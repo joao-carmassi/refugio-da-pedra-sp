@@ -184,7 +184,7 @@ ${parseInt(data.pets) >= 1 ? `*Pets:* ${data.pets}` : ''}`;
             />
             <img
               className="h-full object-cover object-center lg:aspect-square rounded-xl"
-              src="/assets/pousada/bergolado/refugio-3.webp"
+              src="assets/pousada/bergolado/refugio-3.webp"
               alt=""
             />
           </picture>
