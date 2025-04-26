@@ -4,7 +4,7 @@ function Comodidades() {
       <div className="w-full grid place-items-center">
         <img
           className="w-[35rem] rounded-2xl shadow-md"
-          src="./assets/pousada/fogueira/refugio-7.webp"
+          src="/assets/pousada/fogueira/refugio-7.webp"
           alt=""
         />
       </div>

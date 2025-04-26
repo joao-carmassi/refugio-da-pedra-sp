@@ -26,7 +26,7 @@ function Reserve() {
           <div className="lg:col-span-4 mt-10 lg:mt-0">
             <img
               className="w-full rounded-xl"
-              src="./assets/chales/jade/refugio-6.webp"
+              src="/assets/chales/jade/refugio-6.webp"
               alt=""
             />
           </div>
