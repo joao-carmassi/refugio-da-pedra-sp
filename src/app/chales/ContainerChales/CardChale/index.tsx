@@ -24,7 +24,7 @@ function CardChale({ chale }: Props) {
                   <div className="flex justify-center h-full bg-gray-100 dark:bg-neutral-900">
                     <img
                       className="w-full object-cover object-center"
-                      src={`/assets/chales/${chale.id}/refugio-${foto}.webp`}
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/chales/${chale.id}/refugio-${foto}.webp`}
                       alt=""
                     />
                   </div>

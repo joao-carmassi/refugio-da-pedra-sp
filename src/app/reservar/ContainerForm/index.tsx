@@ -180,11 +180,11 @@ ${parseInt(data.pets) >= 1 ? `*Pets:* ${data.pets}` : ''}`;
           <picture>
             <source
               media="(max-width: 64rem)"
-              srcSet="/assets/pousada/geral/refugio-1.webp"
+              srcSet={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/geral/refugio-1.webp`}
             />
             <img
               className="h-full object-cover object-center lg:aspect-square rounded-xl"
-              src="assets/pousada/bergolado/refugio-3.webp"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/bergolado/refugio-3.webp`}
               alt=""
             />
           </picture>

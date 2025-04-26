@@ -14,7 +14,9 @@ function Fotos({ chale, fotos }: Props) {
           <img
             key={index}
             loading="lazy"
-            src={`/assets/chales/${chale}/refugio-${index + 1}.webp`}
+            src={`${
+              process.env.NEXT_PUBLIC_BASE_PATH
+            }/assets/chales/${chale}/refugio-${index + 1}.webp`}
             alt=""
             className="w-full mb-2.5 md:mb-5 shadow-md"
           />

@@ -12,217 +12,217 @@ function Galeria() {
       <div className="columns-1 md:columns-2 lg:columns-3">
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/geral/refugio-1.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/geral/refugio-1.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/santaMaria/vinicola-1.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/santaMaria/vinicola-1.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/geral/refugio-2.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/geral/refugio-2.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/santaMaria/vinicola-2.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/santaMaria/vinicola-2.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/geral/refugio-3.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/geral/refugio-3.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/santaMaria/vinicola-3.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/santaMaria/vinicola-3.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/geral/refugio-4.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/geral/refugio-4.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/santaMaria/vinicola-4.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/santaMaria/vinicola-4.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/geral/refugio-5.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/geral/refugio-5.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/santaMaria/vinicola-5.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/santaMaria/vinicola-5.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/geral/refugio-6.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/geral/refugio-6.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/santaMaria/vinicola-6.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/santaMaria/vinicola-6.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/geral/refugio-7.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/geral/refugio-7.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/santaMaria/vinicola-7.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/santaMaria/vinicola-7.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/fogueira/refugio-1.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/fogueira/refugio-1.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/ecoturismo/ecoturismo-1.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/ecoturismo/ecoturismo-1.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/fogueira/refugio-2.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/fogueira/refugio-2.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/ecoturismo/ecoturismo-2.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/ecoturismo/ecoturismo-2.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/fogueira/refugio-3.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/fogueira/refugio-3.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/ecoturismo/ecoturismo-3.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/ecoturismo/ecoturismo-3.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/fogueira/refugio-4.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/fogueira/refugio-4.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/ecoturismo/ecoturismo-4.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/ecoturismo/ecoturismo-4.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/fogueira/refugio-5.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/fogueira/refugio-5.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/ecoturismo/ecoturismo-5.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/ecoturismo/ecoturismo-5.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/fogueira/refugio-6.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/fogueira/refugio-6.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/ecoturismo/ecoturismo-6.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/ecoturismo/ecoturismo-6.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/fogueira/refugio-7.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/fogueira/refugio-7.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/cachoeira/cachoeira-1.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/cachoeira/cachoeira-1.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/fogueira/refugio-8.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/fogueira/refugio-8.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/cachoeira/cachoeira-2.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/cachoeira/cachoeira-2.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/cafe/refugio-1.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/cafe/refugio-1.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/cachoeira/cachoeira-3.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/cachoeira/cachoeira-3.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/cafe/refugio-2.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/cafe/refugio-2.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/cafe/refugio-3.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/cafe/refugio-3.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/cafe/refugio-4.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/cafe/refugio-4.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/cafe/refugio-5.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/cafe/refugio-5.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/bergolado/refugio-0.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/bergolado/refugio-0.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/bergolado/refugio-1.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/bergolado/refugio-1.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/bergolado/refugio-2.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/bergolado/refugio-2.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/bergolado/refugio-3.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/bergolado/refugio-3.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/bergolado/refugio-4.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/bergolado/refugio-4.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/bergolado/refugio-5.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/bergolado/refugio-5.webp`}
           alt=""
         />
         <img
           className="w-full mb-2.5 md:mb-5 shadow-md"
-          src="assets/pousada/bergolado/refugio-7.webp"
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH}/assets/pousada/bergolado/refugio-7.webp`}
           alt=""
         />
       </div>
