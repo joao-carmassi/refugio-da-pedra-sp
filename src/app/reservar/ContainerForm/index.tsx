@@ -135,7 +135,7 @@ ${parseInt(data.pets) >= 1 ? `*Pets:* ${data.pets}` : ''}`;
                 className="shadow-xs border-b-2 focus:outline-0 md:text-lg focus:border-yellow-500 py-1 w-full border-gray-300"
               >
                 <option value="" disabled>
-                  Open this select menu
+                  Selecione um chalé
                 </option>
                 {chales.data.map((chale) => (
                   <option key={chale.id} value={chale.nome}>
