@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "nome": "Cabana Ametista",
+      "id": "ametista",
+      "banner": 12,
+      "fotos": 18,
+      "fotos_carrosel": [6, 8, 9, 12, 13, 14, 15, 16, 17],
+      "capacidade": "Até 2 pessoas",
+      "camas": "1 cama queen",
+      "banheiros": "1",
+      "tamanho": "30 m²",
+      "ambientes": ["Suíte", "Varanda"],
+      "comodidades": [
+        "TV Smart",
+        "Lareira",
+        "Aquecedor",
+        "Micro-ondas",
+        "Frigobar"
+      ],
+      "area_externa": ["Varanda"],
+      "politica": {
+        "idade_minima": "18",
+        "pets_permitidos": true
+      }
+    },
+    {
+      "nome": "Jade",
+      "id": "jade",
+      "banner": 2,
+      "fotos": 20,
+      "fotos_carrosel": [2, 4, 6, 7, 8, 10, 16],
+      "capacidade": "Até 2 pessoas",
+      "camas": "1 cama casal",
+      "banheiros": "1",
+      "tamanho": "32 m²",
+      "ambientes": ["Suíte", "Sala integrada com cozinha"],
+      "comodidades": ["TV Smart", "Aquecedor", "Cozinha equipada"],
+      "area_externa": ["Deck"],
+      "politica": {
+        "idade_minima": "13",
+        "pets_permitidos": true
+      }
+    },
+    {
+      "nome": "Esmeralda",
+      "id": "esmeralda",
+      "banner": 1,
+      "fotos": 20,
+      "fotos_carrosel": [1, 5, 6, 7, 9, 10, 17, 19],
+      "capacidade": "Até 3 pessoas",
+      "camas": "2 camas de casal",
+      "banheiros": "1",
+      "tamanho": "30 m²",
+      "ambientes": ["Suíte", "Sala integrada com cozinha", "Mezanino"],
+      "comodidades": ["TV Smart", "Aquecedor", "Lareira", "Cozinha equipada"],
+      "area_externa": ["Varanda"],
+      "politica": {
+        "idade_minima": "13",
+        "pets_permitidos": true
+      }
+    },
+    {
+      "nome": "Turmalina",
+      "id": "turmalina",
+      "banner": 1,
+      "fotos": 12,
+      "fotos_carrosel": [1, 3, 4, 5, 6, 9],
+      "capacidade": "Até 3 pessoas",
+      "camas": "2 camas de casal",
+      "banheiros": "1",
+      "tamanho": "30 m²",
+      "ambientes": ["Suíte", "Sala integrada com cozinha", "Mezanino"],
+      "comodidades": ["TV Smart", "Aquecedor", "Cozinha equipada"],
+      "area_externa": ["Varanda"],
+      "politica": {
+        "idade_minima": "13",
+        "pets_permitidos": true
+      }
+    }
+  ]
+}
