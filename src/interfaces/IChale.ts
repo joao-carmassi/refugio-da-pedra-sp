@@ -5,8 +5,11 @@ export default interface IChale {
   fotos: number;
   fotos_carrosel: number[];
   capacidade: string;
-  camas: string;
-  banheiros: string;
+  camas: {
+    quantidade: number;
+    tipo: string;
+  };
+  banheiros: number;
   tamanho: string;
   ambientes: string[];
   comodidades: string[];

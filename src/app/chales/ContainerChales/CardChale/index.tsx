@@ -120,9 +120,9 @@ function CardChale({ chale }: Props) {
               <path d="M3 16h18"></path>
             </svg>
             <span className="font-semibold">
-              Cama{Number(chale.camas) === 1 ? '' : 's'}
+              Cama{chale.camas.quantidade === 1 ? '' : 's'}:
             </span>
-            : {chale.camas}
+            {chale.camas.quantidade} {chale.camas.tipo}
           </p>
           <p className="mt-1 flex items-center gap-1 text-gray-500 dark:text-neutral-400">
             <svg

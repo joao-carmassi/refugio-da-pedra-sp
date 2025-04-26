@@ -49,8 +49,10 @@ function Info({ chale }: Props) {
               <path d="M10 13h11v-2a3 3 0 0 0 -3 -3h-8v5z"></path>
               <path d="M3 16h18"></path>
             </svg>
-            <span className="font-semibold">Camas: </span>
-            {chale.camas}
+            <span className="font-semibold">
+              Cama{chale.camas.quantidade === 1 ? '' : 's'}:
+            </span>
+            {chale.camas.quantidade} {chale.camas.tipo}
           </p>
           <p className="flex gap-1 items-center text-gray-500 dark:text-neutral-40 dark:text-gray-300">
             <svg
@@ -344,8 +346,10 @@ function Info({ chale }: Props) {
             <path d="M10 13h11v-2a3 3 0 0 0 -3 -3h-8v5z"></path>
             <path d="M3 16h18"></path>
           </svg>
-          <span className="font-semibold">Camas: </span>
-          {chale.camas}
+          <span className="font-semibold">
+            Cama{chale.camas.quantidade === 1 ? '' : 's'}:
+          </span>
+          {chale.camas.quantidade} {chale.camas.tipo}
         </p>
         <p className="flex gap-1 items-center text-gray-500 dark:text-neutral-40 dark:text-gray-300">
           <svg
@@ -368,7 +372,7 @@ function Info({ chale }: Props) {
           </svg>
           <span className="font-semibold">Banheiros: </span>
           {chale.banheiros}
-          {parseInt(chale.banheiros) > 1 ? 'banheiros' : 'banheiro'}
+          {chale.banheiros > 1 ? ' banheiros' : ' banheiro'}
         </p>
         <p className="flex gap-1 items-center text-gray-500 dark:text-neutral-40 dark:text-gray-300">
           <svg
