@@ -1,6 +1,11 @@
 import Head from 'next/head';
 import ContainerForm from './ContainerForm';
 
+export const metadata = {
+  title: 'Reservar',
+  description: 'Reserva seu chalé - Refúgio da Pedra SP',
+};
+
 function ReservarPage() {
   return (
     <>

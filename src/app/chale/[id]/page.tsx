@@ -16,6 +16,25 @@ function getChale(id: string): IChale | undefined {
   return chales.data.find((chale) => chale.id === id);
 }
 
+export async function generateMetadata({ params }: Props) {
+  const { id } = await params;
+  const chale = getChale(id);
+
+  if (!chale) {
+    return {
+      title: 'Chalé não encontrado',
+      description: 'Chalé não encontrado no Refúgio da Pedra SP.',
+    };
+  }
+
+  return {
+    title: `${chale.nome} - Refúgio da Pedra SP`,
+    description: `Conheça o ${chale.nome}, chalé para ${
+      chale.capacidade
+    }, com ${chale.comodidades.join(', ')} e muito conforto.`,
+  };
+}
+
 async function PaginaChale({ params }: Props) {
   const { id } = await params;
   const chale = getChale(id);
