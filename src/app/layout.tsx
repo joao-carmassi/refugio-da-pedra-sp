@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import './globals.css';
-import PrelineScriptWrapper from './components/PrelineScriptWrapper';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import NavBar from '@/components/Navbar';
+import Footer from '@/components/Footer/index.tsx';
+import chales from '@/data/chales.json';
+import slugify from 'slugify';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Refugio da Pedra SP',
@@ -12,15 +13,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
+  const links = chales.map((chale) => ({
+    title: chale.nome,
+    href: `/chale/${slugify(chale.nome, { lower: true, strict: true })}`,
+  }));
+
   return (
-    <html
-      lang="pt-BR"
-      data-theme="light"
-      className="max-h-100 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
-    >
+    <html lang="pt-BR" className="light">
       <head>
         {/* Google Tag Manager */}
         <Script
@@ -59,7 +61,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="dark:bg-neutral-900">
+      <body className="bg-background text-foreground">
         {/* Google Tag Manager NoScript */}
         <noscript>
           <iframe
@@ -69,10 +71,11 @@ export default function RootLayout({
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        <Header />
-        {children}
-        <Footer />
-        <PrelineScriptWrapper />
+        <header>
+          <NavBar />
+        </header>
+        <div className="pt-16">{children}</div>
+        <Footer links={links} />
       </body>
     </html>
   );
