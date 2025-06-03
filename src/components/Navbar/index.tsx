@@ -5,7 +5,7 @@ import { NavMenu } from './nav-menu';
 
 const NavBar = () => {
   return (
-    <nav className="h-16 bg-background shadow-sm fixed top-0 w-full z-40">
+    <nav className="h-16 bg-card border border-border fixed top-0 w-full z-40">
       <div className="max-w-7xl w-full mx-auto h-full flex items-center justify-between px-6 md:px-12">
         <div className="flex-1">
           <Link
@@ -40,4 +40,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
