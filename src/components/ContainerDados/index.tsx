@@ -7,6 +7,7 @@ const ContainerDados = () => {
     <section className="w-full max-w-7xl px-6 md:px-12 py-6 md:py-12 md:gap-8 lg:gap-16 mx-auto flex items-center justify-between flex-col-reverse lg:flex-row">
       <div className="pt-5 md:pt-0">
         <img
+          loading="lazy"
           className="rounded-xl"
           src={`${path}/assets/refugio/geral/refugio-28.webp`}
           alt=""

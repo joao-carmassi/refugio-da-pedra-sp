@@ -14,6 +14,7 @@ function Galeria() {
       <div className="columns-1 md:columns-2 lg:columns-3">
         {Array.from({ length: 29 }, (_, index) => (
           <img
+            loading="lazy"
             key={index}
             className="w-full mb-2.5 md:mb-5 shadow-md"
             src={`${path}/assets/refugio/geral/refugio-${index + 1}.webp`}

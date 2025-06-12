@@ -25,6 +25,7 @@ function Reserve() {
       </div>
       <div className="lg:col-span-4 mt-10 lg:mt-0 flex-1">
         <img
+          loading="lazy"
           className="w-full rounded-xl"
           src={`${path}/assets/refugio/chales/jade/refugio-6.webp`}
           alt=""

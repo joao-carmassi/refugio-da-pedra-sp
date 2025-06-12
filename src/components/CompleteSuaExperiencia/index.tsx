@@ -46,6 +46,7 @@ const CompleteSuaExperiencia = () => {
         <div className="mt-2 md:mt-6 w-full mx-auto grid items-center md:grid-cols-2 gap-12">
           {activeFeature?.imgPc && (
             <img
+              loading="lazy"
               alt=""
               src={`${path}/assets/${activeFeature.id}/${activeFeature.imgPc}`}
               className="hidden md:block w-full md:h-[40rem] md:w-full bg-card rounded-xl object-cover object-center"
@@ -87,6 +88,7 @@ const CompleteSuaExperiencia = () => {
                         ></iframe>
                         {imgCell && (
                           <img
+                            loading="lazy"
                             alt=""
                             src={`${path}/assets/${id}/${imgCell}`}
                             className="mt-3 mb-2 md:hidden aspect-video w-full bg-card rounded-xl object-cover object-center"
