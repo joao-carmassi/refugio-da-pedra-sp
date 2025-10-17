@@ -22,12 +22,16 @@ export default function RootLayout({
   }));
 
   return (
-    <html lang="pt-BR" className="light">
+    <html lang='pt-BR' className='light'>
       <head>
+        <meta
+          name='google-site-verification'
+          content='7z3PuWNKZ3rLPsIWZmDpioElAcG46TFEwpYpRVbaAo8'
+        />
         {/* Google Tag Manager */}
         <Script
-          id="gtm-script"
-          strategy="afterInteractive"
+          id='gtm-script'
+          strategy='afterInteractive'
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){
@@ -44,13 +48,13 @@ export default function RootLayout({
 
         {/* Google Analytics */}
         <Script
-          id="gtag-script"
+          id='gtag-script'
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-LBQ9F7S12E"
+          src='https://www.googletagmanager.com/gtag/js?id=G-LBQ9F7S12E'
         />
         <Script
-          id="gtag-config-script"
-          strategy="afterInteractive"
+          id='gtag-config-script'
+          strategy='afterInteractive'
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -61,20 +65,20 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-background text-foreground">
+      <body className='bg-background text-foreground'>
         {/* Google Tag Manager NoScript */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PNHX9RNR"
-            height="0"
-            width="0"
+            src='https://www.googletagmanager.com/ns.html?id=GTM-PNHX9RNR'
+            height='0'
+            width='0'
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
         <header>
           <NavBar />
         </header>
-        <div className="pt-16">{children}</div>
+        <div className='pt-16'>{children}</div>
         <Footer links={links} />
       </body>
     </html>
