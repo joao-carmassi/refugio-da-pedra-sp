@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Rating, RatingButton } from './kibo-ui/rating';
 
 const Hero = () => {
   return (
@@ -42,6 +43,26 @@ const Hero = () => {
                   <ArrowRight className='size-4' />
                 </Link>
               </Button>
+            </div>
+            <div className='space-y-3'>
+              <Image
+                src='https://static.cdnlogo.com/logos/b/94/booking-com.svg'
+                alt='Booking.com'
+                width={188}
+                height={32}
+                className='h-8'
+                loading='eager'
+              />
+              <div className='flex flex-col'>
+                <Rating value={4.5} readOnly>
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <RatingButton key={index} />
+                  ))}
+                </Rating>
+                <span className='text-lg'>
+                  <span className='font-medium'>9.4</span> /10
+                </span>
+              </div>
             </div>
           </div>
           <div
