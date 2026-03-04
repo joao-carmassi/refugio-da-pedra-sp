@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { getInPhoneNumber } from '@/lib/env';
-import { Instagram } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 const links = [
   {
@@ -39,17 +39,17 @@ const links = [
 const mediaLinks = [
   {
     title: 'Google',
-    Icon: <Instagram />,
+    Icon: <Icon icon='mdi:google' />,
     href: 'https://www.google.com/search?q=Ref%C3%BAgio+da+Pedra+Sp&sca_esv=f8ded6305c32e328&sxsrf=AHTn8zpP39Gg0Bio0OMCl3H5lXrP_85Gqw%3A1741978706336&ei=UnzUZ8acFITb1sQPlZncuQc&hotel_occupancy=&ved=0ahUKEwjGjf2voIqMAxWErZUCHZUMN3cQ4dUDCBA&uact=5&oq=Ref%C3%BAgio+da+Pedra+Sp&gs_lp=Egxnd3Mtd2l6LXNlcnAiFFJlZsO6Z2lvIGRhIFBlZHJhIFNwMhEQLhiABBjHARiYBRiOBRivATIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgIQJjIIEAAYgAQYogQyCBAAGIAEGKIEMggQABiABBiiBDIIEAAYgAQYogQyIBAuGIAEGMcBGJgFGI4FGK8BGJcFGNwEGN4EGOAE2AEBSMEKUIYFWIYFcAF4AZABAJgBqQGgAakBqgEDMC4xuAEDyAEA-AEC-AEBmAICoALEAcICBxAjGLADGCfCAgoQABiwAxjWBBhHmAMAiAYBkAYDugYGCAEQARgUkgcDMS4xoAfbCQ&sclient=gws-wiz-serp&lqi=ChRSZWbDumdpbyBkYSBQZWRyYSBTcEj1_pGBzruAgAhaMhAAEAEQAhADGAAYARgCGAMiFHJlZsO6Z2lvIGRhIHBlZHJhIHNwKgoIAhAAEAEQAhADkgEDaW5u#rlimm=18135816175245692937',
   },
   {
     title: 'Instagram',
-    Icon: <Instagram />,
+    Icon: <Icon icon='mdi:instagram' />,
     href: 'https://www.instagram.com/refugiodapedrasp/',
   },
   {
     title: 'Whatsapp',
-    Icon: <Instagram />,
+    Icon: <Icon icon='mdi:whatsapp' />,
     href: getInPhoneNumber(),
   },
 ];
