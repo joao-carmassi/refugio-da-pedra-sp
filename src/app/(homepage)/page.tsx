@@ -3,6 +3,7 @@ import Faq from './faq';
 import Cta from './cta';
 import OutrasExperiencias from './outras-experiencias';
 import Mapa from './mapa';
+import Galeria from './galeria';
 
 export default function HomePage() {
   return (
@@ -12,7 +13,7 @@ export default function HomePage() {
       <Cta />
       <OutrasExperiencias />
       <Mapa />
-      <div className='min-h-container' />
+      <Galeria />
     </main>
   );
 }
