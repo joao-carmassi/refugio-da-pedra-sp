@@ -7,7 +7,7 @@ import { Rating, RatingButton } from './kibo-ui/rating';
 
 const Hero = () => {
   return (
-    <section className='py-6 md:py-12 min-h-screen grid place-items-center'>
+    <section className='py-6 min-h-container grid place-items-center'>
       <div className='container'>
         <div className='grid items-center gap-6 lg:grid-cols-2 lg:gap-12'>
           <div className='flex flex-col items-center gap-5 text-center lg:items-start lg:text-left'>
@@ -28,7 +28,7 @@ const Hero = () => {
                 variant='outline'
                 asChild
                 size='lg'
-                className='w-full sm:w-auto'
+                className='w-full sm:w-auto rounded-full'
               >
                 <Link href='#'>Entre em contato</Link>
               </Button>
@@ -36,7 +36,7 @@ const Hero = () => {
                 asChild
                 effect='ringHover'
                 size='lg'
-                className='w-full sm:w-auto text-primary-foreground!'
+                className='w-full sm:w-auto text-primary-foreground! rounded-full'
               >
                 <Link href='#'>
                   Reservar
@@ -53,7 +53,7 @@ const Hero = () => {
                 className='h-8'
                 loading='eager'
               />
-              <div className='flex flex-col'>
+              <div className='flex flex-col items-center lg:items-start'>
                 <Rating value={4.5} readOnly>
                   {Array.from({ length: 5 }).map((_, index) => (
                     <RatingButton key={index} />

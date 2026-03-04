@@ -139,6 +139,7 @@ Uncomment to import Google fonts if you want to use them in your project.
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+  --height-container: calc(100svh - 4rem);
 
   /* Shadcnblocks.com Colors */
   --color-transparent: transparent;
