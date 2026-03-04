@@ -45,7 +45,11 @@ function Header(): React.ReactNode {
                 ))}
               </NavigationMenuList>
             </NavigationMenu>
-            <Button className='ml-2 md:rounded-full' asChild>
+            <Button
+              effect={'shineHover'}
+              className='ml-2 md:rounded-full'
+              asChild
+            >
               <Link href='/reserva'>Reservar</Link>
             </Button>
 

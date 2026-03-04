@@ -4,6 +4,10 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Rating, RatingButton } from '../../components/kibo-ui/rating';
+import { getInPhoneNumber } from '@/lib/env';
+
+const msgText =
+  'Ola, vim pelo site da pousada e gostaria de fazer uma reserva!';
 
 const Hero = () => {
   return (
@@ -23,14 +27,19 @@ const Hero = () => {
               Venha se aventurar em um mundo onde a natureza e o conforto se
               encontram, em meio à grandiosa Serra da Mantiqueira.
             </p>
-            <div className='flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start'>
+            <div className='flex w-full flex-col-reverse justify-center gap-2 sm:flex-row lg:justify-start'>
               <Button
                 variant='outline'
                 asChild
                 size='lg'
                 className='w-full sm:w-auto rounded-full'
               >
-                <Link href='#'>Entre em contato</Link>
+                <a
+                  target='_blank'
+                  href={`https://api.whatsapp.com/send?phone=${getInPhoneNumber()}&text=${msgText}`}
+                >
+                  Entre em contato
+                </a>
               </Button>
               <Button
                 asChild
@@ -38,7 +47,7 @@ const Hero = () => {
                 size='lg'
                 className='w-full sm:w-auto text-primary-foreground! rounded-full'
               >
-                <Link href='#'>
+                <Link href='/reservar'>
                   Reservar
                   <ArrowRight className='size-4' />
                 </Link>
