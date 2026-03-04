@@ -24,7 +24,7 @@ const links = [
 function Header(): React.ReactNode {
   return (
     <>
-      <header className='w-full h-16 grid place-items-center fixed top-0 z-50'>
+      <header className='w-full h-16 grid place-items-center fixed top-0 z-50 bg-card'>
         <nav className='container flex items-center justify-between'>
           <div>
             <Link

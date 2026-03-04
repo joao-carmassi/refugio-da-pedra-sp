@@ -3,11 +3,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Rating, RatingButton } from './kibo-ui/rating';
+import { Rating, RatingButton } from '../../components/kibo-ui/rating';
 
 const Hero = () => {
   return (
-    <section className='py-6 min-h-container grid place-items-center'>
+    <section className='py-6 min-h-container grid place-items-center bg-card'>
       <div className='container'>
         <div className='grid items-center gap-6 lg:grid-cols-2 lg:gap-12'>
           <div className='flex flex-col items-center gap-5 text-center lg:items-start lg:text-left'>
