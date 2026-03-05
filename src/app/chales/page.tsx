@@ -27,7 +27,7 @@ function ChalePage(): React.ReactNode {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
           {chales.map((chale) => (
             <Link href={`/chales/${chale.id}`} key={chale.id}>
-              <Card className='group'>
+              <Card className='group py-0 ring-0 gap-3'>
                 <div className='relative rounded-b-xl overflow-hidden'>
                   <img
                     src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
@@ -61,7 +61,7 @@ function ChalePage(): React.ReactNode {
                     )}
                   </div>
                 </div>
-                <CardContent className='pb-6 text-base'>
+                <CardContent className='pb-6 text-base px-0'>
                   <h2 className='font-semibold'>{chale.nome}</h2>
                   <p className='text-muted-foreground'>{chale.capacidade}</p>
                   <p className='text-muted-foreground'>{chale.camas}</p>
