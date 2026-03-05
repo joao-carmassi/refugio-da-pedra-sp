@@ -69,7 +69,7 @@ const questions = [
 
 const Faq = () => {
   return (
-    <section className='py-6 lg:py-12'>
+    <section className='py-6 lg:py-12 bg-card'>
       <div className='container'>
         <div className='flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-12'>
           <div className='flex-1'>
@@ -93,7 +93,7 @@ const Faq = () => {
               defaultValue='0'
               type='single'
               collapsible
-              className='w-full bg-card shadow-lg inset-shadow-2xs border-0'
+              className='w-full bg-card'
             >
               {questions.map((item, i) => (
                 <AccordionItem key={i} value={`${i}`}>

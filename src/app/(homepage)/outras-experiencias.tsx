@@ -26,18 +26,6 @@ const OutrasExperiencias = () => {
     <section className='py-6 lg:py-12'>
       <div className='container'>
         <div className='flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-12'>
-          {activeFeature?.imgPc && (
-            <div className='flex-1'>
-              <Image
-                width={724}
-                height={724}
-                loading='lazy'
-                alt={activeFeature.title}
-                src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
-                className='hidden md:block rounded-xl object-cover aspect-9/12 xl:aspect-square w-full'
-              />
-            </div>
-          )}
           <div className='flex flex-col gap-3 md:gap-6 text-start flex-1'>
             <h2 className='text-2xl tracking-tight md:text-4xl lg:text-5xl'>
               Complete sua experiência
@@ -50,7 +38,7 @@ const OutrasExperiencias = () => {
               value={activeItem}
               onValueChange={setActiveItem}
               type='single'
-              className='w-full bg-card shadow-lg inset-shadow-2xs border-0'
+              className='w-full bg-card'
             >
               {features.map(
                 (
@@ -88,6 +76,18 @@ const OutrasExperiencias = () => {
               )}
             </Accordion>
           </div>
+          {activeFeature?.imgPc && (
+            <div className='flex-1'>
+              <Image
+                width={724}
+                height={724}
+                loading='lazy'
+                alt={activeFeature.title}
+                src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
+                className='hidden md:block rounded-xl object-cover aspect-9/12 xl:aspect-square w-full'
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>
