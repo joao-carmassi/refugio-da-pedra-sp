@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import * as React from 'react';
@@ -26,14 +28,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxList,
-} from '@/components/ui/combobox';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -481,28 +475,6 @@ function FormExample() {
                   </Select>
                 </Field>
               </div>
-              <Field>
-                <FieldLabel htmlFor='small-form-framework'>
-                  Framework
-                </FieldLabel>
-                <Combobox items={frameworks}>
-                  <ComboboxInput
-                    id='small-form-framework'
-                    placeholder='Select a framework'
-                    required
-                  />
-                  <ComboboxContent>
-                    <ComboboxEmpty>No frameworks found.</ComboboxEmpty>
-                    <ComboboxList>
-                      {(item) => (
-                        <ComboboxItem key={item} value={item}>
-                          {item}
-                        </ComboboxItem>
-                      )}
-                    </ComboboxList>
-                  </ComboboxContent>
-                </Combobox>
-              </Field>
               <Field>
                 <FieldLabel htmlFor='small-form-comments'>Comments</FieldLabel>
                 <Textarea

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -8,6 +7,7 @@ import {
 } from '@/components/ui/tooltip';
 import chales from '@/data/chales.json';
 import { Check, PawPrint } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 function ChalePage(): React.ReactNode {
@@ -29,15 +29,21 @@ function ChalePage(): React.ReactNode {
             <Link href={`/chales/${chale.id}`} key={chale.id}>
               <Card className='group py-0 ring-0 gap-3'>
                 <div className='relative rounded-b-xl overflow-hidden'>
-                  <img
+                  <Image
                     src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
                     alt={chale.nome}
                     className='aspect-square object-cover'
+                    width={356}
+                    height={356}
+                    loading='eager'
                   />
-                  <img
+                  <Image
                     src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[1]}.webp`}
                     alt={chale.nome}
                     className='aspect-square object-cover absolute top-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition duration-300'
+                    width={356}
+                    height={356}
+                    loading='eager'
                   />
                   <div className='font-semibold text-muted-foreground absolute top-3 right-3'>
                     {chale.politica.pets_permitidos && (

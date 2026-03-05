@@ -63,13 +63,13 @@ const Hero = () => {
                 loading='eager'
               />
               <div className='flex flex-col items-center lg:items-start'>
-                <Rating value={4.5} readOnly>
+                <Rating value={4.8} readOnly>
                   {Array.from({ length: 5 }).map((_, index) => (
                     <RatingButton key={index} />
                   ))}
                 </Rating>
                 <span className='text-lg'>
-                  <span className='font-medium'>9.4</span> /10
+                  <span className='font-medium'>4.8</span> / 5
                 </span>
               </div>
             </div>
