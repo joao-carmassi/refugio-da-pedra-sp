@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Figtree } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import { TooltipProvider } from '@/components/ui/tooltip';
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -31,9 +32,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <TooltipProvider>
+          <Header />
+          {children}
+          <Footer />
+        </TooltipProvider>
       </body>
     </html>
   );

@@ -1,0 +1,88 @@
+[
+  {
+    "nome": "Domo • Colmeia",
+    "id": "colmeia",
+    "banner": [1, 9],
+    "fotos": 14,
+    "capacidade": "Até 2 pessoas",
+    "camas": "1 cama • Queen",
+    "banheiros": "1 banheiro",
+    "tamanho": "30 m²",
+    "ambientes": ["Suíte", "Varanda"],
+    "comodidades": ["TV Smart", "Micro-ondas", "Frigobar"],
+    "area_externa": ["Varanda"],
+    "politica": {
+      "pets_permitidos": false
+    }
+  },
+  {
+    "nome": "Cabana • Ametista",
+    "id": "ametista",
+    "banner": [12, 9],
+    "fotos": 18,
+    "capacidade": "Até 2 pessoas",
+    "camas": "1 cama • Queen",
+    "banheiros": "1 banheiro",
+    "tamanho": "30 m²",
+    "ambientes": ["Suíte", "Varanda"],
+    "comodidades": [
+      "TV Smart",
+      "Lareira",
+      "Aquecedor",
+      "Micro-ondas",
+      "Frigobar"
+    ],
+    "area_externa": ["Varanda"],
+    "politica": {
+      "pets_permitidos": true
+    }
+  },
+  {
+    "nome": "Chalé • Jade",
+    "id": "jade",
+    "banner": [2, 10],
+    "fotos": 20,
+    "capacidade": "Até 2 pessoas",
+    "camas": "1 cama • Casal",
+    "banheiros": "1 banheiro",
+    "tamanho": "32 m²",
+    "ambientes": ["Suíte", "Sala integrada com cozinha"],
+    "comodidades": ["TV Smart", "Aquecedor", "Cozinha equipada"],
+    "area_externa": ["Deck"],
+    "politica": {
+      "pets_permitidos": true
+    }
+  },
+  {
+    "nome": "Chalé • Esmeralda",
+    "id": "esmeralda",
+    "banner": [1, 17],
+    "fotos": 20,
+    "capacidade": "Até 3 pessoas",
+    "camas": "2 camas • Casal",
+    "banheiros": "1 banheiro",
+    "tamanho": "30 m²",
+    "ambientes": ["Suíte", "Sala integrada com cozinha", "Mezanino"],
+    "comodidades": ["TV Smart", "Aquecedor", "Lareira", "Cozinha equipada"],
+    "area_externa": ["Varanda"],
+    "politica": {
+      "pets_permitidos": true
+    }
+  },
+  {
+    "nome": "Chalé • Turmalina",
+    "id": "turmalina",
+    "banner": [1, 5],
+    "fotos": 12,
+    "capacidade": "Até 3 pessoas",
+    "camas": "2 camas • Casal",
+    "banheiros": "1 banheiro",
+    "tamanho": "30 m²",
+    "ambientes": ["Suíte", "Sala integrada com cozinha", "Mezanino"],
+    "comodidades": ["TV Smart", "Aquecedor", "Cozinha equipada"],
+    "area_externa": ["Varanda"],
+    "politica": {
+      "pets_permitidos": true
+    }
+  }
+]
