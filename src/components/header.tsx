@@ -50,7 +50,7 @@ function Header(): React.ReactNode {
               className='ml-2 md:rounded-full'
               asChild
             >
-              <Link href='/reserva'>Reservar</Link>
+              <Link href='/reservar'>Reservar</Link>
             </Button>
 
             {/* Mobile */}
