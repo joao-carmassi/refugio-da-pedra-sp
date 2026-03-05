@@ -34,12 +34,7 @@ const OutrasExperiencias = () => {
               Garanta sua reserva no Refúgio da Pedra e viva os melhores
               passeios de São Bento do Sapucaí!
             </p>
-            <Accordion
-              value={activeItem}
-              onValueChange={setActiveItem}
-              type='single'
-              className='w-full bg-card'
-            >
+            <div className='space-y-3'>
               {features.map(
                 (
                   { title, id, description, imgCell, linkMapa, icon },
@@ -47,34 +42,42 @@ const OutrasExperiencias = () => {
                 ) => {
                   const Icon = iconsMap[icon as keyof typeof iconsMap];
                   return (
-                    <AccordionItem key={index} value={id}>
-                      <AccordionTrigger className='items-center'>
-                        <Icon size={18} />
-                        {title}
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        {description}
-                        <iframe
-                          className='hidden md:block md:h-40 lg:h-60 mt-2 w-full'
-                          src={linkMapa}
-                          loading='lazy'
-                        />
-                        {imgCell && (
-                          <Image
+                    <Accordion
+                      value={activeItem}
+                      onValueChange={setActiveItem}
+                      type='single'
+                      className='w-full bg-card'
+                      key={index}
+                    >
+                      <AccordionItem value={id}>
+                        <AccordionTrigger className='items-center'>
+                          <Icon size={18} />
+                          {title}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                          {description}
+                          <iframe
+                            className='hidden md:block md:h-40 lg:h-60 mt-2 w-full'
+                            src={linkMapa}
                             loading='lazy'
-                            alt={title}
-                            src={`/assets/${id}/${imgCell}`}
-                            className='mt-3 mb-2 md:hidden aspect-video w-full bg-card rounded-xl object-cover object-center'
-                            width={544}
-                            height={306}
                           />
-                        )}
-                      </AccordionContent>
-                    </AccordionItem>
+                          {imgCell && (
+                            <Image
+                              loading='lazy'
+                              alt={title}
+                              src={`/assets/${id}/${imgCell}`}
+                              className='mt-3 mb-2 md:hidden aspect-video w-full bg-card rounded-xl object-cover object-center'
+                              width={544}
+                              height={306}
+                            />
+                          )}
+                        </AccordionContent>
+                      </AccordionItem>
+                    </Accordion>
                   );
                 },
               )}
-            </Accordion>
+            </div>
           </div>
           {activeFeature?.imgPc && (
             <div className='flex-1'>

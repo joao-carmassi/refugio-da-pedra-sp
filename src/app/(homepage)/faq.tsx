@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Accordion,
   AccordionContent,
@@ -15,6 +17,7 @@ import {
   MountainSnow,
 } from 'lucide-react';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const questions = [
   {
@@ -68,15 +71,17 @@ const questions = [
 ];
 
 const Faq = () => {
+  const [open, setOpen] = useState<number>(0);
+
   return (
-    <section className='py-6 lg:py-12 bg-card'>
+    <section className='py-6 lg:py-12'>
       <div className='container'>
         <div className='flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-12'>
           <div className='flex-1'>
             <Image
               width={724}
               height={884}
-              className='rounded-xl object-cover aspect-9/12 xl:aspect-square'
+              className='rounded-xl object-cover aspect-9/12 xl:aspect-9/11'
               src='/assets/refugio/geral/refugio-28.webp'
               alt='Café da manhã'
             />
@@ -89,21 +94,25 @@ const Faq = () => {
               Nos importamos com o seu conforto, por isso sua reserva inclui uma
               série de comodidades para tornar sua estadia ainda mais especial:
             </p>
-            <Accordion
-              defaultValue='0'
-              type='single'
-              collapsible
-              className='w-full bg-card'
-            >
+            <div className='space-y-3'>
               {questions.map((item, i) => (
-                <AccordionItem key={i} value={`${i}`}>
-                  <AccordionTrigger className='items-center'>
-                    {item.Icon} {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent>{item.answer}</AccordionContent>
-                </AccordionItem>
+                <Accordion
+                  type='single'
+                  collapsible
+                  className='w-full bg-card'
+                  key={i}
+                  value={open.toString()}
+                  onValueChange={(value) => setOpen(Number(value))}
+                >
+                  <AccordionItem value={`${i}`}>
+                    <AccordionTrigger className='items-center'>
+                      {item.Icon} {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent>{item.answer}</AccordionContent>
+                  </AccordionItem>
+                </Accordion>
               ))}
-            </Accordion>
+            </div>
           </div>
         </div>
       </div>

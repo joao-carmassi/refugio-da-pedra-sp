@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -23,7 +24,14 @@ function Cta(): React.ReactNode {
             Garanta sua estadia no Refúgio da Pedra e viva uma experiência única
             em meio ao ar livre!
           </p>
-          <Button asChild className='w-full md:w-fit' size={'lg'}>
+          <Button
+            effect={'expandIcon'}
+            iconPlacement='right'
+            icon={ArrowRight}
+            asChild
+            className='w-full md:w-fit rounded-full'
+            size={'lg'}
+          >
             <Link href='/chales'>Ver chalés</Link>
           </Button>
         </div>

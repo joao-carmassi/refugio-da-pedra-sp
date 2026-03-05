@@ -1,6 +1,6 @@
 function Mapa() {
   return (
-    <section className='py-6 md:py-12'>
+    <section className='py-6 md:py-12 bg-card'>
       <div className='container flex flex-col items-center gap-6 md:gap-12'>
         <div className='space-y-3 md:space-y-6 text-center'>
           <h2 className='text-2xl tracking-tight md:text-4xl lg:text-5xl'>
