@@ -19,12 +19,14 @@ import { DateRange } from 'react-day-picker';
 import { ptBR } from 'date-fns/locale';
 import { MinusIcon, PlusIcon } from 'lucide-react';
 import generateWhatsLink from '@/lib/generate-whats-link';
+import { cn } from '@/lib/utils';
 
 interface Props {
   chale: string;
+  petsPermitidos: boolean;
 }
 
-function CardReserva({ chale }: Props): React.ReactNode {
+function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: undefined,
     to: undefined,
@@ -39,12 +41,16 @@ function CardReserva({ chale }: Props): React.ReactNode {
   const guestLabel = [
     `${adults} adulto${adults !== 1 ? 's' : ''}`,
     children > 0 ? `${children} criança${children !== 1 ? 's' : ''}` : '',
-    pets > 0 ? `${pets} animal${pets !== 1 ? 'is' : ''} de estimação` : '',
+    pets > 0 ? `${pets} anima${pets !== 1 ? 'is' : 'l'} de estimação` : '',
   ]
     .filter(Boolean)
     .join(', ');
 
-  const msgText = `Olá, gostaria de reservar o chalé ${chale} para ${guestLabel}${dateRange?.from && dateRange?.to ? ` no período de ${dateRange.from.toLocaleDateString()} a ${dateRange.to.toLocaleDateString()}` : ''}.`;
+  const msgText =
+    `Olá, gostaria de reservar o chalé *${chale}* para *${guestLabel}${dateRange?.from && dateRange?.to ? `* no período de *${dateRange.from.toLocaleDateString()} a ${dateRange.to.toLocaleDateString()}` : ''}*.`.replaceAll(
+      ' · ',
+      ' ',
+    );
 
   return (
     <Card className='shadow-xl border border-border py-4 gap-3'>
@@ -110,20 +116,24 @@ function CardReserva({ chale }: Props): React.ReactNode {
                     </span>
                   </div>
                   <div className='flex items-center gap-3'>
-                    <button
+                    <Button
+                      variant={'outline'}
+                      size='icon-sm'
+                      className='rounded-full'
                       onClick={() => setAdults((v) => Math.max(1, v - 1))}
-                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted disabled:opacity-40'
                       disabled={adults <= 1}
                     >
                       <MinusIcon className='w-3 h-3' />
-                    </button>
+                    </Button>
                     <span className='w-4 text-center text-sm'>{adults}</span>
-                    <button
+                    <Button
+                      variant={'outline'}
+                      size='icon-sm'
+                      className='rounded-full'
                       onClick={() => setAdults((v) => v + 1)}
-                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted'
                     >
                       <PlusIcon className='w-3 h-3' />
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <Separator />
@@ -135,44 +145,65 @@ function CardReserva({ chale }: Props): React.ReactNode {
                     </span>
                   </div>
                   <div className='flex items-center gap-3'>
-                    <button
+                    <Button
+                      variant={'outline'}
+                      size='icon-sm'
+                      className='rounded-full'
                       onClick={() => setChildren((v) => Math.max(0, v - 1))}
-                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted disabled:opacity-40'
                       disabled={children <= 0}
                     >
                       <MinusIcon className='w-3 h-3' />
-                    </button>
+                    </Button>
                     <span className='w-4 text-center text-sm'>{children}</span>
-                    <button
+                    <Button
+                      variant={'outline'}
+                      size='icon-sm'
+                      className='rounded-full'
                       onClick={() => setChildren((v) => v + 1)}
-                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted'
                     >
                       <PlusIcon className='w-3 h-3' />
-                    </button>
+                    </Button>
                   </div>
                 </div>
                 <Separator />
                 <div className='flex items-center justify-between'>
                   <div className='flex flex-col'>
-                    <span className='text-sm font-medium'>
+                    <span
+                      className={cn(
+                        'text-sm font-medium',
+                        !petsPermitidos && 'line-through text-muted-foreground',
+                      )}
+                    >
                       Animais de estimação
                     </span>
                   </div>
                   <div className='flex items-center gap-3'>
-                    <button
+                    <Button
+                      variant={'outline'}
+                      size='icon-sm'
+                      className='rounded-full'
                       onClick={() => setPets((v) => Math.max(0, v - 1))}
-                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted disabled:opacity-40'
-                      disabled={pets <= 0}
+                      disabled={pets <= 0 || !petsPermitidos}
                     >
                       <MinusIcon className='w-3 h-3' />
-                    </button>
-                    <span className='w-4 text-center text-sm'>{pets}</span>
-                    <button
+                    </Button>
+                    <span
+                      className={cn(
+                        'w-4 text-center text-sm',
+                        !petsPermitidos && 'text-muted-foreground',
+                      )}
+                    >
+                      {pets}
+                    </span>
+                    <Button
+                      variant={'outline'}
+                      size='icon-sm'
+                      className='rounded-full'
+                      disabled={!petsPermitidos}
                       onClick={() => setPets((v) => v + 1)}
-                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted'
                     >
                       <PlusIcon className='w-3 h-3' />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

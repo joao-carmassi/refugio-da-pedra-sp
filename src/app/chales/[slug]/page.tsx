@@ -94,7 +94,10 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
           </div>
         </div>
         <div className='h-fit sticky top-22 space-y-3'>
-          <CardReserva chale={chale.nome} />
+          <CardReserva
+            chale={chale.nome}
+            petsPermitidos={chale.politica.pets_permitidos}
+          />
         </div>
       </section>
     </main>
