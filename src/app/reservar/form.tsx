@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, useWatch, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -64,6 +64,7 @@ function Form(): React.ReactNode {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
+      chale: '',
       adultos: 1,
       criancas: 0,
       pets: 0,
@@ -82,6 +83,12 @@ function Form(): React.ReactNode {
   const petsPermitidos =
     chales.find((c) => c.id === chaleSelecionadoId)?.politica.pets_permitidos ??
     true;
+
+  useEffect(() => {
+    if (!petsPermitidos) {
+      setValue('pets', 0);
+    }
+  }, [petsPermitidos, setValue]);
 
   const handleDateSelect = (range: DateRange | undefined) => {
     setValue('checkin', range?.from as Date, { shouldValidate: true });
@@ -105,8 +112,12 @@ function Form(): React.ReactNode {
   return (
     <Card className='w-full max-w-md shadow-xl'>
       <CardHeader>
-        <CardTitle className='text-2xl'>Reserve agora mesmo</CardTitle>
-        <CardDescription>
+        <CardTitle>
+          <h1 className='text-2xl tracking-tight md:text-3xl font-normal text-center'>
+            Reserve agora mesmo
+          </h1>
+        </CardTitle>
+        <CardDescription className='text-muted-foreground leading-snug text-center'>
           Preencha os dados abaixo para solicitar sua reserva
         </CardDescription>
       </CardHeader>
@@ -122,7 +133,7 @@ function Form(): React.ReactNode {
                 {...register('nome')}
               />
               {errors.nome && (
-                <p className='text-destructive text-xs mt-1'>
+                <p className='text-destructive text-xs'>
                   {errors.nome.message}
                 </p>
               )}
@@ -152,7 +163,7 @@ function Form(): React.ReactNode {
                 )}
               />
               {errors.chale && (
-                <p className='text-destructive text-xs mt-1'>
+                <p className='text-destructive text-xs'>
                   {errors.chale.message}
                 </p>
               )}
@@ -391,7 +402,7 @@ function Form(): React.ReactNode {
                 </DropdownMenu>
               </div>
               {(errors.checkin || errors.checkout) && (
-                <p className='text-destructive text-xs mt-1'>
+                <p className='text-destructive text-xs'>
                   {errors.checkin?.message || errors.checkout?.message}
                 </p>
               )}
