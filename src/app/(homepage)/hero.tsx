@@ -62,7 +62,11 @@ const Hero = () => {
               <div className='flex flex-col items-center lg:items-start'>
                 <Rating value={4.8} readOnly>
                   {Array.from({ length: 5 }).map((_, index) => (
-                    <RatingButton key={index} />
+                    <RatingButton
+                      aria-hidden
+                      aria-label={`Rating ${index + 1}`}
+                      key={index}
+                    />
                   ))}
                 </Rating>
                 <span className='text-lg'>

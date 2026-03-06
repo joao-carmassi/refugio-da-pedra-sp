@@ -2,7 +2,7 @@ import './style.css';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import { cn } from '@/lib/utils';
-import { Spinner } from '../../../../components/ui/spinner';
+import { Spinner } from '../spinner';
 
 /**
  * @author: @joao-carmassi

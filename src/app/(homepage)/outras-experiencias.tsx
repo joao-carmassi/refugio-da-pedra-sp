@@ -53,6 +53,7 @@ const OutrasExperiencias = () => {
                       <AccordionContent>
                         {description}
                         <iframe
+                          title={`${title} - Mapa`}
                           className='hidden md:block md:h-40 lg:h-60 mt-2 w-full'
                           src={linkMapa}
                           loading='lazy'

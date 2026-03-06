@@ -74,9 +74,9 @@ const Footer = () => {
             <div className='inline-grid w-fit grid-cols-1 gap-x-24 gap-y-6 sm:grid-cols-3'>
               {links.map((section) => (
                 <div key={section.title} className='h-fit w-min'>
-                  <h4 className='mb-3 text-base font-semibold whitespace-nowrap'>
+                  <h2 className='mb-3 text-base font-semibold whitespace-nowrap'>
                     {section.title}
-                  </h4>
+                  </h2>
                   <ul className='space-y-1 text-base font-medium text-muted-foreground'>
                     {section.links.map((link) => (
                       <li key={link.title}>

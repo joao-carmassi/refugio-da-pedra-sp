@@ -43,7 +43,12 @@ function Header(): React.ReactNode {
               <NavigationMenuList>
                 {links.map((link) => (
                   <NavigationMenuItem key={link.href}>
-                    <Button variant='ghost' size='sm' className='rounded-full'>
+                    <Button
+                      asChild
+                      variant='ghost'
+                      size='sm'
+                      className='rounded-full'
+                    >
                       <Link href={link.href}>{link.label}</Link>
                     </Button>
                   </NavigationMenuItem>
@@ -61,7 +66,12 @@ function Header(): React.ReactNode {
             {/* Mobile */}
             <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
               <DropdownMenuTrigger asChild>
-                <Button className='md:hidden' size={'icon'} variant='outline'>
+                <Button
+                  aria-label='Menu de navegação'
+                  className='md:hidden'
+                  size={'icon'}
+                  variant='outline'
+                >
                   <Menu />
                 </Button>
               </DropdownMenuTrigger>

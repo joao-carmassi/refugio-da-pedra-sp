@@ -10,7 +10,7 @@ function ReservarPage(): React.ReactNode {
       }}
     >
       <section className='w-full h-full grid place-items-center min-h-container bg-black/50'>
-        <div className='px-6 w-full grid place-items-center'>
+        <div className='p-6 md:p-12 w-full grid place-items-center'>
           <Form />
         </div>
       </section>

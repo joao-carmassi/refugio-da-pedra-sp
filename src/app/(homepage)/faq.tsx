@@ -80,7 +80,7 @@ const Faq = () => {
           <div className='flex-1'>
             <Image
               width={724}
-              height={884}
+              height={804}
               className='rounded-xl object-cover aspect-9/12 xl:aspect-9/10'
               src='/assets/refugio/geral/refugio-28.webp'
               alt='Café da manhã'

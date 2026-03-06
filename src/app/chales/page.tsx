@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Tooltip,
@@ -53,13 +52,9 @@ function ChalePage(): React.ReactNode {
                     {chale.politica.pets_permitidos && (
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <Button
-                            variant='outline'
-                            size='icon-sm'
-                            className='rounded-full'
-                          >
-                            <PawPrint strokeWidth={2.5} />
-                          </Button>
+                          <div className='rounded-full bg-card p-[0.4rem] border border-border'>
+                            <PawPrint size={17} strokeWidth={2.2} />
+                          </div>
                         </TooltipTrigger>
                         <TooltipContent>
                           <p className='font-semibold'>
