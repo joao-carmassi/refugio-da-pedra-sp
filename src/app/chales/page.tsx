@@ -35,7 +35,7 @@ function ChalePage(): React.ReactNode {
                   <Image
                     src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
                     alt={chale.nome}
-                    className='aspect-square object-cover'
+                    className='aspect-square object-cover w-full'
                     width={356}
                     height={356}
                     loading='eager'
@@ -43,7 +43,7 @@ function ChalePage(): React.ReactNode {
                   <Image
                     src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[1]}.webp`}
                     alt={chale.nome}
-                    className='aspect-square object-cover absolute top-0 opacity-0 group-hover:opacity-100 group-hover:scale-105 transition duration-300'
+                    className='aspect-square object-cover w-full absolute top-0 opacity-0 group-hover:opacity-100 group-hover:scale-103 transition duration-400 ease-out'
                     width={356}
                     height={356}
                     loading='eager'

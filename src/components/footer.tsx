@@ -3,6 +3,8 @@ import { Button } from './ui/button';
 import { getInPhoneNumber } from '@/lib/env';
 import { Icon } from '@iconify/react';
 import chales from '@/data/chales.json';
+import Image from 'next/image';
+import slugify from 'slugify';
 
 const links = [
   {
@@ -26,7 +28,7 @@ const links = [
     title: 'Chalés',
     links: chales.map((chale) => ({
       title: chale.id,
-      href: `/chales/${chale.id}`,
+      href: `/chales/${slugify(chale.nome, { lower: true, strict: true })}`,
     })),
   },
   {
@@ -65,10 +67,16 @@ const Footer = () => {
         <footer>
           <div className='relative mb-6 flex w-full flex-col gap-6 md:flex-row md:justify-between'>
             <Link
-              className='text-xl font-semibold text-foreground'
+              className='text-xl font-semibold text-foreground flex items-center gap-2'
               href='/'
               aria-label='Brand'
             >
+              <Image
+                src='/logo.png'
+                alt='Refúgio da Pedra SP'
+                width={30}
+                height={30}
+              />
               Refúgio da Pedra SP
             </Link>
             <div className='inline-grid w-fit grid-cols-1 gap-x-24 gap-y-6 sm:grid-cols-3'>
