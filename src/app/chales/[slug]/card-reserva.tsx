@@ -20,13 +20,19 @@ import { ptBR } from 'date-fns/locale';
 import { MinusIcon, PlusIcon } from 'lucide-react';
 import generateWhatsLink from '@/lib/generate-whats-link';
 import { cn } from '@/lib/utils';
+import { ClassNameValue } from 'tailwind-merge';
 
 interface Props {
   chale: string;
   petsPermitidos: boolean;
+  className?: ClassNameValue;
 }
 
-function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
+function CardReserva({
+  chale,
+  petsPermitidos,
+  className,
+}: Props): React.ReactNode {
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: undefined,
     to: undefined,
@@ -53,7 +59,9 @@ function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
     );
 
   return (
-    <Card className='shadow-xl border border-border py-4 gap-3'>
+    <Card
+      className={cn('shadow-xl border border-border py-4 gap-3', className)}
+    >
       <CardHeader className='px-5'>
         <CardTitle className='text-2xl'>Reserve agora mesmo</CardTitle>
       </CardHeader>
