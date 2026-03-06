@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Rating, RatingButton } from '../../components/kibo-ui/rating';
-import { getInPhoneNumber } from '@/lib/env';
+import generateWhatsLink from '@/lib/generate-whats-link';
 
 const msgText =
   'Ola, vim pelo site da pousada e gostaria de fazer uma reserva!';
@@ -34,10 +34,7 @@ const Hero = () => {
                 size='lg'
                 className='w-full sm:w-auto rounded-full'
               >
-                <a
-                  target='_blank'
-                  href={`https://api.whatsapp.com/send?phone=${getInPhoneNumber()}&text=${msgText}`}
-                >
+                <a target='_blank' href={generateWhatsLink(msgText)}>
                   Entre em contato
                 </a>
               </Button>

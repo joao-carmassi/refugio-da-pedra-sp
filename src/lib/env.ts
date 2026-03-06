@@ -1,4 +1,4 @@
 export const getInPhoneNumber = () => {
-  const number = process.env.IN_PHONE_NUMBER || '';
+  const number = process.env.NEXT_PUBLIC_IN_PHONE_NUMBER || '';
   return number;
 };

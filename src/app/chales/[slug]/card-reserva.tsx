@@ -1,5 +1,4 @@
 'use client';
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import {
@@ -12,16 +11,14 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 import { ptBR } from 'date-fns/locale';
+import { MinusIcon, PlusIcon } from 'lucide-react';
+import generateWhatsLink from '@/lib/generate-whats-link';
 
 interface Props {
   chale: string;
@@ -32,8 +29,22 @@ function CardReserva({ chale }: Props): React.ReactNode {
     from: undefined,
     to: undefined,
   });
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [pets, setPets] = useState(0);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+
+  // const totalGuests = adults + children;
+  const guestLabel = [
+    `${adults} adulto${adults !== 1 ? 's' : ''}`,
+    children > 0 ? `${children} criança${children !== 1 ? 's' : ''}` : '',
+    pets > 0 ? `${pets} animal${pets !== 1 ? 'is' : ''} de estimação` : '',
+  ]
+    .filter(Boolean)
+    .join(', ');
+
+  const msgText = `Olá, gostaria de reservar o chalé ${chale} para ${guestLabel}${dateRange?.from && dateRange?.to ? ` no período de ${dateRange.from.toLocaleDateString()} a ${dateRange.to.toLocaleDateString()}` : ''}.`;
 
   return (
     <Card className='shadow-xl border border-border py-4 gap-3'>
@@ -44,7 +55,7 @@ function CardReserva({ chale }: Props): React.ReactNode {
         <div className='w-full border border-border rounded-xl!'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className='rounded-xl grid-cols-[1fr_auto_1fr] grid w-full'>
+              <button className='rounded-t-xl overflow-hidden grid-cols-[1fr_auto_1fr] grid w-full'>
                 <div className='w-full py-2 px-3 flex flex-col items-start hover:bg-muted'>
                   <span className='text-xs text-foreground font-medium'>
                     Check-in
@@ -82,29 +93,103 @@ function CardReserva({ chale }: Props): React.ReactNode {
             <DropdownMenuTrigger asChild>
               <button className='w-full py-2 px-3 rounded-b-xl flex flex-col items-start col-span-3 hover:bg-muted'>
                 <span className='text-xs text-foreground font-medium'>
-                  Hospedes
+                  Hóspedes
                 </span>
-                <span className='text-muted-foreground'>1 Hospede</span>
+                <span className='text-muted-foreground text-sm'>
+                  {guestLabel}
+                </span>
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuGroup>
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Team</DropdownMenuItem>
-                <DropdownMenuItem>Subscription</DropdownMenuItem>
-              </DropdownMenuGroup>
+            <DropdownMenuContent className='p-4' align='start'>
+              <div className='flex flex-col gap-4'>
+                <div className='flex items-center justify-between'>
+                  <div className='flex flex-col'>
+                    <span className='text-sm font-medium'>Adultos</span>
+                    <span className='text-xs text-muted-foreground'>
+                      Com 13 anos ou mais
+                    </span>
+                  </div>
+                  <div className='flex items-center gap-3'>
+                    <button
+                      onClick={() => setAdults((v) => Math.max(1, v - 1))}
+                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted disabled:opacity-40'
+                      disabled={adults <= 1}
+                    >
+                      <MinusIcon className='w-3 h-3' />
+                    </button>
+                    <span className='w-4 text-center text-sm'>{adults}</span>
+                    <button
+                      onClick={() => setAdults((v) => v + 1)}
+                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted'
+                    >
+                      <PlusIcon className='w-3 h-3' />
+                    </button>
+                  </div>
+                </div>
+                <Separator />
+                <div className='flex items-center justify-between'>
+                  <div className='flex flex-col'>
+                    <span className='text-sm font-medium'>Crianças</span>
+                    <span className='text-xs text-muted-foreground'>
+                      De 2 a 12 anos
+                    </span>
+                  </div>
+                  <div className='flex items-center gap-3'>
+                    <button
+                      onClick={() => setChildren((v) => Math.max(0, v - 1))}
+                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted disabled:opacity-40'
+                      disabled={children <= 0}
+                    >
+                      <MinusIcon className='w-3 h-3' />
+                    </button>
+                    <span className='w-4 text-center text-sm'>{children}</span>
+                    <button
+                      onClick={() => setChildren((v) => v + 1)}
+                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted'
+                    >
+                      <PlusIcon className='w-3 h-3' />
+                    </button>
+                  </div>
+                </div>
+                <Separator />
+                <div className='flex items-center justify-between'>
+                  <div className='flex flex-col'>
+                    <span className='text-sm font-medium'>
+                      Animais de estimação
+                    </span>
+                  </div>
+                  <div className='flex items-center gap-3'>
+                    <button
+                      onClick={() => setPets((v) => Math.max(0, v - 1))}
+                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted disabled:opacity-40'
+                      disabled={pets <= 0}
+                    >
+                      <MinusIcon className='w-3 h-3' />
+                    </button>
+                    <span className='w-4 text-center text-sm'>{pets}</span>
+                    <button
+                      onClick={() => setPets((v) => v + 1)}
+                      className='w-7 h-7 rounded-full border border-border flex items-center justify-center hover:bg-muted'
+                    >
+                      <PlusIcon className='w-3 h-3' />
+                    </button>
+                  </div>
+                </div>
+              </div>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
       </CardContent>
       <CardFooter className='px-5'>
-        <Button size={'lg'} className='w-full'>
-          Reservar
+        <Button
+          effect={'ringHover'}
+          size={'lg'}
+          className='w-full rounded-full'
+          asChild
+        >
+          <a target='_blank' href={generateWhatsLink(msgText)}>
+            Reservar
+          </a>
         </Button>
       </CardFooter>
     </Card>
