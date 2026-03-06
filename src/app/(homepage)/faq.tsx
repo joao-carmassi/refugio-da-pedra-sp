@@ -24,7 +24,7 @@ const questions = [
     question: 'Café da manhã',
     Icon: <Coffee size={18} />,
     answer:
-      'O nosso café utiliza produtos típicos da região, como pães caseiros, bolos, pão de queijo, geleias, manteiga, leite, café, sucos e frutas. O hóspede pode consumi-lo no deck principal, desfrutando de uma bela vista das montanhas.O nosso café utiliza produtos típicos da região, como pães caseiros, bolos, pão de queijo, geleias, manteiga, leite, café, sucos e frutas. O hóspede pode consumi-lo no deck principal, desfrutando de uma bela vista das montanhas.',
+      'O nosso café utiliza produtos típicos da região, como pães caseiros, bolos, pão de queijo, geleias, manteiga, leite, café, sucos e frutas. O hóspede pode consumi-lo no deck principal, desfrutando de uma bela vista das montanhas.',
   },
   {
     question: 'Check-in e check-out',
@@ -81,7 +81,7 @@ const Faq = () => {
             <Image
               width={724}
               height={884}
-              className='rounded-xl object-cover aspect-9/12 xl:aspect-9/11'
+              className='rounded-xl object-cover aspect-9/12 xl:aspect-9/10'
               src='/assets/refugio/geral/refugio-28.webp'
               alt='Café da manhã'
             />

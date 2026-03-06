@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { Separator } from '@/components/ui/separator';
 import chales from '@/data/chales.json';
 import Image from 'next/image';
@@ -29,27 +27,33 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
 
   return (
     <main className='min-h-container pb-6 lg:py-12 bg-card'>
-      <img
+      <Image
         src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
         alt={chale.nome}
-        className='aspect-square object-cover lg:hidden'
+        className='aspect-square object-cover lg:hidden w-full'
+        width={800}
+        height={800}
+        priority
       />
-      <section className='px-8 lg:container rounded-4xl lg:rounded-none bg-card -mt-14 pt-6 lg:mt-0 z-10 relative'>
+      <section className='lg:container rounded-4xl lg:rounded-none bg-card px-6 pt-4  -mt-14 lg:mt-0 z-10 relative'>
         <div className='grid lg:grid-cols-[3fr_1fr] gap-6'>
           <div className='space-y-6'>
-            <img
+            <Image
               src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
               alt={chale.nome}
               className='rounded-2xl aspect-video object-cover shadow-md inset-shadow-2xs hidden lg:block'
+              width={1104}
+              height={621}
+              priority
             />
-            <div className='space-y-0.5'>
-              <h1 className='text-2xl tracking-tight md:text-3xl'>
+            <div className='space-y-2'>
+              <h1 className='text-2xl tracking-tight md:text-3xl text-center lg:text-left'>
                 {chale.nome}
               </h1>
-              <p className='text-muted-foreground leading-snug'>
+              <p className='text-muted-foreground leading-snug text-center lg:text-left'>
                 {chale.capacidade} · {chale.camas} · {chale.banheiros}
               </p>
-              <p className='text-muted-foreground leading-snug'>
+              <p className='text-muted-foreground leading-snug text-center lg:text-left'>
                 {chale.ambientes.join(' · ')} · {chale.area_externa.join(' · ')}
               </p>
             </div>
@@ -78,20 +82,18 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
                 ao descanso.
               </p>
             </div>
-            <div className='space-y-2'>
-              <h2 className='text-2xl tracking-tight md:text-3xl'>
+            <div className='grid grid-cols-2 gap-2'>
+              <h2 className='text-2xl tracking-tight md:text-3xl col-span-2'>
                 Comodidades
               </h2>
-              <div className='grid grid-cols-2 gap-3'>
-                {chale.comodidades.concat(comodidades).map((comodidade) => (
-                  <p
-                    className='text-muted-foreground leading-snug'
-                    key={comodidade}
-                  >
-                    {comodidade}
-                  </p>
-                ))}
-              </div>
+              {chale.comodidades.concat(comodidades).map((comodidade) => (
+                <p
+                  className='text-muted-foreground leading-snug'
+                  key={comodidade}
+                >
+                  {comodidade}
+                </p>
+              ))}
             </div>
             <Separator />
             <div className='space-y-3'>

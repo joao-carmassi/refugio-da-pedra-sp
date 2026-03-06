@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import {
   NavigationMenu,
@@ -13,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import { Menu } from 'lucide-react';
+import { useState } from 'react';
 
 const links = [
   { href: '/chales', label: 'Chalés' },
@@ -20,13 +23,15 @@ const links = [
 ];
 
 function Header(): React.ReactNode {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <header className='w-full h-16 grid place-items-center fixed top-0 z-50 bg-card border-b border-border'>
         <nav className='container flex items-center justify-between'>
           <div>
             <Link
-              className='text-xl font-semibold text-foreground'
+              className='md:text-xl font-semibold text-foreground'
               href='/'
               aria-label='Brand'
             >
@@ -54,7 +59,7 @@ function Header(): React.ReactNode {
             </Button>
 
             {/* Mobile */}
-            <DropdownMenu>
+            <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
               <DropdownMenuTrigger asChild>
                 <Button className='md:hidden' size={'icon'} variant='outline'>
                   <Menu />
@@ -63,8 +68,10 @@ function Header(): React.ReactNode {
               <DropdownMenuContent sideOffset={6} align='end'>
                 <DropdownMenuGroup>
                   {links.map((link) => (
-                    <DropdownMenuItem key={link.href}>
-                      <Link href={link.href}>{link.label}</Link>
+                    <DropdownMenuItem asChild key={link.href}>
+                      <Link onClick={() => setIsOpen(false)} href={link.href}>
+                        {link.label}
+                      </Link>
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuGroup>
