@@ -33,8 +33,6 @@ function CardReserva({
   petsPermitidos,
   className,
 }: Props): React.ReactNode {
-  const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
-  const [isGuestOpen, setisGuestOpen] = useState<boolean>(false);
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: undefined,
     to: undefined,
@@ -42,6 +40,8 @@ function CardReserva({
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [pets, setPets] = useState(0);
+  const [dateMenuOpen, setDateMenuOpen] = useState(false);
+  const [guestMenuOpen, setGuestMenuOpen] = useState(false);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -69,10 +69,15 @@ function CardReserva({
       </CardHeader>
       <CardContent className='px-5'>
         <div className='w-full border border-border rounded-xl!'>
-          <DropdownMenu open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
+          <DropdownMenu
+            open={dateMenuOpen}
+            onOpenChange={(v) => {
+              if (!v) setDateMenuOpen(false);
+            }}
+          >
             <DropdownMenuTrigger asChild>
               <button
-                onClick={() => setIsCalendarOpen(!isCalendarOpen)}
+                onClick={() => setDateMenuOpen((v) => !v)}
                 className='rounded-t-xl overflow-hidden grid-cols-[1fr_auto_1fr] grid w-full'
               >
                 <div className='w-full py-2 px-3 flex flex-col items-start hover:bg-muted'>
@@ -108,10 +113,15 @@ function CardReserva({
             </DropdownMenuContent>
           </DropdownMenu>
           <Separator className='col-span-3' />
-          <DropdownMenu open={isGuestOpen} onOpenChange={setisGuestOpen}>
+          <DropdownMenu
+            open={guestMenuOpen}
+            onOpenChange={(v) => {
+              if (!v) setGuestMenuOpen(false);
+            }}
+          >
             <DropdownMenuTrigger asChild>
               <button
-                onClick={() => setisGuestOpen(!isGuestOpen)}
+                onClick={() => setGuestMenuOpen((v) => !v)}
                 className='w-full py-2 px-3 rounded-b-xl flex flex-col items-start col-span-3 hover:bg-muted'
               >
                 <span className='text-xs text-foreground font-medium'>

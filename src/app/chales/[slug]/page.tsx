@@ -31,7 +31,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
         height={800}
         priority
       />
-      <section className='lg:container rounded-4xl lg:rounded-none bg-card px-6 pt-4  -mt-14 lg:mt-0 z-10 relative'>
+      <section className='lg:container rounded-4xl lg:rounded-none bg-card px-6 pt-6 -mt-14 lg:mt-0 z-10 relative'>
         <div className='grid lg:grid-cols-[3fr_1fr] gap-6'>
           <div className='space-y-6'>
             <Image
