@@ -1,26 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+
 import { Separator } from '@/components/ui/separator';
 import chales from '@/data/chales.json';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import slugify from 'slugify';
+import CardReserva from './card-reserva';
 
 interface Props {
   params: Promise<{
@@ -109,56 +94,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
           </div>
         </div>
         <div className='h-fit sticky top-22 space-y-3'>
-          <Card className='shadow-xl border border-border py-4 gap-3'>
-            <CardHeader className='px-5'>
-              <CardTitle className='text-2xl'>Reserve agora mesmo</CardTitle>
-            </CardHeader>
-            <CardContent className='px-5'>
-              <div className=' border border-border rounded-xl! grid-cols-[1fr_auto_1fr] grid'>
-                <button className='w-full py-2 px-3 rounded-l-xl flex flex-col items-start'>
-                  <span className='text-xs text-foreground font-medium'>
-                    Check-in
-                  </span>
-                  <span className='text-muted-foreground'>Adicionar data</span>
-                </button>
-                <Separator orientation='vertical' />
-                <button className='w-full py-2 px-3 rounded-r-xl flex flex-col items-start'>
-                  <span className='text-xs text-foreground font-medium'>
-                    Check-out
-                  </span>
-                  <span className='text-muted-foreground'>Adicionar data</span>
-                </button>
-                <Separator className='col-span-3' />
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <button className='w-full py-2 px-3 rounded-xl flex flex-col items-start col-span-3'>
-                      <span className='text-xs text-foreground font-medium'>
-                        Hospedes
-                      </span>
-                      <span className='text-muted-foreground'>1 Hospede</span>
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent>
-                    <DropdownMenuGroup>
-                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                      <DropdownMenuItem>Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Billing</DropdownMenuItem>
-                    </DropdownMenuGroup>
-                    <DropdownMenuGroup>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>Team</DropdownMenuItem>
-                      <DropdownMenuItem>Subscription</DropdownMenuItem>
-                    </DropdownMenuGroup>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            </CardContent>
-            <CardFooter className='px-5'>
-              <Button size={'lg'} className='w-full rounded-full'>
-                Reservar
-              </Button>
-            </CardFooter>
-          </Card>
+          <CardReserva chale={chale.nome} />
         </div>
       </section>
     </main>
