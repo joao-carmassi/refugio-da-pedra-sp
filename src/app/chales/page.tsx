@@ -9,6 +9,7 @@ import chales from '@/data/chales.json';
 import { Check, PawPrint } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import slugify from 'slugify';
 
 function ChalePage(): React.ReactNode {
   return (
@@ -26,7 +27,10 @@ function ChalePage(): React.ReactNode {
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
           {chales.map((chale) => (
-            <Link href={`/chales/${chale.id}`} key={chale.id}>
+            <Link
+              href={`/chales/${slugify(chale.nome, { lower: true, strict: true })}`}
+              key={chale.id}
+            >
               <Card className='group py-0 ring-0 gap-3 rounded-2xl'>
                 <div className='relative rounded-2xl overflow-hidden'>
                   <Image

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { getInPhoneNumber } from '@/lib/env';
 import { Icon } from '@iconify/react';
+import chales from '@/data/chales.json';
 
 const links = [
   {
@@ -23,7 +24,10 @@ const links = [
   },
   {
     title: 'Chalés',
-    links: [],
+    links: chales.map((chale) => ({
+      title: chale.id,
+      href: `/chales/${chale.id}`,
+    })),
   },
   {
     title: 'Blog',
@@ -56,7 +60,7 @@ const mediaLinks = [
 
 const Footer = () => {
   return (
-    <section className='py-6 md:py-12 bg-card'>
+    <section className='py-6 md:py-12 bg-card border-t border-border'>
       <div className='container'>
         <footer>
           <div className='relative mb-6 flex w-full flex-col gap-6 md:flex-row md:justify-between'>
@@ -73,14 +77,14 @@ const Footer = () => {
                   <h4 className='mb-3 text-base font-semibold whitespace-nowrap'>
                     {section.title}
                   </h4>
-                  <ul className='space-y-3 text-base font-medium text-muted-foreground'>
+                  <ul className='space-y-1 text-base font-medium text-muted-foreground'>
                     {section.links.map((link) => (
                       <li key={link.title}>
                         <Button
                           variant={'link'}
                           effect={'hoverUnderline'}
                           size={'sm'}
-                          className='p-0 after:bottom-1.5 after:w-full'
+                          className='p-0 after:bottom-1.5 after:w-full capitalize'
                           asChild
                         >
                           <a href={link.href}>{link.title}</a>
