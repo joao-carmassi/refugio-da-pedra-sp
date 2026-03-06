@@ -1,7 +1,6 @@
 import { Separator } from '@/components/ui/separator';
 import chales from '@/data/chales.json';
 import Image from 'next/image';
-import { redirect } from 'next/navigation';
 import slugify from 'slugify';
 import CardReserva from './card-reserva';
 
@@ -19,7 +18,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
     (c) => slugify(c.nome, { lower: true, strict: true }) === slug,
   );
 
-  if (!chale) redirect('/chales');
+  if (!chale) return;
 
   return (
     <main className='min-h-container pb-6 lg:py-12 bg-card'>
