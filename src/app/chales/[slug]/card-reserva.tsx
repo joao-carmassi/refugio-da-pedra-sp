@@ -84,7 +84,7 @@ function CardReserva({
                   <span className='text-xs text-foreground font-medium'>
                     Check-in
                   </span>
-                  <span className='text-muted-foreground'>
+                  <span className='text-muted-foreground text-start'>
                     {dateRange?.from?.toLocaleDateString() || 'Adicionar data'}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ function CardReserva({
                   <span className='text-xs text-foreground font-medium'>
                     Check-out
                   </span>
-                  <span className='text-muted-foreground'>
+                  <span className='text-muted-foreground text-start'>
                     {dateRange?.to?.toLocaleDateString() || 'Adicionar data'}
                   </span>
                 </div>
@@ -127,7 +127,7 @@ function CardReserva({
                 <span className='text-xs text-foreground font-medium'>
                   Hóspedes
                 </span>
-                <span className='text-muted-foreground text-sm'>
+                <span className='text-muted-foreground text-sm text-start'>
                   {guestLabel}
                 </span>
               </button>
