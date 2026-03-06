@@ -11,11 +11,7 @@ interface Props {
   }>;
 }
 
-const comodidades = [
-  'Wifi gratuito',
-  'Café da manhã incluso',
-  'Estacionamento privativo',
-];
+const comodidades = ['Wifi gratuito', 'Café da manhã', 'Estacionamento'];
 
 async function ChalePage({ params }: Props): Promise<React.ReactNode> {
   const { slug } = await params;

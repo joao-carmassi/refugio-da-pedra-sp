@@ -33,6 +33,8 @@ function CardReserva({
   petsPermitidos,
   className,
 }: Props): React.ReactNode {
+  const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
+  const [isGuestOpen, setisGuestOpen] = useState<boolean>(false);
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: undefined,
     to: undefined,
@@ -67,9 +69,12 @@ function CardReserva({
       </CardHeader>
       <CardContent className='px-5'>
         <div className='w-full border border-border rounded-xl!'>
-          <DropdownMenu>
+          <DropdownMenu open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
             <DropdownMenuTrigger asChild>
-              <button className='rounded-t-xl overflow-hidden grid-cols-[1fr_auto_1fr] grid w-full'>
+              <button
+                onClick={() => setIsCalendarOpen(!isCalendarOpen)}
+                className='rounded-t-xl overflow-hidden grid-cols-[1fr_auto_1fr] grid w-full'
+              >
                 <div className='w-full py-2 px-3 flex flex-col items-start hover:bg-muted'>
                   <span className='text-xs text-foreground font-medium'>
                     Check-in
@@ -103,9 +108,12 @@ function CardReserva({
             </DropdownMenuContent>
           </DropdownMenu>
           <Separator className='col-span-3' />
-          <DropdownMenu>
+          <DropdownMenu open={isGuestOpen} onOpenChange={setisGuestOpen}>
             <DropdownMenuTrigger asChild>
-              <button className='w-full py-2 px-3 rounded-b-xl flex flex-col items-start col-span-3 hover:bg-muted'>
+              <button
+                onClick={() => setisGuestOpen(!isGuestOpen)}
+                className='w-full py-2 px-3 rounded-b-xl flex flex-col items-start col-span-3 hover:bg-muted'
+              >
                 <span className='text-xs text-foreground font-medium'>
                   Hóspedes
                 </span>
