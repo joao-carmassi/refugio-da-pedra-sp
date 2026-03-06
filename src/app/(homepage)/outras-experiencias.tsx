@@ -54,7 +54,7 @@ const OutrasExperiencias = () => {
                         {description}
                         <iframe
                           title={`${title} - Mapa`}
-                          className='hidden md:block md:h-40 lg:h-60 mt-2 w-full'
+                          className='hidden md:block md:h-40 lg:h-60 mt-2 w-full rounded-xl'
                           src={linkMapa}
                           loading='lazy'
                         />
@@ -63,7 +63,7 @@ const OutrasExperiencias = () => {
                             loading='lazy'
                             alt={title}
                             src={`/assets/${id}/${imgCell}`}
-                            className='mt-3 mb-2 md:hidden aspect-video w-full bg-card rounded-xl object-cover object-center'
+                            className='mt-3 md:hidden aspect-video w-full bg-card rounded-xl object-cover object-center'
                             width={544}
                             height={306}
                           />
