@@ -202,6 +202,11 @@ function CardReserva({
                     >
                       Animais de estimação
                     </span>
+                    {!petsPermitidos && (
+                      <span className='text-xs text-muted-foreground'>
+                        Não permitido neste chalé
+                      </span>
+                    )}
                   </div>
                   <div className='flex items-center gap-3'>
                     <Button
