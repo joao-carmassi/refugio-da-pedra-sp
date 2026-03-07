@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { getInPhoneNumber } from '@/lib/env';
 import { Icon } from '@iconify/react';
 import chales from '@/data/chales.json';
 import Image from 'next/image';
 import slugify from 'slugify';
+import generateWhatsLink from '@/lib/generate-whats-link';
 
 const links = [
   {
@@ -56,7 +56,7 @@ const mediaLinks = [
   {
     title: 'Whatsapp',
     Icon: <Icon icon='mdi:whatsapp' />,
-    href: getInPhoneNumber(),
+    href: generateWhatsLink(),
   },
 ];
 

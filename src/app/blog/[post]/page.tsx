@@ -91,14 +91,10 @@ const BlogPost = () => {
         <h1 className='mb-3 mt-6 md:my-6 max-w-3xl text-2xl tracking-tight md:text-4xl lg:text-5xl'>
           {post.title}
         </h1>
+        <p className='mb-6 text-muted-foreground'>{post.description}</p>
         <Separator className='my-3 md:my-6 lg:my-8' />
         <div className='relative grid grid-cols-12 gap-6 lg:grid'>
-          <div className='col-span-12 lg:col-span-9'>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit,
-            sint eaque? Quibusdam incidunt officiis, consectetur, nesciunt
-            possimus vero rem accusantium laudantium temporibus dicta a sit
-            minus ducimus provident, atque dignissimos.
-          </div>
+          <div className='col-span-12 lg:col-span-9'>{post.content}</div>
           <div className='sticky top-8 col-span-3 col-start-10 hidden h-fit lg:block'>
             <span className='text-lg font-medium'>Nesta página</span>
             <nav className='mt-4 text-sm'>

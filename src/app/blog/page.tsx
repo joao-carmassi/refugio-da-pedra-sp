@@ -48,7 +48,7 @@ const Blog = () => {
                       {post.title}
                     </h2>
                     <p className='md:text-md text-sm text-muted-foreground md:pr-24 xl:pr-32'>
-                      {post.content}
+                      {post.description}
                     </p>
                     <div className='flex w-9/10 flex-wrap items-center gap-2'>
                       {post.tags.map((tag, tagIndex) => (

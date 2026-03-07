@@ -1,7 +1,342 @@
 [
   {
-    "title": "Titulo de exemplo",
-    "content": "Conteudo de exemplo",
-    "tags": ["Exemplo", "Exemplo", "Exemplo", "Exemplo", "Exemplo"]
+    "title": "Refúgio da Pedra: A Pousada Mais Próxima da Pedra do Baú",
+    "description": "Conheça o Refúgio da Pedra, pousada com chalés a ~1,5 km da Pedra do Baú em São Bento do Sapucaí. Natureza, conforto e aventura para trilheiros, casais e famílias.",
+    "content": "Quem busca uma **pousada perto da Pedra do Baú** em São Bento do Sapucaí encontra no Refúgio da Pedra a base perfeita para explorar a Serra da Mantiqueira. A aproximadamente 1,5 km do complexo rochoso mais icônico do interior paulista *(dado fornecido pelo estabelecimento; verificação independente recomendada)*, o Refúgio da Pedra oferece chalés aconchegantes rodeados de Mata Atlântica e a poucos minutos das melhores trilhas da região.\n\nSão Bento do Sapucaí fica a cerca de 200 km de São Paulo e é reconhecida como estância climática pela sua altitude amena na Serra da Mantiqueira. Hospedar aqui significa acordar com ar puro, paisagens verdes e a Pedra do Baú quase na janela — perfeito para trilheiros, casais e famílias que querem explorar sem perder tempo na estrada.\n\n## Por que Escolher o Refúgio da Pedra\n\n- **Localização privilegiada**: a ~1,5 km da Pedra do Baú, cartão-postal de São Bento *(dado do estabelecimento)*\n- **Chalés confortáveis** em meio à natureza, com estrutura para relaxar após as trilhas\n- **Saída direta para aventuras**: Bauzinho, Ana Chata e via ferrata a poucos minutos\n- Ambiente tranquilo ideal para desconexão digital e reconexão com a natureza\n\n## O Que Fazer Saindo Daqui\n\nO **Complexo da Pedra do Baú** é um Monumento Natural Estadual (MoNa) com três cumes e opções para todos os níveis:\n\n- **Trilha do Bauzinho** (1.760 m): tranquila, ~30 min, vista direta para a Pedra do Baú\n- **Trilha Ana Chata** (1.670 m): 3,8 km, aprox. 2 horas, saída do estacionamento Chico Bento — [fonte](https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/)\n- **Pedra do Baú** (aprox. 2.000 m): 5 km ida e volta, ~600 m de elevação, **via ferrata obrigatória** com guia credenciado — [fonte](https://pegamosumaestrada.com.br/como-e-a-trilha-da-pedra-do-bau-em-sao-bento-do-sapucai/)\n\nAlém das trilhas, explore: Cachoeira dos Amores, Oliq Azeite, Vinícola Raízes do Baú e as encantadoras Capelinhas de Mosaico.\n\n## Como Chegar\n\nSão Bento do Sapucaí está a **aprox. 200 km de São Paulo** e **aprox. 40 km de Campos do Jordão** *(distâncias aproximadas; confirme via GPS)*. Acesso de carro pela SP-070 (Via Dutra) → Jacareí → SP-50 → SP-173. Não há aeroporto na cidade.\n\n## Dicas Práticas\n\n- **Melhor época**: outono e primavera (tempo estável, céu limpo)\n- **O que levar**: calçado de trilha, camadas de roupa, protetor solar, repelente e lanterna\n- **Guia obrigatório** para a via ferrata — contate Baú Ecoturismo: (12) 9 9737-5968\n- Reserve com antecedência em feriados e inverno (jun–ago)\n\n## FAQ\n\n### Qual é a trilha mais fácil saindo do Refúgio da Pedra?\nA Trilha do Bauzinho é a mais tranquila: cerca de 30 minutos de caminhada com panorama espetacular da Pedra do Baú — indicada para iniciantes e famílias.\n\n### Precisa de guia para subir a Pedra do Baú?\nSim. A via ferrata exige equipamentos de segurança e guia credenciado. Recomendamos o Baú Ecoturismo, referência na região: (12) 9 9737-5968.\n\n### Com quanto tempo de antecedência devo reservar?\nMínimo 30 dias em feriados e no inverno serrano (junho a agosto), quando a demanda é maior.\n\n## Conclusão\n\nCom localização imbatível e chalés que unem conforto e natureza, o Refúgio da Pedra é o ponto de partida ideal para viver o melhor de São Bento do Sapucaí. **Reserve seu chalé agora** e acorde com a Pedra do Baú como vizinha!\n\n*Veja também: [Trilhas do Complexo do Baú](#trilhas) | [Pontos Turísticos de São Bento do Sapucaí](#pontos-turisticos)*",
+    "tags": ["Exemplo", "Exemplo", "Exemplo"],
+    "suggested_tags": ["Pousada Pedra do Baú", "Hospedagem São Bento do Sapucaí", "Chalés Serra da Mantiqueira", "Ecoturismo", "Trilhas Mantiqueira"],
+    "meta_title": "Pousada Perto da Pedra do Baú | Refúgio da Pedra",
+    "meta_description": "Refúgio da Pedra: chalés a ~1,5 km da Pedra do Baú em São Bento do Sapucaí. Ideal para trilheiros, casais e famílias. Reserve já!",
+    "focus_keywords": ["pousada perto da Pedra do Baú", "hospedar São Bento do Sapucaí", "chalés Pedra do Baú", "onde ficar Pedra do Baú"],
+    "slug": "pousada-proxima-pedra-do-bau",
+    "reading_time_minutes": 3,
+    "word_count": 490,
+    "faq_schema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual é a trilha mais fácil saindo do Refúgio da Pedra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Trilha do Bauzinho é a mais tranquila: cerca de 30 minutos de caminhada com panorama espetacular da Pedra do Baú — indicada para iniciantes e famílias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Precisa de guia para subir a Pedra do Baú?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A via ferrata exige equipamentos de segurança e guia credenciado. Recomendamos o Baú Ecoturismo, referência na região: (12) 9 9737-5968."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Com quanto tempo de antecedência devo reservar o Refúgio da Pedra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mínimo 30 dias em feriados e no inverno serrano (junho a agosto), quando a demanda é maior."
+          }
+        }
+      ]
+    },
+    "suggested_images": [
+      {
+        "description": "Vista dos chalés do Refúgio da Pedra com a Pedra do Baú ao fundo",
+        "alt": "Chalés do Refúgio da Pedra rodeados de mata atlântica com a Pedra do Baú ao fundo em São Bento do Sapucaí",
+        "caption": "O Refúgio da Pedra: natureza e conforto a poucos passos da Pedra do Baú"
+      },
+      {
+        "description": "Trilheiros caminhando pela trilha da Pedra do Baú entre mata fechada",
+        "alt": "Trilheiros na trilha da Pedra do Baú entre mata atlântica em São Bento do Sapucaí",
+        "caption": "Trilha da Pedra do Baú: 5 km de aventura e paisagens únicas"
+      },
+      {
+        "description": "Vista do pôr do sol a partir do Bauzinho com céu alaranjado e vale da Mantiqueira",
+        "alt": "Pôr do sol visto do mirante do Bauzinho em São Bento do Sapucaí",
+        "caption": "O pôr do sol no Bauzinho é um dos momentos mais mágicos da Serra da Mantiqueira"
+      }
+    ],
+    "sources": [
+      { "title": "Pedra do Baú: trilhas, escalada e guia completo | Vivo e Viajo", "url": "https://vivoeviajo.com.br/pedra-do-bau/" },
+      { "title": "Como é a trilha da Pedra do Baú | Pegamos uma Estrada", "url": "https://pegamosumaestrada.com.br/como-e-a-trilha-da-pedra-do-bau-em-sao-bento-do-sapucai/" },
+      { "title": "Subida na Pedra do Baú | Baú Ecoturismo", "url": "https://bauecoturismo.com.br/passeio/subida-na-pedra-do-bau/" },
+      { "title": "O que fazer em São Bento do Sapucaí: TOP 10 atrações | Em Algum Lugar do Mundo", "url": "https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/" },
+      { "title": "Informações do estabelecimento (não verificadas por fonte independente)", "url": null }
+    ],
+    "needs_review": true
+  },
+  {
+    "title": "Gastronomia em São Bento do Sapucaí: Os Melhores Restaurantes da Serra",
+    "description": "Descubra os melhores restaurantes de São Bento do Sapucaí: truta flambada, slow food, azeite artesanal e muito mais na Serra da Mantiqueira.",
+    "content": "A **gastronomia de São Bento do Sapucaí** é um dos segredos mais deliciosos da Serra da Mantiqueira. Além das trilhas e cachoeiras que tornaram a cidade famosa, a mesa local surpreende com pratos regionais de fogão à lenha, ingredientes orgânicos da agricultura familiar e produções artesanais que conectam visitantes à cultura de Chão Bento.\n\nSeja para um almoço com vista para a Pedra do Baú ou um jantar aconchegante após o dia de trilhas, São Bento do Sapucaí oferece opções para todos os estilos — do simples e caseiro ao farm-to-table elaborado. Venha descobrir **onde comer em São Bento do Sapucaí**.\n\n## Por que a Gastronomia Local é Especial\n\n- **Ingredientes frescos**: agricultura familiar forte, com hortas e pomares que abastecem diretamente os restaurantes\n- **Culinária regional e mineira**: trutas, carnes de porco, feijão-tropeiro e queijos artesanais\n- **Produção artesanal**: azeite extravirgem (Oliq), vinhos (Raízes do Baú, Villa Santa Maria) e pizzas artesanais\n\n## Melhores Restaurantes de São Bento do Sapucaí\n\n### Sabor com Arte\nUm clássico da culinária local. Em frente à Pedra do Baú e próximo à Cachoeira dos Amores, é famoso pela **truta flambada**, fogão à lenha e buffet variado com mais de 600 avaliações positivas no Tripadvisor.\n\n- **Horário**: Seg–Qui 11h–17h30 | Sex–Dom 11h–23h — [fonte](https://www.instagram.com/saborcomarte_restaurante/)\n- **Destaque**: buffet nos finais de semana e espaço para eventos\n\n### Entre Vilas\nRestaurante de **slow food** integrado ao Viveiro Frutopia, onde os ingredientes vão direto do pomar ao prato. Ambiente encantador e pratos elaborados com morango, framboesa, mirtilo e outros frutos locais. Ideal para casais sem pressa.\n\n### Lá na Roça\nComida caseira e generosa, com vista para as montanhas e preço justo. Um dos mais bem avaliados atualmente em São Bento para quem busca sabor sem complicação.\n\n### Oliq Azeite\nMais do que um restaurante, uma experiência de turismo rural: tour pela produção de **azeite extravirgem artesanal**, degustação e loja de produtos locais. Evite em dias de chuva — o acesso pode ser difícil. — [fonte](https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/)\n\n### Outros Estabelecimentos *(needs_review)*\n**Hotstone**, **Brazin Burger**, **Mache** e **Padaria Cazarim** são citados por moradores como boas opções. Horários e detalhes não foram verificados de forma independente — confirme antes de visitar.\n\n## Como Chegar\n\nA maioria dos restaurantes fica na área central ou ao longo da rodovia que leva à Pedra do Baú. São Bento do Sapucaí está a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173.\n\n## Dicas Práticas\n\n- **Fins de semana**: movimento alto no Sabor com Arte — chegue cedo ou ligue antes\n- **Inverno** (jun–ago): restaurantes podem ter horários especiais — confirme com antecedência\n- **Pratos típicos da região**: truta, costelinha, feijão-tropeiro e queijo artesanal\n- **Souvenir gastronômico**: leve azeite Oliq e geleias da Raízes do Baú\n\n## FAQ\n\n### Qual o restaurante mais famoso de São Bento do Sapucaí?\nO Sabor com Arte é um dos mais tradicionais: conhecido pela truta flambada, fogão à lenha e buffet variado com vista para a Pedra do Baú.\n\n### Tem opções vegetarianas em São Bento do Sapucaí?\nAlguns restaurantes, como o Entre Vilas e o Lá na Roça, trabalham com ingredientes frescos da fazenda que contemplam vegetarianos. Confirme com o estabelecimento ao reservar.\n\n### Posso visitar a fábrica de azeite Oliq?\nSim. A Oliq oferece tour pela produção com degustação. Recomenda-se confirmar horários e reservar com antecedência, especialmente em dias chuvosos.\n\n## Conclusão\n\nA gastronomia de São Bento do Sapucaí é parte essencial da experiência na Mantiqueira. Não visite a região sem reservar ao menos um almoço no Sabor com Arte ou um jantar tranquilo no Entre Vilas. **Planeje já** e deixe a mesa da serra completar sua aventura!\n\n*Veja também: [Bebidas Artesanais de São Bento do Sapucaí](#bebidas) | [Onde Ficar: Refúgio da Pedra](#refugio)*",
+    "tags": ["Exemplo", "Exemplo", "Exemplo"],
+    "suggested_tags": ["Gastronomia São Bento do Sapucaí", "Restaurantes Serra da Mantiqueira", "Truta flambada São Bento", "Turismo gastronômico", "Comida regional"],
+    "meta_title": "Gastronomia em São Bento do Sapucaí | Guia 2026",
+    "meta_description": "Os melhores restaurantes de São Bento do Sapucaí: truta flambada no Sabor com Arte, slow food no Entre Vilas e azeite artesanal Oliq na Serra da Mantiqueira.",
+    "focus_keywords": ["gastronomia São Bento do Sapucaí", "restaurantes São Bento do Sapucaí", "onde comer São Bento do Sapucaí", "truta flambada São Bento"],
+    "slug": "gastronomia-sao-bento-do-sapucai",
+    "reading_time_minutes": 3,
+    "word_count": 530,
+    "faq_schema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual o restaurante mais famoso de São Bento do Sapucaí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Sabor com Arte é um dos mais tradicionais: conhecido pela truta flambada, fogão à lenha e buffet variado. Funciona Seg–Qui das 11h às 17h30 e Sex–Dom das 11h às 23h."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem opções vegetarianas em São Bento do Sapucaí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Restaurantes como o Entre Vilas e o Lá na Roça trabalham com ingredientes frescos da fazenda que contemplam vegetarianos. Confirme com o estabelecimento ao reservar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso visitar a fábrica de azeite Oliq?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A Oliq Azeite oferece tour pela produção com degustação. Recomenda-se reservar com antecedência e evitar dias de chuva pois o acesso pode ser difícil."
+          }
+        }
+      ]
+    },
+    "suggested_images": [
+      {
+        "description": "Prato de truta flambada do Sabor com Arte com vista para a Pedra do Baú",
+        "alt": "Truta flambada típica de São Bento do Sapucaí servida no Restaurante Sabor com Arte",
+        "caption": "A truta flambada do Sabor com Arte é o prato mais pedido da casa"
+      },
+      {
+        "description": "Mesa de slow food do Entre Vilas com ingredientes orgânicos locais",
+        "alt": "Prato de slow food do restaurante Entre Vilas com ingredientes do Viveiro Frutopia em São Bento do Sapucaí",
+        "caption": "No Entre Vilas, cada ingrediente vem do pomar ao lado"
+      },
+      {
+        "description": "Degustação de azeite artesanal na Oliq com produtos locais expostos",
+        "alt": "Degustação de azeite extravirgem artesanal na Oliq Azeite em São Bento do Sapucaí",
+        "caption": "Oliq Azeite: do olivar ao seu prato, tudo artesanal"
+      }
+    ],
+    "sources": [
+      { "title": "Restaurante Sabor com Arte — Instagram oficial", "url": "https://www.instagram.com/saborcomarte_restaurante/" },
+      { "title": "Sabor com Arte — São Bento TUR", "url": "https://saobentotur.com.br/_gastronomia/restaurante-sabor-com-arte/" },
+      { "title": "SABOR COM ARTE — Tripadvisor", "url": "https://www.tripadvisor.com.br/Restaurant_Review-g2535594-d3908792-Reviews-Sabor_Com_Arte-Sao_Bento_do_Sapucai_State_of_Sao_Paulo.html" },
+      { "title": "O que fazer em São Bento do Sapucaí: TOP 10 atrações | Em Algum Lugar do Mundo", "url": "https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/" },
+      { "title": "Sabor com Arte — restaurantesaborcomarte.com.br", "url": "https://restaurantesaborcomarte.com.br/site/" }
+    ],
+    "needs_review": true
+  },
+  {
+    "title": "Bebidas Artesanais de São Bento do Sapucaí: Vinhos, Cervejas e Mais da Mantiqueira",
+    "description": "Roteiro completo pelas bebidas artesanais de São Bento do Sapucaí: vinícolas de altitude, cervejas artesanais e a Rota dos Vinhos da Mantiqueira.",
+    "content": "São Bento do Sapucaí vai muito além das trilhas: a cidade é um polo emergente de **bebidas artesanais na Serra da Mantiqueira**, com vinícolas que cultivam uvas em altitude, cervejarias criativas e alambiques que preservam a tradição da cachaça artesanal. Para amantes de enoturismo e gastronomia, visitar as produtoras locais é uma das experiências mais ricas do destino.\n\nA altitude da Serra da Mantiqueira — entre 800 e 1.200 metros — cria condições únicas de clima e solo para o cultivo de uvas e outros ingredientes que conferem personalidade singular às **bebidas artesanais de São Bento do Sapucaí**.\n\n## Por que São Bento se Destaca em Bebidas Artesanais\n\n- **Altitude e microclima**: vinhedos a até 1.200 m produzem uvas com maior acidez e complexidade aromática\n- **Integração com turismo rural**: visitações com tours guiados, degustação e paisagens da Pedra do Baú\n- **Diversidade de produtos**: vinhos tintos e brancos, cervejas com ingredientes locais, cachaças e licores artesanais\n\n## Principais Produtores\n\n### Vinícola Raízes do Baú — Fazenda Portal da Luz\nCom mais de **9.000 pés de uvas** cultivados a 1.200 m de altitude, a Raízes do Baú produz Malbec, Cabernet Sauvignon e Syrah, entre outras variedades. A vista privilegiada para o vale e a Pedra do Baú torna a visita uma experiência completa.\n\n- **Empório**: tábuas de queijos, embutidos, geleias e **cerveja artesanal de castanha portuguesa** produzida na própria fazenda\n- **Tour guiado** pelo vinhedo com sommelier — [fonte](https://vinicolaraizesdobau.com.br/)\n\n### Vinícola Villa Santa Maria\nIntegrante da **Rota dos Vinhos da Mantiqueira**, oferece visita guiada pelo vinhedo, degustação harmonizada com sommelier e estrutura gastronômica completa.\n\n- **Horário**: Qui–Dom, 11h–17h | **Reserva obrigatória**: (12) 99633-0222 — [fonte](https://www.rotadosvinhosdamantiqueira.com.br/vinicolas)\n\n### Cervejaria 3 Orelhas e Bauzeira *(needs_review)*\nCervejarias artesanais mencionadas por visitantes locais. Horários e descrição completa não foram verificados de forma independente — recomenda-se pesquisar atualização antes de visitar.\n\n### Alambiques Locais *(needs_review)*\nA região tem tradição em cachaça artesanal, mas informações específicas sobre visitação aos alambiques locais não foram confirmadas em fontes verificáveis. Consulte guias locais ou o São Bento TUR.\n\n### A Bodega *(needs_review)*\nEstabelecimento mencionado por moradores no contexto de bebidas artesanais. Não foi possível obter informações detalhadas de fontes independentes.\n\n## Como Chegar\n\nA maioria das vinícolas fica em estradas rurais ao redor de São Bento do Sapucaí, a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173. Carro com boa tração é recomendado; em dias de chuva, algumas estradas ficam difíceis.\n\n## Dicas Práticas\n\n- **Reserve com antecedência**: especialmente na Villa Santa Maria, que atende apenas com reserva\n- **Não dirija à noite**: estradas rurais sem iluminação — programe visitas para o dia\n- **Harmonização**: leve embutidos, queijos e geleias das produtoras para combinar com os vinhos\n- **Melhor época**: outono e inverno, quando o clima frio valoriza uma degustação aquecida\n\n## FAQ\n\n### A Vinícola Raízes do Baú aceita visitas sem agendamento?\nRecomenda-se contato prévio, especialmente nos finais de semana. Verifique pelo site oficial: vinicolaraizesdobau.com.br\n\n### São Bento do Sapucaí faz parte da Rota dos Vinhos da Mantiqueira?\nSim. A Vinícola Villa Santa Maria é uma das produtoras cadastradas na Rota dos Vinhos da Mantiqueira, que conecta produtores da região serrana.\n\n### Tem cerveja artesanal produzida em São Bento do Sapucaí?\nSim. A Fazenda Portal da Luz produz cerveja artesanal de castanha portuguesa, e há outras cervejarias na região. Para uma lista atualizada, consulte o São Bento TUR.\n\n## Conclusão\n\nUma visita às vinícolas e cervejarias de São Bento do Sapucaí é uma das experiências mais memoráveis da Serra da Mantiqueira. **Planeje seu roteiro de enoturismo**, reserve nas produtoras e complete o dia com um jantar na gastronomia local!\n\n*Veja também: [Gastronomia em São Bento do Sapucaí](#gastronomia) | [Pontos Turísticos da Região](#pontos-turisticos)*",
+    "tags": ["Exemplo", "Exemplo", "Exemplo"],
+    "suggested_tags": ["Bebidas artesanais Serra da Mantiqueira", "Vinícola São Bento do Sapucaí", "Rota dos Vinhos Mantiqueira", "Cerveja artesanal Mantiqueira", "Enoturismo São Paulo"],
+    "meta_title": "Bebidas Artesanais em São Bento do Sapucaí | Guia",
+    "meta_description": "Vinícolas, cervejarias e alambiques em São Bento do Sapucaí. Descubra a Rota dos Vinhos da Mantiqueira e as melhores bebidas artesanais da serra.",
+    "focus_keywords": ["bebidas artesanais São Bento do Sapucaí", "vinícola São Bento do Sapucaí", "rota dos vinhos Mantiqueira", "cerveja artesanal Mantiqueira"],
+    "slug": "bebidas-artesanais-sao-bento-do-sapucai",
+    "reading_time_minutes": 3,
+    "word_count": 510,
+    "faq_schema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "A Vinícola Raízes do Baú aceita visitas sem agendamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Recomenda-se contato prévio, especialmente nos finais de semana. Verifique pelo site oficial: vinicolaraizesdobau.com.br"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "São Bento do Sapucaí faz parte da Rota dos Vinhos da Mantiqueira?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A Vinícola Villa Santa Maria é uma das produtoras cadastradas na Rota dos Vinhos da Mantiqueira, que conecta produtores da região serrana de São Paulo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem cerveja artesanal produzida em São Bento do Sapucaí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A Fazenda Portal da Luz produz cerveja artesanal de castanha portuguesa, e há outras cervejarias na região. Para uma lista atualizada, consulte o São Bento TUR."
+          }
+        }
+      ]
+    },
+    "suggested_images": [
+      {
+        "description": "Vinhedo da Raízes do Baú a 1.200 m de altitude com vista para a Pedra do Baú",
+        "alt": "Vinhedo da Vinícola Raízes do Baú na Fazenda Portal da Luz com a Pedra do Baú ao fundo em São Bento do Sapucaí",
+        "caption": "Vinícola Raízes do Baú: 9.000 pés de uva a 1.200 m de altitude"
+      },
+      {
+        "description": "Degustação de vinho com sommelier na Vinícola Villa Santa Maria com paisagem serrana",
+        "alt": "Sommelier apresentando vinhos na Vinícola Villa Santa Maria em São Bento do Sapucaí",
+        "caption": "Villa Santa Maria: enoturismo na Rota dos Vinhos da Mantiqueira"
+      },
+      {
+        "description": "Empório da Raízes do Baú com tábua de queijos, embutidos e garrafas de vinho",
+        "alt": "Empório da Vinícola Raízes do Baú com tábuas de frios, geleias e cerveja artesanal de castanha portuguesa",
+        "caption": "Tudo produzido na fazenda: do vinho à cerveja de castanha portuguesa"
+      }
+    ],
+    "sources": [
+      { "title": "Vinícola Raízes do Baú — site oficial", "url": "https://vinicolaraizesdobau.com.br/" },
+      { "title": "Fazenda Portal da Luz", "url": "https://fazendaportaldaluz.com.br/" },
+      { "title": "Rota dos Vinhos da Mantiqueira — Vinícolas", "url": "https://www.rotadosvinhosdamantiqueira.com.br/vinicolas" },
+      { "title": "Vinícola Raízes do Baú — Bares SP", "url": "https://www.baressp.com.br/restaurantes/enotecas/vinicola-raizes-do-bau-" },
+      { "title": "O que fazer em São Bento do Sapucaí | Em Algum Lugar do Mundo", "url": "https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/" }
+    ],
+    "needs_review": true
+  },
+  {
+    "title": "O Que Fazer em São Bento do Sapucaí: Guia Completo de Pontos Turísticos",
+    "description": "Guia completo: Pedra do Baú, Capelinhas de Mosaico, cachoeiras, mirantes, museus e turismo rural em São Bento do Sapucaí, na Serra da Mantiqueira.",
+    "content": "São Bento do Sapucaí, apelidada de **Chão Bento**, é um dos destinos mais completos da Serra da Mantiqueira: natureza exuberante, gastronomia autêntica, cultura rica e aventura para todos os gostos. A apenas **aprox. 200 km de São Paulo**, a cidade acumula **pontos turísticos** que vão de formações rochosas monumentais a capelinhas de arte sacra única — tudo possível de explorar num único final de semana.\n\nÉ destino premiado: São Bento conquistou o título de **Top Destino Turístico em Esportes de Aventura em 2019** — [fonte](https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/). Se você quer saber **o que fazer em São Bento do Sapucaí**, este guia tem tudo.\n\n## Por que Visitar São Bento do Sapucaí\n\n- **Natureza preservada**: Mata Atlântica, cachoeiras cristalinas e o lendário Complexo da Pedra do Baú\n- **Arte e Cultura**: Capelinhas de Mosaico únicas no Brasil e Igreja Matriz centenária\n- **Enoturismo e rural**: vinícolas, fábrica de azeite e viveiros com produtos artesanais\n- **Para todos os perfis**: trilheiros, casais, famílias e amantes de cultura\n\n## Principais Atrações\n\n### Complexo da Pedra do Baú\nO cartão-postal da cidade. **Monumento Natural Estadual (MoNa)** com três cumes: Pedra do Baú (aprox. 2.000 m), Bauzinho (1.760 m) e Ana Chata (1.670 m). Trilhas para todos os níveis, via ferrata, rapel e paisagens inesquecíveis.\n\n### Capelinhas de Mosaico\nTrês capelas transformadas em obras de arte sacra pelos artistas locais Ângelo Milani e Claudia Villar — uma das manifestações culturais mais únicas da região:\n\n- **Centro**: Rua 13 de Maio, 217\n- **Paiol Grande**: Av. Sebastião de Mello Mendes\n- **Quilombo**: Estrada Municipal Joaquim da Costa, 920\n— [fonte](https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/)\n\n### Cachoeiras\n- **Cachoeira dos Amores**: estruturada (estacionamento, banheiro, lanchonete), KM 6 da Rod. Pref. Benedito Gomes de Souza. Aberta fds e feriados, com taxa — [fonte](https://saobentotur.com.br/_experiencias/cachoeira-dos-amores/)\n- **Cachoeira do Toldi**: mais de 20 m de queda, trilha de mata fechada *(confirme condições antes de visitar)*\n- **Cachoeira do Tobogã**: ~7 km do centro, ideal para cascading com corda em descida de ~50 m\n\n### Mirante do Cruzeiro\nNo centro da cidade, de fácil acesso, com vista panorâmica das montanhas do Sul de Minas. Uma parada obrigatória para contemplar Chão Bento de cima. — [fonte](https://saobentotur.com.br/_experiencias/mirante-do-cruzeiro/)\n\n### Oliq Azeite\nTour pela produção de azeite extravirgem artesanal, com degustação e loja de produtos. Um dos passeios de turismo rural mais procurados da cidade.\n\n### Vinícola Raízes do Baú — Fazenda Portal da Luz\nVinhedo a 1.200 m de altitude com vista privilegiada para a Pedra do Baú. Tour com sommelier, degustação e empório com queijos, embutidos e geleias.\n\n### Igreja Matriz de São Bento\nConstruída no século XIX no alto de uma colina, com vitrais encantadores e vista privilegiada da cidade. Referência histórica e religiosa de Chão Bento.\n\n### Museus e Cultura *(needs_review)*\nCitados por moradores: Museu Trincheira, Museu do Zé Pereira, Museu do Carro de Boi, Casa de Cultura Miguel Reale e Belvedere do Serrano. Horários de funcionamento não foram verificados de forma independente — confirme localmente ou no São Bento TUR.\n\n## Como Chegar\n\nSão Bento do Sapucaí está a **aprox. 200 km de São Paulo** (SP-070 → SP-50 → SP-173) e **aprox. 40 km de Campos do Jordão** *(distâncias aproximadas)*. Acesso de carro; sem aeroporto na cidade.\n\n## Dicas Práticas\n\n- **Melhor época**: destino atrativo o ano todo; inverno (jun–ago) é mais frio e romântico; verão tem mais chuva\n- **Quantos dias**: um fds é suficiente para as principais atrações; 3 dias para quem quer trilhas e enoturismo\n- **Carnaval**: Bloco do Zé Pereira centenário — reserve hospedagem meses antes\n- **Roupa**: leve camadas; a temperatura varia muito entre o centro e os mirantes\n\n## FAQ\n\n### Quanto tempo preciso para visitar São Bento do Sapucaí?\nUm final de semana cobre as principais atrações. Para trilhas completas e enoturismo, planeje 3 a 4 dias.\n\n### A Pedra do Baú pode ser visitada por qualquer pessoa?\nO acesso ao topo via ferrata exige preparo físico e guia credenciado. O Bauzinho é acessível para iniciantes e famílias.\n\n### As Capelinhas de Mosaico têm horário de visitação?\nA capelinha do centro (Rua 13 de Maio, 217) é a mais acessível. Para as demais, verifique condições antes de visitar.\n\n## Conclusão\n\nSão Bento do Sapucaí surpreende a cada esquina: da adrenalina das trilhas à contemplação das Capelinhas de Mosaico. **Planeje sua viagem agora** e descubra por que Chão Bento é um dos segredos mais bem guardados da Mantiqueira!\n\n*Veja também: [Trilhas do Complexo do Baú](#trilhas) | [Onde Ficar: Refúgio da Pedra](#refugio)*",
+    "tags": ["Exemplo", "Exemplo", "Exemplo"],
+    "suggested_tags": ["O que fazer São Bento do Sapucaí", "Turismo Serra da Mantiqueira", "Cachoeiras São Paulo interior", "Capelinhas de Mosaico", "Ecoturismo São Bento"],
+    "meta_title": "O Que Fazer em São Bento do Sapucaí | Guia 2026",
+    "meta_description": "Descubra os melhores pontos turísticos de São Bento do Sapucaí: Pedra do Baú, Capelinhas de Mosaico, cachoeiras e turismo rural na Serra da Mantiqueira.",
+    "focus_keywords": ["o que fazer em São Bento do Sapucaí", "pontos turísticos São Bento do Sapucaí", "São Bento do Sapucaí turismo", "atrações São Bento Sapucaí"],
+    "slug": "o-que-fazer-sao-bento-do-sapucai",
+    "reading_time_minutes": 4,
+    "word_count": 600,
+    "faq_schema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto tempo preciso para visitar São Bento do Sapucaí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Um final de semana cobre as principais atrações. Para trilhas completas e enoturismo, planeje 3 a 4 dias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A Pedra do Baú pode ser visitada por qualquer pessoa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O acesso ao topo via ferrata exige preparo físico e guia credenciado. O Bauzinho é acessível para iniciantes e famílias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "As Capelinhas de Mosaico têm horário de visitação?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A capelinha do centro (Rua 13 de Maio, 217) é a mais acessível e pode ser visitada livremente. Para as demais, verifique as condições antes de visitar."
+          }
+        }
+      ]
+    },
+    "suggested_images": [
+      {
+        "description": "Vista panorâmica da Pedra do Baú com o vale e a cidade de São Bento ao fundo",
+        "alt": "Vista panorâmica da Pedra do Baú com o vale de São Bento do Sapucaí, Serra da Mantiqueira",
+        "caption": "O Complexo da Pedra do Baú: o cartão-postal de São Bento do Sapucaí"
+      },
+      {
+        "description": "Interior das Capelinhas de Mosaico com arte sacra colorida e detalhada",
+        "alt": "Interior da Capelinha de Mosaico no centro de São Bento do Sapucaí com mosaicos coloridos de arte sacra",
+        "caption": "Capelinhas de Mosaico: arte religiosa única criada por Ângelo Milani e Claudia Villar"
+      },
+      {
+        "description": "Cachoeira dos Amores com banhistas e mata verde ao redor",
+        "alt": "Cachoeira dos Amores em São Bento do Sapucaí com queda d'água e visitantes banhando",
+        "caption": "Cachoeira dos Amores: estruturada, fácil acesso e banho delicioso na Mantiqueira"
+      }
+    ],
+    "sources": [
+      { "title": "O que fazer em São Bento do Sapucaí: TOP 10 atrações | Em Algum Lugar do Mundo", "url": "https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/" },
+      { "title": "Mirante do Cruzeiro | São Bento TUR", "url": "https://saobentotur.com.br/_experiencias/mirante-do-cruzeiro/" },
+      { "title": "Cachoeira dos Amores | São Bento TUR", "url": "https://saobentotur.com.br/_experiencias/cachoeira-dos-amores/" },
+      { "title": "Guia de Áreas Protegidas SP — Monumento Natural Estadual da Pedra do Baú", "url": "https://guiadeareasprotegidas.sp.gov.br/ap/monumento-natural-estadual-da-pedra-do-bau/" },
+      { "title": "O que fazer e onde comer em São Bento do Sapucaí | Viaja que Passa", "url": "https://www.viajaquepassa.com.br/sao-bento-do-sapucai/" }
+    ],
+    "needs_review": true
+  },
+  {
+    "title": "Trilhas em São Bento do Sapucaí: Guia Completo do Complexo da Pedra do Baú",
+    "description": "Tudo sobre as trilhas de São Bento do Sapucaí: Bauzinho, Ana Chata, via ferrata da Pedra do Baú, rapel e dicas para cada nível de aventureiro.",
+    "content": "São Bento do Sapucaí é o destino ideal para quem busca **trilhas na Serra da Mantiqueira**: o município abriga o lendário Complexo da Pedra do Baú, com opções de caminhada e aventura para iniciantes, famílias e montanhistas experientes. Se você quer trilhar, fazer via ferrata ou rapel em meio à Mata Atlântica preservada, este guia tem tudo que você precisa.\n\nA cidade conquistou o **Top Destino Turístico em Esportes de Aventura em 2019** — e o Complexo do Baú é o grande motivo disso. São trilhas com altitudes entre 1.670 m e aprox. 2.000 m, vistas panorâmicas da Mantiqueira e uma energia única que atrai aventureiros de todo o Brasil. — [fonte](https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/)\n\n## As Principais Trilhas do Complexo do Baú\n\n### Trilha do Bauzinho — Nível Fácil\nA trilha mais tranquila e indicada para iniciantes e famílias. Duração de **aprox. 30 minutos** (ida), com uma das melhores vistas da Pedra do Baú. Há cobrança de pequena taxa revertida à conservação ambiental.\n\n- **Dica**: veja o pôr do sol daqui — é espetacular. Leve lanterna para a volta, pois o estacionamento fica escuro.\n- Rapel no bico do Bauzinho disponível com guia para quem quer mais adrenalina — [fonte](https://bauecoturismo.com.br/passeio/rapel-no-bauzinho-trilha-da-ana-chata/)\n\n### Trilha Ana Chata — Nível Moderado\nCom **3,8 km** de extensão e aprox. **2 horas** de caminhada, inicia no **estacionamento Chico Bento**. Passa por área rural e mata fechada antes de chegar à base da Ana Chata (1.670 m), de onde se vê a Serra do Coimbra, Campos do Jordão e toda a Mantiqueira. — [fonte](https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/)\n\n### Trilha da Pedra do Baú — Via Ferrata — Nível Avançado\nA mais desafiadora e recompensadora. São **5 km** de ida e volta, com **~600 m de elevação** e via ferrata — escadas de ferro fundido chumbadas na rocha — para a subida final ao cume. **Obrigatório** equipamentos de segurança e guia credenciado. — [fonte](https://pegamosumaestrada.com.br/como-e-a-trilha-da-pedra-do-bau-em-sao-bento-do-sapucai/)\n\n- Do estacionamento são 1,8 km até a base da Pedra, depois inicia a subida técnica\n- A vista do cume (aprox. 2.000 m) é simplesmente inesquecível\n\n### Outras Atividades de Aventura\n- Trail running na Trilha do Deus Me Livre *(para profissionais)*\n- Mountain bike em trilhas e estradas rurais da região\n- Paraglider e voo livre\n- Cascading na Cachoeira do Tobogã (~50 m de descida com corda)\n\n### Trilha da Onça e Nascer do Sol na Balança *(needs_review)*\nCitados por trilheiros e moradores como experiências especiais. Não foram encontradas informações detalhadas e verificáveis. Consulte guias locais credenciados para rotas e condições atuais.\n\n## Como Chegar ao Ponto de Partida\n\nO principal acesso é pelo **Restaurante Pedra do Baú**, próximo à SP-173. São Bento do Sapucaí está a **aprox. 200 km de São Paulo** pela SP-070 (Via Dutra) → SP-50 → SP-173. Recomenda-se GPS atualizado e carro com boa tração.\n\n## Dicas Práticas\n\n- **Saia cedo**: melhor luz para fotos, menos calor no percurso e estacionamento mais fácil\n- **Equipamentos**: calçado de trilha, bastões, capa de chuva, 2L de água por pessoa e snacks energéticos\n- **Temperatura**: muito mais fria no cume — leve camadas extras de roupa\n- **Guia credenciado**: para via ferrata e rapel — contate Baú Ecoturismo: (12) 9 9737-5968\n- **Melhor época**: outono e primavera (menos chuva e céu mais limpo)\n\n## FAQ\n\n### Qual trilha é mais indicada para crianças e iniciantes?\nA Trilha do Bauzinho é a mais tranquila: ~30 minutos de caminhada, taxa acessível e vista frontal da Pedra do Baú — ideal para toda a família.\n\n### É possível fazer a via ferrata sem contratar guia?\nNão é recomendado. A via ferrata da Pedra do Baú exige equipamentos técnicos e experiência em escalada. Sempre contrate um guia credenciado da região.\n\n### Qual a melhor época para fazer trilhas em São Bento do Sapucaí?\nOutono e primavera oferecem tempo mais estável e melhor visibilidade. Nos meses de verão (dez–mar), chuvas fortes são frequentes e podem tornar as trilhas perigosas.\n\n## Conclusão\n\nO Complexo do Baú é um dos cenários mais deslumbrantes da Serra da Mantiqueira. Da trilha tranquila do Bauzinho à adrenalina da via ferrata no cume da Pedra do Baú, cada passo é uma recompensa. **Monte sua mochila e venha para São Bento do Sapucaí!**\n\n*Veja também: [Pontos Turísticos de São Bento do Sapucaí](#pontos-turisticos) | [Onde Ficar: Refúgio da Pedra](#refugio)*",
+    "tags": ["Exemplo", "Exemplo", "Exemplo"],
+    "suggested_tags": ["Trilhas Pedra do Baú", "Via ferrata São Bento", "Trekking Serra da Mantiqueira", "Rapel Bauzinho", "Ecoturismo aventura"],
+    "meta_title": "Trilhas em São Bento do Sapucaí | Complexo Pedra do Baú",
+    "meta_description": "Guia das melhores trilhas de São Bento do Sapucaí: Bauzinho, Ana Chata e via ferrata da Pedra do Baú. Dicas de equipamentos, guias e melhor época para ir.",
+    "focus_keywords": ["trilhas São Bento do Sapucaí", "trilha Pedra do Baú", "via ferrata Pedra do Baú", "trekking Mantiqueira"],
+    "slug": "trilhas-sao-bento-do-sapucai-pedra-do-bau",
+    "reading_time_minutes": 3,
+    "word_count": 560,
+    "faq_schema": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual trilha é mais indicada para crianças e iniciantes em São Bento do Sapucaí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Trilha do Bauzinho é a mais tranquila: ~30 minutos de caminhada, taxa acessível e vista frontal da Pedra do Baú — ideal para toda a família."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "É possível fazer a via ferrata da Pedra do Baú sem contratar guia?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não é recomendado. A via ferrata exige equipamentos técnicos e experiência em escalada. Sempre contrate um guia credenciado — Baú Ecoturismo: (12) 9 9737-5968."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual a melhor época para fazer trilhas em São Bento do Sapucaí?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Outono e primavera oferecem tempo mais estável e melhor visibilidade. Nos meses de verão (dezembro a março), chuvas fortes são frequentes e podem tornar as trilhas perigosas."
+          }
+        }
+      ]
+    },
+    "suggested_images": [
+      {
+        "description": "Escalador na via ferrata da Pedra do Baú com vista para o vale da Mantiqueira",
+        "alt": "Alpinista subindo a via ferrata da Pedra do Baú com vista panorâmica da Serra da Mantiqueira ao fundo",
+        "caption": "Via ferrata da Pedra do Baú: aventura técnica com vistas de tirar o fôlego"
+      },
+      {
+        "description": "Grupo de trilheiros caminhando pela trilha da Ana Chata entre mata atlântica fechada",
+        "alt": "Grupo de caminhantes na trilha da Ana Chata com mata atlântica densa em São Bento do Sapucaí",
+        "caption": "Trilha Ana Chata: 3,8 km de natureza exuberante e vistas para a Mantiqueira"
+      },
+      {
+        "description": "Vista do Bauzinho com perspectiva frontal da Pedra do Baú e céu azul",
+        "alt": "Vista da Pedra do Bauzinho com a Pedra do Baú em destaque e o vale abaixo em São Bento do Sapucaí",
+        "caption": "O Bauzinho oferece uma das melhores vistas da Pedra do Baú — perfeito para iniciantes"
+      }
+    ],
+    "sources": [
+      { "title": "Como é a trilha da Pedra do Baú | Pegamos uma Estrada", "url": "https://pegamosumaestrada.com.br/como-e-a-trilha-da-pedra-do-bau-em-sao-bento-do-sapucai/" },
+      { "title": "O que fazer em São Bento do Sapucaí: TOP 10 atrações | Em Algum Lugar do Mundo", "url": "https://emalgumlugardomundo.com.br/o-que-fazer-em-sao-bento-do-sapucai/" },
+      { "title": "Rapel no Bauzinho + Trilha da Ana Chata | Baú Ecoturismo", "url": "https://bauecoturismo.com.br/passeio/rapel-no-bauzinho-trilha-da-ana-chata/" },
+      { "title": "Trilha do Complexo do Baú — Baúzinho, Ana Chata e Pedra do Baú | Blog da Aventura", "url": "https://blogdaaventura.com/complexo-do-bau-bauzinho-ana-chata-e-pedra-do-bau/" },
+      { "title": "Pedra do Baú, Bauzinho e Ana Chata: saiba tudo sobre as trilhas | São Paulo Secreto", "url": "https://saopaulosecreto.com/pedra-do-bau-trilha/" }
+    ],
+    "needs_review": true
   }
 ]
