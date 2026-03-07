@@ -13,6 +13,12 @@ interface Props {
   }>;
 }
 
+export function generateStaticParams() {
+  return chales.map((chale) => ({
+    slug: slugify(chale.nome, { lower: true, strict: true }),
+  }));
+}
+
 export async function generateMetadata({
   params,
 }: {

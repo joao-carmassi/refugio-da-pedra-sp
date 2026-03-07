@@ -3,6 +3,15 @@ import chales from '@/data/chales.json';
 import Image from 'next/image';
 import slugify from 'slugify';
 import CardReserva from './card-reserva';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import { Home } from 'lucide-react';
 
 interface Props {
   params: Promise<{
@@ -30,9 +39,26 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
         height={800}
         priority
       />
-      <section className='lg:container rounded-4xl lg:rounded-none bg-card px-6 pt-6 -mt-14 lg:mt-0 z-10 relative'>
+      <section className='lg:container rounded-4xl lg:rounded-none bg-card px-6 pt-6 -mt-14 lg:mt-0 lg:pt-0 z-10 relative'>
         <div className='grid lg:grid-cols-[3fr_1fr] gap-6'>
           <div className='space-y-6'>
+            <Breadcrumb className='hidden lg:flex'>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink aria-label='Homepage' href='/'>
+                    <Home className='h-4 w-4' />
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href='/chales'>Chalés</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{chale.nome}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
             <Image
               src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
               alt={chale.nome}
