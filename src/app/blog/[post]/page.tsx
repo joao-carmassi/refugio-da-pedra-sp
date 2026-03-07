@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import { ArrowUp, Home } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import {
@@ -19,9 +19,9 @@ import slugify from 'slugify';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const BlogPost = () => {
+const BlogPost = (): React.ReactNode => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const sectionRefs = useRef<Record<string, HTMLElement>>({});
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
   const params = useParams();
   const postSlug = params?.post;
 
@@ -30,45 +30,34 @@ const BlogPost = () => {
   );
 
   useEffect(() => {
-    const sections = Object.keys(sectionRefs.current);
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    let observer: IntersectionObserver | null = new IntersectionObserver(
-      observerCallback,
-      {
-        root: null,
-        rootMargin: '0px',
-        threshold: 1,
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
       },
+      { rootMargin: '-10% 0px -80% 0px', threshold: 0 },
     );
 
-    sections.forEach((sectionId) => {
-      const element = sectionRefs.current[sectionId];
-      if (element) {
-        observer?.observe(element);
-      }
+    Object.values(sectionRefs.current).forEach((el) => {
+      if (el) observer.observe(el);
     });
 
-    return () => {
-      observer?.disconnect();
-      observer = null;
-    };
+    return () => observer.disconnect();
   }, []);
 
-  const addSectionRef = (id: string, ref: HTMLElement | null) => {
-    if (ref) {
-      sectionRefs.current[id] = ref;
-    }
-  };
-
   if (!post) return null;
+
+  const contentParts = post.content.split(/\n(?=## )/);
+  const intro = contentParts[0];
+  const sections = contentParts.slice(1).map((part, index) => {
+    const lines = part.split('\n');
+    const title = lines[0].replace(/^##\s*/, '');
+    const sectionContent = lines.slice(1).join('\n').trim();
+    return { id: `section${index + 1}`, title, content: sectionContent };
+  });
 
   return (
     <main className='py-6 md:py-12 min-h-container'>
@@ -97,71 +86,56 @@ const BlogPost = () => {
         <Separator className='my-3 md:my-6 lg:my-8' />
         <div className='relative grid grid-cols-12 gap-6 lg:grid'>
           <article className='col-span-12 lg:col-span-9 prose dark:prose-invert w-full! max-w-none!'>
-            <Markdown remarkPlugins={[remarkGfm]}>{post.content}</Markdown>
+            <Markdown remarkPlugins={[remarkGfm]}>{intro}</Markdown>
+            {sections.map((section) => (
+              <section
+                key={section.id}
+                id={section.id}
+                ref={(el) => {
+                  sectionRefs.current[section.id] = el;
+                }}
+                className='my-8'
+              >
+                <h2>{section.title}</h2>
+                <Markdown remarkPlugins={[remarkGfm]}>
+                  {section.content}
+                </Markdown>
+              </section>
+            ))}
           </article>
-          <div className='sticky top-8 col-span-3 col-start-10 hidden h-fit lg:block'>
+
+          <aside className='sticky top-24 col-span-3 col-start-10 hidden h-fit lg:block'>
             <span className='text-lg font-medium'>Nesta página</span>
             <nav className='mt-4 text-sm'>
               <ul className='space-y-1'>
-                <li>
-                  <a
-                    href='#section1'
-                    className={cn(
-                      'block py-1 transition-colors duration-200',
-                      activeSection === 'section1'
-                        ? 'text-primary'
-                        : 'text-muted-foreground hover:text-primary',
-                    )}
-                  >
-                    How Taxes Work and Why They Matter
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='#section2'
-                    className={cn(
-                      'block py-1 transition-colors duration-200',
-                      activeSection === 'section2'
-                        ? 'text-primary'
-                        : 'text-muted-foreground hover:text-primary',
-                    )}
-                  >
-                    The Great People&apos;s Rebellion
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='#section3'
-                    className={cn(
-                      'block py-1 transition-colors duration-200',
-                      activeSection === 'section3'
-                        ? 'text-primary'
-                        : 'text-muted-foreground hover:text-primary',
-                    )}
-                  >
-                    The King&apos;s Plan
-                  </a>
-                </li>
+                {sections.map((section) => (
+                  <li key={section.id}>
+                    <Link
+                      href={`#${section.id}`}
+                      className={cn(
+                        'block py-1 transition-colors duration-200',
+                        activeSection === section.id
+                          ? 'text-primary'
+                          : 'text-muted-foreground hover:text-primary',
+                      )}
+                    >
+                      {section.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
 
             <Separator className='my-6' />
 
-            <div className='mt-6'>
-              <Button
-                variant='outline'
-                onClick={() =>
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  })
-                }
-              >
-                <ArrowUp className='h-4 w-4' />
-                Volte ao topo
-              </Button>
-            </div>
-          </div>
+            <Button
+              variant='outline'
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              <ArrowUp className='h-4 w-4' />
+              Volte ao topo
+            </Button>
+          </aside>
         </div>
       </div>
     </main>

@@ -1,6 +1,7 @@
 import { getSiteUrl } from '@/lib/env';
 import type { MetadataRoute } from 'next';
 import chales from '@/data/chales.json';
+import posts from '@/data/posts.json';
 import slugify from 'slugify';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,6 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.7,
+  }));
+
+  const postUrls: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${baseUrl}/blog/${slugify(post.title, { lower: true, strict: true })}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
   }));
 
   return [
@@ -37,7 +45,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.6,
+      priority: 0.7,
     },
+    ...postUrls,
   ];
 }
