@@ -16,6 +16,8 @@ import { Separator } from '@/components/ui/separator';
 import { useParams } from 'next/navigation';
 import blogPosts from '@/data/posts.json';
 import slugify from 'slugify';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 const BlogPost = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -91,10 +93,12 @@ const BlogPost = () => {
         <h1 className='mb-3 mt-6 md:my-6 max-w-3xl text-2xl tracking-tight md:text-4xl lg:text-5xl'>
           {post.title}
         </h1>
-        <p className='mb-6 text-muted-foreground'>{post.description}</p>
+        <div className='mb-6 text-muted-foreground'>{post.description}</div>
         <Separator className='my-3 md:my-6 lg:my-8' />
         <div className='relative grid grid-cols-12 gap-6 lg:grid'>
-          <div className='col-span-12 lg:col-span-9'>{post.content}</div>
+          <article className='col-span-12 lg:col-span-9 prose dark:prose-invert w-full! max-w-none!'>
+            <Markdown remarkPlugins={[remarkGfm]}>{post.content}</Markdown>
+          </article>
           <div className='sticky top-8 col-span-3 col-start-10 hidden h-fit lg:block'>
             <span className='text-lg font-medium'>Nesta página</span>
             <nav className='mt-4 text-sm'>
