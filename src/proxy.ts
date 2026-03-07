@@ -6,11 +6,10 @@ import slugify from 'slugify';
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const chale = chales.find((chale) => pathname === `/chales/${chale.id}/`);
+  const url = request.nextUrl.clone();
+
   if (chale) {
-    const url = new URL(
-      `/chales/${slugify(chale.nome, { lower: true, strict: true })}/`,
-      request.url,
-    );
+    url.pathname = `/chales/${slugify(chale.nome, { lower: true, strict: true })}/`;
     return NextResponse.redirect(url, { status: 301 });
   }
 }
