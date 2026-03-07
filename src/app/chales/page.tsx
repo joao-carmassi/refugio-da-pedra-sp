@@ -1,3 +1,11 @@
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Tooltip,
@@ -5,7 +13,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import chales from '@/data/chales.json';
-import { Check, PawPrint } from 'lucide-react';
+import { Check, Home, PawPrint } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import slugify from 'slugify';
@@ -14,11 +22,24 @@ function ChalePage(): React.ReactNode {
   return (
     <main className='min-h-container bg-card py-6 md:py-12 grid place-items-center'>
       <section className='container space-y-6 md:space-y-12'>
-        <div className='text-center space-y-3 md:space-y-6'>
-          <h1 className='text-2xl tracking-tight md:text-4xl lg:text-5xl'>
+        <div className='space-y-3 md:space-y-6'>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink aria-label='Homepage' href='/'>
+                  <Home className='h-4 w-4' />
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Chalés</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+          <h1 className='text-2xl tracking-tight md:text-4xl lg:text-5xl text-center'>
             Acomodações
           </h1>
-          <p className='text-muted-foreground leading-snug mx-auto md:max-w-2/3'>
+          <p className='text-muted-foreground leading-snug mx-auto text-center md:max-w-2/3'>
             Conheça nossos chalés, cabanas e domos, cada um projetado para
             oferecer uma experiência única de conforto e contato com a natureza.
             Escolha o seu refúgio perfeito para uma estadia inesquecível.

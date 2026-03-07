@@ -4,17 +4,43 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import blogPosts from '@/data/posts.json';
+import slugify from 'slugify';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import { Home } from 'lucide-react';
 
 const Blog = () => {
   return (
     <section className='min-h-container py-6 md:py-12 container space-y-6'>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink aria-label='Homepage' href='/'>
+              <Home className='h-4 w-4' />
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Blog</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <h1 className='tracking-tight text-center text-4xl md:text-start lg:text-5xl'>
         Blog
       </h1>
       <section className='space-y-6'>
         {blogPosts.map((post, index) => (
           <React.Fragment key={index}>
-            <Link className='block' href='#'>
+            <Link
+              className='block'
+              href={`/blog/${slugify(post.title, { lower: true, strict: true })}`}
+            >
               <Card className='border-t border-border shadow-lg'>
                 <CardContent>
                   <div className='relative w-full space-y-3'>
