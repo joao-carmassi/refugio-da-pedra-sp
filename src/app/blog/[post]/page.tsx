@@ -18,6 +18,7 @@ import blogPosts from '@/data/posts.json';
 import slugify from 'slugify';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import Cta from '@/components/cta';
 
 const BlogPost = (): React.ReactNode => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -60,7 +61,7 @@ const BlogPost = (): React.ReactNode => {
   });
 
   return (
-    <main className='py-6 md:py-12 min-h-container'>
+    <main className='py-6 md:py-12 min-h-container space-y-6 md:space-y-12'>
       <div className='container'>
         <Breadcrumb>
           <BreadcrumbList>
@@ -138,6 +139,7 @@ const BlogPost = (): React.ReactNode => {
           </aside>
         </div>
       </div>
+      <Cta />
     </main>
   );
 };
