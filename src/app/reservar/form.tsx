@@ -106,7 +106,7 @@ function Form(): React.ReactNode {
   const onSubmit = (data: FormData) => {
     const chaleSelecionado = chales.find((c) => c.id === chaleSelecionadoId);
     const msgText = `Olá, me chamo *${data.nome}* e gostaria de reservar o *${chaleSelecionado?.nome}* para *${guestLabel}* no período de *${data.checkin.toLocaleDateString()} a ${data.checkout.toLocaleDateString()}*.`;
-    window.open(generateWhatsLink(encodeURIComponent(msgText)), '_blank');
+    window.open(generateWhatsLink(msgText), '_blank');
   };
 
   return (
