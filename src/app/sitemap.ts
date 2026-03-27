@@ -8,14 +8,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
 
   const chaleUrls: MetadataRoute.Sitemap = chales.map((chale) => ({
-    url: `${baseUrl}/chales/${slugify(chale.nome, { lower: true, strict: true })}`,
+    url: `${baseUrl}/chales/${slugify(chale.nome, { lower: true, strict: true })}/`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
 
   const postUrls: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${baseUrl}/blog/${slugify(post.title, { lower: true, strict: true })}`,
+    url: `${baseUrl}/blog/${slugify(post.title, { lower: true, strict: true })}/`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.6,
@@ -23,26 +23,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/chales`,
+      url: `${baseUrl}/chales/`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     ...chaleUrls,
     {
-      url: `${baseUrl}/reservar`,
+      url: `${baseUrl}/reservar/`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: `${baseUrl}/blog/`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.7,
