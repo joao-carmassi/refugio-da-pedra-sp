@@ -15,15 +15,15 @@ suggested_tags:
   - Fondue Campos do Jordão
   - Truta Campos do Jordão
   - Gastronomia Serra da Mantiqueira
-meta_title: Restaurantes em Campos do Jordão | Onde Comer
+meta_title: 'Restaurantes em Campos do Jordão: Onde Comer (Todos os Bolsos)'
 meta_description: >-
-  Melhores restaurantes de Campos do Jordão: fondue, truta, massas e culinária
-  contemporânea. Onde comer em Capivari e arredores na Serra da Mantiqueira.
+  Melhores restaurantes de Campos do Jordão: fondue, truta e opções baratas em
+  Abernéssia. Onde comer em Capivari e arredores para todos os bolsos.
 focus_keywords:
   - restaurantes Campos do Jordão
   - onde comer Campos do Jordão
+  - restaurante barato Campos do Jordão
   - fondue Campos do Jordão
-  - gastronomia Campos do Jordão
 faq_schema:
   '@context': 'https://schema.org'
   '@type': FAQPage
@@ -108,12 +108,43 @@ Restaurantes dentro do complexo da Vila Inglesa oferecem refeições com ambient
 ### Estradas e Arredores
 Alguns dos melhores restaurantes ficam nas saídas da cidade, em propriedades rurais com vista para as montanhas. Valem o deslocamento de carro.
 
+## Restaurantes Baratos em Campos do Jordão
+
+Campos do Jordão tem fama de caro — e Capivari de fato pratica preços turísticos. Mas existe uma rota de gastronomia acessível para quem quer comer bem sem pagar o preço de destino de inverno.
+
+### Abernéssia: O Bairro dos Locais
+
+**Abernéssia** é o bairro residencial e comercial de Campos do Jordão — onde os moradores almoçam, fazem compras e comem no dia a dia. Os restaurantes de Abernéssia são significativamente mais baratos que os de Capivari, com qualidade muitas vezes equivalente:
+
+- **Self-services e rodízios:** Pratos de almoço entre R$ 25 e R$ 50 por pessoa
+- **Padarias e lanchonetes:** Café da manhã completo por R$ 15 a R$ 25
+- **Pizzarias e comida simples:** Jantar por R$ 40 a R$ 70 por pessoa
+
+### Jaguaribe: O Intermediário
+
+O bairro de Jaguaribe fica entre Capivari e Abernéssia — turisticamente, tem menos concentração de fondue, mas alguns restaurantes de culinária simples com preços menores que Capivari.
+
+### Opções Baratas em Capivari
+
+Mesmo em Capivari existem opções mais acessíveis:
+- **Trailers e quiosques** ao longo do calçadão para lanches rápidos
+- **Pastelarias e lanchonetes** nas ruas laterais
+- **Chocolates e sorvetes** como refeição informal
+
+### Fondue Barato: Existe?
+
+O fondue nunca será barato em Campos do Jordão — mas os preços variam. Os restaurantes de Jaguaribe e os menores de Capivari cobram R$ 80 a R$ 120 por pessoa, contra R$ 150 a R$ 250 nas casas mais sofisticadas. Para o guia completo de fondue com custo-benefício: [Fondue em Campos do Jordão](/blog/fondue-em-campos-do-jordao).
+
+### Supermercado Como Alternativa
+
+Uma estratégia usada por muitos: comprar queijos, embutidos, chocolates e vinho no supermercado de Abernéssia e fazer um piquenique no Horto Florestal ou em algum mirante. Em dias de inverno com sol, uma mesa ao ar livre com queijo e vinho da região tem charme indiscutível.
+
 ## Dicas Práticas
 
 - **Reserve nos fins de semana de inverno**: os melhores restaurantes lotam rapidamente
 - **Fondue pede reserva**: a sequência de fondue é servida sob demanda e muitos restaurantes limitam as mesas
 - **Almoço é mais tranquilo**: se quiser evitar filas, vá na hora do almoço
-- **Preços**: Campos do Jordão pratica preços de destino turístico — para economizar, explore opções em Abernéssia e Jaguaribe
+- **Para economizar:** Almoce em Abernéssia ou Jaguaribe, jante em Capivari — melhor dos dois mundos
 - **Combine com São Bento**: a gastronomia de São Bento do Sapucaí é mais rústica e artesanal (truta flambada, azeite Oliq) — vale a visita gastronômica às duas cidades
 
 ## FAQ

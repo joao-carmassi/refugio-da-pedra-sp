@@ -64,7 +64,7 @@ faq_schema:
           o Vale do Paraíba. Há escolas e instrutores certificados para voos duplos
           de turismo.
     - '@type': Question
-      name: Santo Antônio do Pinhal ou Campos do Jordão: qual escolher?
+      name: 'Santo Antônio do Pinhal ou Campos do Jordão: qual escolher?'
       acceptedAnswer:
         '@type': Answer
         text: >-

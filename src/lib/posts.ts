@@ -44,6 +44,9 @@ export function getAllPosts(): Post[] {
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
+      if (!Array.isArray(data.tags)) data.tags = [];
+      if (!Array.isArray(data.suggested_tags)) data.suggested_tags = [];
+      if (!Array.isArray(data.focus_keywords)) data.focus_keywords = [];
 
       return {
         slug,
@@ -59,6 +62,9 @@ export function getPostBySlug(slug: string): Post | undefined {
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
+  if (!Array.isArray(data.tags)) data.tags = [];
+  if (!Array.isArray(data.suggested_tags)) data.suggested_tags = [];
+  if (!Array.isArray(data.focus_keywords)) data.focus_keywords = [];
 
   return {
     slug,

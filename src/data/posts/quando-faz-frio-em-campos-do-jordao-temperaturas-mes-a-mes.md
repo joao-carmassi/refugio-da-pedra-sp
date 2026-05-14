@@ -21,9 +21,9 @@ meta_description: >-
   temperaturas mês a mês, geadas, o que vestir e quando ir para pegar frio.
 focus_keywords:
   - quando faz frio Campos do Jordão
-  - temperatura Campos do Jordão
-  - frio Campos do Jordão
-  - geada Campos do Jordão
+  - Campos do Jordão no inverno
+  - Campos do Jordão em julho
+  - frio Campos do Jordão inverno
 faq_schema:
   '@context': 'https://schema.org'
   '@type': FAQPage
@@ -136,8 +136,33 @@ Neve é um fenômeno muito raro em Campos do Jordão. Houve registros isolados, 
 ### Faz frio em Campos do Jordão no verão?
 Os dias de verão são amenos (até 25°C), mas as noites continuam frescas (12–15°C). Comparado ao restante de São Paulo, Campos do Jordão é fresca o ano todo graças à altitude de ~1.628 m.
 
+## Campos do Jordão em Julho: O Pico do Inverno
+
+Julho é o mês mais buscado para sentir o frio de Campos do Jordão — e o mais concorrido. É o mês do **Festival de Inverno**, um dos maiores festivais de música erudita da América Latina, que lota a cidade de turistas de todo o Brasil.
+
+**O que esperar em julho em CJ:**
+- Mínimas de 0°C a 3°C nas madrugadas
+- Geadas cobrindo gramados, carros e telhados ao amanhecer
+- Vila Capivari movimentada até a madrugada
+- Hotéis e pousadas com ocupação quase total
+- Preços de hospedagem no pico do ano
+
+Se julho é a melhor data em termos de frio e atmosfera, é também a mais cara e mais cheia. Junho e agosto oferecem frio semelhante com menos turistas e preços menores.
+
+## Campos do Jordão no Inverno: A Experiência Completa
+
+O inverno de Campos do Jordão (junho a agosto) vai além do frio. A experiência completa inclui:
+
+1. **Acordar com geada:** O vapor do hálito ao ar, gramados brancos, silêncio de montanha
+2. **Café da manhã quentinho:** Em pousada com lareira ou café aconchegante de Capivari
+3. **Passeio pelo calçadão:** [Vila Capivari](/blog/vila-capivari-campos-do-jordao) decorada e cheia de movimento
+4. **Fondue no jantar:** O ritual gastronômico do inverno serrano
+5. **Chocolate quente:** Para encerrar o dia com uma xícara fumegando nas mãos
+
+Para o guia completo sobre o clima da cidade — temperaturas médias, comparação entre bairros, fenômenos como neve e geada — veja: [Clima em Campos do Jordão](/blog/clima-em-campos-do-jordao).
+
 ## Conclusão
 
 O frio de Campos do Jordão é real e intenso no inverno — perfeito para quem busca lareiras, fondues e chocolate quente. De junho a agosto, prepare-se para temperaturas que podem chegar a 0°C. **Hospede-se no Refúgio da Pedra** e combine o frio de Campos do Jordão com as trilhas de São Bento do Sapucaí — a Serra da Mantiqueira espera por você!
 
-*Veja também: [Melhor Época para Visitar Campos do Jordão](#melhor-epoca-cj) | [Altitude de Campos do Jordão](#altitude-cj)*
+*Veja também: [Clima em Campos do Jordão](/blog/clima-em-campos-do-jordao) | [Melhor Época para Visitar Campos do Jordão](/blog/qual-e-a-melhor-epoca-para-visitar-campos-do-jordao)*
