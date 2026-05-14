@@ -82,7 +82,7 @@ Aqui se cultiva a maior produção de trutas da América Latina, crescem flores 
 Sapucaí-Mirim fica no extremo sul de Minas Gerais, na fronteira com São Paulo. Faz parte do **Circuito Turístico Serras Verdes** junto com Gonçalves, Camanducaia, Monte Verde e outras cidades da região.
 
 A cidade tem:
-- Altitude média de 885 metros no centro (mas seus picos chegam a 2.060 m)
+- Altitude média de 885 metros no centro (mas seus picos chegam a 2.060 m) — com clima de altitude que traz invernos frios e verões amenos. → [Clima em Sapucaí-Mirim: temperatura e melhor época](/blog/clima-em-sapucai-mirim)
 - **APA de Sapucaí-Mirim** e **APA Fernão Dias** — duas áreas de proteção ambiental
 - O maior criatório de trutas da América Latina (NR Resort)
 - Grutas e cavernas de altitude

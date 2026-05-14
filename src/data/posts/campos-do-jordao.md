@@ -156,7 +156,7 @@ Campos do Jordão tem clima subtropical de altitude, com quatro estações bem m
 
 - **Inverno (jun–ago):** Frio intenso, temperaturas entre -5°C e 15°C. Alta temporada. Festival de Inverno em julho.
 - **Primavera (set–nov):** Temperaturas amenas, flores desabrochando, menos movimento.
-- **Verão (dez–fev):** Chuvas frequentes à tarde, temperaturas entre 12°C e 25°C. Ideal para cachoeiras e trilhas.
+- **Verão (dez–fev):** Chuvas frequentes à tarde, temperaturas entre 12°C e 25°C. Ideal para cachoeiras e trilhas. Em dezembro, o Natal transforma Capivari com decoração especial: → [Natal em Campos do Jordão](/blog/natal-em-campos-do-jordao).
 - **Outono (mar–mai):** Clima seco e agradável, paisagens com tons de outono. Ótimo custo-benefício.
 
 A [melhor época para visitar Campos do Jordão](/blog/qual-e-a-melhor-epoca-para-visitar-campos-do-jordao) depende do que você quer: se for pelo frio intenso e festival, escolha julho. Se quer trilhar e evitar multidão, vá em outubro.
@@ -172,6 +172,7 @@ Campos do Jordão é o destino central de uma região rica em opções:
 - **Santo Antônio do Pinhal:** a apenas 25 km, é a cidade-irmã de ritmo mais bucólico, conhecida pelo Pico Agudo e pelos ateliers de artesanato.
 - **São Bento do Sapucaí:** a 40 km, é a "[Toscana Brasileira](/blog/sao-bento-do-sapucai-a-toscana-brasileira-da-serra-da-mantiqueira)" com a famosa Pedra do Baú, enoturismo e ecoturismo. Veja o [Guia Completo de São Bento do Sapucaí](/blog/sao-bento-do-sapucai).
 - **Gonçalves (MG):** a 60 km, pequeno vilarejo mineiro com cachoeiras cristalinas e gastronomia autêntica.
+- **Monte Verde (MG):** a ~35 km, vila rústica com atmosfera mais intimista e preços mais acessíveis. → [Campos do Jordão ou Monte Verde: qual escolher?](/blog/campos-do-jordao-ou-monte-verde)
 
 Saiba mais sobre as distâncias na [rota de São Bento do Sapucaí a Campos do Jordão](/blog/sao-bento-do-sapucai-a-campos-do-jordao-distancia-rota-e-dicas).
 
@@ -187,7 +188,7 @@ Saiba mais sobre as distâncias na [rota de São Bento do Sapucaí a Campos do J
 - Tarde: Horto Florestal → Lago Capivari (pedalinho)
 - Noite: Cervejaria artesanal + jantar em Capivari
 
-Para um roteiro de 1 dia, veja: [O Que Fazer em Campos do Jordão em 1 Dia](/blog/o-que-fazer-em-campos-do-jordao-em-1-dia).
+Para um roteiro de 1 dia, veja: [O Que Fazer em Campos do Jordão em 1 Dia](/blog/o-que-fazer-em-campos-do-jordao-em-1-dia). Para um roteiro completo de 3 dias com bate-volta a São Bento do Sapucaí: [Roteiro de 3 Dias em Campos do Jordão](/blog/roteiro-campos-do-jordao-3-dias).
 
 ## A Serra da Mantiqueira em Torno de Campos do Jordão
 
