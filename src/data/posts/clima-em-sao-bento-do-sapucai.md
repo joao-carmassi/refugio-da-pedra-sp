@@ -168,7 +168,7 @@ Abril e maio são os meses com melhor equilíbrio entre temperatura confortável
 | Perfil | Serra + trilhas + natureza | Urbano + gastronomia + events |
 | Distância de SP | 170 km | 165 km |
 
-**Resumo:** Campos do Jordão tem frio mais extremo e maior infraestrutura urbana. São Bento do Sapucaí tem natureza mais preservada, trilhas mais desafiadoras e um clima um pouco mais ameno. As duas cidades são [complementares e próximas](/blog/sao-bento-do-sapucai-a-campos-do-jordao-distancia-rota-e-dicas-de-viagem) — é possível visitar as duas em uma única viagem.
+**Resumo:** Campos do Jordão tem frio mais extremo e maior infraestrutura urbana. São Bento do Sapucaí tem natureza mais preservada, trilhas mais desafiadoras e um clima um pouco mais ameno. As duas cidades são [complementares e próximas](/blog/sao-bento-do-sapucai-a-campos-do-jordao-distancia-rota-e-dicas) — é possível visitar as duas em uma única viagem.
 
 ## Clima e Planejamento: Por Objetivo
 
@@ -194,4 +194,8 @@ O clima de SBS faz parte de um padrão regional de altitude. Cidades próximas t
 
 Para o guia completo da cidade: [São Bento do Sapucaí](/blog/sao-bento-do-sapucai).
 
-Para trilhas e atividades que dependem do clima: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-pela-pedra-do-bau-e-mais).
+Para trilhas e atividades que dependem do clima: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau).
+
+---
+
+**Planejando uma estadia em São Bento do Sapucaí?** O [Refúgio da Pedra](/blog/refugio-da-pedra-a-pousada-mais-proxima-da-pedra-do-bau) oferece chalés com lareira para o inverno e deck arborizado para o outono — a ~1,5 km da Pedra do Baú. Perfeito para qualquer época do ano. [Conheça os chalés](/chales).

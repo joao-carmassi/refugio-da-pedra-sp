@@ -15,7 +15,7 @@ suggested_tags:
   - Geada Campos do Jordão
   - Neve Campos do Jordão
   - Inverno Serra da Mantiqueira
-meta_title: Quando Faz Frio em Campos do Jordão? | Clima
+meta_title: 'Quando Faz Frio em Campos do Jordão? Meses, Geadas e Temperaturas'
 meta_description: >-
   Campos do Jordão faz mais frio de junho a agosto, com mínimas de 0°C. Veja
   temperaturas mês a mês, geadas, o que vestir e quando ir para pegar frio.

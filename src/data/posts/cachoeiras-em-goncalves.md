@@ -146,7 +146,7 @@ Para o guia completo de trilhas, veja: [Trilhas em Gonçalves](/blog/trilhas-em-
 | Cidade | Nº de Cachoeiras | Destaque |
 |---|---|---|
 | **Gonçalves** | 11 | Diversidade e acesso gratuito (Simão) |
-| [São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo) | Várias | Boa infraestrutura, próxima ao Baú |
+| [São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos) | Várias | Boa infraestrutura, próxima ao Baú |
 | [Sapucaí-Mirim](/blog/cachoeiras-em-sapucai-mirim) | Várias | Posses (35m), Amizade |
 
 Para entender melhor a região, veja também: [Serra da Mantiqueira: Extensão, Cidades e Picos](/blog/serra-da-mantiqueira-extensao-cidades-e-picos-mais-altos).

@@ -124,7 +124,7 @@ Para saber o que visitar nas cidades ao redor durante a viagem, confira o guia d
 
 ## Clima e Melhor Época para Visitar São Bento do Sapucaí
 
-São Bento do Sapucaí é um destino para o ano inteiro — cada estação entrega uma experiência diferente.
+São Bento do Sapucaí é um destino para o ano inteiro — cada estação entrega uma experiência diferente. Para dados detalhados de temperatura mês a mês e o que vestir em cada época, confira o [Guia Completo do Clima em São Bento do Sapucaí](/blog/clima-em-sao-bento-do-sapucai).
 
 ### Inverno (Junho a Agosto) — Alta Temporada
 
@@ -167,7 +167,7 @@ Nas proximidades do Complexo da Pedra do Baú ficam duas cachoeiras que não pod
 - **Cachoeira dos Amores**: queda encaixada em mata fechada, com piscina natural de água cristalina para banho
 - **Cachoeira do Toldi**: queda de aproximadamente 20 metros, visível a partir de um mirante de madeira, a 11 km do centro da cidade
 
-Ambas são acessadas pelas mesmas estradas rurais das trilhas — planeje visitá-las no mesmo dia da Pedra do Baú.
+Ambas são acessadas pelas mesmas estradas rurais das trilhas — planeje visitá-las no mesmo dia da Pedra do Baú. Veja o [guia completo das cachoeiras de São Bento do Sapucaí](/blog/cachoeiras-em-sao-bento-do-sapucai) com dicas de acesso, o que levar e melhor época.
 
 ### Capelinhas de Mosaico — Arte Sacra Única no Brasil
 

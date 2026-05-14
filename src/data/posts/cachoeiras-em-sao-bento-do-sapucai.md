@@ -149,7 +149,7 @@ São Bento do Sapucaí tem dois tipos de experiência principais que podem ser c
 **Dia 1:** Trilha da Pedra do Baú (mais exigente, vistas panorâmicas)
 **Dia 2:** Cachoeira dos Amores (mais tranquila, contato com a água)
 
-Essa combinação cobre os dois perfis mais procurados: trilha de altitude e cachoeira de mata fechada. Para o guia completo de trilhas: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-pela-pedra-do-bau-e-mais).
+Essa combinação cobre os dois perfis mais procurados: trilha de altitude e cachoeira de mata fechada. Para o guia completo de trilhas: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau).
 
 ## Guias Locais: Por Que Vale a Pena
 
@@ -177,5 +177,9 @@ Para mais sobre o clima e quando visitar: [Clima em São Bento do Sapucaí](/blo
 
 As cachoeiras fazem parte de uma oferta de natureza mais ampla em São Bento do Sapucaí. Para o guia completo da cidade, incluindo trilhas, gastronomia e história:
 
-- [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo)
+- [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos)
 - [São Bento do Sapucaí (guia completo)](/blog/sao-bento-do-sapucai)
+
+---
+
+**Vai visitar as cachoeiras de São Bento do Sapucaí? Hospede-se no [Refúgio da Pedra](/blog/refugio-da-pedra-a-pousada-mais-proxima-da-pedra-do-bau)** — a única pousada a ~1,5 km da Pedra do Baú, com 5 chalés privativos em meio à Mata Atlântica. De lá, cachoeiras e trilhas ficam a minutos de carro. [Veja os chalés disponíveis](/chales).

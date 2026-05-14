@@ -118,7 +118,7 @@ O Horto Florestal é uma floresta de araucárias centenárias às margens do Lag
 
 ### Centro de Capivari
 
-O calçadão de Capivari concentra as melhores lojas de chocolate, as cervejarias artesanais, os restaurantes de fondue e a agitação noturna da cidade. É onde acontece a maior parte da vida social de Campos do Jordão — indispensável a qualquer hora do dia.
+O calçadão de Capivari concentra as melhores lojas de chocolate, as cervejarias artesanais, os restaurantes de fondue e a agitação noturna da cidade. É onde acontece a maior parte da vida social de Campos do Jordão — indispensável a qualquer hora do dia. [Guia completo da Vila Capivari](/blog/vila-capivari-campos-do-jordao) →
 
 ## O Que Fazer em Campos do Jordão: Experiências
 
@@ -128,7 +128,7 @@ O [Festival de Música de Campos do Jordão](/blog/festas-e-eventos-em-campos-do
 
 ### Chocolates e Fondues
 
-Campos do Jordão é sinônimo de chocolate. A cidade concentra dezenas de chocolaterias artesanais, muitas com fábricas visitáveis, e restaurantes especializados em fondue. O [Guia Completo de Chocolates de Campos do Jordão](/blog/chocolate-e-chocolate-quente-em-campos-do-jordao-guia-completo) lista os melhores endereços.
+Campos do Jordão é sinônimo de chocolate. A cidade concentra dezenas de chocolaterias artesanais, muitas com fábricas visitáveis, e restaurantes especializados em fondue. O [Guia Completo de Chocolates de Campos do Jordão](/blog/chocolate-e-chocolate-quente-em-campos-do-jordao-guia-completo) lista os melhores endereços. Para visitar uma fábrica de chocolate: [Fábricas de Chocolate em Campos do Jordão](/blog/fabrica-de-chocolate-campos-do-jordao). Para o melhor fondue da cidade: [Fondue em Campos do Jordão — Guia Completo](/blog/fondue-em-campos-do-jordao).
 
 ### Trilhas na Serra
 
@@ -144,7 +144,7 @@ Além do fondue, a gastronomia de Campos do Jordão é diversificada: raclette, 
 
 ## Onde Fica e Como Chegar
 
-Campos do Jordão está a **180 km de São Paulo** — cerca de **2h30 a 3h de carro**, dependendo do trânsito. A rota mais comum: **Rodovia Ayrton Senna / Carvalho Pinto** (sentido Taubaté) → **SP-123** (Estrada dos Tropeiros) direto até a cidade.
+Campos do Jordão está a **180 km de São Paulo** — cerca de **2h30 a 3h de carro**, dependendo do trânsito. Prefere ir em um dia só? Veja o guia de [Campos do Jordão de bate e volta de São Paulo](/blog/campos-do-jordao-bate-e-volta-de-sao-paulo). A rota mais comum: **Rodovia Ayrton Senna / Carvalho Pinto** (sentido Taubaté) → **SP-123** (Estrada dos Tropeiros) direto até a cidade.
 
 A SP-123 é especialmente bonita no trecho final, com paisagens de montanha e pinheiros — considere parar em Santo Antônio do Pinhal, a 30 minutos antes de Campos, para uma visita às trilhas e cachoeiras.
 
@@ -163,7 +163,7 @@ A [melhor época para visitar Campos do Jordão](/blog/qual-e-a-melhor-epoca-par
 
 ## Altitude e Temperatura
 
-Campos do Jordão tem altitude média de **1.628 metros** e já registrou **-12°C** na estação meteorológica local. O [Guia Completo de Temperatura de Campos do Jordão](/blog/quando-faz-frio-em-campos-do-jordao-temperaturas-mes-a-mes) detalha as temperaturas mês a mês para ajudar no planejamento da sua viagem.
+Campos do Jordão tem altitude média de **1.628 metros** e já registrou **-12°C** na estação meteorológica local. Veja o [Guia Completo do Clima de Campos do Jordão](/blog/clima-em-campos-do-jordao) com temperaturas mês a mês e o que esperar em cada estação; para entender o período mais frio especificamente: [quando faz frio em Campos do Jordão](/blog/quando-faz-frio-em-campos-do-jordao-temperaturas-mes-a-mes).
 
 ## Cidades Vizinhas
 

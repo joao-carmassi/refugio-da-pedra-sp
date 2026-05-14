@@ -15,10 +15,10 @@ suggested_tags:
   - Cachoeiras São Paulo interior
   - Capelinhas de Mosaico
   - Ecoturismo São Bento
-meta_title: O Que Fazer em São Bento do Sapucaí
+meta_title: 'O Que Fazer em São Bento do Sapucaí: Guia de Pontos Turísticos'
 meta_description: >-
-  Descubra os melhores pontos turísticos de São Bento do Sapucaí: Pedra do Baú,
-  Capelinhas de Mosaico, cachoeiras e turismo rural na Serra da Mantiqueira.
+  Descubra os melhores pontos turísticos de São Bento do Sapucaí: Pedra do
+  Baú, Capelinhas de Mosaico, cachoeiras e turismo rural na Serra da Mantiqueira.
 focus_keywords:
   - o que fazer em São Bento do Sapucaí
   - pontos turísticos São Bento do Sapucaí

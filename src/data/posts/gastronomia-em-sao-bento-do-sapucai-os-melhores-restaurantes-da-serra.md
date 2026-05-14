@@ -15,7 +15,7 @@ suggested_tags:
   - Truta flambada São Bento
   - Turismo gastronômico
   - Comida regional
-meta_title: Gastronomia em São Bento do Sapucaí
+meta_title: 'Restaurantes em São Bento do Sapucaí: Os Melhores da Serra'
 meta_description: >-
   Os melhores restaurantes de São Bento do Sapucaí: truta flambada no Sabor com
   Arte, slow food no Entre Vilas e azeite artesanal Oliq na Serra da
