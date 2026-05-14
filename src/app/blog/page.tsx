@@ -3,8 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
-import blogPosts from '@/data/posts.json';
-import slugify from 'slugify';
+import { getAllPosts } from '@/lib/posts';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,6 +15,8 @@ import {
 import { Home } from 'lucide-react';
 
 const Blog = () => {
+  const blogPosts = getAllPosts();
+
   return (
     <section className='min-h-container py-6 md:py-12 container space-y-6'>
       <Breadcrumb>
@@ -37,10 +38,7 @@ const Blog = () => {
       <section className='space-y-6'>
         {blogPosts.map((post, index) => (
           <React.Fragment key={index}>
-            <Link
-              className='block'
-              href={`/blog/${slugify(post.title, { lower: true, strict: true })}`}
-            >
+            <Link className='block' href={`/blog/${post.slug}`}>
               <Card className='border-t border-border shadow-lg'>
                 <CardContent>
                   <div className='relative w-full space-y-3'>

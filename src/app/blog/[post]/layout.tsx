@@ -1,10 +1,9 @@
 import Script from 'next/script';
 import serialize from 'serialize-javascript';
 import type { WithContext, BlogPosting } from 'schema-dts';
-import blogPosts from '@/data/posts.json';
+import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import { getSiteUrl } from '@/lib/env';
 import { redirect } from 'next/navigation';
-import slugify from 'slugify';
 
 interface Props {
   children: React.ReactNode;
@@ -16,16 +15,12 @@ interface MetadataProps {
 }
 
 export function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    post: slugify(post.title, { lower: true, strict: true }),
-  }));
+  return getAllPosts().map((post) => ({ post: post.slug }));
 }
 
 export async function generateMetadata({ params }: MetadataProps) {
   const { post: postSlug } = await params;
-  const post = blogPosts.find(
-    (p) => slugify(p.title, { lower: true, strict: true }) === postSlug,
-  );
+  const post = getPostBySlug(postSlug);
 
   if (!post) return {};
 
@@ -51,9 +46,7 @@ async function BlogPostLayout({
   params,
 }: Props): Promise<React.ReactNode> {
   const { post: postSlug } = await params;
-  const post = blogPosts.find(
-    (p) => slugify(p.title, { lower: true, strict: true }) === postSlug,
-  );
+  const post = getPostBySlug(postSlug);
 
   if (!post) redirect('/blog');
 
