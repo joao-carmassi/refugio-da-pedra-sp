@@ -11,6 +11,10 @@ Uncomment to import Google fonts if you want to use them in your project.
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+html {
+  scroll-padding-top: 6rem;
+}
+
 :root {
   --background: oklch(0.98 0 0);
   --foreground: oklch(0.147 0.004 49.25);

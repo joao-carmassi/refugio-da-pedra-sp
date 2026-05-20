@@ -7,6 +7,8 @@ const BLOG_REDIRECTS: Record<string, string> = {
     '/blog/toscana-brasileira-sao-bento-do-sapucai/',
   '/blog/o-que-fazer-em-sao-bento-do-sapucai-em-1-dia-roteiro-completo/':
     '/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/',
+  '/blog/o-que-fazer-em-sao-bento-do-sapucai-a-noite-programas-noturnos-na-serra/':
+    '/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/',
 };
 
 // This function can be marked `async` if using `await` inside

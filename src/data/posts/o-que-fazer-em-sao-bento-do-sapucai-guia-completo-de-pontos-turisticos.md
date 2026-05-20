@@ -2,8 +2,8 @@
 title: 'O Que Fazer em São Bento do Sapucaí: Guia Completo + Roteiro de 1 Dia'
 description: >-
   Guia completo com tudo o que fazer em São Bento do Sapucaí: Pedra do Baú,
-  cachoeiras, mirantes, museus e turismo rural. Inclui roteiro prático para
-  aproveitar a cidade em apenas 1 dia.
+  cachoeiras, mirantes, museus e turismo rural. Inclui roteiro de 1 dia e
+  programações para a noite na Serra da Mantiqueira.
 tags:
   - Pontos Turísticos
   - São Bento do Sapucaí
@@ -19,7 +19,8 @@ suggested_tags:
 meta_title: 'O Que Fazer em São Bento do Sapucaí | Guia Completo + Roteiro de 1 Dia'
 meta_description: >-
   O que fazer em São Bento do Sapucaí: Pedra do Baú, Capelinhas de Mosaico,
-  cachoeiras, gastronomia e roteiro completo para aproveitar a cidade em 1 dia.
+  cachoeiras, gastronomia, roteiro de 1 dia e programações para a noite na Serra
+  da Mantiqueira.
 focus_keywords:
   - o que fazer em São Bento do Sapucaí
   - pontos turísticos São Bento do Sapucaí
@@ -27,6 +28,8 @@ focus_keywords:
   - o que fazer em São Bento do Sapucaí em 1 dia
   - roteiro 1 dia São Bento do Sapucaí
   - bate-volta São Bento do Sapucaí
+  - o que fazer em São Bento do Sapucaí à noite
+  - vida noturna São Bento do Sapucaí
 faq_schema:
   '@context': 'https://schema.org'
   '@type': FAQPage
@@ -69,6 +72,22 @@ faq_schema:
           A capelinha do centro (Rua 13 de Maio, 217) é a mais acessível e pode
           ser visitada livremente. Para as demais, verifique as condições antes
           de visitar.
+    - '@type': Question
+      name: O que fazer em São Bento do Sapucaí à noite?
+      acceptedAnswer:
+        '@type': Answer
+        text: >-
+          As melhores opções são observar o céu estrelado, jantar no Sabor com
+          Arte (sexta a domingo até 23h), curtir fogueira ou lareira no chalé e
+          degustar vinhos artesanais da região.
+    - '@type': Question
+      name: São Bento do Sapucaí tem vida noturna agitada?
+      acceptedAnswer:
+        '@type': Answer
+        text: >-
+          Não. A cidade é tranquila à noite, sem bares ou baladas. O charme está
+          na paz serrana e no céu estrelado. Para agito noturno, Campos do
+          Jordão fica a ~40 km.
 ---
 **Em São Bento do Sapucaí você encontra a Pedra do Baú com via ferrata, cachoeiras, vinícolas, ateliês de artesanato, restaurantes serranos e eventos culturais** — tudo a ~200 km de São Paulo, na Serra da Mantiqueira.
 
@@ -196,6 +215,41 @@ Encerre o dia no **Mirante do Cruzeiro** ou em algum ponto alto com vista para a
 #### E Se Eu Tiver Mais Tempo?
 
 Com 2 ou 3 dias, inclua a **subida à Pedra do Baú** pela via ferrata (guia obrigatório), a **[Vinícola Villa Santa Maria e o circuito da Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/)**, o **Viveiro Frutopia** com almoço no **Entre Vilas** e as outras Capelinhas de Mosaico. Hospede-se no **Refúgio da Pedra** — a ~1,5 km da Pedra do Baú — e aproveite com calma.
+
+## O Que Fazer em São Bento do Sapucaí à Noite
+
+São Bento do Sapucaí **não é destino de balada** — e esse é o charme. A noite serrana oferece experiências intimistas: céu estrelado com baixa poluição luminosa, jantares com fogão à lenha e o aconchego da lareira ou fogueira no chalé.
+
+### Observação do Céu Estrelado
+
+Com **baixa poluição luminosa**, o céu noturno da Mantiqueira revela constelações, a Via Láctea e planetas visíveis a olho nu. Os melhores pontos são as áreas rurais ao redor da Pedra do Baú e os chalés do **Refúgio da Pedra**, afastados da iluminação urbana.
+
+**Dica**: leve um aplicativo de astronomia no celular. No inverno (jun–ago), o céu fica especialmente limpo.
+
+### Jantares na Serra
+
+Alguns restaurantes funcionam à noite nos fins de semana:
+
+- **Sabor com Arte**: aberto de **sexta a domingo até 23h**, com buffet, truta flambada, fogão à lenha e shows ao vivo
+- **Restaurante Pedra do Baú**: shows ao vivo nos fins de semana
+- **Hotstone, Brazin Burger e Mache**: opções para jantar casual — confirme horários com antecedência
+
+**Atenção**: durante a semana, a maioria fecha cedo. Sempre ligue para confirmar.
+
+### Fogueira, Lareira e Vinhos no Chalé
+
+A experiência mais clássica das noites serranas. No **Refúgio da Pedra**, os chalés com lareira criam o ambiente perfeito para casais e grupos. Combine com vinhos da **Vinícola Villa Santa Maria** ou da **Raízes do Baú** e queijos artesanais da região.
+
+### Pôr do Sol no Bauzinho
+
+Antecipe a noite assistindo ao pôr do sol do alto do **Bauzinho** — o sol se pondo atrás da Pedra do Baú é um dos espetáculos mais bonitos da região. Leve **lanterna ou headlamp** para a descida, pois o estacionamento fica escuro após o entardecer.
+
+### Eventos Noturnos Sazonais
+
+- **Carnaval "Tem Folia na Montanha"**: shows e blocos à noite
+- **Arraiá do Nhô Bento** (junho): quadrilha, fogueira e comidas típicas
+- **Festival Arte no Inverno da Serra** (julho): apresentações culturais noturnas
+- **FLIPES** (setembro): saraus e shows literários
 
 ## FAQ
 
