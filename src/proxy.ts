@@ -2,12 +2,26 @@ import { NextResponse, type NextRequest } from 'next/server';
 import chales from '@/data/chales.json';
 import slugify from 'slugify';
 
+const BLOG_REDIRECTS: Record<string, string> = {
+  '/blog/sao-bento-do-sapucai-a-toscana-brasileira-da-serra-da-mantiqueira/':
+    '/blog/toscana-brasileira-sao-bento-do-sapucai/',
+  '/blog/o-que-fazer-em-sao-bento-do-sapucai-em-1-dia-roteiro-completo/':
+    '/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/',
+};
+
 // This function can be marked `async` if using `await` inside
 export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const chale = chales.find((chale) => pathname === `/chales/${chale.id}/`);
   const url = request.nextUrl.clone();
 
+  // Blog slug redirects (SEO consolidation)
+  if (pathname in BLOG_REDIRECTS) {
+    url.pathname = BLOG_REDIRECTS[pathname];
+    return NextResponse.redirect(url, { status: 301 });
+  }
+
+  // Chalé ID → slug redirects
+  const chale = chales.find((chale) => pathname === `/chales/${chale.id}/`);
   if (chale) {
     url.pathname = `/chales/${slugify(chale.nome, { lower: true, strict: true })}/`;
     return NextResponse.redirect(url, { status: 301 });
@@ -15,5 +29,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: '/chales/:path*',
+  matcher: ['/chales/:path*', '/blog/:path*'],
 };

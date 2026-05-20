@@ -1,9 +1,9 @@
 ---
-title: 'São Bento do Sapucaí: A Toscana Brasileira da Serra da Mantiqueira'
+title: 'Toscana Brasileira: Por que São Bento do Sapucaí tem esse apelido?'
 description: >-
-  Descubra por que São Bento do Sapucaí é chamada de Toscana Brasileira: vinhos,
-  azeites, queijos artesanais, paisagens de cinema e turismo rural na
-  Mantiqueira.
+  Toscana Brasileira do Brasil: São Bento do Sapucaí reúne vinhos de altitude,
+  azeite artesanal, queijos, gastronomia slow food e paisagens de montanha
+  na Serra da Mantiqueira, a 185 km de São Paulo.
 tags:
   - Toscana Brasileira
   - São Bento do Sapucaí
@@ -16,11 +16,11 @@ suggested_tags:
   - Oliq Azeite
   - Turismo rural Mantiqueira
   - Rota dos vinhos Mantiqueira
-meta_title: 'São Bento do Sapucaí: A Toscana Brasileira | Vinhos, Azeite e Serra'
+meta_title: 'Toscana Brasileira: São Bento do Sapucaí | Vinhos, Azeite e Gastronomia'
 meta_description: >-
-  São Bento do Sapucaí é a Toscana Brasileira: vinhos de altitude, azeite
-  artesanal, queijos, slow food e paisagens de montanha na Serra da Mantiqueira,
-  a 185 km de SP.
+  Toscana Brasileira: São Bento do Sapucaí tem vinhos de altitude, azeite
+  artesanal, queijos, gastronomia slow food e paisagens de montanha na Serra da
+  Mantiqueira — a 185 km de São Paulo.
 focus_keywords:
   - Toscana Brasileira
   - São Bento do Sapucaí Toscana
@@ -137,4 +137,4 @@ O inverno (junho a agosto) é a época mais atmosférica — frio, vinhos e lare
 
 São Bento do Sapucaí merece o título de Toscana Brasileira: vinhos de altitude, azeite artesanal, queijos da Mantiqueira, gastronomia slow food e paisagens que tiram o fôlego. Tudo isso a menos de 3 horas de São Paulo. **Reserve seu chalé no Refúgio da Pedra** e mergulhe na experiência da Toscana Brasileira!
 
-*Veja também: [Gastronomia em São Bento do Sapucaí](#gastronomia) | [O Que Fazer em São Bento do Sapucaí](#o-que-fazer)*
+*Veja também: [Gastronomia em São Bento do Sapucaí](/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/) | [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/)*
