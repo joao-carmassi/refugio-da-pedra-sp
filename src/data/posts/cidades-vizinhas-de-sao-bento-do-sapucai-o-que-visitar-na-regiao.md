@@ -127,4 +127,4 @@ Campos do Jordão tem a maior infraestrutura turística. Para uma experiência m
 
 São Bento do Sapucaí é a porta de entrada para uma das regiões mais encantadoras do Brasil. Com cidades vizinhas que oferecem desde o agito de Campos do Jordão até a paz de Gonçalves, montar um roteiro pela Mantiqueira é garantia de viagem inesquecível. **Reserve no Refúgio da Pedra** e explore toda a serra!
 
-*Veja também: [O Que Fazer em São Bento do Sapucaí](#o-que-fazer) | [Como Chegar a São Bento do Sapucaí](#como-chegar)*
+*Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Como Chegar a São Bento do Sapucaí](/blog/distancia-sao-paulo-sao-bento-do-sapucai-rotas-e-dicas/)*

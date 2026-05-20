@@ -1,5 +1,5 @@
 ---
-title: 'Serra da Mantiqueira: Quantos Habitantes e Quais as Principais Cidades?'
+title: 'Habitantes da Serra da Mantiqueira: Principais Cidades e Dados'
 description: >-
   Saiba quantas pessoas vivem na Serra da Mantiqueira: população das principais
   cidades, perfil demográfico e como a baixa densidade torna a região especial
@@ -16,7 +16,7 @@ suggested_tags:
   - Cidades turísticas Mantiqueira
   - Quantas pessoas Mantiqueira
   - Cidades pequenas Mantiqueira
-meta_title: 'Serra da Mantiqueira: Habitantes e Principais Cidades'
+meta_title: 'Habitantes da Serra da Mantiqueira | Principais Cidades e Dados'
 meta_description: >-
   Serra da Mantiqueira: mais de 2 milhões de habitantes em dezenas de cidades.
   São Bento do Sapucaí (~11.600), Gonçalves (~4.000) e Monte Verde (~5.000) são
@@ -24,7 +24,6 @@ meta_description: >-
 focus_keywords:
   - Serra da Mantiqueira habitantes
   - população Serra da Mantiqueira
-  - cidades Serra da Mantiqueira
   - quantas pessoas Serra da Mantiqueira
 faq_schema:
   '@context': 'https://schema.org'
@@ -113,4 +112,4 @@ Gonçalves (MG), com cerca de 4.000 habitantes, é uma das menores e mais charmo
 
 A Serra da Mantiqueira é especial justamente porque suas cidades mais encantadoras são também as mais compactas. São Bento do Sapucaí, com ~11.600 habitantes, é o exemplo perfeito de que qualidade de vida e riqueza cultural independem de tamanho. **Conheça o Refúgio da Pedra** e experimente a Mantiqueira de perto!
 
-*Veja também: [Extensão e Cidades da Serra da Mantiqueira](#extensao) | [Onde Fica a Serra da Mantiqueira](#onde-fica)*
+*Veja também: [Extensão e Cidades da Serra da Mantiqueira](/blog/extensao-da-serra-da-mantiqueira-cidades-e-picos/) | [Onde Fica a Serra da Mantiqueira](/blog/onde-fica-a-serra-da-mantiqueira-localizacao-estados-e-como-chegar/)*

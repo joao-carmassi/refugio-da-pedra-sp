@@ -121,4 +121,4 @@ Outono e primavera oferecem tempo mais estável e melhor visibilidade. Nos meses
 
 O Complexo do Baú é um dos cenários mais deslumbrantes da Serra da Mantiqueira. Da trilha tranquila do Bauzinho à adrenalina da via ferrata no cume da Pedra do Baú, cada passo é uma recompensa. **Monte sua mochila e venha para São Bento do Sapucaí!**
 
-*Veja também: [Pontos Turísticos de São Bento do Sapucaí](#pontos-turisticos) | [Onde Ficar: Refúgio da Pedra](#refugio)*
+*Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Onde Ficar: Refúgio da Pedra](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/)*

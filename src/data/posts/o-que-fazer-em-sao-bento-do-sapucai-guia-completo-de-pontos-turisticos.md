@@ -266,4 +266,4 @@ A capelinha do centro (Rua 13 de Maio, 217) é a mais acessível. Para as demais
 
 São Bento do Sapucaí surpreende a cada esquina: da adrenalina das trilhas à contemplação das Capelinhas de Mosaico. **Planeje sua viagem agora** e descubra por que Chão Bento é um dos segredos mais bem guardados da Mantiqueira!
 
-*Veja também: [Trilhas no Complexo da Pedra do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Refúgio da Pedra: A Pousada Mais Próxima da Pedra do Baú](/blog/refugio-da-pedra-a-pousada-mais-proxima-da-pedra-do-bau/) | [Toscana Brasileira: São Bento do Sapucaí](/blog/toscana-brasileira-sao-bento-do-sapucai/)*
+*Veja também: [Trilhas no Complexo da Pedra do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Pousada Perto da Pedra do Baú: Refúgio da Pedra](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/) | [Toscana Brasileira: São Bento do Sapucaí](/blog/toscana-brasileira-sao-bento-do-sapucai/)*

@@ -130,4 +130,4 @@ Sim. As cervejarias e bares funcionam durante todo o ano. No inverno, há cervej
 
 Campos do Jordão é paraíso para amantes de cerveja artesanal. Da Baden Baden às cervejarias independentes, cada gole no frio da serra tem sabor especial. **Hospede-se no Refúgio da Pedra** e combine a cerveja de Campos com os vinhos de São Bento do Sapucaí — o circuito completo de bebidas da Mantiqueira!
 
-*Veja também: [Bebidas Artesanais de São Bento do Sapucaí](#bebidas-sbs) | [Restaurantes em Campos do Jordão](#restaurantes-cj)*
+*Veja também: [Bebidas Artesanais de São Bento do Sapucaí](/blog/bebidas-artesanais-de-sao-bento-do-sapucai-vinhos-cervejas-e-mais-da-mantiqueira/) | [Restaurantes em Campos do Jordão](/blog/restaurantes-em-campos-do-jordao-onde-comer-na-serra-da-mantiqueira/)*

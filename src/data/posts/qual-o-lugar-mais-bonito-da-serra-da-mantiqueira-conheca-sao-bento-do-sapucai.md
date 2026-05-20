@@ -121,4 +121,4 @@ Sim. O Bauzinho oferece uma trilha curta e fácil com vista privilegiada da Pedr
 
 São Bento do Sapucaí tem o que nenhum outro destino da Mantiqueira oferece na mesma proporção: paisagens monumentais, aventura real, gastronomia artesanal e cultura autêntica — tudo em uma cidade compacta e acolhedora. **Reserve seu chalé no Refúgio da Pedra** e viva o cenário mais impressionante da Mantiqueira!
 
-*Veja também: [Trilhas em São Bento do Sapucaí](#trilhas) | [Toscana Brasileira](#toscana-brasileira)*
+*Veja também: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/)*

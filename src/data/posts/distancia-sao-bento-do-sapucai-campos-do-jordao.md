@@ -1,5 +1,5 @@
 ---
-title: 'São Bento do Sapucaí a Campos do Jordão: Distância, Rota e Dicas'
+title: 'Distância de São Bento do Sapucaí a Campos do Jordão: Rota e Dicas'
 description: >-
   Distância de São Bento do Sapucaí a Campos do Jordão: aproximadamente 40 km,
   ~1 hora de carro. Veja a rota, dicas e como combinar os dois destinos.
@@ -15,7 +15,7 @@ suggested_tags:
   - Bate-volta Campos do Jordão
   - Serra da Mantiqueira roteiro
   - Combinar São Bento e Campos
-meta_title: 'São Bento do Sapucaí a Campos do Jordão: Distância e Rota'
+meta_title: 'Distância de São Bento do Sapucaí a Campos do Jordão | Rota e Dicas'
 meta_description: >-
   São Bento do Sapucaí a Campos do Jordão: ~40 km, ~1 hora de carro. Veja a rota
   pela SP-173, dicas de estrada e como combinar os dois destinos na Mantiqueira.
@@ -122,4 +122,4 @@ A SP-173, passando por Santo Antônio do Pinhal. Estrada serrana, bonita, mas co
 
 Com apenas **~40 km** separando São Bento do Sapucaí de Campos do Jordão, combinar os dois destinos é a receita perfeita para uma viagem completa na Serra da Mantiqueira. **Hospede-se no Refúgio da Pedra** e tenha o melhor dos dois mundos!
 
-*Veja também: [O Que Fazer em São Bento do Sapucaí](#o-que-fazer) | [Cidades Vizinhas de São Bento do Sapucaí](#cidades-vizinhas)*
+*Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Cidades Vizinhas de São Bento do Sapucaí](/blog/cidades-vizinhas-de-sao-bento-do-sapucai-o-que-visitar-na-regiao/)*

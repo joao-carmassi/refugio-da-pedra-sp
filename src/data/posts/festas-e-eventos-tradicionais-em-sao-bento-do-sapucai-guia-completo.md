@@ -30,7 +30,6 @@ meta_description: >-
 focus_keywords:
   - eventos São Bento do Sapucaí
   - festas São Bento do Sapucaí
-  - o que fazer São Bento do Sapucaí
   - Mountain Festival São Bento do Sapucaí
   - INDOMIT Pedra do Baú
   - FLIPES festival literário
@@ -168,7 +167,7 @@ O **Refúgio da Pedra**, a ~1,5 km da Pedra do Baú, é a base ideal para quem q
 
 *Acompanhe a programação oficial em [saobentotur.com.br/eventos](https://saobentotur.com.br/eventos/).*
 
-*Veja também: [O Que Fazer em São Bento do Sapucaí](#o-que-fazer) | [Trilhas do Complexo do Baú](#trilhas)*
+*Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Trilhas do Complexo do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/)*
 
 ## FAQ
 

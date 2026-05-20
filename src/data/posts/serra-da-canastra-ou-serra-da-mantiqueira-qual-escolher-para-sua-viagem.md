@@ -119,4 +119,4 @@ A Mantiqueira, por combinar hospedagem de charme (chalés com lareira), gastrono
 
 Ambas as serras são espetaculares, mas a **Serra da Mantiqueira** é a escolha mais completa para a maioria dos viajantes: mais perto de São Paulo, mais diversa em experiências e com infraestrutura superior de hospedagem e gastronomia. **Escolha o Refúgio da Pedra como base** e explore o melhor da Mantiqueira!
 
-*Veja também: [O Que Fazer na Serra da Mantiqueira](#o-que-fazer) | [São Bento do Sapucaí: Toscana Brasileira](#toscana-brasileira)*
+*Veja também: [O Que Fazer na Serra da Mantiqueira](/blog/o-que-fazer-na-serra-da-mantiqueira-guia-completo-de-experiencias/) | [São Bento do Sapucaí: Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/)*

@@ -117,4 +117,4 @@ Sim. Reserve com pelo menos 60 dias de antecedência. Durante o carnaval, chalé
 
 O Carnaval de São Bento do Sapucaí é para quem valoriza tradição, cultura e um ambiente familiar. A Família Zé Pereira, os Bonecões Gigantes e o espírito acolhedor de Chão Bento fazem dessa festa uma experiência única na Mantiqueira. **Reserve no Refúgio da Pedra** e venha foligar na serra!
 
-*Veja também: [Festas e Eventos Tradicionais de São Bento do Sapucaí](#eventos) | [O Que Fazer em São Bento do Sapucaí](#o-que-fazer)*
+*Veja também: [Festas e Eventos Tradicionais de São Bento do Sapucaí](/blog/festas-e-eventos-tradicionais-em-sao-bento-do-sapucai-guia-completo/) | [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/)*

@@ -11,6 +11,24 @@ const BLOG_REDIRECTS: Record<string, string> = {
     '/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/',
   '/blog/campos-do-jordao-por-que-e-chamada-de-suica-brasileira/':
     '/blog/suica-brasileira-campos-do-jordao/',
+  '/blog/sao-bento-do-sapucai-a-campos-do-jordao-distancia-rota-e-dicas/':
+    '/blog/distancia-sao-bento-do-sapucai-campos-do-jordao/',
+  '/blog/sao-bento-do-sapucai-e-a-revolucao-de-1932-historia-trincheiras-e-museu/':
+    '/blog/revolucao-de-1932-sao-bento-do-sapucai/',
+  '/blog/serra-da-mantiqueira-extensao-cidades-e-picos-mais-altos/':
+    '/blog/extensao-da-serra-da-mantiqueira-cidades-e-picos/',
+  '/blog/serra-da-mantiqueira-historia-origem-e-a-lenda-da-montanha-que-chora/':
+    '/blog/historia-da-serra-da-mantiqueira-origem-e-lenda/',
+  '/blog/serra-da-mantiqueira-hospedagem-no-refugio-da-pedra-em-sao-bento-do-sapucai/':
+    '/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/',
+  '/blog/serra-da-mantiqueira-quantos-habitantes-e-quais-as-principais-cidades/':
+    '/blog/habitantes-da-serra-da-mantiqueira-cidades-principais/',
+  '/blog/refugio-da-pedra-a-pousada-mais-proxima-da-pedra-do-bau/':
+    '/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/',
+  '/blog/quantos-quilometros-tem-de-sao-paulo-a-sao-bento-do-sapucai-rotas-e-dicas/':
+    '/blog/distancia-sao-paulo-sao-bento-do-sapucai-rotas-e-dicas/',
+  '/blog/artesanato-em-sao-bento-do-sapucai-guia-completo-ditinho-joana-arte-no-quilombo-arteben-e-mais/':
+    '/blog/artesanato-em-sao-bento-do-sapucai-guia-completo/',
 };
 
 // This function can be marked `async` if using `await` inside

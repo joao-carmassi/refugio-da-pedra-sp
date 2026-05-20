@@ -154,4 +154,4 @@ Sim. Trilhas fáceis (Bauzinho), cachoeiras estruturadas (Amores), vinícolas co
 
 A Serra da Mantiqueira é o destino mais completo do Sudeste: aventura, gastronomia, cultura e natureza em um só lugar. São Bento do Sapucaí concentra o melhor da serra em uma cidade compacta e acolhedora. **Faça do Refúgio da Pedra sua base** e descubra tudo o que a Mantiqueira oferece!
 
-*Veja também: [Trilhas em São Bento do Sapucaí](#trilhas) | [Toscana Brasileira](#toscana-brasileira) | [Hospedagem na Mantiqueira](#hospedagem)*
+*Veja também: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/) | [Hospedagem na Mantiqueira](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/)*

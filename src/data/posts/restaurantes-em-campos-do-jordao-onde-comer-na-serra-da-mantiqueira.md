@@ -131,4 +131,4 @@ Nos fins de semana de inverno (junho a agosto), sim. Os restaurantes de fondue e
 
 Comer em Campos do Jordão é uma experiência à parte: fondue com vinho, truta fresca e chocolate quente para encerrar. **Hospede-se no Refúgio da Pedra** e alterne jantares na gastronomia rústica de São Bento do Sapucaí com noites de fondue em Campos do Jordão — são apenas 40 km de prazer serrano!
 
-*Veja também: [Chocolate em Campos do Jordão](#chocolate-cj) | [Gastronomia em São Bento do Sapucaí](#gastronomia-sbs)*
+*Veja também: [Chocolate em Campos do Jordão](/blog/chocolate-e-chocolate-quente-em-campos-do-jordao-guia-completo/) | [Gastronomia em São Bento do Sapucaí](/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/)*

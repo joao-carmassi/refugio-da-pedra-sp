@@ -1,5 +1,5 @@
 ---
-title: Quantos Quilômetros Tem de São Paulo a São Bento do Sapucaí? Rotas e Dicas
+title: 'Distância de São Paulo a São Bento do Sapucaí: Rotas e Dicas'
 description: >-
   Distância de São Paulo a São Bento do Sapucaí: aproximadamente 200 km pela
   SP-070. Veja rotas, tempo de viagem, pedágios e dicas para a estrada.
@@ -110,4 +110,4 @@ A SP-173 é serrana e sinuosa, exigindo atenção. Em dias de chuva forte ou neb
 
 A apenas **~200 km de São Paulo**, São Bento do Sapucaí é mais perto do que muita gente imagina. Com um planejamento simples, a viagem é tranquila e a estrada serrana já faz parte da experiência. **Reserve seu chalé no Refúgio da Pedra** e venha para a Mantiqueira!
 
-*Veja também: [O Que Fazer em São Bento do Sapucaí](#o-que-fazer) | [Distância de Campos do Jordão](#distancia-campos)*
+*Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Distância de São Bento a Campos do Jordão](/blog/distancia-sao-bento-do-sapucai-campos-do-jordao/)*

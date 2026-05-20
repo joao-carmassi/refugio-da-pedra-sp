@@ -21,8 +21,6 @@ meta_description: >-
   Florestal, Pico do Itapeva, Capivari e Amantikir. Guia completo!
 focus_keywords:
   - pontos turísticos Campos do Jordão
-  - atrações Campos do Jordão
-  - o que visitar Campos do Jordão
   - melhores pontos Campos do Jordão
 faq_schema:
   '@context': 'https://schema.org'
@@ -140,4 +138,4 @@ Capivari (ruas e comércio), Ducha de Prata e Palácio Boa Vista são gratuitos.
 
 Os pontos turísticos de Campos do Jordão são variados e encantadores. De mirantes a museus, de jardins a chocolaterias, cada esquina surpreende. **Hospede-se no Refúgio da Pedra** em São Bento do Sapucaí, combine aventura na Pedra do Baú com cultura em Campos do Jordão e viva o melhor da Serra da Mantiqueira!
 
-*Veja também: [O Que Fazer em Campos do Jordão](#o-que-fazer-cj) | [Trilhas em Campos do Jordão](#trilhas-cj)*
+*Veja também: [O Que Fazer em Campos do Jordão](/blog/o-que-fazer-em-campos-do-jordao-guia-completo-de-atividades/) | [Trilhas em Campos do Jordão](/blog/trilhas-em-campos-do-jordao-guia-completo-para-caminhadas-na-serra/)*

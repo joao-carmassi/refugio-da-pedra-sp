@@ -24,8 +24,6 @@ meta_description: >-
 focus_keywords:
   - São Bento do Sapucaí
   - turismo São Bento do Sapucaí
-  - guia São Bento do Sapucaí
-  - o que fazer São Bento do Sapucaí
 faq_schema:
   '@context': 'https://schema.org'
   '@type': FAQPage

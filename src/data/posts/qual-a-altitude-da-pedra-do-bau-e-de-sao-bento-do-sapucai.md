@@ -124,4 +124,4 @@ Sim. O cume pode estar 6 a 7°C mais frio que o centro da cidade. No inverno, te
 
 A altitude é uma das grandes aliadas de São Bento do Sapucaí: garante clima ameno, paisagens deslumbrantes, trilhas desafiadoras e sabores únicos da gastronomia serrana. Com a Pedra do Baú a quase **2.000 metros** e a cidade a 880 m, cada metro de subida é uma recompensa. **Hospede-se no Refúgio da Pedra** e viva a experiência completa da altitude na Mantiqueira!
 
-*Veja também: [Trilhas do Complexo do Baú](#trilhas) | [História da Pedra do Baú](#historia)*
+*Veja também: [Trilhas do Complexo do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [História da Pedra do Baú](/blog/historia-da-pedra-do-bau-da-primeira-escalada-a-via-ferrata/)*

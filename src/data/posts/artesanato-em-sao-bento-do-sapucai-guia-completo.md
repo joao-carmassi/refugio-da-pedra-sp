@@ -1,7 +1,5 @@
 ---
-title: >-
-  Artesanato em São Bento do Sapucaí: Guia Completo (Ditinho Joana, Arte no
-  Quilombo, Arteben e Mais)
+title: 'Artesanato em São Bento do Sapucaí: Guia Completo'
 description: >-
   Guia completo do artesanato de São Bento do Sapucaí: Ateliê Ditinho Joana,
   Arte no Quilombo (80+ artesãos quilombolas), Arteben – Casa do Artesão e
@@ -238,4 +236,4 @@ A Arteben – Casa do Artesão é uma associação fundada em 2004 que reúne ma
 
 O artesanato de São Bento do Sapucaí vai muito além de um único ateliê — é um universo vivo que se espalha pelos bairros e pelo centro da cidade. Do Ateliê Ditinho Joana ao Arte no Quilombo e à Arteben, cada espaço conta uma história diferente da mesma Chão Bento. **Hospede-se no Refúgio da Pedra** e dedique um dia completo a explorar essa face cultural e encantadora da Serra da Mantiqueira!
 
-*Veja também: [O Que Fazer em São Bento do Sapucaí](#o-que-fazer) | [Revolução de 1932 e o Bairro do Quilombo](#quilombo)*
+*Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Revolução de 1932 em São Bento do Sapucaí](/blog/revolucao-de-1932-sao-bento-do-sapucai/)*

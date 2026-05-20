@@ -136,4 +136,4 @@ Há eventos gratuitos e pagos. Os concertos no Auditório Claudio Santoro geralm
 
 Campos do Jordão é uma cidade de eventos o ano todo — mas o inverno, com o Festival de Inverno e a temporada gastronômica, é imbatível. **Hospede-se no Refúgio da Pedra** e combine os eventos de Campos do Jordão com a tranquilidade e aventura de São Bento do Sapucaí!
 
-*Veja também: [Festas e Eventos em São Bento do Sapucaí](#eventos-sbs) | [O Que Fazer em Campos do Jordão](#o-que-fazer-cj)*
+*Veja também: [Festas e Eventos em São Bento do Sapucaí](/blog/festas-e-eventos-tradicionais-em-sao-bento-do-sapucai-guia-completo/) | [O Que Fazer em Campos do Jordão](/blog/o-que-fazer-em-campos-do-jordao-guia-completo-de-atividades/)*

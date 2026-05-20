@@ -1,5 +1,5 @@
 ---
-title: 'São Bento do Sapucaí e a Revolução de 1932: História, Trincheiras e Museu'
+title: 'Revolução de 1932 em São Bento do Sapucaí: História, Trincheiras e Museu'
 description: >-
   Descubra o papel de São Bento do Sapucaí na Revolução Constitucionalista de
   1932: trincheiras, combates na divisa MG/SP, Museu da Revolução e Restaurante
@@ -16,7 +16,7 @@ suggested_tags:
   - Trincheira 1932 Mantiqueira
   - História São Bento do Sapucaí
   - Turismo cultural Mantiqueira
-meta_title: São Bento do Sapucaí na Revolução de 1932 | Museu e Trincheiras
+meta_title: 'Revolução de 1932 em São Bento do Sapucaí | Museu e Trincheiras'
 meta_description: >-
   São Bento do Sapucaí foi palco da Revolução de 1932. Visite o Museu da
   Revolução, as trincheiras originais e o Restaurante Trincheira no bairro do
@@ -120,4 +120,4 @@ Sim. Trincheiras originais de 1932 podem ser encontradas no bairro do Quilombo. 
 
 Conhecer a história de São Bento do Sapucaí na Revolução de 1932 é uma experiência que enriquece qualquer visita à cidade. Entre uma trilha e outra, reserve um tempo para o Museu da Revolução e o Restaurante Trincheira — a história viva de Chão Bento merece ser descoberta. **Hospede-se no Refúgio da Pedra** e explore todos os lados dessa cidade surpreendente!
 
-*Veja também: [O Que Fazer em São Bento do Sapucaí](#o-que-fazer) | [Festas e Eventos Tradicionais](#eventos)*
+*Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Festas e Eventos Tradicionais](/blog/festas-e-eventos-tradicionais-em-sao-bento-do-sapucai-guia-completo/)*

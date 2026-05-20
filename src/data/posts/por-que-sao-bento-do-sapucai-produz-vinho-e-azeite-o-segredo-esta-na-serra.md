@@ -23,7 +23,6 @@ focus_keywords:
   - por que São Bento produz vinho
   - azeite São Bento do Sapucaí
   - vinho de altitude Mantiqueira
-  - Toscana brasileira São Bento
 faq_schema:
   '@context': 'https://schema.org'
   '@type': FAQPage
@@ -138,4 +137,4 @@ Sim. Os azeites da Oliq são premiados em competições nacionais e internaciona
 
 A altitude, o clima e o solo da Serra da Mantiqueira transformaram São Bento do Sapucaí em uma **"Toscana brasileira"** legítima. Visitar as vinícolas e olivais é uma das experiências mais surpreendentes da região. **Reserve seu chalé no Refúgio da Pedra** e descubra os sabores que brotam aos pés da Pedra do Baú!
 
-*Veja também: [Bebidas Artesanais de São Bento do Sapucaí](#bebidas) | [Gastronomia em São Bento do Sapucaí](#gastronomia)*
+*Veja também: [Bebidas Artesanais de São Bento do Sapucaí](/blog/bebidas-artesanais-de-sao-bento-do-sapucai-vinhos-cervejas-e-mais-da-mantiqueira/) | [Gastronomia em São Bento do Sapucaí](/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/)*

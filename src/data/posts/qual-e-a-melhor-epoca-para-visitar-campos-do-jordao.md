@@ -136,4 +136,4 @@ A baixa temporada vai de janeiro a março e em novembro. Nessas épocas, hospeda
 
 Não existe época ruim para visitar Campos do Jordão — existe a **época certa para o seu perfil**. Seja no frio de julho com fondue e festival, ou na primavera com trilhas e flores, a Serra da Mantiqueira sempre recompensa. **Hospede-se no Refúgio da Pedra** e combine o melhor dos dois destinos!
 
-*Veja também: [Quando Faz Frio em Campos do Jordão](#frio-cj) | [Altitude de Campos do Jordão](#altitude-cj)*
+*Veja também: [Quando Faz Frio em Campos do Jordão](/blog/quando-faz-frio-em-campos-do-jordao-temperaturas-mes-a-mes/) | [Altitude de Campos do Jordão](/blog/qual-a-altitude-de-campos-do-jordao-dados-e-curiosidades/)*

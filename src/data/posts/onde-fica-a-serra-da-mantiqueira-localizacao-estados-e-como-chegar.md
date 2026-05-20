@@ -136,4 +136,4 @@ As cidades mais próximas ficam entre 160 e 210 km: São Bento do Sapucaí (~185
 
 A Serra da Mantiqueira é acessível e próxima dos grandes centros do Sudeste. São Bento do Sapucaí, a ~185 km de São Paulo, é uma das melhores portas de entrada para a Mantiqueira — com a Pedra do Baú, vinícolas e o **Refúgio da Pedra** como base ideal. **Garanta seu chalé e explore a serra!**
 
-*Veja também: [Extensão e Cidades da Serra da Mantiqueira](#extensao) | [O Que Fazer na Serra da Mantiqueira](#o-que-fazer)*
+*Veja também: [Extensão e Cidades da Serra da Mantiqueira](/blog/extensao-da-serra-da-mantiqueira-cidades-e-picos/) | [O Que Fazer na Serra da Mantiqueira](/blog/o-que-fazer-na-serra-da-mantiqueira-guia-completo-de-experiencias/)*

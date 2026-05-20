@@ -117,4 +117,4 @@ Sim. A Oliq oferece tour pela produção com degustação. Recomenda-se confirma
 
 A gastronomia de São Bento do Sapucaí é parte essencial da experiência na Mantiqueira. Não visite a região sem reservar ao menos um almoço no Sabor com Arte ou um jantar tranquilo no Entre Vilas. **Planeje já** e deixe a mesa da serra completar sua aventura!
 
-*Veja também: [Bebidas Artesanais de São Bento do Sapucaí](#bebidas) | [Onde Ficar: Refúgio da Pedra](#refugio)*
+*Veja também: [Bebidas Artesanais de São Bento do Sapucaí](/blog/bebidas-artesanais-de-sao-bento-do-sapucai-vinhos-cervejas-e-mais-da-mantiqueira/) | [Onde Ficar: Refúgio da Pedra](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/)*

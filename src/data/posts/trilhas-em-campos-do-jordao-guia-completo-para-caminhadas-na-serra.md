@@ -132,4 +132,4 @@ Sim! As cidades estão a ~40 km uma da outra. Hospede-se no Refúgio da Pedra pa
 
 As trilhas de Campos do Jordão são perfeitas para quem busca caminhadas em meio a araucárias e Mata Atlântica sem a exigência técnica da via ferrata. **Hospede-se no Refúgio da Pedra** e combine o melhor dos dois mundos: aventura na Pedra do Baú e contemplação no Horto Florestal!
 
-*Veja também: [Trilhas em São Bento do Sapucaí](#trilhas-sbs) | [Pontos Turísticos de Campos do Jordão](#pontos-turisticos-cj)*
+*Veja também: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Pontos Turísticos de Campos do Jordão](/blog/pontos-turisticos-de-campos-do-jordao-os-12-lugares-imperdiveis/)*

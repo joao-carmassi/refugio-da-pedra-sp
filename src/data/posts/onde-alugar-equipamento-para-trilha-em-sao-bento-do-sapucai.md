@@ -136,4 +136,4 @@ A agência fica na Av. Conselheiro Rodrigues Alves, 143, Centro de São Bento do
 
 Não ter equipamento nunca é desculpa para não subir a Pedra do Baú. A **Baú Ecoturismo** fornece tudo o que você precisa com segurança e profissionalismo. Traga suas botas, a mochila e a vontade de aventura — o resto eles cuidam. **Hospede-se no Refúgio da Pedra** e comece sua aventura a poucos minutos do complexo!
 
-*Veja também: [Trilhas em São Bento do Sapucaí](#trilhas) | [Como Reservar Passeios Guiados](#passeios-guiados)*
+*Veja também: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Como Reservar Passeios Guiados](/blog/como-reservar-passeios-guiados-em-sao-bento-do-sapucai/)*

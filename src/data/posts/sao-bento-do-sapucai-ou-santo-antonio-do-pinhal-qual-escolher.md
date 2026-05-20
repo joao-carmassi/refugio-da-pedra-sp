@@ -125,4 +125,4 @@ São Bento do Sapucaí, pela Pedra do Baú (via ferrata), diversidade de trilhas
 
 Entre São Bento do Sapucaí e Santo Antônio do Pinhal, São Bento leva vantagem em praticamente todos os critérios: trilhas, gastronomia, cultura, enoturismo e eventos. Mas a melhor escolha é **visitar as duas**. **Hospede-se no Refúgio da Pedra** e explore o melhor da Mantiqueira!
 
-*Veja também: [O Que Fazer em São Bento do Sapucaí](#o-que-fazer) | [Cidades Vizinhas de São Bento do Sapucaí](#cidades-vizinhas)*
+*Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Cidades Vizinhas de São Bento do Sapucaí](/blog/cidades-vizinhas-de-sao-bento-do-sapucai-o-que-visitar-na-regiao/)*

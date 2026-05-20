@@ -1,5 +1,5 @@
 ---
-title: 'Serra da Mantiqueira: História, Origem e a Lenda da Montanha que Chora'
+title: 'História da Serra da Mantiqueira: Origem e Lenda da Montanha que Chora'
 description: >-
   Conheça a história da Serra da Mantiqueira: formação geológica, significado
   tupi de 'a montanha que chora', lenda indígena, bandeirantes e importância
@@ -16,7 +16,7 @@ suggested_tags:
   - Montanha que chora
   - Formação geológica Mantiqueira
   - Bandeirantes Mantiqueira
-meta_title: 'Serra da Mantiqueira: História, Origem e a Lenda Tupi'
+meta_title: 'História da Serra da Mantiqueira | Origem e Lenda da Montanha que Chora'
 meta_description: >-
   História da Serra da Mantiqueira: 'a montanha que chora' em tupi. Formação
   geológica do Gondwana, rota dos bandeirantes e importância como caixa d'água
@@ -123,4 +123,4 @@ A formação remonta à ruptura do supercontinente Gondwana. Colisões entre pla
 
 A Serra da Mantiqueira carrega milhões de anos de história geológica, séculos de exploração humana e uma lenda tupi que explica a abundância de suas águas. Conhecer essa história enriquece qualquer visita à região. **Planeje sua estadia no Refúgio da Pedra**, em São Bento do Sapucaí, e conecte-se com a serra que chora!
 
-*Veja também: [Onde Fica a Serra da Mantiqueira](#onde-fica) | [O Que Fazer na Serra da Mantiqueira](#o-que-fazer)*
+*Veja também: [Onde Fica a Serra da Mantiqueira](/blog/onde-fica-a-serra-da-mantiqueira-localizacao-estados-e-como-chegar/) | [O Que Fazer na Serra da Mantiqueira](/blog/o-que-fazer-na-serra-da-mantiqueira-guia-completo-de-experiencias/)*

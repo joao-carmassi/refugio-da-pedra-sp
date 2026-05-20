@@ -139,4 +139,4 @@ Carro facilita muito, especialmente para o Horto Florestal e o Pico do Itapeva. 
 
 Campos do Jordão oferece atividades para todos os gostos — da aventura radical ao passeio contemplativo. **Planeje seu roteiro** e aproveite cada minuto na Suíça Brasileira. **Reserve seu chalé no Refúgio da Pedra** e combine trilhas em São Bento do Sapucaí com a cultura e gastronomia de Campos do Jordão!
 
-*Veja também: [Pontos Turísticos de Campos do Jordão](#pontos-turisticos-cj) | [Restaurantes em Campos do Jordão](#restaurantes-cj)*
+*Veja também: [Pontos Turísticos de Campos do Jordão](/blog/pontos-turisticos-de-campos-do-jordao-os-12-lugares-imperdiveis/) | [Restaurantes em Campos do Jordão](/blog/restaurantes-em-campos-do-jordao-onde-comer-na-serra-da-mantiqueira/)*

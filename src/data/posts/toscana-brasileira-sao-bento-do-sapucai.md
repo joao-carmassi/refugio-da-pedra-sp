@@ -25,7 +25,6 @@ focus_keywords:
   - Toscana Brasileira
   - São Bento do Sapucaí Toscana
   - Toscana Brasileira Serra da Mantiqueira
-  - enoturismo São Bento do Sapucaí
 faq_schema:
   '@context': 'https://schema.org'
   '@type': FAQPage

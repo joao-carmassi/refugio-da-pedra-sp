@@ -111,4 +111,4 @@ Sim. A Fazenda Portal da Luz produz cerveja artesanal de castanha portuguesa, e 
 
 Uma visita às vinícolas e cervejarias de São Bento do Sapucaí é uma das experiências mais memoráveis da Serra da Mantiqueira. **Planeje seu roteiro de enoturismo**, reserve nas produtoras e complete o dia com um jantar na gastronomia local!
 
-*Veja também: [Gastronomia em São Bento do Sapucaí](#gastronomia) | [Pontos Turísticos da Região](#pontos-turisticos)*
+*Veja também: [Gastronomia em São Bento do Sapucaí](/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/) | [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/)*
