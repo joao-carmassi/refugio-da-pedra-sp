@@ -1,5 +1,5 @@
 ---
-title: 'Campos do Jordão: Por Que É Chamada de Suíça Brasileira?'
+title: 'Suíça Brasileira: por que Campos do Jordão tem esse apelido?'
 description: >-
   Descubra por que Campos do Jordão é a Suíça Brasileira: arquitetura europeia,
   clima frio, chocolate artesanal e paisagens alpinas na Serra da Mantiqueira.
@@ -15,9 +15,9 @@ suggested_tags:
   - Campos do Jordão inverno
   - Turismo Serra da Mantiqueira
   - Arquitetura enxaimel Campos
-meta_title: 'Campos do Jordão: A Suíça Brasileira | Guia'
+meta_title: 'Suíça Brasileira: Campos do Jordão | Arquitetura, Frio e Gastronomia'
 meta_description: >-
-  Campos do Jordão é a Suíça Brasileira: arquitetura europeia, clima frio,
+  Suíça Brasileira: Campos do Jordão tem arquitetura enxaimel, frio intenso,
   chocolate artesanal e fondue na Serra da Mantiqueira. Saiba por quê!
 focus_keywords:
   - Campos do Jordão Suíça Brasileira
@@ -127,4 +127,4 @@ Sim. Embora o inverno seja a alta temporada, o verão oferece temperaturas amena
 
 Campos do Jordão merece o título de **Suíça Brasileira**: frio de montanha, chocolate artesanal, arquitetura europeia e paisagens deslumbrantes. **Hospede-se no Refúgio da Pedra** em São Bento do Sapucaí e inclua Campos do Jordão no seu roteiro pela Serra da Mantiqueira — são apenas 40 km de pura beleza serrana!
 
-*Veja também: [O Que Fazer em Campos do Jordão](#o-que-fazer-cj) | [Roteiro São Bento + Campos do Jordão](#roteiro)*
+*Veja também: [O Que Fazer em Campos do Jordão](/blog/o-que-fazer-em-campos-do-jordao-guia-completo-de-atividades/) | [São Bento a Campos do Jordão: Distância e Rota](/blog/sao-bento-do-sapucai-a-campos-do-jordao-distancia-rota-e-dicas/)*

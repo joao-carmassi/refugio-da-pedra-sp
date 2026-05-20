@@ -9,6 +9,8 @@ const BLOG_REDIRECTS: Record<string, string> = {
     '/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/',
   '/blog/o-que-fazer-em-sao-bento-do-sapucai-a-noite-programas-noturnos-na-serra/':
     '/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/',
+  '/blog/campos-do-jordao-por-que-e-chamada-de-suica-brasileira/':
+    '/blog/suica-brasileira-campos-do-jordao/',
 };
 
 // This function can be marked `async` if using `await` inside
