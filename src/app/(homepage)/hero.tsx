@@ -20,12 +20,13 @@ const Hero = () => {
               <ArrowUpRight className='ml-2 size-4' />
             </Badge>
             <h1 className='text-4xl font-bold text-pretty lg:text-6xl'>
-              <span className='text-primary'>Refúgio da Pedra SP</span> Sua
-              jornada de tranquilidade.
+              <span className='text-primary'>Pousada Refúgio da Pedra</span> —
+              Chalés na Serra da Mantiqueira
             </h1>
             <p className='max-w-xl text-muted-foreground lg:text-xl'>
-              Venha se aventurar em um mundo onde a natureza e o conforto se
-              encontram, em meio à grandiosa Serra da Mantiqueira.
+              Hospede-se em chalés rústicos e confortáveis com vista para as
+              montanhas, a poucos minutos de São Bento do Sapucaí. Natureza,
+              silêncio e descanso real para quem precisa escapar da cidade.
             </p>
             <div className='flex w-full flex-col-reverse justify-center gap-2 sm:flex-row lg:justify-start'>
               <Button

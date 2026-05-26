@@ -10,9 +10,9 @@ interface Props {
 export function generateMetadata() {
   const siteUrl = getSiteUrl();
   return {
-    title: 'Refúgio da Pedra - Chalés e Experiências em São Bento do Sapucaí',
+    title: 'Refúgio da Pedra – Chalés e Pousada em São Bento do Sapucaí',
     description:
-      'Descubra o Refúgio da Pedra, um paraíso em São Bento do Sapucaí, oferecendo chalés aconchegantes em meio à natureza e experiências únicas para todos os gostos.',
+      'Pousada e chalés em São Bento do Sapucaí, na Serra da Mantiqueira. Vista para as montanhas, natureza e conforto. Reserve sua hospedagem no Refúgio da Pedra SP.',
     keywords: [
       'chalés',
       'camping',
