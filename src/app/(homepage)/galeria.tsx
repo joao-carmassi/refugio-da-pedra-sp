@@ -18,7 +18,7 @@ function Galeria() {
           {Array.from({ length: 29 }, (_, index) => (
             <div key={index}>
               <Image
-                className='w-full h-auto mb-2.5 md:mb-5 shadow-md inset-shadow-2xs'
+                className='w-full h-auto mb-2.5 md:mb-5'
                 src={`/assets/refugio/geral/refugio-${index + 1}.webp`}
                 alt={`Foto ${index + 1} da pousada`}
                 width={500}

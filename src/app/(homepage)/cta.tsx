@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 function Cta(): React.ReactNode {
   return (
-    <section className='py-6 md:py-12 bg-card'>
+    <section className='py-6 md:py-12 dark bg-background'>
       <div className='container flex gap-6 md:gap-12 flex-col items-center md:flex-row'>
         <div className='flex-1'>
           <Image
@@ -17,7 +17,7 @@ function Cta(): React.ReactNode {
           />
         </div>
         <div className='space-y-3 md:space-y-6 flex-1'>
-          <h2 className='text-2xl tracking-tight md:text-4xl lg:text-5xl'>
+          <h2 className='text-2xl tracking-tight md:text-4xl lg:text-5xl text-foreground'>
             Reserve seu chalé
           </h2>
           <p className='text-muted-foreground leading-snug'>

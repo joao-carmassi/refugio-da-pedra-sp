@@ -31,7 +31,7 @@ function Header(): React.ReactNode {
         <nav className='container flex items-center justify-between'>
           <div>
             <Link
-              className='md:text-xl font-semibold text-foreground'
+              className='md:text-xl font-semibold text-foreground font-display'
               href='/'
               aria-label='Brand'
             >
