@@ -18,7 +18,7 @@ import chales from '@/data/chales.json';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Check, Home, PawPrint, X } from 'lucide-react';
+import { Check, Home, PawPrint } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import slugify from 'slugify';
@@ -127,83 +127,6 @@ function ChalePage(): React.ReactNode {
               </Card>
             </Link>
           ))}
-        </div>
-        <div className='space-y-3 md:space-y-6'>
-          <h2 className='text-2xl tracking-tight md:text-3xl text-center'>
-            Compare os chalés
-          </h2>
-          <div className='overflow-x-auto rounded-2xl border border-border'>
-            <table className='w-full min-w-160 text-sm text-left border-collapse'>
-              <thead>
-                <tr className='border-b border-border'>
-                  <th className='px-4 py-3 font-semibold'>Nome</th>
-                  <th className='px-4 py-3 font-semibold'>Capacidade</th>
-                  <th className='px-4 py-3 font-semibold'>Camas</th>
-                  <th className='px-4 py-3 font-semibold'>Tamanho</th>
-                  <th className='px-4 py-3 font-semibold text-center'>
-                    Lareira
-                  </th>
-                  <th className='px-4 py-3 font-semibold text-center'>Pets</th>
-                  <th className='px-4 py-3 font-semibold text-right'>
-                    Detalhes
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {chales.map((chale) => {
-                  const temLareira = chale.comodidades.includes('Lareira');
-
-                  return (
-                    <tr
-                      key={chale.id}
-                      className='border-b border-border last:border-0'
-                    >
-                      <td className='px-4 py-3 font-medium whitespace-nowrap'>
-                        {chale.nome}
-                      </td>
-                      <td className='px-4 py-3 text-muted-foreground whitespace-nowrap'>
-                        {chale.capacidade}
-                      </td>
-                      <td className='px-4 py-3 text-muted-foreground whitespace-nowrap'>
-                        {chale.camas}
-                      </td>
-                      <td className='px-4 py-3 text-muted-foreground whitespace-nowrap'>
-                        {chale.tamanho}
-                      </td>
-                      <td className='px-4 py-3 text-center'>
-                        {temLareira ? (
-                          <Check size={16} className='inline text-foreground' />
-                        ) : (
-                          <X
-                            size={16}
-                            className='inline text-muted-foreground'
-                          />
-                        )}
-                      </td>
-                      <td className='px-4 py-3 text-center'>
-                        {chale.politica.pets_permitidos ? (
-                          <Check size={16} className='inline text-foreground' />
-                        ) : (
-                          <X
-                            size={16}
-                            className='inline text-muted-foreground'
-                          />
-                        )}
-                      </td>
-                      <td className='px-4 py-3 text-right whitespace-nowrap'>
-                        <Link
-                          href={`/chales/${slugify(chale.nome, { lower: true, strict: true })}`}
-                          className='underline underline-offset-4 hover:text-muted-foreground'
-                        >
-                          Ver chalé
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
         </div>
       </section>
     </main>
