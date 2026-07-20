@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Figtree } from 'next/font/google';
+import { Archivo, Piazzolla } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { getSiteUrl } from '@/lib/env';
 
-const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const archivo = Archivo({
   subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-sans',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const piazzolla = Piazzolla({
   subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-serif',
 });
 
 export function generateMetadata(): Metadata {
@@ -45,10 +45,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-BR' className={figtree.variable} suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html
+      lang='pt-BR'
+      className={`${archivo.variable} ${piazzolla.variable}`}
+      suppressHydrationWarning
+    >
+      <body className='antialiased'>
         <TooltipProvider>
           <Header />
           {children}
