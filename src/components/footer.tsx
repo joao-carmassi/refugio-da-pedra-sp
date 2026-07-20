@@ -63,17 +63,12 @@ const links = [
     })),
   },
   {
-    title: 'Blog',
+    title: 'Institucional',
     links: [
       {
         title: 'Blog',
         href: '/blog',
       },
-    ],
-  },
-  {
-    title: 'Institucional',
-    links: [
       {
         title: 'Quem Somos',
         href: '/sobre',
@@ -111,7 +106,7 @@ const Footer = () => {
         <footer>
           <div className='relative mb-6 flex w-full flex-col gap-6 md:flex-row md:justify-between'>
             <Link
-              className='text-xl font-semibold text-foreground flex items-center gap-2'
+              className='text-xl font-semibold text-foreground flex items-start gap-2'
               href='/'
               aria-label='Brand'
             >
