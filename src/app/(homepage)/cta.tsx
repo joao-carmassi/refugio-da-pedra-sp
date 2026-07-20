@@ -1,13 +1,34 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function Cta(): React.ReactNode {
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.fromTo(
+      '.gsap-reveal-cta',
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: 'power2.out',
+        stagger: 0.15,
+        scrollTrigger: { trigger: '#cta-anchor', start: 'top 80%' },
+      },
+    );
+  }, []);
+
   return (
-    <section className='py-6 md:py-12 dark bg-background'>
+    <section id='cta-anchor' className='py-6 md:py-12 dark bg-background'>
       <div className='container flex gap-6 md:gap-12 flex-col items-center md:flex-row'>
-        <div className='flex-1'>
+        <div className='gsap-reveal-cta opacity-0 flex-1'>
           <Image
             width={724}
             height={482}
@@ -18,10 +39,10 @@ function Cta(): React.ReactNode {
           />
         </div>
         <div className='space-y-3 md:space-y-6 flex-1'>
-          <h2 className='text-2xl tracking-tight md:text-4xl lg:text-5xl text-foreground'>
+          <h2 className='gsap-reveal-cta opacity-0 text-2xl tracking-tight md:text-4xl lg:text-5xl text-foreground'>
             Reserve seu chalé
           </h2>
-          <p className='text-muted-foreground leading-snug'>
+          <p className='gsap-reveal-cta opacity-0 text-muted-foreground leading-snug'>
             Garanta sua estadia no Refúgio da Pedra e viva uma experiência única
             em meio ao ar livre!
           </p>
@@ -30,7 +51,7 @@ function Cta(): React.ReactNode {
             iconPlacement='right'
             icon={ArrowRight}
             asChild
-            className='w-full md:w-fit rounded-full'
+            className='gsap-reveal-cta opacity-0 w-full md:w-fit rounded-full'
             size={'lg'}
           >
             <Link href='/chales'>Ver chalés</Link>

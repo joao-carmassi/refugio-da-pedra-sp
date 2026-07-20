@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
 import { useForm, useWatch, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -90,6 +92,16 @@ function Form(): React.ReactNode {
     }
   }, [petsPermitidos, setValue]);
 
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    tl.set('.gsap-reveal-reservar', { y: 40, opacity: 0 });
+    tl.to(
+      '.gsap-reveal-reservar',
+      { y: 0, opacity: 1, duration: 1, delay: 0.2, ease: 'expo.out', stagger: 0.08 },
+      0,
+    );
+  }, []);
+
   const handleDateSelect = (range: DateRange | undefined) => {
     setValue('checkin', range?.from as Date, { shouldValidate: true });
     setValue('checkout', range?.to as Date, { shouldValidate: true });
@@ -111,7 +123,7 @@ function Form(): React.ReactNode {
 
   return (
     <Card className='w-full max-w-md shadow-xl'>
-      <CardHeader>
+      <CardHeader className='gsap-reveal-reservar opacity-0'>
         <CardTitle>
           <h1 className='text-2xl tracking-tight md:text-3xl font-normal text-center'>
             Reserve agora mesmo
@@ -125,7 +137,7 @@ function Form(): React.ReactNode {
         <form onSubmit={handleSubmit(onSubmit)}>
           <FieldGroup>
             {/* Nome */}
-            <Field>
+            <Field className='gsap-reveal-reservar opacity-0'>
               <FieldLabel htmlFor='form-nome'>Nome</FieldLabel>
               <Input
                 id='form-nome'
@@ -140,7 +152,7 @@ function Form(): React.ReactNode {
             </Field>
 
             {/* Chalé */}
-            <Field>
+            <Field className='gsap-reveal-reservar opacity-0'>
               <FieldLabel htmlFor='form-chale'>Chalé</FieldLabel>
               <Controller
                 name='chale'
@@ -170,7 +182,7 @@ function Form(): React.ReactNode {
             </Field>
 
             {/* Check-in / Check-out + Hóspedes */}
-            <Field>
+            <Field className='gsap-reveal-reservar opacity-0'>
               <FieldLabel>Datas e hóspedes</FieldLabel>
               <div className='w-full border border-border rounded-xl'>
                 {/* Date picker trigger */}
@@ -412,7 +424,7 @@ function Form(): React.ReactNode {
               type='submit'
               effect='ringHover'
               size='lg'
-              className='w-full rounded-full'
+              className='gsap-reveal-reservar opacity-0 w-full rounded-full'
             >
               Reservar
             </Button>

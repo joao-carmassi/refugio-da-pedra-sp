@@ -1,25 +1,12 @@
-import { Separator } from '@/components/ui/separator';
 import chales from '@/data/chales.json';
-import Image from 'next/image';
 import slugify from 'slugify';
-import CardReserva from './card-reserva';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb';
-import { Home } from 'lucide-react';
+import ChaleContent from './chale-content';
 
 interface Props {
   params: Promise<{
     slug: string;
   }>;
 }
-
-const comodidades = ['Wifi gratuito', 'Café da manhã', 'Estacionamento'];
 
 const descriptions: Record<string, { title: string; paragraphs: string[] }> = {
   colmeia: {
@@ -79,118 +66,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
 
   const description = descriptions[chale.id];
 
-  return (
-    <main className='min-h-container pb-6 lg:py-12 bg-background'>
-      <Image
-        src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
-        alt={chale.nome}
-        className='aspect-square object-cover lg:hidden w-full'
-        width={800}
-        height={800}
-        sizes='100vw'
-        priority
-      />
-      <section className='lg:container rounded-4xl lg:rounded-none bg-background px-6 pt-6 -mt-14 lg:mt-0 lg:pt-0 z-10 relative'>
-        <div className='grid lg:grid-cols-[3fr_1fr] gap-6'>
-          <div className='space-y-6'>
-            <Breadcrumb className='hidden lg:flex'>
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink aria-label='Homepage' href='/'>
-                    <Home className='h-4 w-4' />
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbLink href='/chales'>Chalés</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>{chale.nome}</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-            <Image
-              src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
-              alt={chale.nome}
-              className='rounded-3xl aspect-video object-cover hidden lg:block'
-              width={1104}
-              height={621}
-              sizes='(min-width: 1024px) 75vw, 100vw'
-              priority
-            />
-            <div className='space-y-2'>
-              <h1 className='text-2xl tracking-tight md:text-3xl text-center lg:text-left'>
-                {chale.nome}
-              </h1>
-              <p className='text-muted-foreground leading-snug text-center lg:text-left'>
-                {chale.capacidade} · {chale.camas} · {chale.banheiros}
-              </p>
-              <p className='text-muted-foreground leading-snug text-center lg:text-left'>
-                {chale.ambientes.join(' · ')} · {chale.area_externa.join(' · ')}
-              </p>
-            </div>
-            <CardReserva
-              chale={chale.nome}
-              petsPermitidos={chale.politica.pets_permitidos}
-              className='h-fit space-y-3 lg:hidden'
-            />
-            <div className='space-y-3 border border-border p-6 rounded-2xl md:rounded-3xl bg-card'>
-              <h2 className='text-2xl tracking-tight md:text-3xl'>
-                {description.title}
-              </h2>
-              {description.paragraphs.map((paragraph, index) => (
-                <p
-                  className='text-muted-foreground leading-snug'
-                  key={index}
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-            <div className='grid grid-cols-2 gap-2'>
-              <h2 className='text-2xl tracking-tight md:text-3xl col-span-2'>
-                Comodidades
-              </h2>
-              {chale.comodidades.concat(comodidades).map((comodidade) => (
-                <p
-                  className='text-muted-foreground leading-snug'
-                  key={comodidade}
-                >
-                  {comodidade}
-                </p>
-              ))}
-            </div>
-            <Separator />
-            <div className='space-y-3'>
-              <h2 className='text-2xl tracking-tight md:text-3xl'>
-                Fotografias
-              </h2>
-              <div className='columns-1 md:columns-2 lg:columns-3'>
-                {Array.from({ length: chale.fotos }, (_, index) => (
-                  <div key={index}>
-                    <Image
-                      className='w-full rounded-xl h-auto mb-2.5 md:mb-5'
-                      src={`/assets/refugio/chales/${chale.id}/refugio-${index + 1}.webp`}
-                      alt={`${chale.nome} - foto ${index + 1}`}
-                      width={500}
-                      height={500}
-                      sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <CardReserva
-            chale={chale.nome}
-            petsPermitidos={chale.politica.pets_permitidos}
-            className='h-fit sticky top-22 space-y-3 hidden lg:block'
-          />
-        </div>
-      </section>
-    </main>
-  );
+  return <ChaleContent chale={chale} description={description} />;
 }
 
 export default ChalePage;

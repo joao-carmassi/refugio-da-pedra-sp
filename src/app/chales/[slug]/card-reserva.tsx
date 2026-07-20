@@ -14,6 +14,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 import { ptBR } from 'date-fns/locale';
@@ -45,6 +47,14 @@ function CardReserva({
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
+  useGSAP(() => {
+    gsap.fromTo(
+      '.gsap-reveal-card-reserva',
+      { x: 30, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.9, delay: 0.4, ease: 'power2.out' },
+    );
+  }, []);
+
   // const totalGuests = adults + children;
   const guestLabel = [
     `${adults} adulto${adults !== 1 ? 's' : ''}`,
@@ -61,7 +71,12 @@ function CardReserva({
     );
 
   return (
-    <Card className={cn('shadow py-4 gap-3', className)}>
+    <Card
+      className={cn(
+        'gsap-reveal-card-reserva opacity-0 shadow py-4 gap-3',
+        className,
+      )}
+    >
       <CardHeader className='px-5'>
         <CardTitle className='text-2xl font-display'>
           Reserve agora mesmo

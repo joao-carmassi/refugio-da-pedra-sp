@@ -18,6 +18,9 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const questions = [
   {
@@ -73,11 +76,27 @@ const questions = [
 const Faq = () => {
   const [open, setOpen] = useState<number>(0);
 
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.fromTo(
+      '.gsap-reveal-faq',
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: 'power2.out',
+        stagger: 0.15,
+        scrollTrigger: { trigger: '#faq-anchor', start: 'top 80%' },
+      },
+    );
+  }, []);
+
   return (
-    <section className='py-6 lg:py-12'>
+    <section id='faq-anchor' className='py-6 lg:py-12'>
       <div className='container'>
         <div className='flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-12'>
-          <div className='flex-1'>
+          <div className='gsap-reveal-faq opacity-0 flex-1'>
             <Image
               width={724}
               height={804}
@@ -87,14 +106,14 @@ const Faq = () => {
             />
           </div>
           <div className='flex flex-col gap-3 md:gap-6 text-start flex-1'>
-            <h2 className='text-2xl tracking-tight md:text-4xl lg:text-5xl'>
+            <h2 className='gsap-reveal-faq opacity-0 text-2xl tracking-tight md:text-4xl lg:text-5xl'>
               Comodidades:
             </h2>
-            <p className='text-muted-foreground leading-snug'>
+            <p className='gsap-reveal-faq opacity-0 text-muted-foreground leading-snug'>
               Nos importamos com o seu conforto, por isso sua reserva inclui uma
               série de comodidades para tornar sua estadia ainda mais especial:
             </p>
-            <div className='space-y-3'>
+            <div className='gsap-reveal-faq opacity-0 space-y-3'>
               {questions.map((item, i) => (
                 <Accordion
                   type='single'

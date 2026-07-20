@@ -10,6 +10,9 @@ import {
 } from '@/components/ui/accordion';
 import { memo, useState } from 'react';
 import Image from 'next/image';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const iconsMap = {
   Wine,
@@ -22,18 +25,37 @@ const OutrasExperiencias = () => {
   const [activeItem, setActiveItem] = useState('santaMaria');
   const activeFeature = features.find((f) => f.id === activeItem);
 
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.fromTo(
+      '.gsap-reveal-outras-experiencias',
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: 'power2.out',
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: '#outras-experiencias-anchor',
+          start: 'top 80%',
+        },
+      },
+    );
+  }, []);
+
   return (
-    <section className='py-6 lg:py-12'>
+    <section id='outras-experiencias-anchor' className='py-6 lg:py-12'>
       <div className='container flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-12'>
         <div className='flex flex-col gap-3 md:gap-6 text-start flex-1'>
-          <h2 className='text-2xl tracking-tight md:text-4xl lg:text-5xl'>
+          <h2 className='gsap-reveal-outras-experiencias opacity-0 text-2xl tracking-tight md:text-4xl lg:text-5xl'>
             Complete sua experiência
           </h2>
-          <p className='text-muted-foreground leading-snug'>
+          <p className='gsap-reveal-outras-experiencias opacity-0 text-muted-foreground leading-snug'>
             Garanta sua reserva no Refúgio da Pedra e viva os melhores passeios
             de São Bento do Sapucaí!
           </p>
-          <div className='space-y-3'>
+          <div className='gsap-reveal-outras-experiencias opacity-0 space-y-3'>
             {features.map(
               ({ title, id, description, imgCell, linkMapa, icon }, index) => {
                 const Icon = iconsMap[icon as keyof typeof iconsMap];
@@ -78,7 +100,7 @@ const OutrasExperiencias = () => {
           </div>
         </div>
         {activeFeature?.imgPc && (
-          <div className='flex-1 hidden md:block '>
+          <div className='gsap-reveal-outras-experiencias opacity-0 flex-1 hidden md:block '>
             <Image
               width={724}
               height={724}

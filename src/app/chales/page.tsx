@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,6 +15,9 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import chales from '@/data/chales.json';
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check, Home, PawPrint, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,11 +28,45 @@ import slugify from 'slugify';
 const EAGER_LOAD_COUNT = 3;
 
 function ChalePage(): React.ReactNode {
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // header/breadcrumb/título (acima da dobra, sem scroll)
+    const tl = gsap.timeline();
+    tl.set('.gsap-reveal-chales-header', { y: 40, opacity: 0 });
+    tl.to(
+      '.gsap-reveal-chales-header',
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 0.2,
+        ease: 'expo.out',
+        stagger: 0.08,
+      },
+      0,
+    );
+
+    // grid de cards de chalés (com scroll)
+    gsap.fromTo(
+      '.gsap-reveal-chales-card',
+      { y: 60, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: 'power2.out',
+        stagger: 0.12,
+        scrollTrigger: { trigger: '#chales-grid-anchor', start: 'top 85%' },
+      },
+    );
+  }, []);
+
   return (
     <main className='min-h-container bg-card py-6 md:py-12 md:pt-6 grid place-items-center'>
       <section className='container space-y-6 md:space-y-12'>
         <div className='space-y-3 md:space-y-6'>
-          <Breadcrumb>
+          <Breadcrumb className='gsap-reveal-chales-header opacity-0'>
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink aria-label='Homepage' href='/'>
@@ -40,22 +79,25 @@ function ChalePage(): React.ReactNode {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className='text-2xl tracking-tight md:text-4xl lg:text-5xl text-center'>
+          <h1 className='gsap-reveal-chales-header opacity-0 text-2xl tracking-tight md:text-4xl lg:text-5xl text-center'>
             Acomodações
           </h1>
-          <p className='text-muted-foreground leading-snug mx-auto text-center md:max-w-2/3'>
+          <p className='gsap-reveal-chales-header opacity-0 text-muted-foreground leading-snug mx-auto text-center md:max-w-2/3'>
             Conheça nossos chalés, cabanas e domos, cada um projetado para
             oferecer uma experiência única de conforto e contato com a natureza.
             Escolha o seu refúgio perfeito para uma estadia inesquecível.
           </p>
         </div>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
+        <div
+          id='chales-grid-anchor'
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
+        >
           {chales.map((chale, index) => (
             <Link
               href={`/chales/${slugify(chale.nome, { lower: true, strict: true })}`}
               key={chale.id}
             >
-              <Card className='group py-0 ring-0 gap-3 rounded-2xl'>
+              <Card className='gsap-reveal-chales-card opacity-0 group py-0 ring-0 gap-3 rounded-2xl'>
                 <div className='relative rounded-2xl overflow-hidden'>
                   <Image
                     src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
