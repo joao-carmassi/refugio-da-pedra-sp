@@ -16,7 +16,7 @@ html {
 }
 
 :root {
-  --background: oklch(0.98 0 0);
+  --background: #fcf8f3;
   --foreground: oklch(0.147 0.004 49.25);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.147 0.004 49.25);
@@ -52,7 +52,8 @@ html {
   --font-sans:
     'Archivo', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-  --font-serif: 'Piazzolla', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-serif:
+    'Piazzolla', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;

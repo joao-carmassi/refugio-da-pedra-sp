@@ -62,7 +62,7 @@ const mediaLinks = [
 
 const Footer = () => {
   return (
-    <section className='py-6 md:py-12 bg-card border-t border-border'>
+    <section className='py-6 md:py-12 bg-card dark'>
       <div className='container'>
         <footer>
           <div className='relative mb-6 flex w-full flex-col gap-6 md:flex-row md:justify-between'>
@@ -82,7 +82,7 @@ const Footer = () => {
             <div className='inline-grid w-fit grid-cols-1 gap-x-24 gap-y-6 sm:grid-cols-3'>
               {links.map((section) => (
                 <div key={section.title} className='h-fit w-min'>
-                  <h2 className='mb-3 text-base font-semibold whitespace-nowrap'>
+                  <h2 className='mb-3 text-base font-semibold text-foreground whitespace-nowrap'>
                     {section.title}
                   </h2>
                   <ul className='space-y-1 text-base font-medium text-muted-foreground'>
