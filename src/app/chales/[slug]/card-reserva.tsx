@@ -50,8 +50,8 @@ function CardReserva({
   useGSAP(() => {
     gsap.fromTo(
       '.gsap-reveal-card-reserva',
-      { x: 30, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.9, delay: 0.4, ease: 'power2.out' },
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, delay: 0.4, ease: 'power2.out' },
     );
   }, []);
 
