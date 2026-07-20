@@ -65,8 +65,11 @@ export default function RootLayout({
   };
 
   return (
-<<<<<<< HEAD
-    <html lang='pt-BR' className={figtree.variable} suppressHydrationWarning>
+    <html
+      lang='pt-BR'
+      className={`${archivo.variable} ${piazzolla.variable}`}
+      suppressHydrationWarning
+    >
       <body className='antialiased'>
         <script
           type='application/ld+json'
@@ -76,14 +79,6 @@ export default function RootLayout({
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: serialize(websiteJsonLd) }}
         />
-=======
-    <html
-      lang='pt-BR'
-      className={`${archivo.variable} ${piazzolla.variable}`}
-      suppressHydrationWarning
-    >
-      <body className='antialiased'>
->>>>>>> main
         <TooltipProvider>
           <Header />
           {children}
