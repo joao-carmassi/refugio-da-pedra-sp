@@ -1,5 +1,6 @@
 ---
 title: 'Carnaval em São Bento do Sapucaí: A Tradição Centenária da Família Zé Pereira'
+date: '2026-05-14'
 description: >-
   Guia completo do Carnaval de São Bento do Sapucaí: Família Zé Pereira,
   Bonecões Gigantes, blocos de rua, história centenária e dicas para curtir a

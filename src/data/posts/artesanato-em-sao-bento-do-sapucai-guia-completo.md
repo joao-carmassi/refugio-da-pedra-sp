@@ -1,5 +1,6 @@
 ---
 title: 'Artesanato em São Bento do Sapucaí: Guia Completo'
+date: '2026-05-14'
 description: >-
   Guia completo do artesanato de São Bento do Sapucaí: Ateliê Ditinho Joana,
   Arte no Quilombo (80+ artesãos quilombolas), Arteben – Casa do Artesão e

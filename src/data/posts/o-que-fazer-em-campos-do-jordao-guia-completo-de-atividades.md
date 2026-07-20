@@ -1,5 +1,6 @@
 ---
 title: 'O Que Fazer em Campos do Jordão: Guia Completo de Atividades'
+date: '2026-05-14'
 description: >-
   Guia completo do que fazer em Campos do Jordão: teleférico, trilhas, museus,
   compras, gastronomia e aventura na Serra da Mantiqueira.

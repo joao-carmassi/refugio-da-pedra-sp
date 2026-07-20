@@ -1,5 +1,6 @@
 ---
 title: 'Habitantes da Serra da Mantiqueira: Principais Cidades e Dados'
+date: '2026-05-14'
 description: >-
   Saiba quantas pessoas vivem na Serra da Mantiqueira: população das principais
   cidades, perfil demográfico e como a baixa densidade torna a região especial

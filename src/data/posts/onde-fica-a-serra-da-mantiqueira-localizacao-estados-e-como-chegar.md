@@ -1,5 +1,6 @@
 ---
 title: 'Onde Fica a Serra da Mantiqueira? Localização, Estados e Como Chegar'
+date: '2026-05-14'
 description: >-
   Onde fica a Serra da Mantiqueira: localização entre São Paulo, Minas Gerais e
   Rio de Janeiro. Veja como chegar partindo de SP, distâncias e cidades de

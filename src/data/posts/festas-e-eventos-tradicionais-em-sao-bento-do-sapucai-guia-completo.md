@@ -1,5 +1,6 @@
 ---
 title: 'Festas e Eventos Tradicionais em São Bento do Sapucaí: Guia Completo'
+date: '2026-05-14'
 description: >-
   Descubra as festas e eventos tradicionais de São Bento do Sapucaí: carnaval,
   festa junina, festival de inverno, FLIPES, Mountain Festival, INDOMIT e mais.

@@ -1,5 +1,6 @@
 ---
 title: 'Distância de São Paulo a São Bento do Sapucaí: Rotas e Dicas'
+date: '2026-05-14'
 description: >-
   Distância de São Paulo a São Bento do Sapucaí: aproximadamente 200 km pela
   SP-070. Veja rotas, tempo de viagem, pedágios e dicas para a estrada.

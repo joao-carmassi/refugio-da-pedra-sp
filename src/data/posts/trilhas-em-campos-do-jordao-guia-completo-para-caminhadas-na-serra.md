@@ -1,5 +1,6 @@
 ---
 title: 'Trilhas em Campos do Jordão: Guia Completo para Caminhadas na Serra'
+date: '2026-05-14'
 description: >-
   Guia das melhores trilhas de Campos do Jordão: Horto Florestal, Pico do
   Itapeva, trilha das araucárias e mais. Níveis, distâncias e dicas práticas.

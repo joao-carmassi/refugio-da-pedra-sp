@@ -1,5 +1,6 @@
 ---
 title: 'Revolução de 1932 em São Bento do Sapucaí: História, Trincheiras e Museu'
+date: '2026-05-14'
 description: >-
   Descubra o papel de São Bento do Sapucaí na Revolução Constitucionalista de
   1932: trincheiras, combates na divisa MG/SP, Museu da Revolução e Restaurante

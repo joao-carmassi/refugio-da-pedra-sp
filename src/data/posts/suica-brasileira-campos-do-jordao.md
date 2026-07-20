@@ -1,5 +1,6 @@
 ---
 title: 'Suíça Brasileira: por que Campos do Jordão tem esse apelido?'
+date: '2026-05-14'
 description: >-
   Descubra por que Campos do Jordão é a Suíça Brasileira: arquitetura europeia,
   clima frio, chocolate artesanal e paisagens alpinas na Serra da Mantiqueira.

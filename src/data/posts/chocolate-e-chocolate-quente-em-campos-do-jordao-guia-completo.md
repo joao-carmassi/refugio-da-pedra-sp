@@ -1,5 +1,6 @@
 ---
 title: 'Chocolate e Chocolate Quente em Campos do Jordão: Guia Completo'
+date: '2026-05-14'
 description: >-
   Guia das melhores chocolaterias e chocolate quente de Campos do Jordão.
   Trufas, bombons, fondue de chocolate e experiências imperdíveis no frio da

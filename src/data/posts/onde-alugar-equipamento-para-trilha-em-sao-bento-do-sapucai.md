@@ -1,5 +1,6 @@
 ---
 title: Onde Alugar Equipamento para Trilha em São Bento do Sapucaí
+date: '2026-05-14'
 description: >-
   Saiba onde alugar equipamentos para trilha e via ferrata em São Bento do
   Sapucaí: Baú Ecoturismo, o que está incluso, checklist e dicas para sua

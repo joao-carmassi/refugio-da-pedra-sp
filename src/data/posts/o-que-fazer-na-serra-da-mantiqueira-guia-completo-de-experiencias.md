@@ -1,5 +1,6 @@
 ---
 title: 'O Que Fazer na Serra da Mantiqueira: Guia Completo de Experiências'
+date: '2026-05-14'
 description: >-
   O que fazer na Serra da Mantiqueira: trilhas, cachoeiras, enoturismo,
   gastronomia, mirantes e cultura. Guia completo com as melhores experiências

@@ -1,5 +1,6 @@
 ---
 title: 'Restaurantes em Campos do Jordão: Onde Comer na Serra da Mantiqueira'
+date: '2026-05-14'
 description: >-
   Guia dos melhores restaurantes de Campos do Jordão: fondue, truta, massas,
   comida contemporânea e opções para todos os bolsos na Serra da Mantiqueira.

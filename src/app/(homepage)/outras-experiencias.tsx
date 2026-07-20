@@ -66,6 +66,7 @@ const OutrasExperiencias = () => {
                             className='mt-3 md:hidden aspect-video w-full bg-card rounded-xl object-cover object-center'
                             width={544}
                             height={306}
+                            sizes='100vw'
                           />
                         )}
                       </AccordionContent>
@@ -85,6 +86,7 @@ const OutrasExperiencias = () => {
               alt={activeFeature.title}
               src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
               className='rounded-xl object-cover aspect-9/12 xl:aspect-square w-full'
+              sizes='(max-width: 1024px) 100vw, 50vw'
             />
           </div>
         )}

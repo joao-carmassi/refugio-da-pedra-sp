@@ -1,5 +1,6 @@
 ---
 title: 'Cervejas e Bebidas Artesanais de Campos do Jordão: Guia Completo'
+date: '2026-05-14'
 description: >-
   Guia das cervejas artesanais de Campos do Jordão: Baden Baden, cervejarias
   locais, tours pela fábrica e harmonizações na Serra da Mantiqueira.

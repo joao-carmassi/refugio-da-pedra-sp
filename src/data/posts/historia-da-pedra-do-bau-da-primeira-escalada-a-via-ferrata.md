@@ -1,5 +1,6 @@
 ---
 title: 'História da Pedra do Baú: Da Primeira Escalada à Via Ferrata'
+date: '2026-05-14'
 description: >-
   A história completa da Pedra do Baú: a escalada dos irmãos Cortez em 1940, a
   construção da via ferrata, o abrigo de montanha e as lendas da formação

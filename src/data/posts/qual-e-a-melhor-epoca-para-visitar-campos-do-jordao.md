@@ -1,5 +1,6 @@
 ---
 title: Qual É a Melhor Época para Visitar Campos do Jordão?
+date: '2026-05-14'
 description: >-
   Descubra a melhor época para visitar Campos do Jordão: inverno para frio e
   festivais, primavera para trilhas, verão para economia. Guia mês a mês.

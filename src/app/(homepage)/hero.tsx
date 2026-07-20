@@ -33,7 +33,7 @@ const Hero = () => {
                 variant='outline'
                 asChild
                 size='lg'
-                className='w-full sm:w-auto rounded-full'
+                className='w-full sm:w-auto rounded-full min-h-12'
               >
                 <a target='_blank' href={generateWhatsLink(msgText)}>
                   Entre em contato
@@ -43,7 +43,7 @@ const Hero = () => {
                 asChild
                 effect='ringHover'
                 size='lg'
-                className='w-full sm:w-auto text-primary-foreground! rounded-full'
+                className='w-full sm:w-auto text-primary-foreground! rounded-full min-h-12'
               >
                 <Link href='/reservar'>
                   Reservar
@@ -52,15 +52,29 @@ const Hero = () => {
               </Button>
             </div>
             <div className='space-y-3'>
-              <Image
-                src='https://static.cdnlogo.com/logos/b/94/booking-com.svg'
-                alt='Booking.com'
-                width={188}
-                height={32}
-                className='h-8'
-                loading='eager'
-              />
-              <div className='flex flex-col items-center lg:items-start'>
+              <a
+                href='https://www.booking.com/hotel/br/chale-refugio-da-pedra-sp-sao-bento-do-sapucai-sp.pt-br.html'
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='Ver no Booking.com'
+                className='inline-block'
+              >
+                <Image
+                  src='/booking-logo.svg'
+                  alt='Booking.com'
+                  width={188}
+                  height={32}
+                  className='h-8'
+                  sizes='188px'
+                />
+              </a>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Refúgio da Pedra SP')}`}
+                target='_blank'
+                rel='noopener noreferrer'
+                aria-label='Ver avaliações no Google'
+                className='flex flex-col items-center lg:items-start'
+              >
                 <Rating value={4.8} readOnly>
                   {Array.from({ length: 5 }).map((_, index) => (
                     <RatingButton
@@ -73,7 +87,7 @@ const Hero = () => {
                 <span className='text-lg'>
                   <span className='font-medium'>4.8</span> / 5
                 </span>
-              </div>
+              </a>
             </div>
           </div>
           <div
@@ -89,6 +103,7 @@ const Hero = () => {
               src='/assets/refugio/geral/refugio-14.webp'
               width={704}
               height={792}
+              sizes='(max-width: 1024px) 100vw, 50vw'
               priority
             />
           </div>

@@ -1,5 +1,6 @@
 ---
 title: 'Serra da Canastra ou Serra da Mantiqueira: Qual Escolher para Sua Viagem?'
+date: '2026-05-14'
 description: >-
   Serra da Canastra ou Mantiqueira? Comparação completa: cachoeiras, trilhas,
   gastronomia, hospedagem, distância de SP e perfil de viajante. Descubra qual é

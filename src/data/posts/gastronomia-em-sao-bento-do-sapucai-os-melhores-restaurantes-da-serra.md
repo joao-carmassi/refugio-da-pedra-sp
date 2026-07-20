@@ -1,5 +1,6 @@
 ---
 title: 'Gastronomia em São Bento do Sapucaí: Os Melhores Restaurantes da Serra'
+date: '2026-05-14'
 description: >-
   Descubra os melhores restaurantes de São Bento do Sapucaí: truta flambada,
   slow food, azeite artesanal e muito mais na Serra da Mantiqueira.

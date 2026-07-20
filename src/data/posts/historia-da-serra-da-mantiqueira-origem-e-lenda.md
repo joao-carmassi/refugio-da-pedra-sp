@@ -1,5 +1,6 @@
 ---
 title: 'História da Serra da Mantiqueira: Origem e Lenda da Montanha que Chora'
+date: '2026-05-14'
 description: >-
   Conheça a história da Serra da Mantiqueira: formação geológica, significado
   tupi de 'a montanha que chora', lenda indígena, bandeirantes e importância

@@ -1,5 +1,6 @@
 ---
 title: 'O Que Fazer em São Bento do Sapucaí: Guia Completo + Roteiro de 1 Dia'
+date: '2026-05-14'
 description: >-
   Guia completo com tudo o que fazer em São Bento do Sapucaí: Pedra do Baú,
   cachoeiras, mirantes, museus e turismo rural. Inclui roteiro de 1 dia e

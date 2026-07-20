@@ -1,5 +1,6 @@
 ---
 title: Por Que São Bento do Sapucaí Produz Vinho e Azeite? O Segredo Está na Serra
+date: '2026-05-14'
 description: >-
   Entenda por que São Bento do Sapucaí se tornou polo de vinhos e azeites
   artesanais: altitude, clima, solo e o terroir único da Serra da Mantiqueira.

@@ -1,5 +1,6 @@
 ---
 title: Como Reservar Passeios Guiados em São Bento do Sapucaí
+date: '2026-05-14'
 description: >-
   Guia completo para reservar passeios guiados em São Bento do Sapucaí: Pedra do
   Baú, rapel, trilhas, escalada e mais. Saiba como agendar, o que esperar e

@@ -1,5 +1,6 @@
 ---
 title: Qual a População de São Bento do Sapucaí? Dados e Curiosidades
+date: '2026-05-14'
 description: >-
   População de São Bento do Sapucaí: cerca de 11.684 habitantes (Censo 2022).
   Conheça dados demográficos, história e por que a cidade encanta mesmo sendo

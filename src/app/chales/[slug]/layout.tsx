@@ -1,9 +1,8 @@
-import Script from 'next/script';
 import serialize from 'serialize-javascript';
-import type { WithContext, LodgingBusiness } from 'schema-dts';
+import type { WithContext, Room, BreadcrumbList } from 'schema-dts';
 import chales from '@/data/chales.json';
 import { getSiteUrl } from '@/lib/env';
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import slugify from 'slugify';
 
 interface Props {
@@ -33,7 +32,7 @@ export async function generateMetadata({
 
   const siteUrl = getSiteUrl();
   return {
-    title: `${chale.nome} - Refúgio da Pedra`,
+    title: chale.nome,
     description: `${chale.nome} no Refúgio da Pedra: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho} em São Bento do Sapucaí, na Serra da Mantiqueira.`,
     keywords: [
       chale.nome,
@@ -72,31 +71,60 @@ async function ChaleLayout({
     (c) => slugify(c.nome, { lower: true, strict: true }) === slug,
   );
 
-  if (!chale) redirect('/chales');
+  if (!chale) notFound();
 
   const siteUrl = getSiteUrl();
-  const jsonLd: WithContext<LodgingBusiness> = {
+  const jsonLd: WithContext<Room> = {
     '@context': 'https://schema.org',
-    '@type': 'LodgingBusiness',
+    '@type': 'Room',
     name: chale.nome,
     description: `${chale.nome} no Refúgio da Pedra: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho}.`,
     url: `${siteUrl}/chales/${slug}`,
     image: `${siteUrl}/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'São Bento do Sapucaí',
-      addressRegion: 'SP',
-      addressCountry: 'BR',
+    containedInPlace: {
+      '@type': 'LodgingBusiness',
+      name: 'Refúgio da Pedra SP',
+      url: siteUrl,
     },
+  };
+
+  const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Chalés',
+        item: `${siteUrl}/chales`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: chale.nome,
+        item: `${siteUrl}/chales/${slug}`,
+      },
+    ],
   };
 
   return (
     <>
-      <Script
-        id='jsonld-chale'
+      <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{
           __html: serialize(jsonLd),
+        }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{
+          __html: serialize(breadcrumbJsonLd),
         }}
       />
       {children}

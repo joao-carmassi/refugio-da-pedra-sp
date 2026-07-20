@@ -7,7 +7,7 @@ interface Props {
 export function generateMetadata() {
   const siteUrl = getSiteUrl();
   return {
-    title: 'Reservar - Refúgio da Pedra',
+    title: 'Reservar',
     description:
       'Reserve sua estadia no Refúgio da Pedra em São Bento do Sapucaí. Chalés, cabanas e domos disponíveis para uma experiência única na natureza da Serra da Mantiqueira.',
     keywords: [

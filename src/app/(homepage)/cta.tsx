@@ -14,6 +14,7 @@ function Cta(): React.ReactNode {
             className='w-full rounded-xl'
             src='/assets/refugio/chales/jade/refugio-6.webp'
             alt=''
+            sizes='(max-width: 768px) 100vw, 50vw'
           />
         </div>
         <div className='space-y-3 md:space-y-6 flex-1'>

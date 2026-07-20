@@ -1,5 +1,6 @@
 ---
 title: Qual a Altitude de Campos do Jordão? Dados e Curiosidades
+date: '2026-05-14'
 description: >-
   Campos do Jordão está a ~1.628 m de altitude, uma das cidades mais altas do
   Brasil. Veja dados, comparações e como a altitude influencia o clima e a

@@ -1,5 +1,6 @@
 ---
 title: 'Igreja Matriz de São Bento do Sapucaí: História, Arquitetura e Visitação'
+date: '2026-05-14'
 description: >-
   Conheça a Igreja Matriz de São Bento do Sapucaí: construída em taipa de pilão
   por volta de 1853, tombada em 2015, com vitrais, arte carmelita e vista

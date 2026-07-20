@@ -1,5 +1,6 @@
 ---
 title: 'Trilhas em São Bento do Sapucaí: Guia Completo do Complexo da Pedra do Baú'
+date: '2026-05-14'
 description: >-
   Tudo sobre as trilhas de São Bento do Sapucaí: Bauzinho, Ana Chata, via
   ferrata da Pedra do Baú, rapel e dicas para cada nível de aventureiro.

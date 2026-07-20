@@ -1,5 +1,6 @@
 ---
 title: 'Distância de São Bento do Sapucaí a Campos do Jordão: Rota e Dicas'
+date: '2026-05-14'
 description: >-
   Distância de São Bento do Sapucaí a Campos do Jordão: aproximadamente 40 km,
   ~1 hora de carro. Veja a rota, dicas e como combinar os dois destinos.

@@ -32,6 +32,8 @@ export interface Post {
   meta_description: string;
   focus_keywords: string[];
   faq_schema: FaqSchema;
+  date: string;
+  dateModified?: string;
 }
 
 export function getAllPosts(): Post[] {

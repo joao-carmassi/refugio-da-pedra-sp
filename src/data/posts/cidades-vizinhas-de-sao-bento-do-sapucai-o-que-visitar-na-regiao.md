@@ -1,5 +1,6 @@
 ---
 title: 'Cidades Vizinhas de São Bento do Sapucaí: O Que Visitar na Região'
+date: '2026-05-14'
 description: >-
   Conheça as cidades vizinhas de São Bento do Sapucaí: Campos do Jordão, Santo
   Antônio do Pinhal, Sapucaí-Mirim, Gonçalves e mais. Dicas de bate-volta na

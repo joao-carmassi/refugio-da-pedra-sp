@@ -1,5 +1,6 @@
 ---
 title: Quantos Habitantes Tem Campos do Jordão? Demografia e Curiosidades
+date: '2026-05-14'
 description: >-
   Campos do Jordão tem cerca de 52 mil habitantes fixos, mas no inverno a
   população pode triplicar. Conheça a demografia e curiosidades da estância

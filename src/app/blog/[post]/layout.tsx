@@ -1,9 +1,8 @@
-import Script from 'next/script';
 import serialize from 'serialize-javascript';
-import type { WithContext, BlogPosting } from 'schema-dts';
+import type { WithContext, BlogPosting, BreadcrumbList } from 'schema-dts';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
 import { getSiteUrl } from '@/lib/env';
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 interface Props {
   children: React.ReactNode;
@@ -48,7 +47,7 @@ async function BlogPostLayout({
   const { post: postSlug } = await params;
   const post = getPostBySlug(postSlug);
 
-  if (!post) redirect('/blog');
+  if (!post) notFound();
 
   const siteUrl = getSiteUrl();
   const jsonLdBlogPosting: WithContext<BlogPosting> = {
@@ -58,29 +57,62 @@ async function BlogPostLayout({
     description: post.meta_description,
     keywords: post.focus_keywords.join(', '),
     url: `${siteUrl}/blog/${postSlug}`,
+    ...(post.date
+      ? {
+          datePublished: post.date,
+          dateModified: post.dateModified || post.date,
+        }
+      : {}),
     author: {
       '@type': 'Organization',
-      name: 'Refúgio da Pedra',
+      name: 'Refúgio da Pedra SP',
       url: siteUrl,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Refúgio da Pedra',
+      name: 'Refúgio da Pedra SP',
       url: siteUrl,
     },
   };
 
+  const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: siteUrl,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${siteUrl}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: `${siteUrl}/blog/${postSlug}`,
+      },
+    ],
+  };
+
   return (
     <>
-      <Script
-        id='jsonld-blog-post'
+      <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: serialize(jsonLdBlogPosting) }}
       />
-      <Script
-        id='jsonld-blog-post-faq'
+      <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(post.faq_schema) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: serialize(breadcrumbJsonLd) }}
       />
       {children}
     </>

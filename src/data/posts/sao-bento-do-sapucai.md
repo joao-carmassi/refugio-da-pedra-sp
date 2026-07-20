@@ -1,5 +1,6 @@
 ---
 title: 'São Bento do Sapucaí: Guia Completo de Turismo na Serra da Mantiqueira'
+date: '2026-05-14'
 description: >-
   Guia completo de turismo em São Bento do Sapucaí: o que fazer, onde comer,
   onde ficar, como chegar e quando visitar a Toscana Brasileira da Serra da

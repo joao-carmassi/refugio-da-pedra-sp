@@ -1,5 +1,6 @@
 ---
 title: 'São Bento do Sapucaí ou Santo Antônio do Pinhal: Qual Escolher?'
+date: '2026-05-14'
 description: >-
   Comparação completa entre São Bento do Sapucaí e Santo Antônio do Pinhal:
   natureza, trilhas, gastronomia, hospedagem e o que cada cidade oferece de

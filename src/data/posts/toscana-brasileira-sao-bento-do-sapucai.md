@@ -1,5 +1,6 @@
 ---
 title: 'Toscana Brasileira: Por que São Bento do Sapucaí tem esse apelido?'
+date: '2026-05-14'
 description: >-
   Toscana Brasileira do Brasil: São Bento do Sapucaí reúne vinhos de altitude,
   azeite artesanal, queijos, gastronomia slow food e paisagens de montanha

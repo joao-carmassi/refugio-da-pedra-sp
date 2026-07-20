@@ -13,6 +13,7 @@ const Cta = () => {
               src='/assets/refugio/geral/refugio-1.webp'
               alt='placeholder hero'
               className='aspect-3/2 w-full rounded-t-md object-cover md:rounded-t-none md:rounded-l-md'
+              sizes='(max-width: 1024px) 100vw, 50vw'
             />
           </div>
           <div className='w-full shrink-0 p-4 md:p-8 lg:p-16 lg:w-1/2 space-y-3 md:space-y-6'>

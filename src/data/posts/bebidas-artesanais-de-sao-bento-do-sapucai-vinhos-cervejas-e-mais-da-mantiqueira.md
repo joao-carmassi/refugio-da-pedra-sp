@@ -2,6 +2,7 @@
 title: >-
   Bebidas Artesanais de São Bento do Sapucaí: Vinhos, Cervejas e Mais da
   Mantiqueira
+date: '2026-05-14'
 description: >-
   Roteiro completo pelas bebidas artesanais de São Bento do Sapucaí: vinícolas
   de altitude, cervejas artesanais e a Rota dos Vinhos da Mantiqueira.

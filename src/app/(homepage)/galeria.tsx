@@ -23,6 +23,7 @@ function Galeria() {
                 alt={`Foto ${index + 1} da pousada`}
                 width={500}
                 height={500}
+                sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
               />
             </div>
           ))}

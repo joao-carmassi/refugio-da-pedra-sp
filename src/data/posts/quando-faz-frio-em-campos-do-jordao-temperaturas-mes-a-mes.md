@@ -1,5 +1,6 @@
 ---
 title: Quando Faz Frio em Campos do Jordão? Temperaturas Mês a Mês
+date: '2026-05-14'
 description: >-
   Saiba quando faz frio em Campos do Jordão: temperaturas mês a mês, recordes,
   geadas e o que vestir em cada época. Planeje sua viagem pelo clima.

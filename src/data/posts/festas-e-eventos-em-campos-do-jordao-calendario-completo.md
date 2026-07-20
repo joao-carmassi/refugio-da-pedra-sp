@@ -1,5 +1,6 @@
 ---
 title: 'Festas e Eventos em Campos do Jordão: Calendário Completo'
+date: '2026-05-14'
 description: >-
   Calendário de festas e eventos de Campos do Jordão: Festival de Inverno,
   Festival de Cerveja, eventos gastronômicos e culturais ao longo do ano.

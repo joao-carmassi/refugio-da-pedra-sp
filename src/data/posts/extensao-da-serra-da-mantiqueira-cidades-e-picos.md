@@ -1,5 +1,6 @@
 ---
 title: 'Serra da Mantiqueira: Extensão, Cidades e Picos Mais Altos'
+date: '2026-05-14'
 description: >-
   A Serra da Mantiqueira tem mais de 500 km de extensão e atravessa SP, MG e RJ.
   Conheça as principais cidades, picos e dados geográficos da cadeia montanhosa.

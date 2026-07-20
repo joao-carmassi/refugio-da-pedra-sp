@@ -1,5 +1,6 @@
 ---
 title: 'Pousada Perto da Pedra do Baú: Conheça o Refúgio da Pedra'
+date: '2026-05-14'
 description: >-
   Conheça o Refúgio da Pedra, pousada com chalés a ~1,5 km da Pedra do Baú em
   São Bento do Sapucaí. Natureza, conforto e aventura para trilheiros, casais e

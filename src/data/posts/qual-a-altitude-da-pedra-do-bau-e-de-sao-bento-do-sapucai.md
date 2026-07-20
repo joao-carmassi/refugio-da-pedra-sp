@@ -1,5 +1,6 @@
 ---
 title: Qual a Altitude da Pedra do Baú e de São Bento do Sapucaí?
+date: '2026-05-14'
 description: >-
   Descubra a altitude da Pedra do Baú (1.964 m), do Bauzinho, da Ana Chata e de
   São Bento do Sapucaí. Entenda como a altitude influencia o clima e as trilhas.

@@ -1,5 +1,6 @@
 ---
 title: 'Pontos Turísticos de Campos do Jordão: Os 12 Lugares Imperdíveis'
+date: '2026-05-14'
 description: >-
   Os 12 melhores pontos turísticos de Campos do Jordão: Morro do Elefante, Horto
   Florestal, Pico do Itapeva, Capivari, Amantikir e muito mais.

@@ -1,5 +1,6 @@
 ---
 title: Qual o Lugar Mais Bonito da Serra da Mantiqueira? Conheça São Bento do Sapucaí
+date: '2026-05-14'
 description: >-
   Descubra por que São Bento do Sapucaí é considerado o lugar mais bonito da
   Serra da Mantiqueira: Pedra do Baú, trilhas, vinícolas, cachoeiras e paisagens
