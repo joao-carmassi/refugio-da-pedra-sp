@@ -33,7 +33,7 @@ const Hero = () => {
                 variant='outline'
                 asChild
                 size='lg'
-                className='w-full sm:w-auto rounded-full min-h-12'
+                className='w-full sm:w-auto rounded-full'
               >
                 <a target='_blank' href={generateWhatsLink(msgText)}>
                   Entre em contato
@@ -43,7 +43,7 @@ const Hero = () => {
                 asChild
                 effect='ringHover'
                 size='lg'
-                className='w-full sm:w-auto text-primary-foreground! rounded-full min-h-12'
+                className='w-full sm:w-auto text-primary-foreground! rounded-full'
               >
                 <Link href='/reservar'>
                   Reservar

@@ -57,7 +57,7 @@ function Header(): React.ReactNode {
             </NavigationMenu>
             <Button
               effect={'shineHover'}
-              className='ml-2 min-h-12 md:rounded-full'
+              className='ml-2 md:rounded-full'
               asChild
             >
               <Link href='/reservar'>Reservar</Link>
@@ -68,7 +68,7 @@ function Header(): React.ReactNode {
               <DropdownMenuTrigger asChild>
                 <Button
                   aria-label='Menu de navegação'
-                  className='min-h-12 min-w-12 md:hidden'
+                  className='md:hidden'
                   size={'icon'}
                   variant='outline'
                 >
