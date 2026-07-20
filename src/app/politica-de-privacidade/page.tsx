@@ -42,7 +42,7 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
 
   return (
     <main className='min-h-container bg-card py-6 md:py-12 grid place-items-center'>
-      <section className='container space-y-6 md:space-y-8 max-w-3xl'>
+      <section className='container space-y-6 md:space-y-8'>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -113,12 +113,12 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
             </h2>
             <p>
               O contato inicial e boa parte da comunicação sobre sua reserva
-              acontece pelo WhatsApp, canal principal de atendimento do
-              Refúgio da Pedra. Os dados enviados por meio do site ou do
-              WhatsApp ficam sob nossa responsabilidade e são acessados apenas
-              pela equipe responsável pela operação da pousada, pelo tempo
-              necessário para cumprir a finalidade da reserva e eventuais
-              obrigações legais ou fiscais.
+              acontece pelo WhatsApp, canal principal de atendimento do Refúgio
+              da Pedra. Os dados enviados por meio do site ou do WhatsApp ficam
+              sob nossa responsabilidade e são acessados apenas pela equipe
+              responsável pela operação da pousada, pelo tempo necessário para
+              cumprir a finalidade da reserva e eventuais obrigações legais ou
+              fiscais.
             </p>
           </section>
 
@@ -130,10 +130,9 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
               Nos termos da LGPD (Lei nº 13.709/2018), você tem direito a
               confirmar a existência de tratamento dos seus dados, acessar,
               corrigir, solicitar a anonimização, bloqueio ou eliminação de
-              dados desnecessários, solicitar a portabilidade dos dados a
-              outro fornecedor de serviço, revogar seu consentimento a
-              qualquer momento e ser informado sobre com quem compartilhamos
-              seus dados.
+              dados desnecessários, solicitar a portabilidade dos dados a outro
+              fornecedor de serviço, revogar seu consentimento a qualquer
+              momento e ser informado sobre com quem compartilhamos seus dados.
             </p>
           </section>
 
@@ -143,8 +142,8 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
             </h2>
             <p>
               Para exercer qualquer um dos direitos acima, esclarecer dúvidas
-              sobre esta política ou solicitar a exclusão dos seus dados,
-              entre em contato conosco pelo WhatsApp{' '}
+              sobre esta política ou solicitar a exclusão dos seus dados, entre
+              em contato conosco pelo WhatsApp{' '}
               {phoneNumber ? (
                 <a
                   className='text-primary hover:underline'
@@ -157,7 +156,8 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
               ) : (
                 <span>[telefone/WhatsApp a informar]</span>
               )}
-              . {/* TODO: substituir por e-mail dedicado de privacidade, se/quando disponível */}
+              .{' '}
+              {/* TODO: substituir por e-mail dedicado de privacidade, se/quando disponível */}
             </p>
           </section>
 
@@ -167,8 +167,8 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
             </h2>
             <p>
               Esta Política de Privacidade pode ser atualizada periodicamente
-              para refletir melhorias em nossos processos ou mudanças
-              legais. Recomendamos revisitar esta página de tempos em tempos.
+              para refletir melhorias em nossos processos ou mudanças legais.
+              Recomendamos revisitar esta página de tempos em tempos.
             </p>
           </section>
         </div>
