@@ -84,7 +84,7 @@ const OutrasExperiencias = () => {
               loading='lazy'
               alt={activeFeature.title}
               src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
-              className='rounded-xl object-cover aspect-9/12 xl:aspect-square w-full'
+              className='rounded-2xl md:rounded-3xl object-cover aspect-9/12 xl:aspect-square w-full'
             />
           </div>
         )}

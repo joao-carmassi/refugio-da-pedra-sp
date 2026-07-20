@@ -11,7 +11,7 @@ function Cta(): React.ReactNode {
           <Image
             width={724}
             height={482}
-            className='w-full rounded-xl'
+            className='w-full rounded-2xl md:rounded-3xl'
             src='/assets/refugio/chales/jade/refugio-6.webp'
             alt=''
           />

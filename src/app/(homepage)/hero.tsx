@@ -72,14 +72,14 @@ const Hero = () => {
             </div>
           </div>
           <div
-            className='lg:pl-5 lg:pb-5 rounded-4xl'
+            className='lg:pl-5 lg:pb-5 rounded-3xl'
             style={{
               backgroundImage:
                 'conic-gradient(from 60deg at 50% 50%, var(--card), var(--card), var(--card), #e5e7eb, #e5e7eb, var(--card), var(--card), var(--card))',
             }}
           >
             <Image
-              className='w-full aspect-8/9 rounded-3xl object-cover'
+              className='w-full aspect-8/9 rounded-2xl md:rounded-3xl object-cover'
               alt='Refúgio da Pedra SP'
               src='/assets/refugio/geral/refugio-14.webp'
               width={704}
