@@ -43,20 +43,6 @@ function ChaleContent({ chale, description }: Props): React.ReactNode {
       },
       0,
     );
-
-    // descrição/amenidades/fotos (com scroll)
-    gsap.fromTo(
-      '.gsap-reveal-chale-detalhes',
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power2.out',
-        stagger: 0.1,
-        scrollTrigger: { trigger: '#chale-detalhes-anchor', start: 'top 85%' },
-      },
-    );
   }, []);
 
   return (
@@ -117,21 +103,18 @@ function ChaleContent({ chale, description }: Props): React.ReactNode {
             />
             <div
               id='chale-detalhes-anchor'
-              className='gsap-reveal-chale-detalhes opacity-0 space-y-3 border border-border p-6 rounded-2xl md:rounded-3xl bg-card'
+              className='space-y-3 border border-border p-6 rounded-2xl md:rounded-3xl bg-card'
             >
               <h2 className='text-2xl tracking-tight md:text-3xl'>
                 {description.title}
               </h2>
               {description.paragraphs.map((paragraph, index) => (
-                <p
-                  className='text-muted-foreground leading-snug'
-                  key={index}
-                >
+                <p className='text-muted-foreground leading-snug' key={index}>
                   {paragraph}
                 </p>
               ))}
             </div>
-            <div className='gsap-reveal-chale-detalhes opacity-0 grid grid-cols-2 gap-2'>
+            <div className='grid grid-cols-2 gap-2'>
               <h2 className='text-2xl tracking-tight md:text-3xl col-span-2'>
                 Comodidades
               </h2>
@@ -145,7 +128,7 @@ function ChaleContent({ chale, description }: Props): React.ReactNode {
               ))}
             </div>
             <Separator className='gsap-reveal-chale-detalhes opacity-0' />
-            <div className='gsap-reveal-chale-detalhes opacity-0 space-y-3'>
+            <div className='space-y-3'>
               <h2 className='text-2xl tracking-tight md:text-3xl'>
                 Fotografias
               </h2>

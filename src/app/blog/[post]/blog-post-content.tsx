@@ -2,9 +2,6 @@
 import { ArrowUp, Home } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { cn } from '@/lib/utils';
 import {
   Breadcrumb,
@@ -56,34 +53,10 @@ const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
     return () => observer.disconnect();
   }, []);
 
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const tl = gsap.timeline();
-    tl.set('.gsap-reveal-post-header', { y: 40, opacity: 0 });
-    tl.to(
-      '.gsap-reveal-post-header',
-      { y: 0, opacity: 1, duration: 1, delay: 0.2, ease: 'expo.out', stagger: 0.08 },
-      0,
-    );
-
-    gsap.fromTo(
-      '.gsap-reveal-post-body',
-      { y: 30, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: '#post-body-anchor', start: 'top 85%' },
-      },
-    );
-  }, []);
-
   return (
-    <main className='py-6 md:py-12 min-h-container space-y-6 md:space-y-12'>
+    <main className='py-6 md:py-12 min-h-container space-y-6 md:space-y-12 animate-in fade-in duration-300 fill-mode-both'>
       <div className='container'>
-        <Breadcrumb className='gsap-reveal-post-header opacity-0'>
+        <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink aria-label='Homepage' href='/'>
@@ -100,18 +73,13 @@ const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <h1 className='gsap-reveal-post-header opacity-0 mb-3 mt-6 md:my-6 max-w-3xl text-2xl tracking-tight md:text-4xl lg:text-5xl'>
+        <h1 className='mb-3 mt-6 md:my-6 max-w-3xl text-2xl tracking-tight md:text-4xl lg:text-5xl'>
           {post.title}
         </h1>
-        <div className='gsap-reveal-post-header opacity-0 mb-6 text-muted-foreground'>
-          {post.description}
-        </div>
+        <div className='mb-6 text-muted-foreground'>{post.description}</div>
         <Separator className='my-3 md:my-6 lg:my-8' />
         <div className='relative grid grid-cols-12 gap-6 lg:grid'>
-          <article
-            id='post-body-anchor'
-            className='gsap-reveal-post-body opacity-0 col-span-12 lg:col-span-9 prose dark:prose-invert w-full! max-w-none!'
-          >
+          <article className='col-span-12 lg:col-span-9 prose dark:prose-invert w-full! max-w-none!'>
             <Markdown remarkPlugins={[remarkGfm]}>{intro}</Markdown>
             {sections.map((section) => (
               <section

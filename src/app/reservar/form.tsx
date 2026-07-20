@@ -97,7 +97,14 @@ function Form(): React.ReactNode {
     tl.set('.gsap-reveal-reservar', { y: 40, opacity: 0 });
     tl.to(
       '.gsap-reveal-reservar',
-      { y: 0, opacity: 1, duration: 1, delay: 0.2, ease: 'expo.out', stagger: 0.08 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        delay: 0.2,
+        ease: 'expo.out',
+        stagger: 0.08,
+      },
       0,
     );
   }, []);
@@ -422,7 +429,6 @@ function Form(): React.ReactNode {
 
             <Button
               type='submit'
-              effect='ringHover'
               size='lg'
               className='gsap-reveal-reservar opacity-0 w-full rounded-full'
             >

@@ -25,22 +25,6 @@ const BlogContent = ({ blogPosts }: Props) => {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // header/breadcrumb/título (acima da dobra, sem scroll)
-    const tl = gsap.timeline();
-    tl.set('.gsap-reveal-blog-header', { y: 40, opacity: 0 });
-    tl.to(
-      '.gsap-reveal-blog-header',
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        delay: 0.2,
-        ease: 'expo.out',
-        stagger: 0.08,
-      },
-      0,
-    );
-
     // grid de cards de posts (com scroll)
     gsap.fromTo(
       '.gsap-reveal-blog-card',
@@ -58,7 +42,7 @@ const BlogContent = ({ blogPosts }: Props) => {
 
   return (
     <section className='min-h-container py-6 md:py-12 container space-y-6'>
-      <Breadcrumb className='gsap-reveal-blog-header opacity-0'>
+      <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink aria-label='Homepage' href='/'>
@@ -71,7 +55,7 @@ const BlogContent = ({ blogPosts }: Props) => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className='gsap-reveal-blog-header opacity-0 tracking-tight text-center text-4xl md:text-start lg:text-5xl'>
+      <h1 className='tracking-tight text-center text-4xl md:text-start lg:text-5xl'>
         Blog
       </h1>
       <section id='blog-grid-anchor' className='space-y-6'>

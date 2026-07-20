@@ -31,22 +31,6 @@ function ChalePage(): React.ReactNode {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // header/breadcrumb/título (acima da dobra, sem scroll)
-    const tl = gsap.timeline();
-    tl.set('.gsap-reveal-chales-header', { y: 40, opacity: 0 });
-    tl.to(
-      '.gsap-reveal-chales-header',
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        delay: 0.2,
-        ease: 'expo.out',
-        stagger: 0.08,
-      },
-      0,
-    );
-
     // grid de cards de chalés (com scroll)
     gsap.fromTo(
       '.gsap-reveal-chales-card',
@@ -63,10 +47,10 @@ function ChalePage(): React.ReactNode {
   }, []);
 
   return (
-    <main className='min-h-container bg-card py-6 md:py-12 md:pt-6 grid place-items-center'>
+    <main className='min-h-container bg-card py-6 md:py-12 grid place-items-center'>
       <section className='container space-y-6 md:space-y-12'>
         <div className='space-y-3 md:space-y-6'>
-          <Breadcrumb className='gsap-reveal-chales-header opacity-0'>
+          <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink aria-label='Homepage' href='/'>
@@ -79,10 +63,10 @@ function ChalePage(): React.ReactNode {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className='gsap-reveal-chales-header opacity-0 text-2xl tracking-tight md:text-4xl lg:text-5xl text-center'>
+          <h1 className='text-2xl tracking-tight md:text-4xl lg:text-5xl text-center'>
             Acomodações
           </h1>
-          <p className='gsap-reveal-chales-header opacity-0 text-muted-foreground leading-snug mx-auto text-center md:max-w-2/3'>
+          <p className='text-muted-foreground leading-snug mx-auto text-center md:max-w-2/3'>
             Conheça nossos chalés, cabanas e domos, cada um projetado para
             oferecer uma experiência única de conforto e contato com a natureza.
             Escolha o seu refúgio perfeito para uma estadia inesquecível.
