@@ -61,11 +61,11 @@ function CardReserva({
     );
 
   return (
-    <Card
-      className={cn('shadow-xl border border-border py-4 gap-3', className)}
-    >
+    <Card className={cn('shadow py-4 gap-3', className)}>
       <CardHeader className='px-5'>
-        <CardTitle className='text-2xl'>Reserve agora mesmo</CardTitle>
+        <CardTitle className='text-2xl font-display'>
+          Reserve agora mesmo
+        </CardTitle>
       </CardHeader>
       <CardContent className='px-5'>
         <div className='w-full border border-border rounded-xl!'>

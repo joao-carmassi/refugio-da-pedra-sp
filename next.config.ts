@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
   experimental: {
     typedEnv: true,
   },
+  images: {
+    qualities: [100],
+    formats: ['image/avif', 'image/webp'],
+  },
   async headers() {
     return [
       {

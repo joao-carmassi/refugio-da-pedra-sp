@@ -1,6 +1,6 @@
 import serialize from 'serialize-javascript';
 import type { WithContext, BlogPosting, BreadcrumbList } from 'schema-dts';
-import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { getPostBySlug } from '@/lib/posts';
 import { getSiteUrl } from '@/lib/env';
 import { notFound } from 'next/navigation';
 
@@ -13,9 +13,9 @@ interface MetadataProps {
   params: Promise<{ post: string }>;
 }
 
-export function generateStaticParams() {
-  return getAllPosts().map((post) => ({ post: post.slug }));
-}
+// export function generateStaticParams() {
+//   return getAllPosts().map((post) => ({ post: post.slug }));
+// }
 
 export async function generateMetadata({ params }: MetadataProps) {
   const { post: postSlug } = await params;

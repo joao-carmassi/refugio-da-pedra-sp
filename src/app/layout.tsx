@@ -1,14 +1,24 @@
 import type { Metadata } from 'next';
-import { Figtree } from 'next/font/google';
 import serialize from 'serialize-javascript';
 import type { WithContext, Organization, WebSite } from 'schema-dts';
+import { Archivo, Piazzolla } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { getSiteUrl } from '@/lib/env';
 
-const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
+const archivo = Archivo({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-sans',
+});
+
+const piazzolla = Piazzolla({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-serif',
+});
 
 export function generateMetadata(): Metadata {
   const siteUrl = getSiteUrl();
@@ -55,6 +65,7 @@ export default function RootLayout({
   };
 
   return (
+<<<<<<< HEAD
     <html lang='pt-BR' className={figtree.variable} suppressHydrationWarning>
       <body className='antialiased'>
         <script
@@ -65,6 +76,14 @@ export default function RootLayout({
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: serialize(websiteJsonLd) }}
         />
+=======
+    <html
+      lang='pt-BR'
+      className={`${archivo.variable} ${piazzolla.variable}`}
+      suppressHydrationWarning
+    >
+      <body className='antialiased'>
+>>>>>>> main
         <TooltipProvider>
           <Header />
           {children}

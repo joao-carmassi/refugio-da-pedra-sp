@@ -27,11 +27,11 @@ function Header(): React.ReactNode {
 
   return (
     <>
-      <header className='w-full h-16 grid place-items-center fixed top-0 z-50 bg-card border-b border-border'>
+      <header className='w-full h-16 grid place-items-center fixed top-0 z-50 bg-card'>
         <nav className='container flex items-center justify-between'>
           <div>
             <Link
-              className='md:text-xl font-semibold text-foreground'
+              className='md:text-xl font-semibold text-foreground font-display'
               href='/'
               aria-label='Brand'
             >

@@ -80,7 +80,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
   const description = descriptions[chale.id];
 
   return (
-    <main className='min-h-container pb-6 lg:py-12 bg-card'>
+    <main className='min-h-container pb-6 lg:py-12 bg-background'>
       <Image
         src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
         alt={chale.nome}
@@ -90,7 +90,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
         sizes='100vw'
         priority
       />
-      <section className='lg:container rounded-4xl lg:rounded-none bg-card px-6 pt-6 -mt-14 lg:mt-0 lg:pt-0 z-10 relative'>
+      <section className='lg:container rounded-4xl lg:rounded-none bg-background px-6 pt-6 -mt-14 lg:mt-0 lg:pt-0 z-10 relative'>
         <div className='grid lg:grid-cols-[3fr_1fr] gap-6'>
           <div className='space-y-6'>
             <Breadcrumb className='hidden lg:flex'>
@@ -113,7 +113,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
             <Image
               src={`/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`}
               alt={chale.nome}
-              className='rounded-2xl aspect-video object-cover shadow-md inset-shadow-2xs hidden lg:block'
+              className='rounded-3xl aspect-video object-cover hidden lg:block'
               width={1104}
               height={621}
               sizes='(min-width: 1024px) 75vw, 100vw'
@@ -135,7 +135,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
               petsPermitidos={chale.politica.pets_permitidos}
               className='h-fit space-y-3 lg:hidden'
             />
-            <div className='space-y-2 border border-border p-6 rounded-2xl'>
+            <div className='space-y-3 border border-border p-6 rounded-2xl md:rounded-3xl bg-card'>
               <h2 className='text-2xl tracking-tight md:text-3xl'>
                 {description.title}
               </h2>
@@ -170,7 +170,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
                 {Array.from({ length: chale.fotos }, (_, index) => (
                   <div key={index}>
                     <Image
-                      className='w-full h-auto mb-2.5 md:mb-5 shadow-md inset-shadow-2xs'
+                      className='w-full rounded-xl h-auto mb-2.5 md:mb-5'
                       src={`/assets/refugio/chales/${chale.id}/refugio-${index + 1}.webp`}
                       alt={`${chale.nome} - foto ${index + 1}`}
                       width={500}

@@ -1,5 +1,4 @@
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,10 +14,6 @@ const Hero = () => {
       <div className='container'>
         <div className='grid items-center gap-6 lg:grid-cols-2 lg:gap-12'>
           <div className='flex flex-col items-center gap-5 text-center lg:items-start lg:text-left'>
-            <Badge variant='outline'>
-              Pousada
-              <ArrowUpRight className='ml-2 size-4' />
-            </Badge>
             <h1 className='text-4xl font-bold text-pretty lg:text-6xl'>
               <span className='text-primary'>Pousada Refúgio da Pedra</span> —
               Chalés na Serra da Mantiqueira
@@ -91,14 +86,14 @@ const Hero = () => {
             </div>
           </div>
           <div
-            className='lg:pl-5 lg:pb-5 rounded-xl'
+            className='lg:pl-5 lg:pb-5 rounded-3xl'
             style={{
               backgroundImage:
-                'conic-gradient(from 60deg at 50% 50%, var(--background), var(--background), var(--background), #e5e7eb, #e5e7eb, var(--background), var(--background), var(--background))',
+                'conic-gradient(from 60deg at 50% 50%, var(--card), var(--card), var(--card), #e5e7eb, #e5e7eb, var(--card), var(--card), var(--card))',
             }}
           >
             <Image
-              className='w-full aspect-8/9 rounded-xl object-cover'
+              className='w-full aspect-8/9 rounded-2xl md:rounded-3xl object-cover'
               alt='Refúgio da Pedra SP'
               src='/assets/refugio/geral/refugio-14.webp'
               width={704}

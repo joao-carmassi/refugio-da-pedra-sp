@@ -24,7 +24,7 @@ const EAGER_LOAD_COUNT = 3;
 
 function ChalePage(): React.ReactNode {
   return (
-    <main className='min-h-container bg-card py-6 md:py-12 grid place-items-center'>
+    <main className='min-h-container bg-card py-6 md:py-12 md:pt-6 grid place-items-center'>
       <section className='container space-y-6 md:space-y-12'>
         <div className='space-y-3 md:space-y-6'>
           <Breadcrumb>

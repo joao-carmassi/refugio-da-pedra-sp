@@ -1,7 +1,5 @@
-import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 import {
@@ -37,33 +35,27 @@ const Blog = () => {
       </h1>
       <section className='space-y-6'>
         {blogPosts.map((post, index) => (
-          <React.Fragment key={index}>
-            <Link className='block' href={`/blog/${post.slug}`}>
-              <Card className='border-t border-border shadow-lg'>
-                <CardContent>
-                  <div className='relative w-full space-y-3'>
-                    <h2 className='text-lg font-medium tracking-tight text-foreground md:text-2xl'>
-                      {post.title}
-                    </h2>
-                    <p className='md:text-md text-sm text-muted-foreground md:pr-24 xl:pr-32'>
-                      {post.description}
-                    </p>
-                    <div className='flex w-9/10 flex-wrap items-center gap-2'>
-                      {post.tags.map((tag, tagIndex) => (
-                        <Badge key={tagIndex} className='h-6 rounded-md'>
-                          <span className='text-md font-medium'>{tag}</span>
-                        </Badge>
-                      ))}
-                    </div>
+          <Link key={index} className='block' href={`/blog/${post.slug}`}>
+            <Card className='shadow-lg'>
+              <CardContent>
+                <div className='relative w-full space-y-3'>
+                  <h2 className='text-lg font-medium tracking-tight text-foreground md:text-2xl'>
+                    {post.title}
+                  </h2>
+                  <p className='md:text-md text-sm text-muted-foreground md:pr-24 xl:pr-32'>
+                    {post.description}
+                  </p>
+                  <div className='flex w-9/10 flex-wrap items-center gap-2'>
+                    {post.tags.map((tag, tagIndex) => (
+                      <Badge key={tagIndex} className='h-6 rounded-md'>
+                        <span className='text-md font-medium'>{tag}</span>
+                      </Badge>
+                    ))}
                   </div>
-                </CardContent>
-              </Card>
-            </Link>
-
-            {index < blogPosts.length - 1 && (
-              <Separator className='h-px w-full' />
-            )}
-          </React.Fragment>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </section>
     </section>
