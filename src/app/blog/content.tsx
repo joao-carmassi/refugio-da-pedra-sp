@@ -1,7 +1,3 @@
-'use client';
-
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 import {
   Breadcrumb,
@@ -11,37 +7,29 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import { Badge } from '@/components/ui/badge';
 import { Home } from 'lucide-react';
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import type { PostListItem } from '@/lib/posts';
 
 interface Props {
   blogPosts: PostListItem[];
 }
 
+/**
+ * Índice do blog — macroestrutura Index-First (design.md § Macrostructure):
+ * a página É a lista. Sem cards, sem sombra, sem hero; cada post é uma linha
+ * separada por fio de 1px, e o link ocupa a linha inteira.
+ *
+ * Sem reveal: índices são listas, e a Index-First pede "Reveal: none".
+ * Por isso este arquivo deixou de ser client component — não há mais GSAP nem
+ * `opacity-0` no markup (design.md § Motion).
+ *
+ * A data não é exibida porque `getAllPostsMeta()` não a expõe em
+ * `PostListItem` (só slug/title/description/tags) — nada de inventar campo.
+ */
 const BlogContent = ({ blogPosts }: Props) => {
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // grid de cards de posts (com scroll)
-    gsap.fromTo(
-      '.gsap-reveal-blog-card',
-      { y: 60, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        ease: 'power2.out',
-        stagger: 0.1,
-        scrollTrigger: { trigger: '#blog-grid-anchor', start: 'top 85%' },
-      },
-    );
-  }, []);
-
   return (
-    <section className='min-h-container py-6 md:py-12 container space-y-6'>
+    <main className='min-h-container container py-8 md:py-14 animate-in fade-in duration-300 fill-mode-both'>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -55,39 +43,51 @@ const BlogContent = ({ blogPosts }: Props) => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className='tracking-tight text-center text-4xl md:text-start lg:text-5xl'>
-        Blog
-      </h1>
-      <section id='blog-grid-anchor' className='space-y-6'>
-        {blogPosts.map((post, index) => (
-          <Link
-            key={index}
-            className='block gsap-reveal-blog-card opacity-0'
-            href={`/blog/${post.slug}`}
-          >
-            <Card className='shadow-lg'>
-              <CardContent>
-                <div className='relative w-full space-y-3'>
-                  <h2 className='text-lg font-medium tracking-tight text-foreground md:text-2xl'>
-                    {post.title}
-                  </h2>
-                  <p className='md:text-md text-sm text-muted-foreground md:pr-24 xl:pr-32'>
-                    {post.description}
-                  </p>
-                  <div className='flex w-9/10 flex-wrap items-center gap-2'>
-                    {post.tags.map((tag, tagIndex) => (
-                      <Badge key={tagIndex} className='h-6 rounded-md'>
-                        <span className='text-md font-medium'>{tag}</span>
-                      </Badge>
-                    ))}
-                  </div>
+
+      {/* Abertura curta, no espírito Index-First: um rótulo do que vem abaixo. */}
+      <header className='mt-8 max-w-[70ch] md:mt-12'>
+        <h1 className='text-3xl tracking-tight text-balance md:text-4xl'>
+          Blog
+        </h1>
+        <p className='mt-3 text-muted-foreground text-pretty md:text-lg'>
+          São Bento do Sapucaí e a Serra da Mantiqueira, do jeito de quem mora
+          aqui — trilhas, roteiros, épocas do ano e o que fazer na região.
+        </p>
+      </header>
+
+      <ul className='mt-8 border-t border-border md:mt-12'>
+        {blogPosts.map((post) => (
+          <li key={post.slug} className='border-b border-border'>
+            {/* Barra final obrigatória: `trailingSlash: true` no next.config.ts
+                — sem ela o link cai num 308 antes de chegar no post. */}
+            <Link
+              href={`/blog/${post.slug}/`}
+              className='group block rounded-sm py-5 outline-none focus-visible:ring-3 focus-visible:ring-ring/50 md:py-6'
+            >
+              <h2 className='text-lg tracking-tight text-pretty underline-offset-4 decoration-1 transition-colors duration-200 group-hover:text-accent-deep group-hover:underline md:text-2xl'>
+                {post.title}
+              </h2>
+              <p className='mt-2 line-clamp-1 max-w-[75ch] text-sm text-muted-foreground'>
+                {post.description}
+              </p>
+              {post.tags.length > 0 && (
+                <div className='mt-3 flex flex-wrap items-center gap-1.5'>
+                  {post.tags.map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant='outline'
+                      className='bg-transparent px-2 text-[0.6875rem] font-normal text-muted-foreground'
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
                 </div>
-              </CardContent>
-            </Card>
-          </Link>
+              )}
+            </Link>
+          </li>
         ))}
-      </section>
-    </section>
+      </ul>
+    </main>
   );
 };
 

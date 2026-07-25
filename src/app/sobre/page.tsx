@@ -30,7 +30,7 @@ const temBioDosProprietarios = PROPRIETARIOS.bio.length > 0;
 
 function SobrePage(): React.ReactNode {
   return (
-    <main className='min-h-container bg-card py-6 md:py-12 grid place-items-center animate-in fade-in duration-300 fill-mode-both'>
+    <main className='min-h-container py-6 md:py-12 grid place-items-center animate-in fade-in duration-300 fill-mode-both'>
       <section className='container space-y-6 md:space-y-8'>
         <Breadcrumb>
           <BreadcrumbList>
@@ -146,8 +146,9 @@ function SobrePage(): React.ReactNode {
               Procuramos manter a vegetação nativa, usar os recursos da
               propriedade com consciência e respeitar o ritmo da montanha, que
               muda de temperatura e de humor várias vezes ao dia. Não
-              construímos o Refúgio da Pedra SP para ser grande — construímos para
-              que ele continuasse de pé, do jeito que é, daqui a vinte anos.
+              construímos o Refúgio da Pedra SP para ser grande — construímos
+              para que ele continuasse de pé, do jeito que é, daqui a vinte
+              anos.
             </p>
           </div>
 
@@ -167,16 +168,16 @@ function SobrePage(): React.ReactNode {
               </div>
             )}
             <p>
-              Se está pensando em vir, saiba que não vai encontrar um atendimento
-              padronizado de central telefônica. Você fala diretamente com{' '}
+              Se está pensando em vir, saiba que não vai encontrar um
+              atendimento padronizado de central telefônica. Você fala
+              diretamente com{' '}
               {temNomeDosProprietarios
                 ? PROPRIETARIOS.nome
                 : 'quem cuida do lugar'}
               , tira dúvidas pelo WhatsApp e é recebido por gente que gosta
-              genuinamente de receber.
-              É assim que gostaríamos de ser recebidos também — e é esse o
-              Refúgio da Pedra SP que convidamos você a conhecer, aqui em São Bento
-              do Sapucaí.{' '}
+              genuinamente de receber. É assim que gostaríamos de ser recebidos
+              também — e é esse o Refúgio da Pedra SP que convidamos você a
+              conhecer, aqui em São Bento do Sapucaí.{' '}
               <Link
                 className='underline underline-offset-4 hover:text-foreground'
                 href='/reservar/'
