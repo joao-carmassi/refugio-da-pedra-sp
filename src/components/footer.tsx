@@ -1,9 +1,8 @@
+/* Hallmark · genre: editorial · chrome: N6 masthead + Ft1 footer · design-system: design.md · designed-as-app */
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { Instagram } from 'lucide-react';
-import chales from '@/data/chales.json';
 import Image from 'next/image';
-import slugify from 'slugify';
 import generateWhatsLink from '@/lib/generate-whats-link';
 import { getInPhoneNumber } from '@/lib/env';
 
@@ -68,48 +67,14 @@ function WhatsappIcon(props: React.SVGProps<SVGSVGElement>) {
 
 // `trailingSlash: true` (next.config.ts) — todo href interno precisa terminar
 // com barra, senão o Next responde 308 antes de servir a página.
+// Ft1 pede UMA fila curta de links, não um índice em colunas: o sitemap já
+// cobre a árvore completa, e cada chalé é alcançado por /chales/.
 const links = [
-  {
-    title: 'Pousada',
-    links: [
-      {
-        title: 'Home',
-        href: '/',
-      },
-      {
-        title: 'Chalés',
-        href: '/chales/',
-      },
-      {
-        title: 'Reservar',
-        href: '/reservar/',
-      },
-    ],
-  },
-  {
-    title: 'Chalés',
-    links: chales.map((chale) => ({
-      title: chale.id,
-      href: `/chales/${slugify(chale.nome, { lower: true, strict: true })}/`,
-    })),
-  },
-  {
-    title: 'Institucional',
-    links: [
-      {
-        title: 'Blog',
-        href: '/blog/',
-      },
-      {
-        title: 'Quem Somos',
-        href: '/sobre/',
-      },
-      {
-        title: 'Política de Privacidade',
-        href: '/politica-de-privacidade/',
-      },
-    ],
-  },
+  { title: 'Chalés', href: '/chales/' },
+  { title: 'Blog', href: '/blog/' },
+  { title: 'Sobre', href: '/sobre/' },
+  { title: 'Reservar', href: '/reservar/' },
+  { title: 'Privacidade', href: '/politica-de-privacidade/' },
 ];
 
 // CID decimal do perfil no Google (0xfbaf5cb9454d9009), extraído do par
@@ -136,6 +101,11 @@ const mediaLinks = [
   },
 ];
 
+// Anel de foco da casa (design.md § Microinteractions), aplicado à mão nos
+// links que não passam pelo `buttonVariants`.
+const focusRing =
+  'outline-none rounded-xs focus-visible:ring-3 focus-visible:ring-ring/50';
+
 const Footer = () => {
   const phone = getInPhoneNumber();
   const phoneHref = phone.startsWith('+') ? `tel:${phone}` : `tel:+${phone}`;
@@ -145,97 +115,107 @@ const Footer = () => {
   const cityLine = `${NAP.addressLocality} — ${NAP.addressRegion}, ${NAP.addressCountryName}`;
 
   return (
-    <section className='py-6 md:py-12 bg-card dark'>
-      <div className='container'>
-        <footer>
-          <div className='relative mb-6 flex w-full flex-col gap-6 md:flex-row md:justify-between'>
-            <div className='flex flex-col gap-3'>
-              <Link
-                className='text-xl font-semibold text-foreground flex items-start gap-2'
-                href='/'
-                aria-label='Brand'
+    // Ft1 mast-headed: uma única faixa horizontal aberta por uma hairline.
+    // `bg-card dark` é a cor do rodapé que já estava no site — no redisign esta
+    // faixa é clara; aqui veio só a estrutura, a paleta continua a de casa.
+    <footer className='w-full border-t border-border bg-card dark'>
+      <div className='container py-10 md:py-16'>
+        <div className='flex flex-col gap-8 md:flex-row md:items-start md:justify-between md:gap-16'>
+          {/* Mastro: wordmark + uma linha de posicionamento. */}
+          <div className='max-w-sm'>
+            <Link
+              className={`flex items-center gap-2.5 font-display text-2xl font-semibold tracking-tight text-foreground ${focusRing}`}
+              href='/'
+              aria-label='Refúgio da Pedra SP — página inicial'
+            >
+              <Image
+                src='/logo.png'
+                alt=''
+                aria-hidden='true'
+                width={30}
+                height={30}
+              />
+              Refúgio da Pedra SP
+            </Link>
+            <p className='mt-3 text-sm leading-relaxed text-muted-foreground'>
+              Cinco acomodações ao pé da Pedra do Baú, na Serra da Mantiqueira,
+              com café da manhã incluso.
+            </p>
+          </div>
+
+          {/* NAP (Nome, Endereço, Telefone) visível — sinal de confiança
+              para busca local e espelho do LodgingBusiness em (homepage)/layout.tsx. */}
+          <address className='not-italic text-sm leading-relaxed text-muted-foreground'>
+            <span className='block font-medium text-foreground'>
+              {NAP.name}
+            </span>
+            {streetLine ? <span className='block'>{streetLine}</span> : null}
+            <span className='block'>
+              {NAP.postalCode ? `${NAP.postalCode} · ` : ''}
+              {cityLine}
+            </span>
+            {phone ? (
+              <a
+                className={`block w-fit py-1 hover:text-accent-deep hover:underline ${focusRing}`}
+                href={phoneHref}
               >
-                <Image
-                  src='/logo.png'
-                  alt='Refúgio da Pedra SP'
-                  width={30}
-                  height={30}
-                />
-                Refúgio da Pedra SP
-              </Link>
-              {/* NAP (Nome, Endereço, Telefone) visível — sinal de confiança
-                  para busca local e espelho do LodgingBusiness em (homepage)/layout.tsx. */}
-              <address className='not-italic text-sm leading-relaxed text-muted-foreground'>
-                <span className='block font-medium text-foreground'>
-                  {NAP.name}
-                </span>
-                {streetLine ? (
-                  <span className='block'>{streetLine}</span>
+                {formatPhone(phone)}
+              </a>
+            ) : null}
+          </address>
+        </div>
+
+        {/* Fila única de links, separada por pontos médios. */}
+        <nav aria-label='Rodapé' className='mt-8'>
+          <ul className='flex flex-wrap items-center gap-x-3 gap-y-1 text-sm'>
+            {links.map((link, index) => (
+              <li key={link.href} className='flex items-center gap-3'>
+                {index > 0 ? (
+                  <span aria-hidden='true' className='text-muted-foreground/50'>
+                    ·
+                  </span>
                 ) : null}
-                <span className='block'>
-                  {NAP.postalCode ? `${NAP.postalCode} · ` : ''}
-                  {cityLine}
-                </span>
-                {phone ? (
-                  <a
-                    className='block w-fit py-1 hover:text-foreground hover:underline'
-                    href={phoneHref}
-                  >
-                    {formatPhone(phone)}
-                  </a>
-                ) : null}
-              </address>
-            </div>
-            <div className='inline-grid w-fit grid-cols-1 gap-x-24 gap-y-6 sm:grid-cols-3'>
-              {links.map((section) => (
-                <div key={section.title} className='h-fit w-min'>
-                  <h2 className='mb-3 text-base font-semibold text-foreground whitespace-nowrap'>
-                    {section.title}
-                  </h2>
-                  <ul className='space-y-1 text-base font-medium text-muted-foreground'>
-                    {section.links.map((link) => (
-                      <li key={link.title}>
-                        <Button
-                          variant={'link'}
-                          effect={'hoverUnderline'}
-                          size={'sm'}
-                          className='p-0 after:bottom-1.5 after:w-full capitalize'
-                          asChild
-                        >
-                          <a href={link.href}>{link.title}</a>
-                        </Button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className='flex flex-col-reverse items-baseline justify-between gap-8 border-t border-border pt-8 md:flex-row md:gap-16'>
-            <div className='text-xs text-muted-foreground sm:text-sm'>
-              &copy; {new Date().getFullYear()} Refúgio da Pedra SP. Todos os
-              direitos reservados.
-            </div>
-            <div className='flex items-start gap-4 text-xs text-muted-foreground lg:items-center'>
-              {mediaLinks.map((link) => (
-                <Button
-                  key={link.title}
-                  variant={'outline'}
-                  size={'icon'}
-                  className='rounded-full'
-                  asChild
-                  aria-label={link.title}
+                <Link
+                  href={link.href}
+                  className={`inline-flex min-h-11 items-center font-medium text-foreground transition-colors hover:text-accent-deep ${focusRing}`}
                 >
-                  <a href={link.href} target='_blank' rel='noopener noreferrer'>
-                    {link.Icon}
-                  </a>
-                </Button>
-              ))}
-            </div>
+                  {link.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        {/* Hairline acima da linha de copyright. */}
+        <div className='mt-6 flex flex-col-reverse items-baseline justify-between gap-6 border-t border-border pt-6 md:flex-row md:gap-16'>
+          <div className='text-xs text-muted-foreground sm:text-sm'>
+            &copy; {new Date().getFullYear()} Refúgio da Pedra SP. Todos os
+            direitos reservados.
           </div>
-        </footer>
+          {/* `text-muted-foreground` é o que o rodapé antigo tinha e aqui é
+              obrigatório: o `outline` do Button não define cor de texto, então
+              o ícone herdaria o preto já resolvido do `<body>` (tema claro) e
+              sumiria no fundo escuro — a classe `dark` troca as variáveis, mas
+              herança de `color` carrega o valor computado, não a variável. */}
+          <div className='flex items-start gap-4 text-xs text-muted-foreground lg:items-center'>
+            {mediaLinks.map((link) => (
+              <Button
+                key={link.title}
+                variant={'outline'}
+                size={'icon'}
+                className='rounded-full'
+                asChild
+                aria-label={link.title}
+              >
+                <a href={link.href} target='_blank' rel='noopener noreferrer'>
+                  {link.Icon}
+                </a>
+              </Button>
+            ))}
+          </div>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 };
 
