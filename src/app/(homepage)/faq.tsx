@@ -86,8 +86,16 @@ const Faq = () => {
 
   return (
     <section id='faq-anchor' ref={scope} className='py-12 md:py-20'>
-      <div className='container'>
-        <header data-reveal className='max-w-3xl'>
+      {/* No desktop a ficha vira duas colunas: o título fica grudado enquanto a
+          lista corre ao lado. `items-start` é o que permite o `sticky` — sem
+          ele o item do grid estica até a altura da linha inteira e nunca chega
+          a destacar. O corte é em `lg`: em `md` as duas colunas espremeriam
+          tanto o título quanto os rótulos da ficha. */}
+      <div className='container lg:grid lg:grid-cols-[19rem_1fr] lg:items-start lg:gap-16'>
+        <header
+          data-reveal
+          className='max-w-3xl lg:sticky lg:top-24 lg:max-w-none'
+        >
           <h2 className='text-2xl tracking-tight text-pretty md:text-4xl lg:text-5xl'>
             Comodidades
           </h2>
@@ -97,7 +105,7 @@ const Faq = () => {
           </p>
         </header>
 
-        <dl data-reveal className='mt-8 md:mt-12'>
+        <dl data-reveal className='mt-8 md:mt-12 lg:mt-0'>
           {comodidades.map(({ Icon, label, value, nota }) => (
             <div
               key={label}

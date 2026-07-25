@@ -40,7 +40,15 @@ const Hero = () => {
 
   return (
     <section ref={scope}>
-      <div className='relative isolate flex min-h-[34rem] flex-col justify-end overflow-hidden md:min-h-[42rem] lg:min-h-[48rem]'>
+      {/* Em tablet e desktop a foto ocupa o que sobra da viewport depois do
+          masthead — `--header-height` é publicada pelo próprio cabeçalho, que
+          já mede a altura expandida. O fallback cobre o primeiro paint (antes
+          da hidratação) e vale a altura do masthead em `lg`.
+          `svh` e não `dvh`: a barra de endereço aparecendo e sumindo mudaria a
+          altura do hero no meio da rolagem.
+          É `min-h`, então em telas muito baixas o bloco cresce em vez de cortar
+          o texto — melhor passar da dobra do que esconder o H1. */}
+      <div className='relative isolate flex min-h-[34rem] flex-col justify-end overflow-hidden md:min-h-[calc(100svh-var(--header-height,10.5rem))]'>
         {/* LCP da página: `priority` (sem lazy) e sem animação de opacity. */}
         <Image
           className='-z-10 object-cover object-center'
@@ -57,7 +65,12 @@ const Hero = () => {
 
         {/* `dark` troca os tokens do bloco (foreground, border, primary) para a
             variante escura — nada de cor solta no markup. */}
-        <div className='dark container pt-28 pb-8 md:pt-40 md:pb-14'>
+        {/* O bloco é `justify-end`: em telas altas sobra espaço acima e o `pt`
+            não desloca nada — ele só entra em jogo quando a viewport aperta,
+            como folga mínima entre o masthead e o H1. Por isso o valor em `md`
+            é modesto: um `pt` generoso aqui não embelezaria a tela alta e
+            estouraria a dobra num notebook 720p. */}
+        <div className='dark container pt-28 pb-8 md:pt-16 md:pb-14'>
           <div className='max-w-3xl'>
             <h1
               data-reveal
@@ -112,7 +125,7 @@ const Hero = () => {
 
       {/* Linha de prova. Fica fora do scrim, no papel creme, porque o logotipo
           do Booking é azul-marinho e ficaria ilegível sobre a fotografia. */}
-      <div data-reveal className='border-b border-border'>
+      <div data-reveal className='bg-card shadow-2xs'>
         <div className='container flex flex-wrap items-center gap-x-8 gap-y-3 py-4'>
           <a
             href={bookingLink}

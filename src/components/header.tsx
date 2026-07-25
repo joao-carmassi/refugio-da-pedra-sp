@@ -88,6 +88,17 @@ function Header(): React.ReactNode {
     };
   }, []);
 
+  // Publica a altura expandida para o resto da página. O hero usa isso para
+  // ocupar exatamente o que sobra da viewport (`100svh - --header-height`) sem
+  // precisar repetir a medição nem chutar um valor fixo.
+  useEffect(() => {
+    if (!expandedHeight) return;
+    document.documentElement.style.setProperty(
+      '--header-height',
+      `${expandedHeight}px`,
+    );
+  }, [expandedHeight]);
+
   // Antes da primeira medição o cabeçalho fica no fluxo (é o que o servidor
   // renderiza), então não há salto entre HTML estático e hidratação.
   const measured = expandedHeight > 0;
