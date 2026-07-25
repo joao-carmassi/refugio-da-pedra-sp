@@ -107,7 +107,7 @@ Montanhas cobertas de Mata Atlântica e bosques de araucárias emolduram a cidad
 - **Proximidade**: a ~167 km de São Paulo e ~40 km de São Bento do Sapucaí
 - **Ideal para casais**: restaurantes românticos, lareiras e passeios a dois
 - **Cultura e natureza**: museus, jardins, trilhas e mirantes num só destino
-- **Combine com São Bento do Sapucaí**: fique no Refúgio da Pedra e visite Campos do Jordão num bate-volta
+- **Combine com São Bento do Sapucaí**: fique no Refúgio da Pedra SP e visite Campos do Jordão num bate-volta
 
 ## Como Chegar
 
@@ -126,6 +126,6 @@ Sim. Embora o inverno seja a alta temporada, o verão oferece temperaturas amena
 
 ## Conclusão
 
-Campos do Jordão merece o título de **Suíça Brasileira**: frio de montanha, chocolate artesanal, arquitetura europeia e paisagens deslumbrantes. **Hospede-se no Refúgio da Pedra** em São Bento do Sapucaí e inclua Campos do Jordão no seu roteiro pela Serra da Mantiqueira — são apenas 40 km de pura beleza serrana!
+Campos do Jordão merece o título de **Suíça Brasileira**: frio de montanha, chocolate artesanal, arquitetura europeia e paisagens deslumbrantes. **Hospede-se no Refúgio da Pedra SP** em São Bento do Sapucaí e inclua Campos do Jordão no seu roteiro pela Serra da Mantiqueira — são apenas 40 km de pura beleza serrana!
 
 *Veja também: [O Que Fazer em Campos do Jordão](/blog/o-que-fazer-em-campos-do-jordao-guia-completo-de-atividades/) | [São Bento a Campos do Jordão: Distância e Rota](/blog/distancia-sao-bento-do-sapucai-campos-do-jordao/)*

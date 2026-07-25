@@ -32,15 +32,15 @@ const defaultOgImage = {
   url: '/assets/refugio/geral/refugio-1.webp',
   width: 1620,
   height: 1080,
-  alt: 'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+  alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
 };
 
 export function generateMetadata(): Metadata {
   const siteUrl = getSiteUrl();
   return {
     title: {
-      default: 'Refúgio da Pedra - Chalés em São Bento do Sapucaí',
-      template: '%s | Refúgio da Pedra',
+      default: 'Refúgio da Pedra SP - Chalés em São Bento do Sapucaí',
+      template: '%s | Refúgio da Pedra SP',
     },
     description:
       'Chalés e experiências em meio à natureza em São Bento do Sapucaí, Serra da Mantiqueira.',
@@ -51,7 +51,7 @@ export function generateMetadata(): Metadata {
       canonical: `${siteUrl}/`,
     },
     openGraph: {
-      siteName: 'Refúgio da Pedra',
+      siteName: 'Refúgio da Pedra SP',
       type: 'website',
       locale: 'pt_BR',
       images: [defaultOgImage],
@@ -81,8 +81,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'LodgingBusiness',
     '@id': `${siteUrl}/#business`,
-    name: 'Pousada Refúgio da Pedra',
-    alternateName: 'Refúgio da Pedra',
+    name: 'Pousada Refúgio da Pedra SP',
+    alternateName: 'Refúgio da Pedra SP',
     description:
       'Pousada sustentável com chalés, cabana e domo geodésico ao pé da Pedra do Baú, em São Bento do Sapucaí, na Serra da Mantiqueira.',
     url: `${siteUrl}/`,
@@ -142,8 +142,8 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${siteUrl}/#website`,
-    name: 'Pousada Refúgio da Pedra',
-    alternateName: 'Refúgio da Pedra',
+    name: 'Pousada Refúgio da Pedra SP',
+    alternateName: 'Refúgio da Pedra SP',
     url: `${siteUrl}/`,
     inLanguage: 'pt-BR',
     publisher: { '@id': `${siteUrl}/#business` },

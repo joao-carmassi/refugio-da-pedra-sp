@@ -180,7 +180,7 @@ function Form(): React.ReactNode {
     const chaleSelecionado = chales.find((c) => c.id === chaleSelecionadoId);
     const totalNoites = contarNoites(data.checkin, data.checkout);
     const msgText = [
-      `Olá, me chamo *${data.nome}* e gostaria de solicitar uma reserva no Refúgio da Pedra, em São Bento do Sapucaí.`,
+      `Olá, me chamo *${data.nome}* e gostaria de solicitar uma reserva no Refúgio da Pedra SP, em São Bento do Sapucaí.`,
       `*Acomodação:* ${chaleSelecionado?.nome}`,
       `*Check-in:* ${formatarData(data.checkin)} (a partir das ${CHECKIN_HORA})`,
       `*Check-out:* ${formatarData(data.checkout)} (até as ${CHECKOUT_HORA})`,

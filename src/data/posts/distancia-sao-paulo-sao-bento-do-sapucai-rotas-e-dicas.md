@@ -109,6 +109,6 @@ A SP-173 é serrana e sinuosa, exigindo atenção. Em dias de chuva forte ou neb
 
 ## Conclusão
 
-A apenas **~200 km de São Paulo**, São Bento do Sapucaí é mais perto do que muita gente imagina. Com um planejamento simples, a viagem é tranquila e a estrada serrana já faz parte da experiência. **Reserve seu chalé no Refúgio da Pedra** e venha para a Mantiqueira!
+A apenas **~200 km de São Paulo**, São Bento do Sapucaí é mais perto do que muita gente imagina. Com um planejamento simples, a viagem é tranquila e a estrada serrana já faz parte da experiência. **Reserve seu chalé no Refúgio da Pedra SP** e venha para a Mantiqueira!
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Distância de São Bento a Campos do Jordão](/blog/distancia-sao-bento-do-sapucai-campos-do-jordao/)*

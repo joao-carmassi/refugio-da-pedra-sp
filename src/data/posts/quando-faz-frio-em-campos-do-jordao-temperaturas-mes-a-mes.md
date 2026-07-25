@@ -139,6 +139,6 @@ Os dias de verão são amenos (até 25°C), mas as noites continuam frescas (12�
 
 ## Conclusão
 
-O frio de Campos do Jordão é real e intenso no inverno — perfeito para quem busca lareiras, fondues e chocolate quente. De junho a agosto, prepare-se para temperaturas que podem chegar a 0°C. **Hospede-se no Refúgio da Pedra** e combine o frio de Campos do Jordão com as trilhas de São Bento do Sapucaí — a Serra da Mantiqueira espera por você!
+O frio de Campos do Jordão é real e intenso no inverno — perfeito para quem busca lareiras, fondues e chocolate quente. De junho a agosto, prepare-se para temperaturas que podem chegar a 0°C. **Hospede-se no Refúgio da Pedra SP** e combine o frio de Campos do Jordão com as trilhas de São Bento do Sapucaí — a Serra da Mantiqueira espera por você!
 
 *Veja também: [Melhor Época para Visitar Campos do Jordão](/blog/qual-e-a-melhor-epoca-para-visitar-campos-do-jordao/) | [Altitude de Campos do Jordão](/blog/qual-a-altitude-de-campos-do-jordao-dados-e-curiosidades/)*

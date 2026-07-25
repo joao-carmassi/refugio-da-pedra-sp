@@ -112,7 +112,7 @@ Além da gastronomia, São Bento oferece cenários que justificam o apelido:
 
 ## Onde Se Hospedar na Toscana Brasileira
 
-O **Refúgio da Pedra** é a base perfeita para explorar a Toscana Brasileira. Localizado a ~1,5 km da Pedra do Baú, oferece **5 chalés** temáticos em meio à Mata Atlântica:
+O **Refúgio da Pedra SP** é a base perfeita para explorar a Toscana Brasileira. Localizado a ~1,5 km da Pedra do Baú, oferece **5 chalés** temáticos em meio à Mata Atlântica:
 
 - **Domo Colmeia**: experiência geodésica para casais, 30 m², TV Smart, deck
 - **Cabana Ametista**: lareira, aquecedor e varanda com vista — pet friendly
@@ -135,6 +135,6 @@ O inverno (junho a agosto) é a época mais atmosférica — frio, vinhos e lare
 
 ## Conclusão
 
-São Bento do Sapucaí merece o título de Toscana Brasileira: vinhos de altitude, azeite artesanal, queijos da Mantiqueira, gastronomia slow food e paisagens que tiram o fôlego. Tudo isso a menos de 3 horas de São Paulo. **Reserve seu chalé no Refúgio da Pedra** e mergulhe na experiência da Toscana Brasileira!
+São Bento do Sapucaí merece o título de Toscana Brasileira: vinhos de altitude, azeite artesanal, queijos da Mantiqueira, gastronomia slow food e paisagens que tiram o fôlego. Tudo isso a menos de 3 horas de São Paulo. **Reserve seu chalé no Refúgio da Pedra SP** e mergulhe na experiência da Toscana Brasileira!
 
 *Veja também: [Gastronomia em São Bento do Sapucaí](/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/) | [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/)*

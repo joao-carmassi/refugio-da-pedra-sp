@@ -136,6 +136,6 @@ Não para a maioria das pessoas. O mal de altitude (soroche) geralmente começa 
 
 ## Conclusão
 
-A altitude de **~1.628 metros** é o grande trunfo de Campos do Jordão: frio autêntico, ar puro, araucárias e paisagens serranas. Combine com uma visita a São Bento do Sapucaí (~880 m) e sinta a diferença que a altitude faz. **Reserve seu chalé no Refúgio da Pedra** e explore a Mantiqueira em todas as altitudes!
+A altitude de **~1.628 metros** é o grande trunfo de Campos do Jordão: frio autêntico, ar puro, araucárias e paisagens serranas. Combine com uma visita a São Bento do Sapucaí (~880 m) e sinta a diferença que a altitude faz. **Reserve seu chalé no Refúgio da Pedra SP** e explore a Mantiqueira em todas as altitudes!
 
 *Veja também: [Quando Faz Frio em Campos do Jordão](/blog/quando-faz-frio-em-campos-do-jordao-temperaturas-mes-a-mes/) | [Altitude da Pedra do Baú](/blog/qual-a-altitude-da-pedra-do-bau-e-de-sao-bento-do-sapucai/)*

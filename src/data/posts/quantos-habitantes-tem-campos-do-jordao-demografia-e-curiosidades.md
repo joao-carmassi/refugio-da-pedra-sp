@@ -118,6 +118,6 @@ A cidade recebe mais de 3 milhões de visitantes por ano, com pico de movimento 
 
 ## Conclusão
 
-Campos do Jordão pode ter apenas ~52 mil moradores, mas sua capacidade de encantar milhões é inegável. É uma cidade pequena com alma grande — perfeita para quem busca frio, cultura e gastronomia. **Hospede-se no Refúgio da Pedra** em São Bento do Sapucaí e conheça Campos do Jordão num bate-volta inesquecível!
+Campos do Jordão pode ter apenas ~52 mil moradores, mas sua capacidade de encantar milhões é inegável. É uma cidade pequena com alma grande — perfeita para quem busca frio, cultura e gastronomia. **Hospede-se no Refúgio da Pedra SP** em São Bento do Sapucaí e conheça Campos do Jordão num bate-volta inesquecível!
 
 *Veja também: [O Que Fazer em Campos do Jordão](/blog/o-que-fazer-em-campos-do-jordao-guia-completo-de-atividades/) | [Altitude de Campos do Jordão](/blog/qual-a-altitude-de-campos-do-jordao-dados-e-curiosidades/)*

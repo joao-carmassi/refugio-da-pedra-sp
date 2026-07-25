@@ -94,7 +94,7 @@ Conjunto arquitetônico que reproduz uma vila britânica, com lojinhas, cafés e
 
 ## 10. Pedra do Baú (a partir de São Bento)
 
-Embora fique no município vizinho de **São Bento do Sapucaí** (~40 km), a **Pedra do Baú** é frequentemente incluída nos roteiros de quem visita a região. Com 1.964 m de altitude e via ferrata, é a aventura mais épica da Mantiqueira. O **Refúgio da Pedra** é a base ideal para essa experiência.
+Embora fique no município vizinho de **São Bento do Sapucaí** (~40 km), a **Pedra do Baú** é frequentemente incluída nos roteiros de quem visita a região. Com 1.964 m de altitude e via ferrata, é a aventura mais épica da Mantiqueira. O **Refúgio da Pedra SP** é a base ideal para essa experiência.
 
 ## 11. Bosque do Silêncio
 
@@ -137,6 +137,6 @@ Capivari (ruas e comércio), Ducha de Prata e Palácio Boa Vista são gratuitos.
 
 ## Conclusão
 
-Os pontos turísticos de Campos do Jordão são variados e encantadores. De mirantes a museus, de jardins a chocolaterias, cada esquina surpreende. **Hospede-se no Refúgio da Pedra** em São Bento do Sapucaí, combine aventura na Pedra do Baú com cultura em Campos do Jordão e viva o melhor da Serra da Mantiqueira!
+Os pontos turísticos de Campos do Jordão são variados e encantadores. De mirantes a museus, de jardins a chocolaterias, cada esquina surpreende. **Hospede-se no Refúgio da Pedra SP** em São Bento do Sapucaí, combine aventura na Pedra do Baú com cultura em Campos do Jordão e viva o melhor da Serra da Mantiqueira!
 
 *Veja também: [O Que Fazer em Campos do Jordão](/blog/o-que-fazer-em-campos-do-jordao-guia-completo-de-atividades/) | [Trilhas em Campos do Jordão](/blog/trilhas-em-campos-do-jordao-guia-completo-para-caminhadas-na-serra/)*

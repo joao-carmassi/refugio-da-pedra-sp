@@ -21,7 +21,7 @@ const PROPRIETARIOS: {
   bio: string;
 } = {
   nome: 'Daniel e Marcia',
-  cargo: 'Anfitriões do Refúgio da Pedra',
+  cargo: 'Anfitriões do Refúgio da Pedra SP',
   bio: '',
 };
 
@@ -64,10 +64,10 @@ function SobrePage(): React.ReactNode {
         <div className='prose dark:prose-invert max-w-none space-y-8 text-muted-foreground leading-relaxed'>
           <div className='space-y-4'>
             <h2 className='text-xl md:text-2xl text-foreground'>
-              Como o Refúgio da Pedra começou
+              Como o Refúgio da Pedra SP começou
             </h2>
             <p>
-              O Refúgio da Pedra nasceu em 2018 de uma vontade simples: viver
+              O Refúgio da Pedra SP nasceu em 2018 de uma vontade simples: viver
               mais perto da serra e compartilhar esse lugar com quem também
               precisa desacelerar. Foi em São Bento do Sapucaí, entre neblina,
               pedras centenárias e o cheiro de eucalipto molhado, que trocamos a
@@ -146,7 +146,7 @@ function SobrePage(): React.ReactNode {
               Procuramos manter a vegetação nativa, usar os recursos da
               propriedade com consciência e respeitar o ritmo da montanha, que
               muda de temperatura e de humor várias vezes ao dia. Não
-              construímos o Refúgio da Pedra para ser grande — construímos para
+              construímos o Refúgio da Pedra SP para ser grande — construímos para
               que ele continuasse de pé, do jeito que é, daqui a vinte anos.
             </p>
           </div>
@@ -175,7 +175,7 @@ function SobrePage(): React.ReactNode {
               , tira dúvidas pelo WhatsApp e é recebido por gente que gosta
               genuinamente de receber.
               É assim que gostaríamos de ser recebidos também — e é esse o
-              Refúgio da Pedra que convidamos você a conhecer, aqui em São Bento
+              Refúgio da Pedra SP que convidamos você a conhecer, aqui em São Bento
               do Sapucaí.{' '}
               <Link
                 className='underline underline-offset-4 hover:text-foreground'

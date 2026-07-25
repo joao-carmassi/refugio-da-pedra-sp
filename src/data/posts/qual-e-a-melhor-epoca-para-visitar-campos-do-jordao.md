@@ -120,7 +120,7 @@ O verão em Campos do Jordão é diferente do verão litorâneo:
 
 ## Conexão com São Bento do Sapucaí
 
-Estando a **aprox. 40 km de São Bento do Sapucaí**, Campos do Jordão é um complemento perfeito para quem se hospeda no Refúgio da Pedra. A melhor estratégia é usar São Bento como base para trilhas e natureza, e reservar um dia para o circuito gastronômico e cultural de Campos do Jordão.
+Estando a **aprox. 40 km de São Bento do Sapucaí**, Campos do Jordão é um complemento perfeito para quem se hospeda no Refúgio da Pedra SP. A melhor estratégia é usar São Bento como base para trilhas e natureza, e reservar um dia para o circuito gastronômico e cultural de Campos do Jordão.
 
 ## FAQ
 
@@ -135,6 +135,6 @@ A baixa temporada vai de janeiro a março e em novembro. Nessas épocas, hospeda
 
 ## Conclusão
 
-Não existe época ruim para visitar Campos do Jordão — existe a **época certa para o seu perfil**. Seja no frio de julho com fondue e festival, ou na primavera com trilhas e flores, a Serra da Mantiqueira sempre recompensa. **Hospede-se no Refúgio da Pedra** e combine o melhor dos dois destinos!
+Não existe época ruim para visitar Campos do Jordão — existe a **época certa para o seu perfil**. Seja no frio de julho com fondue e festival, ou na primavera com trilhas e flores, a Serra da Mantiqueira sempre recompensa. **Hospede-se no Refúgio da Pedra SP** e combine o melhor dos dois destinos!
 
 *Veja também: [Quando Faz Frio em Campos do Jordão](/blog/quando-faz-frio-em-campos-do-jordao-temperaturas-mes-a-mes/) | [Altitude de Campos do Jordão](/blog/qual-a-altitude-de-campos-do-jordao-dados-e-curiosidades/)*

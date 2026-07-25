@@ -91,7 +91,7 @@ A Mantiqueira vai além das paisagens: combina **degustação de vinhos e azeite
 Da Suíça Brasileira (Campos do Jordão, 1.628 m) ao refúgio de Monte Verde (1.555 m), passando pela Toscana Brasileira (São Bento do Sapucaí) e pelo pico das Agulhas Negras (2.791 m em Itatiaia), a serra cobre todos os perfis de viajante ao longo de mais de 500 km.
 
 ### 4. Infraestrutura de Hospedagem
-A oferta de hospedagem na Mantiqueira vai de hotéis sofisticados em Campos do Jordão a chalés privativos como o **Refúgio da Pedra** em São Bento do Sapucaí. Na Canastra, as opções se concentram em São Roque de Minas, com perfil mais rústico.
+A oferta de hospedagem na Mantiqueira vai de hotéis sofisticados em Campos do Jordão a chalés privativos como o **Refúgio da Pedra SP** em São Bento do Sapucaí. Na Canastra, as opções se concentram em São Roque de Minas, com perfil mais rústico.
 
 ### 5. Clima e Conforto
 A Mantiqueira é agradável o ano inteiro. No inverno, frio delicioso com lareira e fondue. No verão, cachoeiras e temperaturas amenas na altitude. A Canastra pode ser muito quente e seca na estiagem.
@@ -114,10 +114,10 @@ A Mantiqueira é muito mais perto: São Bento do Sapucaí fica a ~185 km (~2h30)
 A Mantiqueira. Além da gastronomia serrana (truta, fondue), oferece enoturismo (vinhos de altitude), azeite artesanal e restaurantes de slow food. A Canastra é referência no queijo artesanal.
 
 ### Qual serra é melhor para casais?
-A Mantiqueira, por combinar hospedagem de charme (chalés com lareira), gastronomia romântica e trilhas para todos os níveis. O Refúgio da Pedra, em São Bento, é ideal para casais.
+A Mantiqueira, por combinar hospedagem de charme (chalés com lareira), gastronomia romântica e trilhas para todos os níveis. O Refúgio da Pedra SP, em São Bento, é ideal para casais.
 
 ## Conclusão
 
-Ambas as serras são espetaculares, mas a **Serra da Mantiqueira** é a escolha mais completa para a maioria dos viajantes: mais perto de São Paulo, mais diversa em experiências e com infraestrutura superior de hospedagem e gastronomia. **Escolha o Refúgio da Pedra como base** e explore o melhor da Mantiqueira!
+Ambas as serras são espetaculares, mas a **Serra da Mantiqueira** é a escolha mais completa para a maioria dos viajantes: mais perto de São Paulo, mais diversa em experiências e com infraestrutura superior de hospedagem e gastronomia. **Escolha o Refúgio da Pedra SP como base** e explore o melhor da Mantiqueira!
 
 *Veja também: [O Que Fazer na Serra da Mantiqueira](/blog/o-que-fazer-na-serra-da-mantiqueira-guia-completo-de-experiencias/) | [São Bento do Sapucaí: Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/)*

@@ -26,7 +26,7 @@ const Cta = () => {
           </div>
           <div className='w-full shrink-0 p-4 md:p-8 lg:p-16 lg:w-1/2 space-y-3 md:space-y-6'>
             <h3 className='text-xl tracking-tight md:text-3xl lg:text-4xl'>
-              Garanta sua experiência no Refúgio da Pedra
+              Garanta sua experiência no Refúgio da Pedra SP
             </h3>
             <p className='text-muted-foreground lg:text-lg'>
               Reserve agora seu chalé e viva momentos inesquecíveis em meio à

@@ -120,7 +120,7 @@ Reserve hospedagem com antecedência para qualquer evento, especialmente:
 - **Fins de semana de junho a agosto**: mínimo 30 dias antes
 - **Réveillon**: mínimo 90 dias antes
 
-O **Refúgio da Pedra** em São Bento do Sapucaí (~40 km) é uma alternativa estratégica: chalés em meio à natureza, longe do movimento intenso de Campos do Jordão, mas perto o suficiente para aproveitar os eventos com um bate-volta.
+O **Refúgio da Pedra SP** em São Bento do Sapucaí (~40 km) é uma alternativa estratégica: chalés em meio à natureza, longe do movimento intenso de Campos do Jordão, mas perto o suficiente para aproveitar os eventos com um bate-volta.
 
 ## FAQ
 
@@ -135,6 +135,6 @@ Há eventos gratuitos e pagos. Os concertos no Auditório Claudio Santoro geralm
 
 ## Conclusão
 
-Campos do Jordão é uma cidade de eventos o ano todo — mas o inverno, com o Festival de Inverno e a temporada gastronômica, é imbatível. **Hospede-se no Refúgio da Pedra** e combine os eventos de Campos do Jordão com a tranquilidade e aventura de São Bento do Sapucaí!
+Campos do Jordão é uma cidade de eventos o ano todo — mas o inverno, com o Festival de Inverno e a temporada gastronômica, é imbatível. **Hospede-se no Refúgio da Pedra SP** e combine os eventos de Campos do Jordão com a tranquilidade e aventura de São Bento do Sapucaí!
 
 *Veja também: [Festas e Eventos em São Bento do Sapucaí](/blog/festas-e-eventos-tradicionais-em-sao-bento-do-sapucai-guia-completo/) | [O Que Fazer em Campos do Jordão](/blog/o-que-fazer-em-campos-do-jordao-guia-completo-de-atividades/)*

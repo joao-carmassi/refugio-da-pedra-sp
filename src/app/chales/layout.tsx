@@ -16,7 +16,7 @@ const ogImage = {
   url: '/assets/refugio/geral/refugio-1.webp',
   width: 1620,
   height: 1080,
-  alt: 'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+  alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
 };
 
 /**
@@ -30,7 +30,7 @@ export function generateMetadata() {
   return {
     title: 'Chalés em São Bento do Sapucaí',
     description:
-      'Conheça os chalés, cabanas e domos do Refúgio da Pedra em São Bento do Sapucaí. Acomodações únicas em meio à natureza da Serra da Mantiqueira.',
+      'Conheça os chalés, cabanas e domos do Refúgio da Pedra SP em São Bento do Sapucaí. Acomodações únicas em meio à natureza da Serra da Mantiqueira.',
     keywords: [
       'chalés',
       'cabanas',
@@ -40,10 +40,10 @@ export function generateMetadata() {
       'Serra da Mantiqueira',
     ],
     openGraph: {
-      title: 'Acomodações - Refúgio da Pedra',
+      title: 'Acomodações - Refúgio da Pedra SP',
       description:
         'Chalés, cabanas e domos em meio à natureza em São Bento do Sapucaí.',
-      siteName: 'Refúgio da Pedra',
+      siteName: 'Refúgio da Pedra SP',
       type: 'website',
       url: pageUrl,
       images: [ogImage],
@@ -58,9 +58,9 @@ const jsonLd: WithContext<ItemList> = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   '@id': `${pageUrl}#acomodacoes`,
-  name: 'Acomodações - Pousada Refúgio da Pedra',
+  name: 'Acomodações - Pousada Refúgio da Pedra SP',
   description:
-    'Chalés, cabanas e domos da Pousada Refúgio da Pedra em São Bento do Sapucaí.',
+    'Chalés, cabanas e domos da Pousada Refúgio da Pedra SP em São Bento do Sapucaí.',
   numberOfItems: chales.length,
   itemListOrder: 'https://schema.org/ItemListOrderAscending',
   itemListElement: chales.map((chale, index) => ({

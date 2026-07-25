@@ -21,12 +21,12 @@ export function generateMetadata() {
     // Sem a marca no título: o template do layout raiz já a acrescenta.
     title: 'Política de Privacidade',
     description:
-      'Política de Privacidade do Refúgio da Pedra: como coletamos, usamos e protegemos os dados pessoais de hóspedes, em conformidade com a LGPD (Lei 13.709/2018).',
+      'Política de Privacidade do Refúgio da Pedra SP: como coletamos, usamos e protegemos os dados pessoais de hóspedes, em conformidade com a LGPD (Lei 13.709/2018).',
     keywords: [
       'política de privacidade',
       'LGPD',
       'proteção de dados',
-      'Refúgio da Pedra',
+      'Refúgio da Pedra SP',
     ],
     robots: {
       index: true,
@@ -34,18 +34,18 @@ export function generateMetadata() {
     // `openGraph` de um segmento substitui inteiramente o do layout raiz (não
     // faz deep merge), então `images` e `siteName` precisam ser repetidos aqui.
     openGraph: {
-      title: 'Política de Privacidade - Refúgio da Pedra',
+      title: 'Política de Privacidade - Refúgio da Pedra SP',
       description:
-        'Como o Refúgio da Pedra coleta, usa e protege dados pessoais, em conformidade com a LGPD.',
+        'Como o Refúgio da Pedra SP coleta, usa e protege dados pessoais, em conformidade com a LGPD.',
       type: 'website',
       url: `${siteUrl}/politica-de-privacidade/`,
-      siteName: 'Refúgio da Pedra',
+      siteName: 'Refúgio da Pedra SP',
       images: [
         {
           url: `${siteUrl}/assets/refugio/geral/refugio-1.webp`,
           width: 1620,
           height: 1080,
-          alt: 'Pousada Refúgio da Pedra, em São Bento do Sapucaí, na Serra da Mantiqueira',
+          alt: 'Pousada Refúgio da Pedra SP, em São Bento do Sapucaí, na Serra da Mantiqueira',
         },
       ],
     },
@@ -88,7 +88,7 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
           <div className='space-y-6'>
             <p>
               Esta Política de Privacidade descreve como a{' '}
-              <strong>Pousada Refúgio da Pedra</strong> (CNPJ
+              <strong>Pousada Refúgio da Pedra SP</strong> (CNPJ
               37.224.704/0001-58), localizada no bairro Paiol Grande, em São
               Bento do Sapucaí, na Serra da Mantiqueira, coleta,
               utiliza, armazena e protege os dados pessoais de seus hóspedes e
@@ -123,7 +123,7 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
               reserva, tirar dúvidas sobre a hospedagem, organizar a logística
               da sua estadia (chegada, saída, comodidades) e, quando autorizado
               por você, enviar comunicações sobre promoções ou novidades do
-              Refúgio da Pedra. Não vendemos nem compartilhamos seus dados com
+              Refúgio da Pedra SP. Não vendemos nem compartilhamos seus dados com
               terceiros para fins de publicidade.
             </p>
           </section>
@@ -168,7 +168,7 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
               <p>
                 Para exercer qualquer um dos direitos acima, esclarecer dúvidas
                 sobre esta política ou solicitar a exclusão dos seus dados, fale
-                com a equipe do Refúgio da Pedra pelo WhatsApp{' '}
+                com a equipe do Refúgio da Pedra SP pelo WhatsApp{' '}
                 <a
                   className='text-primary hover:underline'
                   href={`https://api.whatsapp.com/send?phone=${phoneNumber}`}
@@ -183,7 +183,7 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
               <p>
                 Para exercer qualquer um dos direitos acima, esclarecer dúvidas
                 sobre esta política ou solicitar a exclusão dos seus dados, fale
-                com a equipe do Refúgio da Pedra pelo WhatsApp, usando o botão
+                com a equipe do Refúgio da Pedra SP pelo WhatsApp, usando o botão
                 de contato disponível em todas as páginas deste site.
               </p>
             )}

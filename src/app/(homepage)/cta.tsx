@@ -51,7 +51,7 @@ function Cta(): React.ReactNode {
             Reserve seu chalé
           </h2>
           <p className='gsap-reveal-cta opacity-0 text-muted-foreground leading-snug'>
-            Garanta sua estadia no Refúgio da Pedra e viva uma experiência única
+            Garanta sua estadia no Refúgio da Pedra SP e viva uma experiência única
             em meio ao ar livre!
           </p>
           <Button

@@ -14,7 +14,7 @@ Todas as URLs abaixo terminam com barra: o site usa `trailingSlash: true`, entã
 - [Reservar](/reservar/): consulta de disponibilidade e reserva de estadia
 
 ## Sobre
-- [Quem Somos](/sobre/): a história por trás do Refúgio da Pedra
+- [Quem Somos](/sobre/): a história por trás do Refúgio da Pedra SP
 - [Política de Privacidade](/politica-de-privacidade/): tratamento de dados pessoais
 
 ## Blog
@@ -39,7 +39,7 @@ Todas as URLs abaixo terminam com barra: o site usa `trailingSlash: true`, entã
 - [Como Reservar Passeios Guiados em São Bento do Sapucaí](/blog/como-reservar-passeios-guiados-em-sao-bento-do-sapucai/)
 - [Onde Alugar Equipamento para Trilha em São Bento do Sapucaí](/blog/onde-alugar-equipamento-para-trilha-em-sao-bento-do-sapucai/)
 - [Cidades Vizinhas de São Bento do Sapucaí: O Que Visitar na Região](/blog/cidades-vizinhas-de-sao-bento-do-sapucai-o-que-visitar-na-regiao/)
-- [Pousada Perto da Pedra do Baú: Conheça o Refúgio da Pedra](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/)
+- [Pousada Perto da Pedra do Baú: Conheça o Refúgio da Pedra SP](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/)
 
 ### Serra da Mantiqueira
 - [Onde Fica a Serra da Mantiqueira? Localização, Estados e Como Chegar](/blog/onde-fica-a-serra-da-mantiqueira-localizacao-estados-e-como-chegar/)

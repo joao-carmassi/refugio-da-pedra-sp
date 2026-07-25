@@ -119,6 +119,6 @@ Sim. Trincheiras originais de 1932 podem ser encontradas no bairro do Quilombo. 
 
 ## Conclusão
 
-Conhecer a história de São Bento do Sapucaí na Revolução de 1932 é uma experiência que enriquece qualquer visita à cidade. Entre uma trilha e outra, reserve um tempo para o Museu da Revolução e o Restaurante Trincheira — a história viva de Chão Bento merece ser descoberta. **Hospede-se no Refúgio da Pedra** e explore todos os lados dessa cidade surpreendente!
+Conhecer a história de São Bento do Sapucaí na Revolução de 1932 é uma experiência que enriquece qualquer visita à cidade. Entre uma trilha e outra, reserve um tempo para o Museu da Revolução e o Restaurante Trincheira — a história viva de Chão Bento merece ser descoberta. **Hospede-se no Refúgio da Pedra SP** e explore todos os lados dessa cidade surpreendente!
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Festas e Eventos Tradicionais](/blog/festas-e-eventos-tradicionais-em-sao-bento-do-sapucai-guia-completo/)*

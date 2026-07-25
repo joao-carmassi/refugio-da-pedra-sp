@@ -66,7 +66,7 @@ Se você já provou um azeite da **Oliq** ou um vinho da **Villa Santa Maria** d
 
 São Bento do Sapucaí está entre **900 e quase 2.000 metros de altitude**. Essa elevação é o primeiro fator decisivo: tanto a oliveira quanto a videira se beneficiam de temperaturas mais amenas e de noites frias, que retardam a maturação dos frutos e concentram aromas e sabores.
 
-- Os **vinhedos** da Vinícola Villa Santa Maria, parceira do Refúgio da Pedra e integrante da Rota dos Vinhos da Mantiqueira, produzem uvas com maior acidez e complexidade aromática
+- Os **vinhedos** da Vinícola Villa Santa Maria, parceira do Refúgio da Pedra SP e integrante da Rota dos Vinhos da Mantiqueira, produzem uvas com maior acidez e complexidade aromática
 - Os **olivais** da Oliq alcançam até **1.800 m**, onde o frio estimula a floração e a maturação lenta das azeitonas
 
 ### Clima Subtropical de Montanha
@@ -103,7 +103,7 @@ O cultivo de uvas em São Bento do Sapucaí começou há mais de 15 anos e a pro
 
 ### Vinícola Villa Santa Maria
 
-Integrante da **Rota dos Vinhos da Mantiqueira** e parceira do Refúgio da Pedra, a Villa Santa Maria é a referência em enoturismo de São Bento do Sapucaí. Oferece visita guiada pelo vinhedo, degustação harmonizada com sommelier e estrutura gastronômica completa.
+Integrante da **Rota dos Vinhos da Mantiqueira** e parceira do Refúgio da Pedra SP, a Villa Santa Maria é a referência em enoturismo de São Bento do Sapucaí. Oferece visita guiada pelo vinhedo, degustação harmonizada com sommelier e estrutura gastronômica completa.
 
 - **Horário**: Qui–Dom, 11h–17h | **Reserva obrigatória**: (12) 99633-0222
 - Variedades de montanha com acidez e complexidade aromáticas excepcionais
@@ -136,6 +136,6 @@ Sim. Os azeites da Oliq são premiados em competições nacionais e internaciona
 
 ## Conclusão
 
-A altitude, o clima e o solo da Serra da Mantiqueira transformaram São Bento do Sapucaí em uma **"Toscana brasileira"** legítima. Visitar as vinícolas e olivais é uma das experiências mais surpreendentes da região. **Reserve seu chalé no Refúgio da Pedra** e descubra os sabores que brotam aos pés da Pedra do Baú!
+A altitude, o clima e o solo da Serra da Mantiqueira transformaram São Bento do Sapucaí em uma **"Toscana brasileira"** legítima. Visitar as vinícolas e olivais é uma das experiências mais surpreendentes da região. **Reserve seu chalé no Refúgio da Pedra SP** e descubra os sabores que brotam aos pés da Pedra do Baú!
 
 *Veja também: [Bebidas Artesanais de São Bento do Sapucaí](/blog/bebidas-artesanais-de-sao-bento-do-sapucai-vinhos-cervejas-e-mais-da-mantiqueira/) | [Gastronomia em São Bento do Sapucaí](/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/)*

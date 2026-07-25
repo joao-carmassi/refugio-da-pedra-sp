@@ -129,6 +129,6 @@ A Pedra da Mina, com 2.798 metros, na divisa entre São Paulo e Minas Gerais. É
 
 ## Conclusão
 
-Com mais de 500 km de extensão, a Serra da Mantiqueira é um universo de cidades, picos e paisagens. São Bento do Sapucaí, com a Pedra do Baú e o título de Toscana Brasileira, é um dos melhores pontos de partida. **Faça do Refúgio da Pedra seu ponto de partida** para desbravar a Mantiqueira!
+Com mais de 500 km de extensão, a Serra da Mantiqueira é um universo de cidades, picos e paisagens. São Bento do Sapucaí, com a Pedra do Baú e o título de Toscana Brasileira, é um dos melhores pontos de partida. **Faça do Refúgio da Pedra SP seu ponto de partida** para desbravar a Mantiqueira!
 
 *Veja também: [Onde Fica a Serra da Mantiqueira](/blog/onde-fica-a-serra-da-mantiqueira-localizacao-estados-e-como-chegar/) | [História da Serra da Mantiqueira](/blog/historia-da-serra-da-mantiqueira-origem-e-lenda/)*

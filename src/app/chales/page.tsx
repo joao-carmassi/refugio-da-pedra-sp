@@ -144,7 +144,7 @@ function ChalePage(): React.ReactNode {
             Onde ficam os chalés e como escolher o seu
           </h2>
           <p className='text-muted-foreground leading-snug'>
-            O Refúgio da Pedra fica em São Bento do Sapucaí, no interior de São
+            O Refúgio da Pedra SP fica em São Bento do Sapucaí, no interior de São
             Paulo, dentro da Serra da Mantiqueira e a 1,5 km da Pedra do Baú. É
             esse endereço que define o resto: as acomodações foram construídas
             voltadas para as montanhas, e quem se hospeda aqui costuma dividir o

@@ -108,7 +108,7 @@ Cidade paulista que homenageia o escritor. Oferece trilhas, cachoeiras e o charm
 
 ## Dicas para Explorar a Região
 
-- **Base em São Bento**: hospede-se no **Refúgio da Pedra** e faça bate-voltas para as cidades vizinhas
+- **Base em São Bento**: hospede-se no **Refúgio da Pedra SP** e faça bate-voltas para as cidades vizinhas
 - **Estradas serranas**: bonitas mas sinuosas — dirija com cuidado, especialmente à noite
 - **Combine destinos**: São Bento + Santo Antônio do Pinhal é a combinação mais fácil e recompensadora
 - **Abastecimento**: complete o tanque em São Bento ou Campos do Jordão antes de ir para cidades menores
@@ -126,6 +126,6 @@ Campos do Jordão tem a maior infraestrutura turística. Para uma experiência m
 
 ## Conclusão
 
-São Bento do Sapucaí é a porta de entrada para uma das regiões mais encantadoras do Brasil. Com cidades vizinhas que oferecem desde o agito de Campos do Jordão até a paz de Gonçalves, montar um roteiro pela Mantiqueira é garantia de viagem inesquecível. **Reserve no Refúgio da Pedra** e explore toda a serra!
+São Bento do Sapucaí é a porta de entrada para uma das regiões mais encantadoras do Brasil. Com cidades vizinhas que oferecem desde o agito de Campos do Jordão até a paz de Gonçalves, montar um roteiro pela Mantiqueira é garantia de viagem inesquecível. **Reserve no Refúgio da Pedra SP** e explore toda a serra!
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Como Chegar a São Bento do Sapucaí](/blog/distancia-sao-paulo-sao-bento-do-sapucai-rotas-e-dicas/)*

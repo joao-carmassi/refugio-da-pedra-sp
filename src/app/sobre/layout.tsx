@@ -14,7 +14,7 @@ const ogImage = {
   url: '/assets/refugio/geral/refugio-1.webp',
   width: 1620,
   height: 1080,
-  alt: 'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+  alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
 };
 
 /**
@@ -28,7 +28,7 @@ export function generateMetadata() {
   return {
     title: 'Quem Somos',
     description:
-      'Conheça o Refúgio da Pedra: pousada sustentável criada em 2018 ao pé da Pedra do Baú, em São Bento do Sapucaí, com chalés, cabana e domo geodésico na Serra da Mantiqueira.',
+      'Conheça o Refúgio da Pedra SP: pousada sustentável criada em 2018 ao pé da Pedra do Baú, em São Bento do Sapucaí, com chalés, cabana e domo geodésico na Serra da Mantiqueira.',
     keywords: [
       'quem somos',
       'sobre',
@@ -40,10 +40,10 @@ export function generateMetadata() {
       'Serra da Mantiqueira',
     ],
     openGraph: {
-      title: 'Quem Somos - Refúgio da Pedra',
+      title: 'Quem Somos - Refúgio da Pedra SP',
       description:
-        'A história do Refúgio da Pedra, pousada sustentável ao pé da Pedra do Baú, em São Bento do Sapucaí.',
-      siteName: 'Refúgio da Pedra',
+        'A história do Refúgio da Pedra SP, pousada sustentável ao pé da Pedra do Baú, em São Bento do Sapucaí.',
+      siteName: 'Refúgio da Pedra SP',
       type: 'website',
       url: pageUrl,
       images: [ogImage],
@@ -58,9 +58,9 @@ const jsonLd: WithContext<AboutPage> = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
   '@id': `${pageUrl}#webpage`,
-  name: 'Quem Somos - Pousada Refúgio da Pedra',
+  name: 'Quem Somos - Pousada Refúgio da Pedra SP',
   description:
-    'História e proposta da Pousada Refúgio da Pedra: pousada sustentável fundada em 2018 ao pé da Pedra do Baú, em São Bento do Sapucaí, na Serra da Mantiqueira.',
+    'História e proposta da Pousada Refúgio da Pedra SP: pousada sustentável fundada em 2018 ao pé da Pedra do Baú, em São Bento do Sapucaí, na Serra da Mantiqueira.',
   url: pageUrl,
   inLanguage: 'pt-BR',
   isPartOf: { '@id': `${getSiteUrl()}/#website` },

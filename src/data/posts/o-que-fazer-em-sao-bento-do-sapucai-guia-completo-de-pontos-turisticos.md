@@ -137,7 +137,7 @@ Tour pela produção de azeite extravirgem artesanal, com degustação e loja de
 Tour rural com visitas a macieiras, carvalhos, parreiras, morangueiros, framboeseiros e mirtilos. Os ingredientes vão direto do pomar para a cozinha do restaurante **Entre Vilas**, que funciona ao lado — uma das experiências mais originais do interior paulista.
 
 ### Vinícola Villa Santa Maria
-Integrante da **Rota dos Vinhos da Mantiqueira** e parceira do Refúgio da Pedra. Oferece visita guiada pelo vinhedo, degustação harmonizada com sommelier e estrutura gastronômica completa. **Reserva obrigatória**: (12) 99633-0222.
+Integrante da **Rota dos Vinhos da Mantiqueira** e parceira do Refúgio da Pedra SP. Oferece visita guiada pelo vinhedo, degustação harmonizada com sommelier e estrutura gastronômica completa. **Reserva obrigatória**: (12) 99633-0222.
 
 > São Bento do Sapucaí concentra vinícolas, azeite artesanal e gastronomia slow food que renderam à cidade o apelido de **[Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/)** — conheça o circuito completo.
 
@@ -215,7 +215,7 @@ Encerre o dia no **Mirante do Cruzeiro** ou em algum ponto alto com vista para a
 
 #### E Se Eu Tiver Mais Tempo?
 
-Com 2 ou 3 dias, inclua a **subida à Pedra do Baú** pela via ferrata (guia obrigatório), a **[Vinícola Villa Santa Maria e o circuito da Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/)**, o **Viveiro Frutopia** com almoço no **Entre Vilas** e as outras Capelinhas de Mosaico. Hospede-se no **Refúgio da Pedra** — a ~1,5 km da Pedra do Baú — e aproveite com calma.
+Com 2 ou 3 dias, inclua a **subida à Pedra do Baú** pela via ferrata (guia obrigatório), a **[Vinícola Villa Santa Maria e o circuito da Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/)**, o **Viveiro Frutopia** com almoço no **Entre Vilas** e as outras Capelinhas de Mosaico. Hospede-se no **Refúgio da Pedra SP** — a ~1,5 km da Pedra do Baú — e aproveite com calma.
 
 ## O Que Fazer em São Bento do Sapucaí à Noite
 
@@ -223,7 +223,7 @@ São Bento do Sapucaí **não é destino de balada** — e esse é o charme. A n
 
 ### Observação do Céu Estrelado
 
-Com **baixa poluição luminosa**, o céu noturno da Mantiqueira revela constelações, a Via Láctea e planetas visíveis a olho nu. Os melhores pontos são as áreas rurais ao redor da Pedra do Baú e os chalés do **Refúgio da Pedra**, afastados da iluminação urbana.
+Com **baixa poluição luminosa**, o céu noturno da Mantiqueira revela constelações, a Via Láctea e planetas visíveis a olho nu. Os melhores pontos são as áreas rurais ao redor da Pedra do Baú e os chalés do **Refúgio da Pedra SP**, afastados da iluminação urbana.
 
 **Dica**: leve um aplicativo de astronomia no celular. No inverno (jun–ago), o céu fica especialmente limpo.
 
@@ -239,7 +239,7 @@ Alguns restaurantes funcionam à noite nos fins de semana:
 
 ### Fogueira, Lareira e Vinhos no Chalé
 
-A experiência mais clássica das noites serranas. No **Refúgio da Pedra**, os chalés com lareira criam o ambiente perfeito para casais e grupos. Combine com vinhos da **Vinícola Villa Santa Maria** ou da **Raízes do Baú** e queijos artesanais da região.
+A experiência mais clássica das noites serranas. No **Refúgio da Pedra SP**, os chalés com lareira criam o ambiente perfeito para casais e grupos. Combine com vinhos da **Vinícola Villa Santa Maria** ou da **Raízes do Baú** e queijos artesanais da região.
 
 ### Pôr do Sol no Bauzinho
 
@@ -267,4 +267,4 @@ A capelinha do centro (Rua 13 de Maio, 217) é a mais acessível. Para as demais
 
 São Bento do Sapucaí surpreende a cada esquina: da adrenalina das trilhas à contemplação das Capelinhas de Mosaico. **Planeje sua viagem agora** e descubra por que Chão Bento é um dos segredos mais bem guardados da Mantiqueira!
 
-*Veja também: [Trilhas no Complexo da Pedra do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Pousada Perto da Pedra do Baú: Refúgio da Pedra](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/) | [Toscana Brasileira: São Bento do Sapucaí](/blog/toscana-brasileira-sao-bento-do-sapucai/)*
+*Veja também: [Trilhas no Complexo da Pedra do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Pousada Perto da Pedra do Baú: Refúgio da Pedra SP](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/) | [Toscana Brasileira: São Bento do Sapucaí](/blog/toscana-brasileira-sao-bento-do-sapucai/)*

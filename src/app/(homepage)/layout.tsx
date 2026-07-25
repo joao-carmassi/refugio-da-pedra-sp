@@ -14,7 +14,7 @@ const ogImage = {
   url: '/assets/refugio/geral/refugio-1.webp',
   width: 1620,
   height: 1080,
-  alt: 'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+  alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
 };
 
 /**
@@ -28,10 +28,10 @@ export function generateMetadata() {
   const siteUrl = getSiteUrl();
   return {
     title: {
-      absolute: 'Refúgio da Pedra – Chalés e Pousada em São Bento do Sapucaí',
+      absolute: 'Refúgio da Pedra SP – Chalés e Pousada em São Bento do Sapucaí',
     },
     description:
-      'Pousada e chalés em São Bento do Sapucaí, na Serra da Mantiqueira. Vista para as montanhas, natureza e conforto. Reserve sua hospedagem no Refúgio da Pedra.',
+      'Pousada e chalés em São Bento do Sapucaí, na Serra da Mantiqueira. Vista para as montanhas, natureza e conforto. Reserve sua hospedagem no Refúgio da Pedra SP.',
     keywords: [
       'chalés',
       'camping',
@@ -41,12 +41,12 @@ export function generateMetadata() {
       'experiências',
       'Serra da Mantiqueira',
     ],
-    authors: [{ name: 'Pousada Refúgio da Pedra' }],
+    authors: [{ name: 'Pousada Refúgio da Pedra SP' }],
     openGraph: {
-      title: 'Refúgio da Pedra - Chalés e Experiências',
+      title: 'Refúgio da Pedra SP - Chalés e Experiências',
       description:
         'Um paraíso em São Bento do Sapucaí com chalés e experiências na natureza.',
-      siteName: 'Refúgio da Pedra',
+      siteName: 'Refúgio da Pedra SP',
       type: 'website',
       url: `${siteUrl}/`,
       images: [ogImage],
@@ -65,7 +65,7 @@ const jsonLd: WithContext<WebPage> = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   '@id': `${getSiteUrl()}/#webpage`,
-  name: 'Pousada Refúgio da Pedra – Chalés em São Bento do Sapucaí',
+  name: 'Pousada Refúgio da Pedra SP – Chalés em São Bento do Sapucaí',
   description:
     'Complexo de chalés, cabanas e domos em meio à natureza, em São Bento do Sapucaí, na Serra da Mantiqueira.',
   url: pageUrl,
@@ -76,7 +76,7 @@ const jsonLd: WithContext<WebPage> = {
     '@type': 'ImageObject',
     url: `${getSiteUrl()}/assets/refugio/geral/refugio-1.webp`,
     caption:
-      'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo',
+      'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo',
   },
 };
 

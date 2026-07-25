@@ -1,8 +1,8 @@
 ---
-title: 'Pousada Perto da Pedra do Baú: Conheça o Refúgio da Pedra'
+title: 'Pousada Perto da Pedra do Baú: Conheça o Refúgio da Pedra SP'
 date: '2026-05-14'
 description: >-
-  Conheça o Refúgio da Pedra, pousada com chalés a ~1,5 km da Pedra do Baú em
+  Conheça o Refúgio da Pedra SP, pousada com chalés a ~1,5 km da Pedra do Baú em
   São Bento do Sapucaí. Natureza, conforto e aventura para trilheiros, casais e
   famílias.
 tags:
@@ -17,9 +17,9 @@ suggested_tags:
   - Chalés Serra da Mantiqueira
   - Ecoturismo
   - Trilhas Mantiqueira
-meta_title: Pousada Perto da Pedra do Baú | Refúgio da Pedra
+meta_title: Pousada Perto da Pedra do Baú | Refúgio da Pedra SP
 meta_description: >-
-  Refúgio da Pedra: chalés a ~1,5 km da Pedra do Baú em São Bento do Sapucaí.
+  Refúgio da Pedra SP: chalés a ~1,5 km da Pedra do Baú em São Bento do Sapucaí.
   Ideal para trilheiros, casais e famílias. Reserve já!
 focus_keywords:
   - pousada perto da Pedra do Baú
@@ -32,7 +32,7 @@ faq_schema:
   '@type': FAQPage
   mainEntity:
     - '@type': Question
-      name: Qual é a trilha mais fácil saindo do Refúgio da Pedra?
+      name: Qual é a trilha mais fácil saindo do Refúgio da Pedra SP?
       acceptedAnswer:
         '@type': Answer
         text: >-
@@ -40,20 +40,20 @@ faq_schema:
           caminhada com panorama espetacular da Pedra do Baú — indicada para
           iniciantes e famílias.
     - '@type': Question
-      name: Com quanto tempo de antecedência devo reservar o Refúgio da Pedra?
+      name: Com quanto tempo de antecedência devo reservar o Refúgio da Pedra SP?
       acceptedAnswer:
         '@type': Answer
         text: >-
           Mínimo 30 dias em feriados e no inverno serrano (junho a agosto),
           quando a demanda é maior.
 ---
-**O Refúgio da Pedra é a pousada mais próxima da Pedra do Baú**: fica a apenas ~1,5 km do monumento rochoso, em São Bento do Sapucaí, com 5 chalés privativos em meio à Mata Atlântica.
+**O Refúgio da Pedra SP é a pousada mais próxima da Pedra do Baú**: fica a apenas ~1,5 km do monumento rochoso, em São Bento do Sapucaí, com 5 chalés privativos em meio à Mata Atlântica.
 
-Quem busca uma **pousada perto da Pedra do Baú** em São Bento do Sapucaí encontra no Refúgio da Pedra a base perfeita para explorar a Serra da Mantiqueira. A aproximadamente 1,5 km do complexo rochoso mais icônico do interior paulista, o Refúgio da Pedra oferece chalés aconchegantes rodeados de Mata Atlântica e a poucos minutos das melhores trilhas da região.
+Quem busca uma **pousada perto da Pedra do Baú** em São Bento do Sapucaí encontra no Refúgio da Pedra SP a base perfeita para explorar a Serra da Mantiqueira. A aproximadamente 1,5 km do complexo rochoso mais icônico do interior paulista, o Refúgio da Pedra SP oferece chalés aconchegantes rodeados de Mata Atlântica e a poucos minutos das melhores trilhas da região.
 
 São Bento do Sapucaí fica a cerca de 200 km de São Paulo e é reconhecida como estância climática pela sua altitude amena na Serra da Mantiqueira. Hospedar aqui significa acordar com ar puro, paisagens verdes e a Pedra do Baú quase na janela — perfeito para trilheiros, casais e famílias que querem explorar sem perder tempo na estrada.
 
-## Por que Escolher o Refúgio da Pedra
+## Por que Escolher o Refúgio da Pedra SP
 
 - **Localização privilegiada**: a ~1,5 km da Pedra do Baú, cartão-postal de São Bento
 - **Chalés confortáveis** em meio à natureza, com estrutura para relaxar após as trilhas
@@ -91,7 +91,7 @@ São Bento do Sapucaí está a **aprox. 200 km de São Paulo** e **aprox. 40 km 
 
 ## FAQ
 
-### Qual é a trilha mais fácil saindo do Refúgio da Pedra?
+### Qual é a trilha mais fácil saindo do Refúgio da Pedra SP?
 A Trilha do Bauzinho é a mais tranquila: 2,5 km ida e volta (~30 minutos), com panorama espetacular da Pedra do Baú — indicada para iniciantes e famílias. Leve lanterna para a volta.
 
 ### Com quanto tempo de antecedência devo reservar?
@@ -99,6 +99,6 @@ Mínimo 30 dias em feriados e no inverno serrano (junho a agosto), quando a dema
 
 ## Conclusão
 
-Com localização imbatível e chalés que unem conforto e natureza, o Refúgio da Pedra é o ponto de partida ideal para viver o melhor de São Bento do Sapucaí. **Reserve seu chalé agora** e acorde com a Pedra do Baú como vizinha!
+Com localização imbatível e chalés que unem conforto e natureza, o Refúgio da Pedra SP é o ponto de partida ideal para viver o melhor de São Bento do Sapucaí. **Reserve seu chalé agora** e acorde com a Pedra do Baú como vizinha!
 
 *Veja também: [Trilhas do Complexo do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/)*

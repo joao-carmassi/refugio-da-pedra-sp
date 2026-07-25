@@ -123,7 +123,7 @@ Artesanato em lã, malhas, cerâmicas e produtos regionais podem ser encontrados
 
 ## Combine com São Bento do Sapucaí
 
-Campos do Jordão está a apenas **~40 km de São Bento do Sapucaí**. Hospede-se no Refúgio da Pedra, aproveite as trilhas da Pedra do Baú e reserve dias alternados para conhecer Campos do Jordão — o melhor dos dois mundos na Mantiqueira.
+Campos do Jordão está a apenas **~40 km de São Bento do Sapucaí**. Hospede-se no Refúgio da Pedra SP, aproveite as trilhas da Pedra do Baú e reserve dias alternados para conhecer Campos do Jordão — o melhor dos dois mundos na Mantiqueira.
 
 ## FAQ
 
@@ -138,6 +138,6 @@ Carro facilita muito, especialmente para o Horto Florestal e o Pico do Itapeva. 
 
 ## Conclusão
 
-Campos do Jordão oferece atividades para todos os gostos — da aventura radical ao passeio contemplativo. **Planeje seu roteiro** e aproveite cada minuto na Suíça Brasileira. **Reserve seu chalé no Refúgio da Pedra** e combine trilhas em São Bento do Sapucaí com a cultura e gastronomia de Campos do Jordão!
+Campos do Jordão oferece atividades para todos os gostos — da aventura radical ao passeio contemplativo. **Planeje seu roteiro** e aproveite cada minuto na Suíça Brasileira. **Reserve seu chalé no Refúgio da Pedra SP** e combine trilhas em São Bento do Sapucaí com a cultura e gastronomia de Campos do Jordão!
 
 *Veja também: [Pontos Turísticos de Campos do Jordão](/blog/pontos-turisticos-de-campos-do-jordao-os-12-lugares-imperdiveis/) | [Restaurantes em Campos do Jordão](/blog/restaurantes-em-campos-do-jordao-onde-comer-na-serra-da-mantiqueira/)*

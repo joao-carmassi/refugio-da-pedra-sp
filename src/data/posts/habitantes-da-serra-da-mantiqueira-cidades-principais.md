@@ -111,6 +111,6 @@ Gonçalves (MG), com cerca de 4.000 habitantes, é uma das menores e mais charmo
 
 ## Conclusão
 
-A Serra da Mantiqueira é especial justamente porque suas cidades mais encantadoras são também as mais compactas. São Bento do Sapucaí, com ~11.600 habitantes, é o exemplo perfeito de que qualidade de vida e riqueza cultural independem de tamanho. **Conheça o Refúgio da Pedra** e experimente a Mantiqueira de perto!
+A Serra da Mantiqueira é especial justamente porque suas cidades mais encantadoras são também as mais compactas. São Bento do Sapucaí, com ~11.600 habitantes, é o exemplo perfeito de que qualidade de vida e riqueza cultural independem de tamanho. **Conheça o Refúgio da Pedra SP** e experimente a Mantiqueira de perto!
 
 *Veja também: [Extensão e Cidades da Serra da Mantiqueira](/blog/extensao-da-serra-da-mantiqueira-cidades-e-picos/) | [Onde Fica a Serra da Mantiqueira](/blog/onde-fica-a-serra-da-mantiqueira-localizacao-estados-e-como-chegar/)*

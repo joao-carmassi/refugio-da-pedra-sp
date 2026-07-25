@@ -164,7 +164,7 @@ O ano se encerra com o tradicional **Réveillon**: queima de fogos de artifício
 
 O segredo é combinar o evento com uma boa hospedagem reservada com antecedência. Durante o **INDOMIT** e o **Mountain Festival**, os chalés e pousadas da região esgotam com semanas de antecedência. Para os demais eventos, 30 dias costumam ser suficientes — exceto em feriados nacionais.
 
-O **Refúgio da Pedra**, a ~1,5 km da Pedra do Baú, é a base ideal para quem quer viver os eventos sambentistas sem abrir mão do conforto serrano. Reserve seu chalé e garanta a melhor experiência na Serra da Mantiqueira.
+O **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú, é a base ideal para quem quer viver os eventos sambentistas sem abrir mão do conforto serrano. Reserve seu chalé e garanta a melhor experiência na Serra da Mantiqueira.
 
 *Acompanhe a programação oficial em [saobentotur.com.br/eventos](https://saobentotur.com.br/eventos/).*
 

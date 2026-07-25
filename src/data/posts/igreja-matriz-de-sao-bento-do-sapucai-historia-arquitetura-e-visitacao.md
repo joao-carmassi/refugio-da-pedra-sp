@@ -113,6 +113,6 @@ São Bento Abade é o padroeiro da cidade e da igreja. Sua imagem voltou ao alta
 
 ## Conclusão
 
-A Igreja Matriz de São Bento do Sapucaí é muito mais do que um templo religioso — é um monumento vivo da história colonial e cultural da Serra da Mantiqueira. Das paredes de taipa de pilão às imagens trazidas da Itália, cada detalhe conta séculos de devoção e arte. **Hospede-se no Refúgio da Pedra** e inclua a Matriz no seu roteiro!
+A Igreja Matriz de São Bento do Sapucaí é muito mais do que um templo religioso — é um monumento vivo da história colonial e cultural da Serra da Mantiqueira. Das paredes de taipa de pilão às imagens trazidas da Itália, cada detalhe conta séculos de devoção e arte. **Hospede-se no Refúgio da Pedra SP** e inclua a Matriz no seu roteiro!
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Revolução de 1932 em São Bento do Sapucaí](/blog/revolucao-de-1932-sao-bento-do-sapucai/)*

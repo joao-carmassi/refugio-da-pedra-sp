@@ -105,7 +105,7 @@ O título de "lugar mais bonito" vai além do visual:
 - **Identidade cultural forte**: esculturas em jacarandá, oficinas quilombolas e capelinhas de mosaico a céu aberto
 - **Cozinha de raiz e autoral**: truta da Mantiqueira, ingredientes do pomar ao prato e fogão à lenha
 - **Eventos**: FLIPES, Mountain Festival, INDOMIT, Carnaval centenário
-- **Hospedagem**: Refúgio da Pedra, a ~1,5 km da Pedra do Baú
+- **Hospedagem**: Refúgio da Pedra SP, a ~1,5 km da Pedra do Baú
 
 ## FAQ
 
@@ -120,6 +120,6 @@ Sim. O Bauzinho oferece uma trilha curta e fácil com vista privilegiada da Pedr
 
 ## Conclusão
 
-São Bento do Sapucaí tem o que nenhum outro destino da Mantiqueira oferece na mesma proporção: paisagens monumentais, aventura real, gastronomia artesanal e cultura autêntica — tudo em uma cidade compacta e acolhedora. **Reserve seu chalé no Refúgio da Pedra** e viva o cenário mais impressionante da Mantiqueira!
+São Bento do Sapucaí tem o que nenhum outro destino da Mantiqueira oferece na mesma proporção: paisagens monumentais, aventura real, gastronomia artesanal e cultura autêntica — tudo em uma cidade compacta e acolhedora. **Reserve seu chalé no Refúgio da Pedra SP** e viva o cenário mais impressionante da Mantiqueira!
 
 *Veja também: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/)*

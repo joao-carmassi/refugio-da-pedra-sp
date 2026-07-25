@@ -126,6 +126,6 @@ Sim. As chocolaterias funcionam o ano todo e os preços costumam ser melhores fo
 
 ## Conclusão
 
-O chocolate é parte essencial da experiência em Campos do Jordão. Não visite a Serra da Mantiqueira sem provar o **chocolate quente artesanal** e levar trufas para casa. **Hospede-se no Refúgio da Pedra** em São Bento do Sapucaí e reserve um dia para o circuito do chocolate em Capivari — são apenas 40 km de puro prazer serrano!
+O chocolate é parte essencial da experiência em Campos do Jordão. Não visite a Serra da Mantiqueira sem provar o **chocolate quente artesanal** e levar trufas para casa. **Hospede-se no Refúgio da Pedra SP** em São Bento do Sapucaí e reserve um dia para o circuito do chocolate em Capivari — são apenas 40 km de puro prazer serrano!
 
 *Veja também: [Restaurantes em Campos do Jordão](/blog/restaurantes-em-campos-do-jordao-onde-comer-na-serra-da-mantiqueira/) | [Suíça Brasileira: Campos do Jordão](/blog/suica-brasileira-campos-do-jordao/)*

@@ -96,13 +96,11 @@ function Header(): React.ReactNode {
     <>
       <header
         className={cn(
-          'w-full border-b bg-card',
+          // Sem contorno nos dois estados: o cabeçalho funde com a superfície
+          // logo abaixo dele em vez de se anunciar como uma barra.
+          'w-full bg-card',
           morph,
           measured && 'fixed inset-x-0 top-0 z-50',
-          // No topo o cabeçalho não tem contorno: funde com o hero, que usa a
-          // mesma superfície. Compacto ele flutua sobre o conteúdo e precisa da
-          // hairline para o texto não passar colado por baixo.
-          compact ? 'border-border' : 'border-transparent',
         )}
       >
         <div
@@ -150,9 +148,9 @@ function Header(): React.ReactNode {
             <Link
               className={cn(wordmark, morph, 'text-lg', focusRing)}
               href='/'
-              aria-label='Refúgio da Pedra — página inicial'
+              aria-label='Refúgio da Pedra SP — página inicial'
             >
-              Refúgio da Pedra
+              Refúgio da Pedra SP
             </Link>
 
             <Button
@@ -223,9 +221,9 @@ function Header(): React.ReactNode {
                 <Link
                   className={cn(wordmark, 'text-4xl lg:text-5xl', focusRing)}
                   href='/'
-                  aria-label='Refúgio da Pedra — página inicial'
+                  aria-label='Refúgio da Pedra SP — página inicial'
                 >
-                  Refúgio da Pedra
+                  Refúgio da Pedra SP
                 </Link>
                 <p className={cn('mt-2.5 text-xs', locality)}>
                   São Bento do Sapucaí · Serra da Mantiqueira
@@ -262,9 +260,9 @@ function Header(): React.ReactNode {
               <Link
                 className={cn(wordmark, 'text-xl', focusRing)}
                 href='/'
-                aria-label='Refúgio da Pedra — página inicial'
+                aria-label='Refúgio da Pedra SP — página inicial'
               >
-                Refúgio da Pedra
+                Refúgio da Pedra SP
               </Link>
 
               <ul className='ml-auto flex items-center gap-6'>

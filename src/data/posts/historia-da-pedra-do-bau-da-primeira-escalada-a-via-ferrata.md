@@ -137,6 +137,6 @@ Sim. Inaugurado em janeiro de 1947, foi um dos primeiros abrigos de montanha do 
 
 ## Conclusão
 
-A Pedra do Baú é muito mais do que uma formação rochosa — é uma história de sonhos, coragem e resiliência. Dos irmãos Cortez escalando de mãos nuas à via ferrata que hoje leva milhares ao cume, cada degrau carrega décadas de história. **Hospede-se no Refúgio da Pedra** e viva essa história de perto!
+A Pedra do Baú é muito mais do que uma formação rochosa — é uma história de sonhos, coragem e resiliência. Dos irmãos Cortez escalando de mãos nuas à via ferrata que hoje leva milhares ao cume, cada degrau carrega décadas de história. **Hospede-se no Refúgio da Pedra SP** e viva essa história de perto!
 
 *Veja também: [Trilhas do Complexo do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Onde Alugar Equipamento para Trilha](/blog/onde-alugar-equipamento-para-trilha-em-sao-bento-do-sapucai/)*

@@ -210,11 +210,11 @@ A gastronomia de São Bento do Sapucaí é influenciada pela tradição mineira 
 
 [Guia completo de gastronomia e restaurantes em São Bento do Sapucaí](/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra)
 
-## Onde Ficar em São Bento do Sapucaí: Refúgio da Pedra
+## Onde Ficar em São Bento do Sapucaí: Refúgio da Pedra SP
 
 Para quem busca estar no coração da natureza, a menos de 5 minutos da Pedra do Baú, com toda a estrutura para descansar de verdade — sem mão dupla no corredor de hotel, sem vizinhos de parede —, o **Refúgio da Pedra SP** é a escolha certa.
 
-Localizado na zona rural de São Bento do Sapucaí, o Refúgio da Pedra oferece **5 chalés exclusivos** imersos na Mata Atlântica da Serra da Mantiqueira. Cada chalé foi projetado para uma experiência diferente:
+Localizado na zona rural de São Bento do Sapucaí, o Refúgio da Pedra SP oferece **5 chalés exclusivos** imersos na Mata Atlântica da Serra da Mantiqueira. Cada chalé foi projetado para uma experiência diferente:
 
 - **Domo Colmeia**: experiência geodésica única para casais, com deck privativo e visão de céu estrelado
 - **Cabana Ametista**: lareira, aquecedor e varanda com vista para a mata — pet friendly
@@ -224,7 +224,7 @@ Localizado na zona rural de São Bento do Sapucaí, o Refúgio da Pedra oferece 
 
 Todos os chalés estão em meio à natureza, com privacidade total, silêncio de serra e a Pedra do Baú visível a partir da propriedade. É o ponto de partida perfeito para qualquer trilha do Complexo da Pedra do Baú.
 
-[Conheça os chalés do Refúgio da Pedra](/chales) | [O Refúgio da Pedra: a pousada mais próxima da Pedra do Baú](/blog/refugio-da-pedra-a-pousada-mais-proxima-da-pedra-do-bau) | [Hospedagem na Serra da Mantiqueira no Refúgio da Pedra](/blog/serra-da-mantiqueira-hospedagem-no-refugio-da-pedra-em-sao-bento-do-sapucai)
+[Conheça os chalés do Refúgio da Pedra SP](/chales) | [O Refúgio da Pedra SP: a pousada mais próxima da Pedra do Baú](/blog/refugio-da-pedra-a-pousada-mais-proxima-da-pedra-do-bau) | [Hospedagem na Serra da Mantiqueira no Refúgio da Pedra SP](/blog/serra-da-mantiqueira-hospedagem-no-refugio-da-pedra-em-sao-bento-do-sapucai)
 
 ## São Bento do Sapucaí x Campos do Jordão: Qual Escolher?
 

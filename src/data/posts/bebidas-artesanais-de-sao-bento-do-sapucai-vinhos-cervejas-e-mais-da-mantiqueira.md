@@ -70,7 +70,7 @@ A altitude da Serra da Mantiqueira — entre 1.000 e quase 2.000 metros — cria
 ## Principais Produtores
 
 ### Vinícola Villa Santa Maria
-Integrante da **Rota dos Vinhos da Mantiqueira**, a Villa Santa Maria é a vinícola parceira do Refúgio da Pedra: oferece visita guiada pelo vinhedo, degustação harmonizada com sommelier e estrutura gastronômica completa — a experiência de enoturismo mais recomendada da região.
+Integrante da **Rota dos Vinhos da Mantiqueira**, a Villa Santa Maria é a vinícola parceira do Refúgio da Pedra SP: oferece visita guiada pelo vinhedo, degustação harmonizada com sommelier e estrutura gastronômica completa — a experiência de enoturismo mais recomendada da região.
 
 - **Horário**: Qui–Dom, 11h–17h | **Reserva obrigatória**: (12) 99633-0222 — [fonte](https://www.rotadosvinhosdamantiqueira.com.br/vinicolas)
 

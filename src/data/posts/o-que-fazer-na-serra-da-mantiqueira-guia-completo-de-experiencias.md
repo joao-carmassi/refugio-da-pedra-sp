@@ -138,7 +138,7 @@ A Mantiqueira é a única cadeia montanhosa do Sudeste com **enoturismo consolid
 
 ## Onde Se Hospedar
 
-Para uma experiência completa na Mantiqueira, use **São Bento do Sapucaí** como base: é central, autêntica e menos lotada que Campos do Jordão. O **Refúgio da Pedra** oferece 5 chalés privativos a ~1,5 km da Pedra do Baú — perfeito para explorar a serra.
+Para uma experiência completa na Mantiqueira, use **São Bento do Sapucaí** como base: é central, autêntica e menos lotada que Campos do Jordão. O **Refúgio da Pedra SP** oferece 5 chalés privativos a ~1,5 km da Pedra do Baú — perfeito para explorar a serra.
 
 ## FAQ
 
@@ -153,6 +153,6 @@ Sim. Trilhas fáceis (Bauzinho), cachoeiras estruturadas (Amores), vinícolas co
 
 ## Conclusão
 
-A Serra da Mantiqueira é o destino mais completo do Sudeste: aventura, gastronomia, cultura e natureza em um só lugar. São Bento do Sapucaí concentra o melhor da serra em uma cidade compacta e acolhedora. **Faça do Refúgio da Pedra sua base** e descubra tudo o que a Mantiqueira oferece!
+A Serra da Mantiqueira é o destino mais completo do Sudeste: aventura, gastronomia, cultura e natureza em um só lugar. São Bento do Sapucaí concentra o melhor da serra em uma cidade compacta e acolhedora. **Faça do Refúgio da Pedra SP sua base** e descubra tudo o que a Mantiqueira oferece!
 
 *Veja também: [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/) | [Toscana Brasileira](/blog/toscana-brasileira-sao-bento-do-sapucai/) | [Hospedagem na Mantiqueira](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/)*

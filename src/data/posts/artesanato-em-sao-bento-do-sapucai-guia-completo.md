@@ -207,7 +207,7 @@ Monte um **roteiro de meio dia** visitando os principais espaços:
 | 14h | Arteben – Casa do Artesão | 60+ artesãos num só espaço, no centro |
 | 15h30 | Capelinhas de Mosaico | Rua 13 de Maio, 217 — entrada livre |
 
-**Base ideal**: Refúgio da Pedra — ponto de partida perfeito para explorar o melhor de São Bento.
+**Base ideal**: Refúgio da Pedra SP — ponto de partida perfeito para explorar o melhor de São Bento.
 
 ---
 
@@ -235,6 +235,6 @@ A Arteben – Casa do Artesão é uma associação fundada em 2004 que reúne ma
 
 ## Conclusão
 
-O artesanato de São Bento do Sapucaí vai muito além de um único ateliê — é um universo vivo que se espalha pelos bairros e pelo centro da cidade. Do Ateliê Ditinho Joana ao Arte no Quilombo e à Arteben, cada espaço conta uma história diferente da mesma Chão Bento. **Hospede-se no Refúgio da Pedra** e dedique um dia completo a explorar essa face cultural e encantadora da Serra da Mantiqueira!
+O artesanato de São Bento do Sapucaí vai muito além de um único ateliê — é um universo vivo que se espalha pelos bairros e pelo centro da cidade. Do Ateliê Ditinho Joana ao Arte no Quilombo e à Arteben, cada espaço conta uma história diferente da mesma Chão Bento. **Hospede-se no Refúgio da Pedra SP** e dedique um dia completo a explorar essa face cultural e encantadora da Serra da Mantiqueira!
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Revolução de 1932 em São Bento do Sapucaí](/blog/revolucao-de-1932-sao-bento-do-sapucai/)*

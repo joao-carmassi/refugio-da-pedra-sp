@@ -100,7 +100,7 @@ A gastronomia serrana combina perfeitamente com cerveja artesanal:
 
 ## Conexão com São Bento do Sapucaí
 
-Enquanto Campos do Jordão é referência em **cerveja artesanal**, São Bento do Sapucaí se destaca em **vinhos e azeites** artesanais. A Vinícola Villa Santa Maria (parceira do Refúgio da Pedra) e a Oliq Azeite completam o circuito de bebidas e produtos artesanais da Serra da Mantiqueira.
+Enquanto Campos do Jordão é referência em **cerveja artesanal**, São Bento do Sapucaí se destaca em **vinhos e azeites** artesanais. A Vinícola Villa Santa Maria (parceira do Refúgio da Pedra SP) e a Oliq Azeite completam o circuito de bebidas e produtos artesanais da Serra da Mantiqueira.
 
 Juntos, os dois destinos oferecem:
 - Cervejarias artesanais em Campos do Jordão
@@ -129,6 +129,6 @@ Sim. As cervejarias e bares funcionam durante todo o ano. No inverno, há cervej
 
 ## Conclusão
 
-Campos do Jordão é paraíso para amantes de cerveja artesanal. Da Baden Baden às cervejarias independentes, cada gole no frio da serra tem sabor especial. **Hospede-se no Refúgio da Pedra** e combine a cerveja de Campos com os vinhos de São Bento do Sapucaí — o circuito completo de bebidas da Mantiqueira!
+Campos do Jordão é paraíso para amantes de cerveja artesanal. Da Baden Baden às cervejarias independentes, cada gole no frio da serra tem sabor especial. **Hospede-se no Refúgio da Pedra SP** e combine a cerveja de Campos com os vinhos de São Bento do Sapucaí — o circuito completo de bebidas da Mantiqueira!
 
 *Veja também: [Bebidas Artesanais de São Bento do Sapucaí](/blog/bebidas-artesanais-de-sao-bento-do-sapucai-vinhos-cervejas-e-mais-da-mantiqueira/) | [Restaurantes em Campos do Jordão](/blog/restaurantes-em-campos-do-jordao-onde-comer-na-serra-da-mantiqueira/)*

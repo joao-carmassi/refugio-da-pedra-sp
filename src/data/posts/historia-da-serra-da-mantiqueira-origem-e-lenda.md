@@ -122,6 +122,6 @@ A formação remonta à ruptura do supercontinente Gondwana. Colisões entre pla
 
 ## Conclusão
 
-A Serra da Mantiqueira carrega milhões de anos de história geológica, séculos de exploração humana e uma lenda tupi que explica a abundância de suas águas. Conhecer essa história enriquece qualquer visita à região. **Planeje sua estadia no Refúgio da Pedra**, em São Bento do Sapucaí, e conecte-se com a serra que chora!
+A Serra da Mantiqueira carrega milhões de anos de história geológica, séculos de exploração humana e uma lenda tupi que explica a abundância de suas águas. Conhecer essa história enriquece qualquer visita à região. **Planeje sua estadia no Refúgio da Pedra SP**, em São Bento do Sapucaí, e conecte-se com a serra que chora!
 
 *Veja também: [Onde Fica a Serra da Mantiqueira](/blog/onde-fica-a-serra-da-mantiqueira-localizacao-estados-e-como-chegar/) | [O Que Fazer na Serra da Mantiqueira](/blog/o-que-fazer-na-serra-da-mantiqueira-guia-completo-de-experiencias/)*

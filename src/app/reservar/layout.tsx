@@ -14,7 +14,7 @@ const ogImage = {
   url: '/assets/refugio/geral/refugio-1.webp',
   width: 1620,
   height: 1080,
-  alt: 'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+  alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
 };
 
 /**
@@ -28,7 +28,7 @@ export function generateMetadata() {
   return {
     title: 'Reservar',
     description:
-      'Reserve sua estadia no Refúgio da Pedra em São Bento do Sapucaí. Chalés, cabanas e domos disponíveis para uma experiência única na natureza da Serra da Mantiqueira.',
+      'Reserve sua estadia no Refúgio da Pedra SP em São Bento do Sapucaí. Chalés, cabanas e domos disponíveis para uma experiência única na natureza da Serra da Mantiqueira.',
     keywords: [
       'reservar',
       'reserva',
@@ -38,10 +38,10 @@ export function generateMetadata() {
       'Serra da Mantiqueira',
     ],
     openGraph: {
-      title: 'Reservar - Refúgio da Pedra',
+      title: 'Reservar - Refúgio da Pedra SP',
       description:
-        'Reserve sua estadia no Refúgio da Pedra. Chalés, cabanas e domos na Serra da Mantiqueira.',
-      siteName: 'Refúgio da Pedra',
+        'Reserve sua estadia no Refúgio da Pedra SP. Chalés, cabanas e domos na Serra da Mantiqueira.',
+      siteName: 'Refúgio da Pedra SP',
       type: 'website',
       url: pageUrl,
       images: [ogImage],
@@ -60,9 +60,9 @@ const jsonLd: WithContext<WebPage> = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
   '@id': `${pageUrl}#webpage`,
-  name: 'Reservar - Pousada Refúgio da Pedra',
+  name: 'Reservar - Pousada Refúgio da Pedra SP',
   description:
-    'Solicite a reserva da sua estadia na Pousada Refúgio da Pedra, em São Bento do Sapucaí, na Serra da Mantiqueira.',
+    'Solicite a reserva da sua estadia na Pousada Refúgio da Pedra SP, em São Bento do Sapucaí, na Serra da Mantiqueira.',
   url: pageUrl,
   inLanguage: 'pt-BR',
   isPartOf: { '@id': `${getSiteUrl()}/#website` },

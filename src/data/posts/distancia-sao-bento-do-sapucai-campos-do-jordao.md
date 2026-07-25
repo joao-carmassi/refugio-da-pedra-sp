@@ -99,7 +99,7 @@ A maioria dos viajantes que conhece São Bento do Sapucaí faz pelo menos um bat
 - **Dia 2**: Subida à Pedra do Baú (com guia), Vinícola Villa Santa Maria à tarde
 - **Dia 3**: Bate-volta a Campos do Jordão — Pico do Itapeva, Capivari, compras e fondue
 
-Base ideal: **Refúgio da Pedra**, a ~1,5 km da Pedra do Baú — perfeito para explorar os dois destinos.
+Base ideal: **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú — perfeito para explorar os dois destinos.
 
 ## Dicas Práticas
 
@@ -121,6 +121,6 @@ A SP-173, passando por Santo Antônio do Pinhal. Estrada serrana, bonita, mas co
 
 ## Conclusão
 
-Com apenas **~40 km** separando São Bento do Sapucaí de Campos do Jordão, combinar os dois destinos é a receita perfeita para uma viagem completa na Serra da Mantiqueira. **Hospede-se no Refúgio da Pedra** e tenha o melhor dos dois mundos!
+Com apenas **~40 km** separando São Bento do Sapucaí de Campos do Jordão, combinar os dois destinos é a receita perfeita para uma viagem completa na Serra da Mantiqueira. **Hospede-se no Refúgio da Pedra SP** e tenha o melhor dos dois mundos!
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Cidades Vizinhas de São Bento do Sapucaí](/blog/cidades-vizinhas-de-sao-bento-do-sapucai-o-que-visitar-na-regiao/)*

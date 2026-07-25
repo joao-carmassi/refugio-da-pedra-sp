@@ -8,7 +8,7 @@ function ReservarPage(): React.ReactNode {
           Renderizada no HTML do servidor, sem opacity-0, para não bloquear o LCP. */}
       <Image
         src='/assets/refugio/geral/refugio-1.webp'
-        alt='Vista da pousada Refúgio da Pedra, em São Bento do Sapucaí, na Serra da Mantiqueira'
+        alt='Vista da pousada Refúgio da Pedra SP, em São Bento do Sapucaí, na Serra da Mantiqueira'
         fill
         priority
         quality={75}

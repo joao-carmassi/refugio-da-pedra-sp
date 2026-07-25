@@ -146,6 +146,6 @@ A Trilha do Bauzinho é a mais tranquila e pode ser feita sem guia. Para quem qu
 
 ## Conclusão
 
-Reservar um passeio guiado em São Bento do Sapucaí é simples: um WhatsApp para a Baú Ecoturismo, escolha de data e pronto. Não perca a oportunidade de viver as melhores aventuras da Mantiqueira com segurança e informação. **Hospede-se no Refúgio da Pedra** e tenha tudo a poucos minutos!
+Reservar um passeio guiado em São Bento do Sapucaí é simples: um WhatsApp para a Baú Ecoturismo, escolha de data e pronto. Não perca a oportunidade de viver as melhores aventuras da Mantiqueira com segurança e informação. **Hospede-se no Refúgio da Pedra SP** e tenha tudo a poucos minutos!
 
 *Veja também: [Onde Alugar Equipamento para Trilha](/blog/onde-alugar-equipamento-para-trilha-em-sao-bento-do-sapucai/) | [Trilhas em São Bento do Sapucaí](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/)*

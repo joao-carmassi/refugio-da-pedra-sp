@@ -101,7 +101,7 @@ Durante os **cinco dias de carnaval**, São Bento do Sapucaí oferece uma progra
 
 ## Onde Se Hospedar
 
-O **Refúgio da Pedra**, a ~1,5 km da Pedra do Baú, é a base ideal para curtir o carnaval e ainda aproveitar as trilhas durante o dia. Reserve seu chalé e combine folia com aventura na serra.
+O **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú, é a base ideal para curtir o carnaval e ainda aproveitar as trilhas durante o dia. Reserve seu chalé e combine folia com aventura na serra.
 
 ## FAQ
 
@@ -116,6 +116,6 @@ Sim. Reserve com pelo menos 60 dias de antecedência. Durante o carnaval, chalé
 
 ## Conclusão
 
-O Carnaval de São Bento do Sapucaí é para quem valoriza tradição, cultura e um ambiente familiar. A Família Zé Pereira, os Bonecões Gigantes e o espírito acolhedor de Chão Bento fazem dessa festa uma experiência única na Mantiqueira. **Reserve no Refúgio da Pedra** e venha foligar na serra!
+O Carnaval de São Bento do Sapucaí é para quem valoriza tradição, cultura e um ambiente familiar. A Família Zé Pereira, os Bonecões Gigantes e o espírito acolhedor de Chão Bento fazem dessa festa uma experiência única na Mantiqueira. **Reserve no Refúgio da Pedra SP** e venha foligar na serra!
 
 *Veja também: [Festas e Eventos Tradicionais de São Bento do Sapucaí](/blog/festas-e-eventos-tradicionais-em-sao-bento-do-sapucai-guia-completo/) | [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/)*

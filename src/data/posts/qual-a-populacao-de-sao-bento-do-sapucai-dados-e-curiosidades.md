@@ -123,6 +123,6 @@ Sim. Apesar de pequena, a cidade conta com pousadas, chalés, restaurantes, agê
 
 ## Conclusão
 
-Com pouco mais de 11 mil habitantes, São Bento do Sapucaí prova que tamanho não é documento quando se trata de riqueza natural e cultural. A cidade é um tesouro escondido na Mantiqueira — e quem descobre, sempre volta. **Reserve no Refúgio da Pedra** e conheça o charme de Chão Bento!
+Com pouco mais de 11 mil habitantes, São Bento do Sapucaí prova que tamanho não é documento quando se trata de riqueza natural e cultural. A cidade é um tesouro escondido na Mantiqueira — e quem descobre, sempre volta. **Reserve no Refúgio da Pedra SP** e conheça o charme de Chão Bento!
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [História da Pedra do Baú](/blog/historia-da-pedra-do-bau-da-primeira-escalada-a-via-ferrata/)*

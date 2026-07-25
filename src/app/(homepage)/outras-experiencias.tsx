@@ -52,7 +52,7 @@ const OutrasExperiencias = () => {
             Complete sua experiência
           </h2>
           <p className='gsap-reveal-outras-experiencias opacity-0 text-muted-foreground leading-snug'>
-            Garanta sua reserva no Refúgio da Pedra e viva os melhores passeios
+            Garanta sua reserva no Refúgio da Pedra SP e viva os melhores passeios
             de São Bento do Sapucaí!
           </p>
           <div className='gsap-reveal-outras-experiencias opacity-0 space-y-3'>

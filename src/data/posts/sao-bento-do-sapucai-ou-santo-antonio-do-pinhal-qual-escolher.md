@@ -74,7 +74,7 @@ Na hora de escolher um destino na Serra da Mantiqueira, a dúvida entre **São B
 | **Cultura** | Capelinhas de Mosaico, Ditinho Joana, Casa Miguel Reale, Museu Revolução 1932 | Ateliês de artesanato, Cristo Redentor |
 | **Eventos** | INDOMIT, Mountain Festival, FLIPES, Carnaval centenário | Eventos menores |
 | **Vida noturna** | Tranquila (céu estrelado, fogueira) | Tranquila |
-| **Hospedagem** | Chalés em meio à natureza (Refúgio da Pedra) | Pousadas intimistas |
+| **Hospedagem** | Chalés em meio à natureza (Refúgio da Pedra SP) | Pousadas intimistas |
 | **População** | ~11.684 habitantes | ~7.000 habitantes |
 | **Distância de SP** | ~200 km | ~185 km |
 
@@ -109,7 +109,7 @@ Santo Antônio do Pinhal é encantadora e merece crédito:
 
 ## A Melhor Estratégia: Combine as Duas
 
-Como ficam a apenas **~25 km** (~30 min de carro), o ideal é **incluir as duas** no roteiro. Use São Bento do Sapucaí como base (com hospedagem no **Refúgio da Pedra**) e faça um bate-volta a Santo Antônio do Pinhal para conhecer o Pico Agudo.
+Como ficam a apenas **~25 km** (~30 min de carro), o ideal é **incluir as duas** no roteiro. Use São Bento do Sapucaí como base (com hospedagem no **Refúgio da Pedra SP**) e faça um bate-volta a Santo Antônio do Pinhal para conhecer o Pico Agudo.
 
 ## FAQ
 
@@ -124,6 +124,6 @@ São Bento do Sapucaí, pela Pedra do Baú (via ferrata), diversidade de trilhas
 
 ## Conclusão
 
-Entre São Bento do Sapucaí e Santo Antônio do Pinhal, São Bento leva vantagem em praticamente todos os critérios: trilhas, gastronomia, cultura, enoturismo e eventos. Mas a melhor escolha é **visitar as duas**. **Hospede-se no Refúgio da Pedra** e explore o melhor da Mantiqueira!
+Entre São Bento do Sapucaí e Santo Antônio do Pinhal, São Bento leva vantagem em praticamente todos os critérios: trilhas, gastronomia, cultura, enoturismo e eventos. Mas a melhor escolha é **visitar as duas**. **Hospede-se no Refúgio da Pedra SP** e explore o melhor da Mantiqueira!
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Cidades Vizinhas de São Bento do Sapucaí](/blog/cidades-vizinhas-de-sao-bento-do-sapucai-o-que-visitar-na-regiao/)*

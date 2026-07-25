@@ -38,9 +38,9 @@ export async function generateMetadata({
     // `chales/layout.tsx` define um `title` string, o que consome o template
     // do layout raiz — por isso a string completa é montada aqui.
     title: {
-      absolute: `${chale.nome} — Chalé em São Bento do Sapucaí | Refúgio da Pedra`,
+      absolute: `${chale.nome} — Chalé em São Bento do Sapucaí | Refúgio da Pedra SP`,
     },
-    description: `${chale.nome} no Refúgio da Pedra: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho} em São Bento do Sapucaí, na Serra da Mantiqueira.`,
+    description: `${chale.nome} no Refúgio da Pedra SP: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho} em São Bento do Sapucaí, na Serra da Mantiqueira.`,
     keywords: [
       chale.nome,
       'chalé',
@@ -50,16 +50,16 @@ export async function generateMetadata({
       ...chale.comodidades,
     ],
     openGraph: {
-      title: `${chale.nome} - Refúgio da Pedra`,
-      description: `${chale.nome} no Refúgio da Pedra: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}.`,
-      siteName: 'Refúgio da Pedra',
+      title: `${chale.nome} - Refúgio da Pedra SP`,
+      description: `${chale.nome} no Refúgio da Pedra SP: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}.`,
+      siteName: 'Refúgio da Pedra SP',
       type: 'website',
       url: pageUrl,
       images: [
         {
           // Arquivo estático: servido exatamente assim, sem barra final.
           url: `${siteUrl}/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`,
-          alt: `${chale.nome} — Refúgio da Pedra, São Bento do Sapucaí`,
+          alt: `${chale.nome} — Refúgio da Pedra SP, São Bento do Sapucaí`,
         },
       ],
     },
@@ -89,7 +89,7 @@ async function ChaleLayout({
     '@type': 'Room',
     '@id': `${pageUrl}#acomodacao`,
     name: chale.nome,
-    description: `${chale.nome} no Refúgio da Pedra: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho}.`,
+    description: `${chale.nome} no Refúgio da Pedra SP: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho}.`,
     url: pageUrl,
     // Arquivos estáticos: servidos exatamente assim, sem barra final.
     image: chale.banner.map(

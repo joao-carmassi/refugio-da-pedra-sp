@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: MetadataProps) {
     openGraph: {
       title: post.meta_title,
       description: post.meta_description,
-      siteName: 'Refúgio da Pedra',
+      siteName: 'Refúgio da Pedra SP',
       locale: 'pt_BR',
       type: 'article',
       url: `${siteUrl}/blog/${postSlug}/`,
