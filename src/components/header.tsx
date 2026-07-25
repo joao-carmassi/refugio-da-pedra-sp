@@ -34,6 +34,11 @@ const locality =
 const morph =
   'transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none';
 
+// Mesma curva do cabeçalho, um pouco mais curta: meio segundo num painel de
+// três itens lê como lentidão.
+const panel =
+  'transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none';
+
 // Alturas do bloco desktop. Precisam ser explícitas porque as duas camadas do
 // crossfade são absolutas — nenhuma delas dita a altura do cabeçalho.
 // Expandida = wordmark + localidade + fila de links; compacta = altura do CTA.
@@ -43,6 +48,11 @@ function Header(): React.ReactNode {
   const [isOpen, setIsOpen] = useState(false);
   const [compact, setCompact] = useState(false);
   const shellRef = useRef<HTMLDivElement>(null);
+  // Espelha `isOpen` para o medidor, que é montado uma vez só e não pode
+  // capturar o estado por closure.
+  const openRef = useRef(false);
+  // eslint-disable-next-line react-hooks/refs
+  openRef.current = isOpen;
   // Altura do masthead expandido. O cabeçalho é `fixed`; este valor alimenta um
   // spacer no fluxo, para que a página nunca suba quando ele encolhe.
   const [expandedHeight, setExpandedHeight] = useState(0);
@@ -55,17 +65,28 @@ function Header(): React.ReactNode {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Só mede enquanto o cabeçalho está expandido; no estado compacto o último
-  // valor medido é mantido (é a altura que o spacer precisa reservar).
+  // O spacer tem que ficar travado na altura expandida. Medir de forma contínua
+  // (ResizeObserver) faria ele acompanhar a animação e empurrar o hero para
+  // baixo na volta ao topo — por isso só se mede em repouso: na montagem, ao
+  // redimensionar a janela e no fim da transição de volta ao topo.
   useEffect(() => {
     const el = shellRef.current;
-    if (compact || !el) return;
-    const observer = new ResizeObserver(() =>
-      setExpandedHeight(el.offsetHeight),
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [compact]);
+    if (!el) return;
+    const measure = () => {
+      // Fora do topo o cabeçalho está compacto, e com o painel mobile aberto
+      // ele está mais alto do que o spacer deve reservar: nos dois casos a
+      // medida seria errada.
+      if (window.scrollY !== 0 || openRef.current) return;
+      setExpandedHeight(el.offsetHeight);
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    el.addEventListener('transitionend', measure);
+    return () => {
+      window.removeEventListener('resize', measure);
+      el.removeEventListener('transitionend', measure);
+    };
+  }, []);
 
   // Antes da primeira medição o cabeçalho fica no fluxo (é o que o servidor
   // renderiza), então não há salto entre HTML estático e hidratação.
@@ -105,7 +126,25 @@ function Header(): React.ReactNode {
               size={'icon'}
               variant='ghost'
             >
-              {isOpen ? <X /> : <Menu />}
+              {/* Os dois ícones ficam empilhados na mesma célula e giram um
+                  para dentro do outro — trocar o nó direto daria um corte seco
+                  ao lado de um painel que abre suave. */}
+              <span className='grid place-items-center'>
+                <Menu
+                  className={cn(
+                    'col-start-1 row-start-1',
+                    panel,
+                    isOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100',
+                  )}
+                />
+                <X
+                  className={cn(
+                    'col-start-1 row-start-1',
+                    panel,
+                    isOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0',
+                  )}
+                />
+              </span>
             </Button>
 
             <Link
@@ -160,7 +199,11 @@ function Header(): React.ReactNode {
                 compact ? 'top-1/2 -translate-y-1/2' : 'top-0 lg:top-1.5',
               )}
             >
-              <Button effect={'ringHover'} className='rounded-full px-5' asChild>
+              <Button
+                effect={'ringHover'}
+                className='rounded-full px-5'
+                asChild
+              >
                 <Link href='/reservar/'>Reservar</Link>
               </Button>
             </div>
@@ -178,11 +221,7 @@ function Header(): React.ReactNode {
             >
               <div className='text-center'>
                 <Link
-                  className={cn(
-                    wordmark,
-                    'text-4xl lg:text-5xl',
-                    focusRing,
-                  )}
+                  className={cn(wordmark, 'text-4xl lg:text-5xl', focusRing)}
                   href='/'
                   aria-label='Refúgio da Pedra — página inicial'
                 >
@@ -242,26 +281,50 @@ function Header(): React.ReactNode {
 
           {/* ---------- Painel de navegação mobile ---------- */}
           {/* Disclosure simples: desce dentro do próprio cabeçalho, o que
-              dispensa o scrim que o dropdown antigo exigia. */}
-          {isOpen ? (
-            <ul
-              id='menu-principal'
-              className='mt-3 border-t border-border pt-1 md:hidden'
-            >
-              {links.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    // min-h-11 = 44px de alvo de toque (WCAG 2.5.8).
-                    className={`flex min-h-11 items-center text-base font-medium text-foreground ${focusRing}`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          ) : null}
+              dispensa o scrim que o dropdown antigo exigia.
+              O painel fica sempre montado e abre por `grid-template-rows`
+              (0fr → 1fr): é a única forma de animar altura automática sem
+              fixar um `max-height` chutado, que ou corta o conteúdo ou faz a
+              transição parecer atrasada. O `overflow-hidden` fica no wrapper
+              para a hairline superior também ser recortada quando fechado. */}
+          <div
+            className={cn(
+              'grid overflow-hidden md:hidden',
+              panel,
+              isOpen ? 'mt-3 grid-rows-[1fr]' : 'mt-0 grid-rows-[0fr]',
+            )}
+          >
+            {/* A célula do grid não pode ter borda nem padding: com a trilha em
+                0fr eles continuam ocupando altura (a hairline chegaria a
+                aparecer no cabeçalho fechado). Ficam no `<ul>`, que transborda
+                e é recortado pelo wrapper. */}
+            <div className='min-h-0'>
+              <ul
+                id='menu-principal'
+                inert={!isOpen}
+                className={cn(
+                  'border-t border-border pt-1',
+                  panel,
+                  isOpen
+                    ? 'translate-y-0 opacity-100'
+                    : '-translate-y-2 opacity-0',
+                )}
+              >
+                {links.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      // min-h-11 = 44px de alvo de toque (WCAG 2.5.8).
+                      className={`flex min-h-11 items-center text-base font-medium text-foreground ${focusRing}`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </header>
 
