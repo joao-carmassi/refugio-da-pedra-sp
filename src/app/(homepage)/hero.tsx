@@ -16,7 +16,8 @@ const msgText =
 // 18135816175245692937), the same feature id used by the map embed in mapa.tsx.
 // A `maps/search/?api=1&query=<texto>` link is a text search and can resolve to
 // the wrong place; a CID link always opens this listing.
-const googleReviewsLink = 'https://www.google.com/maps?cid=18135816175245692937';
+const googleReviewsLink =
+  'https://www.google.com/maps?cid=18135816175245692937';
 
 const bookingLink =
   'https://www.booking.com/hotel/br/chale-refugio-da-pedra-sp-sao-bento-do-sapucai-sp.pt-br.html';
@@ -62,8 +63,8 @@ const Hero = () => {
               data-reveal
               className='text-4xl font-semibold tracking-tight text-pretty text-foreground md:text-5xl lg:text-6xl'
             >
-              <span className='text-primary'>Pousada Refúgio da Pedra SP</span> —
-              Chalés em São Bento do Sapucaí, na Serra da Mantiqueira
+              <span className='text-primary'>Pousada Refúgio da Pedra SP</span>{' '}
+              — Chalés em São Bento do Sapucaí, na Serra da Mantiqueira
             </h1>
 
             <p

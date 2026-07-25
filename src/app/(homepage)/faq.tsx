@@ -1,12 +1,6 @@
 'use client';
 
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
-import {
   Coffee,
   Calendar,
   Wifi,
@@ -15,130 +9,118 @@ import {
   Car,
   Bed,
   MountainSnow,
+  type LucideIcon,
 } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
-import { gsap } from 'gsap';
-import { getAlt } from '@/lib/image-alt';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useReveal } from '@/hooks/use-reveal';
 
-const questions = [
+type Comodidade = {
+  Icon: LucideIcon;
+  /** Nome da comodidade — a coluna fixa da ficha. */
+  label: string;
+  /** Resposta curta, o dado em si. */
+  value: string;
+  /** Detalhe opcional, em corpo menor. */
+  nota?: string;
+};
+
+// Os oito fatos são exatamente os do acordeão anterior — só mudaram de forma:
+// de pergunta e resposta para ficha técnica.
+const comodidades: Comodidade[] = [
   {
-    question: 'O café da manhã está incluso?',
-    Icon: <Coffee size={18} />,
-    answer:
-      'O nosso café utiliza produtos típicos da região, como pães caseiros, bolos, pão de queijo, geleias, manteiga, leite, café, sucos e frutas. O hóspede pode consumi-lo no deck principal, desfrutando de uma bela vista das montanhas.',
+    Icon: Coffee,
+    label: 'Café da manhã',
+    value: 'Incluso na reserva',
+    nota: 'Produtos típicos da região: pães caseiros, bolos, pão de queijo, geleias, manteiga, leite, café, sucos e frutas. Servido no deck principal, com vista para as montanhas.',
   },
   {
-    question: 'Qual o horário de check-in e check-out?',
-    Icon: <Calendar size={18} />,
-    answer:
-      'O seu descanso começa às 14h (check-in), e se estende até o meio-dia (check-out), para que você possa aproveitar cada minuto da estadia.',
+    Icon: Calendar,
+    label: 'Check-in · check-out',
+    value: '14h · 12h',
+    nota: 'O descanso começa às 14h e se estende até o meio-dia, para você aproveitar cada minuto da estadia.',
   },
   {
-    question: 'A pousada tem Wi-Fi gratuito?',
-    Icon: <Wifi size={18} />,
-    answer:
-      'Fique sempre conectado! Nossos chalés oferecem Wi-Fi gratuito para que você possa compartilhar os melhores momentos da sua estadia, sem perder o contato com o mundo',
+    Icon: Wifi,
+    label: 'Wi-Fi',
+    value: 'Gratuito em todos os chalés',
+    nota: 'Para compartilhar os melhores momentos da estadia sem perder o contato com o mundo.',
   },
   {
-    question: 'A pousada aceita pets?',
-    Icon: <PawPrint size={18} />,
-    answer:
-      'Entendemos que os animais de estimação são parte da família. Por isso, somos pet-friendly e ficaremos felizes em receber o seu amigo peludo durante a sua estadia.',
+    Icon: PawPrint,
+    label: 'Pets',
+    value: 'Aceitos — somos pet-friendly',
+    nota: 'Animais de estimação são parte da família. Ficaremos felizes em receber o seu amigo peludo.',
   },
   {
-    question: 'A pousada aceita crianças?',
-    Icon: <Baby size={18} />,
-    answer:
-      'Valorizamos a presença das famílias em nosso espaço. Para tornar a experiência ainda mais acessível, permitimos a estadia de crianças a partir dos 13 anos. É nossa maneira de compartilhar momentos especiais com todos, oferecendo conforto e praticidade para a família.',
+    Icon: Baby,
+    label: 'Crianças',
+    value: 'A partir de 13 anos',
+    nota: 'É a nossa maneira de manter a experiência confortável e prática para toda a família.',
   },
   {
-    question: 'Tem estacionamento privativo?',
-    Icon: <Car size={18} />,
-    answer:
-      'Cada chalé possui seu próprio estacionamento individual, oferecendo segurança e praticidade durante toda a sua hospedagem.',
+    Icon: Car,
+    label: 'Estacionamento',
+    value: 'Privativo, um por chalé',
+    nota: 'Cada chalé tem a própria vaga individual — segurança e praticidade durante toda a hospedagem.',
   },
   {
-    question: 'Roupas de cama e toalhas estão inclusas?',
-    Icon: <Bed size={18} />,
-    answer:
-      'Roupas de cama macias, toalhas de banho e rosto estão incluidas na reserva sempre prontas para o seu conforto.',
+    Icon: Bed,
+    label: 'Roupa de cama e toalhas',
+    value: 'Inclusas na reserva',
+    nota: 'Roupas de cama macias e toalhas de banho e rosto, sempre prontas para o seu conforto.',
   },
   {
-    question: 'Qual a distância até a Pedra do Baú?',
-    Icon: <MountainSnow size={18} />,
-    answer:
-      'A apenas 1,5 km da Pedra do Baú, nossa pousada esta localizada no local perfeito para quem gosta de explorar a natureza.',
+    Icon: MountainSnow,
+    label: 'Pedra do Baú',
+    value: '1,5 km da pousada',
+    nota: 'O ponto de partida certo para quem gosta de explorar a natureza da Serra da Mantiqueira.',
   },
 ];
 
-// Mesma foto exibida como item 28 da galeria da homepage. O alt vem do mapa
-// único, então as duas ocorrências nunca divergem.
-const cafeDaManhaSrc = '/assets/refugio/geral/refugio-28.webp';
-
+/**
+ * Ficha técnica tabular (F3): uma linha por comodidade, réguas de 1px entre
+ * elas. Substitui o acordeão — a página já usa esse gesto em
+ * `outras-experiencias`, onde ele tem função (trocar a foto).
+ */
 const Faq = () => {
-  const [open, setOpen] = useState<number>(0);
-
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo(
-      '.gsap-reveal-faq',
-      { y: 60, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        ease: 'power2.out',
-        stagger: 0.15,
-        scrollTrigger: { trigger: '#faq-anchor', start: 'top 80%' },
-      },
-    );
-  }, []);
+  const scope = useReveal<HTMLElement>();
 
   return (
-    <section id='faq-anchor' className='py-6 lg:py-12'>
+    <section id='faq-anchor' ref={scope} className='py-12 md:py-20'>
       <div className='container'>
-        <div className='flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-12'>
-          <div className='gsap-reveal-faq opacity-0 flex-1'>
-            <Image
-              width={724}
-              height={804}
-              className='rounded-2xl md:rounded-3xl object-cover aspect-9/12 xl:aspect-9/10'
-              src={cafeDaManhaSrc}
-              alt={getAlt(cafeDaManhaSrc, 'Café da manhã')}
-            />
-          </div>
-          <div className='flex flex-col gap-3 md:gap-6 text-start flex-1'>
-            <h2 className='gsap-reveal-faq opacity-0 text-2xl tracking-tight md:text-4xl lg:text-5xl'>
-              Comodidades:
-            </h2>
-            <p className='gsap-reveal-faq opacity-0 text-muted-foreground leading-snug'>
-              Nos importamos com o seu conforto, por isso sua reserva inclui uma
-              série de comodidades para tornar sua estadia ainda mais especial:
-            </p>
-            <div className='gsap-reveal-faq opacity-0 space-y-3'>
-              {questions.map((item, i) => (
-                <Accordion
-                  type='single'
-                  collapsible
-                  className='w-full bg-card'
-                  key={i}
-                  value={open.toString()}
-                  onValueChange={(value) => setOpen(Number(value))}
-                >
-                  <AccordionItem value={`${i}`}>
-                    <AccordionTrigger className='items-center'>
-                      {item.Icon} {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent>{item.answer}</AccordionContent>
-                  </AccordionItem>
-                </Accordion>
-              ))}
+        <header data-reveal className='max-w-3xl'>
+          <h2 className='text-2xl tracking-tight text-pretty md:text-4xl lg:text-5xl'>
+            Comodidades
+          </h2>
+          <p className='mt-3 max-w-prose text-muted-foreground'>
+            Nos importamos com o seu conforto, por isso toda reserva no Refúgio
+            da Pedra SP já inclui o que está nesta ficha.
+          </p>
+        </header>
+
+        <dl data-reveal className='mt-8 md:mt-12'>
+          {comodidades.map(({ Icon, label, value, nota }) => (
+            <div
+              key={label}
+              className='grid grid-cols-1 gap-x-10 gap-y-1 border-t border-border py-4 last:border-b md:grid-cols-[16rem_1fr] md:py-5'
+            >
+              <dt className='flex items-center gap-2 font-medium'>
+                <Icon
+                  aria-hidden='true'
+                  className='size-4 shrink-0 text-muted-foreground'
+                />
+                {label}
+              </dt>
+              <dd>
+                <p className='tabular-nums'>{value}</p>
+                {nota ? (
+                  <p className='mt-1 max-w-prose text-sm text-muted-foreground'>
+                    {nota}
+                  </p>
+                ) : null}
+              </dd>
             </div>
-          </div>
-        </div>
+          ))}
+        </dl>
       </div>
     </section>
   );
