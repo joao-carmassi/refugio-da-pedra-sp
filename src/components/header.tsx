@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
@@ -119,7 +120,10 @@ function Header(): React.ReactNode {
           className={cn(
             'container',
             morph,
-            compact ? 'py-2 md:py-3.5' : 'pt-4 pb-3 md:pt-7 md:pb-4',
+            // Padding simétrico no estado expandido: com pb menor que pt o
+            // brasão (centrado na altura do bloco) lia como desalinhado para
+            // baixo dentro da caixa do cabeçalho.
+            compact ? 'py-2 md:py-3.5' : 'py-4 md:py-7',
           )}
         >
           {/* ---------- Mobile: hambúrguer · wordmark · CTA ---------- */}
@@ -164,14 +168,26 @@ function Header(): React.ReactNode {
               Refúgio da Pedra SP
             </Link>
 
-            <Button
-              effect={'ringHover'}
-              size={'sm'}
-              className='h-11 shrink-0 rounded-full px-4'
-              asChild
+            {/* Com o painel aberto o CTA passa para dentro dele. O nó continua
+                montado e só perde opacidade: removê-lo do fluxo faria o
+                wordmark deslizar para a direita a cada abertura do menu. */}
+            <div
+              inert={isOpen}
+              className={cn(
+                'shrink-0',
+                panel,
+                isOpen ? 'pointer-events-none opacity-0' : 'opacity-100',
+              )}
             >
-              <Link href='/reservar/'>Reservar</Link>
-            </Button>
+              <Button
+                effect={'ringHover'}
+                size={'sm'}
+                className='h-11 rounded-full px-4'
+                asChild
+              >
+                <Link href='/reservar/'>Reservar</Link>
+              </Button>
+            </div>
           </div>
 
           {/* Linha de localidade: colapsa por `max-h`/`opacity` para a altura do
@@ -199,13 +215,14 @@ function Header(): React.ReactNode {
               compact ? 'h-9' : deskHeight,
             )}
           >
-            {/* CTA é o único elemento compartilhado: ele não some, só desliza
-                para o centro vertical da barra. */}
+            {/* CTA é o único elemento compartilhado: não some entre os estados,
+                só acompanha a altura do bloco. Fica no centro vertical nos dois
+                — expandido, é o contrapeso do brasão à esquerda; encostá-lo no
+                topo deixava a linha dos dois tortas. */}
             <div
               className={cn(
-                'absolute right-0 z-10',
+                'absolute top-1/2 right-0 z-10 -translate-y-1/2',
                 morph,
-                compact ? 'top-1/2 -translate-y-1/2' : 'top-0 lg:top-1.5',
               )}
             >
               <Button
@@ -228,6 +245,27 @@ function Header(): React.ReactNode {
                   : 'translate-y-0 opacity-100 blur-0 delay-150',
               )}
             >
+              {/* Brasão à esquerda. Fica dentro da camada masthead de
+                  propósito: some junto com ela no mesmo fade, sem estado
+                  próprio. `aria-hidden` + `tabIndex={-1}` porque o wordmark ao
+                  lado já é o link para a home — dois links idênticos seguidos
+                  só dobrariam o anúncio no leitor de tela. */}
+              <Link
+                href='/'
+                aria-hidden='true'
+                tabIndex={-1}
+                className='absolute top-1/2 left-0 -translate-y-1/2'
+              >
+                <Image
+                  src='/logo.png'
+                  alt=''
+                  width={88}
+                  height={88}
+                  priority
+                  className='size-16 lg:size-[4.5rem]'
+                />
+              </Link>
+
               <div className='text-center'>
                 <Link
                   className={cn(wordmark, 'text-4xl lg:text-5xl', focusRing)}
@@ -308,30 +346,42 @@ function Header(): React.ReactNode {
                 aparecer no cabeçalho fechado). Ficam no `<ul>`, que transborda
                 e é recortado pelo wrapper. */}
             <div className='min-h-0'>
-              <ul
+              <div
                 id='menu-principal'
                 inert={!isOpen}
                 className={cn(
-                  'border-t border-border pt-1',
+                  'border-t border-border pt-1 pb-2',
                   panel,
                   isOpen
                     ? 'translate-y-0 opacity-100'
                     : '-translate-y-2 opacity-0',
                 )}
               >
-                {links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      // min-h-11 = 44px de alvo de toque (WCAG 2.5.8).
-                      className={`flex min-h-11 items-center text-base font-medium text-foreground ${focusRing}`}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+                <ul>
+                  {links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        // min-h-11 = 44px de alvo de toque (WCAG 2.5.8).
+                        className={`flex min-h-11 items-center text-base font-medium text-foreground ${focusRing}`}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <Button
+                  effect={'ringHover'}
+                  className='mx-auto mt-3 flex h-11 w-full max-w-xs rounded-full'
+                  asChild
+                >
+                  <Link href='/reservar/' onClick={() => setIsOpen(false)}>
+                    Reservar
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

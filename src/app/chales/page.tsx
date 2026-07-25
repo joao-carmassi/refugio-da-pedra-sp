@@ -25,8 +25,7 @@ import slugify from 'slugify';
 const EAGER_LOAD_COUNT = 3;
 
 // Grid 3-up: cada card ocupa ~1/3 da largura do container em telas grandes.
-const CARD_SIZES =
-  '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+const CARD_SIZES = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
 
 function ChalePage(): React.ReactNode {
   // Reveal único da página (design.md § Motion): o grid é o único grupo
@@ -145,7 +144,7 @@ function ChalePage(): React.ReactNode {
           })}
         </div>
 
-        <section className='max-w-[68ch] space-y-3 border-t border-border pt-8'>
+        <section className='space-y-3 border-t border-border pt-8'>
           <h2 className='text-xl tracking-tight text-pretty md:text-3xl'>
             Onde ficam os chalés e como escolher o seu
           </h2>
