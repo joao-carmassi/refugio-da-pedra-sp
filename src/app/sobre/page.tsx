@@ -9,6 +9,25 @@ import {
 import { Home } from 'lucide-react';
 import Link from 'next/link';
 
+// Identidade de quem recebe os hóspedes, em um único lugar.
+// Nome e função foram confirmados pelos proprietários.
+// TODO (ainda pendente com os proprietários): sobrenomes, texto de bio e foto.
+// Enquanto `bio` estiver vazia, o parágrafo de bio não é renderizado — nada de
+// placeholder ou espaço quebrado na página publicada. A foto entra aqui como um
+// novo campo assim que for enviada.
+const PROPRIETARIOS: {
+  nome: string;
+  cargo: string;
+  bio: string;
+} = {
+  nome: 'Daniel e Marcia',
+  cargo: 'Anfitriões do Refúgio da Pedra',
+  bio: '',
+};
+
+const temNomeDosProprietarios = PROPRIETARIOS.nome.length > 0;
+const temBioDosProprietarios = PROPRIETARIOS.bio.length > 0;
+
 function SobrePage(): React.ReactNode {
   return (
     <main className='min-h-container bg-card py-6 md:py-12 grid place-items-center animate-in fade-in duration-300 fill-mode-both'>
@@ -32,10 +51,14 @@ function SobrePage(): React.ReactNode {
             Uma pousada sustentável ao pé da Pedra do Baú
           </h1>
           <p className='text-muted-foreground md:text-lg'>
-            Desde 2018, recebendo quem vem para a Serra da Mantiqueira em busca
-            de natureza, silêncio e aventura — em São Bento do Sapucaí.
+            Desde 2018,{' '}
+            {temNomeDosProprietarios
+              ? `${PROPRIETARIOS.nome} recebem`
+              : 'recebemos'}{' '}
+            quem vem para a Serra da Mantiqueira em busca de natureza, silêncio
+            e aventura — em São Bento do Sapucaí, a 1,5 km do pé da Pedra do
+            Baú.
           </p>
-          {/* TODO: replace with real owner name + photo once provided */}
         </div>
 
         <div className='prose dark:prose-invert max-w-none space-y-8 text-muted-foreground leading-relaxed'>
@@ -106,7 +129,7 @@ function SobrePage(): React.ReactNode {
               animais de estimação são parte da família.{' '}
               <Link
                 className='underline underline-offset-4 hover:text-foreground'
-                href='/chales'
+                href='/chales/'
               >
                 Conheça as acomodações
               </Link>{' '}
@@ -132,16 +155,31 @@ function SobrePage(): React.ReactNode {
             <h2 className='text-xl md:text-2xl text-foreground'>
               Quem recebe você
             </h2>
+            {temNomeDosProprietarios && (
+              <div className='space-y-1'>
+                <p className='text-foreground font-medium'>
+                  {PROPRIETARIOS.nome}
+                </p>
+                {PROPRIETARIOS.cargo.length > 0 && (
+                  <p className='text-sm'>{PROPRIETARIOS.cargo}</p>
+                )}
+                {temBioDosProprietarios && <p>{PROPRIETARIOS.bio}</p>}
+              </div>
+            )}
             <p>
               Se está pensando em vir, saiba que não vai encontrar um atendimento
-              padronizado de central telefônica. Vai falar diretamente com quem
-              cuida do lugar, tirar dúvidas pelo WhatsApp e ser recebido por
-              gente que gosta genuinamente de receber. É assim que gostaríamos
-              de ser recebidos também — e é esse o Refúgio da Pedra que
-              convidamos você a conhecer.{' '}
+              padronizado de central telefônica. Você fala diretamente com{' '}
+              {temNomeDosProprietarios
+                ? PROPRIETARIOS.nome
+                : 'quem cuida do lugar'}
+              , tira dúvidas pelo WhatsApp e é recebido por gente que gosta
+              genuinamente de receber.
+              É assim que gostaríamos de ser recebidos também — e é esse o
+              Refúgio da Pedra que convidamos você a conhecer, aqui em São Bento
+              do Sapucaí.{' '}
               <Link
                 className='underline underline-offset-4 hover:text-foreground'
-                href='/reservar'
+                href='/reservar/'
               >
                 Reserve sua estadia
               </Link>

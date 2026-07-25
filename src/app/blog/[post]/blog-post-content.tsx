@@ -25,7 +25,9 @@ interface Section {
 }
 
 interface Props {
-  post: Post;
+  // Só o cabeçalho do post: o corpo já chega via `intro`/`sections`, então
+  // passar o `Post` inteiro duplicaria o markdown no payload RSC.
+  post: Pick<Post, 'title' | 'description'>;
   intro: string;
   sections: Section[];
 }

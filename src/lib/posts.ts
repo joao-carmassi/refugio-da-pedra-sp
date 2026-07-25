@@ -31,9 +31,52 @@ export interface Post {
   meta_title: string;
   meta_description: string;
   focus_keywords: string[];
-  faq_schema: FaqSchema;
+  // Opcional: nem todo frontmatter garante a chave, então o consumidor precisa
+  // se proteger antes de serializar o JSON-LD.
+  faq_schema?: FaqSchema;
   date: string;
+  // Campos opcionais de frontmatter, ainda não preenchidos nos posts.
   dateModified?: string;
+  author?: string;
+  image?: string;
+}
+
+/**
+ * Subconjunto de `Post` usado pela listagem do blog. Não inclui `content`:
+ * a listagem é um client component e o corpo em markdown dos 41 posts seria
+ * serializado no payload RSC embutido no HTML sem nunca ser renderizado.
+ */
+export type PostListItem = Pick<
+  Post,
+  'slug' | 'title' | 'description' | 'tags'
+>;
+
+/** Imagem padrão para OG tags / schema quando o post não define `image`. */
+export const DEFAULT_POST_IMAGE = '/assets/refugio/geral/refugio-1.webp';
+
+/**
+ * Lê apenas o frontmatter necessário para a listagem, mantendo o corpo dos
+ * posts no servidor.
+ */
+export function getAllPostsMeta(): PostListItem[] {
+  const fileNames = fs.readdirSync(postsDirectory);
+
+  return fileNames
+    .filter((f) => f.endsWith('.md'))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.md$/, '');
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data } = matter(fileContents);
+      const { title, description, tags } = data as Post;
+
+      return {
+        slug,
+        title,
+        description,
+        tags: tags ?? [],
+      };
+    });
 }
 
 export function getAllPosts(): Post[] {

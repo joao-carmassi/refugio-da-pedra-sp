@@ -8,10 +8,27 @@ interface Props {
   children: React.ReactNode;
 }
 
+/**
+ * O Next.js substitui (não mescla) o objeto `openGraph` inteiro quando um
+ * segmento filho o declara, então `images` precisa ser repetido aqui.
+ */
+const ogImage = {
+  url: '/assets/refugio/geral/refugio-1.webp',
+  width: 1620,
+  height: 1080,
+  alt: 'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+};
+
+/**
+ * `trailingSlash: true` no next.config.ts: toda rota é servida com barra
+ * final, então canonical/og:url/JSON-LD precisam apontar para a URL com barra
+ * — caso contrário apontam para um 308. Não vale para arquivos estáticos.
+ */
+const pageUrl = `${getSiteUrl()}/chales/`;
+
 export function generateMetadata() {
-  const siteUrl = getSiteUrl();
   return {
-    title: 'Acomodações',
+    title: 'Chalés em São Bento do Sapucaí',
     description:
       'Conheça os chalés, cabanas e domos do Refúgio da Pedra em São Bento do Sapucaí. Acomodações únicas em meio à natureza da Serra da Mantiqueira.',
     keywords: [
@@ -26,11 +43,13 @@ export function generateMetadata() {
       title: 'Acomodações - Refúgio da Pedra',
       description:
         'Chalés, cabanas e domos em meio à natureza em São Bento do Sapucaí.',
+      siteName: 'Refúgio da Pedra',
       type: 'website',
-      url: `${siteUrl}/chales`,
+      url: pageUrl,
+      images: [ogImage],
     },
     alternates: {
-      canonical: `${siteUrl}/chales`,
+      canonical: pageUrl,
     },
   };
 }
@@ -38,14 +57,17 @@ export function generateMetadata() {
 const jsonLd: WithContext<ItemList> = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Acomodações - Refúgio da Pedra SP',
+  '@id': `${pageUrl}#acomodacoes`,
+  name: 'Acomodações - Pousada Refúgio da Pedra',
   description:
-    'Chalés, cabanas e domos do Refúgio da Pedra SP em São Bento do Sapucaí.',
+    'Chalés, cabanas e domos da Pousada Refúgio da Pedra em São Bento do Sapucaí.',
+  numberOfItems: chales.length,
+  itemListOrder: 'https://schema.org/ItemListOrderAscending',
   itemListElement: chales.map((chale, index) => ({
     '@type': 'ListItem' as const,
     position: index + 1,
     name: chale.nome,
-    url: `${getSiteUrl()}/chales/${slugify(chale.nome, { lower: true, strict: true })}`,
+    url: `${pageUrl}${slugify(chale.nome, { lower: true, strict: true })}/`,
   })),
 };
 
@@ -57,13 +79,13 @@ const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: getSiteUrl(),
+      item: `${getSiteUrl()}/`,
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Chalés',
-      item: `${getSiteUrl()}/chales`,
+      item: pageUrl,
     },
   ],
 };

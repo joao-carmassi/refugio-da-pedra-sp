@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getAlt } from '@/lib/image-alt';
 
 function Galeria() {
   useGSAP(() => {
@@ -48,18 +49,22 @@ function Galeria() {
           </p>
         </div>
         <div className='columns-1 md:columns-2 lg:columns-3'>
-          {Array.from({ length: 29 }, (_, index) => (
-            <div key={index} className='gsap-reveal-galeria opacity-0'>
-              <Image
-                className='w-full rounded-xl h-auto mb-2.5 md:mb-5'
-                src={`/assets/refugio/geral/refugio-${index + 1}.webp`}
-                alt={`Foto ${index + 1} da pousada`}
-                width={500}
-                height={500}
-                sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
-              />
-            </div>
-          ))}
+          {Array.from({ length: 29 }, (_, index) => {
+            const src = `/assets/refugio/geral/refugio-${index + 1}.webp`;
+
+            return (
+              <div key={index} className='gsap-reveal-galeria opacity-0'>
+                <Image
+                  className='w-full rounded-xl h-auto mb-2.5 md:mb-5'
+                  src={src}
+                  alt={getAlt(src, `Foto ${index + 1} da pousada`)}
+                  width={500}
+                  height={500}
+                  sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

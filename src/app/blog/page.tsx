@@ -1,8 +1,8 @@
-import { getAllPosts } from '@/lib/posts';
+import { getAllPostsMeta } from '@/lib/posts';
 import BlogContent from './content';
 
 const Blog = () => {
-  const blogPosts = getAllPosts();
+  const blogPosts = getAllPostsMeta();
 
   return <BlogContent blogPosts={blogPosts} />;
 };

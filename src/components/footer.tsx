@@ -5,6 +5,35 @@ import chales from '@/data/chales.json';
 import Image from 'next/image';
 import slugify from 'slugify';
 import generateWhatsLink from '@/lib/generate-whats-link';
+import { getInPhoneNumber } from '@/lib/env';
+
+// Endereço informado pelo proprietário. Os campos vazios são renderizados
+// condicionalmente — nunca inventar logradouro, número ou CEP: um NAP
+// inconsistente derruba o ranqueamento local e a correspondência com o
+// Google Business Profile.
+const NAP = {
+  name: 'Refúgio da Pedra SP',
+  // TODO(proprietário): confirmar grafia — "Araucárias"? Deve bater exatamente
+  // com o GBP. Grafia mantida verbatim como enviada, sem correção silenciosa.
+  // Falta também o número do imóvel — acrescentar aqui quando informado.
+  streetAddress: 'Rua Das Araucareas',
+  neighborhood: 'Paiol Grande',
+  // TODO(proprietário): preencher o CEP. Vazio = linha some do rodapé.
+  postalCode: '12490-000', // ex.: '12490-000'
+  addressLocality: 'São Bento do Sapucaí',
+  addressRegion: 'SP',
+  addressCountry: 'BR', // código ISO, espelha o PostalAddress do JSON-LD
+  addressCountryName: 'Brasil', // rótulo exibido ao usuário
+} as const;
+
+// Exibe o número no formato brasileiro quando reconhecível; caso contrário
+// devolve o valor cru do env sem tentar adivinhar.
+function formatPhone(raw: string): string {
+  const digits = raw.replace(/\D/g, '');
+  const match = /^55(\d{2})(\d{4,5})(\d{4})$/.exec(digits);
+  if (!match) return raw;
+  return `+55 (${match[1]}) ${match[2]}-${match[3]}`;
+}
 
 function GoogleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -37,6 +66,8 @@ function WhatsappIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+// `trailingSlash: true` (next.config.ts) — todo href interno precisa terminar
+// com barra, senão o Next responde 308 antes de servir a página.
 const links = [
   {
     title: 'Pousada',
@@ -47,11 +78,11 @@ const links = [
       },
       {
         title: 'Chalés',
-        href: '/chales',
+        href: '/chales/',
       },
       {
         title: 'Reservar',
-        href: '/reservar',
+        href: '/reservar/',
       },
     ],
   },
@@ -59,7 +90,7 @@ const links = [
     title: 'Chalés',
     links: chales.map((chale) => ({
       title: chale.id,
-      href: `/chales/${slugify(chale.nome, { lower: true, strict: true })}`,
+      href: `/chales/${slugify(chale.nome, { lower: true, strict: true })}/`,
     })),
   },
   {
@@ -67,25 +98,31 @@ const links = [
     links: [
       {
         title: 'Blog',
-        href: '/blog',
+        href: '/blog/',
       },
       {
         title: 'Quem Somos',
-        href: '/sobre',
+        href: '/sobre/',
       },
       {
         title: 'Política de Privacidade',
-        href: '/politica-de-privacidade',
+        href: '/politica-de-privacidade/',
       },
     ],
   },
 ];
 
+// CID decimal do perfil no Google (0xfbaf5cb9454d9009), extraído do par
+// `0x94cc7de7a1085cab:0xfbaf5cb9454d9009` do embed em (homepage)/mapa.tsx.
+// Link por CID resolve sempre a mesma ficha; busca por texto pode cair em outro
+// resultado ou em uma página de resultados.
+const GOOGLE_MAPS_CID = '18135816175245692937';
+
 const mediaLinks = [
   {
     title: 'Google',
     Icon: <GoogleIcon />,
-    href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Refúgio da Pedra SP')}`,
+    href: `https://www.google.com/maps?cid=${GOOGLE_MAPS_CID}`,
   },
   {
     title: 'Instagram',
@@ -100,24 +137,55 @@ const mediaLinks = [
 ];
 
 const Footer = () => {
+  const phone = getInPhoneNumber();
+  const phoneHref = phone.startsWith('+') ? `tel:${phone}` : `tel:+${phone}`;
+  const streetLine = [NAP.streetAddress, NAP.neighborhood]
+    .filter(Boolean)
+    .join(' — ');
+  const cityLine = `${NAP.addressLocality} — ${NAP.addressRegion}, ${NAP.addressCountryName}`;
+
   return (
     <section className='py-6 md:py-12 bg-card dark'>
       <div className='container'>
         <footer>
           <div className='relative mb-6 flex w-full flex-col gap-6 md:flex-row md:justify-between'>
-            <Link
-              className='text-xl font-semibold text-foreground flex items-start gap-2'
-              href='/'
-              aria-label='Brand'
-            >
-              <Image
-                src='/logo.png'
-                alt='Refúgio da Pedra SP'
-                width={30}
-                height={30}
-              />
-              Refúgio da Pedra SP
-            </Link>
+            <div className='flex flex-col gap-3'>
+              <Link
+                className='text-xl font-semibold text-foreground flex items-start gap-2'
+                href='/'
+                aria-label='Brand'
+              >
+                <Image
+                  src='/logo.png'
+                  alt='Refúgio da Pedra SP'
+                  width={30}
+                  height={30}
+                />
+                Refúgio da Pedra SP
+              </Link>
+              {/* NAP (Nome, Endereço, Telefone) visível — sinal de confiança
+                  para busca local e espelho do LodgingBusiness em (homepage)/layout.tsx. */}
+              <address className='not-italic text-sm leading-relaxed text-muted-foreground'>
+                <span className='block font-medium text-foreground'>
+                  {NAP.name}
+                </span>
+                {streetLine ? (
+                  <span className='block'>{streetLine}</span>
+                ) : null}
+                <span className='block'>
+                  {NAP.postalCode ? `${NAP.postalCode} · ` : ''}
+                  {cityLine}
+                </span>
+                {phone ? (
+                  <a
+                    className='block w-fit py-1 hover:text-foreground hover:underline'
+                    href={phoneHref}
+                  >
+                    {formatPhone(phone)}
+                  </a>
+                ) : null}
+              </address>
+            </div>
             <div className='inline-grid w-fit grid-cols-1 gap-x-24 gap-y-6 sm:grid-cols-3'>
               {links.map((section) => (
                 <div key={section.title} className='h-fit w-min'>

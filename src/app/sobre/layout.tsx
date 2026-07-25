@@ -6,8 +6,25 @@ interface Props {
   children: React.ReactNode;
 }
 
+/**
+ * O Next.js substitui (não mescla) o objeto `openGraph` inteiro quando um
+ * segmento filho o declara, então `images` precisa ser repetido aqui.
+ */
+const ogImage = {
+  url: '/assets/refugio/geral/refugio-1.webp',
+  width: 1620,
+  height: 1080,
+  alt: 'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+};
+
+/**
+ * `trailingSlash: true` no next.config.ts: toda rota é servida com barra
+ * final, então canonical/og:url/JSON-LD precisam apontar para a URL com barra
+ * — caso contrário apontam para um 308. Não vale para arquivos estáticos.
+ */
+const pageUrl = `${getSiteUrl()}/sobre/`;
+
 export function generateMetadata() {
-  const siteUrl = getSiteUrl();
   return {
     title: 'Quem Somos',
     description:
@@ -26,11 +43,13 @@ export function generateMetadata() {
       title: 'Quem Somos - Refúgio da Pedra',
       description:
         'A história do Refúgio da Pedra, pousada sustentável ao pé da Pedra do Baú, em São Bento do Sapucaí.',
+      siteName: 'Refúgio da Pedra',
       type: 'website',
-      url: `${siteUrl}/sobre`,
+      url: pageUrl,
+      images: [ogImage],
     },
     alternates: {
-      canonical: `${siteUrl}/sobre`,
+      canonical: pageUrl,
     },
   };
 }
@@ -38,26 +57,16 @@ export function generateMetadata() {
 const jsonLd: WithContext<AboutPage> = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
-  name: 'Quem Somos - Refúgio da Pedra SP',
+  '@id': `${pageUrl}#webpage`,
+  name: 'Quem Somos - Pousada Refúgio da Pedra',
   description:
-    'História e proposta do Refúgio da Pedra SP: pousada sustentável fundada em 2018 ao pé da Pedra do Baú, em São Bento do Sapucaí, na Serra da Mantiqueira.',
-  url: `${getSiteUrl()}/sobre`,
+    'História e proposta da Pousada Refúgio da Pedra: pousada sustentável fundada em 2018 ao pé da Pedra do Baú, em São Bento do Sapucaí, na Serra da Mantiqueira.',
+  url: pageUrl,
   inLanguage: 'pt-BR',
-  about: {
-    '@type': 'LodgingBusiness',
-    name: 'Refúgio da Pedra SP',
-    description:
-      'Pousada sustentável com chalés, cabana e domo geodésico ao pé da Pedra do Baú, em São Bento do Sapucaí, na Serra da Mantiqueira.',
-    url: getSiteUrl(),
-    foundingDate: '2018',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'São Bento do Sapucaí',
-      addressRegion: 'SP',
-      addressCountry: 'BR',
-    },
-    sameAs: ['https://www.instagram.com/refugiodapedrasp/'],
-  },
+  isPartOf: { '@id': `${getSiteUrl()}/#website` },
+  // O negócio é descrito uma única vez no layout raiz.
+  about: { '@id': `${getSiteUrl()}/#business` },
+  mainEntity: { '@id': `${getSiteUrl()}/#business` },
 };
 
 const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
@@ -68,13 +77,13 @@ const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: getSiteUrl(),
+      item: `${getSiteUrl()}/`,
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Quem Somos',
-      item: `${getSiteUrl()}/sobre`,
+      item: pageUrl,
     },
   ],
 };

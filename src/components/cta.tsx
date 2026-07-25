@@ -1,5 +1,10 @@
 import { Button } from '@/components/ui/button';
+import { getAlt } from '@/lib/image-alt';
 import Image from 'next/image';
+
+// Este CTA é renderizado na homepage e no rodapé de todo post do blog. A mesma
+// foto é o item 1 da galeria da homepage, então o alt vem do mapa único.
+const ctaSrc = '/assets/refugio/geral/refugio-1.webp';
 
 const Cta = () => {
   return (
@@ -10,8 +15,11 @@ const Cta = () => {
             <Image
               width={748}
               height={499}
-              src='/assets/refugio/geral/refugio-1.webp'
-              alt='placeholder hero'
+              src={ctaSrc}
+              alt={getAlt(
+                ctaSrc,
+                'Chalés de madeira e tijolo iluminados ao entardecer, com o paredão da Pedra do Baú ao fundo',
+              )}
               className='aspect-3/2 w-full rounded-t-md object-cover md:rounded-t-none md:rounded-l-md'
               sizes='(max-width: 1024px) 100vw, 50vw'
             />
@@ -32,7 +40,8 @@ const Cta = () => {
               effect={'shineHover'}
               asChild
             >
-              <a href='/reservar'>Reservar agora</a>
+              {/* Barra final obrigatória: `trailingSlash: true` no next.config.ts. */}
+              <a href='/reservar/'>Reservar agora</a>
             </Button>
           </div>
         </div>

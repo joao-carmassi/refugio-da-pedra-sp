@@ -1,12 +1,17 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { getAlt } from '@/lib/image-alt';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Não é decorativa: é a foto que ilustra o CTA "Reserve seu chalé", então tem
+// alt real (antes vinha com `alt=''`, que a marcava como decorativa).
+const ctaSrc = '/assets/refugio/chales/jade/refugio-6.webp';
 
 function Cta(): React.ReactNode {
   useGSAP(() => {
@@ -33,8 +38,11 @@ function Cta(): React.ReactNode {
             width={724}
             height={482}
             className='w-full rounded-2xl md:rounded-3xl'
-            src='/assets/refugio/chales/jade/refugio-6.webp'
-            alt=''
+            src={ctaSrc}
+            alt={getAlt(
+              ctaSrc,
+              'Hóspede apoiada no parapeito do deck de troncos, olhando para as montanhas da Serra da Mantiqueira',
+            )}
             sizes='(max-width: 768px) 100vw, 50vw'
           />
         </div>
@@ -54,7 +62,7 @@ function Cta(): React.ReactNode {
             className='gsap-reveal-cta opacity-0 w-full md:w-fit rounded-full'
             size={'lg'}
           >
-            <Link href='/chales'>Ver chalés</Link>
+            <Link href='/chales/'>Ver chalés</Link>
           </Button>
         </div>
       </div>

@@ -9,10 +9,17 @@ import {
 import { getInPhoneNumber, getSiteUrl } from '@/lib/env';
 import { Home } from 'lucide-react';
 
+// TODO (pendente com o proprietário): número real do Cadastur. Enquanto vier
+// vazio, a linha inteira deixa de ser renderizada — nada de placeholder entre
+// colchetes na página publicada. Preencher via NEXT_PUBLIC_CADASTUR ou, se
+// preferir, trocando o fallback abaixo pelo número real.
+const CADASTUR = process.env.NEXT_PUBLIC_CADASTUR ?? '';
+
 export function generateMetadata() {
   const siteUrl = getSiteUrl();
   return {
-    title: 'Política de Privacidade - Refúgio da Pedra',
+    // Sem a marca no título: o template do layout raiz já a acrescenta.
+    title: 'Política de Privacidade',
     description:
       'Política de Privacidade do Refúgio da Pedra: como coletamos, usamos e protegemos os dados pessoais de hóspedes, em conformidade com a LGPD (Lei 13.709/2018).',
     keywords: [
@@ -24,15 +31,26 @@ export function generateMetadata() {
     robots: {
       index: true,
     },
+    // `openGraph` de um segmento substitui inteiramente o do layout raiz (não
+    // faz deep merge), então `images` e `siteName` precisam ser repetidos aqui.
     openGraph: {
       title: 'Política de Privacidade - Refúgio da Pedra',
       description:
         'Como o Refúgio da Pedra coleta, usa e protege dados pessoais, em conformidade com a LGPD.',
       type: 'website',
-      url: `${siteUrl}/politica-de-privacidade`,
+      url: `${siteUrl}/politica-de-privacidade/`,
+      siteName: 'Refúgio da Pedra',
+      images: [
+        {
+          url: `${siteUrl}/assets/refugio/geral/refugio-1.webp`,
+          width: 1620,
+          height: 1080,
+          alt: 'Pousada Refúgio da Pedra, em São Bento do Sapucaí, na Serra da Mantiqueira',
+        },
+      ],
     },
     alternates: {
-      canonical: `${siteUrl}/politica-de-privacidade`,
+      canonical: `${siteUrl}/politica-de-privacidade/`,
     },
   };
 }
@@ -69,16 +87,17 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
         <div className='prose dark:prose-invert max-w-none space-y-6 text-muted-foreground leading-relaxed'>
           <div className='space-y-6'>
             <p>
-              Esta Política de Privacidade descreve como o{' '}
-              <strong>Refúgio da Pedra SP</strong> (CNPJ 37.224.704/0001-58),
-              localizado em São Bento do Sapucaí, Serra da Mantiqueira, coleta,
+              Esta Política de Privacidade descreve como a{' '}
+              <strong>Pousada Refúgio da Pedra</strong> (CNPJ
+              37.224.704/0001-58), localizada no bairro Paiol Grande, em São
+              Bento do Sapucaí, na Serra da Mantiqueira, coleta,
               utiliza, armazena e protege os dados pessoais de seus hóspedes e
               visitantes deste site, em conformidade com a Lei Geral de Proteção
               de Dados Pessoais (Lei nº 13.709/2018 — LGPD).
             </p>
-            <p className='text-sm'>
-              Cadastro no Cadastur: [CADASTUR: a informar]
-            </p>
+            {CADASTUR && (
+              <p className='text-sm'>Cadastro no Cadastur: {CADASTUR}</p>
+            )}
           </div>
 
           <section className='space-y-2'>
@@ -142,11 +161,14 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
             <h2 className='text-foreground text-xl font-semibold md:text-2xl'>
               5. Como exercer seus direitos ou tirar dúvidas
             </h2>
-            <p>
-              Para exercer qualquer um dos direitos acima, esclarecer dúvidas
-              sobre esta política ou solicitar a exclusão dos seus dados, entre
-              em contato conosco pelo WhatsApp{' '}
-              {phoneNumber ? (
+            {/* TODO (pendente com o proprietário): e-mail dedicado de
+                privacidade. Sem o telefone configurado, a frase cai para a
+                versão sem número — nunca para um placeholder visível. */}
+            {phoneNumber ? (
+              <p>
+                Para exercer qualquer um dos direitos acima, esclarecer dúvidas
+                sobre esta política ou solicitar a exclusão dos seus dados, fale
+                com a equipe do Refúgio da Pedra pelo WhatsApp{' '}
                 <a
                   className='text-primary hover:underline'
                   href={`https://api.whatsapp.com/send?phone=${phoneNumber}`}
@@ -155,12 +177,16 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
                 >
                   {phoneNumber}
                 </a>
-              ) : (
-                <span>[telefone/WhatsApp a informar]</span>
-              )}
-              .{' '}
-              {/* TODO: substituir por e-mail dedicado de privacidade, se/quando disponível */}
-            </p>
+                .
+              </p>
+            ) : (
+              <p>
+                Para exercer qualquer um dos direitos acima, esclarecer dúvidas
+                sobre esta política ou solicitar a exclusão dos seus dados, fale
+                com a equipe do Refúgio da Pedra pelo WhatsApp, usando o botão
+                de contato disponível em todas as páginas deste site.
+              </p>
+            )}
           </section>
 
           <section className='space-y-2'>

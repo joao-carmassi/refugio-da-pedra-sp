@@ -31,8 +31,15 @@ export async function generateMetadata({
   if (!chale) return {};
 
   const siteUrl = getSiteUrl();
+  // `trailingSlash: true` no next.config.ts: a rota é servida com barra final,
+  // então canonical/og:url precisam da barra ou apontam para um 308.
+  const pageUrl = `${siteUrl}/chales/${slug}/`;
   return {
-    title: chale.nome,
+    // `chales/layout.tsx` define um `title` string, o que consome o template
+    // do layout raiz — por isso a string completa é montada aqui.
+    title: {
+      absolute: `${chale.nome} — Chalé em São Bento do Sapucaí | Refúgio da Pedra`,
+    },
     description: `${chale.nome} no Refúgio da Pedra: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho} em São Bento do Sapucaí, na Serra da Mantiqueira.`,
     keywords: [
       chale.nome,
@@ -45,19 +52,19 @@ export async function generateMetadata({
     openGraph: {
       title: `${chale.nome} - Refúgio da Pedra`,
       description: `${chale.nome} no Refúgio da Pedra: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}.`,
+      siteName: 'Refúgio da Pedra',
       type: 'website',
-      url: `${siteUrl}/chales/${slug}`,
+      url: pageUrl,
       images: [
         {
+          // Arquivo estático: servido exatamente assim, sem barra final.
           url: `${siteUrl}/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`,
-          width: 800,
-          height: 800,
-          alt: chale.nome,
+          alt: `${chale.nome} — Refúgio da Pedra, São Bento do Sapucaí`,
         },
       ],
     },
     alternates: {
-      canonical: `${siteUrl}/chales/${slug}`,
+      canonical: pageUrl,
     },
   };
 }
@@ -74,18 +81,50 @@ async function ChaleLayout({
   if (!chale) notFound();
 
   const siteUrl = getSiteUrl();
+  // `trailingSlash: true` no next.config.ts: a rota é servida com barra final.
+  const pageUrl = `${siteUrl}/chales/${slug}/`;
+
   const jsonLd: WithContext<Room> = {
     '@context': 'https://schema.org',
     '@type': 'Room',
+    '@id': `${pageUrl}#acomodacao`,
     name: chale.nome,
     description: `${chale.nome} no Refúgio da Pedra: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho}.`,
-    url: `${siteUrl}/chales/${slug}`,
-    image: `${siteUrl}/assets/refugio/chales/${chale.id}/refugio-${chale.banner[0]}.webp`,
-    containedInPlace: {
-      '@type': 'LodgingBusiness',
-      name: 'Refúgio da Pedra SP',
-      url: siteUrl,
+    url: pageUrl,
+    // Arquivos estáticos: servidos exatamente assim, sem barra final.
+    image: chale.banner.map(
+      (n) => `${siteUrl}/assets/refugio/chales/${chale.id}/refugio-${n}.webp`,
+    ),
+    occupancy: {
+      '@type': 'QuantitativeValue',
+      unitCode: 'C62',
+      value: chale.capacidade_num,
+      maxValue: chale.capacidade_num,
     },
+    floorSize: {
+      '@type': 'QuantitativeValue',
+      unitCode: 'MTK',
+      unitText: 'm²',
+      value: chale.tamanho_m2,
+    },
+    numberOfBathroomsTotal: chale.banheiros_num,
+    bed: {
+      '@type': 'BedDetails',
+      numberOfBeds: chale.camas_num,
+      typeOfBed: chale.camas_tipo,
+    },
+    amenityFeature: [
+      ...chale.ambientes,
+      ...chale.comodidades,
+      ...chale.area_externa,
+    ].map((name) => ({
+      '@type': 'LocationFeatureSpecification' as const,
+      name,
+      value: true,
+    })),
+    petsAllowed: chale.politica.pets_permitidos,
+    // O negócio é descrito uma única vez no layout raiz.
+    containedInPlace: { '@id': `${siteUrl}/#business` },
   };
 
   const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
@@ -96,19 +135,19 @@ async function ChaleLayout({
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: siteUrl,
+        item: `${siteUrl}/`,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Chalés',
-        item: `${siteUrl}/chales`,
+        item: `${siteUrl}/chales/`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: chale.nome,
-        item: `${siteUrl}/chales/${slug}`,
+        item: pageUrl,
       },
     ],
   };

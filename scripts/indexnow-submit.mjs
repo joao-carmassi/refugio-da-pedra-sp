@@ -63,14 +63,18 @@ function getPostUrls() {
     .map((fileName) => `${baseUrl}/blog/${fileName.replace(/\.md$/, '')}/`);
 }
 
+// Must stay in sync with src/app/sitemap.ts. Every URL carries a trailing slash
+// because next.config.ts sets `trailingSlash: true` — a slash-less URL 308s.
 function buildUrlList() {
   return [
     `${baseUrl}/`,
     `${baseUrl}/chales/`,
     ...getChaleUrls(),
     `${baseUrl}/reservar/`,
+    `${baseUrl}/sobre/`,
     `${baseUrl}/blog/`,
     ...getPostUrls(),
+    `${baseUrl}/politica-de-privacidade/`,
   ];
 }
 

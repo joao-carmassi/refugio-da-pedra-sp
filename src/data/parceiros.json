@@ -5,7 +5,9 @@
     "title": "Vinícola Villa Santa Maria",
     "description": "A Vinícola Villa Santa Maria produz os vinhos Brandina, que refletem o terroir especial do Vale do Baú. Além da vinificação de alta qualidade, a vinícola oferece experiências de enoturismo, como visitas guiadas e degustações, em meio à Serra da Mantiqueira.",
     "imgPc": "vinicola-3.webp",
+    "imgPcAlt": "Duas garrafas de vinho branco Brandina Chardonnay geladas em balde de gelo, com o jardim da vinícola ao fundo",
     "imgCell": "vinicola-1.webp",
+    "imgCellAlt": "Fileira de barris de carvalho na cave da Villa Santa Maria, com o logotipo Brandina gravado na tampa",
     "linkMapa": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.0986804996!2d-45.68448672390126!3d-22.724573279383772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc7ba10a365591%3A0x9ad6a9539765994d!2sVin%C3%ADcola%20Villa%20Santa%20Maria!5e0!3m2!1spt-BR!2sbr!4v1748897605071!5m2!1spt-BR!2sbr"
   },
   {
@@ -14,7 +16,9 @@
     "title": "Restaurante Sabor com Arte",
     "description": "Restaurante Sabor com Arte, um refúgio gastronômico em São Bento do Sapucaí! Refeições à la carte, buffet aos finais de semana e uma seleção irresistível de pizzas, peixes e porções, aqui cada prato é preparado com carinho e qualidade. Venha viver essa experiência saborosa!",
     "imgPc": "sabor-2.webp",
+    "imgPcAlt": "Salão envidraçado de fachada rosa do restaurante Sabor com Arte, com guarda-sóis no terraço e o morro coberto de mata atrás",
     "imgCell": "sabor-1.webp",
+    "imgCellAlt": "Ipê-amarelo florido no jardim do restaurante Sabor com Arte, com o salão envidraçado e a serra ao fundo",
     "linkMapa": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.4259670213105!2d-45.684301223874044!3d-22.675181479418857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc7b8ed83941cb%3A0xcecc4bf87026eb86!2sRestaurante%20%26%20Pizzaria%20Sabor%20com%20Arte!5e0!3m2!1spt-BR!2sbr!4v1748897103075!5m2!1spt-BR!2sbr"
   },
   {
@@ -23,7 +27,9 @@
     "title": "OLIQ - o azeite extravirgem da Mantiqueira",
     "description": "A OLIQ cultiva oliveiras na Serra da Mantiqueira e produz azeites extravirgens especiais. Fundada por três amigos, a marca une sustentabilidade e tradição, oferecendo também visitas guiadas e degustações em sua fazenda.",
     "imgPc": "oliq-2.webp",
+    "imgPcAlt": "Cinco azeites OLIQ e copinhos de degustação sobre mesa de madeira, com o olival ao fundo",
     "imgCell": "oliq-1.webp",
+    "imgCellAlt": "Seis garrafas de azeite OLIQ enfileiradas diante do olival plantado na encosta",
     "linkMapa": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.848005432171!2d-45.693023623903564!3d-22.62215037945644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc7923b480e2bf%3A0xa9072fad89aa94d!2sOLIQ%20-%20o%20azeite%20extravirgem%20da%20Mantiqueira!5e0!3m2!1spt-BR!2sbr!4v1748897679910!5m2!1spt-BR!2sbr"
   },
   {
@@ -32,7 +38,9 @@
     "title": "Baú Ecoturismo",
     "description": "A Baú Ecoturismo é a maior agência de ecoturismo de São Bento do Sapucaí, especializada em turismo de aventura na região. Oferece atividades como trilhas, escaladas e rapel, proporcionando experiências seguras e inesquecíveis na natureza exuberante da Serra da Mantiqueira",
     "imgPc": "ecoturismo-4.webp",
+    "imgPcAlt": "Escaladores de capacete subindo a via ferrata na rocha, com o vale verde bem abaixo",
     "imgCell": "ecoturismo-2.webp",
+    "imgCellAlt": "Três trilheiros de mochila observando o paredão da Pedra do Baú no fim da trilha",
     "linkMapa": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.0174422873806!2d-45.7326124!3d-22.690394599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc7a41f8040663%3A0xa64993bc94437c11!2sBa%C3%BA%20Ecoturismo!5e0!3m2!1spt-BR!2sbr!4v1748897704048!5m2!1spt-BR!2sbr"
   }
 ]

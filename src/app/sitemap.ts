@@ -1,66 +1,67 @@
-import fs from 'fs';
-import path from 'path';
 import { getSiteUrl } from '@/lib/env';
 import type { MetadataRoute } from 'next';
 import chales from '@/data/chales.json';
 import { getAllPosts } from '@/lib/posts';
 import slugify from 'slugify';
 
-function mtimeOf(relativePath: string): Date {
-  const fullPath = path.join(
-    /* turbopackIgnore: true */ process.cwd(),
-    relativePath,
-  );
-  return fs.statSync(fullPath).mtime;
-}
+// Explicit, hand-maintained lastmod dates.
+//
+// These used to come from fs.statSync().mtime, but a CI checkout rewrites every
+// file's mtime, so every deploy published a brand-new lastmod even when nothing
+// had changed — which teaches crawlers to ignore the field. Bump the relevant
+// entry when a page's content actually changes. Blog posts are exempt: they
+// carry real dates in their markdown frontmatter.
+//
+// Values seeded from each route's last content commit.
+const LAST_MODIFIED = {
+  home: '2026-07-20',
+  chales: '2026-07-20',
+  chale: '2026-07-20',
+  reservar: '2026-03-06',
+  blog: '2026-07-20',
+  sobre: '2026-07-24',
+  politicaDePrivacidade: '2026-07-20',
+} as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
 
-  // No per-chalé date field exists yet, so fall back to the shared data
-  // file's mtime as a real (non-fabricated) freshness signal.
-  const chalesDataMtime = mtimeOf('src/data/chales.json');
-
   const chaleUrls: MetadataRoute.Sitemap = chales.map((chale) => ({
     url: `${baseUrl}/chales/${slugify(chale.nome, { lower: true, strict: true })}/`,
-    lastModified: chalesDataMtime,
-    changeFrequency: 'monthly',
-    priority: 0.7,
+    lastModified: LAST_MODIFIED.chale,
   }));
 
   const postUrls: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
     url: `${baseUrl}/blog/${post.slug}/`,
-    lastModified: post.date ? new Date(post.date) : mtimeOf('src/data/posts'),
-    changeFrequency: 'monthly',
-    priority: 0.6,
+    lastModified: post.dateModified ?? post.date,
   }));
 
   return [
     {
       url: `${baseUrl}/`,
-      lastModified: mtimeOf('src/app/(homepage)/hero.tsx'),
-      changeFrequency: 'monthly',
-      priority: 1.0,
+      lastModified: LAST_MODIFIED.home,
     },
     {
       url: `${baseUrl}/chales/`,
-      lastModified: mtimeOf('src/app/chales/page.tsx'),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      lastModified: LAST_MODIFIED.chales,
     },
     ...chaleUrls,
     {
       url: `${baseUrl}/reservar/`,
-      lastModified: mtimeOf('src/app/reservar/page.tsx'),
-      changeFrequency: 'monthly',
-      priority: 0.9,
+      lastModified: LAST_MODIFIED.reservar,
+    },
+    {
+      url: `${baseUrl}/sobre/`,
+      lastModified: LAST_MODIFIED.sobre,
     },
     {
       url: `${baseUrl}/blog/`,
-      lastModified: mtimeOf('src/app/blog/page.tsx'),
-      changeFrequency: 'weekly',
-      priority: 0.7,
+      lastModified: LAST_MODIFIED.blog,
     },
     ...postUrls,
+    {
+      url: `${baseUrl}/politica-de-privacidade/`,
+      lastModified: LAST_MODIFIED.politicaDePrivacidade,
+    },
   ];
 }

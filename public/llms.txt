@@ -1,13 +1,74 @@
 # Refúgio da Pedra SP
 
-> Pousada e chalés em meio à natureza em São Bento do Sapucaí, Serra da Mantiqueira — chalés, cabanas e domos com vista para as montanhas.
+> Pousada e chalés em meio à natureza em São Bento do Sapucaí, Serra da Mantiqueira (SP) — chalés, cabanas e domos com vista para as montanhas, a poucos minutos da Pedra do Baú.
+
+Todas as URLs abaixo terminam com barra: o site usa `trailingSlash: true`, então endereços sem a barra final respondem com redirecionamento 308.
 
 ## Acomodações
-- [Chalés e Acomodações](/chales): visão geral de todos os chalés, cabanas e domos disponíveis
-- [Reservar](/reservar): reserva de estadia
+- [Chalés e Acomodações](/chales/): visão geral de todos os chalés, cabanas e domos disponíveis
+- [Domo · Colmeia](/chales/domo-colmeia/): domo geodésico, até 2 pessoas, 30 m², suíte com cama Queen e deck
+- [Cabana · Ametista](/chales/cabana-ametista/): cabana, até 2 pessoas, 30 m², suíte com cama Queen e varanda, aceita pets
+- [Chalé · Jade](/chales/chale-jade/): chalé, até 2 pessoas, 32 m², suíte, sala integrada com cozinha e deck, aceita pets
+- [Chalé · Esmeralda](/chales/chale-esmeralda/): chalé, até 3 pessoas, 30 m², suíte, mezanino, sala integrada com cozinha e varanda, aceita pets
+- [Chalé · Turmalina](/chales/chale-turmalina/): chalé, até 3 pessoas, 30 m², suíte, mezanino, sala integrada com cozinha e varanda, aceita pets
+- [Reservar](/reservar/): consulta de disponibilidade e reserva de estadia
 
 ## Sobre
-- [Quem Somos](/sobre): a história por trás do Refúgio da Pedra
+- [Quem Somos](/sobre/): a história por trás do Refúgio da Pedra
+- [Política de Privacidade](/politica-de-privacidade/): tratamento de dados pessoais
 
 ## Blog
-- [Blog](/blog): guias e conteúdo sobre São Bento do Sapucaí e a Serra da Mantiqueira
+- [Blog](/blog/): guias e conteúdo sobre São Bento do Sapucaí e a Serra da Mantiqueira
+
+### São Bento do Sapucaí
+- [São Bento do Sapucaí: Guia Completo de Turismo na Serra da Mantiqueira](/blog/sao-bento-do-sapucai/)
+- [O Que Fazer em São Bento do Sapucaí: Guia Completo + Roteiro de 1 Dia](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/)
+- [Trilhas em São Bento do Sapucaí: Guia Completo do Complexo da Pedra do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/)
+- [História da Pedra do Baú: Da Primeira Escalada à Via Ferrata](/blog/historia-da-pedra-do-bau-da-primeira-escalada-a-via-ferrata/)
+- [Qual a Altitude da Pedra do Baú e de São Bento do Sapucaí?](/blog/qual-a-altitude-da-pedra-do-bau-e-de-sao-bento-do-sapucai/)
+- [Qual a População de São Bento do Sapucaí? Dados e Curiosidades](/blog/qual-a-populacao-de-sao-bento-do-sapucai-dados-e-curiosidades/)
+- [Gastronomia em São Bento do Sapucaí: Os Melhores Restaurantes da Serra](/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/)
+- [Bebidas Artesanais de São Bento do Sapucaí: Vinhos, Cervejas e Mais da Mantiqueira](/blog/bebidas-artesanais-de-sao-bento-do-sapucai-vinhos-cervejas-e-mais-da-mantiqueira/)
+- [Por Que São Bento do Sapucaí Produz Vinho e Azeite? O Segredo Está na Serra](/blog/por-que-sao-bento-do-sapucai-produz-vinho-e-azeite-o-segredo-esta-na-serra/)
+- [Artesanato em São Bento do Sapucaí: Guia Completo](/blog/artesanato-em-sao-bento-do-sapucai-guia-completo/)
+- [Festas e Eventos Tradicionais em São Bento do Sapucaí: Guia Completo](/blog/festas-e-eventos-tradicionais-em-sao-bento-do-sapucai-guia-completo/)
+- [Carnaval em São Bento do Sapucaí: A Tradição Centenária da Família Zé Pereira](/blog/carnaval-em-sao-bento-do-sapucai-a-tradicao-centenaria-da-familia-ze-pereira/)
+- [Igreja Matriz de São Bento do Sapucaí: História, Arquitetura e Visitação](/blog/igreja-matriz-de-sao-bento-do-sapucai-historia-arquitetura-e-visitacao/)
+- [Revolução de 1932 em São Bento do Sapucaí: História, Trincheiras e Museu](/blog/revolucao-de-1932-sao-bento-do-sapucai/)
+- [Toscana Brasileira: Por que São Bento do Sapucaí tem esse apelido?](/blog/toscana-brasileira-sao-bento-do-sapucai/)
+- [Como Reservar Passeios Guiados em São Bento do Sapucaí](/blog/como-reservar-passeios-guiados-em-sao-bento-do-sapucai/)
+- [Onde Alugar Equipamento para Trilha em São Bento do Sapucaí](/blog/onde-alugar-equipamento-para-trilha-em-sao-bento-do-sapucai/)
+- [Cidades Vizinhas de São Bento do Sapucaí: O Que Visitar na Região](/blog/cidades-vizinhas-de-sao-bento-do-sapucai-o-que-visitar-na-regiao/)
+- [Pousada Perto da Pedra do Baú: Conheça o Refúgio da Pedra](/blog/pousada-perto-da-pedra-do-bau-refugio-da-pedra/)
+
+### Serra da Mantiqueira
+- [Onde Fica a Serra da Mantiqueira? Localização, Estados e Como Chegar](/blog/onde-fica-a-serra-da-mantiqueira-localizacao-estados-e-como-chegar/)
+- [Serra da Mantiqueira: Extensão, Cidades e Picos Mais Altos](/blog/extensao-da-serra-da-mantiqueira-cidades-e-picos/)
+- [História da Serra da Mantiqueira: Origem e Lenda da Montanha que Chora](/blog/historia-da-serra-da-mantiqueira-origem-e-lenda/)
+- [Habitantes da Serra da Mantiqueira: Principais Cidades e Dados](/blog/habitantes-da-serra-da-mantiqueira-cidades-principais/)
+- [O Que Fazer na Serra da Mantiqueira: Guia Completo de Experiências](/blog/o-que-fazer-na-serra-da-mantiqueira-guia-completo-de-experiencias/)
+- [Qual o Lugar Mais Bonito da Serra da Mantiqueira? Conheça São Bento do Sapucaí](/blog/qual-o-lugar-mais-bonito-da-serra-da-mantiqueira-conheca-sao-bento-do-sapucai/)
+- [Serra da Canastra ou Serra da Mantiqueira: Qual Escolher para Sua Viagem?](/blog/serra-da-canastra-ou-serra-da-mantiqueira-qual-escolher-para-sua-viagem/)
+- [São Bento do Sapucaí ou Santo Antônio do Pinhal: Qual Escolher?](/blog/sao-bento-do-sapucai-ou-santo-antonio-do-pinhal-qual-escolher/)
+
+### Campos do Jordão e região
+- [O Que Fazer em Campos do Jordão: Guia Completo de Atividades](/blog/o-que-fazer-em-campos-do-jordao-guia-completo-de-atividades/)
+- [Pontos Turísticos de Campos do Jordão: Os 12 Lugares Imperdíveis](/blog/pontos-turisticos-de-campos-do-jordao-os-12-lugares-imperdiveis/)
+- [Trilhas em Campos do Jordão: Guia Completo para Caminhadas na Serra](/blog/trilhas-em-campos-do-jordao-guia-completo-para-caminhadas-na-serra/)
+- [Restaurantes em Campos do Jordão: Onde Comer na Serra da Mantiqueira](/blog/restaurantes-em-campos-do-jordao-onde-comer-na-serra-da-mantiqueira/)
+- [Cervejas e Bebidas Artesanais de Campos do Jordão: Guia Completo](/blog/cervejas-e-bebidas-artesanais-de-campos-do-jordao-guia-completo/)
+- [Chocolate e Chocolate Quente em Campos do Jordão: Guia Completo](/blog/chocolate-e-chocolate-quente-em-campos-do-jordao-guia-completo/)
+- [Festas e Eventos em Campos do Jordão: Calendário Completo](/blog/festas-e-eventos-em-campos-do-jordao-calendario-completo/)
+- [Qual a Altitude de Campos do Jordão? Dados e Curiosidades](/blog/qual-a-altitude-de-campos-do-jordao-dados-e-curiosidades/)
+- [Quantos Habitantes Tem Campos do Jordão? Demografia e Curiosidades](/blog/quantos-habitantes-tem-campos-do-jordao-demografia-e-curiosidades/)
+- [Quando Faz Frio em Campos do Jordão? Temperaturas Mês a Mês](/blog/quando-faz-frio-em-campos-do-jordao-temperaturas-mes-a-mes/)
+- [Qual É a Melhor Época para Visitar Campos do Jordão?](/blog/qual-e-a-melhor-epoca-para-visitar-campos-do-jordao/)
+- [Suíça Brasileira: por que Campos do Jordão tem esse apelido?](/blog/suica-brasileira-campos-do-jordao/)
+
+### Como chegar
+- [Distância de São Paulo a São Bento do Sapucaí: Rotas e Dicas](/blog/distancia-sao-paulo-sao-bento-do-sapucai-rotas-e-dicas/)
+- [Distância de São Bento do Sapucaí a Campos do Jordão: Rota e Dicas](/blog/distancia-sao-bento-do-sapucai-campos-do-jordao/)
+
+## Optional
+- [Sitemap XML](/sitemap.xml): lista completa e canônica de todas as páginas indexáveis
+- [robots.txt](/robots.txt): regras de rastreamento

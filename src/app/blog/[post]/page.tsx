@@ -21,7 +21,13 @@ const BlogPost = async ({ params }: Props): Promise<React.ReactNode> => {
     return { id: `section${index + 1}`, title, content };
   });
 
-  return <BlogPostContent post={post} intro={intro} sections={sections} />;
+  return (
+    <BlogPostContent
+      post={{ title: post.title, description: post.description }}
+      intro={intro}
+      sections={sections}
+    />
+  );
 };
 
 export default BlogPost;

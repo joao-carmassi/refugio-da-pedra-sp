@@ -15,10 +15,10 @@ import { Home } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import type { Post } from '@/lib/posts';
+import type { PostListItem } from '@/lib/posts';
 
 interface Props {
-  blogPosts: Post[];
+  blogPosts: PostListItem[];
 }
 
 const BlogContent = ({ blogPosts }: Props) => {

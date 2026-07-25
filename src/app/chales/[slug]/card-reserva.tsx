@@ -14,8 +14,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Separator } from '@/components/ui/separator';
-import { useGSAP } from '@gsap/react';
-import { gsap } from 'gsap';
 import { useState } from 'react';
 import { DateRange } from 'react-day-picker';
 import { ptBR } from 'date-fns/locale';
@@ -47,14 +45,6 @@ function CardReserva({
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  useGSAP(() => {
-    gsap.fromTo(
-      '.gsap-reveal-card-reserva',
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9, delay: 0.4, ease: 'power2.out' },
-    );
-  }, []);
-
   // const totalGuests = adults + children;
   const guestLabel = [
     `${adults} adulto${adults !== 1 ? 's' : ''}`,
@@ -73,7 +63,7 @@ function CardReserva({
   return (
     <Card
       className={cn(
-        'gsap-reveal-card-reserva opacity-0 shadow py-4 gap-3',
+        'animate-in fade-in duration-300 fill-mode-both shadow py-4 gap-3',
         className,
       )}
     >
@@ -160,7 +150,7 @@ function CardReserva({
                     <Button
                       variant={'outline'}
                       size='icon-sm'
-                      className='rounded-full'
+                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
                       onClick={() => setAdults((v) => Math.max(1, v - 1))}
                       disabled={adults <= 1}
                     >
@@ -170,7 +160,7 @@ function CardReserva({
                     <Button
                       variant={'outline'}
                       size='icon-sm'
-                      className='rounded-full'
+                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
                       onClick={() => setAdults((v) => v + 1)}
                     >
                       <PlusIcon className='w-3 h-3' />
@@ -189,7 +179,7 @@ function CardReserva({
                     <Button
                       variant={'outline'}
                       size='icon-sm'
-                      className='rounded-full'
+                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
                       onClick={() => setChildren((v) => Math.max(0, v - 1))}
                       disabled={children <= 0}
                     >
@@ -199,7 +189,7 @@ function CardReserva({
                     <Button
                       variant={'outline'}
                       size='icon-sm'
-                      className='rounded-full'
+                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
                       onClick={() => setChildren((v) => v + 1)}
                     >
                       <PlusIcon className='w-3 h-3' />
@@ -227,7 +217,7 @@ function CardReserva({
                     <Button
                       variant={'outline'}
                       size='icon-sm'
-                      className='rounded-full'
+                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
                       onClick={() => setPets((v) => Math.max(0, v - 1))}
                       disabled={pets <= 0 || !petsPermitidos}
                     >
@@ -244,7 +234,7 @@ function CardReserva({
                     <Button
                       variant={'outline'}
                       size='icon-sm'
-                      className='rounded-full'
+                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
                       disabled={!petsPermitidos}
                       onClick={() => setPets((v) => v + 1)}
                     >

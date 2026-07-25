@@ -38,21 +38,65 @@ import generateWhatsLink from '@/lib/generate-whats-link';
 import { cn } from '@/lib/utils';
 import chales from '@/data/chales.json';
 
-const schema = z.object({
-  nome: z.string().min(2, 'Informe seu nome completo'),
-  chale: z.string().min(1, 'Selecione um chalé'),
-  checkin: z.date({ message: 'Informe a data de check-in' }),
-  checkout: z.date({ message: 'Informe a data de check-out' }),
-  adultos: z.number().min(1, 'Mínimo 1 adulto'),
-  criancas: z.number().min(0),
-  pets: z.number().min(0),
-});
+// Horários de operação da pousada (mesmos valores exibidos no FAQ da home).
+const CHECKIN_HORA = '14h';
+const CHECKOUT_HORA = '12h';
+
+// Estadia máxima aceita pelo formulário. Acima disso o hóspede é orientado a
+// falar direto com a pousada, porque envolve condições específicas.
+const MAX_NOITES = 30;
+
+// TODO: confirmar com o proprietário o tempo médio real de resposta no
+// WhatsApp e o horário de atendimento. Os valores abaixo são a expectativa
+// comunicada ao hóspede e devem refletir a operação real.
+const TEMPO_RESPOSTA = 'em até 2 horas, das 8h às 20h';
+
+const UM_DIA_EM_MS = 1000 * 60 * 60 * 24;
+
+const inicioDeHoje = (): Date => {
+  const data = new Date();
+  data.setHours(0, 0, 0, 0);
+  return data;
+};
+
+const contarNoites = (checkin: Date, checkout: Date): number =>
+  Math.round((checkout.getTime() - checkin.getTime()) / UM_DIA_EM_MS);
+
+const formatarData = (data: Date): string => data.toLocaleDateString('pt-BR');
+
+const schema = z
+  .object({
+    nome: z.string().min(2, 'Informe seu nome completo'),
+    chale: z.string().min(1, 'Selecione um chalé'),
+    checkin: z.date({ message: 'Informe a data de check-in' }),
+    checkout: z.date({ message: 'Informe a data de check-out' }),
+    adultos: z.number().min(1, 'Mínimo 1 adulto'),
+    criancas: z.number().min(0),
+    pets: z.number().min(0),
+  })
+  .refine((d) => !d.checkin || d.checkin >= inicioDeHoje(), {
+    message: 'A data de check-in não pode estar no passado',
+    path: ['checkin'],
+  })
+  .refine((d) => !d.checkin || !d.checkout || d.checkout > d.checkin, {
+    message: 'O check-out precisa ser depois do check-in',
+    path: ['checkout'],
+  })
+  .refine(
+    (d) =>
+      !d.checkin ||
+      !d.checkout ||
+      contarNoites(d.checkin, d.checkout) <= MAX_NOITES,
+    {
+      message: `Estadias acima de ${MAX_NOITES} noites são combinadas direto com a pousada`,
+      path: ['checkout'],
+    },
+  );
 
 type FormData = z.infer<typeof schema>;
 
 function Form(): React.ReactNode {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const today = inicioDeHoje();
 
   const [dateMenuOpen, setDateMenuOpen] = useState(false);
   const [guestMenuOpen, setGuestMenuOpen] = useState(false);
@@ -81,6 +125,16 @@ function Form(): React.ReactNode {
   const checkout = useWatch({ control, name: 'checkout' });
 
   const dateRange: DateRange = { from: checkin, to: checkout };
+
+  const noites =
+    checkin && checkout ? Math.max(0, contarNoites(checkin, checkout)) : 0;
+
+  const mostrarResumoDatas =
+    Boolean(checkin) &&
+    Boolean(checkout) &&
+    noites > 0 &&
+    !errors.checkin &&
+    !errors.checkout;
 
   const petsPermitidos =
     chales.find((c) => c.id === chaleSelecionadoId)?.politica.pets_permitidos ??
@@ -124,7 +178,16 @@ function Form(): React.ReactNode {
 
   const onSubmit = (data: FormData) => {
     const chaleSelecionado = chales.find((c) => c.id === chaleSelecionadoId);
-    const msgText = `Olá, me chamo *${data.nome}* e gostaria de reservar o *${chaleSelecionado?.nome}* para *${guestLabel}* no período de *${data.checkin.toLocaleDateString()} a ${data.checkout.toLocaleDateString()}*.`;
+    const totalNoites = contarNoites(data.checkin, data.checkout);
+    const msgText = [
+      `Olá, me chamo *${data.nome}* e gostaria de solicitar uma reserva no Refúgio da Pedra, em São Bento do Sapucaí.`,
+      `*Acomodação:* ${chaleSelecionado?.nome}`,
+      `*Check-in:* ${formatarData(data.checkin)} (a partir das ${CHECKIN_HORA})`,
+      `*Check-out:* ${formatarData(data.checkout)} (até as ${CHECKOUT_HORA})`,
+      `*Noites:* ${totalNoites}`,
+      `*Hóspedes:* ${guestLabel}`,
+      'Podem confirmar a disponibilidade e o valor da diária, por favor?',
+    ].join('\n');
     window.open(generateWhatsLink(msgText), '_blank');
   };
 
@@ -132,12 +195,13 @@ function Form(): React.ReactNode {
     <Card className='w-full max-w-md shadow-xl'>
       <CardHeader className='gsap-reveal-reservar opacity-0'>
         <CardTitle>
-          <h1 className='text-2xl tracking-tight md:text-3xl font-normal text-center'>
-            Reserve agora mesmo
-          </h1>
+          <h2 className='text-2xl tracking-tight md:text-3xl font-normal text-center'>
+            Solicite sua reserva
+          </h2>
         </CardTitle>
         <CardDescription className='text-muted-foreground leading-snug text-center'>
-          Preencha os dados abaixo para solicitar sua reserva
+          Preencha os dados abaixo. Ao enviar, abrimos o WhatsApp da pousada com
+          a sua solicitação já escrita — é só apertar enviar.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -148,7 +212,9 @@ function Form(): React.ReactNode {
               <FieldLabel htmlFor='form-nome'>Nome</FieldLabel>
               <Input
                 id='form-nome'
+                className='min-h-11'
                 placeholder='Seu nome completo'
+                autoComplete='name'
                 {...register('nome')}
               />
               {errors.nome && (
@@ -166,7 +232,7 @@ function Form(): React.ReactNode {
                 control={control}
                 render={({ field }) => (
                   <Select onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger id='form-chale'>
+                    <SelectTrigger id='form-chale' className='w-full min-h-11'>
                       <SelectValue placeholder='Selecione um chalé' />
                     </SelectTrigger>
                     <SelectContent>
@@ -207,31 +273,31 @@ function Form(): React.ReactNode {
                     >
                       <div
                         className={cn(
-                          'w-full py-2 px-3 flex flex-col items-start hover:bg-muted',
+                          'w-full min-h-11 py-2 px-3 flex flex-col items-start justify-center hover:bg-muted',
                           errors.checkin &&
                             'border border-destructive rounded-tl-xl',
                         )}
                       >
                         <span className='text-xs text-foreground font-medium'>
-                          Check-in
+                          Check-in · a partir das {CHECKIN_HORA}
                         </span>
                         <span className='text-muted-foreground text-sm text-start'>
-                          {checkin?.toLocaleDateString() || 'Adicionar data'}
+                          {checkin ? formatarData(checkin) : 'Adicionar data'}
                         </span>
                       </div>
                       <Separator orientation='vertical' />
                       <div
                         className={cn(
-                          'w-full py-2 px-3 flex flex-col items-start hover:bg-muted',
+                          'w-full min-h-11 py-2 px-3 flex flex-col items-start justify-center hover:bg-muted',
                           errors.checkout &&
                             'border border-destructive rounded-tr-xl',
                         )}
                       >
                         <span className='text-xs text-foreground font-medium'>
-                          Check-out
+                          Check-out · até as {CHECKOUT_HORA}
                         </span>
                         <span className='text-muted-foreground text-sm text-start'>
-                          {checkout?.toLocaleDateString() || 'Adicionar data'}
+                          {checkout ? formatarData(checkout) : 'Adicionar data'}
                         </span>
                       </div>
                     </button>
@@ -263,7 +329,7 @@ function Form(): React.ReactNode {
                     <button
                       type='button'
                       onClick={() => setGuestMenuOpen((v) => !v)}
-                      className='w-full py-2 px-3 rounded-b-xl flex flex-col items-start hover:bg-muted bg-input/30'
+                      className='w-full min-h-11 py-2 px-3 rounded-b-xl flex flex-col items-start justify-center hover:bg-muted bg-input/30'
                     >
                       <span className='text-xs text-foreground font-medium'>
                         Hóspedes
@@ -286,9 +352,10 @@ function Form(): React.ReactNode {
                         <div className='flex items-center gap-3'>
                           <Button
                             variant='outline'
-                            size='icon-sm'
-                            className='rounded-full'
+                            size='icon'
+                            className='size-11 rounded-full'
                             type='button'
+                            aria-label='Remover um adulto'
                             onClick={() =>
                               setValue('adultos', Math.max(1, adultos - 1), {
                                 shouldValidate: true,
@@ -296,23 +363,24 @@ function Form(): React.ReactNode {
                             }
                             disabled={adultos <= 1}
                           >
-                            <MinusIcon className='w-3 h-3' />
+                            <MinusIcon className='w-4 h-4' />
                           </Button>
                           <span className='w-4 text-center text-sm'>
                             {adultos}
                           </span>
                           <Button
                             variant='outline'
-                            size='icon-sm'
-                            className='rounded-full'
+                            size='icon'
+                            className='size-11 rounded-full'
                             type='button'
+                            aria-label='Adicionar um adulto'
                             onClick={() =>
                               setValue('adultos', adultos + 1, {
                                 shouldValidate: true,
                               })
                             }
                           >
-                            <PlusIcon className='w-3 h-3' />
+                            <PlusIcon className='w-4 h-4' />
                           </Button>
                         </div>
                       </div>
@@ -328,9 +396,10 @@ function Form(): React.ReactNode {
                         <div className='flex items-center gap-3'>
                           <Button
                             variant='outline'
-                            size='icon-sm'
-                            className='rounded-full'
+                            size='icon'
+                            className='size-11 rounded-full'
                             type='button'
+                            aria-label='Remover uma criança'
                             onClick={() =>
                               setValue('criancas', Math.max(0, criancas - 1), {
                                 shouldValidate: true,
@@ -338,23 +407,24 @@ function Form(): React.ReactNode {
                             }
                             disabled={criancas <= 0}
                           >
-                            <MinusIcon className='w-3 h-3' />
+                            <MinusIcon className='w-4 h-4' />
                           </Button>
                           <span className='w-4 text-center text-sm'>
                             {criancas}
                           </span>
                           <Button
                             variant='outline'
-                            size='icon-sm'
-                            className='rounded-full'
+                            size='icon'
+                            className='size-11 rounded-full'
                             type='button'
+                            aria-label='Adicionar uma criança'
                             onClick={() =>
                               setValue('criancas', criancas + 1, {
                                 shouldValidate: true,
                               })
                             }
                           >
-                            <PlusIcon className='w-3 h-3' />
+                            <PlusIcon className='w-4 h-4' />
                           </Button>
                         </div>
                       </div>
@@ -380,9 +450,10 @@ function Form(): React.ReactNode {
                         <div className='flex items-center gap-3'>
                           <Button
                             variant='outline'
-                            size='icon-sm'
-                            className='rounded-full'
+                            size='icon'
+                            className='size-11 rounded-full'
                             type='button'
+                            aria-label='Remover um animal de estimação'
                             onClick={() =>
                               setValue('pets', Math.max(0, pets - 1), {
                                 shouldValidate: true,
@@ -390,7 +461,7 @@ function Form(): React.ReactNode {
                             }
                             disabled={pets <= 0 || !petsPermitidos}
                           >
-                            <MinusIcon className='w-3 h-3' />
+                            <MinusIcon className='w-4 h-4' />
                           </Button>
                           <span
                             className={cn(
@@ -402,9 +473,10 @@ function Form(): React.ReactNode {
                           </span>
                           <Button
                             variant='outline'
-                            size='icon-sm'
-                            className='rounded-full'
+                            size='icon'
+                            className='size-11 rounded-full'
                             type='button'
+                            aria-label='Adicionar um animal de estimação'
                             disabled={!petsPermitidos}
                             onClick={() =>
                               setValue('pets', pets + 1, {
@@ -412,7 +484,7 @@ function Form(): React.ReactNode {
                               })
                             }
                           >
-                            <PlusIcon className='w-3 h-3' />
+                            <PlusIcon className='w-4 h-4' />
                           </Button>
                         </div>
                       </div>
@@ -420,6 +492,13 @@ function Form(): React.ReactNode {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
+              {mostrarResumoDatas && checkin && checkout && (
+                <p className='text-muted-foreground text-xs'>
+                  {noites} noite{noites !== 1 ? 's' : ''} · check-in{' '}
+                  {formatarData(checkin)} às {CHECKIN_HORA} · check-out{' '}
+                  {formatarData(checkout)} até as {CHECKOUT_HORA}
+                </p>
+              )}
               {(errors.checkin || errors.checkout) && (
                 <p className='text-destructive text-xs'>
                   {errors.checkin?.message || errors.checkout?.message}
@@ -430,10 +509,18 @@ function Form(): React.ReactNode {
             <Button
               type='submit'
               size='lg'
-              className='gsap-reveal-reservar opacity-0 w-full rounded-full'
+              className='gsap-reveal-reservar opacity-0 h-11 w-full rounded-full'
             >
-              Reservar
+              Enviar solicitação pelo WhatsApp
             </Button>
+
+            {/* Handoff honesto: o formulário não confirma reserva, apenas abre
+                a conversa no WhatsApp com os dados preenchidos. */}
+            <p className='text-muted-foreground text-xs leading-relaxed text-center'>
+              Não há cobrança nem confirmação automática nesta etapa. Nós
+              conferimos a disponibilidade da acomodação escolhida e respondemos
+              com o valor e a forma de pagamento — normalmente {TEMPO_RESPOSTA}.
+            </p>
           </FieldGroup>
         </form>
       </CardContent>

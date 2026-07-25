@@ -1,10 +1,28 @@
 import serialize from 'serialize-javascript';
-import type { WithContext, LodgingBusiness } from 'schema-dts';
-import { getSiteUrl, getInPhoneNumber } from '@/lib/env';
+import type { WithContext, WebPage } from 'schema-dts';
+import { getSiteUrl } from '@/lib/env';
 
 interface Props {
   children: React.ReactNode;
 }
+
+/**
+ * O Next.js substitui (não mescla) o objeto `openGraph` inteiro quando um
+ * segmento filho o declara, então `images` precisa ser repetido aqui.
+ */
+const ogImage = {
+  url: '/assets/refugio/geral/refugio-1.webp',
+  width: 1620,
+  height: 1080,
+  alt: 'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+};
+
+/**
+ * `trailingSlash: true` no next.config.ts: toda rota é servida com barra
+ * final, então canonical/og:url/JSON-LD precisam apontar para a URL com barra
+ * — caso contrário apontam para um 308. Não vale para arquivos estáticos.
+ */
+const pageUrl = `${getSiteUrl()}/`;
 
 export function generateMetadata() {
   const siteUrl = getSiteUrl();
@@ -13,7 +31,7 @@ export function generateMetadata() {
       absolute: 'Refúgio da Pedra – Chalés e Pousada em São Bento do Sapucaí',
     },
     description:
-      'Pousada e chalés em São Bento do Sapucaí, na Serra da Mantiqueira. Vista para as montanhas, natureza e conforto. Reserve sua hospedagem no Refúgio da Pedra SP.',
+      'Pousada e chalés em São Bento do Sapucaí, na Serra da Mantiqueira. Vista para as montanhas, natureza e conforto. Reserve sua hospedagem no Refúgio da Pedra.',
     keywords: [
       'chalés',
       'camping',
@@ -23,45 +41,43 @@ export function generateMetadata() {
       'experiências',
       'Serra da Mantiqueira',
     ],
-    authors: [{ name: 'Refúgio da Pedra SP' }],
+    authors: [{ name: 'Pousada Refúgio da Pedra' }],
     openGraph: {
       title: 'Refúgio da Pedra - Chalés e Experiências',
       description:
         'Um paraíso em São Bento do Sapucaí com chalés e experiências na natureza.',
+      siteName: 'Refúgio da Pedra',
       type: 'website',
-      url: siteUrl,
+      url: `${siteUrl}/`,
+      images: [ogImage],
     },
     alternates: {
-      canonical: siteUrl,
+      canonical: `${siteUrl}/`,
     },
   };
 }
 
-const rawPhone = getInPhoneNumber();
-
-const jsonLd: WithContext<LodgingBusiness> = {
+/**
+ * O negócio em si é descrito uma única vez no layout raiz
+ * (`${siteUrl}/#business`). Aqui apenas referenciamos aquele nó.
+ */
+const jsonLd: WithContext<WebPage> = {
   '@context': 'https://schema.org',
-  '@type': 'LodgingBusiness',
-  name: 'Refúgio da Pedra SP',
+  '@type': 'WebPage',
+  '@id': `${getSiteUrl()}/#webpage`,
+  name: 'Pousada Refúgio da Pedra – Chalés em São Bento do Sapucaí',
   description:
     'Complexo de chalés, cabanas e domos em meio à natureza, em São Bento do Sapucaí, na Serra da Mantiqueira.',
-  url: getSiteUrl(),
-  image: `${getSiteUrl()}/assets/refugio/geral/refugio-1.webp`,
-  ...(rawPhone
-    ? { telephone: rawPhone.startsWith('+') ? rawPhone : `+${rawPhone}` }
-    : {}),
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'São Bento do Sapucaí',
-    addressRegion: 'SP',
-    addressCountry: 'BR',
+  url: pageUrl,
+  inLanguage: 'pt-BR',
+  isPartOf: { '@id': `${getSiteUrl()}/#website` },
+  about: { '@id': `${getSiteUrl()}/#business` },
+  primaryImageOfPage: {
+    '@type': 'ImageObject',
+    url: `${getSiteUrl()}/assets/refugio/geral/refugio-1.webp`,
+    caption:
+      'Chalés do Refúgio da Pedra ao entardecer, com a Pedra do Baú ao fundo',
   },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: -22.67812457941675,
-    longitude: -45.66375792387372,
-  },
-  sameAs: ['https://www.instagram.com/refugiodapedrasp/'],
 };
 
 async function HomeLayout({ children }: Props): Promise<React.ReactNode> {

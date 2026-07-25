@@ -17,9 +17,11 @@ import {
 import { Menu } from 'lucide-react';
 import { useState } from 'react';
 
+// `trailingSlash: true` (next.config.ts) — todo href interno precisa terminar
+// com barra, senão o Next responde 308 antes de servir a página.
 const links = [
-  { href: '/chales', label: 'Chalés' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/chales/', label: 'Chalés' },
+  { href: '/blog/', label: 'Blog' },
 ];
 
 function Header(): React.ReactNode {
@@ -60,7 +62,7 @@ function Header(): React.ReactNode {
               className='ml-2 md:rounded-full'
               asChild
             >
-              <Link href='/reservar'>Reservar</Link>
+              <Link href='/reservar/'>Reservar</Link>
             </Button>
 
             {/* Mobile */}
@@ -68,14 +70,19 @@ function Header(): React.ReactNode {
               <DropdownMenuTrigger asChild>
                 <Button
                   aria-label='Menu de navegação'
-                  className='md:hidden'
+                  // size-11 = 44px: alvo mínimo de toque recomendado (WCAG 2.5.8).
+                  className='md:hidden size-11'
                   size={'icon'}
                   variant='outline'
                 >
                   <Menu />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent sideOffset={6} align='end'>
+              <DropdownMenuContent
+                sideOffset={6}
+                align='end'
+                className='w-44 bg-popover'
+              >
                 <DropdownMenuGroup>
                   {links.map((link) => (
                     <DropdownMenuItem asChild key={link.href}>
@@ -90,6 +97,15 @@ function Header(): React.ReactNode {
           </div>
         </nav>
       </header>
+      {/* Scrim do menu mobile: sem ele o painel flutua sobre o H1 do hero, que
+          fica visível mas ilegível por trás. z-40 mantém o header (z-50) e o
+          painel do dropdown por cima. */}
+      {isOpen ? (
+        <div
+          aria-hidden='true'
+          className='fixed inset-0 z-40 bg-background/85 backdrop-blur-sm pointer-events-none md:hidden'
+        />
+      ) : null}
       <div className='pt-16' />
     </>
   );

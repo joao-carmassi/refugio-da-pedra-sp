@@ -22,7 +22,7 @@ html {
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.147 0.004 49.25);
   --primary: oklch(75.211% 0.16495 66.443);
-  --primary-foreground: oklch(100% 0.00011 271.152);
+  --primary-foreground: oklch(0.28 0.07 46);
   --secondary: oklch(0.7977 0.1641 82.71);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.97 0.001 106.424);

@@ -19,59 +19,64 @@ import {
 import Image from 'next/image';
 import { useState } from 'react';
 import { gsap } from 'gsap';
+import { getAlt } from '@/lib/image-alt';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const questions = [
   {
-    question: 'Café da manhã',
+    question: 'O café da manhã está incluso?',
     Icon: <Coffee size={18} />,
     answer:
       'O nosso café utiliza produtos típicos da região, como pães caseiros, bolos, pão de queijo, geleias, manteiga, leite, café, sucos e frutas. O hóspede pode consumi-lo no deck principal, desfrutando de uma bela vista das montanhas.',
   },
   {
-    question: 'Check-in e check-out',
+    question: 'Qual o horário de check-in e check-out?',
     Icon: <Calendar size={18} />,
     answer:
       'O seu descanso começa às 14h (check-in), e se estende até o meio-dia (check-out), para que você possa aproveitar cada minuto da estadia.',
   },
   {
-    question: 'Wifi Gratuito',
+    question: 'A pousada tem Wi-Fi gratuito?',
     Icon: <Wifi size={18} />,
     answer:
       'Fique sempre conectado! Nossos chalés oferecem Wi-Fi gratuito para que você possa compartilhar os melhores momentos da sua estadia, sem perder o contato com o mundo',
   },
   {
-    question: 'Pet Friendly',
+    question: 'A pousada aceita pets?',
     Icon: <PawPrint size={18} />,
     answer:
       'Entendemos que os animais de estimação são parte da família. Por isso, somos pet-friendly e ficaremos felizes em receber o seu amigo peludo durante a sua estadia.',
   },
   {
-    question: 'Crianças',
+    question: 'A pousada aceita crianças?',
     Icon: <Baby size={18} />,
     answer:
       'Valorizamos a presença das famílias em nosso espaço. Para tornar a experiência ainda mais acessível, permitimos a estadia de crianças a partir dos 13 anos. É nossa maneira de compartilhar momentos especiais com todos, oferecendo conforto e praticidade para a família.',
   },
   {
-    question: 'Estacionamento privativo',
+    question: 'Tem estacionamento privativo?',
     Icon: <Car size={18} />,
     answer:
       'Cada chalé possui seu próprio estacionamento individual, oferecendo segurança e praticidade durante toda a sua hospedagem.',
   },
   {
-    question: 'Roupas de cama e toalhas',
+    question: 'Roupas de cama e toalhas estão inclusas?',
     Icon: <Bed size={18} />,
     answer:
       'Roupas de cama macias, toalhas de banho e rosto estão incluidas na reserva sempre prontas para o seu conforto.',
   },
   {
-    question: 'Pedra do Baú',
+    question: 'Qual a distância até a Pedra do Baú?',
     Icon: <MountainSnow size={18} />,
     answer:
       'A apenas 1,5 km da Pedra do Baú, nossa pousada esta localizada no local perfeito para quem gosta de explorar a natureza.',
   },
 ];
+
+// Mesma foto exibida como item 28 da galeria da homepage. O alt vem do mapa
+// único, então as duas ocorrências nunca divergem.
+const cafeDaManhaSrc = '/assets/refugio/geral/refugio-28.webp';
 
 const Faq = () => {
   const [open, setOpen] = useState<number>(0);
@@ -101,8 +106,8 @@ const Faq = () => {
               width={724}
               height={804}
               className='rounded-2xl md:rounded-3xl object-cover aspect-9/12 xl:aspect-9/10'
-              src='/assets/refugio/geral/refugio-28.webp'
-              alt='Café da manhã'
+              src={cafeDaManhaSrc}
+              alt={getAlt(cafeDaManhaSrc, 'Café da manhã')}
             />
           </div>
           <div className='flex flex-col gap-3 md:gap-6 text-start flex-1'>

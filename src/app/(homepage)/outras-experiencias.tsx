@@ -57,7 +57,18 @@ const OutrasExperiencias = () => {
           </p>
           <div className='gsap-reveal-outras-experiencias opacity-0 space-y-3'>
             {features.map(
-              ({ title, id, description, imgCell, linkMapa, icon }, index) => {
+              (
+                {
+                  title,
+                  id,
+                  description,
+                  imgCell,
+                  imgCellAlt,
+                  linkMapa,
+                  icon,
+                },
+                index,
+              ) => {
                 const Icon = iconsMap[icon as keyof typeof iconsMap];
                 return (
                   <Accordion
@@ -83,7 +94,7 @@ const OutrasExperiencias = () => {
                         {imgCell && (
                           <Image
                             loading='lazy'
-                            alt={title}
+                            alt={imgCellAlt || title}
                             src={`/assets/${id}/${imgCell}`}
                             className='mt-3 md:hidden aspect-video w-full bg-card rounded-xl object-cover object-center'
                             width={544}
@@ -105,7 +116,7 @@ const OutrasExperiencias = () => {
               width={724}
               height={724}
               loading='lazy'
-              alt={activeFeature.title}
+              alt={activeFeature.imgPcAlt || activeFeature.title}
               src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
               className='rounded-2xl md:rounded-3xl object-cover aspect-9/12 xl:aspect-square w-full'
               sizes='(max-width: 1024px) 100vw, 50vw'
