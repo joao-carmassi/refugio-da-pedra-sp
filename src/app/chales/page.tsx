@@ -88,7 +88,7 @@ function ChalePage(): React.ReactNode {
                     <Image
                       src={capaSrc}
                       alt={getAlt(capaSrc, chale.nome)}
-                      className='aspect-[4/3] md:aspect-square object-cover w-full'
+                      className='aspect-4/3 md:aspect-square object-cover w-full'
                       width={356}
                       height={356}
                       sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw'
@@ -100,7 +100,7 @@ function ChalePage(): React.ReactNode {
                         hoverSrc,
                         `${chale.nome} - vista alternativa`,
                       )}
-                      className='aspect-[4/3] md:aspect-square object-cover w-full absolute top-0 opacity-0 group-hover:opacity-100 group-hover:scale-103 transition duration-400 ease-out'
+                      className='aspect-4/3 md:aspect-square object-cover w-full absolute top-0 opacity-0 group-hover:opacity-100 group-hover:scale-103 transition duration-400 ease-out'
                       width={356}
                       height={356}
                       sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw'
