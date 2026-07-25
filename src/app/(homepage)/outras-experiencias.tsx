@@ -10,9 +10,6 @@ import {
 } from '@/components/ui/accordion';
 import { memo, useState } from 'react';
 import Image from 'next/image';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const iconsMap = {
   Wine,
@@ -21,44 +18,39 @@ const iconsMap = {
   UtensilsCrossed,
 };
 
+/**
+ * Único acordeão da página — e aqui ele tem função: abrir um parceiro troca a
+ * fotografia grande à direita. Restilizado para o sistema (réguas de 1px em vez
+ * da caixa arredondada com borda). Sem reveal: a seção já tem movimento próprio
+ * na troca de imagem.
+ */
 const OutrasExperiencias = () => {
   const [activeItem, setActiveItem] = useState('santaMaria');
   const activeFeature = features.find((f) => f.id === activeItem);
 
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo(
-      '.gsap-reveal-outras-experiencias',
-      { y: 60, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        ease: 'power2.out',
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: '#outras-experiencias-anchor',
-          start: 'top 80%',
-        },
-      },
-    );
-  }, []);
-
   return (
-    <section id='outras-experiencias-anchor' className='py-6 lg:py-12'>
-      <div className='container flex flex-col-reverse lg:flex-row items-center gap-6 md:gap-12'>
-        <div className='flex flex-col gap-3 md:gap-6 text-start flex-1'>
-          <h2 className='gsap-reveal-outras-experiencias opacity-0 text-2xl tracking-tight md:text-4xl lg:text-5xl'>
+    <section id='outras-experiencias-anchor' className='py-12 md:py-20'>
+      <div className='container'>
+        <header className='max-w-3xl'>
+          <h2 className='text-2xl tracking-tight text-pretty md:text-4xl lg:text-5xl'>
             Complete sua experiência
           </h2>
-          <p className='gsap-reveal-outras-experiencias opacity-0 text-muted-foreground leading-snug'>
-            Garanta sua reserva no Refúgio da Pedra SP e viva os melhores passeios
-            de São Bento do Sapucaí!
+          <p className='mt-3 max-w-prose text-muted-foreground'>
+            Garanta sua reserva no Refúgio da Pedra SP e viva os melhores
+            passeios de São Bento do Sapucaí.
           </p>
-          <div className='gsap-reveal-outras-experiencias opacity-0 space-y-3'>
-            {features.map(
-              (
-                {
+        </header>
+
+        <div className='mt-8 flex flex-col-reverse gap-8 md:mt-12 lg:flex-row lg:items-start lg:gap-12'>
+          <div className='flex-1'>
+            <Accordion
+              value={activeItem}
+              onValueChange={setActiveItem}
+              type='single'
+              className='rounded-none border-0 border-y bg-transparent'
+            >
+              {features.map(
+                ({
                   title,
                   id,
                   description,
@@ -66,28 +58,26 @@ const OutrasExperiencias = () => {
                   imgCellAlt,
                   linkMapa,
                   icon,
-                },
-                index,
-              ) => {
-                const Icon = iconsMap[icon as keyof typeof iconsMap];
-                return (
-                  <Accordion
-                    value={activeItem}
-                    onValueChange={setActiveItem}
-                    type='single'
-                    className='w-full bg-card'
-                    key={index}
-                  >
-                    <AccordionItem value={id}>
-                      <AccordionTrigger className='items-center'>
-                        <Icon size={18} />
+                }) => {
+                  const Icon = iconsMap[icon as keyof typeof iconsMap];
+
+                  return (
+                    <AccordionItem
+                      key={id}
+                      value={id}
+                      className='data-[state=open]:bg-transparent'
+                    >
+                      <AccordionTrigger className='items-center gap-3 px-0 py-4 text-base font-medium data-[state=open]:text-foreground'>
+                        <Icon aria-hidden='true' size={18} />
                         {title}
                       </AccordionTrigger>
-                      <AccordionContent>
+                      {/* `-mx-4` anula o `px-4` fixo do wrapper do
+                          AccordionContent, alinhando o texto com o gatilho. */}
+                      <AccordionContent className='-mx-4 pb-5 text-muted-foreground'>
                         {description}
                         <iframe
                           title={`${title} - Mapa`}
-                          className='hidden md:block md:h-40 lg:h-60 mt-2 w-full rounded-xl'
+                          className='mt-3 hidden w-full rounded-xl md:block md:h-40 lg:h-60'
                           src={linkMapa}
                           loading='lazy'
                         />
@@ -96,7 +86,7 @@ const OutrasExperiencias = () => {
                             loading='lazy'
                             alt={imgCellAlt || title}
                             src={`/assets/${id}/${imgCell}`}
-                            className='mt-3 md:hidden aspect-video w-full bg-card rounded-xl object-cover object-center'
+                            className='mt-3 aspect-video w-full rounded-xl object-cover object-center md:hidden'
                             width={544}
                             height={306}
                             sizes='100vw'
@@ -104,25 +94,26 @@ const OutrasExperiencias = () => {
                         )}
                       </AccordionContent>
                     </AccordionItem>
-                  </Accordion>
-                );
-              },
-            )}
+                  );
+                },
+              )}
+            </Accordion>
           </div>
+
+          {activeFeature?.imgPc && (
+            <div className='hidden flex-1 md:block'>
+              <Image
+                width={724}
+                height={724}
+                loading='lazy'
+                alt={activeFeature.imgPcAlt || activeFeature.title}
+                src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
+                className='aspect-9/12 w-full rounded-2xl object-cover xl:aspect-square'
+                sizes='(max-width: 1024px) 100vw, 50vw'
+              />
+            </div>
+          )}
         </div>
-        {activeFeature?.imgPc && (
-          <div className='gsap-reveal-outras-experiencias opacity-0 flex-1 hidden md:block '>
-            <Image
-              width={724}
-              height={724}
-              loading='lazy'
-              alt={activeFeature.imgPcAlt || activeFeature.title}
-              src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
-              className='rounded-2xl md:rounded-3xl object-cover aspect-9/12 xl:aspect-square w-full'
-              sizes='(max-width: 1024px) 100vw, 50vw'
-            />
-          </div>
-        )}
       </div>
     </section>
   );
