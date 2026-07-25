@@ -37,8 +37,11 @@ function ChalePage(): React.ReactNode {
   return (
     <main className='min-h-container bg-background py-12 md:py-20'>
       <div className='container space-y-12 md:space-y-20'>
-        {/* Cabeçalho de inventário: o que é, quantos são, onde ficam. */}
-        <header className='space-y-4'>
+        {/* Cabeçalho de inventário: o que é, quantos são, onde ficam.
+            Sem `space-y-*`: a folga breadcrumb→h1 é a padrão de todas as rotas
+            (`mt-6 md:mt-8`) e não pode ser a mesma do ritmo interno do bloco,
+            que continua em 1rem. Por isso as margens são explícitas. */}
+        <header>
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -52,13 +55,13 @@ function ChalePage(): React.ReactNode {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <h1 className='text-2xl tracking-tight text-pretty md:text-4xl lg:text-5xl'>
+          <h1 className='mt-6 text-2xl tracking-tight text-pretty md:mt-8 md:text-4xl lg:text-5xl'>
             Chalés, cabana e domo em São Bento do Sapucaí
           </h1>
-          <p className='text-sm text-muted-foreground'>
+          <p className='mt-4 text-sm text-muted-foreground'>
             Cinco acomodações · Serra da Mantiqueira · Pedra do Baú a 1,5 km
           </p>
-          <p className='max-w-[62ch] leading-relaxed text-muted-foreground'>
+          <p className='mt-4 max-w-[62ch] leading-relaxed text-muted-foreground'>
             Todas independentes, com entrada própria. Escolha pela capacidade,
             pelas camas e pelo que cada uma tem — lareira, cozinha equipada,
             mezanino ou deck com vista.

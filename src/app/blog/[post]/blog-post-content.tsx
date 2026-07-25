@@ -56,7 +56,9 @@ const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
   }, []);
 
   return (
-    <main className='py-6 md:py-12 min-h-container space-y-6 md:space-y-12 animate-in fade-in duration-300 fill-mode-both'>
+    // `pt-12 md:pt-20`: mesma folga entre header e breadcrumb de /chales/,
+    // /blog/ e /sobre/. Só o topo é padronizado.
+    <main className='pt-12 pb-6 md:pt-20 md:pb-12 min-h-container space-y-6 md:space-y-12 animate-in fade-in duration-300 fill-mode-both'>
       <div className='container'>
         <Breadcrumb>
           <BreadcrumbList>
@@ -67,7 +69,9 @@ const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href='/blog'>Blog</BreadcrumbLink>
+              {/* barra final obrigatória: `trailingSlash: true` no
+                  next.config.ts — sem ela o Next responde 308. */}
+              <BreadcrumbLink href='/blog/'>Blog</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
@@ -75,7 +79,9 @@ const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <h1 className='mb-3 mt-6 md:my-6 max-w-3xl text-2xl tracking-tight md:text-4xl lg:text-5xl'>
+        {/* `mt-6 md:mt-8`: folga padrão breadcrumb→título das cinco rotas.
+            O `md:my-6` de antes amarrava topo e base no mesmo valor. */}
+        <h1 className='mb-3 mt-6 md:mt-8 md:mb-6 max-w-3xl text-2xl tracking-tight md:text-4xl lg:text-5xl'>
           {post.title}
         </h1>
         <div className='mb-6 text-muted-foreground'>{post.description}</div>

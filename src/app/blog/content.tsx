@@ -29,7 +29,10 @@ interface Props {
  */
 const BlogContent = ({ blogPosts }: Props) => {
   return (
-    <main className='min-h-container container py-8 md:py-14 animate-in fade-in duration-300 fill-mode-both'>
+    // `pt-12 md:pt-20` é a folga padrão entre o header e o breadcrumb, a mesma
+    // de /chales/, /sobre/ e dos posts. Só o topo é padronizado — o rodapé de
+    // cada rota continua com o respiro que já tinha.
+    <main className='min-h-container container pt-12 pb-8 md:pt-20 md:pb-14 animate-in fade-in duration-300 fill-mode-both'>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -45,7 +48,8 @@ const BlogContent = ({ blogPosts }: Props) => {
       </Breadcrumb>
 
       {/* Abertura curta, no espírito Index-First: um rótulo do que vem abaixo. */}
-      <header className='mt-8 max-w-[70ch] md:mt-12'>
+      {/* `mt-6 md:mt-8`: folga padrão breadcrumb→título das cinco rotas. */}
+      <header className='mt-6 max-w-[70ch] md:mt-8'>
         <h1 className='text-3xl tracking-tight text-balance md:text-4xl'>
           Blog
         </h1>

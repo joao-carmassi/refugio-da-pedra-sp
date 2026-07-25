@@ -67,7 +67,10 @@ function ChaleContent({ chale, description }: Props): React.ReactNode {
   const bannerAlt = getAlt(bannerSrc, chale.nome);
 
   return (
-    <main className='min-h-container pb-6 lg:py-12 bg-background animate-in fade-in duration-300 fill-mode-both'>
+    // `lg:pt-20` iguala a folga header→breadcrumb das outras rotas (/chales/,
+    // /blog/, /sobre/, posts). Só de `lg` para cima: abaixo disso o breadcrumb
+    // é `hidden` e o banner encosta no topo — o mobile continua sem `pt`.
+    <main className='min-h-container pb-6 lg:pt-20 lg:pb-12 bg-background animate-in fade-in duration-300 fill-mode-both'>
       <Image
         src={bannerSrc}
         alt={bannerAlt}
@@ -80,7 +83,11 @@ function ChaleContent({ chale, description }: Props): React.ReactNode {
       <section className='lg:container rounded-4xl lg:rounded-none bg-background px-6 pt-6 -mt-14 lg:mt-0 lg:pt-0 z-10 relative'>
         <div className='grid lg:grid-cols-[3fr_1fr] gap-6'>
           <div className='space-y-6'>
-            <Breadcrumb className='hidden lg:flex'>
+            {/* `lg:mb-8` sobrepõe o 1.5rem do `space-y-6` do pai só nesta
+                folga, igualando o breadcrumb→conteúdo das outras rotas. Vale
+                apenas de `lg` para cima, que é onde o breadcrumb existe — o
+                ritmo do resto do bloco e o mobile ficam intactos. */}
+            <Breadcrumb className='hidden lg:mb-8 lg:flex'>
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink aria-label='Homepage' href='/'>

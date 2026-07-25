@@ -30,7 +30,11 @@ const temBioDosProprietarios = PROPRIETARIOS.bio.length > 0;
 
 function SobrePage(): React.ReactNode {
   return (
-    <main className='min-h-container py-6 md:py-12 grid place-items-center animate-in fade-in duration-300 fill-mode-both'>
+    // `pt-12 md:pt-20`: mesma folga entre header e breadcrumb de /chales/,
+    // /blog/ e dos posts. O `grid place-items-center` saiu junto — com ele o
+    // conteúdo era centrado na altura do `min-h-container`, então o padding do
+    // topo não mandava na posição do breadcrumb.
+    <main className='min-h-container pt-12 pb-6 md:pt-20 md:pb-12 animate-in fade-in duration-300 fill-mode-both'>
       <section className='container space-y-6 md:space-y-8'>
         <Breadcrumb>
           <BreadcrumbList>
