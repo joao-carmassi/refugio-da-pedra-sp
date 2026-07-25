@@ -6,34 +6,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { getSiteUrl } from '@/lib/env';
 import { Home } from 'lucide-react';
-
-export function generateMetadata() {
-  const siteUrl = getSiteUrl();
-  return {
-    title: 'Quem Somos - Refúgio da Pedra',
-    description:
-      'Conheça a história por trás do Refúgio da Pedra, em São Bento do Sapucaí: uma pousada de família na Serra da Mantiqueira feita para quem busca descanso de verdade.',
-    keywords: [
-      'quem somos',
-      'sobre',
-      'pousada de família',
-      'São Bento do Sapucaí',
-      'Serra da Mantiqueira',
-    ],
-    openGraph: {
-      title: 'Quem Somos - Refúgio da Pedra',
-      description:
-        'A história por trás do Refúgio da Pedra, uma pousada de família na Serra da Mantiqueira.',
-      type: 'website',
-      url: `${siteUrl}/sobre`,
-    },
-    alternates: {
-      canonical: `${siteUrl}/sobre`,
-    },
-  };
-}
+import Link from 'next/link';
 
 function SobrePage(): React.ReactNode {
   return (
@@ -55,53 +29,125 @@ function SobrePage(): React.ReactNode {
 
         <div className='space-y-3'>
           <h1 className='text-2xl tracking-tight md:text-4xl lg:text-5xl'>
-            A família por trás do Refúgio da Pedra
+            Uma pousada sustentável ao pé da Pedra do Baú
           </h1>
+          <p className='text-muted-foreground md:text-lg'>
+            Desde 2018, recebendo quem vem para a Serra da Mantiqueira em busca
+            de natureza, silêncio e aventura — em São Bento do Sapucaí.
+          </p>
           {/* TODO: replace with real owner name + photo once provided */}
         </div>
 
-        <div className='prose dark:prose-invert max-w-none space-y-4 text-muted-foreground leading-relaxed'>
-          <p>
-            O Refúgio da Pedra nasceu de uma vontade simples: viver mais perto
-            da serra e compartilhar esse lugar com quem também precisa
-            desacelerar. Foi em São Bento do Sapucaí, entre neblina, pedras
-            centenárias e o cheiro de eucalipto molhado, que decidimos trocar a
-            rotina da cidade grande por um pedaço de terra na Mantiqueira e
-            construir, aos poucos, os primeiros chalés.
-          </p>
-          <p>
-            Não somos uma rede de hotéis, nem um empreendimento gerido à
-            distância. Somos uma família que mora perto, que cuida do jardim no
-            fim de semana, que conhece cada chalé pelo nome e sabe qual deles
-            pega o melhor sol da manhã. Cada detalhe da hospedagem — da lenha
-            separada para a lareira ao horário do café — passa pelas nossas
-            mãos, porque acreditamos que hospitalidade de verdade não se
-            terceiriza.
-          </p>
-          <p>
-            Quem chega ao Refúgio da Pedra costuma dizer a mesma coisa: o
-            silêncio impressiona. Aqui, os dias começam com o vapor subindo do
-            vale e terminam com o céu mais estrelado do que a maioria das
-            pessoas já viu. Entre uma coisa e outra, dá tempo de caminhar até a
-            cachoeira, ler um livro na varanda ou simplesmente não fazer nada —
-            o que, na correria do dia a dia, virou um luxo raro.
-          </p>
-          <p>
-            Também levamos a sério o compromisso com a terra que nos acolhe.
-            Procuramos manter a vegetação nativa, usar os recursos da
-            propriedade com consciência e respeitar o ritmo da montanha, que
-            muda de temperatura e de humor várias vezes ao dia. Não construímos
-            o Refúgio da Pedra para ser grande — construímos para que ele
-            continuasse de pé, do jeito que é, daqui a vinte anos.
-          </p>
-          <p>
-            Se você está pensando em vir, saiba que não vai encontrar um
-            atendimento padronizado de central telefônica. Vai falar diretamente
-            com quem cuida do lugar, tirar dúvidas pelo WhatsApp e ser recebido
-            por gente que gosta genuinamente de receber. É assim que gostaríamos
-            de ser recebidos também — e é esse o Refúgio da Pedra que convidamos
-            você a conhecer.
-          </p>
+        <div className='prose dark:prose-invert max-w-none space-y-8 text-muted-foreground leading-relaxed'>
+          <div className='space-y-4'>
+            <h2 className='text-xl md:text-2xl text-foreground'>
+              Como o Refúgio da Pedra começou
+            </h2>
+            <p>
+              O Refúgio da Pedra nasceu em 2018 de uma vontade simples: viver
+              mais perto da serra e compartilhar esse lugar com quem também
+              precisa desacelerar. Foi em São Bento do Sapucaí, entre neblina,
+              pedras centenárias e o cheiro de eucalipto molhado, que trocamos a
+              rotina da cidade grande por um pedaço de terra na Mantiqueira e
+              começamos a construir, aos poucos, as primeiras acomodações.
+            </p>
+            <p>
+              A ideia sempre foi a mesma: uma pousada sustentável, pequena o
+              suficiente para ser cuidada de perto e integrada à paisagem em vez
+              de imposta a ela. Não somos uma rede de hotéis, nem um
+              empreendimento gerido à distância. Somos uma família que mora
+              perto, que cuida do jardim no fim de semana, que conhece cada
+              chalé pelo nome e sabe qual deles pega o melhor sol da manhã.
+            </p>
+          </div>
+
+          <div className='space-y-4'>
+            <h2 className='text-xl md:text-2xl text-foreground'>
+              No pé da Pedra do Baú
+            </h2>
+            <p>
+              Estamos a apenas 1,5 km do pé da Pedra do Baú, um dos cartões
+              postais da Serra da Mantiqueira. É essa localização que define o
+              nosso dia a dia: trilhas que começam praticamente na porta,
+              escalada e rapel a poucos minutos, montanhas imponentes de um lado
+              e o vale se abrindo do outro. Quem chega costuma dizer a mesma
+              coisa — o silêncio impressiona. Os dias começam com o vapor
+              subindo do vale e terminam com o céu mais estrelado do que a
+              maioria das pessoas já viu.
+            </p>
+            <p>
+              Estar aqui também é uma escolha: acreditamos no turismo rural e no
+              turismo de aventura como forma de movimentar a economia local. Por
+              isso trabalhamos lado a lado com quem produz e recebe na região —
+              a vinícola do Vale do Baú, o azeite extravirgem da Mantiqueira, os
+              restaurantes da cidade e as agências de ecoturismo que conduzem as
+              trilhas e escaladas. Cada hóspede que chega ao Refúgio acaba
+              deixando algo para São Bento do Sapucaí inteira.
+            </p>
+          </div>
+
+          <div className='space-y-4'>
+            <h2 className='text-xl md:text-2xl text-foreground'>
+              Acomodações simples, do jeito que a serra pede
+            </h2>
+            <p>
+              São cinco acomodações no total: três chalés, uma cabana com
+              lareira e um domo geodésico. Todas são propositalmente simples —
+              não vai encontrar aqui luxo de vitrine, e sim o essencial bem
+              feito. Suíte confortável, deck ou varanda privativa com vista para
+              as montanhas, aquecedor para as noites frias, cozinha equipada nos
+              chalés e lareira de verdade onde faz sentido ter uma.
+            </p>
+            <p>
+              A reserva já inclui o que importa: café da manhã com produtos
+              típicos da região, roupa de cama e toalhas, Wi-Fi, estacionamento
+              privativo em cada acomodação e seguro sem custo adicional. Somos
+              pet friendly na maior parte das unidades, porque entendemos que os
+              animais de estimação são parte da família.{' '}
+              <Link
+                className='underline underline-offset-4 hover:text-foreground'
+                href='/chales'
+              >
+                Conheça as acomodações
+              </Link>{' '}
+              e escolha a que combina com a sua viagem.
+            </p>
+          </div>
+
+          <div className='space-y-4'>
+            <h2 className='text-xl md:text-2xl text-foreground'>
+              Sustentabilidade não é discurso
+            </h2>
+            <p>
+              Levamos a sério o compromisso com a terra que nos acolhe.
+              Procuramos manter a vegetação nativa, usar os recursos da
+              propriedade com consciência e respeitar o ritmo da montanha, que
+              muda de temperatura e de humor várias vezes ao dia. Não
+              construímos o Refúgio da Pedra para ser grande — construímos para
+              que ele continuasse de pé, do jeito que é, daqui a vinte anos.
+            </p>
+          </div>
+
+          <div className='space-y-4'>
+            <h2 className='text-xl md:text-2xl text-foreground'>
+              Quem recebe você
+            </h2>
+            <p>
+              Se está pensando em vir, saiba que não vai encontrar um atendimento
+              padronizado de central telefônica. Vai falar diretamente com quem
+              cuida do lugar, tirar dúvidas pelo WhatsApp e ser recebido por
+              gente que gosta genuinamente de receber. É assim que gostaríamos
+              de ser recebidos também — e é esse o Refúgio da Pedra que
+              convidamos você a conhecer.{' '}
+              <Link
+                className='underline underline-offset-4 hover:text-foreground'
+                href='/reservar'
+              >
+                Reserve sua estadia
+              </Link>
+              .
+            </p>
+          </div>
         </div>
       </section>
     </main>
