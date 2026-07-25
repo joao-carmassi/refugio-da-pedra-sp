@@ -1,69 +1,72 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { getAlt } from '@/lib/image-alt';
 import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useReveal } from '@/hooks/use-reveal';
 
-// Não é decorativa: é a foto que ilustra o CTA "Reserve seu chalé", então tem
-// alt real (antes vinha com `alt=''`, que a marcava como decorativa).
-const ctaSrc = '/assets/refugio/chales/jade/refugio-6.webp';
-
+/**
+ * Fecho da página. Não é uma segunda dobra fotográfica: depois da banda do mapa
+ * a macroestrutura Photographic pede uma faixa de texto estreita. Por isso o
+ * bloco perdeu a foto e virou tipografia — a voz de CTA não se repete, o pill
+ * âmbar é o mesmo do topo e o link tipográfico (C3) leva ao catálogo.
+ *
+ * O `<Cta />` compartilhado (`src/components/cta.tsx`) NÃO é usado nesta rota —
+ * ele só entra no rodapé dos posts do blog. Não há duas faixas de CTA aqui.
+ */
 function Cta(): React.ReactNode {
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.fromTo(
-      '.gsap-reveal-cta',
-      { y: 60, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        ease: 'power2.out',
-        stagger: 0.15,
-        scrollTrigger: { trigger: '#cta-anchor', start: 'top 80%' },
-      },
-    );
-  }, []);
+  const scope = useReveal<HTMLElement>();
 
   return (
-    <section id='cta-anchor' className='py-6 md:py-12 dark bg-background'>
-      <div className='container flex gap-6 md:gap-12 flex-col items-center md:flex-row'>
-        <div className='gsap-reveal-cta opacity-0 flex-1'>
-          <Image
-            width={724}
-            height={482}
-            className='w-full rounded-2xl md:rounded-3xl'
-            src={ctaSrc}
-            alt={getAlt(
-              ctaSrc,
-              'Hóspede apoiada no parapeito do deck de troncos, olhando para as montanhas da Serra da Mantiqueira',
-            )}
-            sizes='(max-width: 768px) 100vw, 50vw'
-          />
-        </div>
-        <div className='space-y-3 md:space-y-6 flex-1'>
-          <h2 className='gsap-reveal-cta opacity-0 text-2xl tracking-tight md:text-4xl lg:text-5xl text-foreground'>
+    <section
+      id='cta-anchor'
+      ref={scope}
+      // `dark bg-background` é a cor do CTA que já estava no site: faixa escura
+      // fechando a página. No redisign esta seção é clara — aqui só a estrutura
+      // foi trazida, a paleta continua a de casa.
+      className='border-t border-border bg-background py-16 md:py-24 dark'
+    >
+      <div className='container'>
+        <div className='max-w-2xl'>
+          {/* `text-foreground` explícito: sem ele o h2 herda a cor já resolvida
+              do `<body>` (o preto do tema claro) e some no fundo escuro — a
+              classe `dark` troca as variáveis, mas herança de `color` carrega o
+              valor computado, não a variável. */}
+          <h2
+            data-reveal
+            className='text-2xl tracking-tight text-pretty text-foreground md:text-4xl lg:text-5xl'
+          >
             Reserve seu chalé
           </h2>
-          <p className='gsap-reveal-cta opacity-0 text-muted-foreground leading-snug'>
+          <p data-reveal className='mt-3 text-muted-foreground md:text-lg'>
             Garanta sua estadia no Refúgio da Pedra SP e viva uma experiência única
-            em meio ao ar livre!
+            em meio ao ar livre.
           </p>
-          <Button
-            effect={'expandIcon'}
-            iconPlacement='right'
-            icon={ArrowRight}
-            asChild
-            className='gsap-reveal-cta opacity-0 w-full md:w-fit rounded-full'
-            size={'lg'}
+
+          <div
+            data-reveal
+            className='mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-8'
           >
-            <Link href='/chales/'>Ver chalés</Link>
-          </Button>
+            <Button
+              effect='expandIcon'
+              iconPlacement='right'
+              icon={ArrowRight}
+              asChild
+              size='lg'
+              className='w-full rounded-full text-primary-foreground! sm:w-auto'
+            >
+              <Link href='/reservar/'>Reservar</Link>
+            </Button>
+
+            {/* C3 · link tipográfico: palavra, seta e sublinhado de 1px. */}
+            <Link
+              href='/chales/'
+              className='inline-flex items-center gap-1.5 rounded-xs text-accent-deep underline underline-offset-4 outline-none hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50'
+            >
+              Ver chalés
+              <ArrowRight aria-hidden='true' className='size-4' />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

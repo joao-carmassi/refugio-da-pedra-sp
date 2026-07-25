@@ -30,8 +30,15 @@ const OutrasExperiencias = () => {
 
   return (
     <section id='outras-experiencias-anchor' className='py-12 md:py-20'>
-      <div className='container'>
-        <header className='max-w-3xl'>
+      {/* Em `lg` são duas colunas: título, texto e acordeão empilhados à
+          esquerda; a foto ocupando a coluna direita inteira (`row-span-2`),
+          alinhada pelo topo com o título. Abaixo de `lg` continua uma coluna
+          só, com a foto entre o cabeçalho e o acordeão — ela precisa ficar à
+          vista de quem abre um item, senão a troca de imagem acontece fora da
+          tela. É por isso que a ordem do DOM é cabeçalho · foto · acordeão, e o
+          posicionamento em `lg` é explícito em vez de depender dessa ordem. */}
+      <div className='container md:grid md:gap-y-12 lg:grid-cols-2 lg:items-start lg:gap-x-12 lg:gap-y-8'>
+        <header className='max-w-3xl lg:col-start-1 lg:row-start-1 lg:max-w-none'>
           <h2 className='text-2xl tracking-tight text-pretty md:text-4xl lg:text-5xl'>
             Complete sua experiência
           </h2>
@@ -41,9 +48,22 @@ const OutrasExperiencias = () => {
           </p>
         </header>
 
-        <div className='mt-8 flex flex-col-reverse gap-8 md:mt-12 lg:flex-row lg:items-start lg:gap-12'>
-          <div className='flex-1'>
-            <Accordion
+        {activeFeature?.imgPc && (
+          <div className='mt-8 hidden md:mt-0 md:block lg:col-start-2 lg:row-span-2 lg:row-start-1'>
+            <Image
+              width={724}
+              height={724}
+              loading='lazy'
+              alt={activeFeature.imgPcAlt || activeFeature.title}
+              src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
+              className='aspect-9/12 w-full rounded-2xl object-cover xl:aspect-square'
+              sizes='(max-width: 1024px) 100vw, 50vw'
+            />
+          </div>
+        )}
+
+        <div className='mt-8 md:mt-0 lg:col-start-1 lg:row-start-2'>
+          <Accordion
               value={activeItem}
               onValueChange={setActiveItem}
               type='single'
@@ -97,22 +117,7 @@ const OutrasExperiencias = () => {
                   );
                 },
               )}
-            </Accordion>
-          </div>
-
-          {activeFeature?.imgPc && (
-            <div className='hidden flex-1 md:block'>
-              <Image
-                width={724}
-                height={724}
-                loading='lazy'
-                alt={activeFeature.imgPcAlt || activeFeature.title}
-                src={`/assets/${activeFeature.id}/${activeFeature.imgPc}`}
-                className='aspect-9/12 w-full rounded-2xl object-cover xl:aspect-square'
-                sizes='(max-width: 1024px) 100vw, 50vw'
-              />
-            </div>
-          )}
+          </Accordion>
         </div>
       </div>
     </section>
