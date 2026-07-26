@@ -262,7 +262,7 @@ function Header(): React.ReactNode {
                   width={88}
                   height={88}
                   priority
-                  className='size-16 lg:size-[4.5rem]'
+                  className='size-16 lg:size-[6rem]'
                 />
               </Link>
 
