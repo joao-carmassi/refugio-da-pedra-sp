@@ -12,7 +12,7 @@ const descriptions: Record<string, ChaleDescription> = {
   colmeia: {
     title: 'Um domo para dois, sem barulho e sem pressa',
     paragraphs: [
-      'O Domo Colmeia é a menor e a mais recolhida das nossas acomodações: 30 m² de suíte única, cama Queen e uma abertura grande apontada para a montanha. Quem escolhe o domo normalmente quer o oposto de um hotel — ninguém circulando do lado de fora, nenhum corredor, nenhum horário a cumprir.',
+      'O Domo Colmeia é a acomodação mais marcante do Refúgio: uma estrutura geodésica de 30 m², com suíte, cama Queen e uma fachada de vidro inteira apontada para a montanha. Quem escolhe o domo normalmente quer o oposto de um hotel — ninguém circulando do lado de fora, nenhum corredor, nenhum horário a cumprir.',
       'O deck é onde o domo acontece de verdade. É de lá que se acompanha o fim de tarde na Mantiqueira, com o céu mudando de cor atrás das montanhas, e é lá que a maioria dos hóspedes toma o café da manhã quando o tempo colabora.',
       'Dentro, o essencial resolvido: TV Smart para as noites de chuva, micro-ondas e frigobar para não precisar sair por causa de uma bebida gelada ou de um lanche fora de hora.',
     ],
@@ -40,14 +40,14 @@ const descriptions: Record<string, ChaleDescription> = {
   jade: {
     title: 'O chalé de quem prefere cozinhar',
     paragraphs: [
-      'Com 32 m², o Chalé Jade é a maior suíte do Refúgio, e o que o diferencia não é o tamanho: é a sala integrada com cozinha equipada. Dá para fazer as compras na cidade, voltar com o que encontrou na feira e cozinhar sem improviso.',
+      'Com 32 m², o Chalé Jade é uma tiny house completa: suíte, sala integrada e cozinha equipada na mesma planta. Dá para fazer as compras na cidade, voltar com o que encontrou na feira e cozinhar sem improviso.',
       'Isso muda o ritmo da estadia. Em vez de organizar o dia em função do horário do restaurante, o casal decide na hora se janta em casa ou sai. Para viagens mais longas, é a diferença entre visitar São Bento do Sapucaí e morar nela por alguns dias.',
-      'A suíte tem cama de casal, TV Smart e aquecedor para as madrugadas frias. O deck privativo se abre para as montanhas — é o lugar natural para o café da manhã e para o almoço que saiu da própria cozinha.',
+      'A suíte tem cama de casal, TV Smart e aquecedor para as madrugadas frias. O deck privativo é amplo e se abre para as montanhas — é o lugar natural para o café da manhã e para o almoço que saiu da própria cozinha.',
     ],
     destaques: [
-      'Sala integrada com cozinha equipada',
-      'A maior suíte do Refúgio, com 32 m²',
-      'Deck privativo com vista para as montanhas',
+      'Sala integrada com cozinha completa',
+      'Tiny house de 32 m², com suíte e sala',
+      'Deck privativo amplo, com vista para as montanhas',
     ],
     idealPara:
       'Casais em estadias mais longas, que fazem das refeições parte do passeio.',
@@ -57,14 +57,14 @@ const descriptions: Record<string, ChaleDescription> = {
   esmeralda: {
     title: 'Lareira e cozinha na mesma acomodação',
     paragraphs: [
-      'O Chalé Esmeralda é o único que reúne lareira e cozinha equipada ao mesmo tempo. Some a isso o mezanino e as duas camas de casal e você tem a acomodação mais completa do Refúgio, para até três pessoas.',
+      'O Chalé Esmeralda reúne lareira e cozinha equipada na mesma acomodação. Some a isso o mezanino e as duas camas de casal e você tem uma das unidades mais completas do Refúgio, para até três pessoas.',
       'O mezanino resolve o problema clássico de quem viaja em grupo: acomodar mais gente sem que ninguém durma na sala. Costuma ficar com as crianças ou com o terceiro hóspede, enquanto a suíte fica para o casal.',
-      'A varanda é espaçosa o bastante para todo mundo caber ao mesmo tempo, com a Serra da Mantiqueira na frente. Depois de um dia de trilha, é onde o grupo se junta — e, quando esfria, a noite continua dentro, ao redor da lareira.',
+      'A varanda tem a Serra da Mantiqueira na frente e é onde o dia termina: depois da trilha, é ali que se senta para ver o sol baixar — e, quando esfria, a noite continua dentro, ao redor da lareira.',
     ],
     destaques: [
       'Lareira e cozinha equipada na mesma unidade',
       'Mezanino e duas camas de casal, para até 3 pessoas',
-      'Varanda ampla com vista para a serra',
+      'Varanda com vista para a serra',
     ],
     idealPara:
       'Famílias e grupos de até 3 pessoas que não querem abrir mão nem da lareira nem da cozinha.',

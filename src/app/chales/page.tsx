@@ -157,7 +157,7 @@ function ChalePage(): React.ReactNode {
           </p>
           <p className='leading-relaxed text-muted-foreground'>
             São cinco unidades, todas independentes e com entrada própria. Duas
-            foram pensadas para casais: o Domo Colmeia, o mais reservado deles,
+            foram pensadas para casais: o Domo Colmeia, a acomodação-símbolo da pousada,
             e a Cabana Ametista, com lareira para as noites de inverno. O Chalé
             Jade tem sala integrada com cozinha equipada, para quem prefere
             cozinhar em vez de sair para jantar. Esmeralda e Turmalina acomodam
