@@ -91,13 +91,13 @@ function Dobra({ chale }: Props): React.ReactNode {
           <div className='max-w-3xl'>
             <h1
               data-reveal
-              className='text-4xl leading-[1.05] font-semibold tracking-tight text-pretty text-foreground wrap-anywhere md:text-6xl lg:text-7xl'
+              className='opacity-0 text-4xl leading-[1.05] font-semibold tracking-tight text-pretty text-foreground wrap-anywhere md:text-6xl lg:text-7xl'
             >
               {chale.nome}
             </h1>
             <p
               data-reveal
-              className='mt-4 text-foreground/90 tabular-nums md:text-lg'
+              className='opacity-0 mt-4 text-foreground/90 tabular-nums md:text-lg'
             >
               {chale.capacidade} · {chale.camas} · {chale.banheiros}
             </p>
@@ -106,7 +106,7 @@ function Dobra({ chale }: Props): React.ReactNode {
             <a
               data-reveal
               href='#reservar'
-              className='group mt-6 inline-flex min-h-11 items-center gap-2 rounded-xs text-sm font-medium whitespace-nowrap text-foreground underline decoration-1 underline-offset-4 outline-none focus-visible:ring-3 focus-visible:ring-ring/50'
+              className='opacity-0 group mt-6 inline-flex min-h-11 items-center gap-2 rounded-xs text-sm font-medium whitespace-nowrap text-foreground underline decoration-1 underline-offset-4 outline-none focus-visible:ring-3 focus-visible:ring-ring/50'
             >
               Reservar
               <ArrowDown
