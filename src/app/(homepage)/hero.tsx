@@ -61,7 +61,7 @@ const Hero = () => {
         />
         <div
           aria-hidden='true'
-          className='absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/45 to-black/5'
+          className='absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/45 to-black/5'
         />
 
         {/* `dark` troca os tokens do bloco (foreground, border, primary) para a

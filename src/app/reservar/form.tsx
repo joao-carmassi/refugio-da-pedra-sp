@@ -637,7 +637,7 @@ function Form(): React.ReactNode {
       {/* `sticky` e não `fixed`: assim ela some quando o rodapé entra em cena,
           em vez de cobri-lo. Mora fora do grid para que nenhum ancestral com
           `overflow` a prenda. */}
-      <div className='sticky bottom-0 z-30 mt-10 shadow bg-card lg:hidden'>
+      <div className='sticky bottom-0 z-30 mt-10 shadow-sm bg-card lg:hidden'>
         <div
           className={`${SHELL} flex items-center justify-between gap-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]`}
         >

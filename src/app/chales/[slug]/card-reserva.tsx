@@ -63,7 +63,7 @@ function CardReserva({
   return (
     <Card
       className={cn(
-        'animate-in fade-in duration-300 fill-mode-both shadow py-4 gap-3',
+        'animate-in fade-in duration-300 fill-mode-both shadow-sm py-4 gap-3',
         className,
       )}
     >
