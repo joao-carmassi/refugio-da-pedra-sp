@@ -75,7 +75,7 @@ const Hero = () => {
           <div className='max-w-3xl'>
             <h1
               data-reveal
-              className='text-4xl font-semibold tracking-tight text-pretty text-foreground md:text-5xl lg:text-6xl'
+              className='opacity-0 text-4xl font-semibold tracking-tight text-pretty text-foreground md:text-5xl lg:text-6xl'
             >
               <span className='text-primary'>Pousada Refúgio da Pedra SP</span>{' '}
               — Chalés em São Bento do Sapucaí, na Serra da Mantiqueira
@@ -83,7 +83,7 @@ const Hero = () => {
 
             <p
               data-reveal
-              className='mt-4 max-w-xl text-foreground/90 md:mt-5 md:text-lg'
+              className='opacity-0 mt-4 max-w-xl text-foreground/90 md:mt-5 md:text-lg'
             >
               Chalés rústicos e confortáveis com vista para as montanhas, a
               poucos minutos do centro de São Bento do Sapucaí. Natureza,
@@ -92,7 +92,7 @@ const Hero = () => {
 
             <div
               data-reveal
-              className='mt-6 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-8'
+              className='opacity-0 mt-6 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-8'
             >
               <Button
                 asChild
@@ -147,7 +147,10 @@ const Hero = () => {
 
           {/* Some no mobile: com a linha quebrando em duas, o traço sobraria
               pendurado no fim da primeira — o gap já separa os dois blocos. */}
-          <span aria-hidden='true' className='hidden h-5 w-px bg-border sm:block' />
+          <span
+            aria-hidden='true'
+            className='hidden h-5 w-px bg-border sm:block'
+          />
 
           <a
             href={googleReviewsLink}
