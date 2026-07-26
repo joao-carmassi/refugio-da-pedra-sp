@@ -40,15 +40,16 @@ const Hero = () => {
 
   return (
     <section ref={scope}>
-      {/* Em tablet e desktop a foto ocupa o que sobra da viewport depois do
+      {/* Em qualquer largura a foto ocupa o que sobra da viewport depois do
           masthead — `--header-height` é publicada pelo próprio cabeçalho, que
-          já mede a altura expandida. O fallback cobre o primeiro paint (antes
-          da hidratação) e vale a altura do masthead em `lg`.
+          já mede a altura expandida em toda breakpoint. Os fallbacks cobrem o
+          primeiro paint (antes da hidratação): ~5rem é a barra mobile
+          (py-4 + alvo de toque de 44px), 10.5rem o masthead em `md`+.
           `svh` e não `dvh`: a barra de endereço aparecendo e sumindo mudaria a
           altura do hero no meio da rolagem.
           É `min-h`, então em telas muito baixas o bloco cresce em vez de cortar
           o texto — melhor passar da dobra do que esconder o H1. */}
-      <div className='relative isolate flex min-h-[34rem] flex-col justify-end overflow-hidden md:min-h-[calc(100svh-var(--header-height,10.5rem))]'>
+      <div className='relative isolate flex min-h-[calc(100svh-var(--header-height,5rem))] flex-col justify-end overflow-hidden md:min-h-[calc(100svh-var(--header-height,10.5rem))]'>
         {/* LCP da página: `priority` (sem lazy) e sem animação de opacity. */}
         <Image
           className='-z-10 object-cover object-center'
@@ -126,7 +127,7 @@ const Hero = () => {
       {/* Linha de prova. Fica fora do scrim, no papel creme, porque o logotipo
           do Booking é azul-marinho e ficaria ilegível sobre a fotografia. */}
       <div data-reveal className='bg-card shadow-2xs'>
-        <div className='container flex flex-wrap items-center gap-x-8 gap-y-3 py-4'>
+        <div className='container flex flex-wrap items-center gap-x-4 gap-y-2 py-3 sm:gap-x-8 sm:gap-y-3 sm:py-4'>
           <a
             href={bookingLink}
             target='_blank'
@@ -139,19 +140,21 @@ const Hero = () => {
               alt='Refúgio da Pedra SP no Booking.com'
               width={188}
               height={32}
-              className='h-6 w-auto md:h-7'
+              className='h-5 w-auto sm:h-6 md:h-7'
               sizes='188px'
             />
           </a>
 
-          <span aria-hidden='true' className='h-5 w-px bg-border' />
+          {/* Some no mobile: com a linha quebrando em duas, o traço sobraria
+              pendurado no fim da primeira — o gap já separa os dois blocos. */}
+          <span aria-hidden='true' className='hidden h-5 w-px bg-border sm:block' />
 
           <a
             href={googleReviewsLink}
             target='_blank'
             rel='noopener noreferrer'
             aria-label='Ver avaliações no Google'
-            className='inline-flex items-center gap-2 rounded-xs text-sm text-muted-foreground outline-none focus-visible:ring-3 focus-visible:ring-ring/50'
+            className='inline-flex items-center gap-1.5 rounded-xs text-xs text-muted-foreground outline-none focus-visible:ring-3 focus-visible:ring-ring/50 sm:gap-2 sm:text-sm'
           >
             <span className='text-primary'>
               <Rating value={4.8} readOnly>
