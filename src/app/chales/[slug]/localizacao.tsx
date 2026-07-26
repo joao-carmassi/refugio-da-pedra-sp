@@ -12,8 +12,8 @@ interface Props {
  */
 function Localizacao({ chale }: Props): React.ReactNode {
   return (
-    <p className="flex max-w-[62ch] items-start gap-2 leading-relaxed text-muted-foreground">
-      <MapPin aria-hidden="true" className="mt-1 h-4 w-4 shrink-0" />
+    <p className='flex max-w-[62ch] items-start gap-2 leading-relaxed text-muted-foreground'>
+      <MapPin aria-hidden='true' className='mt-1 h-4 w-4 shrink-0' />
       <span>
         {nomeCorrido(chale.nome)} fica em São Bento do Sapucaí (SP), na Serra da
         Mantiqueira, a 1,5 km da Pedra do Baú — ponto de partida das trilhas e

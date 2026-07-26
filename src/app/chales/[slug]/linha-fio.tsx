@@ -9,7 +9,7 @@ function LinhaFio({
   children: React.ReactNode;
 }): React.ReactNode {
   return (
-    <li className="border-t border-border py-2.5 text-sm leading-snug text-muted-foreground">
+    <li className='border-t border-border py-2.5 text-sm leading-snug text-muted-foreground'>
       {children}
     </li>
   );

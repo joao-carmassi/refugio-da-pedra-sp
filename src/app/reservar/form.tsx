@@ -443,17 +443,28 @@ function Form(): React.ReactNode {
                   erroDatas && 'ring-3 ring-destructive/25',
                 )}
               >
+                {/* `modal={false}`: em modo modal o Radix injeta
+                    `body[data-scroll-locked] { overflow: hidden; position:
+                    relative }` para travar a rolagem, e aí o `body` vira o
+                    ancestral rolável mais próximo do resumo `sticky` ao lado.
+                    Como o `scrollTop` do body é sempre 0, o resumo se recalcula
+                    como se a página estivesse no topo e sai voando da tela ao
+                    abrir o calendário.
+                    O estado segue controlado porque `handleDateSelect` fecha o
+                    calendário sozinho quando o intervalo fica completo — mas
+                    quem alterna é só o Radix, via `onOpenChange`. O `onClick`
+                    manual que estava no gatilho somava um segundo alternador:
+                    sem modal os dois rodam no mesmo clique, um fecha e o outro
+                    reabre, e o campo não fechava mais ao ser clicado de novo. */}
                 <DropdownMenu
+                  modal={false}
                   open={dateMenuOpen}
-                  onOpenChange={(v) => {
-                    if (!v) setDateMenuOpen(false);
-                  }}
+                  onOpenChange={setDateMenuOpen}
                 >
                   <DropdownMenuTrigger asChild>
                     <button
                       type='button'
                       aria-describedby='nota-datas'
-                      onClick={() => setDateMenuOpen((v) => !v)}
                       className={cn(
                         'flex min-h-14 w-full min-w-0 flex-col items-start justify-center rounded-xl bg-input/30 px-3 py-2 hover:bg-muted active:bg-muted',
                         FOCUS,

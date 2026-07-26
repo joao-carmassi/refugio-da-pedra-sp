@@ -33,11 +33,11 @@ function Comodidades({ chale }: Props): React.ReactNode {
   ];
 
   return (
-    <div className="space-y-4">
-      <h2 className="text-xl tracking-tight text-pretty md:text-2xl">
+    <div className='space-y-4'>
+      <h2 className='text-xl tracking-tight text-pretty md:text-2xl'>
         Comodidades do {nomeCorrido(chale.nome)}
       </h2>
-      <ul className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+      <ul className='grid grid-cols-1 gap-x-8 sm:grid-cols-2'>
         {itens.map((comodidade) => (
           <LinhaFio key={comodidade}>{comodidade}</LinhaFio>
         ))}

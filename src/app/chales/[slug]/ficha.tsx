@@ -27,17 +27,17 @@ function Ficha({ chale }: Props): React.ReactNode {
   return (
     <section
       aria-label={`Ficha do ${nomeCorrido(chale.nome)}`}
-      className="bg-card"
+      className='bg-card'
     >
-      <div className="container">
+      <div className='container'>
         {/* Sete colunas em `lg` — seis valores mais a política de pets. Com
             seis, a célula de pets caía sozinha numa segunda faixa e o fio
             curto embaixo lia como sobra. */}
-        <ul className="grid grid-cols-2 gap-x-8 sm:grid-cols-3 lg:grid-cols-7">
+        <ul className='grid grid-cols-2 gap-x-8 sm:grid-cols-3 lg:grid-cols-7'>
           {valores.map((valor) => (
             <li
               key={valor}
-              className="border-t border-border py-3 text-sm leading-snug text-muted-foreground tabular-nums"
+              className='border-t border-border py-3 text-sm leading-snug text-muted-foreground tabular-nums'
             >
               {valor}
             </li>
@@ -46,9 +46,9 @@ function Ficha({ chale }: Props): React.ReactNode {
               uma linha inteira só para a política de animais desequilibrava a
               banda. Sem risco no texto — riscar a frase que diz "não
               permitido" nega a própria negação. */}
-          <li className="flex items-start gap-2 border-t border-border py-3 text-sm leading-snug text-muted-foreground">
+          <li className='flex items-start gap-2 border-t border-border py-3 text-sm leading-snug text-muted-foreground'>
             <PawPrint
-              aria-hidden="true"
+              aria-hidden='true'
               size={16}
               strokeWidth={2.2}
               className={`mt-0.5 shrink-0 ${chale.politica.pets_permitidos ? '' : 'opacity-50'}`}

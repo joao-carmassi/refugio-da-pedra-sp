@@ -51,8 +51,8 @@ function Stepper({
   onChange: (next: number) => void;
 }): React.ReactNode {
   return (
-    <div className="flex items-center justify-between gap-4 py-3">
-      <div className="min-w-0">
+    <div className='flex items-center justify-between gap-4 py-3'>
+      <div className='min-w-0'>
         <p
           className={cn(
             'text-sm font-medium',
@@ -61,18 +61,18 @@ function Stepper({
         >
           {label}
         </p>
-        {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+        {hint && <p className='text-xs text-muted-foreground'>{hint}</p>}
       </div>
-      <div className="flex shrink-0 items-center gap-3">
+      <div className='flex shrink-0 items-center gap-3'>
         <Button
-          variant="outline"
-          size="icon-sm"
+          variant='outline'
+          size='icon-sm'
           aria-label={`Menos ${label.toLowerCase()}`}
           className='relative rounded-full after:absolute after:-inset-1.5 after:content-[""]'
           onClick={() => onChange(Math.max(min, value - 1))}
           disabled={disabled || value <= min}
         >
-          <MinusIcon className="h-3 w-3" />
+          <MinusIcon className='h-3 w-3' />
         </Button>
         <span
           className={cn(
@@ -83,14 +83,14 @@ function Stepper({
           {value}
         </span>
         <Button
-          variant="outline"
-          size="icon-sm"
+          variant='outline'
+          size='icon-sm'
           aria-label={`Mais ${label.toLowerCase()}`}
           className='relative rounded-full after:absolute after:-inset-1.5 after:content-[""]'
           onClick={() => onChange(value + 1)}
           disabled={disabled}
         >
-          <PlusIcon className="h-3 w-3" />
+          <PlusIcon className='h-3 w-3' />
         </Button>
       </div>
     </div>
@@ -116,7 +116,6 @@ function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [pets, setPets] = useState(0);
-  const [dateMenuOpen, setDateMenuOpen] = useState(false);
   const [guestMenuOpen, setGuestMenuOpen] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -152,23 +151,23 @@ function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
   const guestRows = (
     <>
       <Stepper
-        label="Adultos"
-        hint="Com 13 anos ou mais"
+        label='Adultos'
+        hint='Com 13 anos ou mais'
         value={adults}
         min={1}
         onChange={setAdults}
       />
-      <div className="border-t border-border" />
+      <div className='border-t border-border' />
       <Stepper
-        label="Crianças"
-        hint="De 2 a 12 anos"
+        label='Crianças'
+        hint='De 2 a 12 anos'
         value={children}
         min={0}
         onChange={setChildren}
       />
-      <div className="border-t border-border" />
+      <div className='border-t border-border' />
       <Stepper
-        label="Animais de estimação"
+        label='Animais de estimação'
         hint={petsPermitidos ? undefined : 'Não permitido neste chalé'}
         value={pets}
         min={0}
@@ -189,84 +188,97 @@ function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
           — o "Reservar ↓" da dobra não levava a lugar nenhum no celular. Aqui
           ele leva ao ponto do fluxo onde a barra fixa já está na tela. */}
       <aside
-        id="reservar"
-        className="h-fit scroll-mt-24 lg:sticky lg:top-24"
-        aria-label="Reserva"
+        id='reservar'
+        className='h-fit scroll-mt-24 lg:sticky lg:top-24'
+        aria-label='Reserva'
       >
-        <div className="hidden lg:block">
-          <div className="rounded-2xl bg-card p-5 shadow-2xs ring-1 ring-border">
-            <h2 className="font-display text-xl tracking-tight">
+        <div className='hidden lg:block'>
+          <div className='rounded-2xl bg-card p-5 shadow-2xs ring-1 ring-border'>
+            <h2 className='font-display text-xl tracking-tight'>
               Reserve agora mesmo
             </h2>
 
-            <div className="mt-4 border-t border-border">
-              <DropdownMenu
-                open={dateMenuOpen}
-                onOpenChange={(v) => {
-                  if (!v) setDateMenuOpen(false);
-                }}
-              >
+            <div className='mt-4 border-t border-border'>
+              {/* `modal={false}` não é preferência de comportamento, é o que
+                  mantém o trilho grudado. Em modo modal o Radix injeta
+                  `body[data-scroll-locked] { overflow: hidden; position:
+                  relative }` para travar a rolagem — e aí o `body` vira o
+                  ancestral rolável mais próximo deste `<aside sticky>`. Como o
+                  `scrollTop` do body é sempre 0 (a rolagem do documento mora no
+                  viewport), o sticky se recalcula como se a página estivesse no
+                  topo e o cartão sai voando da tela ao abrir o campo.
+                  O `overflow: visible !important` que `globals.css` tem para
+                  este seletor não resolve: mesma especificidade, e o `<style>`
+                  do Radix entra no `<head>` depois da folha de estilo.
+                  Sem modal também some o `pointer-events: none` no body. */}
+              {/* Sem `open`/`onOpenChange`: o gatilho do Radix já alterna
+                  sozinho. O controle manual que estava aqui somava um segundo
+                  `onClick` ao do próprio gatilho — com `modal={false}` os dois
+                  passam a rodar no mesmo clique, um fecha e o outro reabre, e o
+                  campo não fechava mais ao ser clicado de novo. */}
+              <DropdownMenu modal={false}>
                 <DropdownMenuTrigger asChild>
                   <button
-                    onClick={() => setDateMenuOpen((v) => !v)}
                     className={cn(
                       'grid w-full grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)] text-left transition-colors hover:bg-muted',
                       focusRing,
                     )}
                   >
-                    <span className="flex flex-col px-1 py-3">
-                      <span className="text-xs font-medium">Check-in</span>
-                      <span className="truncate text-sm text-muted-foreground tabular-nums">
+                    <span className='flex flex-col px-1 py-3'>
+                      <span className='text-xs font-medium'>Check-in</span>
+                      <span className='truncate text-sm text-muted-foreground tabular-nums'>
                         {checkIn || 'Adicionar data'}
                       </span>
                     </span>
-                    <span aria-hidden="true" className="my-3 bg-border" />
-                    <span className="flex flex-col px-3 py-3">
-                      <span className="text-xs font-medium">Check-out</span>
-                      <span className="truncate text-sm text-muted-foreground tabular-nums">
+                    <span aria-hidden='true' className='my-3 bg-border' />
+                    <span className='flex flex-col px-3 py-3'>
+                      <span className='text-xs font-medium'>Check-out</span>
+                      <span className='truncate text-sm text-muted-foreground tabular-nums'>
                         {checkOut || 'Adicionar data'}
                       </span>
                     </span>
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-fit">
+                <DropdownMenuContent align='end' className='w-fit'>
                   <Calendar
-                    mode="range"
+                    mode='range'
                     locale={ptBR}
                     defaultMonth={dateRange?.from}
                     selected={dateRange}
                     onSelect={setDateRange}
                     numberOfMonths={2}
                     disabled={(date) => date < today}
-                    className="w-fit bg-card"
+                    className='w-fit bg-card'
                   />
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <div className="border-t border-border" />
+              <div className='border-t border-border' />
 
+              {/* Mesmo motivo do campo de datas: sem `modal={false}` o trilho
+                  descola ao abrir. Aqui o estado continua controlado porque a
+                  seta precisa saber girar — mas quem o escreve é só o Radix,
+                  via `onOpenChange`; o gatilho não alterna por fora. */}
               <DropdownMenu
+                modal={false}
                 open={guestMenuOpen}
-                onOpenChange={(v) => {
-                  if (!v) setGuestMenuOpen(false);
-                }}
+                onOpenChange={setGuestMenuOpen}
               >
                 <DropdownMenuTrigger asChild>
                   <button
-                    onClick={() => setGuestMenuOpen((v) => !v)}
                     className={cn(
                       'flex w-full items-center justify-between gap-3 px-1 py-3 text-left transition-colors hover:bg-muted',
                       focusRing,
                     )}
                   >
-                    <span className="flex min-w-0 flex-col">
-                      <span className="text-xs font-medium">Hóspedes</span>
-                      <span className="truncate text-sm text-muted-foreground">
+                    <span className='flex min-w-0 flex-col'>
+                      <span className='text-xs font-medium'>Hóspedes</span>
+                      <span className='truncate text-sm text-muted-foreground'>
                         {guestLabel}
                       </span>
                     </span>
                     <ChevronDown
-                      aria-hidden="true"
+                      aria-hidden='true'
                       className={cn(
                         'h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out motion-reduce:transition-none',
                         guestMenuOpen && 'rotate-180',
@@ -274,21 +286,21 @@ function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
                     />
                   </button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-72 p-4">
+                <DropdownMenuContent align='start' className='w-72 p-4'>
                   {guestRows}
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <div className="border-t border-border" />
+              <div className='border-t border-border' />
             </div>
 
             <Button
-              effect="ringHover"
-              size="lg"
-              className="mt-5 w-full rounded-full"
+              effect='ringHover'
+              size='lg'
+              className='mt-5 w-full rounded-full'
               asChild
             >
-              <a target="_blank" rel="noopener noreferrer" href={whatsHref}>
+              <a target='_blank' rel='noopener noreferrer' href={whatsHref}>
                 Reservar
               </a>
             </Button>
@@ -318,54 +330,54 @@ function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
             panelOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
           )}
         >
-          <div className="min-h-0">
+          <div className='min-h-0'>
             <div
-              id="painel-reserva"
+              id='painel-reserva'
               inert={!panelOpen}
-              className="max-h-[65svh] overflow-y-auto px-4 pt-4"
+              className='max-h-[65svh] overflow-y-auto px-4 pt-4'
             >
               <Calendar
-                mode="range"
+                mode='range'
                 locale={ptBR}
                 defaultMonth={dateRange?.from}
                 selected={dateRange}
                 onSelect={setDateRange}
                 numberOfMonths={1}
                 disabled={(date) => date < today}
-                className="mx-auto w-fit bg-card"
+                className='mx-auto w-fit bg-card'
               />
-              <div className="mt-2 border-t border-border" />
+              <div className='mt-2 border-t border-border' />
               {guestRows}
             </div>
           </div>
         </div>
 
         <div
-          className="flex items-center gap-3 px-4 py-3"
+          className='flex items-center gap-3 px-4 py-3'
           style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
         >
           <button
-            type="button"
+            type='button'
             onClick={() => setSheetOpen((v) => !v)}
             aria-expanded={panelOpen}
-            aria-controls="painel-reserva"
+            aria-controls='painel-reserva'
             className={cn(
               'flex min-h-11 min-w-0 flex-1 items-center gap-2 text-left',
               focusRing,
             )}
           >
-            <span className="min-w-0 flex-1">
-              <span className="block truncate text-sm font-medium tabular-nums">
+            <span className='min-w-0 flex-1'>
+              <span className='block truncate text-sm font-medium tabular-nums'>
                 {checkIn && checkOut
                   ? `${checkIn} – ${checkOut}`
                   : 'Adicionar data'}
               </span>
-              <span className="block truncate text-xs text-muted-foreground">
+              <span className='block truncate text-xs text-muted-foreground'>
                 {guestLabel}
               </span>
             </span>
             <ChevronDown
-              aria-hidden="true"
+              aria-hidden='true'
               className={cn(
                 'h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out motion-reduce:transition-none',
                 !panelOpen && 'rotate-180',
@@ -374,11 +386,11 @@ function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
           </button>
 
           <Button
-            effect="ringHover"
-            className="h-11 shrink-0 rounded-full px-6"
+            effect='ringHover'
+            className='h-11 shrink-0 rounded-full px-6'
             asChild
           >
-            <a target="_blank" rel="noopener noreferrer" href={whatsHref}>
+            <a target='_blank' rel='noopener noreferrer' href={whatsHref}>
               Reservar
             </a>
           </Button>

@@ -113,7 +113,7 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
   return (
     // `pb-20` no mobile é a folga da barra fixa de reserva (~68px); no desktop
     // a barra não existe e o rodapé encosta na última faixa da galeria.
-    <main className="bg-background pb-20 lg:pb-0">
+    <main className='bg-background pb-20 lg:pb-0'>
       <Dobra chale={chale} />
       <Ficha chale={chale} />
 
@@ -121,8 +121,8 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
           grudado à direita. A grade mora aqui, e não dentro de um componente,
           porque é ela que define quais seções o trilho acompanha na rolagem —
           uma decisão de página, não de seção. */}
-      <div className="container grid gap-12 pt-12 md:pt-16 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14">
-        <div className="min-w-0 space-y-12 md:space-y-16">
+      <div className='container grid gap-12 pt-12 md:pt-16 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14'>
+        <div className='min-w-0 space-y-12 md:space-y-16'>
           <Descricao chale={chale} description={description} />
           <IdealPara description={description} />
           <Comodidades chale={chale} />
