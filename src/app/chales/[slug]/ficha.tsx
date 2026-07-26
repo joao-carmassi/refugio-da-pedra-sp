@@ -38,7 +38,7 @@ function Ficha({ chale }: Props): React.ReactNode {
   return (
     <section
       aria-label={`Ficha do ${nomeCorrido(chale.nome)}`}
-      className='border-b border-border bg-card'
+      className='shadow-2xs bg-card'
     >
       <div className='container'>
         {/* Sem `gap-x`: o respiro entre colunas é `pr-6` dentro da célula, para
