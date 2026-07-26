@@ -1,38 +1,114 @@
+/* Hallmark · component: booking rail + sticky bar · genre: editorial
+ * C4 knobs: reveal=after-fold, anchored=viewport-bottom, shadow=hairline
+ * states: default · hover · focus · active · disabled · loading(n/a) · error(n/a) · success(n/a)
+ * design-system: design.md · designed-as-app
+ */
 'use client';
+
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Separator } from '@/components/ui/separator';
-import { useState } from 'react';
-import { DateRange } from 'react-day-picker';
-import { ptBR } from 'date-fns/locale';
-import { MinusIcon, PlusIcon } from 'lucide-react';
+import { useAfterFold } from '@/hooks/use-after-fold';
 import generateWhatsLink from '@/lib/generate-whats-link';
 import { cn } from '@/lib/utils';
-import { ClassNameValue } from 'tailwind-merge';
+import { ptBR } from 'date-fns/locale';
+import { ChevronDown, MinusIcon, PlusIcon } from 'lucide-react';
+import { useState } from 'react';
+import { DateRange } from 'react-day-picker';
 
 interface Props {
   chale: string;
   petsPermitidos: boolean;
-  className?: ClassNameValue;
 }
 
-function CardReserva({
-  chale,
-  petsPermitidos,
-  className,
-}: Props): React.ReactNode {
+// Anel de foco da casa, aplicado à mão nos alvos que não passam pelo Button.
+const focusRing =
+  'outline-none rounded-xs focus-visible:ring-3 focus-visible:ring-ring/50';
+
+// Curva expo-out do design system. Usada só na entrada da barra mobile —
+// é a única motion desta ilha.
+const barMotion =
+  'transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:translate-y-0';
+
+/** Um passo de contador. Alvo de toque de 44px via `after`, sem inflar o botão. */
+function Stepper({
+  label,
+  hint,
+  value,
+  min,
+  disabled = false,
+  onChange,
+}: {
+  label: string;
+  hint?: string;
+  value: number;
+  min: number;
+  disabled?: boolean;
+  onChange: (next: number) => void;
+}): React.ReactNode {
+  return (
+    <div className="flex items-center justify-between gap-4 py-3">
+      <div className="min-w-0">
+        <p
+          className={cn(
+            'text-sm font-medium',
+            disabled && 'text-muted-foreground line-through',
+          )}
+        >
+          {label}
+        </p>
+        {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
+      </div>
+      <div className="flex shrink-0 items-center gap-3">
+        <Button
+          variant="outline"
+          size="icon-sm"
+          aria-label={`Menos ${label.toLowerCase()}`}
+          className='relative rounded-full after:absolute after:-inset-1.5 after:content-[""]'
+          onClick={() => onChange(Math.max(min, value - 1))}
+          disabled={disabled || value <= min}
+        >
+          <MinusIcon className="h-3 w-3" />
+        </Button>
+        <span
+          className={cn(
+            'w-4 text-center text-sm tabular-nums',
+            disabled && 'text-muted-foreground',
+          )}
+        >
+          {value}
+        </span>
+        <Button
+          variant="outline"
+          size="icon-sm"
+          aria-label={`Mais ${label.toLowerCase()}`}
+          className='relative rounded-full after:absolute after:-inset-1.5 after:content-[""]'
+          onClick={() => onChange(value + 1)}
+          disabled={disabled}
+        >
+          <PlusIcon className="h-3 w-3" />
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Uma única instância governa as duas superfícies de reserva — o trilho sticky
+ * do desktop e a barra fixa do mobile. Antes eram dois `<CardReserva>` montados
+ * lado a lado, cada um com seu `useState`: quem escolhia a data no mobile e
+ * girava o aparelho encontrava o formulário vazio.
+ */
+function CardReserva({ chale, petsPermitidos }: Props): React.ReactNode {
+  // Lido direto da sentinela que a dobra publica no DOM, e não recebido por
+  // prop: os dois componentes são irmãos sob `page.tsx`, que é servidor e não
+  // pode segurar estado. Ver `use-after-fold`.
+  const afterFold = useAfterFold();
+
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
     from: undefined,
     to: undefined,
@@ -42,10 +118,16 @@ function CardReserva({
   const [pets, setPets] = useState(0);
   const [dateMenuOpen, setDateMenuOpen] = useState(false);
   const [guestMenuOpen, setGuestMenuOpen] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  // const totalGuests = adults + children;
+  // A barra só existe depois da dobra. Se o leitor voltar ao topo com o painel
+  // aberto, ele recolhe junto — derivado, não sincronizado por efeito, senão
+  // haveria um render intermediário com a barra fora da tela e o painel aberto.
+  const panelOpen = sheetOpen && afterFold;
+
   const guestLabel = [
     `${adults} adulto${adults !== 1 ? 's' : ''}`,
     children > 0 ? `${children} criança${children !== 1 ? 's' : ''}` : '',
@@ -54,212 +136,255 @@ function CardReserva({
     .filter(Boolean)
     .join(', ');
 
+  const checkIn = dateRange?.from?.toLocaleDateString();
+  const checkOut = dateRange?.to?.toLocaleDateString();
+
   const msgText =
     `Olá, gostaria de reservar o chalé *${chale}* para *${guestLabel}${dateRange?.from && dateRange?.to ? `* no período de *${dateRange.from.toLocaleDateString()} a ${dateRange.to.toLocaleDateString()}` : ''}*.`.replaceAll(
       ' · ',
       ' ',
     );
 
+  const whatsHref = generateWhatsLink(msgText);
+
+  /* ---------- peças compartilhadas entre trilho e painel ---------- */
+
+  const guestRows = (
+    <>
+      <Stepper
+        label="Adultos"
+        hint="Com 13 anos ou mais"
+        value={adults}
+        min={1}
+        onChange={setAdults}
+      />
+      <div className="border-t border-border" />
+      <Stepper
+        label="Crianças"
+        hint="De 2 a 12 anos"
+        value={children}
+        min={0}
+        onChange={setChildren}
+      />
+      <div className="border-t border-border" />
+      <Stepper
+        label="Animais de estimação"
+        hint={petsPermitidos ? undefined : 'Não permitido neste chalé'}
+        value={pets}
+        min={0}
+        disabled={!petsPermitidos}
+        onChange={setPets}
+      />
+    </>
+  );
+
   return (
-    <Card
-      className={cn(
-        'animate-in fade-in duration-300 fill-mode-both shadow-sm py-4 gap-3',
-        className,
-      )}
-    >
-      <CardHeader className='px-5'>
-        <CardTitle className='text-2xl font-display'>
-          Reserve agora mesmo
-        </CardTitle>
-      </CardHeader>
-      <CardContent className='px-5'>
-        <div className='w-full border border-border rounded-xl!'>
-          <DropdownMenu
-            open={dateMenuOpen}
-            onOpenChange={(v) => {
-              if (!v) setDateMenuOpen(false);
-            }}
-          >
-            <DropdownMenuTrigger asChild>
-              <button
-                onClick={() => setDateMenuOpen((v) => !v)}
-                className='rounded-t-xl overflow-hidden grid-cols-[1fr_auto_1fr] grid w-full'
+    <>
+      {/* ---------------- Trilho sticky · desktop ---------------- */}
+      {/* Uma única camada de contenção: papel do cartão, cantos e sombra de
+          cabelo. Por dentro só há fios — um segundo contorno em volta dos
+          campos faria caixa-dentro-de-caixa. */}
+      {/* O id fica no wrapper, e não no `<aside>`: o aside é `hidden` no
+          mobile, e um elemento sem caixa de layout não é alvo válido de âncora
+          — o "Reservar ↓" da dobra não levava a lugar nenhum no celular. Aqui
+          ele leva ao ponto do fluxo onde a barra fixa já está na tela. */}
+      <aside
+        id="reservar"
+        className="h-fit scroll-mt-24 lg:sticky lg:top-24"
+        aria-label="Reserva"
+      >
+        <div className="hidden lg:block">
+          <div className="rounded-2xl bg-card p-5 shadow-2xs ring-1 ring-border">
+            <h2 className="font-display text-xl tracking-tight">
+              Reserve agora mesmo
+            </h2>
+
+            <div className="mt-4 border-t border-border">
+              <DropdownMenu
+                open={dateMenuOpen}
+                onOpenChange={(v) => {
+                  if (!v) setDateMenuOpen(false);
+                }}
               >
-                <div className='w-full py-2 px-3 flex flex-col items-start hover:bg-muted'>
-                  <span className='text-xs text-foreground font-medium'>
-                    Check-in
-                  </span>
-                  <span className='text-muted-foreground text-start'>
-                    {dateRange?.from?.toLocaleDateString() || 'Adicionar data'}
-                  </span>
-                </div>
-                <Separator orientation='vertical' />
-                <div className='w-full py-2 px-3 flex flex-col items-start hover:bg-muted'>
-                  <span className='text-xs text-foreground font-medium'>
-                    Check-out
-                  </span>
-                  <span className='text-muted-foreground text-start'>
-                    {dateRange?.to?.toLocaleDateString() || 'Adicionar data'}
-                  </span>
-                </div>
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align='end' className='w-fit'>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    onClick={() => setDateMenuOpen((v) => !v)}
+                    className={cn(
+                      'grid w-full grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)] text-left transition-colors hover:bg-muted',
+                      focusRing,
+                    )}
+                  >
+                    <span className="flex flex-col px-1 py-3">
+                      <span className="text-xs font-medium">Check-in</span>
+                      <span className="truncate text-sm text-muted-foreground tabular-nums">
+                        {checkIn || 'Adicionar data'}
+                      </span>
+                    </span>
+                    <span aria-hidden="true" className="my-3 bg-border" />
+                    <span className="flex flex-col px-3 py-3">
+                      <span className="text-xs font-medium">Check-out</span>
+                      <span className="truncate text-sm text-muted-foreground tabular-nums">
+                        {checkOut || 'Adicionar data'}
+                      </span>
+                    </span>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-fit">
+                  <Calendar
+                    mode="range"
+                    locale={ptBR}
+                    defaultMonth={dateRange?.from}
+                    selected={dateRange}
+                    onSelect={setDateRange}
+                    numberOfMonths={2}
+                    disabled={(date) => date < today}
+                    className="w-fit bg-card"
+                  />
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <div className="border-t border-border" />
+
+              <DropdownMenu
+                open={guestMenuOpen}
+                onOpenChange={(v) => {
+                  if (!v) setGuestMenuOpen(false);
+                }}
+              >
+                <DropdownMenuTrigger asChild>
+                  <button
+                    onClick={() => setGuestMenuOpen((v) => !v)}
+                    className={cn(
+                      'flex w-full items-center justify-between gap-3 px-1 py-3 text-left transition-colors hover:bg-muted',
+                      focusRing,
+                    )}
+                  >
+                    <span className="flex min-w-0 flex-col">
+                      <span className="text-xs font-medium">Hóspedes</span>
+                      <span className="truncate text-sm text-muted-foreground">
+                        {guestLabel}
+                      </span>
+                    </span>
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={cn(
+                        'h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out motion-reduce:transition-none',
+                        guestMenuOpen && 'rotate-180',
+                      )}
+                    />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-72 p-4">
+                  {guestRows}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <div className="border-t border-border" />
+            </div>
+
+            <Button
+              effect="ringHover"
+              size="lg"
+              className="mt-5 w-full rounded-full"
+              asChild
+            >
+              <a target="_blank" rel="noopener noreferrer" href={whatsHref}>
+                Reservar
+              </a>
+            </Button>
+          </div>
+        </div>
+      </aside>
+
+      {/* ---------------- Barra fixa · mobile ---------------- */}
+      {/* Entra só depois da dobra: sobre a fotografia de abertura ela cobriria
+          justamente o que a página tem de melhor. `translate-y-full` a mantém
+          fora da tela sem removê-la do DOM, para a transição existir nos dois
+          sentidos. */}
+      <div
+        className={cn(
+          'fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card lg:hidden',
+          barMotion,
+          afterFold
+            ? 'translate-y-0 opacity-100'
+            : 'pointer-events-none translate-y-full opacity-0',
+        )}
+      >
+        {/* Painel: abre por `grid-template-rows` (0fr → 1fr), mesmo padrão do
+            menu do cabeçalho — anima altura automática sem `max-height` chutado. */}
+        <div
+          className={cn(
+            'grid overflow-hidden transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none',
+            panelOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+          )}
+        >
+          <div className="min-h-0">
+            <div
+              id="painel-reserva"
+              inert={!panelOpen}
+              className="max-h-[65svh] overflow-y-auto px-4 pt-4"
+            >
               <Calendar
-                mode='range'
+                mode="range"
                 locale={ptBR}
                 defaultMonth={dateRange?.from}
                 selected={dateRange}
                 onSelect={setDateRange}
-                numberOfMonths={2}
+                numberOfMonths={1}
                 disabled={(date) => date < today}
-                className='w-fit bg-card'
+                className="mx-auto w-fit bg-card"
               />
-            </DropdownMenuContent>
-          </DropdownMenu>
-          <Separator className='col-span-3' />
-          <DropdownMenu
-            open={guestMenuOpen}
-            onOpenChange={(v) => {
-              if (!v) setGuestMenuOpen(false);
-            }}
-          >
-            <DropdownMenuTrigger asChild>
-              <button
-                onClick={() => setGuestMenuOpen((v) => !v)}
-                className='w-full py-2 px-3 rounded-b-xl flex flex-col items-start col-span-3 hover:bg-muted'
-              >
-                <span className='text-xs text-foreground font-medium'>
-                  Hóspedes
-                </span>
-                <span className='text-muted-foreground text-sm text-start'>
-                  {guestLabel}
-                </span>
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className='p-4' align='start'>
-              <div className='flex flex-col gap-4'>
-                <div className='flex items-center justify-between'>
-                  <div className='flex flex-col'>
-                    <span className='text-sm font-medium'>Adultos</span>
-                    <span className='text-xs text-muted-foreground'>
-                      Com 13 anos ou mais
-                    </span>
-                  </div>
-                  <div className='flex items-center gap-3'>
-                    <Button
-                      variant={'outline'}
-                      size='icon-sm'
-                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
-                      onClick={() => setAdults((v) => Math.max(1, v - 1))}
-                      disabled={adults <= 1}
-                    >
-                      <MinusIcon className='w-3 h-3' />
-                    </Button>
-                    <span className='w-4 text-center text-sm'>{adults}</span>
-                    <Button
-                      variant={'outline'}
-                      size='icon-sm'
-                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
-                      onClick={() => setAdults((v) => v + 1)}
-                    >
-                      <PlusIcon className='w-3 h-3' />
-                    </Button>
-                  </div>
-                </div>
-                <Separator />
-                <div className='flex items-center justify-between'>
-                  <div className='flex flex-col'>
-                    <span className='text-sm font-medium'>Crianças</span>
-                    <span className='text-xs text-muted-foreground'>
-                      De 2 a 12 anos
-                    </span>
-                  </div>
-                  <div className='flex items-center gap-3'>
-                    <Button
-                      variant={'outline'}
-                      size='icon-sm'
-                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
-                      onClick={() => setChildren((v) => Math.max(0, v - 1))}
-                      disabled={children <= 0}
-                    >
-                      <MinusIcon className='w-3 h-3' />
-                    </Button>
-                    <span className='w-4 text-center text-sm'>{children}</span>
-                    <Button
-                      variant={'outline'}
-                      size='icon-sm'
-                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
-                      onClick={() => setChildren((v) => v + 1)}
-                    >
-                      <PlusIcon className='w-3 h-3' />
-                    </Button>
-                  </div>
-                </div>
-                <Separator />
-                <div className='flex items-center justify-between'>
-                  <div className='flex flex-col'>
-                    <span
-                      className={cn(
-                        'text-sm font-medium',
-                        !petsPermitidos && 'line-through text-muted-foreground',
-                      )}
-                    >
-                      Animais de estimação
-                    </span>
-                    {!petsPermitidos && (
-                      <span className='text-xs text-muted-foreground'>
-                        Não permitido neste chalé
-                      </span>
-                    )}
-                  </div>
-                  <div className='flex items-center gap-3'>
-                    <Button
-                      variant={'outline'}
-                      size='icon-sm'
-                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
-                      onClick={() => setPets((v) => Math.max(0, v - 1))}
-                      disabled={pets <= 0 || !petsPermitidos}
-                    >
-                      <MinusIcon className='w-3 h-3' />
-                    </Button>
-                    <span
-                      className={cn(
-                        'w-4 text-center text-sm',
-                        !petsPermitidos && 'text-muted-foreground',
-                      )}
-                    >
-                      {pets}
-                    </span>
-                    <Button
-                      variant={'outline'}
-                      size='icon-sm'
-                      className='rounded-full relative after:absolute after:-inset-1.5 after:content-[""]'
-                      disabled={!petsPermitidos}
-                      onClick={() => setPets((v) => v + 1)}
-                    >
-                      <PlusIcon className='w-3 h-3' />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              <div className="mt-2 border-t border-border" />
+              {guestRows}
+            </div>
+          </div>
         </div>
-      </CardContent>
-      <CardFooter className='px-5'>
-        <Button
-          effect={'ringHover'}
-          size={'lg'}
-          className='w-full rounded-full'
-          asChild
+
+        <div
+          className="flex items-center gap-3 px-4 py-3"
+          style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}
         >
-          <a target='_blank' href={generateWhatsLink(msgText)}>
-            Reservar
-          </a>
-        </Button>
-      </CardFooter>
-    </Card>
+          <button
+            type="button"
+            onClick={() => setSheetOpen((v) => !v)}
+            aria-expanded={panelOpen}
+            aria-controls="painel-reserva"
+            className={cn(
+              'flex min-h-11 min-w-0 flex-1 items-center gap-2 text-left',
+              focusRing,
+            )}
+          >
+            <span className="min-w-0 flex-1">
+              <span className="block truncate text-sm font-medium tabular-nums">
+                {checkIn && checkOut
+                  ? `${checkIn} – ${checkOut}`
+                  : 'Adicionar data'}
+              </span>
+              <span className="block truncate text-xs text-muted-foreground">
+                {guestLabel}
+              </span>
+            </span>
+            <ChevronDown
+              aria-hidden="true"
+              className={cn(
+                'h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ease-out motion-reduce:transition-none',
+                !panelOpen && 'rotate-180',
+              )}
+            />
+          </button>
+
+          <Button
+            effect="ringHover"
+            className="h-11 shrink-0 rounded-full px-6"
+            asChild
+          >
+            <a target="_blank" rel="noopener noreferrer" href={whatsHref}>
+              Reservar
+            </a>
+          </Button>
+        </div>
+      </div>
+    </>
   );
 }
 

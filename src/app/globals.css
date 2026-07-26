@@ -14,6 +14,15 @@ html {
   scroll-padding-top: 6rem;
 }
 
+/* Rede de segurança para quem sangra além da coluna (a foto de quebra de grade
+   em /chales/[slug]/). `clip` e não `hidden`: `hidden` cria um contexto de
+   rolagem novo e quebra `position: sticky` nos descendentes — que é justamente
+   o que o trilho de reserva usa. */
+html,
+body {
+  overflow-x: clip;
+}
+
 :root {
   --background: #fcf8f3;
   --foreground: oklch(0.147 0.004 49.25);

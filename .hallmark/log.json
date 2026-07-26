@@ -1,0 +1,30 @@
+[
+  {
+    "date": "2026-07-26",
+    "macrostructure": "Photographic",
+    "theme": "design.md (sistema do projeto)",
+    "enrichment": "none — fotografia real do acervo",
+    "brief": "Refúgio da Pedra SP · redesign da página de chalé /chales/[slug]/"
+  },
+  {
+    "date": "2026-07-20",
+    "macrostructure": "Narrative Workflow",
+    "theme": "design.md (sistema do projeto)",
+    "enrichment": "none",
+    "brief": "Refúgio da Pedra SP · /reservar/"
+  },
+  {
+    "date": "2026-07-18",
+    "macrostructure": "Catalogue",
+    "theme": "design.md (sistema do projeto)",
+    "enrichment": "none",
+    "brief": "Refúgio da Pedra SP · /chales/"
+  },
+  {
+    "date": "2026-07-18",
+    "macrostructure": "Index-First",
+    "theme": "design.md (sistema do projeto)",
+    "enrichment": "none",
+    "brief": "Refúgio da Pedra SP · /blog/"
+  }
+]

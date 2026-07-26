@@ -1,6 +1,21 @@
+/* Hallmark · genre: editorial · macrostructure: Photographic
+ * H6 dobra (full-bleed · legenda inferior-esquerda · texto sobreposto)
+ * F3 ficha (só valores · fio em toda linha · tabular-nums)
+ * C3 link tipográfico · C4 barra fixa (reveal=após a dobra · sombra=fio)
+ * chrome: N6 masthead + Ft1 rodapé (compartilhados, fora de escopo)
+ * design-system: design.md · designed-as-app
+ */
 import chales from '@/data/chales.json';
 import slugify from 'slugify';
-import ChaleContent, { type ChaleDescription } from './chale-content';
+import CardReserva from './card-reserva';
+import Comodidades from './comodidades';
+import Descricao from './descricao';
+import Dobra from './dobra';
+import Ficha from './ficha';
+import Fotografias from './fotografias';
+import IdealPara from './ideal-para';
+import Localizacao from './localizacao';
+import type { ChaleDescription } from './types';
 
 interface Props {
   params: Promise<{
@@ -95,7 +110,34 @@ async function ChalePage({ params }: Props): Promise<React.ReactNode> {
 
   const description = descriptions[chale.id];
 
-  return <ChaleContent chale={chale} description={description} />;
+  return (
+    // `pb-20` no mobile é a folga da barra fixa de reserva (~68px); no desktop
+    // a barra não existe e o rodapé encosta na última faixa da galeria.
+    <main className="bg-background pb-20 lg:pb-0">
+      <Dobra chale={chale} />
+      <Ficha chale={chale} />
+
+      {/* Corpo editorial: coluna de texto à esquerda, trilho de reserva
+          grudado à direita. A grade mora aqui, e não dentro de um componente,
+          porque é ela que define quais seções o trilho acompanha na rolagem —
+          uma decisão de página, não de seção. */}
+      <div className="container grid gap-12 pt-12 md:pt-16 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14">
+        <div className="min-w-0 space-y-12 md:space-y-16">
+          <Descricao chale={chale} description={description} />
+          <IdealPara description={description} />
+          <Comodidades chale={chale} />
+          <Localizacao chale={chale} />
+        </div>
+
+        <CardReserva
+          chale={chale.nome}
+          petsPermitidos={chale.politica.pets_permitidos}
+        />
+      </div>
+
+      <Fotografias chale={chale} />
+    </main>
+  );
 }
 
 export default ChalePage;
