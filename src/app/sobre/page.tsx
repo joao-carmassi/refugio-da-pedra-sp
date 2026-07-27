@@ -73,18 +73,17 @@ function SobrePage(): React.ReactNode {
             <p>
               O Refúgio da Pedra SP nasceu em 2018 de uma vontade simples: viver
               mais perto da serra e compartilhar esse lugar com quem também
-              precisa desacelerar. Foi em São Bento do Sapucaí, entre neblina,
-              pedras centenárias e o cheiro de eucalipto molhado, que trocamos a
-              rotina da cidade grande por um pedaço de terra na Mantiqueira e
-              começamos a construir, aos poucos, as primeiras acomodações.
+              precisa desacelerar. Foi em São Bento do Sapucaí, entre a neblina
+              da manhã e as araucárias, que trocamos a rotina da cidade grande
+              por um pedaço de terra na Mantiqueira e começamos a construir, aos
+              poucos, as primeiras acomodações.
             </p>
             <p>
               A ideia sempre foi a mesma: uma pousada sustentável, pequena o
-              suficiente para ser cuidada de perto e integrada à paisagem em vez
-              de imposta a ela. Não somos uma rede de hotéis, nem um
-              empreendimento gerido à distância. Somos uma família que mora
-              perto, que cuida do jardim no fim de semana, que conhece cada
-              chalé pelo nome e sabe qual deles pega o melhor sol da manhã.
+              suficiente para ser cuidada de perto e que acompanha a paisagem em
+              vez de disputar espaço com ela. Não somos uma rede de hotéis, nem
+              um empreendimento gerido à distância. Somos uma família que mora
+              perto, que cuida do jardim e que conhece cada chalé pelo nome.
             </p>
           </div>
 
@@ -127,8 +126,8 @@ function SobrePage(): React.ReactNode {
             </p>
             <p>
               A reserva já inclui o que importa: café da manhã com produtos
-              típicos da região, roupa de cama e toalhas, Wi-Fi, estacionamento
-              privativo em cada acomodação e seguro sem custo adicional. Somos
+              típicos da região, roupa de cama e toalhas, Wi-Fi e estacionamento
+              privativo em cada acomodação. Somos
               pet friendly na maior parte das unidades, porque entendemos que os
               animais de estimação são parte da família.{' '}
               <Link
@@ -149,10 +148,10 @@ function SobrePage(): React.ReactNode {
               Levamos a sério o compromisso com a terra que nos acolhe.
               Procuramos manter a vegetação nativa, usar os recursos da
               propriedade com consciência e respeitar o ritmo da montanha, que
-              muda de temperatura e de humor várias vezes ao dia. Não
-              construímos o Refúgio da Pedra SP para ser grande — construímos
-              para que ele continuasse de pé, do jeito que é, daqui a vinte
-              anos.
+              muda de temperatura e de humor várias vezes ao dia. Nunca quisemos
+              que o Refúgio da Pedra SP crescesse depressa: preferimos que ele
+              dure, e que a serra continue aqui do mesmo jeito para quem vier
+              depois.
             </p>
           </div>
 
