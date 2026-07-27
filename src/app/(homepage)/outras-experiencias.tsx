@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/accordion';
 import { memo, useState } from 'react';
 import Image from 'next/image';
+import { useReveal } from '@/hooks/use-reveal';
 
 const iconsMap = {
   Wine,
@@ -21,15 +22,21 @@ const iconsMap = {
 /**
  * Único acordeão da página — e aqui ele tem função: abrir um parceiro troca a
  * fotografia grande à direita. Restilizado para o sistema (réguas de 1px em vez
- * da caixa arredondada com borda). Sem reveal: a seção já tem movimento próprio
- * na troca de imagem.
+ * da caixa arredondada com borda). O reveal de entrada é o mesmo das outras
+ * seções (um único grupo: cabeçalho · foto · acordeão); a troca de imagem
+ * acontece depois e é independente dele.
  */
 const OutrasExperiencias = () => {
   const [activeItem, setActiveItem] = useState('santaMaria');
   const activeFeature = features.find((f) => f.id === activeItem);
+  const scope = useReveal<HTMLElement>();
 
   return (
-    <section id='outras-experiencias-anchor' className='py-12 md:py-20'>
+    <section
+      id='outras-experiencias-anchor'
+      ref={scope}
+      className='py-12 md:py-20'
+    >
       {/* Em `lg` são duas colunas: título, texto e acordeão empilhados à
           esquerda; a foto ocupando a coluna direita inteira (`row-span-2`),
           alinhada pelo topo com o título. Abaixo de `lg` continua uma coluna
@@ -38,7 +45,10 @@ const OutrasExperiencias = () => {
           tela. É por isso que a ordem do DOM é cabeçalho · foto · acordeão, e o
           posicionamento em `lg` é explícito em vez de depender dessa ordem. */}
       <div className='container md:grid md:gap-y-12 lg:grid-cols-2 lg:items-start lg:gap-x-12 lg:gap-y-8'>
-        <header className='max-w-3xl lg:col-start-1 lg:row-start-1 lg:max-w-none'>
+        <header
+          data-reveal
+          className='max-w-3xl lg:col-start-1 lg:row-start-1 lg:max-w-none'
+        >
           <h2 className='text-2xl tracking-tight text-pretty md:text-4xl lg:text-5xl'>
             Complete sua experiência
           </h2>
@@ -49,7 +59,10 @@ const OutrasExperiencias = () => {
         </header>
 
         {activeFeature?.imgPc && (
-          <div className='mt-8 hidden md:mt-0 md:block lg:col-start-2 lg:row-span-2 lg:row-start-1'>
+          <div
+            data-reveal
+            className='mt-8 hidden md:mt-0 md:block lg:col-start-2 lg:row-span-2 lg:row-start-1'
+          >
             <Image
               width={724}
               height={724}
@@ -62,7 +75,7 @@ const OutrasExperiencias = () => {
           </div>
         )}
 
-        <div className='mt-8 md:mt-0 lg:col-start-1 lg:row-start-2'>
+        <div data-reveal className='mt-8 md:mt-0 lg:col-start-1 lg:row-start-2'>
           <Accordion
               value={activeItem}
               onValueChange={setActiveItem}
