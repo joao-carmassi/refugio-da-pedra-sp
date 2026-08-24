@@ -1,5 +1,7 @@
 import serialize from 'serialize-javascript';
 import type { WithContext, Blog, BreadcrumbList } from 'schema-dts';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 import { getSiteUrl } from '@/lib/env';
 import { DEFAULT_POST_IMAGE } from '@/lib/posts';
 
@@ -96,7 +98,9 @@ function BlogLayout({ children }: Props): React.ReactNode {
           __html: serialize(breadcrumbJsonLd),
         }}
       />
+      <Header />
       {children}
+      <Footer />
     </>
   );
 }

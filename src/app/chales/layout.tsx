@@ -1,5 +1,7 @@
 import serialize from 'serialize-javascript';
 import type { WithContext, ItemList, BreadcrumbList } from 'schema-dts';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 import { getSiteUrl } from '@/lib/env';
 import chales from '@/data/chales.json';
 import slugify from 'slugify';
@@ -105,7 +107,9 @@ function ChalesLayout({ children }: Props): React.ReactNode {
           __html: serialize(breadcrumbJsonLd),
         }}
       />
+      <Header />
       {children}
+      <Footer />
     </>
   );
 }

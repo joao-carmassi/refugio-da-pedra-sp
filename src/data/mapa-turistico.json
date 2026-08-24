@@ -1,0 +1,329 @@
+[
+  {
+    "id": "refugio",
+    "nome": "Refúgio da Pedra SP",
+    "cat": "hospedagem",
+    "zona": "bau",
+    "lat": -22.67812457941675,
+    "lng": -45.66375792387372,
+    "refugio": true,
+    "horario": "Check-in 14h · check-out 12h",
+    "resumo": "Ponto de partida deste mapa: cinco chalés privativos em meio à Mata Atlântica, no pé do Complexo da Pedra do Baú.",
+    "descricao": "Pousada sustentável em Paiol Grande, com chalés, cabana e domo geodésico voltados para o mar de montanhas da Mantiqueira. Todas as distâncias deste mapa são medidas a partir daqui.",
+    "endereco": "Rua das Araucárias, Paiol Grande — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "refugio/geral",
+      "arquivos": ["refugio-1.webp", "refugio-2.webp", "refugio-15.webp"]
+    }
+  },
+  {
+    "id": "pedra-bau",
+    "nome": "Pedra do Baú",
+    "cat": "turismo",
+    "zona": "bau",
+    "lat": -22.68835,
+    "lng": -45.66081,
+    "resumo": "O monólito que dá nome à região, com via ferrata e vista de 360° sobre a Mantiqueira.",
+    "descricao": "Cume mais alto do Monumento Natural Estadual da Pedra do Baú. O trecho final da subida é feito por uma via ferrata com mais de 300 degraus e grampos fixados na rocha, sempre com guia credenciado. Do alto se vê o Vale do Baú, o Bauzinho e a Ana Chata alinhados.",
+    "endereco": "Monumento Natural Estadual da Pedra do Baú — São Bento do Sapucaí"
+  },
+  {
+    "id": "bauzinho",
+    "nome": "Bauzinho",
+    "cat": "aventura",
+    "zona": "bau",
+    "lat": -22.68657,
+    "lng": -45.65799,
+    "resumo": "A trilha mais acessível do complexo — e o melhor pôr do sol da serra.",
+    "descricao": "Cerca de 2,5 km de percurso ida e volta, com aproximadamente 30 minutos de caminhada a partir da portaria. É a saída indicada para quem quer a vista sem encarar a via ferrata da Pedra do Baú.",
+    "endereco": "Complexo da Pedra do Baú — São Bento do Sapucaí"
+  },
+  {
+    "id": "ana-chata",
+    "nome": "Pedra Ana Chata",
+    "cat": "aventura",
+    "zona": "bau",
+    "lat": -22.69282,
+    "lng": -45.66926,
+    "resumo": "Laje suspensa com vista aberta para a Serra do Coimbra e Campos do Jordão.",
+    "descricao": "Trilha de cerca de 3,8 km que começa no estacionamento Chico Bento. No alto, a formação equilibrada abre a vista mais larga do complexo: Serra do Coimbra, Campos do Jordão e o resto da Mantiqueira.",
+    "endereco": "Complexo da Pedra do Baú — São Bento do Sapucaí"
+  },
+  {
+    "id": "rampa-voo-livre",
+    "nome": "Rampa de Voo Livre da Pedra do Baú",
+    "cat": "aventura",
+    "zona": "bau",
+    "lat": -22.68002,
+    "lng": -45.65076,
+    "resumo": "Rampa oficial de parapente, com decolagem sobre o Vale do Baú.",
+    "descricao": "Uma das rampas mais procuradas do estado, com voos duplos conduzidos por instrutores credenciados. A operação depende do vento do dia — confirme com a escola antes de subir.",
+    "endereco": "Rampa da Pedra do Baú — São Bento do Sapucaí"
+  },
+  {
+    "id": "restaurante-pedra-bau",
+    "nome": "Restaurante Pedra do Baú",
+    "cat": "restaurantes",
+    "zona": "bau",
+    "lat": -22.6804,
+    "lng": -45.66321,
+    "resumo": "Portaria da trilha principal e parada de quem sobe ou desce o Baú.",
+    "descricao": "Em Paiol Grande, é o melhor ponto de partida para a trilha principal e o ponto de encontro das saídas guiadas. O estacionamento custa R$ 20 e é isento para quem consome no restaurante.",
+    "endereco": "R. das Araucárias, 450, Paiol Grande — São Bento do Sapucaí"
+  },
+  {
+    "id": "cachoeira-amores",
+    "nome": "Cachoeira dos Amores",
+    "cat": "turismo",
+    "zona": "bau",
+    "lat": -22.67312,
+    "lng": -45.67566,
+    "resumo": "A cachoeira mais estruturada da cidade, com estacionamento, banheiro e lanchonete.",
+    "descricao": "Fica no km 6 da Rodovia Prefeito Benedito Gomes de Souza, e o acesso à queda é por uma trilha de cerca de 6 km ida e volta. Tem estacionamento, banheiros, lanchonete e loja de artesanato na entrada.",
+    "endereco": "Km 6 da Rod. Pref. Benedito Gomes de Souza, Paiol Grande — São Bento do Sapucaí"
+  },
+  {
+    "id": "cachoeira-toldi",
+    "nome": "Cachoeira do Toldi",
+    "cat": "turismo",
+    "zona": "bau",
+    "lat": -22.65923,
+    "lng": -45.64444,
+    "resumo": "Queda de cerca de 20 metros, vista de um mirante na estrada do Paiol Grande.",
+    "descricao": "A queda é observada de longe, a partir da estrada. O mirante de madeira que servia o ponto está em ruínas desde 2022 — vá pela vista da curva, não pelo banho.",
+    "endereco": "Estrada do Paiol Grande — São Bento do Sapucaí"
+  },
+  {
+    "id": "bau-ecoturismo",
+    "nome": "Baú Ecoturismo",
+    "cat": "aventura",
+    "zona": "centro",
+    "lat": -22.6903946,
+    "lng": -45.7326124,
+    "destaque": true,
+    "resumo": "A maior agência de ecoturismo da cidade: trilhas guiadas, via ferrata, escalada e rapel.",
+    "descricao": "Especializada em turismo de aventura na região, com guias credenciados para a via ferrata da Pedra do Baú, escaladas, rapel e travessias na Serra da Mantiqueira. As saídas se encontram no Restaurante Pedra do Baú, em Paiol Grande. Parceira do Refúgio da Pedra SP.",
+    "endereco": "Av. Conselheiro Rodrigues Alves, 143, Centro — São Bento do Sapucaí",
+    "tel": "(12) 99737-5968",
+    "site": "https://bauecoturismo.com.br",
+    "fotos": {
+      "pasta": "ecoturismo",
+      "arquivos": [
+        "ecoturismo-4.webp",
+        "ecoturismo-2.webp",
+        "ecoturismo-1.webp",
+        "ecoturismo-6.webp"
+      ]
+    }
+  },
+  {
+    "id": "sabor-com-arte",
+    "nome": "Restaurante Sabor com Arte",
+    "cat": "restaurantes",
+    "zona": "vale",
+    "lat": -22.675181479418857,
+    "lng": -45.684301223874044,
+    "destaque": true,
+    "resumo": "Truta flambada, fogão a lenha e buffet de fim de semana, em frente à Pedra do Baú.",
+    "descricao": "Refeições à la carte durante a semana, buffet aos finais de semana e uma carta de pizzas, peixes e porções. Fica em frente à Pedra do Baú e perto da Cachoeira dos Amores. Parceiro do Refúgio da Pedra SP.",
+    "endereco": "São Bento do Sapucaí — SP",
+    "fotos": {
+      "pasta": "sabor",
+      "arquivos": ["sabor-2.webp", "sabor-1.webp"]
+    }
+  },
+  {
+    "id": "villa-santa-maria",
+    "nome": "Vinícola Villa Santa Maria",
+    "cat": "experiencias",
+    "zona": "vale",
+    "lat": -22.724573279383772,
+    "lng": -45.68448672390126,
+    "destaque": true,
+    "resumo": "Vinhos Brandina, visita guiada ao vinhedo e degustação harmonizada no Vale do Baú.",
+    "descricao": "Integrante da Rota dos Vinhos da Mantiqueira. A visita passa pelo vinhedo e pela sala de vinificação e termina em degustação conduzida por sommelier. Reserva obrigatória. Parceira do Refúgio da Pedra SP.",
+    "endereco": "Vale do Baú — São Bento do Sapucaí",
+    "tel": "(12) 99633-0222",
+    "fotos": {
+      "pasta": "santaMaria",
+      "arquivos": [
+        "vinicola-3.webp",
+        "vinicola-1.webp",
+        "vinicola-5.webp",
+        "vinicola-7.webp"
+      ]
+    }
+  },
+  {
+    "id": "oliq",
+    "nome": "OLIQ — Azeite da Mantiqueira",
+    "cat": "compras",
+    "zona": "vale",
+    "lat": -22.62215037945644,
+    "lng": -45.693023623903564,
+    "destaque": true,
+    "resumo": "Olival de altitude com visita à produção, degustação orientada e loja de azeites.",
+    "descricao": "Fundada por três amigos, cultiva oliveiras na Serra da Mantiqueira e produz azeites extravirgens premiados. O tour passa pela produção e termina em degustação, com loja de produtos da região. Parceira do Refúgio da Pedra SP.",
+    "endereco": "São Bento do Sapucaí — SP",
+    "fotos": {
+      "pasta": "oliq",
+      "arquivos": ["oliq-2.webp", "oliq-1.webp"]
+    }
+  },
+  {
+    "id": "raizes-do-bau",
+    "nome": "Raízes do Baú",
+    "cat": "cafes",
+    "zona": "vale",
+    "lat": -22.7134,
+    "lng": -45.65569,
+    "resumo": "Café colonial serrano, cervejaria artesanal e vinhedo de altitude no mesmo endereço.",
+    "descricao": "A Fazenda Portal da Luz reúne o café colonial, a cervejaria artesanal e a Vinícola Raízes do Baú, com mais de 9.000 pés de uva a 1.200 m de altitude e vista para a Pedra do Baú. Boa parada entre um passeio e outro.",
+    "endereco": "Estr. Mun. José Theotônio Silva, 9400, Bairro do Baú — São Bento do Sapucaí",
+    "site": "https://vinicolaraizesdobau.com.br"
+  },
+  {
+    "id": "entre-vilas",
+    "nome": "Entre Vilas",
+    "cat": "restaurantes",
+    "zona": "vale",
+    "lat": -22.62544,
+    "lng": -45.58209,
+    "resumo": "Slow food dentro do Viveiro Frutopia — o ingrediente sai do pomar e vai para o prato.",
+    "descricao": "Restaurante integrado ao viveiro, com pratos construídos em cima do que está maduro na propriedade: morango, framboesa, mirtilo e as frutas da estação.",
+    "endereco": "Campo do Serrano — São Bento do Sapucaí"
+  },
+  {
+    "id": "frutopia",
+    "nome": "Viveiro Frutopia",
+    "cat": "experiencias",
+    "zona": "vale",
+    "lat": -22.62549,
+    "lng": -45.58211,
+    "aConferir": true,
+    "resumo": "Tour rural por macieiras, parreiras, morangueiros, framboeseiras e mirtilos.",
+    "descricao": "Uma propriedade de 35 hectares aberta à visitação, na mesma fazenda do restaurante Entre Vilas. O pino marca a entrada do restaurante — a área cultivada é bem maior.",
+    "endereco": "Campo do Serrano — São Bento do Sapucaí"
+  },
+  {
+    "id": "la-na-roca",
+    "nome": "Lá na Roça",
+    "cat": "restaurantes",
+    "zona": "vale",
+    "lat": -22.71896,
+    "lng": -45.79383,
+    "resumo": "Comida caseira com vista larga da serra, um dos melhores custo-benefício da cidade.",
+    "endereco": "Estr. Carmelina Francisca da Rosa Barros, km 8, Serrano de Cima — São Bento do Sapucaí"
+  },
+  {
+    "id": "trincheira",
+    "nome": "Restaurante Trincheira",
+    "cat": "restaurantes",
+    "zona": "vale",
+    "lat": -22.67958,
+    "lng": -45.72791,
+    "resumo": "Gastronomia regional sobre a trincheira original da Revolução de 1932.",
+    "descricao": "Foi erguido no lugar exato de uma trincheira da Revolução de 1932, no bairro do Quilombo — e divide o endereço com o museu que conta essa história.",
+    "endereco": "Rod. Benedito Cândido Ribeiro, 1403, Bairro do Quilombo — São Bento do Sapucaí"
+  },
+  {
+    "id": "museu-1932",
+    "nome": "Museu da Revolução de 1932",
+    "cat": "turismo",
+    "zona": "vale",
+    "lat": -22.67958,
+    "lng": -45.7277,
+    "horario": "Todos os dias, 8h às 18h",
+    "resumo": "Acervo da Revolução Constitucionalista no bairro do Quilombo, junto à trincheira original.",
+    "endereco": "Rod. Benedito Cândido Ribeiro, 1403, Bairro do Quilombo — São Bento do Sapucaí"
+  },
+  {
+    "id": "arte-no-quilombo",
+    "nome": "Arte no Quilombo",
+    "cat": "compras",
+    "zona": "vale",
+    "lat": -22.67244,
+    "lng": -45.71614,
+    "resumo": "Associação de mais de 80 artesãos, especializada em palha de bananeira e de milho.",
+    "descricao": "Fundada em 2004 no bairro do Quilombo, reúne artesãos da região e oferece oficinas para visitantes além da loja.",
+    "endereco": "Rod. Ver. Benedito Cândido Ribeiro, km 2,5, Bairro do Quilombo — São Bento do Sapucaí",
+    "tel": "(12) 3971-2669",
+    "site": "https://artenoquilombo.com.br"
+  },
+  {
+    "id": "ditinho-joana",
+    "nome": "Ateliê Ditinho Joana",
+    "cat": "compras",
+    "zona": "vale",
+    "lat": -22.67257,
+    "lng": -45.71547,
+    "horario": "Diariamente, 8h às 17h",
+    "resumo": "Esculturas em madeira de jacarandá que retratam a vida rural da serra.",
+    "endereco": "Estr. Ver. Benedito Cândido Ribeiro, Bairro do Quilombo — São Bento do Sapucaí",
+    "tel": "(12) 99665-5115"
+  },
+  {
+    "id": "arteben",
+    "nome": "Arteben — Casa do Artesão",
+    "cat": "compras",
+    "zona": "centro",
+    "lat": -22.68788,
+    "lng": -45.73292,
+    "resumo": "Mais de 60 artesãos de todos os bairros da cidade reunidos num espaço só, no centro.",
+    "descricao": "Associação fundada em 2004. É a parada certa para quem quer ver o artesanato de São Bento inteiro sem sair do centro.",
+    "endereco": "Av. Dr. Rubião Júnior, 491, sala 16, Centro — São Bento do Sapucaí",
+    "tel": "(12) 99673-0308"
+  },
+  {
+    "id": "igreja-matriz",
+    "nome": "Igreja Matriz de São Bento",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.68981,
+    "lng": -45.73094,
+    "resumo": "Matriz de taipa de pilão de 1853, tombada como patrimônio histórico.",
+    "descricao": "Construída em taipa de pilão por volta de 1853 e tombada em 2015, fica no alto de uma colina no centro da cidade. É o ponto de partida natural para conhecer o centrinho a pé.",
+    "endereco": "Praça Cônego Bento de Almeida, Centro — São Bento do Sapucaí"
+  },
+  {
+    "id": "capelinhas-mosaico",
+    "nome": "Capelinhas de Mosaico",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.6902,
+    "lng": -45.73541,
+    "resumo": "Três capelas revestidas em mosaico pelos artistas Ângelo Milani e Claudia Villar.",
+    "descricao": "Um roteiro curto por três capelas cobertas de mosaico colorido: no Centro (Rua 13 de Maio, 217), em Paiol Grande (Av. Sebastião de Mello Mendes) e no Quilombo (Estrada Municipal Joaquim da Costa, 920). O pino marca a do Centro.",
+    "endereco": "Rua 13 de Maio, 217, Centro — São Bento do Sapucaí"
+  },
+  {
+    "id": "casa-cultura-miguel-reale",
+    "nome": "Casa de Cultura Miguel Reale",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.68995,
+    "lng": -45.73182,
+    "resumo": "Espaço cultural dedicado ao jurista e filósofo nascido na cidade, com sebo de livros.",
+    "endereco": "Rua Sargento José Lourenço, 105, Centro — São Bento do Sapucaí"
+  },
+  {
+    "id": "mirante-cruzeiro",
+    "nome": "Mirante do Cruzeiro",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.69071,
+    "lng": -45.72872,
+    "resumo": "Mirante de fácil acesso no centro, com vista panorâmica para o Sul de Minas.",
+    "endereco": "Rua Presidente Castelo Branco, Centro — São Bento do Sapucaí"
+  },
+  {
+    "id": "taipa",
+    "nome": "Restaurante Taipa",
+    "cat": "restaurantes",
+    "zona": "centro",
+    "lat": -22.68988,
+    "lng": -45.73287,
+    "resumo": "Culinária regional variada em ambiente rústico, no centrinho da cidade.",
+    "endereco": "Rua Desembargador Afonso de Carvalho, Centro — São Bento do Sapucaí"
+  }
+]
