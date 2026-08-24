@@ -1,15 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { List, Search, TriangleAlert, X } from 'lucide-react';
-import {
-  Map,
-  MapArc,
-  MapMarker,
-  MapRoute,
-  MarkerContent,
-  useMap,
-} from '@/components/ui/map';
+import { List, Search, X } from 'lucide-react';
+import { Map, MapArc, MapRoute, useMap } from '@/components/ui/map';
 import {
   CATEGORIAS,
   FILTRO_TODOS,
@@ -22,11 +15,6 @@ import {
   type FiltroId,
   type Local,
 } from '@/lib/mapa-turistico';
-import {
-  useGeolocalizacao,
-  type Coordenada,
-  type ErroLocalizacao,
-} from '@/hooks/use-geolocalizacao';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { usePresenca } from '@/hooks/use-presenca';
 import { cn } from '@/lib/utils';
@@ -34,7 +22,6 @@ import {
   ESTILO_BASE,
   LIMITES_REGIAO,
   LOCALE_PT_BR,
-  dentroDaRegiao,
   ZOOM_FOCO,
   ZOOM_INICIAL,
   ZOOM_MAXIMO,
@@ -119,145 +106,6 @@ function Camera({ camera, mobile }: { camera: OrdemCamera; mobile: boolean }) {
 }
 
 /**
- * O que dizer quando a localização não vem — ou vem de longe demais.
- *
- * Uma frase por motivo porque cada um pede uma coisa diferente de quem lê:
- * permissão negada se resolve nas configurações do site, `http://` não se
- * resolve ali, e estar fora da região não é falha de ninguém.
- */
-const AVISO_LOCALIZACAO: Record<
-  ErroLocalizacao | 'fora-da-regiao',
-  string
-> = {
-  negada:
-    'Permissão de localização negada. Libere nas configurações do site para o mapa mostrar onde você está.',
-  inseguro: 'A localização só funciona em conexão segura (https).',
-  indisponivel: 'Não foi possível obter sua localização agora.',
-  demorou: 'A localização demorou demais para responder. Tente de novo.',
-  'sem-suporte': 'Este navegador não oferece localização.',
-  'fora-da-regiao':
-    'Você está fora de São Bento do Sapucaí — este mapa cobre só a região.',
-};
-
-/**
- * Leva o mapa até quem pediu a própria localização.
- *
- * Separado da `Camera` porque não é ordem da interface: a resposta do
- * navegador chega quando chega, e não no gesto. Cada resposta é um objeto
- * novo, então pedir de novo parado no mesmo lugar continua valendo como ordem.
- */
-function VooParaMim({
-  coordenada,
-  mobile,
-}: {
-  coordenada: Coordenada | null;
-  mobile: boolean;
-}) {
-  const { map, isLoaded } = useMap();
-
-  useEffect(() => {
-    if (!map || !isLoaded || !coordenada) return;
-
-    map.flyTo({
-      center: [coordenada.lng, coordenada.lat],
-      // Nunca afasta: quem pede a própria posição já escolheu o quanto quer
-      // ver, e recuar o zoom para 14 seria desfazer a escolha.
-      zoom: Math.max(map.getZoom(), 14),
-      duration: 900,
-      essential: true,
-      offset: mobile ? [0, -110] : [180, 0],
-    });
-  }, [map, isLoaded, coordenada, mobile]);
-
-  return null;
-}
-
-/**
- * "Você está aqui".
- *
- * Ponto, e não pino: pino é lugar do mapa, e quem visita não é um dos lugares.
- * O azul é a única cor de fora da paleta do mapa no mapa inteiro — é o que
- * impede o ponto de ser lido como mais um lugar, e é a convenção que todo
- * mundo já traz de outros mapas.
- *
- * O halo é desenho, não escala: o raio real em metros mudaria de tamanho a
- * cada zoom e viraria mancha ao afastar.
- */
-function MarcadorMinhaLocalizacao({ coordenada }: { coordenada: Coordenada }) {
-  return (
-    <MapMarker
-      longitude={coordenada.lng}
-      latitude={coordenada.lat}
-      anchor='center'
-    >
-      <MarkerContent className='pointer-events-none'>
-        <span className='relative grid size-4 place-items-center'>
-          <span
-            aria-hidden='true'
-            style={{ background: 'rgb(43 106 214 / 0.2)' }}
-            className='absolute -inset-3 rounded-full'
-          />
-          <span
-            aria-hidden='true'
-            style={{
-              background: '#2b6ad6',
-              borderColor: 'var(--map-surface)',
-              boxShadow: 'var(--map-shadow-pin)',
-            }}
-            className='size-4 rounded-full border-[3px]'
-          />
-        </span>
-      </MarkerContent>
-    </MapMarker>
-  );
-}
-
-/**
- * Recado sobre o mapa quando a localização não dá certo.
- *
- * Existe porque o silêncio era o bug: sem ele, permissão negada, `http://` e
- * GPS lento eram a mesma coisa — um botão que pisca e não faz nada.
- */
-function AvisoLocalizacao({
-  texto,
-  entrando,
-  onFechar,
-  className,
-}: {
-  texto: string;
-  entrando: boolean;
-  onFechar: () => void;
-  className?: string;
-}) {
-  return (
-    <div
-      role='status'
-      style={{
-        background: 'var(--map-ink)',
-        color: 'var(--map-sand)',
-        boxShadow: 'var(--map-shadow-panel)',
-      }}
-      className={cn(
-        'pointer-events-auto flex items-start gap-2.5 rounded-2xl py-2.5 pr-2 pl-3.5 text-[13px] leading-snug',
-        entrando ? ANIMA_BAIXO_ENTRA : ANIMA_BAIXO_SAI,
-        className,
-      )}
-    >
-      <TriangleAlert aria-hidden='true' className='mt-0.5 size-4 shrink-0' />
-      <p className='min-w-0 flex-1'>{texto}</p>
-      <button
-        type='button'
-        onClick={onFechar}
-        aria-label='Fechar aviso'
-        className='grid size-6 shrink-0 place-items-center rounded-full transition-colors hover:bg-white/10'
-      >
-        <X className='size-4' />
-      </button>
-    </div>
-  );
-}
-
-/**
  * Ordem de pintura dos pinos, fixa: o MapLibre reordena os marcadores conforme
  * a latitude, e a ordem do DOM é o que decide quem fica por cima entre pinos
  * empatados. O Refúgio vai por último para nunca cair atrás de ninguém.
@@ -276,17 +124,12 @@ const ANIMA_SAI =
   'animate-out fade-out slide-out-to-left-6 fill-mode-forwards pointer-events-none duration-200 ease-in';
 
 /**
- * Entrada e saída do que é ancorado nas bordas: cada um volta pela borda de
- * onde veio. Sumir no lugar não diz para onde a coisa foi, e no toque essa
- * pista é o que liga o que se tocou ao que apareceu.
- *
- * O cartão do lugar não usa este par: ele não desmonta, encolhe (ver a pilha
+ * Entrada e saída do que é ancorado no topo do mobile: a busca e os filtros
+ * voltam pela borda de onde vieram. Sumir no lugar não diz para onde a coisa
+ * foi, e no toque essa pista é o que liga o que se tocou ao que apareceu. O
+ * cartão do lugar não está aqui porque ele não desmonta: encolhe (ver a pilha
  * do mobile), que é o que deixa os controles descerem junto.
  */
-const ANIMA_BAIXO_ENTRA =
-  'animate-in fade-in slide-in-from-bottom-4 duration-300 ease-out';
-const ANIMA_BAIXO_SAI =
-  'animate-out fade-out slide-out-to-bottom-4 fill-mode-forwards pointer-events-none duration-200 ease-in';
 const ANIMA_TOPO_ENTRA =
   'animate-in fade-in slide-in-from-top-4 duration-300 ease-out';
 const ANIMA_TOPO_SAI =
@@ -603,44 +446,6 @@ function MapaTuristico() {
   const fichaPresente = usePresenca(folhaFicha, 300);
   const folhaAltura: Altura = folhaFicha ? 'alta' : folha;
 
-  const {
-    coordenada: minhaPosicao,
-    erro: erroLocalizacao,
-    buscando: localizando,
-    pedir: pedirLocalizacao,
-  } = useGeolocalizacao();
-  const [avisoAberto, setAvisoAberto] = useState(false);
-
-  /**
-   * Fora da cerca não há voo nem marcador: o `maxBounds` pararia o mapa na
-   * borda, e o ponto ficaria num canto aonde não se chega arrastando. O aviso
-   * é o que sobra para dizer, e é mais honesto do que um mapa que não se mexe.
-   */
-  const minhaPosicaoNaRegiao =
-    minhaPosicao && dentroDaRegiao(minhaPosicao.lng, minhaPosicao.lat)
-      ? minhaPosicao
-      : null;
-
-  const aviso =
-    erroLocalizacao ??
-    (minhaPosicao && !minhaPosicaoNaRegiao ? ('fora-da-regiao' as const) : null);
-  const mostraAviso = avisoAberto && !!aviso;
-  const avisoPresente = usePresenca(mostraAviso);
-
-  const localizar = useCallback(() => {
-    setAvisoAberto(true);
-    pedirLocalizacao();
-  }, [pedirLocalizacao]);
-
-  // Recado não é painel: some sozinho. Ficar na tela até alguém fechar cobriria
-  // o mapa por tempo indeterminado por causa de uma coisa que já foi lida.
-  useEffect(() => {
-    if (!mostraAviso) return;
-
-    const id = window.setTimeout(() => setAvisoAberto(false), 6000);
-    return () => window.clearTimeout(id);
-  }, [mostraAviso, aviso]);
-
   /**
    * Toque no mapa recolhe o que estiver na frente. Precisa ser estável entre
    * renderizações: é ela que decide se o efeito que assina os eventos do
@@ -696,8 +501,6 @@ function MapaTuristico() {
           <ToqueNoMapa onToque={tocarNoMapa} onArrasto={recolherFolha} />
         )}
 
-        <VooParaMim coordenada={minhaPosicaoNaRegiao} mobile={mobile} />
-
         <Pinos
           locais={locais}
           selecionado={selecionado}
@@ -705,13 +508,6 @@ function MapaTuristico() {
           onSelect={(id) => selecionar(id)}
           onHover={setHover}
         />
-
-        {/* Depois dos pinos de propósito: entre marcadores quem decide a
-            ordem de pintura é a ordem do DOM, e o ponto de quem está olhando
-            não pode acabar atrás de um lugar. */}
-        {minhaPosicaoNaRegiao && (
-          <MarcadorMinhaLocalizacao coordenada={minhaPosicaoNaRegiao} />
-        )}
 
         {/* O traçado de verdade, gravado em `rotas.json`. O arco continua como
             reserva para o lugar que ainda não tem rota calculada: ele não é o
@@ -846,21 +642,7 @@ function MapaTuristico() {
         )}
 
         {!mobile && (
-          <Controles
-            variante='desktop'
-            localizando={localizando}
-            onLocalizar={localizar}
-            className='absolute right-5 bottom-6 z-30'
-          />
-        )}
-
-        {!mobile && avisoPresente && aviso && (
-          <AvisoLocalizacao
-            texto={AVISO_LOCALIZACAO[aviso]}
-            entrando={mostraAviso}
-            onFechar={() => setAvisoAberto(false)}
-            className='absolute bottom-6 left-[calc(50%+230px)] z-40 w-96 max-w-[calc(100%-2rem)] -translate-x-1/2'
-          />
+          <Controles variante='desktop' className='absolute right-5 bottom-6 z-30' />
         )}
 
         {/* ------------------------------------------------------- mobile */}
@@ -952,21 +734,7 @@ function MapaTuristico() {
             style={{ bottom: acimaDaFolha(folhaAltura) }}
             className='pointer-events-none absolute inset-x-2.5 z-40 flex flex-col transition-[bottom] duration-300'
           >
-            {avisoPresente && aviso && (
-              <AvisoLocalizacao
-                texto={AVISO_LOCALIZACAO[aviso]}
-                entrando={mostraAviso}
-                onFechar={() => setAvisoAberto(false)}
-                className='mb-3'
-              />
-            )}
-
-            <Controles
-              variante='mobile'
-              localizando={localizando}
-              onLocalizar={localizar}
-              className='self-end'
-            />
+            <Controles variante='mobile' className='self-end' />
 
             {/* O cartão encolhe até zero em vez de desmontar. Desmontando, os
                 controles de zoom caíam de uma vez para o lugar que ele

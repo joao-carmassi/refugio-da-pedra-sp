@@ -32,25 +32,10 @@ export const ZOOM_MAXIMO = 17;
  * Cerca da região. Impede que o usuário arraste para fora de São Bento do
  * Sapucaí e fique olhando para um mapa vazio sem entender o que aconteceu.
  */
-const [OESTE, SUL] = [-45.92, -22.85];
-const [LESTE, NORTE] = [-45.5, -22.5];
-
 export const LIMITES_REGIAO: LngLatBoundsLike = [
-  [OESTE, SUL],
-  [LESTE, NORTE],
+  [-45.92, -22.85],
+  [-45.5, -22.5],
 ];
-
-/**
- * A cerca vale também para a localização de quem visita.
- *
- * O `maxBounds` prende o centro do mapa dentro dela, então voar para uma
- * coordenada de fora não sai do lugar: o mapa para na borda e o botão parece
- * quebrado. Saber de antemão que está fora é o que permite dizer isso em vez
- * de fingir um voo.
- */
-export function dentroDaRegiao(lng: number, lat: number) {
-  return lng >= OESTE && lng <= LESTE && lat >= SUL && lat <= NORTE;
-}
 
 /**
  * Textos da camada de gestos cooperativos do MapLibre. A página tem conteúdo
