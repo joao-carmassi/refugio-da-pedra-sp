@@ -22,6 +22,7 @@ import {
   ESTILO_BASE,
   LIMITES_REGIAO,
   LOCALE_PT_BR,
+  enquadrarTudo,
   ZOOM_FOCO,
   ZOOM_INICIAL,
   ZOOM_MAXIMO,
@@ -45,6 +46,30 @@ type OrdemCamera =
   | { tipo: 'foco'; local: Local; selo: number }
   | { tipo: 'rota'; local: Local; selo: number }
   | null;
+
+/**
+ * Abre o mapa com todos os pontos à vista.
+ *
+ * Precisa acontecer aqui, e não em `center`/`zoom` do `<Map>`, porque o
+ * enquadramento depende do tamanho do contêiner, que só existe depois que ele
+ * é montado. Sem animação: no primeiro quadro não há de onde vir.
+ *
+ * Uma vez só. Reenquadrar a cada mudança desfaria o que a pessoa explorou —
+ * voltar à abertura é gesto dela, no botão de ver todos os pontos.
+ */
+function Abertura({ mobile }: { mobile: boolean }) {
+  const { map, isLoaded } = useMap();
+  const feito = useRef(false);
+
+  useEffect(() => {
+    if (!map || !isLoaded || feito.current) return;
+
+    feito.current = true;
+    enquadrarTudo(map, mobile, 0);
+  }, [map, isLoaded, mobile]);
+
+  return null;
+}
 
 /**
  * Traduz o estado da interface em movimento de câmera.
@@ -493,6 +518,7 @@ function MapaTuristico() {
         dragRotate={false}
         pitchWithRotate={false}
       >
+        <Abertura mobile={mobile} />
         <Camera camera={camera} mobile={mobile} />
 
         {mobile && (
