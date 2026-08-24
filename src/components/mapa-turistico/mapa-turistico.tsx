@@ -2,27 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { List, Search, X } from 'lucide-react';
-import {
-  Map,
-  MapArc,
-  MapMarker,
-  MapRoute,
-  MarkerContent,
-  useMap,
-} from '@/components/ui/map';
+import { Map, MapArc, MapRoute, useMap } from '@/components/ui/map';
 import {
   CATEGORIAS,
   FILTRO_TODOS,
   LOCAIS,
   REFUGIO,
-  ZONAS,
   filtrarLocais,
   getLocal,
   getRota,
   getRotaUrl,
   type FiltroId,
   type Local,
-  type ZonaId,
 } from '@/lib/mapa-turistico';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { usePresenca } from '@/hooks/use-presenca';
@@ -31,7 +22,6 @@ import {
   ESTILO_BASE,
   LIMITES_REGIAO,
   LOCALE_PT_BR,
-  ZOOM_AGRUPAMENTO,
   ZOOM_FOCO,
   ZOOM_INICIAL,
   ZOOM_MAXIMO,
@@ -134,15 +124,12 @@ const ANIMA_SAI =
   'animate-out fade-out slide-out-to-left-6 fill-mode-forwards pointer-events-none duration-200 ease-in';
 
 /**
- * Entrada e saída do que é ancorado nas bordas do mobile: cada um volta pela
- * borda de onde veio. O cartão do lugar e a folha saem por baixo, a busca e os
- * filtros por cima — sumir no lugar não diz para onde a coisa foi, e no toque
- * essa pista é o que liga o que se tocou ao que apareceu.
+ * Entrada e saída do que é ancorado no topo do mobile: a busca e os filtros
+ * voltam pela borda de onde vieram. Sumir no lugar não diz para onde a coisa
+ * foi, e no toque essa pista é o que liga o que se tocou ao que apareceu. O
+ * cartão do lugar não está aqui porque ele não desmonta: encolhe (ver a pilha
+ * do mobile), que é o que deixa os controles descerem junto.
  */
-const ANIMA_BAIXO_ENTRA =
-  'animate-in fade-in slide-in-from-bottom-4 duration-300 ease-out';
-const ANIMA_BAIXO_SAI =
-  'animate-out fade-out slide-out-to-bottom-4 fill-mode-forwards pointer-events-none duration-200 ease-in';
 const ANIMA_TOPO_ENTRA =
   'animate-in fade-in slide-in-from-top-4 duration-300 ease-out';
 const ANIMA_TOPO_SAI =
@@ -169,27 +156,37 @@ const acimaDaFolha = (altura: Altura) =>
   `calc(${FRACOES[altura === 'alta' ? 'media' : altura] * 100}% + 0.5rem)`;
 
 /**
- * Recolhe a folha ao toque no mapa.
+ * Tira da frente o que estiver sobre o mapa quando se toca o mapa.
  *
- * Sem isto ela só sairia da frente por arrasto, e quem toca o mapa está
- * pedindo justamente o mapa. Arrastar o mapa vale como o mesmo pedido. Os
- * pinos são nós de DOM fora do canvas, então tocar num deles não passa por
- * aqui — abrir um lugar continua abrindo um lugar.
+ * Sem isto a folha só sairia da frente por arrasto, e quem toca o mapa está
+ * pedindo justamente o mapa. O toque no pino chega aqui junto — o MapLibre
+ * pendura os marcadores dentro do mesmo contêiner que ele escuta —, então
+ * quem recebe o evento precisa separar os dois; ver `tocarNoMapa`.
+ *
+ * Arrastar não é a mesma coisa que tocar: arrastar recolhe a folha para
+ * liberar mapa, mas mantém o lugar aberto — quem move o mapa com um cartão em
+ * cena costuma estar olhando onde aquele lugar fica.
  */
-function ToqueNoMapa({ onToque }: { onToque: () => void }) {
+function ToqueNoMapa({
+  onToque,
+  onArrasto,
+}: {
+  onToque: (evento: { originalEvent: MouseEvent }) => void;
+  onArrasto: () => void;
+}) {
   const { map, isLoaded } = useMap();
 
   useEffect(() => {
     if (!map || !isLoaded) return;
 
     map.on('click', onToque);
-    map.on('dragstart', onToque);
+    map.on('dragstart', onArrasto);
 
     return () => {
       map.off('click', onToque);
-      map.off('dragstart', onToque);
+      map.off('dragstart', onArrasto);
     };
-  }, [map, isLoaded, onToque]);
+  }, [map, isLoaded, onToque, onArrasto]);
 
   return null;
 }
@@ -212,10 +209,10 @@ function repouso(mobile: boolean): Painel {
 /**
  * Pinos do mapa.
  *
- * Acompanha o zoom para decidir entre pinos individuais e agrupamentos por
- * zona: de longe, 20 pinos sobrepostos viram uma mancha ilegível; o
- * agrupamento mostra quantos lugares existem em cada trecho do vale e leva
- * para lá com um clique. O Refúgio nunca é agrupado — é a origem de tudo.
+ * Sem agrupamento por zona: são poucas dezenas de lugares em um vale pequeno,
+ * e trocar os pinos por bolhas com um número dizia menos do que os próprios
+ * pinos já diziam — de longe eles não chegam a virar mancha. Afastar o mapa
+ * agora só afasta.
  *
  * Todos os pinos ficam montados o tempo todo, e é a opacidade que decide quem
  * está em cena. Montar e desmontar conforme o filtro os fazia piscar de uma
@@ -236,94 +233,15 @@ function Pinos({
   onSelect: (id: string) => void;
   onHover: (id: string | null) => void;
 }) {
-  const { map, isLoaded } = useMap();
-  const [zoom, setZoom] = useState(() => map?.getZoom() ?? ZOOM_INICIAL.desktop);
-
-  useEffect(() => {
-    if (!map || !isLoaded) return;
-
-    const atualiza = () => setZoom(map.getZoom());
-    atualiza();
-    map.on('zoom', atualiza);
-
-    return () => {
-      map.off('zoom', atualiza);
-    };
-  }, [map, isLoaded]);
-
-  const agrupado = zoom <= ZOOM_AGRUPAMENTO;
-
-  // Quem está em cena agora: passou pelo filtro e não foi recolhido para dentro
-  // de um agrupamento. O resto continua montado, só que transparente.
-  const visiveis = useMemo(() => {
-    const ids = new Set<string>();
-
-    for (const item of locais) {
-      if (!agrupado || item.refugio) ids.add(item.id);
-    }
-
-    return ids;
-  }, [locais, agrupado]);
-
-  const grupos = useMemo(() => {
-    if (!agrupado) return [];
-
-    // `Map` aqui seria o componente do mapcn, não a estrutura do JS — daí o
-    // agrupamento num objeto simples.
-    const porZona: Partial<Record<ZonaId, Local[]>> = {};
-    for (const item of locais) {
-      if (item.refugio) continue;
-      porZona[item.zona] = [...(porZona[item.zona] ?? []), item];
-    }
-
-    return Object.entries(porZona).map(([zona, itens]) => ({
-      zona: zona as ZonaId,
-      total: itens.length,
-      lng: itens.reduce((soma, i) => soma + i.lng, 0) / itens.length,
-      lat: itens.reduce((soma, i) => soma + i.lat, 0) / itens.length,
-    }));
-  }, [agrupado, locais]);
+  // Quem está em cena agora: quem passou pelo filtro. O resto continua
+  // montado, só que transparente.
+  const visiveis = useMemo(
+    () => new Set(locais.map((item) => item.id)),
+    [locais],
+  );
 
   return (
     <>
-      {grupos.map((grupo) => (
-        <MapMarker
-          key={grupo.zona}
-          longitude={grupo.lng}
-          latitude={grupo.lat}
-          onClick={() =>
-            map?.flyTo({
-              center: [grupo.lng, grupo.lat],
-              zoom: 13.4,
-              duration: 700,
-              essential: true,
-            })
-          }
-        >
-          <MarkerContent>
-            <span
-              style={{
-                width: 40 + Math.min(grupo.total, 12) * 1.6,
-                height: 40 + Math.min(grupo.total, 12) * 1.6,
-                background: 'var(--map-surface)',
-                borderColor: 'var(--map-stone)',
-                color: 'var(--map-ink)',
-                boxShadow: 'var(--map-shadow-control)',
-              }}
-              className='grid cursor-pointer place-items-center rounded-full border-[3px] leading-none'
-            >
-              <span className='text-[15px] font-bold'>{grupo.total}</span>
-              <span
-                style={{ color: 'var(--map-meta)' }}
-                className='text-[8px] tracking-wide uppercase'
-              >
-                {ZONAS[grupo.zona]}
-              </span>
-            </span>
-          </MarkerContent>
-        </MapMarker>
-      ))}
-
       {PINOS_ORDENADOS.map((local) => (
         <Pino
           key={local.id}
@@ -514,7 +432,6 @@ function MapaTuristico() {
 
   // Mesma regra do desktop, aplicada às bordas: desmontar no quadro em que a
   // condição vira falsa faz tudo sumir sem sair de cena.
-  const cartaoPresente = usePresenca(mostraCartaoMobile);
   const cromoPresente = usePresenca(mostraCromoMobile);
   const buscaPresente = usePresenca(mostraBuscaMobile);
 
@@ -539,6 +456,24 @@ function MapaTuristico() {
     setFolha('minima');
   }, []);
 
+  /**
+   * Toque no vazio do mapa também fecha o lugar aberto.
+   *
+   * No vazio, e não em qualquer lugar: o clique num pino sobe até o contêiner
+   * do canvas, porque é ali que o MapLibre pendura os marcadores. Sem o
+   * guarda, tocar num lugar o abriria e o fecharia no mesmo gesto.
+   */
+  const tocarNoMapa = useCallback(
+    (evento: { originalEvent: MouseEvent }) => {
+      const alvo = evento.originalEvent.target;
+      if (alvo instanceof Element && alvo.closest('.maplibregl-marker')) return;
+
+      setSelecionado(null);
+      recolherFolha();
+    },
+    [recolherFolha],
+  );
+
   return (
     <div
       data-mapa
@@ -562,7 +497,9 @@ function MapaTuristico() {
       >
         <Camera camera={camera} mobile={mobile} />
 
-        {mobile && <ToqueNoMapa onToque={recolherFolha} />}
+        {mobile && (
+          <ToqueNoMapa onToque={tocarNoMapa} onArrasto={recolherFolha} />
+        )}
 
         <Pinos
           locais={locais}
@@ -795,26 +732,47 @@ function MapaTuristico() {
         {mobile && (
           <div
             style={{ bottom: acimaDaFolha(folhaAltura) }}
-            className='pointer-events-none absolute inset-x-2.5 z-40 flex flex-col gap-3 transition-[bottom] duration-300'
+            className='pointer-events-none absolute inset-x-2.5 z-40 flex flex-col transition-[bottom] duration-300'
           >
             <Controles variante='mobile' className='self-end' />
 
-            {cartaoPresente && ultimoLocal && (
-              <div
-                className={cn(
-                  'pointer-events-auto',
-                  mostraCartaoMobile ? ANIMA_BAIXO_ENTRA : ANIMA_BAIXO_SAI,
+            {/* O cartão encolhe até zero em vez de desmontar. Desmontando, os
+                controles de zoom caíam de uma vez para o lugar que ele
+                ocupava, no quadro em que ele saía. Colapsar a linha do grid faz
+                a pilha inteira descer no mesmo tempo do resto, e o respiro
+                entre os dois mora aqui dentro para ir embora junto. */}
+            <div
+              className={cn(
+                'grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
+                mostraCartaoMobile ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+              )}
+            >
+              {/* O recorte precisa sobrar dos lados e embaixo, senão ele corta
+                  a sombra do cartão num quadrado. As margens negativas devolvem
+                  esse respiro à conta da linha, que continua medindo só o
+                  cartão. */}
+              <div className='-mx-3 -mb-3 overflow-hidden px-3 pb-3'>
+                {ultimoLocal && (
+                  <div
+                    inert={!mostraCartaoMobile}
+                    className={cn(
+                      'pt-3 transition-opacity duration-200 ease-out',
+                      mostraCartaoMobile
+                        ? 'pointer-events-auto opacity-100'
+                        : 'pointer-events-none opacity-0',
+                    )}
+                  >
+                    <CartaoRapido
+                      local={ultimoLocal}
+                      variante='mobile'
+                      onDetalhes={abrirDetalhes}
+                      onRota={abrirRota}
+                      onFechar={() => setSelecionado(null)}
+                    />
+                  </div>
                 )}
-              >
-                <CartaoRapido
-                  local={ultimoLocal}
-                  variante='mobile'
-                  onDetalhes={abrirDetalhes}
-                  onRota={abrirRota}
-                  onFechar={() => setSelecionado(null)}
-                />
               </div>
-            )}
+            </div>
           </div>
         )}
 

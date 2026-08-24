@@ -68,10 +68,7 @@ export type CategoriaId = keyof typeof CATEGORIAS;
 export const FILTRO_TODOS = 'todos' as const;
 export type FiltroId = typeof FILTRO_TODOS | CategoriaId;
 
-/**
- * Zonas usadas para agrupar os pinos quando o mapa está afastado demais para
- * mostrar cada local separadamente.
- */
+/** Trecho do vale onde cada lugar fica, usado para descrevê-lo por perto. */
 export const ZONAS = {
   bau: 'Vale do Baú',
   centro: 'Centro',

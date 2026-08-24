@@ -25,9 +25,6 @@ export const ZOOM_INICIAL = { desktop: 12.6, mobile: 12 } as const;
 /** Zoom a partir do qual um local isolado é apresentado sem contexto demais. */
 export const ZOOM_FOCO = 15;
 
-/** Abaixo disso os pinos viram agrupamentos por zona. */
-export const ZOOM_AGRUPAMENTO = 11.6;
-
 export const ZOOM_MINIMO = 10.5;
 export const ZOOM_MAXIMO = 17;
 

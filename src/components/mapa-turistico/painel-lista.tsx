@@ -56,8 +56,7 @@ function PainelLista({
             className='mt-0.5 text-xs'
           >
             {locais.length}{' '}
-            {locais.length === 1 ? 'lugar encontrado' : 'lugares encontrados'} ·
-            parceiros primeiro
+            {locais.length === 1 ? 'lugar encontrado' : 'lugares encontrados'}
           </p>
         </div>
 

@@ -59,8 +59,8 @@ function Pino({
         ? 470
         : 440;
 
-  // Preenchido só quando o pino "acende": fora disso o ícone fica na cor da
-  // categoria sobre o cartão branco, que é o que mantém a base legível.
+  // Aceso agora quer dizer só "com a sombra forte": todo pino é preenchido, e
+  // o preenchimento deixou de servir de sinal de estado.
   const aceso = selecionado || Boolean(local.refugio);
 
   return (
@@ -91,19 +91,19 @@ function Pino({
             zIndex,
             width: diametro,
             height: diametro,
-            background: aceso
-              ? local.refugio
-                ? 'var(--map-green-deep)'
-                : categoria.cor
-              : 'var(--map-surface)',
-            color: aceso ? 'var(--map-sand)' : categoria.cor,
-            borderColor: local.refugio
-              ? 'var(--map-stone)'
-              : selecionado
-                ? 'var(--map-surface)'
-                : local.destaque
-                  ? 'var(--map-stone)'
-                  : categoria.cor,
+            // Disco na cor da categoria com o desenho claro por cima: sobre
+            // um mapa de papel, cheio de textura, a mancha de cor é o que se
+            // acha de longe — o contorno fino sobre branco se perdia no fundo.
+            // A borda clara não é enfeite: é ela que descola o disco do que
+            // estiver embaixo quando os dois têm cor forte.
+            background: local.refugio
+              ? 'var(--map-green-deep)'
+              : categoria.cor,
+            color: 'var(--map-sand)',
+            borderColor:
+              local.refugio || local.destaque
+                ? 'var(--map-stone)'
+                : 'var(--map-surface)',
             borderWidth: local.refugio || selecionado ? 3 : local.destaque ? 2.5 : 2,
             boxShadow: aceso
               ? 'var(--map-shadow-pin-active)'
@@ -152,11 +152,11 @@ function Pino({
           aria-hidden='true'
           style={{
             zIndex,
+            // A cauda acompanha o disco: com o disco preenchido, deixá-la
+            // cinza fazia o pino parecer duas peças soltas.
             background: local.refugio
               ? 'var(--map-green-deep)'
-              : selecionado
-                ? categoria.cor
-                : 'rgb(27 36 32 / 0.35)',
+              : categoria.cor,
           }}
           className='h-[9px] w-0.5'
         />
