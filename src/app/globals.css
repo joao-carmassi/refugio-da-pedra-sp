@@ -812,6 +812,24 @@ body {
   var {
     @apply font-text;
   }
+  .maplibregl-popup-content {
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
+  }
+  .maplibregl-popup-tip {
+    @apply hidden!;
+  }
+  .maplibregl-ctrl-attrib {
+    @apply bg-background! text-muted-foreground! border-border! rounded-md! border! shadow-sm!;
+  }
+  .maplibregl-ctrl-attrib a {
+    @apply text-muted-foreground!;
+  }
+  .maplibregl-ctrl-attrib a:hover {
+    @apply text-foreground!;
+  }
+  .maplibregl-ctrl-attrib-button {
+    @apply bg-transparent! dark:invert;
+  }
 }
 
 @layer utilities {
@@ -916,5 +934,78 @@ body[data-scroll-locked] {
 
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   /mapa-turistico — identidade própria do mapa
+   ---------------------------------------------------------------------------
+   O mapa turístico tem identidade separada da marca do Refúgio (arquivo
+   "Identidade Visual Mapa" do design): o verde da mata assume o papel
+   principal e o marrom pedra fica só nos destaques e no vínculo com o
+   refúgio. Por isso os tokens vivem num escopo próprio em vez de sobrescrever
+   `--primary` global — a página continua dentro do mesmo header/footer do
+   site, e mexer nos tokens globais vazaria para eles.
+
+   A tipografia é a mesma do site (Piazzolla + Archivo), então não há token de
+   fonte aqui.
+   -------------------------------------------------------------------------- */
+[data-mapa] {
+  --map-green: #2f6b4f;
+  --map-green-deep: #1e4534;
+  --map-sand: #f1efe6;
+  --map-stone: #8a6b3b;
+  --map-ink: #1b2420;
+  --map-body: #3d4a42;
+  --map-meta: #6e7a70;
+  --map-line: #d6dbd1;
+  --map-chip: #e4e7dc;
+  --map-surface: #ffffff;
+
+  /* Estados de funcionamento e selo de destaque. */
+  --map-open-fg: #2f6b4f;
+  --map-open-bg: rgb(47 107 79 / 0.12);
+  --map-closed-fg: #8c3a2a;
+  --map-closed-bg: rgb(180 82 58 / 0.13);
+  --map-featured-fg: #7a5f33;
+  --map-featured-bg: rgb(138 107 59 / 0.14);
+  --map-featured-bd: rgb(138 107 59 / 0.28);
+  --map-featured-card: #fbf6ea;
+
+  /* Sombras dos elementos flutuantes sobre a base cartográfica. */
+  --map-shadow-pin: 0 4px 12px rgb(27 36 32 / 0.22);
+  --map-shadow-pin-active: 0 10px 26px rgb(27 36 32 / 0.34);
+  --map-shadow-control: 0 6px 20px rgb(27 36 32 / 0.18);
+  --map-shadow-panel: 0 18px 44px rgb(27 36 32 / 0.2);
+}
+
+/* Base cartográfica em areia serra. O tile vem cinza-neutro do CARTO; o
+   filtro puxa para o bege da identidade sem precisar de style vetorial
+   próprio (que exigiria `connect-src` liberado no CSP). */
+[data-mapa-canvas] .maplibregl-canvas {
+  filter: sepia(0.32) saturate(0.82) brightness(1.03) contrast(0.96);
+}
+
+[data-mapa] .maplibregl-ctrl-attrib {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  background: rgb(255 255 255 / 0.82);
+}
+
+/* Pulso do pino do Refúgio — o único pino que se anuncia sozinho. */
+@keyframes map-pin-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-mapa] [data-map-pulse] {
+    animation: none;
   }
 }

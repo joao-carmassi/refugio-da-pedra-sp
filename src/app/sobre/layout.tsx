@@ -1,5 +1,7 @@
 import serialize from 'serialize-javascript';
 import type { WithContext, AboutPage, BreadcrumbList } from 'schema-dts';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 import { getSiteUrl } from '@/lib/env';
 
 interface Props {
@@ -103,7 +105,9 @@ function SobreLayout({ children }: Props): React.ReactNode {
           __html: serialize(breadcrumbJsonLd),
         }}
       />
+      <Header />
       {children}
+      <Footer />
     </>
   );
 }

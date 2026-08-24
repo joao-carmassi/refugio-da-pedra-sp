@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 const links = [
   { href: '/chales/', label: 'Chalés' },
   { href: '/blog/', label: 'Blog' },
+  { href: '/mapa-turistico/', label: 'Mapa' },
   { href: '/sobre/', label: 'Sobre' },
 ];
 
@@ -45,26 +46,41 @@ const panel =
 // Expandida = wordmark + localidade + fila de links; compacta = altura do CTA.
 const deskHeight = 'h-[7rem] lg:h-[7.75rem]';
 
-function Header(): React.ReactNode {
+interface Props {
+  /**
+   * Trava o cabeçalho num estado, ignorando o scroll. `true` = sempre
+   * compacto (barra), `false` = sempre expandido (masthead). Sem a prop, o
+   * cabeçalho continua decidindo sozinho pela posição de rolagem.
+   */
+  compact?: boolean;
+}
+
+function Header({ compact: travado }: Props = {}): React.ReactNode {
   const [isOpen, setIsOpen] = useState(false);
-  const [compact, setCompact] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const compact = travado ?? scrolled;
   const shellRef = useRef<HTMLDivElement>(null);
   // Espelha `isOpen` para o medidor, que é montado uma vez só e não pode
   // capturar o estado por closure.
   const openRef = useRef(false);
   // eslint-disable-next-line react-hooks/refs
   openRef.current = isOpen;
-  // Altura do masthead expandido. O cabeçalho é `fixed`; este valor alimenta um
-  // spacer no fluxo, para que a página nunca suba quando ele encolhe.
+  // Altura do estado em repouso. O cabeçalho é `fixed`; este valor alimenta um
+  // spacer no fluxo, para que a página nunca suba quando ele encolhe. Com a
+  // prop travada não há encolhimento, e o que se mede (e publica) é a altura do
+  // estado travado — compacta, se for esse o caso.
   const [expandedHeight, setExpandedHeight] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => setCompact(window.scrollY > 0);
+    // Com o estado vindo de fora, o scroll não decide nada: nem vale registrar
+    // o listener.
+    if (travado !== undefined) return;
+    const onScroll = () => setScrolled(window.scrollY > 0);
     // Chamada imediata: um reload no meio da página já nasce rolado.
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [travado]);
 
   // O spacer tem que ficar travado na altura expandida. Medir de forma contínua
   // (ResizeObserver) faria ele acompanhar a animação e empurrar o hero para
@@ -76,8 +92,10 @@ function Header(): React.ReactNode {
     const measure = () => {
       // Fora do topo o cabeçalho está compacto, e com o painel mobile aberto
       // ele está mais alto do que o spacer deve reservar: nos dois casos a
-      // medida seria errada.
-      if (window.scrollY !== 0 || openRef.current) return;
+      // medida seria errada. Com a prop travada a altura não depende mais da
+      // rolagem, então só a guarda do painel continua valendo.
+      if ((travado === undefined && window.scrollY !== 0) || openRef.current)
+        return;
       setExpandedHeight(el.offsetHeight);
     };
     measure();
@@ -87,11 +105,13 @@ function Header(): React.ReactNode {
       window.removeEventListener('resize', measure);
       el.removeEventListener('transitionend', measure);
     };
-  }, []);
+  }, [travado]);
 
-  // Publica a altura expandida para o resto da página. O hero usa isso para
+  // Publica a altura em repouso para o resto da página. O hero usa isso para
   // ocupar exatamente o que sobra da viewport (`100svh - --header-height`) sem
-  // precisar repetir a medição nem chutar um valor fixo.
+  // precisar repetir a medição nem chutar um valor fixo. Numa página que trava
+  // o cabeçalho, o publicado é a altura do estado travado — que é justamente o
+  // que o consumidor precisa descontar (o mapa, travado em compacto, é o caso).
   useEffect(() => {
     if (!expandedHeight) return;
     document.documentElement.style.setProperty(
@@ -387,7 +407,8 @@ function Header(): React.ReactNode {
         </div>
       </header>
 
-      {/* Spacer: segura no fluxo a altura do masthead expandido. */}
+      {/* Spacer: segura no fluxo a altura do cabeçalho em repouso — o masthead
+          expandido, ou a do estado travado quando a página dita o estado. */}
       {measured ? <div style={{ height: expandedHeight }} /> : null}
     </>
   );

@@ -3,8 +3,6 @@ import serialize from 'serialize-javascript';
 import type { WithContext, LodgingBusiness, WebSite } from 'schema-dts';
 import { Archivo, Piazzolla } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { getSiteUrl, getInPhoneNumber } from '@/lib/env';
 
@@ -164,11 +162,13 @@ export default function RootLayout({
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: serialize(websiteJsonLd) }}
         />
-        <TooltipProvider>
-          <Header />
-          {children}
-          <Footer />
-        </TooltipProvider>
+        {/*
+          O chrome (cabeçalho/rodapé) não mora mais aqui: cada rota monta o seu
+          no próprio layout. O motivo é `/mapa-turistico/`, uma tela cheia que
+          não tem rodapé e usa o cabeçalho compacto — com o chrome no raiz não
+          havia como uma única rota abrir mão dele sem gambiarra de pathname.
+        */}
+        <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
   );

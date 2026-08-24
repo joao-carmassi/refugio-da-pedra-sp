@@ -6,7 +6,12 @@ const CSP_DIRECTIVES = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  "connect-src 'self'",
+  // OpenFreeMap serves the vector basemap for /mapa-turistico/ (style JSON,
+  // tiles, glyphs and sprites) over fetch/XHR, so it needs connect-src, not
+  // img-src. The MapLibre worker is served from this origin — see
+  // scripts/sync-maplibre-worker.mjs — hence 'self' rather than a CDN.
+  "connect-src 'self' https://tiles.openfreemap.org",
+  "worker-src 'self' blob:",
   // Allows the Google Maps embed used on the homepage (see mapa.tsx / outras-experiencias.tsx).
   "frame-src 'self' https://www.google.com",
   // Clickjacking protection. Also shipped as a standalone enforcing header
@@ -51,10 +56,14 @@ const nextConfig: NextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
+          // `geolocation=(self)` is required by the "use my location" control
+          // on /mapa-turistico/ — the browser blocks the Geolocation API
+          // outright under `geolocation=()`. Still same-origin only: no
+          // embedded third party can ask for the visitor's position.
           {
             key: 'Permissions-Policy',
             value:
-              'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+              'camera=(), microphone=(), geolocation=(self), interest-cohort=()',
           },
           // Only takes effect once the site is confirmed served over HTTPS in
           // production — browsers ignore Strict-Transport-Security on plain HTTP,
@@ -80,8 +89,9 @@ const nextConfig: NextConfig = {
           //      header, or `report-uri`) and violations are actually being received —
           //      today the policy neither enforces nor logs anything.
           //   2. Zero violations for a full crawl of /, /chales/, /chales/[slug]/,
-          //      /reservar/, /blog/, /blog/[post]/, /sobre/ and
-          //      /politica-de-privacidade/, including the Google Maps embed.
+          //      /reservar/, /blog/, /blog/[post]/, /sobre/, /mapa-turistico/ and
+          //      /politica-de-privacidade/, including the Google Maps embed and
+          //      the MapLibre basemap (worker, style JSON, tiles, glyphs).
           //   3. `script-src 'unsafe-inline'` is either replaced with a nonce/hash
           //      or consciously accepted — as written it neuters most of the policy.
           //   4. Any analytics/third-party script added since this was written is

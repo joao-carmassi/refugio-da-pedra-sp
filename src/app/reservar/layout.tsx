@@ -1,5 +1,7 @@
 import serialize from 'serialize-javascript';
 import type { WithContext, WebPage, BreadcrumbList } from 'schema-dts';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 import { getSiteUrl } from '@/lib/env';
 
 interface Props {
@@ -116,7 +118,9 @@ function ReservarLayout({ children }: Props): React.ReactNode {
           __html: serialize(breadcrumbJsonLd),
         }}
       />
+      <Header />
       {children}
+      <Footer />
     </>
   );
 }
