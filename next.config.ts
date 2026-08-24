@@ -56,14 +56,10 @@ const nextConfig: NextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
-          // `geolocation=(self)` is required by the "use my location" control
-          // on /mapa-turistico/ — the browser blocks the Geolocation API
-          // outright under `geolocation=()`. Still same-origin only: no
-          // embedded third party can ask for the visitor's position.
           {
             key: 'Permissions-Policy',
             value:
-              'camera=(), microphone=(), geolocation=(self), interest-cohort=()',
+              'camera=(), microphone=(), geolocation=(), interest-cohort=()',
           },
           // Only takes effect once the site is confirmed served over HTTPS in
           // production — browsers ignore Strict-Transport-Security on plain HTTP,
