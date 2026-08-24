@@ -1,7 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import { Crosshair, LocateFixed, Minus, Plus, TentTree } from 'lucide-react';
+import {
+  Crosshair,
+  LoaderCircle,
+  LocateFixed,
+  Minus,
+  Plus,
+  TentTree,
+} from 'lucide-react';
 import { useMap } from '@/components/ui/map';
 import { REFUGIO } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
@@ -9,6 +15,13 @@ import { ZOOM_FOCO, ZOOM_INICIAL } from './base-cartografica';
 
 interface Props {
   variante: 'desktop' | 'mobile';
+  /**
+   * Pedir a localização mora fora daqui: a resposta do navegador vira
+   * marcador no mapa e recado na tela, e nenhuma das duas coisas é assunto de
+   * uma pilha de botões. O que sobra para os botões é chamar e mostrar espera.
+   */
+  localizando: boolean;
+  onLocalizar: () => void;
   className?: string;
 }
 
@@ -20,9 +33,8 @@ interface Props {
  * paleta do mapa. O comportamento continua vindo da instância do MapLibre via
  * `useMap()`.
  */
-function Controles({ variante, className }: Props) {
+function Controles({ variante, localizando, onLocalizar, className }: Props) {
   const { map } = useMap();
-  const [localizando, setLocalizando] = useState(false);
   const mobile = variante === 'mobile';
 
   function irParaRefugio() {
@@ -41,27 +53,6 @@ function Controles({ variante, className }: Props) {
       duration: 800,
       essential: true,
     });
-  }
-
-  function localizar() {
-    if (!map || !navigator.geolocation) return;
-
-    setLocalizando(true);
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        setLocalizando(false);
-        map.flyTo({
-          center: [coords.longitude, coords.latitude],
-          zoom: 14,
-          duration: 900,
-          essential: true,
-        });
-      },
-      // Recusar a permissão é uma resposta legítima: o mapa continua onde
-      // está, sem alerta nem insistência.
-      () => setLocalizando(false),
-      { enableHighAccuracy: true, timeout: 8000 },
-    );
   }
 
   const botaoPilha =
@@ -107,13 +98,20 @@ function Controles({ variante, className }: Props) {
       >
         <button
           type='button'
-          onClick={localizar}
+          onClick={onLocalizar}
           disabled={localizando}
           aria-label='Usar minha localização'
+          aria-busy={localizando}
           style={{ color: 'var(--map-ink)' }}
           className={cn(botaoPilha, mobile ? 'size-11' : 'size-10.5')}
         >
-          <LocateFixed className='size-5' />
+          {/* A espera pode passar de dez segundos sem GPS. Sem o giro, o
+              botão apagado é indistinguível de botão que não fez nada. */}
+          {localizando ? (
+            <LoaderCircle aria-hidden='true' className='size-5 animate-spin' />
+          ) : (
+            <LocateFixed aria-hidden='true' className='size-5' />
+          )}
         </button>
 
         {!mobile && (
