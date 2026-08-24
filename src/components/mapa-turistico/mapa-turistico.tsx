@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { List, Map as IconeMapa, Search, X } from 'lucide-react';
 import {
   Map,
@@ -41,7 +41,7 @@ import Busca from './busca';
 import CartaoRapido from './cartao-rapido';
 import Controles from './controles';
 import Filtros from './filtros';
-import FolhaMobile, { type Altura } from './folha-mobile';
+import FolhaMobile, { FRACOES, type Altura } from './folha-mobile';
 import PainelDetalhes from './painel-detalhes';
 import PainelLista from './painel-lista';
 import PainelRota from './painel-rota';
@@ -132,6 +132,82 @@ const PINOS_ORDENADOS = [...LOCAIS].sort(
 const ANIMA_ENTRA = 'animate-in fade-in slide-in-from-left-6 duration-300 ease-out';
 const ANIMA_SAI =
   'animate-out fade-out slide-out-to-left-6 fill-mode-forwards pointer-events-none duration-200 ease-in';
+
+/**
+ * Entrada e saída do que é ancorado nas bordas do mobile: cada um volta pela
+ * borda de onde veio. O cartão do lugar e a folha saem por baixo, a busca e os
+ * filtros por cima — sumir no lugar não diz para onde a coisa foi, e no toque
+ * essa pista é o que liga o que se tocou ao que apareceu.
+ */
+const ANIMA_BAIXO_ENTRA =
+  'animate-in fade-in slide-in-from-bottom-4 duration-300 ease-out';
+const ANIMA_BAIXO_SAI =
+  'animate-out fade-out slide-out-to-bottom-4 fill-mode-forwards pointer-events-none duration-200 ease-in';
+const ANIMA_TOPO_ENTRA =
+  'animate-in fade-in slide-in-from-top-4 duration-300 ease-out';
+const ANIMA_TOPO_SAI =
+  'animate-out fade-out slide-out-to-top-4 fill-mode-forwards pointer-events-none duration-200 ease-in';
+
+/** A busca do mobile cobre a tela inteira: só o fade, sem deslizar nada. */
+const ANIMA_TELA_ENTRA = 'animate-in fade-in duration-200 ease-out';
+const ANIMA_TELA_SAI =
+  'animate-out fade-out fill-mode-forwards pointer-events-none duration-200 ease-in';
+
+/**
+ * Onde encostar o que flutua no mobile.
+ *
+ * A folha não fecha mais, então "encostado no rodapé" passou a querer dizer
+ * "logo acima da folha, onde quer que ela esteja parada". A conta sai da mesma
+ * tabela de paradas que a folha usa, e não de uma classe com o número escrito
+ * à mão, para que mexer numa parada mova junto tudo que se apoia nela.
+ *
+ * A parada mais alta não conta: com a folha quase inteira aberta não sobra
+ * mapa para operar, e a pilha subiria para fora do quadro. Ali ela fica atrás
+ * da folha, que é onde estava antes de existir faixa de repouso.
+ */
+const acimaDaFolha = (altura: Altura) =>
+  `calc(${FRACOES[altura === 'alta' ? 'media' : altura] * 100}% + 0.5rem)`;
+
+/**
+ * Recolhe a folha ao toque no mapa.
+ *
+ * Sem isto ela só sairia da frente por arrasto, e quem toca o mapa está
+ * pedindo justamente o mapa. Arrastar o mapa vale como o mesmo pedido. Os
+ * pinos são nós de DOM fora do canvas, então tocar num deles não passa por
+ * aqui — abrir um lugar continua abrindo um lugar.
+ */
+function ToqueNoMapa({ onToque }: { onToque: () => void }) {
+  const { map, isLoaded } = useMap();
+
+  useEffect(() => {
+    if (!map || !isLoaded) return;
+
+    map.on('click', onToque);
+    map.on('dragstart', onToque);
+
+    return () => {
+      map.off('click', onToque);
+      map.off('dragstart', onToque);
+    };
+  }, [map, isLoaded, onToque]);
+
+  return null;
+}
+
+/**
+ * Painel para onde a interface volta quando nada está sendo lido.
+ *
+ * No desktop sobra tela à esquerda do mapa, e deixar essa coluna vazia
+ * escondia a lista atrás de um botão que a pessoa precisava descobrir antes de
+ * saber que existia lista. Ela fica aberta desde o começo e sai de cena sozinha
+ * quando algo mais específico ocupa o lugar — a ficha de um ponto, a rota.
+ *
+ * No mobile continua fechado: lá a coluna não existe, a lista mora na folha
+ * inferior e abri-la de saída cobriria metade do mapa.
+ */
+function repouso(mobile: boolean): Painel {
+  return mobile ? null : 'lista';
+}
 
 /**
  * Pinos do mapa.
@@ -280,14 +356,26 @@ function MapaTuristico() {
   const [termo, setTermo] = useState('');
   const [buscaAberta, setBuscaAberta] = useState(false);
   const [selecionado, setSelecionado] = useState<string | null>(null);
-  const [painel, setPainel] = useState<Painel>(null);
-  const [folha, setFolha] = useState<Altura>('fechada');
+  const [painel, setPainel] = useState<Painel>(repouso(mobile));
+  const [folha, setFolha] = useState<Altura>('minima');
   const [hover, setHover] = useState<string | null>(null);
   const [camera, setCamera] = useState<OrdemCamera>(null);
 
   const selo = useRef(0);
   const local = selecionado ? (getLocal(selecionado) ?? null) : null;
   const tracado = local ? getRota(local) : null;
+
+  /**
+   * Eco do último lugar aberto.
+   *
+   * Fechar o cartão zera `selecionado` no mesmo quadro em que ele começa a
+   * descer, e um cartão sem lugar não tem o que desenhar enquanto sai. Este eco
+   * segura o conteúdo até a animação terminar; ele nunca é lido por quem já tem
+   * `local` na mão.
+   */
+  const [ultimoLocal, setUltimoLocal] = useState<Local | null>(null);
+
+  if (local && local !== ultimoLocal) setUltimoLocal(local);
 
   const locais = useMemo(
     () => filtrarLocais(filtro, termo),
@@ -313,8 +401,8 @@ function MapaTuristico() {
 
   if (mobile !== eraMobile) {
     setEraMobile(mobile);
-    setPainel(null);
-    setFolha('fechada');
+    setPainel(repouso(mobile));
+    setFolha('minima');
     setBuscaAberta(false);
   }
 
@@ -336,7 +424,7 @@ function MapaTuristico() {
     // o cartão inferior que faz esse papel — por isso ali o clique não abre
     // nada por cima do mapa.
     setPainel(mobile ? null : 'detalhes');
-    if (mobile) setFolha('fechada');
+    if (mobile) setFolha('minima');
     mover(daBusca ? 'foco' : 'pan', alvo);
   }
 
@@ -363,15 +451,26 @@ function MapaTuristico() {
     mover('rota', local);
   }
 
-  function fecharPainel() {
+  /** Fecha a ficha (ou a rota) e devolve a coluna ao estado de repouso. */
+  function fecharFicha() {
+    setPainel(repouso(mobile));
+    if (mobile) setFolha('minima');
+  }
+
+  /**
+   * O X da lista. Único caminho para a coluna vazia no desktop: quem quer o
+   * mapa inteiro fecha a lista, e o botão do rodapé traz ela de volta.
+   */
+  function fecharLista() {
     setPainel(null);
-    if (mobile) setFolha('fechada');
   }
 
   function trocarFiltro(novo: FiltroId) {
     setFiltro(novo);
     setSelecionado(null);
-    setPainel(novo === FILTRO_TODOS || mobile ? null : 'lista');
+    // Filtrar é pedido de lista, mesmo com a ficha aberta: a pessoa acabou de
+    // dizer que quer ver outro conjunto de lugares.
+    setPainel(repouso(mobile));
     if (mobile && novo !== FILTRO_TODOS) setFolha('media');
   }
 
@@ -403,12 +502,42 @@ function MapaTuristico() {
   const naColuna = (presente: boolean, entrando: boolean) =>
     presente && (entrando || !trocando);
 
+  // Agora é o caminho de volta, não o de ida: a lista já nasce aberta, então o
+  // botão só reaparece para quem a fechou de propósito.
   const mostraFab = !mobile && !painel;
 
   const mostraCartaoMobile =
-    mobile && !!local && painel !== 'detalhes' && folha === 'fechada';
+    mobile && !!local && painel !== 'detalhes' && folha === 'minima';
   const mostraCromoMobile =
     mobile && folha !== 'alta' && painel !== 'detalhes' && !buscaAberta;
+  const mostraBuscaMobile = mobile && buscaAberta;
+
+  // Mesma regra do desktop, aplicada às bordas: desmontar no quadro em que a
+  // condição vira falsa faz tudo sumir sem sair de cena.
+  const cartaoPresente = usePresenca(mostraCartaoMobile);
+  const cromoPresente = usePresenca(mostraCromoMobile);
+  const buscaPresente = usePresenca(mostraBuscaMobile);
+
+  /**
+   * A ficha do mobile fica no lugar até a folha terminar de descer.
+   *
+   * Voltar da ficha zera `painel` e baixa a folha no mesmo quadro; trocar o
+   * conteúdo ali mostraria a lista se encolhendo, que é uma cena que ninguém
+   * pediu. A troca acontece depois, com a folha já parada na faixa de repouso.
+   */
+  const folhaFicha = painel === 'detalhes' && !!local;
+  const fichaPresente = usePresenca(folhaFicha, 300);
+  const folhaAltura: Altura = folhaFicha ? 'alta' : folha;
+
+  /**
+   * Toque no mapa recolhe o que estiver na frente. Precisa ser estável entre
+   * renderizações: é ela que decide se o efeito que assina os eventos do
+   * MapLibre se desfaz e refaz a cada quadro.
+   */
+  const recolherFolha = useCallback(() => {
+    setPainel((atual) => (atual === 'detalhes' ? null : atual));
+    setFolha('minima');
+  }, []);
 
   return (
     <div
@@ -432,6 +561,8 @@ function MapaTuristico() {
         pitchWithRotate={false}
       >
         <Camera camera={camera} mobile={mobile} />
+
+        {mobile && <ToqueNoMapa onToque={recolherFolha} />}
 
         <Pinos
           locais={locais}
@@ -515,7 +646,7 @@ function MapaTuristico() {
               selecionado={selecionado}
               onSelect={(id) => selecionar(id)}
               onHover={setHover}
-              onFechar={fecharPainel}
+              onFechar={fecharLista}
               className='min-h-0 flex-1'
             />
           </div>
@@ -524,7 +655,7 @@ function MapaTuristico() {
         {naColuna(detalhesPresente, mostraDetalhes) && local && (
           <PainelDetalhes
             local={local}
-            onVoltar={fecharPainel}
+            onVoltar={fecharFicha}
             onRota={abrirRota}
             // Mesmo encaixe da lista, logo abaixo da busca: a ficha substitui a
             // lista na coluna da esquerda em vez de cobrir a tela inteira.
@@ -578,8 +709,13 @@ function MapaTuristico() {
         )}
 
         {/* ------------------------------------------------------- mobile */}
-        {mostraCromoMobile && (
-          <div className='absolute inset-x-0 top-0 z-30 flex flex-col gap-2 px-3 pt-3'>
+        {cromoPresente && (
+          <div
+            className={cn(
+              'absolute inset-x-0 top-0 z-30 flex flex-col gap-2 px-3 pt-3',
+              mostraCromoMobile ? ANIMA_TOPO_ENTRA : ANIMA_TOPO_SAI,
+            )}
+          >
             <button
               type='button'
               onClick={() => setBuscaAberta(true)}
@@ -615,10 +751,13 @@ function MapaTuristico() {
           </div>
         )}
 
-        {mobile && buscaAberta && (
+        {buscaPresente && (
           <div
             style={{ background: 'var(--map-surface)' }}
-            className='absolute inset-0 z-50 flex flex-col'
+            className={cn(
+              'absolute inset-0 z-50 flex flex-col',
+              mostraBuscaMobile ? ANIMA_TELA_ENTRA : ANIMA_TELA_SAI,
+            )}
           >
             <div className='flex items-start gap-2 p-3'>
               <button
@@ -647,73 +786,70 @@ function MapaTuristico() {
           </div>
         )}
 
-        {mostraCartaoMobile && local && (
-          <div className='absolute inset-x-2.5 bottom-3 z-40'>
-            <CartaoRapido
-              local={local}
-              variante='mobile'
-              onDetalhes={abrirDetalhes}
-              onRota={abrirRota}
-              onFechar={() => setSelecionado(null)}
-            />
+        {/* Uma pilha só, empilhada de baixo para cima logo acima da folha.
+            Cada peça posicionada por conta própria precisaria saber a altura
+            das outras — e a do cartão muda com o nome do lugar, então o número
+            escrito à mão erra justamente na tela curta, onde sobrepor dói. */}
+        {mobile && (
+          <div
+            style={{ bottom: acimaDaFolha(folhaAltura) }}
+            className='pointer-events-none absolute inset-x-2.5 z-40 flex flex-col gap-3 transition-[bottom] duration-300'
+          >
+            <Controles variante='mobile' className='self-end' />
+
+            {cartaoPresente && ultimoLocal && (
+              <div
+                className={cn(
+                  'pointer-events-auto',
+                  mostraCartaoMobile ? ANIMA_BAIXO_ENTRA : ANIMA_BAIXO_SAI,
+                )}
+              >
+                <CartaoRapido
+                  local={ultimoLocal}
+                  variante='mobile'
+                  onDetalhes={abrirDetalhes}
+                  onRota={abrirRota}
+                  onFechar={() => setSelecionado(null)}
+                />
+              </div>
+            )}
+
+            {!buscaAberta && painel !== 'detalhes' && (
+              <button
+                type='button'
+                onClick={() => {
+                  setSelecionado(null);
+                  setPainel(null);
+                  setFolha(folha === 'minima' ? 'media' : 'minima');
+                }}
+                style={{
+                  background: 'var(--map-ink)',
+                  color: 'var(--map-sand)',
+                  boxShadow: 'var(--map-shadow-panel)',
+                }}
+                className='pointer-events-auto flex h-10.5 items-center gap-2 self-center rounded-full px-4.5 text-sm font-bold'
+              >
+                {folha === 'minima' ? (
+                  <List aria-hidden='true' className='size-4.5' />
+                ) : (
+                  <IconeMapa aria-hidden='true' className='size-4.5' />
+                )}
+                {folha === 'minima' ? 'Lista' : 'Mapa'}
+              </button>
+            )}
           </div>
         )}
 
         {mobile && (
-          <Controles
-            variante='mobile'
-            className={cn(
-              'absolute right-3 z-30 transition-[bottom] duration-300',
-              folha !== 'fechada'
-                ? 'bottom-[calc(50%+3.5rem)]'
-                : mostraCartaoMobile
-                  ? 'bottom-56'
-                  : 'bottom-24',
-            )}
-          />
-        )}
-
-        {mobile && !buscaAberta && painel !== 'detalhes' && (
-          <button
-            type='button'
-            onClick={() => {
-              setSelecionado(null);
-              setPainel(null);
-              setFolha(folha === 'fechada' ? 'media' : 'fechada');
-            }}
-            style={{
-              background: 'var(--map-ink)',
-              color: 'var(--map-sand)',
-              boxShadow: 'var(--map-shadow-panel)',
-            }}
-            className={cn(
-              'absolute left-1/2 z-40 flex h-10.5 -translate-x-1/2 items-center gap-2 rounded-full px-4.5 text-sm font-bold transition-[bottom] duration-300',
-              folha !== 'fechada'
-                ? 'bottom-[calc(50%+0.875rem)]'
-                : mostraCartaoMobile
-                  ? 'bottom-52'
-                  : 'bottom-7',
-            )}
-          >
-            {folha === 'fechada' ? (
-              <List aria-hidden='true' className='size-4.5' />
-            ) : (
-              <IconeMapa aria-hidden='true' className='size-4.5' />
-            )}
-            {folha === 'fechada' ? 'Lista' : 'Mapa'}
-          </button>
-        )}
-
-        {mobile && (folha !== 'fechada' || painel === 'detalhes') && (
           <FolhaMobile
-            altura={painel === 'detalhes' ? 'alta' : folha}
+            altura={folhaAltura}
             onAltura={setFolha}
-            rotulo={painel === 'detalhes' ? 'Detalhes do local' : titulo}
+            rotulo={fichaPresente ? 'Detalhes do local' : titulo}
           >
-            {painel === 'detalhes' && local ? (
+            {fichaPresente && ultimoLocal ? (
               <PainelDetalhes
-                local={local}
-                onVoltar={fecharPainel}
+                local={ultimoLocal}
+                onVoltar={fecharFicha}
                 onRota={abrirRota}
                 moldura={false}
                 className='min-h-0 flex-1'
