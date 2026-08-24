@@ -359,15 +359,20 @@ export function filtrarLocais(
 }
 
 /**
- * Link de rota do Google Maps saindo do Refúgio. Usa coordenadas em vez do
- * nome do lugar: o nome nem sempre resolve para o ponto certo em estrada
- * rural, a coordenada sempre resolve.
+ * Link de rota do Google Maps até o lugar.
+ *
+ * Sem `origin` de propósito: o Maps assume a localização de quem abriu. Fixar a
+ * saída no Refúgio traçava a rota errada para quem ainda está vindo de casa, e
+ * quem já está hospedado sai do Refúgio de qualquer jeito — o padrão acerta os
+ * dois casos, e ninguém precisa apagar um endereço antes de sair dirigindo.
+ *
+ * O destino vai em coordenada, e não no nome do lugar: o nome nem sempre
+ * resolve para o ponto certo em estrada rural, a coordenada sempre resolve.
  */
 export function getRotaUrl(destino: Local): string {
-  const origem = `${REFUGIO.lat},${REFUGIO.lng}`;
   const chegada = `${destino.lat},${destino.lng}`;
 
-  return `https://www.google.com/maps/dir/?api=1&origin=${origem}&destination=${chegada}&travelmode=driving`;
+  return `https://www.google.com/maps/dir/?api=1&destination=${chegada}&travelmode=driving`;
 }
 
 /** Caminho da primeira foto do local, quando existe. */
