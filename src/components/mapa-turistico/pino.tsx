@@ -2,8 +2,9 @@
 
 import { Star } from 'lucide-react';
 import { MapMarker, MarkerContent, MarkerTooltip } from '@/components/ui/map';
-import { CATEGORIAS, getDistancia, type Local } from '@/lib/mapa-turistico';
+import { CATEGORIAS, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
+import CartaoRapido from './cartao-rapido';
 
 interface Props {
   local: Local;
@@ -151,36 +152,20 @@ function Pino({ local, selecionado, destacado, onSelect, onHover }: Props) {
         )}
       </MarkerContent>
 
-      {/* No toque não existe hover: o MapLibre só abre este popup no ponteiro,
-          então o mobile nunca o vê — a informação chega pelo cartão inferior. */}
-      <MarkerTooltip offset={diametro + 12} className='w-49'>
-        <div
-          style={{
-            background: 'var(--map-surface)',
-            borderColor: 'var(--map-line)',
-            boxShadow: 'var(--map-shadow-panel)',
-          }}
-          className='rounded-xl border px-3 py-2.5'
-        >
-          <p
-            style={{ color: 'var(--map-ink)' }}
-            className='font-display text-sm leading-tight font-semibold'
-          >
-            {local.nome}
-          </p>
-          <p
-            style={{ color: 'var(--map-meta)' }}
-            className='mt-1 text-[11px] leading-tight'
-          >
-            {categoria.label}
-          </p>
-          <p
-            style={{ color: 'var(--map-body)' }}
-            className='text-[11px] leading-tight'
-          >
-            {getDistancia(local)}
-          </p>
-        </div>
+      {/* A prévia do lugar é este balão, e só ele: o clique no pino vai direto
+          para a ficha completa. No toque não existe hover — o MapLibre só abre
+          o popup no ponteiro —, então o mobile nunca o vê e recebe a mesma
+          prévia pelo cartão inferior.
+
+          Sem ações aqui: o balão fecha assim que o ponteiro sai do pino, então
+          um botão dentro dele não teria como ser alcançado. */}
+      {/* O balão do `ui/map` vem com moldura escura de tooltip curto; o cartão
+          traz o próprio fundo e a própria sombra, então ela é zerada aqui. */}
+      <MarkerTooltip
+        offset={diametro + 12}
+        className='w-88 bg-transparent p-0 text-[color:var(--map-ink)] shadow-none'
+      >
+        <CartaoRapido local={local} variante='desktop' acoes={false} />
       </MarkerTooltip>
     </MapMarker>
   );

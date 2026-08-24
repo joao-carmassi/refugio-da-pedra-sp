@@ -10,22 +10,29 @@ import { EtiquetaCategoria, Horario, Nota, SeloDestaque } from './etiquetas';
 interface Props {
   local: Local;
   variante: 'desktop' | 'mobile';
-  onDetalhes: () => void;
-  onRota: () => void;
-  onFechar: () => void;
+  /**
+   * Fechar, "Ver detalhes" e "Como chegar". Desligado quando o cartão é a
+   * prévia de hover do desktop: o balão do MapLibre some assim que o ponteiro
+   * deixa o pino, então botão nenhum ali chega a ser clicável.
+   */
+  acoes?: boolean;
+  onDetalhes?: () => void;
+  onRota?: () => void;
+  onFechar?: () => void;
 }
 
 /**
- * Cartão que aparece quando um pino é clicado — a primeira resposta do mapa,
- * antes do painel completo.
+ * Prévia de um lugar — a primeira resposta do mapa, antes da ficha completa.
  *
- * No desktop é vertical, com a foto no topo; no mobile é horizontal e mais
- * baixo, porque ali ele divide a tela com o próprio mapa e não pode cobrir o
- * pino que acabou de ser tocado.
+ * No desktop é vertical, com a foto no topo, e aparece ao passar o ponteiro
+ * sobre o pino; no mobile, onde hover não existe, ele é horizontal e mais
+ * baixo, porque ali divide a tela com o próprio mapa e não pode cobrir o pino
+ * que acabou de ser tocado.
  */
 function CartaoRapido({
   local,
   variante,
+  acoes = true,
   onDetalhes,
   onRota,
   onFechar,
@@ -71,34 +78,38 @@ function CartaoRapido({
             </p>
           </div>
 
-          <button
-            type='button'
-            onClick={onFechar}
-            aria-label='Fechar'
-            style={{ color: 'var(--map-meta)' }}
-            className='-mt-1 -mr-1 grid size-8 shrink-0 place-items-center self-start rounded-full transition-colors hover:bg-black/5'
-          >
-            <X className='size-4.5' />
-          </button>
+          {acoes && (
+            <button
+              type='button'
+              onClick={onFechar}
+              aria-label='Fechar'
+              style={{ color: 'var(--map-meta)' }}
+              className='-mt-1 -mr-1 grid size-8 shrink-0 place-items-center self-start rounded-full transition-colors hover:bg-black/5'
+            >
+              <X className='size-4.5' />
+            </button>
+          )}
         </div>
       ) : (
         <>
           <div className='relative h-33 w-full overflow-hidden'>
             <FotoLocal local={local} sizes='352px' />
 
-            <button
-              type='button'
-              onClick={onFechar}
-              aria-label='Fechar'
-              style={{
-                background: 'var(--map-surface)',
-                color: 'var(--map-ink)',
-                boxShadow: 'var(--map-shadow-control)',
-              }}
-              className='absolute top-3 right-3 grid size-7.5 place-items-center rounded-full'
-            >
-              <X className='size-4.5' />
-            </button>
+            {acoes && (
+              <button
+                type='button'
+                onClick={onFechar}
+                aria-label='Fechar'
+                style={{
+                  background: 'var(--map-surface)',
+                  color: 'var(--map-ink)',
+                  boxShadow: 'var(--map-shadow-control)',
+                }}
+                className='absolute top-3 right-3 grid size-7.5 place-items-center rounded-full'
+              >
+                <X className='size-4.5' />
+              </button>
+            )}
 
             {local.destaque && (
               <SeloDestaque className='absolute top-3 left-3 bg-[color:var(--map-surface)]!' />
@@ -128,15 +139,17 @@ function CartaoRapido({
         </>
       )}
 
-      <div className={cn('flex gap-2.5 px-3.5 pb-4', !mobile && 'px-4')}>
-        <BotaoMapa onClick={onDetalhes} className='flex-1'>
-          {mobile ? 'Detalhes' : 'Ver detalhes'}
-        </BotaoMapa>
-        <BotaoMapa tom='contorno' onClick={onRota} className='flex-1'>
-          <Route aria-hidden='true' />
-          Como chegar
-        </BotaoMapa>
-      </div>
+      {acoes && (
+        <div className={cn('flex gap-2.5 px-3.5 pb-4', !mobile && 'px-4')}>
+          <BotaoMapa onClick={onDetalhes} className='flex-1'>
+            {mobile ? 'Detalhes' : 'Ver detalhes'}
+          </BotaoMapa>
+          <BotaoMapa tom='contorno' onClick={onRota} className='flex-1'>
+            <Route aria-hidden='true' />
+            Como chegar
+          </BotaoMapa>
+        </div>
+      )}
     </div>
   );
 }

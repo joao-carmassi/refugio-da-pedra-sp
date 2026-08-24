@@ -16,6 +16,7 @@ import {
   type ZonaId,
 } from '@/lib/mapa-turistico';
 import { useIsMobile } from '@/hooks/use-media-query';
+import { usePresenca } from '@/hooks/use-presenca';
 import { cn } from '@/lib/utils';
 import {
   ESTILO_BASE,
@@ -252,7 +253,7 @@ function MapaTuristico() {
     termo.trim().length > 0
       ? `Resultados para “${termo.trim()}”`
       : filtro === FILTRO_TODOS
-        ? 'Lugares próximos'
+        ? 'O que fazer por perto'
         : CATEGORIAS[filtro].label;
 
   // Trocar de viewport no meio do caminho deixaria a folha aberta sem folha
@@ -280,7 +281,12 @@ function MapaTuristico() {
     setSelecionado(id);
     setBuscaAberta(false);
     setHover(null);
-    setPainel((atual) => (atual === 'lista' && !mobile ? 'lista' : null));
+    // No desktop o clique já é o pedido da ficha. A prévia do lugar mora no
+    // hover do pino, e um cartão intermediário depois do clique só somaria um
+    // passo entre escolher o lugar e ler sobre ele. No toque não há hover, e é
+    // o cartão inferior que faz esse papel — por isso ali o clique não abre
+    // nada por cima do mapa.
+    setPainel(mobile ? null : 'detalhes');
     if (mobile) setFolha('fechada');
     mover(daBusca ? 'foco' : 'pan', alvo);
   }
@@ -320,12 +326,26 @@ function MapaTuristico() {
     if (mobile && novo !== FILTRO_TODOS) setFolha('media');
   }
 
-  const mostraTopo = !mobile && painel !== 'detalhes' && painel !== 'rota';
-  const mostraLista = !mobile && painel === 'lista';
+  // A busca e os filtros continuam de pé com a ficha aberta: ter de fechar o
+  // que se está lendo só para procurar outro lugar era um passo a mais sem
+  // motivo. A exceção é a rota, que ocupa o alto da própria coluna.
+  const mostraTopo = !mobile && painel !== 'rota';
+  // O dropdown de resultados desce por cima da lista. Enquanto ele estiver na
+  // tela a lista sai de cena; ao fechar a busca ela volta, com animação.
+  const buscaSugerindo =
+    buscaAberta && termo.trim().length > 0 && resultados.length > 0;
   const mostraDetalhes = painel === 'detalhes' && !!local;
+  // A ficha do desktop desmonta só depois que a animação de saída termina.
+  // O mobile fica de fora: lá ela é o conteúdo da folha, que já anima sozinha.
+  const detalhesPresente = usePresenca(mostraDetalhes && !mobile);
+
+  const mostraLista = !mobile && painel === 'lista' && !buscaSugerindo;
+  // Mesma ideia para a lista, com uma ressalva: ela e a ficha dividem o mesmo
+  // encaixe na coluna da esquerda. Deixar as duas montadas durante a troca faz
+  // uma aparecer através da outra no meio do fade, então quem entra manda.
+  const listaPresente = usePresenca(mostraLista) && !detalhesPresente;
   const mostraRota = !mobile && painel === 'rota' && !!local;
-  const mostraRapido = !!local && !painel;
-  const mostraFab = !mobile && !painel && !local;
+  const mostraFab = !mobile && !painel;
 
   const mostraCartaoMobile =
     mobile && !!local && painel !== 'detalhes' && folha === 'fechada';
@@ -396,19 +416,24 @@ function MapaTuristico() {
             <Filtros
               ativo={filtro}
               onChange={trocarFiltro}
-              className='mt-2.5 w-[calc(100vw-2.5rem)] max-w-238'
+              className='-mx-3 -mt-0.5 w-[calc(100vw-1rem)] max-w-244'
             />
           </div>
         )}
 
-        {mostraLista && (
+        {listaPresente && (
           <div
             style={{
               background: 'var(--map-surface)',
               borderColor: 'var(--map-line)',
               boxShadow: 'var(--map-shadow-panel)',
             }}
-            className='absolute top-33 bottom-5 left-5 z-20 flex w-101 flex-col overflow-hidden rounded-2xl border'
+            className={cn(
+              'absolute top-33 bottom-5 left-5 z-20 flex w-101 flex-col overflow-hidden rounded-2xl border',
+              mostraLista
+                ? 'animate-in fade-in slide-in-from-left-6 duration-300 ease-out'
+                : 'animate-out fade-out slide-out-to-left-6 fill-mode-forwards pointer-events-none duration-200 ease-in',
+            )}
           >
             <PainelLista
               titulo={titulo}
@@ -422,12 +447,19 @@ function MapaTuristico() {
           </div>
         )}
 
-        {mostraDetalhes && !mobile && local && (
+        {detalhesPresente && local && (
           <PainelDetalhes
             local={local}
             onVoltar={fecharPainel}
             onRota={abrirRota}
-            className='absolute top-5 bottom-5 left-5 z-40 w-103'
+            // Mesmo encaixe da lista, logo abaixo da busca: a ficha substitui a
+            // lista na coluna da esquerda em vez de cobrir a tela inteira.
+            className={cn(
+              'absolute top-33 bottom-5 left-5 z-40 w-101',
+              mostraDetalhes
+                ? 'animate-in fade-in slide-in-from-left-6 duration-300 ease-out'
+                : 'animate-out fade-out slide-out-to-left-6 fill-mode-forwards pointer-events-none duration-200 ease-in',
+            )}
           />
         )}
 
@@ -437,18 +469,6 @@ function MapaTuristico() {
             onVoltar={() => setPainel('detalhes')}
             className='absolute top-5 left-5 z-40 w-101'
           />
-        )}
-
-        {mostraRapido && !mobile && local && (
-          <div className='absolute bottom-6 left-5 z-30'>
-            <CartaoRapido
-              local={local}
-              variante='desktop'
-              onDetalhes={abrirDetalhes}
-              onRota={abrirRota}
-              onFechar={() => setSelecionado(null)}
-            />
-          </div>
         )}
 
         {mostraFab && (
@@ -468,7 +488,10 @@ function MapaTuristico() {
               className='size-4.5'
               style={{ color: 'var(--map-green)' }}
             />
-            {locais.length} lugares nesta área
+            O que fazer por perto
+            <span style={{ color: 'var(--map-meta)' }} className='font-medium'>
+              {locais.length}
+            </span>
           </button>
         )}
 
@@ -510,7 +533,7 @@ function MapaTuristico() {
               </span>
             </button>
 
-            <Filtros ativo={filtro} onChange={trocarFiltro} />
+            <Filtros ativo={filtro} onChange={trocarFiltro} className='-m-3' />
           </div>
         )}
 

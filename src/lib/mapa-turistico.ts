@@ -9,6 +9,7 @@ import {
   UtensilsCrossed,
   type LucideIcon,
 } from 'lucide-react';
+import Fuse from 'fuse.js';
 import locaisJson from '@/data/mapa-turistico.json';
 
 /**
@@ -178,27 +179,123 @@ export function getDistancia(local: Local): string {
   return `${km.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} km em linha reta`;
 }
 
+/** Minúsculas e sem acento: quem digita "sao bento" quer "São Bento". */
+function semAcento(texto: string): string {
+  return texto
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase();
+}
+
+/**
+ * Índice de busca: nome e categoria, que é o que o hóspede digita.
+ *
+ * O resumo ficou de fora de propósito. Casar palavra solta de descrição enche
+ * a lista de lugar que não parece resposta para o que foi perguntado, e num
+ * mapa com poucas dezenas de pontos isso atrapalha mais do que ajuda.
+ */
+const REGISTROS = LOCAIS.map((local) => ({
+  local,
+  nome: local.nome,
+  categoria: CATEGORIAS[local.cat].label,
+  texto: semAcento(`${local.nome} ${CATEGORIAS[local.cat].label}`),
+}));
+
+const FUSE = new Fuse(REGISTROS, {
+  keys: [
+    { name: 'nome', weight: 0.7 },
+    { name: 'categoria', weight: 0.3 },
+  ],
+  includeScore: true,
+  ignoreDiacritics: true,
+  // O termo pode estar em qualquer ponto do nome: "baú" tem de achar
+  // "Restaurante Pedra do Baú", não só o que começa com a palavra.
+  ignoreLocation: true,
+  threshold: 0.4,
+  minMatchCharLength: 2,
+});
+
+/**
+ * Teto de score do palpite. Acima disso o Fuse já está casando letra avulsa —
+ * "vila" com "Vinícola" — e o resultado polui mais do que informa.
+ */
+const SCORE_MAXIMO = 0.5;
+
+/**
+ * Pontua cada local contra o termo, palavra por palavra.
+ *
+ * Toda palavra digitada precisa bater em algum lugar (E, não OU), senão
+ * "cachoeira amores" devolveria todas as cachoeiras do mapa.
+ *
+ * Para cada palavra tenta-se primeiro o trecho literal, ignorando acento: é o
+ * que acerta a busca bem escrita, sem ruído nenhum. Só quando a palavra não
+ * aparece em lugar algum entra o Fuse, que tolera letra trocada
+ * ("restarante") em troca de palpites piores — daí o teto de score.
+ *
+ * O número devolvido é a soma dos scores: 0 é acerto literal, e quanto maior,
+ * mais o resultado dependeu de palpite. `null` significa termo vazio, que não
+ * é busca nenhuma.
+ */
+function pontuar(termo: string): Map<string, number> | null {
+  const palavras = semAcento(termo).trim().split(/\s+/).filter(Boolean);
+  if (!palavras.length) return null;
+
+  let acumulado: Map<string, number> | null = null;
+
+  for (const palavra of palavras) {
+    const rodada = new Map<string, number>();
+
+    for (const registro of REGISTROS) {
+      if (registro.texto.includes(palavra)) rodada.set(registro.local.id, 0);
+    }
+
+    if (!rodada.size) {
+      for (const { item, score = 1 } of FUSE.search(palavra)) {
+        if (score <= SCORE_MAXIMO) rodada.set(item.local.id, score);
+      }
+    }
+
+    if (!acumulado) {
+      acumulado = rodada;
+    } else {
+      for (const id of [...acumulado.keys()]) {
+        const score = rodada.get(id);
+
+        if (score === undefined) acumulado.delete(id);
+        else acumulado.set(id, acumulado.get(id)! + score);
+      }
+    }
+
+    if (!acumulado.size) return acumulado;
+  }
+
+  return acumulado;
+}
+
 /**
  * Filtro único da tela: categoria + termo de busca. A ordenação coloca os
  * parceiros em Destaque primeiro — é a regra do design, e vale tanto para a
- * lista lateral quanto para o autocomplete.
+ * lista lateral quanto para o autocomplete. O score só desempata dentro de
+ * cada grupo, para que o acerto literal venha antes do palpite.
  */
 export function filtrarLocais(
   filtro: FiltroId,
   termo: string,
   { incluirRefugio = true }: { incluirRefugio?: boolean } = {},
 ): Local[] {
-  const busca = termo.trim().toLowerCase();
+  const scores = pontuar(termo);
 
   return LOCAIS.filter((local) => {
     if (!incluirRefugio && local.refugio) return false;
     if (filtro !== FILTRO_TODOS && local.cat !== filtro) return false;
-    if (!busca) return true;
 
-    return `${local.nome} ${CATEGORIAS[local.cat].label}`
-      .toLowerCase()
-      .includes(busca);
-  }).sort((a, b) => Number(!!b.destaque) - Number(!!a.destaque));
+    return !scores || scores.has(local.id);
+  }).sort((a, b) => {
+    const porDestaque = Number(!!b.destaque) - Number(!!a.destaque);
+    if (porDestaque !== 0 || !scores) return porDestaque;
+
+    return scores.get(a.id)! - scores.get(b.id)!;
+  });
 }
 
 /**

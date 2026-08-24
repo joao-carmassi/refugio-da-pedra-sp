@@ -1,22 +1,10 @@
 'use client';
 
 import { useEffect, useId, useRef, useState } from 'react';
-import { ArrowUpRight, Search, TrendingUp, X } from 'lucide-react';
+import { ArrowUpRight, Search, X } from 'lucide-react';
 import { CATEGORIAS, getDistancia, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import { Rotulo, SeloDestaque } from './etiquetas';
-
-/**
- * Atalhos oferecidos com o campo vazio. São termos, não lugares: preenchem a
- * busca em vez de navegar, que é o que o desenho pede.
- */
-const SUGESTOES = [
-  'Pedra do Baú',
-  'Restaurantes',
-  'Cafés',
-  'Experiências',
-  'Compras',
-];
 
 interface Props {
   termo: string;
@@ -48,8 +36,9 @@ function Busca({
   const [termoAnterior, setTermoAnterior] = useState(termo);
 
   const temTermo = termo.trim().length > 0;
+  // Sem termo não há lista: o campo vazio não sugere nada, só espera.
   const itens = temTermo ? resultados.slice(0, 6) : [];
-  const mostraLista = aberto && (temTermo ? itens.length > 0 : true);
+  const mostraLista = aberto && itens.length > 0;
 
   // Ajuste durante a renderização, não em efeito: a lista já mudou de conteúdo,
   // então manter o índice antigo destacaria a linha errada por um quadro.
@@ -68,20 +57,18 @@ function Busca({
       return;
     }
 
-    const total = temTermo ? itens.length : SUGESTOES.length;
-    if (!total) return;
+    if (!itens.length) return;
 
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault();
       const passo = event.key === 'ArrowDown' ? 1 : -1;
-      setAtivo((i) => (i + passo + total) % total);
+      setAtivo((i) => (i + passo + itens.length) % itens.length);
       return;
     }
 
     if (event.key === 'Enter' && ativo >= 0) {
       event.preventDefault();
-      if (temTermo) onEscolher(itens[ativo].id);
-      else onTermo(SUGESTOES[ativo]);
+      onEscolher(itens[ativo].id);
     }
   }
 
@@ -160,112 +147,75 @@ function Busca({
         <div
           id={listaId}
           role='listbox'
-          aria-label={temTermo ? 'Resultados' : 'Sugestões'}
+          aria-label='Resultados'
           style={{
             background: 'var(--map-surface)',
             borderColor: 'var(--map-line)',
             boxShadow: 'var(--map-shadow-panel)',
           }}
-          className='overflow-hidden rounded-2xl border'
+          className='animate-in fade-in slide-in-from-top-2 overflow-hidden rounded-2xl border duration-200 ease-out'
         >
           <div className='px-3.5 pt-2.5 pb-1.5'>
-            <Rotulo>{temTermo ? 'Resultados' : 'Sugestões para você'}</Rotulo>
+            <Rotulo>Resultados</Rotulo>
           </div>
 
-          {temTermo
-            ? itens.map((local, indice) => {
-                const categoria = CATEGORIAS[local.cat];
-                const Icone = categoria.icone;
+          {itens.map((local, indice) => {
+            const categoria = CATEGORIAS[local.cat];
+            const Icone = categoria.icone;
 
-                return (
-                  <button
-                    key={local.id}
-                    id={`${listaId}-${indice}`}
-                    role='option'
-                    aria-selected={ativo === indice}
-                    type='button'
-                    onMouseEnter={() => setAtivo(indice)}
-                    onClick={() => onEscolher(local.id)}
-                    style={{ borderColor: 'var(--map-line)' }}
-                    className={cn(
-                      'flex w-full items-center gap-3 border-t px-3.5 py-2.5 text-left transition-colors',
-                      ativo === indice && 'bg-black/[0.035]',
-                    )}
-                  >
-                    <span
-                      aria-hidden='true'
-                      style={{
-                        background: 'rgb(138 107 59 / 0.1)',
-                        color: categoria.cor,
-                      }}
-                      className='grid size-8 shrink-0 place-items-center rounded-[9px]'
-                    >
-                      <Icone className='size-4.5' />
-                    </span>
-
-                    <span className='min-w-0 flex-1'>
-                      <span
-                        style={{ color: 'var(--map-ink)' }}
-                        className='block truncate text-sm font-medium'
-                      >
-                        {local.nome}
-                      </span>
-                      <span
-                        style={{ color: 'var(--map-meta)' }}
-                        className='block truncate text-[11px]'
-                      >
-                        {categoria.label} · {getDistancia(local)}
-                      </span>
-                    </span>
-
-                    {local.destaque ? (
-                      <SeloDestaque />
-                    ) : (
-                      <ArrowUpRight
-                        aria-hidden='true'
-                        className='size-4 shrink-0'
-                        style={{ color: 'var(--map-line)' }}
-                      />
-                    )}
-                  </button>
-                );
-              })
-            : SUGESTOES.map((sugestao, indice) => (
-                <button
-                  key={sugestao}
-                  id={`${listaId}-${indice}`}
-                  role='option'
-                  aria-selected={ativo === indice}
-                  type='button'
-                  onMouseEnter={() => setAtivo(indice)}
-                  onClick={() => {
-                    onTermo(sugestao);
-                    inputRef.current?.focus();
+            return (
+              <button
+                key={local.id}
+                id={`${listaId}-${indice}`}
+                role='option'
+                aria-selected={ativo === indice}
+                type='button'
+                onMouseEnter={() => setAtivo(indice)}
+                onClick={() => onEscolher(local.id)}
+                style={{ borderColor: 'var(--map-line)' }}
+                className={cn(
+                  'flex w-full items-center gap-3 border-t px-3.5 py-2.5 text-left transition-colors',
+                  ativo === indice && 'bg-black/[0.035]',
+                )}
+              >
+                <span
+                  aria-hidden='true'
+                  style={{
+                    background: 'rgb(138 107 59 / 0.1)',
+                    color: categoria.cor,
                   }}
-                  style={{ borderColor: 'var(--map-line)' }}
-                  className={cn(
-                    'flex w-full items-center gap-3 border-t px-3.5 py-2.5 text-left transition-colors',
-                    ativo === indice && 'bg-black/[0.035]',
-                  )}
+                  className='grid size-8 shrink-0 place-items-center rounded-[9px]'
                 >
-                  <span
-                    aria-hidden='true'
-                    style={{
-                      background: 'rgb(138 107 59 / 0.1)',
-                      color: 'var(--map-stone)',
-                    }}
-                    className='grid size-8 shrink-0 place-items-center rounded-[9px]'
-                  >
-                    <TrendingUp className='size-4.5' />
-                  </span>
+                  <Icone className='size-4.5' />
+                </span>
+
+                <span className='min-w-0 flex-1'>
                   <span
                     style={{ color: 'var(--map-ink)' }}
-                    className='flex-1 text-sm font-medium'
+                    className='block truncate text-sm font-medium'
                   >
-                    {sugestao}
+                    {local.nome}
                   </span>
-                </button>
-              ))}
+                  <span
+                    style={{ color: 'var(--map-meta)' }}
+                    className='block truncate text-[11px]'
+                  >
+                    {categoria.label} · {getDistancia(local)}
+                  </span>
+                </span>
+
+                {local.destaque ? (
+                  <SeloDestaque />
+                ) : (
+                  <ArrowUpRight
+                    aria-hidden='true'
+                    className='size-4 shrink-0'
+                    style={{ color: 'var(--map-line)' }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </div>
       )}
     </div>
