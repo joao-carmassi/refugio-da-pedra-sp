@@ -4,7 +4,10 @@ import { useState } from 'react';
 import { ArrowLeft, Navigation, Share2 } from 'lucide-react';
 import {
   REFUGIO,
+  formatarDistancia,
+  formatarDuracao,
   getDistancia,
+  getRota,
   getRotaUrl,
   type Local,
 } from '@/lib/mapa-turistico';
@@ -29,6 +32,7 @@ interface Props {
 function PainelRota({ local, onVoltar, className }: Props) {
   const [copiado, setCopiado] = useState(false);
   const url = getRotaUrl(local);
+  const rota = getRota(local);
 
   async function compartilhar() {
     const dados = {
@@ -128,19 +132,43 @@ function PainelRota({ local, onVoltar, className }: Props) {
           style={{ borderColor: 'var(--map-line)' }}
           className='mt-4 border-t pt-3.5'
         >
-          <p
-            style={{ color: 'var(--map-green)' }}
-            className='font-display text-3xl leading-none font-semibold'
-          >
-            {getDistancia(local)}
+          <p className='flex items-baseline gap-2'>
+            <span
+              style={{ color: 'var(--map-green)' }}
+              className='font-display text-3xl leading-none font-semibold'
+            >
+              {rota ? formatarDistancia(rota.metros) : getDistancia(local)}
+            </span>
+            {rota && (
+              <span
+                style={{ color: 'var(--map-ink)' }}
+                className='text-base font-medium'
+              >
+                {formatarDuracao(rota.segundos)} de carro
+              </span>
+            )}
           </p>
           <p
             style={{ color: 'var(--map-meta)' }}
             className='mt-1 text-[13px]'
           >
-            O trajeto de carro é mais longo — boa parte da região é estrada de
-            terra. O tempo real aparece no Google Maps.
+            Trajeto pela estrada, calculado sobre o OpenStreetMap. Boa parte da
+            região é estrada de terra, então o relógio real varia com a
+            condição do piso e a época do ano.
           </p>
+
+          {/* Cume e cachoeira não têm estrada até a porta. Dizer só "18,6 km de
+              carro" mandaria a pessoa procurar um estacionamento que não
+              existe — o número do trecho a pé é o que evita isso. */}
+          {rota && rota.desvio > 250 && (
+            <p
+              style={{ color: 'var(--map-ink)' }}
+              className='mt-2 text-[13px] font-medium'
+            >
+              A estrada chega a {formatarDistancia(rota.desvio)} do ponto: o
+              final do caminho é a pé.
+            </p>
+          )}
         </div>
 
         <div className='mt-4 flex gap-2.5'>

@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import Fuse from 'fuse.js';
 import locaisJson from '@/data/mapa-turistico.json';
+import rotasJson from '@/data/rotas.json';
 
 /**
  * TODO(proprietário): conferir e completar o cadastro de `mapa-turistico.json`.
@@ -142,15 +143,45 @@ export function getLocal(id: string): Local | undefined {
   return LOCAIS.find((l) => l.id === id);
 }
 
+export interface Rota {
+  /** Estrada percorrida, em metros, do Refúgio até o ponto. */
+  metros: number;
+  segundos: number;
+  /**
+   * Quanto a estrada mais próxima parou longe do ponto cadastrado. Grande em
+   * cume e cachoeira, que se alcança a pé: é o trecho que o carro não faz.
+   */
+  desvio: number;
+  /** Traçado da rota, em pares [lng, lat]. */
+  linha: [number, number][];
+}
+
 /**
- * Distância em linha reta até o Refúgio.
+ * Rotas de carro, calculadas pelo OSRM sobre o OpenStreetMap e gravadas em
+ * `rotas.json` por `npm run rotas`.
  *
- * É calculada a partir das coordenadas, e não guardada no JSON, por dois
- * motivos: não há como conferir quilometragem de estrada de terra sem
- * percorrer, e um número guardado à mão vira mentira no dia em que a
- * coordenada é corrigida. O rótulo diz "em linha reta" justamente porque o
- * trajeto real é maior — quem quer o número da estrada usa o "Como chegar",
- * que abre o Google Maps.
+ * Ficam no repositório em vez de serem buscadas pelo navegador porque a origem
+ * é fixa e os destinos são uma lista curada: a resposta é a mesma para todo
+ * visitante. Assim o painel abre sem espera, continua de pé se o serviço de
+ * rotas cair, e o site em produção não despeja tráfego no servidor de
+ * demonstração do OSRM, que existe para desenvolvimento.
+ *
+ * Mexeu em coordenada no `mapa-turistico.json`? Rode `npm run rotas` de novo.
+ */
+// O TypeScript lê a geometria do JSON como `number[][]`, sem saber que cada par
+// tem exatamente dois números — daí a passagem por `unknown`. Quem garante o
+// formato é o gerador, não o compilador.
+const ROTAS = rotasJson.rotas as unknown as Record<string, Rota>;
+
+export function getRota(local: Local): Rota | null {
+  return ROTAS[local.id] ?? null;
+}
+
+/**
+ * Distância em linha reta até o Refúgio. Serve de reserva para o lugar que
+ * ainda não tem rota gravada — cadastrado depois da última geração, ou fora do
+ * alcance do roteamento. Um número aproximado é melhor do que espaço em branco,
+ * e o rótulo diz que é linha reta para não passar por quilometragem de estrada.
  */
 export function getDistanciaKm(local: Local): number {
   const R = 6371;
@@ -167,16 +198,48 @@ export function getDistanciaKm(local: Local): number {
   return 2 * R * Math.asin(Math.sqrt(a));
 }
 
+/** Metros em texto: abaixo de 1 km o número redondo diz mais que "0,2 km". */
+export function formatarDistancia(metros: number): string {
+  if (metros < 1000) return `${Math.round(metros / 10) * 10} m`;
+
+  const km = metros / 1000;
+
+  return `${km.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} km`;
+}
+
+export function formatarDuracao(segundos: number): string {
+  const minutos = Math.round(segundos / 60);
+
+  if (minutos < 60) return `${minutos} min`;
+
+  const horas = Math.floor(minutos / 60);
+  const resto = minutos % 60;
+
+  return resto ? `${horas} h ${resto} min` : `${horas} h`;
+}
+
+/**
+ * A linha de distância que aparece em cartão, lista e busca.
+ *
+ * Mostra estrada e tempo de carro — é a resposta que o hóspede procura ao
+ * escolher o que fazer no dia. A linha reta enganava justamente onde mais
+ * importa: a Pedra do Baú fica a 1,2 km da varanda e a 18,6 km de carro,
+ * porque a estrada contorna o maciço.
+ */
 export function getDistancia(local: Local): string {
   if (local.refugio) return 'Ponto de partida';
 
-  const km = getDistanciaKm(local);
+  const rota = getRota(local);
 
-  if (km < 1) {
-    return `${Math.round(km * 1000)} m em linha reta`;
+  if (!rota) {
+    const km = getDistanciaKm(local);
+
+    return km < 1
+      ? `${Math.round(km * 1000)} m em linha reta`
+      : `${km.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} km em linha reta`;
   }
 
-  return `${km.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} km em linha reta`;
+  return `${formatarDistancia(rota.metros)} · ${formatarDuracao(rota.segundos)} de carro`;
 }
 
 /** Minúsculas e sem acento: quem digita "sao bento" quer "São Bento". */

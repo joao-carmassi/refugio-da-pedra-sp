@@ -2,7 +2,14 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { List, Map as IconeMapa, Search, X } from 'lucide-react';
-import { Map, MapArc, MapMarker, MarkerContent, useMap } from '@/components/ui/map';
+import {
+  Map,
+  MapArc,
+  MapMarker,
+  MapRoute,
+  MarkerContent,
+  useMap,
+} from '@/components/ui/map';
 import {
   CATEGORIAS,
   FILTRO_TODOS,
@@ -11,6 +18,7 @@ import {
   ZONAS,
   filtrarLocais,
   getLocal,
+  getRota,
   getRotaUrl,
   type FiltroId,
   type Local,
@@ -64,16 +72,23 @@ function Camera({ camera, mobile }: { camera: OrdemCamera; mobile: boolean }) {
     const { tipo, local } = camera;
 
     if (tipo === 'rota') {
+      // Enquadra pela caixa do traçado, não pela reta entre os dois pontos: a
+      // estrada sai muito fora dela — para a Pedra do Baú ela contorna o maciço
+      // inteiro, e metade da rota ficaria fora da tela.
+      const rota = getRota(local);
+      const pontos: [number, number][] = rota?.linha.length
+        ? rota.linha
+        : [
+            [REFUGIO.lng, REFUGIO.lat],
+            [local.lng, local.lat],
+          ];
+      const lngs = pontos.map(([lng]) => lng);
+      const lats = pontos.map(([, lat]) => lat);
+
       map.fitBounds(
         [
-          [
-            Math.min(REFUGIO.lng, local.lng),
-            Math.min(REFUGIO.lat, local.lat),
-          ],
-          [
-            Math.max(REFUGIO.lng, local.lng),
-            Math.max(REFUGIO.lat, local.lat),
-          ],
+          [Math.min(...lngs), Math.min(...lats)],
+          [Math.max(...lngs), Math.max(...lats)],
         ],
         {
           // Sobra à esquerda no desktop porque o painel de rota cobre essa
@@ -272,6 +287,7 @@ function MapaTuristico() {
 
   const selo = useRef(0);
   const local = selecionado ? (getLocal(selecionado) ?? null) : null;
+  const tracado = local ? getRota(local) : null;
 
   const locais = useMemo(
     () => filtrarLocais(filtro, termo),
@@ -425,22 +441,36 @@ function MapaTuristico() {
           onHover={setHover}
         />
 
+        {/* O traçado de verdade, gravado em `rotas.json`. O arco continua como
+            reserva para o lugar que ainda não tem rota calculada: ele não é o
+            caminho, mas mostra a direção, e é o mesmo caso em que o painel diz
+            "em linha reta". */}
         {mostraRota && local && (
-          <MapArc
-            data={[
-              {
-                id: local.id,
-                from: [REFUGIO.lng, REFUGIO.lat],
-                to: [local.lng, local.lat],
-              },
-            ]}
-            curvature={0.22}
-            paint={{
-              'line-color': '#2f6b4f',
-              'line-width': 4,
-              'line-opacity': 0.9,
-            }}
-          />
+          tracado ? (
+            <MapRoute
+              coordinates={tracado.linha}
+              color='#2f6b4f'
+              width={4}
+              opacity={0.9}
+              interactive={false}
+            />
+          ) : (
+            <MapArc
+              data={[
+                {
+                  id: local.id,
+                  from: [REFUGIO.lng, REFUGIO.lat],
+                  to: [local.lng, local.lat],
+                },
+              ]}
+              curvature={0.22}
+              paint={{
+                'line-color': '#2f6b4f',
+                'line-width': 4,
+                'line-opacity': 0.9,
+              }}
+            />
+          )
         )}
 
         {/* ------------------------------------------------------ desktop */}
