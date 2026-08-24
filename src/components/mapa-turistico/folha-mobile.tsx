@@ -12,8 +12,9 @@ export type Altura = 'minima' | 'media' | 'alta';
  * completo e a lista vira um botão que a pessoa precisa lembrar que existe —
  * deixando a faixa com a alça e o título sempre no rodapé, o caminho de volta
  * está à mão e o gesto de puxar fica anunciado o tempo todo. São 18% e não
- * menos porque é o que cabe a alça (44px) mais o cabeçalho da lista (~67px):
- * cortar o título ao meio deixaria a faixa sem dizer o que ela é.
+ * menos porque é o que cabe a alça (44px), o cabeçalho da lista e uma tira do
+ * primeiro cartão: cortar o título ao meio deixaria a faixa sem dizer o que
+ * ela é, e sem a tira de cartão ela não pareceria ter mais coisa embaixo.
  */
 const PARADAS: Record<Altura, number> = {
   minima: 0.18,

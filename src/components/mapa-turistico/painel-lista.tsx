@@ -37,7 +37,12 @@ function PainelLista({
     <div className={cn('flex min-h-0 flex-col', className)}>
       <div
         style={{ borderColor: 'var(--map-line)' }}
-        className='flex shrink-0 items-start gap-2.5 border-b px-4.5 pt-4 pb-3'
+        className={cn(
+          'flex shrink-0 items-start gap-2.5 border-b px-4.5 pb-3',
+          // Na folha do mobile a alça já é o respiro do topo, e cada pixel
+          // gasto aqui é um pixel a menos de lista na faixa de repouso.
+          compacto ? 'pt-0' : 'pt-4',
+        )}
       >
         <div className='min-w-0 flex-1'>
           <h2

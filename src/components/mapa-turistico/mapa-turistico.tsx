@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { List, Map as IconeMapa, Search, X } from 'lucide-react';
+import { List, Search, X } from 'lucide-react';
 import {
   Map,
   MapArc,
@@ -789,7 +789,9 @@ function MapaTuristico() {
         {/* Uma pilha só, empilhada de baixo para cima logo acima da folha.
             Cada peça posicionada por conta própria precisaria saber a altura
             das outras — e a do cartão muda com o nome do lugar, então o número
-            escrito à mão erra justamente na tela curta, onde sobrepor dói. */}
+            escrito à mão erra justamente na tela curta, onde sobrepor dói.
+            Não há botão de lista aqui: a folha nunca sai de cena, então a
+            própria faixa dela é o caminho para a lista e para o mapa. */}
         {mobile && (
           <div
             style={{ bottom: acimaDaFolha(folhaAltura) }}
@@ -812,30 +814,6 @@ function MapaTuristico() {
                   onFechar={() => setSelecionado(null)}
                 />
               </div>
-            )}
-
-            {!buscaAberta && painel !== 'detalhes' && (
-              <button
-                type='button'
-                onClick={() => {
-                  setSelecionado(null);
-                  setPainel(null);
-                  setFolha(folha === 'minima' ? 'media' : 'minima');
-                }}
-                style={{
-                  background: 'var(--map-ink)',
-                  color: 'var(--map-sand)',
-                  boxShadow: 'var(--map-shadow-panel)',
-                }}
-                className='pointer-events-auto flex h-10.5 items-center gap-2 self-center rounded-full px-4.5 text-sm font-bold'
-              >
-                {folha === 'minima' ? (
-                  <List aria-hidden='true' className='size-4.5' />
-                ) : (
-                  <IconeMapa aria-hidden='true' className='size-4.5' />
-                )}
-                {folha === 'minima' ? 'Lista' : 'Mapa'}
-              </button>
             )}
           </div>
         )}
