@@ -356,17 +356,15 @@ function MapaTuristico() {
   function abrirRota() {
     if (!local) return;
 
-    // No celular a pessoa está prestes a dirigir: abrir o app de navegação que
-    // ela já usa vale mais do que um painel com o resumo do trajeto. O painel
-    // de rota existe só no desktop, onde ninguém está no volante.
-    if (mobile) {
-      window.open(getRotaUrl(local), '_blank', 'noopener,noreferrer');
-      return;
-    }
-
-    setPainel('rota');
-    setBuscaAberta(false);
-    mover('rota', local);
+    // Vai direto para o Google Maps, no celular e no desktop. Quem clica em
+    // "como chegar" está indo embora do mapa: o painel de rota interrompia
+    // isso com um resumo do trajeto para, no fim, mandar para o mesmo lugar.
+    //
+    // O painel continua no código (`painel-rota.tsx`, e o `'rota'` que ele usa
+    // em `Painel`/`OrdemCamera`) porque o resumo em si — distância, duração e
+    // traçado sobre o mapa — tem valor fora do gesto de sair para navegar, e
+    // pode voltar por outra porta.
+    window.open(getRotaUrl(local), '_blank', 'noopener,noreferrer');
   }
 
   /** Fecha a ficha (ou a rota) e devolve a coluna ao estado de repouso. */
