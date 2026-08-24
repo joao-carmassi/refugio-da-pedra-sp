@@ -19,10 +19,11 @@ export type Altura = 'minima' | 'media' | 'alta';
 const PARADAS: Record<Altura, number> = {
   minima: 0.18,
   media: 0.5,
-  // A mais alta não é 1 para o mapa nunca sumir por completo, mas sobrava
-  // faixa de mapa morta demais entre a folha e o header do site — o que ficou
-  // é o suficiente para dizer que há mapa atrás sem parecer espaço esquecido.
-  alta: 0.94,
+  // A mais alta não é 1 para o mapa nunca sumir por completo: a tira que sobra
+  // no topo é o que mostra a folha encostando em algo, e não virando tela. É
+  // uma tira e não uma faixa — qualquer coisa maior lê como espaço esquecido
+  // entre a folha e o cabeçalho do site.
+  alta: 0.985,
 };
 
 /** Onde a folha para. Base de tudo que flutua acima dela. */
