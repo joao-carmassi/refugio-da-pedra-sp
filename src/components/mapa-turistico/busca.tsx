@@ -35,6 +35,7 @@ function Busca({
   const [ativo, setAtivo] = useState(-1);
   const [termoAnterior, setTermoAnterior] = useState(termo);
 
+  const mobile = variante === 'mobile';
   const temTermo = termo.trim().length > 0;
   // Sem termo não há lista: o campo vazio não sugere nada, só espera.
   const itens = temTermo ? resultados.slice(0, 6) : [];
@@ -82,7 +83,7 @@ function Busca({
         }}
         className={cn(
           'flex h-13 items-center gap-2.5 border px-3',
-          variante === 'mobile' ? 'rounded-full' : 'rounded-2xl',
+          mobile ? 'rounded-full' : 'rounded-2xl',
         )}
       >
         <Search
@@ -153,7 +154,17 @@ function Busca({
             borderColor: 'var(--map-line)',
             boxShadow: 'var(--map-shadow-panel)',
           }}
-          className='animate-in fade-in slide-in-from-top-2 overflow-hidden rounded-2xl border duration-200 ease-out'
+          className={cn(
+            'animate-in fade-in slide-in-from-top-2 overflow-hidden rounded-2xl border duration-200 ease-out',
+            // No desktop o balão sai do fluxo: nele, as pílulas de categoria
+            // desciam e subiam a cada letra digitada. Sem `relative` aqui de
+            // propósito — ele ancora no bloco do topo inteiro (campo mais
+            // filas), que é o pai posicionado, e assim cai logo abaixo das
+            // pílulas em vez de cobri-las.
+            //
+            // No mobile a busca ocupa a tela e a lista é a própria coluna.
+            !mobile && 'absolute inset-x-0 top-full z-20',
+          )}
         >
           <div className='px-3.5 pt-2.5 pb-1.5'>
             <Rotulo>Resultados</Rotulo>

@@ -6,6 +6,7 @@ import { Map, MapArc, MapMarker, MarkerContent, useMap } from '@/components/ui/m
 import {
   CATEGORIAS,
   FILTRO_TODOS,
+  LOCAIS,
   REFUGIO,
   ZONAS,
   filtrarLocais,
@@ -100,12 +101,36 @@ function Camera({ camera, mobile }: { camera: OrdemCamera; mobile: boolean }) {
 }
 
 /**
+ * Ordem de pintura dos pinos, fixa: o MapLibre reordena os marcadores conforme
+ * a latitude, e a ordem do DOM é o que decide quem fica por cima entre pinos
+ * empatados. O Refúgio vai por último para nunca cair atrás de ninguém.
+ */
+const PINOS_ORDENADOS = [...LOCAIS].sort(
+  (a, b) => Number(!!a.refugio) - Number(!!b.refugio),
+);
+
+/**
+ * Entrada e saída dos painéis da coluna da esquerda. Sempre pelo mesmo lado:
+ * eles ocupam o mesmo encaixe e se revezam ali, então deslizar cada um por uma
+ * borda diferente faria a troca parecer três telas em vez de uma só.
+ */
+const ANIMA_ENTRA = 'animate-in fade-in slide-in-from-left-6 duration-300 ease-out';
+const ANIMA_SAI =
+  'animate-out fade-out slide-out-to-left-6 fill-mode-forwards pointer-events-none duration-200 ease-in';
+
+/**
  * Pinos do mapa.
  *
  * Acompanha o zoom para decidir entre pinos individuais e agrupamentos por
  * zona: de longe, 20 pinos sobrepostos viram uma mancha ilegível; o
  * agrupamento mostra quantos lugares existem em cada trecho do vale e leva
  * para lá com um clique. O Refúgio nunca é agrupado — é a origem de tudo.
+ *
+ * Todos os pinos ficam montados o tempo todo, e é a opacidade que decide quem
+ * está em cena. Montar e desmontar conforme o filtro os fazia piscar de uma
+ * letra digitada para a outra: um marcador desmontado não tem como animar a
+ * própria saída. São poucas dezenas de nós — o custo de manter os de fora vale
+ * a transição.
  */
 function Pinos({
   locais,
@@ -136,6 +161,18 @@ function Pinos({
   }, [map, isLoaded]);
 
   const agrupado = zoom <= ZOOM_AGRUPAMENTO;
+
+  // Quem está em cena agora: passou pelo filtro e não foi recolhido para dentro
+  // de um agrupamento. O resto continua montado, só que transparente.
+  const visiveis = useMemo(() => {
+    const ids = new Set<string>();
+
+    for (const item of locais) {
+      if (!agrupado || item.refugio) ids.add(item.id);
+    }
+
+    return ids;
+  }, [locais, agrupado]);
 
   const grupos = useMemo(() => {
     if (!agrupado) return [];
@@ -196,21 +233,17 @@ function Pinos({
         </MapMarker>
       ))}
 
-      {locais
-        .filter((local) => !agrupado || local.refugio)
-        // O Refúgio por último para ficar por cima na ordem do DOM, já que o
-        // MapLibre reordena os marcadores conforme a latitude.
-        .sort((a, b) => Number(!!a.refugio) - Number(!!b.refugio))
-        .map((local) => (
-          <Pino
-            key={local.id}
-            local={local}
-            selecionado={selecionado === local.id}
-            destacado={hover === local.id}
-            onSelect={onSelect}
-            onHover={onHover}
-          />
-        ))}
+      {PINOS_ORDENADOS.map((local) => (
+        <Pino
+          key={local.id}
+          local={local}
+          visivel={visiveis.has(local.id)}
+          selecionado={selecionado === local.id}
+          destacado={hover === local.id}
+          onSelect={onSelect}
+          onHover={onHover}
+        />
+      ))}
     </>
   );
 }
@@ -326,25 +359,34 @@ function MapaTuristico() {
     if (mobile && novo !== FILTRO_TODOS) setFolha('media');
   }
 
-  // A busca e os filtros continuam de pé com a ficha aberta: ter de fechar o
-  // que se está lendo só para procurar outro lugar era um passo a mais sem
-  // motivo. A exceção é a rota, que ocupa o alto da própria coluna.
-  const mostraTopo = !mobile && painel !== 'rota';
+  // A busca e os filtros continuam de pé com qualquer painel aberto — inclusive
+  // o de rota: ter de fechar o que se está lendo só para procurar outro lugar
+  // era um passo a mais sem motivo.
+  const mostraTopo = !mobile;
   // O dropdown de resultados desce por cima da lista. Enquanto ele estiver na
   // tela a lista sai de cena; ao fechar a busca ela volta, com animação.
   const buscaSugerindo =
     buscaAberta && termo.trim().length > 0 && resultados.length > 0;
-  const mostraDetalhes = painel === 'detalhes' && !!local;
-  // A ficha do desktop desmonta só depois que a animação de saída termina.
-  // O mobile fica de fora: lá ela é o conteúdo da folha, que já anima sozinha.
-  const detalhesPresente = usePresenca(mostraDetalhes && !mobile);
 
   const mostraLista = !mobile && painel === 'lista' && !buscaSugerindo;
-  // Mesma ideia para a lista, com uma ressalva: ela e a ficha dividem o mesmo
-  // encaixe na coluna da esquerda. Deixar as duas montadas durante a troca faz
-  // uma aparecer através da outra no meio do fade, então quem entra manda.
-  const listaPresente = usePresenca(mostraLista) && !detalhesPresente;
+  const mostraDetalhes = painel === 'detalhes' && !!local;
   const mostraRota = !mobile && painel === 'rota' && !!local;
+
+  // Os painéis do desktop desmontam só depois que a animação de saída termina.
+  // A ficha do mobile fica de fora: lá ela é o conteúdo da folha, que já anima
+  // sozinha.
+  const listaPresente = usePresenca(mostraLista);
+  const detalhesPresente = usePresenca(mostraDetalhes && !mobile);
+  const rotaPresente = usePresenca(mostraRota);
+
+  // Os três dividem o mesmo encaixe na coluna da esquerda. Deixar dois montados
+  // durante a troca faz um aparecer através do outro no meio do fade, então
+  // quem entra manda: o que está saindo desmonta na hora se já há outro
+  // entrando no lugar dele.
+  const trocando = mostraLista || mostraDetalhes || mostraRota;
+  const naColuna = (presente: boolean, entrando: boolean) =>
+    presente && (entrando || !trocando);
+
   const mostraFab = !mobile && !painel;
 
   const mostraCartaoMobile =
@@ -402,8 +444,12 @@ function MapaTuristico() {
         )}
 
         {/* ------------------------------------------------------ desktop */}
+        {/* Este bloco é a âncora do balão de resultados da busca, que se
+            posiciona pelo rodapé dele para nascer abaixo das pílulas. Fica
+            acima dos painéis: o balão cai justamente sobre o encaixe deles, e
+            atrás de um painel ele não seria lido. */}
         {mostraTopo && (
-          <div className='absolute top-5 left-5 z-30 w-101'>
+          <div className='absolute top-5 left-5 z-50 w-101'>
             <Busca
               termo={termo}
               onTermo={setTermo}
@@ -421,7 +467,7 @@ function MapaTuristico() {
           </div>
         )}
 
-        {listaPresente && (
+        {naColuna(listaPresente, mostraLista) && (
           <div
             style={{
               background: 'var(--map-surface)',
@@ -430,9 +476,7 @@ function MapaTuristico() {
             }}
             className={cn(
               'absolute top-33 bottom-5 left-5 z-20 flex w-101 flex-col overflow-hidden rounded-2xl border',
-              mostraLista
-                ? 'animate-in fade-in slide-in-from-left-6 duration-300 ease-out'
-                : 'animate-out fade-out slide-out-to-left-6 fill-mode-forwards pointer-events-none duration-200 ease-in',
+              mostraLista ? ANIMA_ENTRA : ANIMA_SAI,
             )}
           >
             <PainelLista
@@ -447,7 +491,7 @@ function MapaTuristico() {
           </div>
         )}
 
-        {detalhesPresente && local && (
+        {naColuna(detalhesPresente, mostraDetalhes) && local && (
           <PainelDetalhes
             local={local}
             onVoltar={fecharPainel}
@@ -456,18 +500,22 @@ function MapaTuristico() {
             // lista na coluna da esquerda em vez de cobrir a tela inteira.
             className={cn(
               'absolute top-33 bottom-5 left-5 z-40 w-101',
-              mostraDetalhes
-                ? 'animate-in fade-in slide-in-from-left-6 duration-300 ease-out'
-                : 'animate-out fade-out slide-out-to-left-6 fill-mode-forwards pointer-events-none duration-200 ease-in',
+              mostraDetalhes ? ANIMA_ENTRA : ANIMA_SAI,
             )}
           />
         )}
 
-        {mostraRota && local && (
+        {naColuna(rotaPresente, mostraRota) && local && (
           <PainelRota
             local={local}
             onVoltar={() => setPainel('detalhes')}
-            className='absolute top-5 left-5 z-40 w-101'
+            // Mesmo encaixe dos outros dois, e não o alto da coluna: ali ele
+            // empurrava a busca para fora da tela. A altura é a do conteúdo —
+            // o painel é curto e esticá-lo até embaixo só deixaria vazio.
+            className={cn(
+              'absolute top-33 left-5 z-40 w-101',
+              mostraRota ? ANIMA_ENTRA : ANIMA_SAI,
+            )}
           />
         )}
 

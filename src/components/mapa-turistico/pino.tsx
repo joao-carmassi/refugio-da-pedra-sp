@@ -8,6 +8,11 @@ import CartaoRapido from './cartao-rapido';
 
 interface Props {
   local: Local;
+  /**
+   * `false` mantém o pino montado, porém fora de cena. Quem chama não desmonta
+   * os pinos que saem do filtro — é o que permite a eles animarem a saída.
+   */
+  visivel: boolean;
   selecionado: boolean;
   destacado: boolean;
   onSelect: (id: string) => void;
@@ -27,7 +32,14 @@ interface Props {
  * `anchor='bottom'` do MapLibre ancora a base do elemento na coordenada, então
  * é a ponta da cauda que cai sobre o lugar, não o centro do círculo.
  */
-function Pino({ local, selecionado, destacado, onSelect, onHover }: Props) {
+function Pino({
+  local,
+  visivel,
+  selecionado,
+  destacado,
+  onSelect,
+  onHover,
+}: Props) {
   const categoria = CATEGORIAS[local.cat];
   const Icone = local.refugio ? CATEGORIAS.hospedagem.icone : categoria.icone;
 
@@ -56,11 +68,24 @@ function Pino({ local, selecionado, destacado, onSelect, onHover }: Props) {
       longitude={local.lng}
       latitude={local.lat}
       anchor='bottom'
-      onClick={() => onSelect(local.id)}
-      onMouseEnter={() => onHover(local.id)}
+      // Os guardas são o que torna o pino fora de cena inerte de verdade: o
+      // MapLibre escuta no elemento que ele mesmo cria, acima do conteúdo, e
+      // `pointer-events-none` no conteúdo não o alcança.
+      onClick={() => visivel && onSelect(local.id)}
+      onMouseEnter={() => visivel && onHover(local.id)}
       onMouseLeave={() => onHover(null)}
     >
-      <MarkerContent className='relative flex flex-col items-center'>
+      {/* Entra e sai crescendo a partir da ponta da cauda, que é o ponto que
+          de fato marca o lugar. */}
+      <MarkerContent
+        className={cn(
+          'relative flex origin-bottom flex-col items-center',
+          'transition-[opacity,transform] duration-300 ease-out',
+          visivel
+            ? 'scale-100 opacity-100'
+            : 'pointer-events-none scale-50 opacity-0',
+        )}
+      >
         <div
           style={{
             zIndex,
@@ -158,15 +183,22 @@ function Pino({ local, selecionado, destacado, onSelect, onHover }: Props) {
           prévia pelo cartão inferior.
 
           Sem ações aqui: o balão fecha assim que o ponteiro sai do pino, então
-          um botão dentro dele não teria como ser alcançado. */}
-      {/* O balão do `ui/map` vem com moldura escura de tooltip curto; o cartão
+          um botão dentro dele não teria como ser alcançado.
+
+          Ele só existe enquanto o pino está em cena — o balão instala o próprio
+          ouvinte no marcador, fora do alcance do conteúdo, e sem isso o mapa
+          abriria a prévia de um pino que ficou transparente.
+
+          O balão do `ui/map` vem com moldura escura de tooltip curto; o cartão
           traz o próprio fundo e a própria sombra, então ela é zerada aqui. */}
-      <MarkerTooltip
-        offset={diametro + 12}
-        className='w-88 bg-transparent p-0 text-[color:var(--map-ink)] shadow-none'
-      >
-        <CartaoRapido local={local} variante='desktop' acoes={false} />
-      </MarkerTooltip>
+      {visivel && (
+        <MarkerTooltip
+          offset={diametro + 12}
+          className='w-88 bg-transparent p-0 text-[color:var(--map-ink)] shadow-none'
+        >
+          <CartaoRapido local={local} variante='desktop' acoes={false} />
+        </MarkerTooltip>
+      )}
     </MapMarker>
   );
 }
