@@ -36,6 +36,7 @@ import FolhaMobile, { FRACOES, type Altura } from './folha-mobile';
 import PainelDetalhes from './painel-detalhes';
 import PainelLista from './painel-lista';
 import PainelRota from './painel-rota';
+import { pintarBase } from './paleta-cartografica';
 import Pino from './pino';
 
 type Painel = 'lista' | 'detalhes' | 'rota' | null;
@@ -66,6 +67,36 @@ function Redimensiona() {
     const observador = new ResizeObserver(() => map.resize());
     observador.observe(map.getContainer());
     return () => observador.disconnect();
+  }, [map]);
+
+  return null;
+}
+
+/**
+ * Aplica a paleta do mapa sobre o estilo do OpenFreeMap assim que ele chega.
+ *
+ * Precisa de um efeito porque a repintura depende do estilo já baixado — as
+ * camadas só existem depois disso. Ouve dois eventos porque nenhum dos dois
+ * sozinho cobre os dois caminhos: `styledata` pega o estilo que chega depois
+ * da montagem, `load` garante uma última chamada quando o mapa termina de
+ * abrir. `pintarBase` sai sozinha quando já pintou, então chamar de novo não
+ * custa nada.
+ */
+function Repintura() {
+  const { map } = useMap();
+
+  useEffect(() => {
+    if (!map) return;
+
+    const pintar = () => pintarBase(map);
+
+    pintar();
+    map.on('styledata', pintar);
+    map.on('load', pintar);
+    return () => {
+      map.off('styledata', pintar);
+      map.off('load', pintar);
+    };
   }, [map]);
 
   return null;
@@ -533,8 +564,7 @@ function MapaTuristico() {
   return (
     <div
       data-mapa
-      data-mapa-canvas
-      style={{ background: 'var(--map-sand)' }}
+      style={{ background: 'var(--map-base)' }}
       className='relative isolate size-full overflow-hidden'
     >
       <Map
@@ -552,6 +582,7 @@ function MapaTuristico() {
         pitchWithRotate={false}
       >
         <Redimensiona />
+        <Repintura />
         <Abertura mobile={mobile} />
         <Camera camera={camera} mobile={mobile} />
 

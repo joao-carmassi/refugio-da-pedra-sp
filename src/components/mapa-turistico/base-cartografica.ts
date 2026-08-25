@@ -10,12 +10,16 @@ import { FRACOES } from './folha-mobile';
  * os mesmos dados do OpenStreetMap em estilo vetorial, sem chave e sem limite
  * de requisições, então é ele que fica.
  *
- * O `positron` chega cinza-neutro. O bege da identidade ("areia serra",
- * #F1EFE6) é obtido por filtro sobre o canvas, em `globals.css`
- * (`[data-mapa-canvas] .maplibregl-canvas`) — mais barato e menos frágil do
- * que reescrever as ~120 camadas de paint do estilo vetorial em runtime.
+ * O `liberty` e não o `positron`: o mapa é de uma região de mata, e o
+ * `positron` é minimalista a ponto de não desenhar mata nem área protegida —
+ * o vale inteiro sairia vazio. O `liberty` traz a mancha do Monumento Natural
+ * da Pedra do Baú, os cursos d'água e a hierarquia de estrada que separa a
+ * rodovia da estradinha de terra.
+ *
+ * Ele chega bege de papel, com rodovia amarela; quem dá a cor final é
+ * `pintarBase`, em `paleta-cartografica.ts`.
  */
-export const ESTILO_BASE = 'https://tiles.openfreemap.org/styles/positron';
+export const ESTILO_BASE = 'https://tiles.openfreemap.org/styles/liberty';
 
 /**
  * Enquadramento inicial: o Refúgio um pouco abaixo do centro óptico, para
