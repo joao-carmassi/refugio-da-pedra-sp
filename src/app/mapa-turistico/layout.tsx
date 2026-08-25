@@ -1,0 +1,228 @@
+import serialize from 'serialize-javascript';
+import type {
+  WithContext,
+  CollectionPage,
+  BreadcrumbList,
+  FAQPage,
+  ItemList,
+} from 'schema-dts';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import { getSiteUrl } from '@/lib/env';
+import { CATEGORIAS } from '@/lib/mapa-turistico';
+import { LUGARES } from './dados';
+import { PERGUNTAS } from './perguntas';
+
+interface Props {
+  children: React.ReactNode;
+}
+
+/**
+ * O Next.js substitui (não mescla) o objeto `openGraph` inteiro quando um
+ * segmento filho o declara, então `images` precisa ser repetido aqui.
+ *
+ * TODO(proprietário): trocar pela foto própria desta rota assim que ela
+ * existir — o hero da página está em placeholder pelo mesmo motivo.
+ */
+const ogImage = {
+  url: '/assets/refugio/geral/refugio-1.webp',
+  width: 1620,
+  height: 1080,
+  alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+};
+
+/**
+ * `trailingSlash: true` no next.config.ts: toda rota é servida com barra
+ * final, então canonical/og:url/JSON-LD precisam apontar para a URL com barra
+ * — caso contrário apontam para um 308. Não vale para arquivos estáticos.
+ */
+const pageUrl = `${getSiteUrl()}/mapa-turistico/`;
+
+/**
+ * Esta rota, e não `/mapa/`, é a dona da busca "mapa turístico de São Bento
+ * do Sapucaí".
+ *
+ * `/mapa/` é a ferramenta: tela cheia, sem rodapé, conteúdo desenhado em
+ * WebGL. Não há corpo de texto para o buscador ler nem lugar para converter
+ * quem chega. Esta página responde à mesma intenção em HTML rastreável e
+ * empurra para o mapa e para a reserva no mesmo scroll. Por isso `/mapa/`
+ * ficou com o eixo de ferramenta ("Mapa Interativo da Região") — as duas
+ * continuam indexáveis e auto-canônicas, sem disputar o mesmo termo.
+ */
+export function generateMetadata() {
+  return {
+    title: 'Mapa Turístico de São Bento do Sapucaí',
+    description:
+      'Onde ficam a Pedra do Baú, as cachoeiras, os mirantes e as igrejas de São Bento do Sapucaí, com a distância de carro de cada lugar até a pousada.',
+    keywords: [
+      'mapa turístico de são bento do sapucaí',
+      'mapa de são bento do sapucaí',
+      'onde fica a pedra do baú',
+      'distância até a pedra do baú',
+      'cachoeiras de são bento do sapucaí',
+      'mirantes de são bento do sapucaí',
+      'igrejas de são bento do sapucaí',
+      'vale do baú',
+    ],
+    openGraph: {
+      title: 'Mapa Turístico de São Bento do Sapucaí - Refúgio da Pedra SP',
+      description:
+        'Onde ir na serra: cada ponto do mapa de São Bento do Sapucaí com a distância de carro até o Refúgio da Pedra SP.',
+      siteName: 'Refúgio da Pedra SP',
+      type: 'website',
+      url: pageUrl,
+      images: [ogImage],
+    },
+    alternates: {
+      canonical: pageUrl,
+    },
+  };
+}
+
+const siteUrl = getSiteUrl();
+
+/**
+ * Lista canônica dos lugares — o `ItemList` do site inteiro mora aqui.
+ *
+ * Ele nasceu em `/mapa/`, mas descrever cada atração é papel da página que
+ * tem texto sobre elas; a tela do mapa passou a apenas referenciar este `@id`
+ * no `mainEntity`. Duas cópias dos mesmos 23 nós em URLs diferentes seria o
+ * mesmo erro que o repositório evita de propósito com o `#business`: duas
+ * entidades concorrentes para a mesma coisa.
+ *
+ * O Refúgio fica de fora: ele já é descrito uma única vez como
+ * `LodgingBusiness` no layout raiz, e repeti-lo aqui como "atração" criaria
+ * um segundo nó para o mesmo negócio.
+ */
+const itemListJsonLd: WithContext<ItemList> = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `${pageUrl}#lugares`,
+  name: 'Lugares para visitar em São Bento do Sapucaí',
+  numberOfItems: LUGARES.length,
+  itemListElement: LUGARES.map((local, indice) => ({
+    '@type': 'ListItem' as const,
+    position: indice + 1,
+    item: {
+      '@type': 'TouristAttraction' as const,
+      '@id': `${pageUrl}#${local.id}`,
+      name: local.nome,
+      description: local.resumo,
+      ...(local.site ? { url: local.site } : {}),
+      ...(local.tel ? { telephone: local.tel } : {}),
+      ...(local.horario ? { openingHours: local.horario } : {}),
+      address: {
+        '@type': 'PostalAddress' as const,
+        streetAddress: local.endereco,
+        addressLocality: 'São Bento do Sapucaí',
+        addressRegion: 'SP',
+        addressCountry: 'BR',
+      },
+      geo: {
+        '@type': 'GeoCoordinates' as const,
+        latitude: local.lat,
+        longitude: local.lng,
+      },
+      additionalType: CATEGORIAS[local.cat].label,
+    },
+  })),
+};
+
+const jsonLd: WithContext<CollectionPage> = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  '@id': `${pageUrl}#webpage`,
+  name: 'Mapa Turístico de São Bento do Sapucaí',
+  description:
+    'Onde ficam os pontos turísticos, cachoeiras, mirantes e igrejas de São Bento do Sapucaí, agrupados por trecho do município e com a distância de carro a partir do Refúgio da Pedra SP.',
+  url: pageUrl,
+  inLanguage: 'pt-BR',
+  isPartOf: { '@id': `${siteUrl}/#website` },
+  // O negócio é descrito uma única vez no layout raiz.
+  publisher: { '@id': `${siteUrl}/#business` },
+  mainEntity: { '@id': `${pageUrl}#lugares` },
+  about: {
+    '@type': 'City',
+    name: 'São Bento do Sapucaí',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'São Bento do Sapucaí',
+      addressRegion: 'SP',
+      addressCountry: 'BR',
+    },
+  },
+  // O mapa interativo é a ferramenta que esta página apresenta.
+  significantLink: `${siteUrl}/mapa/`,
+};
+
+const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Mapa Turístico',
+      item: pageUrl,
+    },
+  ],
+};
+
+/**
+ * Nó à parte, com `@id` próprio: a página em si já é o `CollectionPage`
+ * acima, cujo `mainEntity` é a lista de lugares. Declarar as perguntas aqui e
+ * ligá-las por `isPartOf` evita dois nós de página disputando a mesma URL.
+ *
+ * As perguntas são as mesmas de `./perguntas`, que a seção visível renderiza
+ * — uma fonte só, para o markup nunca descrever um FAQ que não está na tela.
+ *
+ * Ele não está aqui esperando rich result: o Google encerrou o de FAQ para
+ * sites não-governamentais em maio de 2026, e o site não persegue mais esse
+ * formato. Fica porque é o recorte que os buscadores generativos (AI
+ * Overviews, ChatGPT, Perplexity) leem melhor, e porque as respostas já
+ * existem na página de qualquer jeito — custo zero, sem promessa falsa.
+ */
+const faqJsonLd: WithContext<FAQPage> = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${pageUrl}#faq`,
+  inLanguage: 'pt-BR',
+  isPartOf: { '@id': `${pageUrl}#webpage` },
+  mainEntity: PERGUNTAS.map(({ pergunta, resposta }) => ({
+    '@type': 'Question' as const,
+    name: pergunta,
+    acceptedAnswer: {
+      '@type': 'Answer' as const,
+      text: resposta,
+    },
+  })),
+};
+
+function MapaTuristicoLayout({ children }: Props): React.ReactNode {
+  return (
+    <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: serialize(itemListJsonLd) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: serialize(breadcrumbJsonLd) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: serialize(faqJsonLd) }}
+      />
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
+}
+
+export default MapaTuristicoLayout;

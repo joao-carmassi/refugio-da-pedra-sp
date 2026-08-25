@@ -13,7 +13,10 @@ import { cn } from '@/lib/utils';
 const links = [
   { href: '/chales/', label: 'Chalés' },
   { href: '/blog/', label: 'Blog' },
-  { href: '/mapa/', label: 'Mapa' },
+  // Aponta para a página de conteúdo, não para a tela do mapa: o link de nav
+  // sitewide é o sinal interno mais forte do site e precisa ir para a rota
+  // indexável. Quem quer a ferramenta chega nela pelo CTA da própria página.
+  { href: '/mapa-turistico/', label: 'Mapa' },
   { href: '/sobre/', label: 'Sobre' },
 ];
 
