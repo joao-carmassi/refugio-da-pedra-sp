@@ -37,7 +37,8 @@ function Faq(): React.ReactNode {
             Perguntas frequentes
           </h2>
           <p className='mt-3 max-w-prose text-muted-foreground'>
-            Taxas, horários e o que é obrigatório em cada trilha. Onde o dado
+            Quanto tempo a cidade pede, o que se paga para entrar, o que é
+            obrigatório em cada trilha e como o mapa funciona. Onde o dado
             público diverge, dizemos que diverge em vez de publicar um número
             que manda alguém subir a serra à toa.
           </p>
