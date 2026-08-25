@@ -2,7 +2,7 @@
 
 import { useId, useRef, useState } from 'react';
 import { ArrowUpRight, Search, X } from 'lucide-react';
-import { CATEGORIAS, getDistancia, type Local } from '@/lib/mapa-turistico';
+import { CATEGORIAS, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import { Rotulo, SeloDestaque } from './etiquetas';
 
@@ -215,7 +215,7 @@ function Busca({
                     style={{ color: 'var(--map-meta)' }}
                     className='block truncate text-[11px]'
                   >
-                    {categoria.label} · {getDistancia(local)}
+                    {categoria.label}
                   </span>
                 </span>
 

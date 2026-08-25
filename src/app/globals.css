@@ -156,6 +156,21 @@ body {
   --color-sidebar: var(--sidebar);
   --height-container: calc(100svh - 4rem);
 
+  /*
+    O que sobra da viewport abaixo do cabeçalho fixo. Gera `h-below-header` e
+    `min-h-below-header`: a primeira para telas cheias sem rolagem (o mapa), a
+    segunda para páginas em que o cabeçalho aberto e o conteúdo fecham uma tela
+    e o rodapé fica abaixo da dobra (a 404).
+
+    Quem publica `--header-height` é o próprio cabeçalho, que se mede depois de
+    montar — o valor já leva em conta o estado (masthead aberto ou barra
+    compacta). O fallback de 4rem só vale até a primeira medição, ou sem JS.
+
+    Diferente de `--height-container`, que desconta 4rem fixos e por isso erra a
+    conta sempre que o cabeçalho não está compacto.
+  */
+  --height-below-header: calc(100svh - var(--header-height, 4rem));
+
   /* Shadcnblocks.com Colors */
   --color-transparent: transparent;
   --color-gradient-1: var(--gradient-1);
@@ -938,19 +953,28 @@ body[data-scroll-locked] {
 }
 
 /* ---------------------------------------------------------------------------
-   /mapa — identidade própria do mapa
+   Identidade própria do mapa
    ---------------------------------------------------------------------------
    O mapa turístico tem identidade separada da marca do Refúgio (arquivo
    "Identidade Visual Mapa" do design): o verde da mata assume o papel
    principal e o marrom pedra fica só nos destaques e no vínculo com o
    refúgio. Por isso os tokens vivem num escopo próprio em vez de sobrescrever
-   `--primary` global — a página continua dentro do mesmo header/footer do
-   site, e mexer nos tokens globais vazaria para eles.
+   `--primary` global — fora destas duas rotas o site segue âmbar.
+
+   Dois escopos, porque as duas rotas usam a identidade de formas diferentes:
+
+     `[data-mapa]`      a tela do mapa. Os componentes dela pintam por `style`
+                        com `var(--map-*)`, então basta ter os tokens.
+     `[data-mapa-tema]` a página de conteúdo. Ela é feita de componentes do
+                        shadcn, que leem `--primary`, `--border`, `--card`:
+                        aqui os tokens do tema são remapeados para a paleta do
+                        mapa, e a identidade chega a tudo de uma vez.
 
    A tipografia é a mesma do site (Piazzolla + Archivo), então não há token de
    fonte aqui.
    -------------------------------------------------------------------------- */
-[data-mapa] {
+[data-mapa],
+[data-mapa-tema] {
   --map-green: #2f6b4f;
   --map-green-deep: #1e4534;
   --map-sand: #f1efe6;
@@ -981,6 +1005,70 @@ body[data-scroll-locked] {
   --map-shadow-pin-active: 0 10px 26px rgb(27 36 32 / 0.34);
   --map-shadow-control: 0 6px 20px rgb(27 36 32 / 0.18);
   --map-shadow-panel: 0 18px 44px rgb(27 36 32 / 0.2);
+}
+
+/* O escopo vive no `<main>` de `/mapa-turistico/`, não na rota inteira:
+   cabeçalho e rodapé são a marca do Refúgio e continuam âmbar, como no resto
+   do site. A identidade do mapa é de um projeto que o Refúgio mantém, não um
+   tema alternativo do site — as duas marcas se encontram uma vez só, na
+   assinatura do topo da página.
+
+   Remapear token é o que evita repintar componente a componente: o `Button`, o
+   `Badge` e o `Breadcrumb` continuam sendo os do site, e mudam de cor porque a
+   variável embaixo deles mudou. */
+[data-mapa-tema] {
+  --background: var(--map-sand);
+  --foreground: var(--map-ink);
+  --card: var(--map-surface);
+  --card-foreground: var(--map-ink);
+  --popover: var(--map-surface);
+  --popover-foreground: var(--map-ink);
+  /* "Verde mata em tudo que é ação, rota e marca." O âmbar da casa some daqui
+     — inclusive do botão Reservar do cabeçalho. */
+  --primary: var(--map-green);
+  --primary-foreground: #ffffff;
+  --secondary: var(--map-chip);
+  --secondary-foreground: var(--map-ink);
+  --muted: var(--map-chip);
+  --muted-foreground: var(--map-meta);
+  --accent: var(--map-chip);
+  --accent-foreground: var(--map-ink);
+  /* Cor de link e de rótulo de leitura. */
+  --accent-deep: var(--map-green);
+  --border: var(--map-line);
+  --input: var(--map-line);
+  --ring: var(--map-green);
+}
+
+/* Fundos fechados — o rodapé (`bg-card dark`) e a faixa de fecho da página.
+   No tema da casa são marrom-café; aqui viram verde profundo, que é o papel
+   que a identidade dá a essa cor ("fundos fechados, hover, modo escuro").
+
+   Os dois seletores porque o `.dark` tanto pode estar num descendente (o
+   rodapé, a seção de fecho) quanto no próprio nó de escopo. */
+[data-mapa-tema] .dark,
+.dark[data-mapa-tema] {
+  --background: var(--map-green-deep);
+  --foreground: var(--map-sand);
+  --card: var(--map-green-deep);
+  --card-foreground: var(--map-sand);
+  --popover: var(--map-green-deep);
+  --popover-foreground: var(--map-sand);
+  --muted: rgb(241 239 230 / 0.08);
+  --muted-foreground: #c4d3c8;
+  --accent: rgb(241 239 230 / 0.1);
+  --accent-foreground: var(--map-sand);
+  /* Sobre o verde profundo o verde mata não tem contraste nenhum: a ação
+     inverte para areia e o texto do botão volta ao verde. */
+  --primary: var(--map-sand);
+  --primary-foreground: var(--map-green-deep);
+  --secondary: rgb(241 239 230 / 0.12);
+  --secondary-foreground: var(--map-sand);
+  /* Verde mata clareado, o mesmo que a identidade usa sobre fundo verde. */
+  --accent-deep: #9cc4ae;
+  --border: rgb(241 239 230 / 0.18);
+  --input: rgb(241 239 230 / 0.2);
+  --ring: #9cc4ae;
 }
 
 [data-mapa] .maplibregl-ctrl-attrib {

@@ -1,0 +1,292 @@
+import {
+  CATEGORIAS,
+  LOCAIS,
+  ZONAS,
+  type CategoriaId,
+  type Local,
+  type ZonaId,
+} from '@/lib/mapa-turistico';
+
+/**
+ * Números desta página saem do cadastro, nunca da mão de quem escreve.
+ *
+ * A copy diz "9 lugares de turismo" e "23 pontos no mapa" — se alguém
+ * acrescentar uma cachoeira em `mapa-turistico.json`, o texto tem de
+ * acompanhar sozinho. Digitar o número no JSX transformaria cada edição de
+ * dado numa página que mente até alguém reparar.
+ */
+
+/** O Refúgio fica de fora: ele é a origem das medidas, não um atrativo. */
+export const LUGARES = LOCAIS.filter((local) => !local.refugio);
+
+export function contarZona(zona: ZonaId): number {
+  return LOCAIS.filter((local) => local.zona === zona).length;
+}
+
+interface CategoriaDaPagina {
+  id: CategoriaId;
+  label: string;
+  /** Uma linha sobre o que a categoria cobre — escrita sobre o cadastro. */
+  texto: string;
+  /** Link de continuidade, quando a categoria tem para onde mandar. */
+  leitura?: { href: string; texto: string };
+}
+
+/**
+ * As oito categorias do mapa, na ordem em que a página as conta.
+ *
+ * Sem número de lugares, de propósito: contagem numa página institucional
+ * envelhece mal e convida à comparação errada — "só 2 cachoeiras?" —, quando o
+ * que importa é o que existe em cada eixo. Quem quiser contar abre o mapa.
+ *
+ * TODO(proprietário): mandar a lista de restaurantes, cafés, lojas de
+ * artesanato e experiências guiadas (nome, endereço e horário, quando houver)
+ * para o cadastro. A etiqueta "Em breve" some sozinha assim que o primeiro
+ * registro de cada categoria entrar em `mapa-turistico.json`.
+ */
+export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
+  [
+    {
+      id: 'turismo',
+      texto:
+        'Cachoeiras, mirantes e praças. Entram aqui a portaria do Monumento Natural Estadual da Pedra do Baú, a Cachoeira do Toldi, com salto de mais de 70 metros, a Cachoeira do Encontro, o Mirante do Cruzeiro e o Portal da Cidade, onde funciona o Centro de Informação ao Turista.',
+    },
+    {
+      id: 'aventura',
+      texto:
+        'O Complexo da Pedra do Baú inteiro: o cume do Baú a 1.950 m, o Bauzinho, a Pedra Ana Chata, o setor de escalada do Campo Escola e a rampa de voo livre do Mirante do Caramuru. Fora do complexo, a Pedra da Balança, no extremo oeste do município.',
+      leitura: {
+        href: '/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/',
+        texto: 'As trilhas do complexo, uma a uma',
+      },
+    },
+    {
+      id: 'cultura',
+      texto:
+        'As igrejas do centro, a Ladeira dos Pirilampos, com trechos de Eugênia Sereno em mosaico, as Capelinhas de Mosaico e a Casa da Cultura Professor Miguel Reale, casarão do século XIX de entrada gratuita.',
+      leitura: {
+        href: '/blog/igreja-matriz-de-sao-bento-do-sapucai-historia-arquitetura-e-visitacao/',
+        texto: 'A história da Igreja Matriz',
+      },
+    },
+    {
+      id: 'restaurantes',
+      texto:
+        'A mesa da serra: truta, azeite prensado na região, vinho de altitude e a cozinha de fogão a lenha das estradas do vale.',
+      leitura: {
+        href: '/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/',
+        texto: 'O guia de gastronomia',
+      },
+    },
+    {
+      id: 'cafes',
+      texto:
+        'A parada antes de subir e depois de descer — cafés, casas de chá e as padarias que abrem cedo no centro.',
+    },
+    {
+      id: 'compras',
+      texto:
+        'O que São Bento faz à mão: escultura em madeira, tear, cerâmica e mosaico, dos ateliês do centro às associações de artesãos do município.',
+      leitura: {
+        href: '/blog/artesanato-em-sao-bento-do-sapucai-guia-completo/',
+        texto: 'O guia de artesanato',
+      },
+    },
+    {
+      id: 'experiencias',
+      texto:
+        'O que se faz acompanhado: voo livre de parapente, escalada e cachoeirismo com condutor, cavalgada e passeio de jipe pelas estradas de terra.',
+      leitura: {
+        href: '/blog/como-reservar-passeios-guiados-em-sao-bento-do-sapucai/',
+        texto: 'Como reservar um passeio guiado',
+      },
+    },
+    {
+      id: 'hospedagem',
+      texto:
+        'O Refúgio da Pedra SP, marcado no mapa porque é dele que sai cada medida. Cinco acomodações no pé da Pedra do Baú.',
+      leitura: { href: '/chales/', texto: 'Conheça as acomodações' },
+    },
+  ] satisfies Omit<CategoriaDaPagina, 'label'>[]
+).map(({ id, texto, leitura }) => ({
+  id,
+  label: CATEGORIAS[id].label,
+  texto,
+  leitura,
+}));
+
+export interface PontoDaPagina {
+  id: string;
+  nome: string;
+  resumo: string;
+  categoria: CategoriaId;
+  categoriaLabel: string;
+  /** Enquadramento da foto que vai ocupar o lugar do espaço reservado. */
+  foto: string;
+}
+
+export interface GrupoDePontos {
+  id: ZonaId;
+  label: string;
+  /** Uma linha sobre o trecho, no cabeçalho do grupo. */
+  texto: string;
+  /** Post do blog que aprofunda o trecho, quando existe um. */
+  leitura?: { href: string; texto: string };
+  pontos: PontoDaPagina[];
+}
+
+/**
+ * Enquadramento pedido para a foto de cada ponto.
+ *
+ * Não é texto de tela: é a legenda do espaço reservado e o `alt` que a
+ * fotografia herda quando chegar. Escrever aqui, e não no componente, mantém
+ * o briefing junto do cadastro que ele descreve.
+ *
+ * TODO(proprietário): as fotos. Cada linha abaixo é o pedido de uma delas.
+ */
+const ENQUADRAMENTOS: Record<string, string> = {
+  'mona-pedra-bau':
+    'Portaria do Monumento Natural Estadual da Pedra do Baú, com a placa de entrada e o maciço ao fundo',
+  'pedra-bau':
+    'Cume da Pedra do Baú visto de baixo, com a via ferrata riscando a face de granito',
+  bauzinho:
+    'Trilha do Bauzinho no trecho final, com caminhantes chegando ao topo e a vista da Mantiqueira aberta',
+  'ana-chata':
+    'Laje suspensa da Pedra Ana Chata sobre o vale, com a serra ao fundo',
+  'campo-escola':
+    'Escalador em parede de granito no setor Campo Escola, com corda e costão à vista',
+  'rampa-voo-livre':
+    'Rampa de voo livre do Mirante do Caramuru com parapente pronto para decolar sobre o vale',
+  'cachoeira-encontro':
+    'Encontro das duas quedas da Cachoeira do Encontro, com as piscinas rasas em primeiro plano',
+  'cachoeira-toldi':
+    'Salto de mais de 70 metros da Cachoeira do Toldi visto do deck de mirante na estrada',
+  'pedra-balanca':
+    'Cruz no cume da Pedra da Balança a 1.600 m, com o vale a oeste ao fundo',
+  'cachoeira-toboga':
+    'Escorregador natural de rocha da Cachoeira do Tobogã terminando na piscina rasa',
+  'belvedere-serrano':
+    'Deck de pedra e tora do Belvedere do Serrano ao nascer do sol, com o mar de nuvens abaixo',
+  'igreja-matriz':
+    'Fachada da Igreja Matriz de São Bento, de taipa de pilão, vista da praça em frente',
+  'ladeira-pirilampos':
+    'Ladeira dos Pirilampos revestida de mosaico, descendo da Matriz para a parte baixa da cidade',
+  'capelinhas-mosaico':
+    'Uma das Capelinhas de Mosaico em detalhe, com o revestimento de caco de vidro e miçanga',
+  'igreja-sao-benedito':
+    'Igreja de São Benedito com a Congada em festa no adro',
+  'igreja-rosario':
+    'Torre única da Igreja Nossa Senhora do Rosário, de 1934, vista do marco zero da cidade',
+  'igreja-remedios':
+    'Fachada azul da Igreja Nossa Senhora dos Remédios, de frente para o coreto',
+  'igreja-santo-antonio':
+    'Igreja Santo Antônio vista da rua, no roteiro de igrejas do centro',
+  'casa-cultura-miguel-reale':
+    'Casarão do século XIX da Casa da Cultura Professor Miguel Reale, com a fachada colonial inteira no quadro',
+  'mirante-cruzeiro':
+    'Rosa dos ventos em mosaico no piso do Mirante do Cruzeiro, com a cidade ao fundo',
+  'praca-bandeira':
+    'Praça da Bandeira arborizada, com os bancos e o caminho de pedestres',
+  'praca-joao-goulart':
+    'Praça Presidente João Goulart na subida do Mirante do Cruzeiro',
+  'portal-cidade':
+    'Portal da Cidade de São Bento do Sapucaí, com o Centro de Informação ao Turista aberto',
+};
+
+function montarPonto(local: Local): PontoDaPagina {
+  return {
+    id: local.id,
+    nome: local.nome,
+    resumo: local.resumo,
+    categoria: local.cat,
+    categoriaLabel: CATEGORIAS[local.cat].label,
+    foto: ENQUADRAMENTOS[local.id] ?? `${local.nome}, em São Bento do Sapucaí`,
+  };
+}
+
+/**
+ * Ordem em que os pontos entram na galeria, dentro de cada trecho.
+ *
+ * A ordem do JSON é a de cadastro, não a de quem chega: começar o Vale do Baú
+ * pela portaria e o Centro pela Matriz é o que um anfitrião faria. Quem não
+ * está listado aqui entra depois, na ordem do cadastro — acrescentar um lugar
+ * ao JSON nunca deixa a galeria incompleta.
+ */
+const ORDEM: string[] = [
+  'mona-pedra-bau',
+  'pedra-bau',
+  'bauzinho',
+  'ana-chata',
+  'rampa-voo-livre',
+  'campo-escola',
+  'cachoeira-encontro',
+  'cachoeira-toldi',
+  'igreja-matriz',
+  'ladeira-pirilampos',
+  'casa-cultura-miguel-reale',
+  'mirante-cruzeiro',
+  'capelinhas-mosaico',
+  'igreja-sao-benedito',
+  'igreja-rosario',
+  'igreja-remedios',
+  'igreja-santo-antonio',
+  'portal-cidade',
+  'praca-bandeira',
+  'praca-joao-goulart',
+  'belvedere-serrano',
+  'cachoeira-toboga',
+  'pedra-balanca',
+];
+
+function ordenar(a: PontoDaPagina, b: PontoDaPagina): number {
+  const posicao = (id: string) => {
+    const indice = ORDEM.indexOf(id);
+
+    return indice === -1 ? ORDEM.length : indice;
+  };
+
+  return posicao(a.id) - posicao(b.id);
+}
+
+/**
+ * Os lugares, agrupados pelo trecho do município em que ficam.
+ *
+ * O agrupamento é o mesmo `zona` do cadastro, que o mapa já usa. Ele responde
+ * à pergunta que a lista solta não responde: o que dá para juntar num dia só.
+ */
+export const GRUPOS_DE_PONTOS: GrupoDePontos[] = (
+  [
+    {
+      id: 'bau',
+      texto:
+        'O complexo da Pedra do Baú e as duas cachoeiras do caminho. É o trecho das trilhas, e o que se alcança sem passar pela cidade.',
+      leitura: {
+        href: '/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/',
+        texto: 'As trilhas do complexo, uma a uma',
+      },
+    },
+    {
+      id: 'centro',
+      texto:
+        'Cabe numa tarde a pé: as igrejas, o casarão da Casa da Cultura, a escadaria de mosaico e o mirante que se alcança caminhando.',
+      leitura: {
+        href: '/blog/igreja-matriz-de-sao-bento-do-sapucai-historia-arquitetura-e-visitacao/',
+        texto: 'A história da Igreja Matriz',
+      },
+    },
+    {
+      id: 'vale',
+      texto:
+        'O lado oeste, no rumo do Serrano e da divisa com Minas. Estrada de terra na maior parte do caminho — vá de carro preparado e evite dia de chuva forte.',
+    },
+  ] satisfies Omit<GrupoDePontos, 'label' | 'pontos'>[]
+).map((grupo) => ({
+  ...grupo,
+  label: ZONAS[grupo.id],
+  pontos: LUGARES.filter((local) => local.zona === grupo.id)
+    .map(montarPonto)
+    .sort(ordenar),
+}));
+
+/** Todos os pontos numa lista só, na ordem editorial dos grupos. */
+export const PONTOS = GRUPOS_DE_PONTOS.flatMap((grupo) => grupo.pontos);

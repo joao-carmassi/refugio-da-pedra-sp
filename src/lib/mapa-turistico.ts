@@ -142,7 +142,12 @@ export interface Local {
   /** Nota e nº de avaliações do Google, quando conferidos. */
   nota?: string;
   avaliacoes?: number;
-  /** Parceiro do Refúgio: ganha prioridade na lista e selo no pino. */
+  /**
+   * Prioridade na lista, cartão maior e selo no pino. Marca parceiro do
+   * Refúgio — e o próprio Refúgio, que é quem mais precisa ser achado no
+   * mapa da própria pousada. `refugio` só diz de onde saem as distâncias; é
+   * este campo que empurra o lugar para o topo da lista.
+   */
   destaque?: boolean;
   /** O próprio Refúgio da Pedra — origem de todas as distâncias. */
   refugio?: boolean;

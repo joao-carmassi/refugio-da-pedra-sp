@@ -9,7 +9,14 @@ export default function NotFound() {
   return (
     <>
       <Header />
-      <main className='min-h-container grid place-items-center py-6 md:py-12'>
+      {/*
+        Cabeçalho aberto + este bloco fecham uma viewport exata, e o rodapé cai
+        abaixo da dobra. `min-h-below-header` desconta a altura que o próprio
+        cabeçalho mede e publica; `min-h-container` não servia porque desconta
+        4rem fixos, longe do masthead aberto. Como o spacer do cabeçalho já
+        ocupa essa altura no fluxo, cabeçalho + main dão 100svh redondos.
+      */}
+      <main className='grid min-h-below-header place-items-center py-6 md:py-12'>
         <div className='container flex flex-col items-center gap-4 text-center'>
           <h1 className='text-2xl tracking-tight md:text-4xl'>
             Página não encontrada

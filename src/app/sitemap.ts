@@ -21,6 +21,7 @@ const LAST_MODIFIED = {
   blog: '2026-07-20',
   sobre: '2026-07-24',
   mapa: '2026-08-25',
+  mapaTuristico: '2026-08-25',
   politicaDePrivacidade: '2026-07-20',
 } as const;
 
@@ -54,6 +55,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/sobre/`,
       lastModified: LAST_MODIFIED.sobre,
+    },
+    {
+      url: `${baseUrl}/mapa-turistico/`,
+      lastModified: LAST_MODIFIED.mapaTuristico,
     },
     {
       url: `${baseUrl}/mapa/`,

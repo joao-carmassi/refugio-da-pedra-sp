@@ -1,7 +1,7 @@
 'use client';
 
 import { Route, X } from 'lucide-react';
-import { getDistancia, type Local } from '@/lib/mapa-turistico';
+import { type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
 import FotoLocal from './foto-local';
@@ -72,10 +72,11 @@ function CartaoRapido({
             >
               {local.nome}
             </p>
-            <p className='mt-1 flex items-center gap-2 text-xs'>
-              <Nota local={local} />
-              <span style={{ color: 'var(--map-meta)' }}>{getDistancia(local)}</span>
-            </p>
+            {local.nota && (
+              <p className='mt-1 flex items-center gap-2 text-xs'>
+                <Nota local={local} />
+              </p>
+            )}
           </div>
 
           {acoes && (
@@ -124,11 +125,12 @@ function CartaoRapido({
             >
               {local.nome}
             </p>
-            <p className='mt-1.5 flex flex-wrap items-center gap-2 text-xs'>
-              <Nota local={local} />
-              <span style={{ color: 'var(--map-meta)' }}>{getDistancia(local)}</span>
-              <Horario local={local} />
-            </p>
+            {(local.nota || local.horario) && (
+              <p className='mt-1.5 flex flex-wrap items-center gap-2 text-xs'>
+                <Nota local={local} />
+                <Horario local={local} />
+              </p>
+            )}
             <p
               style={{ color: 'var(--map-body)' }}
               className='mt-2 text-xs leading-normal text-pretty'

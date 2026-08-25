@@ -17,6 +17,10 @@ Todas as URLs abaixo terminam com barra: o site usa `trailingSlash: true`, entã
 - [Quem Somos](/sobre/): a história por trás do Refúgio da Pedra SP
 - [Política de Privacidade](/politica-de-privacidade/): tratamento de dados pessoais
 
+## Região
+- [Mapa Turístico de São Bento do Sapucaí](/mapa-turistico/): onde ficam os pontos turísticos, cachoeiras, mirantes e igrejas do município, agrupados por trecho e com a distância de carro a partir da pousada
+- [Mapa Interativo](/mapa/): a ferramenta em si — filtro por categoria, busca e rota de carro da pousada até cada ponto
+
 ## Blog
 - [Blog](/blog/): guias e conteúdo sobre São Bento do Sapucaí e a Serra da Mantiqueira
 

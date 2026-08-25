@@ -1,6 +1,6 @@
 'use client';
 
-import { getDistancia, type Local } from '@/lib/mapa-turistico';
+import { type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import FotoLocal from './foto-local';
 import {
@@ -89,15 +89,11 @@ function CartaoLista({ local, ativo, onSelect, onHover, compacto }: Props) {
           {local.nome}
         </p>
 
-        <p className='mt-1.5 flex items-center gap-2 text-xs'>
-          <Nota local={local} />
-          {local.nota && (
-            <span style={{ color: 'var(--map-line)' }} aria-hidden='true'>
-              ·
-            </span>
-          )}
-          <span style={{ color: 'var(--map-meta)' }}>{getDistancia(local)}</span>
-        </p>
+        {local.nota && (
+          <p className='mt-1.5 flex items-center gap-2 text-xs'>
+            <Nota local={local} />
+          </p>
+        )}
 
         <Horario local={local} className='mt-1.5 block' />
 

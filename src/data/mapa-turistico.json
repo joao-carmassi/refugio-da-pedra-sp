@@ -7,6 +7,7 @@
     "lat": -22.678125,
     "lng": -45.661183,
     "refugio": true,
+    "destaque": true,
     "horario": "Check-in 14h · check-out 12h",
     "nota": "4,7",
     "avaliacoes": 29,

@@ -2,7 +2,6 @@
 
 import { ArrowLeft, Clock, MapPin, MessageCircle, Phone, Route } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import generateWhatsLink from '@/lib/generate-whats-link';
 import { REFUGIO, getDistancia, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
@@ -22,6 +21,24 @@ interface Info {
   icone: typeof Clock;
   rotulo: string;
   valor: string;
+}
+
+/**
+ * Link de WhatsApp do próprio lugar, quando o telefone cadastrado é celular.
+ *
+ * Só celular porque fixo de igreja, museu e portaria não tem conta de
+ * WhatsApp: o link abriria uma conversa com um número que nunca responde, o
+ * que é pior do que não oferecer o botão. O teste é o formato brasileiro de
+ * celular — DDD mais nove dígitos começando em 9.
+ */
+function getWhatsLocal(local: Local) {
+  const numero = local.tel?.replace(/\D/g, '');
+
+  if (!numero || !/^\d{2}9\d{8}$/.test(numero)) return null;
+
+  const texto = `Olá! Vi ${local.nome} no mapa turístico do site do ${REFUGIO.nome} e queria saber mais.`;
+
+  return `https://api.whatsapp.com/send?phone=55${numero}&text=${encodeURIComponent(texto)}`;
 }
 
 /**
@@ -53,6 +70,8 @@ function PainelDetalhes({
       valor: local.tel,
     },
   ].filter(Boolean) as Info[];
+
+  const whats = getWhatsLocal(local);
 
   return (
     <div
@@ -121,21 +140,18 @@ function PainelDetalhes({
               Como chegar
             </BotaoMapa>
 
-            {/* O WhatsApp aqui é o do Refúgio, não o do lugar: quem está
-                planejando a viagem pergunta para a pousada, que conhece a
-                estrada, o horário real e se vale a pena no dia. */}
-            <BotaoMapa tom='contorno' asChild className='flex-1'>
-              <a
-                href={generateWhatsLink(
-                  `Olá! Estou vendo o mapa turístico do site e queria saber mais sobre ${local.nome}.`,
-                )}
-                target='_blank'
-                rel='noopener noreferrer'
-              >
-                <MessageCircle aria-hidden='true' />
-                WhatsApp
-              </a>
-            </BotaoMapa>
+            {/* O WhatsApp é o do próprio lugar: quem pergunta preço, horário
+                de hoje ou se tem vaga quer falar com quem atende ali. Sem
+                telefone cadastrado o botão some — mandar a conversa para outro
+                destino só faria o visitante perguntar para quem não sabe. */}
+            {whats && (
+              <BotaoMapa tom='contorno' asChild className='flex-1'>
+                <a href={whats} target='_blank' rel='noopener noreferrer'>
+                  <MessageCircle aria-hidden='true' />
+                  WhatsApp
+                </a>
+              </BotaoMapa>
+            )}
           </div>
 
           {!local.refugio && (

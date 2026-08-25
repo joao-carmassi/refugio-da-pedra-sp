@@ -3,11 +3,9 @@ import type {
   WithContext,
   CollectionPage,
   BreadcrumbList,
-  ItemList,
 } from 'schema-dts';
 import Header from '@/components/header';
 import { getSiteUrl } from '@/lib/env';
-import { CATEGORIAS, LOCAIS } from '@/lib/mapa-turistico';
 
 interface Props {
   children: React.ReactNode;
@@ -31,25 +29,34 @@ const ogImage = {
  */
 const pageUrl = `${getSiteUrl()}/mapa/`;
 
+/**
+ * O eixo desta rota é a ferramenta, não a busca por "mapa turístico de São
+ * Bento do Sapucaí" — essa é de `/mapa-turistico/`, que responde à mesma
+ * intenção em HTML rastreável e tem onde converter. Aqui não há corpo de
+ * texto: o `<h1>` e o lede existem só para leitor de tela, e o conteúdo é
+ * WebGL. As duas páginas continuam indexáveis e auto-canônicas.
+ *
+ * A description antiga prometia "restaurantes, cafés e artesanato", e o
+ * cadastro não tem um único local nessas categorias — snippet que promete o
+ * que a tela não entrega devolve o visitante para a busca.
+ */
 export function generateMetadata() {
   return {
-    title: 'Mapa Turístico de São Bento do Sapucaí',
+    title: 'Mapa Interativo da Região',
     description:
-      'Mapa interativo de São Bento do Sapucaí: Pedra do Baú, trilhas, cachoeiras, restaurantes, cafés e artesanato da Serra da Mantiqueira, com a distância de cada lugar até o Refúgio da Pedra SP.',
+      'Abra o mapa do Refúgio da Pedra SP, filtre por categoria e veja a rota de carro da pousada até cada ponto de São Bento do Sapucaí.',
     keywords: [
-      'mapa turístico',
-      'mapa de são bento do sapucaí',
-      'o que fazer em são bento do sapucaí',
-      'pontos turísticos são bento do sapucaí',
-      'pedra do baú mapa',
-      'trilhas serra da mantiqueira',
-      'restaurantes são bento do sapucaí',
-      'vale do baú',
+      'mapa interativo',
+      'mapa refúgio da pedra sp',
+      'como chegar na pedra do baú',
+      'distância até a pedra do baú',
+      'rota vale do baú',
+      'são bento do sapucaí',
     ],
     openGraph: {
-      title: 'Mapa Turístico de São Bento do Sapucaí - Refúgio da Pedra SP',
+      title: 'Mapa Interativo - Refúgio da Pedra SP',
       description:
-        'Onde ir na serra: trilhas, mesas e experiências de São Bento do Sapucaí em um mapa só, com a distância de cada lugar até a pousada.',
+        'Filtre por categoria e veja a rota de carro da pousada até cada ponto de São Bento do Sapucaí.',
       siteName: 'Refúgio da Pedra SP',
       type: 'website',
       url: pageUrl,
@@ -64,61 +71,27 @@ export function generateMetadata() {
 const siteUrl = getSiteUrl();
 
 /**
- * Cada local vira um nó `TouristAttraction` com coordenada.
+ * A lista dos lugares não é declarada aqui.
  *
- * O Refúgio fica de fora da lista: ele já é descrito uma única vez como
- * `LodgingBusiness` no layout raiz, e repetir o negócio aqui como "atração"
- * criaria dois nós concorrentes para a mesma entidade.
+ * Ela vive em `/mapa-turistico/#lugares`, a página que tem texto sobre cada
+ * atração; esta rota apenas referencia aquele `@id` no `mainEntity`. Emitir
+ * os mesmos nós nas duas URLs criaria duas cópias de cada atração no grafo —
+ * o mesmo erro que o site evita de propósito com o `#business`, descrito uma
+ * única vez no layout raiz.
  */
-const itemListJsonLd: WithContext<ItemList> = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  '@id': `${pageUrl}#lugares`,
-  name: 'Lugares para visitar em São Bento do Sapucaí',
-  numberOfItems: LOCAIS.filter((local) => !local.refugio).length,
-  itemListElement: LOCAIS.filter((local) => !local.refugio).map(
-    (local, indice) => ({
-      '@type': 'ListItem' as const,
-      position: indice + 1,
-      item: {
-        '@type': 'TouristAttraction' as const,
-        '@id': `${pageUrl}#${local.id}`,
-        name: local.nome,
-        description: local.resumo,
-        ...(local.site ? { url: local.site } : {}),
-        ...(local.tel ? { telephone: local.tel } : {}),
-        ...(local.horario ? { openingHours: local.horario } : {}),
-        address: {
-          '@type': 'PostalAddress' as const,
-          streetAddress: local.endereco,
-          addressLocality: 'São Bento do Sapucaí',
-          addressRegion: 'SP',
-          addressCountry: 'BR',
-        },
-        geo: {
-          '@type': 'GeoCoordinates' as const,
-          latitude: local.lat,
-          longitude: local.lng,
-        },
-        additionalType: CATEGORIAS[local.cat].label,
-      },
-    }),
-  ),
-};
-
 const jsonLd: WithContext<CollectionPage> = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   '@id': `${pageUrl}#webpage`,
-  name: 'Mapa Turístico de São Bento do Sapucaí',
+  name: 'Mapa Interativo da Região - Refúgio da Pedra SP',
   description:
-    'Mapa interativo com os pontos turísticos, trilhas, restaurantes e experiências de São Bento do Sapucaí, na Serra da Mantiqueira.',
+    'Mapa interativo dos pontos turísticos, trilhas e cachoeiras de São Bento do Sapucaí, com filtro por categoria e rota de carro a partir do Refúgio da Pedra SP.',
   url: pageUrl,
   inLanguage: 'pt-BR',
   isPartOf: { '@id': `${siteUrl}/#website` },
   // O negócio é descrito uma única vez no layout raiz.
   publisher: { '@id': `${siteUrl}/#business` },
-  mainEntity: { '@id': `${pageUrl}#lugares` },
+  mainEntity: { '@id': `${siteUrl}/mapa-turistico/#lugares` },
   about: {
     '@type': 'City',
     name: 'São Bento do Sapucaí',
@@ -151,10 +124,6 @@ function MapaLayout({ children }: Props): React.ReactNode {
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
-      />
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: serialize(itemListJsonLd) }}
       />
       <script
         type='application/ld+json'
