@@ -13,7 +13,7 @@ import { cn } from '@/lib/utils';
 const links = [
   { href: '/chales/', label: 'Chalés' },
   { href: '/blog/', label: 'Blog' },
-  { href: '/mapa-turistico/', label: 'Mapa' },
+  { href: '/mapa/', label: 'Mapa' },
   { href: '/sobre/', label: 'Sobre' },
 ];
 

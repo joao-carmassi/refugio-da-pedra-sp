@@ -10,7 +10,7 @@ import MapaTuristico from '@/components/mapa-turistico/mapa-turistico';
   de padding e de qualquer wrapper extra: qualquer um deles roubaria altura do
   mapa e devolveria a barra de rolagem que esta tela existe para não ter.
 */
-function MapaTuristicoPage(): React.ReactNode {
+function MapaPage(): React.ReactNode {
   return (
     <main className='h-[calc(100svh-var(--header-height,4rem))]'>
       {/*
@@ -33,4 +33,4 @@ function MapaTuristicoPage(): React.ReactNode {
   );
 }
 
-export default MapaTuristicoPage;
+export default MapaPage;

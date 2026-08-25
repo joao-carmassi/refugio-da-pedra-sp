@@ -12,7 +12,7 @@ interface Props extends ButtonProps {
  * Botão do mapa.
  *
  * Reaproveita o `Button` do shadcn (foco, `asChild`, estados) mas troca a
- * paleta: dentro de `/mapa-turistico` a cor de ação é o verde mata da
+ * paleta: dentro de `/mapa` a cor de ação é o verde mata da
  * identidade do mapa, não o âmbar da marca do Refúgio. As cores vêm por
  * `style` porque os tokens do mapa são escopados em `[data-mapa]` — uma
  * classe utilitária do tema global apontaria para o âmbar.

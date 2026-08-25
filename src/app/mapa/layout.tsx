@@ -29,7 +29,7 @@ const ogImage = {
  * final, então canonical/og:url/JSON-LD precisam apontar para a URL com barra
  * — caso contrário apontam para um 308.
  */
-const pageUrl = `${getSiteUrl()}/mapa-turistico/`;
+const pageUrl = `${getSiteUrl()}/mapa/`;
 
 export function generateMetadata() {
   return {
@@ -139,13 +139,13 @@ const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
     {
       '@type': 'ListItem',
       position: 2,
-      name: 'Mapa Turístico',
+      name: 'Mapa',
       item: pageUrl,
     },
   ],
 };
 
-function MapaTuristicoLayout({ children }: Props): React.ReactNode {
+function MapaLayout({ children }: Props): React.ReactNode {
   return (
     <>
       <script
@@ -177,4 +177,4 @@ function MapaTuristicoLayout({ children }: Props): React.ReactNode {
   );
 }
 
-export default MapaTuristicoLayout;
+export default MapaLayout;

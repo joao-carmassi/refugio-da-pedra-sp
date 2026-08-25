@@ -175,9 +175,9 @@ export default function RootLayout({
         />
         {/*
           O chrome (cabeçalho/rodapé) não mora mais aqui: cada rota monta o seu
-          no próprio layout. O motivo é `/mapa-turistico/`, uma tela cheia que
-          não tem rodapé e usa o cabeçalho compacto — com o chrome no raiz não
-          havia como uma única rota abrir mão dele sem gambiarra de pathname.
+          no próprio layout. O motivo é `/mapa/`, uma tela cheia que não tem
+          rodapé e usa o cabeçalho compacto — com o chrome no raiz não havia
+          como uma única rota abrir mão dele sem gambiarra de pathname.
         */}
         <TooltipProvider>{children}</TooltipProvider>
       </body>

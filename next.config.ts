@@ -6,7 +6,7 @@ const CSP_DIRECTIVES = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  // OpenFreeMap serves the vector basemap for /mapa-turistico/ (style JSON,
+  // OpenFreeMap serves the vector basemap for /mapa/ (style JSON,
   // tiles, glyphs and sprites) over fetch/XHR, so it needs connect-src, not
   // img-src. The MapLibre worker is served from this origin — see
   // scripts/sync-maplibre-worker.mjs — hence 'self' rather than a CDN.
@@ -85,7 +85,7 @@ const nextConfig: NextConfig = {
           //      header, or `report-uri`) and violations are actually being received —
           //      today the policy neither enforces nor logs anything.
           //   2. Zero violations for a full crawl of /, /chales/, /chales/[slug]/,
-          //      /reservar/, /blog/, /blog/[post]/, /sobre/, /mapa-turistico/ and
+          //      /reservar/, /blog/, /blog/[post]/, /sobre/, /mapa/ and
           //      /politica-de-privacidade/, including the Google Maps embed and
           //      the MapLibre basemap (worker, style JSON, tiles, glyphs).
           //   3. `script-src 'unsafe-inline'` is either replaced with a nonce/hash
