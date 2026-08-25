@@ -72,7 +72,7 @@ function WhatsappIcon(props: React.SVGProps<SVGSVGElement>) {
 const links = [
   { title: 'Chalés', href: '/chales/' },
   { title: 'Blog', href: '/blog/' },
-  { title: 'Mapa turístico', href: '/mapa-turistico/' },
+  { title: 'Mapa turístico', href: '/mapa/' },
   { title: 'Sobre', href: '/sobre/' },
   { title: 'Reservar', href: '/reservar/' },
   { title: 'Privacidade', href: '/politica-de-privacidade/' },
