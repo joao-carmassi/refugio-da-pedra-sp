@@ -18,8 +18,26 @@ export interface Pergunta {
  * há pergunta sobre preço de hospedagem, telefone de terceiro nem horário que
  * o cadastro não tenha conferido: o mapa cala onde a fonte é duvidosa, e a
  * página que fala do mapa segue a mesma regra.
+ *
+ * A ordem não é aleatória. Abre no planejamento ("dá para conhecer num fim de
+ * semana"), passa pelo que se paga e pelo que é obrigatório, e fecha nas
+ * perguntas sobre a ferramenta — impressão, aplicativo, origem das medidas.
+ * É o percurso de quem está montando a viagem, não o do site.
+ *
+ * Quatro delas nasceram da pesquisa de intenção de 25/08/2026 sobre o que se
+ * pergunta a ChatGPT e Gemini nos termos "mapa turístico" e "guia turístico
+ * de São Bento do Sapucaí": mapa para impressão, mapa sem aplicativo, onde
+ * contratar guia e roteiro de dois dias apareceram em ambas as plataformas. O
+ * termo de cauda curta praticamente não tem volume no Google — quem procura
+ * isso está perguntando a um modelo, e é por passagem citável, não por
+ * palavra-chave, que esta página é encontrada.
  */
 export const PERGUNTAS: Pergunta[] = [
+  {
+    pergunta: 'Dá para conhecer São Bento do Sapucaí em um fim de semana?',
+    resposta:
+      'Dá, dividindo por trecho — é assim que o mapa está organizado. O Vale do Baú toma um dia inteiro: a portaria do Monumento Natural, a trilha que você escolher e as cachoeiras do Encontro e do Toldi, todas do mesmo lado. O centro histórico se faz a pé em meio período, com as cinco igrejas, a Ladeira dos Pirilampos, as Capelinhas de Mosaico, a Casa da Cultura e as duas praças. Sobra a rota rural, com a Cachoeira do Tobogã, o Belvedere do Serrano e a Pedra da Balança, que rende a segunda manhã.',
+  },
   {
     pergunta: 'Preciso pagar para entrar no Complexo da Pedra do Baú?',
     resposta:
@@ -29,6 +47,18 @@ export const PERGUNTAS: Pergunta[] = [
     pergunta: 'Dá para subir a Pedra do Baú sem guia?',
     resposta:
       'Não. Guia credenciado é obrigatório, na proporção de um monitor a cada seis pessoas, e o agendamento tem de ser feito com pelo menos um dia de antecedência. São cerca de 4 km de trilha e 3 horas de subida, com via ferrata de degraus e grampos no trecho final. A Pedra Ana Chata também exige agendamento prévio.',
+    leitura: {
+      href: '/blog/como-reservar-passeios-guiados-em-sao-bento-do-sapucai/',
+      texto: 'Como reservar passeios guiados em São Bento',
+    },
+  },
+  {
+    // Preço fica de fora de propósito: varia por trilha e por tamanho de
+    // grupo, e valor de terceiro que o cadastro não confere não entra na
+    // página — a mesma regra que cala sobre a taxa da Cachoeira dos Amores.
+    pergunta: 'Onde contratar um guia para as trilhas de São Bento do Sapucaí?',
+    resposta:
+      'Com os condutores credenciados do município ou com as agências locais, sempre com pelo menos um dia de antecedência — no cume do Baú e na Pedra Ana Chata o guia é obrigatório, na proporção de um monitor a cada seis pessoas. O Centro de Informação ao Turista, que funciona no Portal da Cidade e está marcado no mapa, é o balcão oficial para essa pergunta, e o telefone dele aparece na ficha do ponto. Esta página não publica preço de guia: ele varia por trilha e por tamanho do grupo, e valor de terceiro que não dá para conferir não entra no cadastro.',
     leitura: {
       href: '/blog/como-reservar-passeios-guiados-em-sao-bento-do-sapucai/',
       texto: 'Como reservar passeios guiados em São Bento',
@@ -57,6 +87,19 @@ export const PERGUNTAS: Pergunta[] = [
     pergunta: 'As cachoeiras cobram entrada?',
     resposta:
       'A Cachoeira do Tobogã tem acesso gratuito. Para a Cachoeira do Encontro entra-se por dentro da Cachoeira dos Amores, e a taxa cobrada é a dela — confirme o valor no local, porque as fontes públicas divergem.',
+  },
+  {
+    // TODO(proprietário): confirmar com o Centro de Informação ao Turista se
+    // há folheto impresso disponível e em que horário atendem. Enquanto não
+    // houver confirmação, a resposta manda ligar antes em vez de prometer.
+    pergunta: 'Existe um mapa turístico de São Bento do Sapucaí para imprimir?',
+    resposta:
+      'Este não tem versão para impressão: é um mapa de tela, feito para abrir no celular durante a viagem, com a ficha de cada lugar e a rota de carro a um toque. Material impresso do município sai do Centro de Informação ao Turista, que funciona no Portal da Cidade, na entrada da cidade — vale ligar antes para saber o que há disponível.',
+  },
+  {
+    pergunta: 'Preciso baixar algum aplicativo para usar o mapa?',
+    resposta:
+      'Não. O mapa abre no navegador do celular ou do computador, sem instalar nada, sem criar conta e sem pagar. Precisa de internet para carregar. Depois disso, o botão Como chegar entrega a rota para o Google Maps, que é onde a navegação passo a passo acontece.',
   },
   {
     pergunta: 'As distâncias do mapa são medidas a partir de onde?',

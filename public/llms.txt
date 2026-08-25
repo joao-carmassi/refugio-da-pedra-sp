@@ -18,8 +18,8 @@ Todas as URLs abaixo terminam com barra: o site usa `trailingSlash: true`, entã
 - [Política de Privacidade](/politica-de-privacidade/): tratamento de dados pessoais
 
 ## Região
-- [Mapa Turístico de São Bento do Sapucaí](/mapa-turistico/): onde ficam os pontos turísticos, cachoeiras, mirantes e igrejas do município, agrupados por trecho e com a distância de carro a partir da pousada
-- [Mapa Interativo](/mapa/): a ferramenta em si — filtro por categoria, busca e rota de carro da pousada até cada ponto
+- [Mapa Turístico de São Bento do Sapucaí](/mapa-turistico/): guia da cidade em forma de mapa — onde ficam os pontos turísticos, cachoeiras, mirantes e igrejas do município, agrupados por trecho, com endereço, horário e rota de carro para cada lugar, mais um FAQ sobre taxa de entrada, obrigatoriedade de guia, roteiro de fim de semana e mapa impresso
+- [Mapa Interativo](/mapa/): a ferramenta em si — filtro por categoria, busca e rota de carro até cada ponto. Abre no navegador, sem aplicativo e sem cadastro
 
 ## Blog
 - [Blog](/blog/): guias e conteúdo sobre São Bento do Sapucaí e a Serra da Mantiqueira

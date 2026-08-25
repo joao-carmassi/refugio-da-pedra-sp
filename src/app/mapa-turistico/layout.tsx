@@ -60,11 +60,20 @@ export function generateMetadata() {
     title: 'Mapa Turístico de São Bento do Sapucaí',
     description:
       'Guia de São Bento do Sapucaí em forma de mapa: a Pedra do Baú, as cachoeiras, os mirantes e as igrejas do município, com endereço, horário e rota de carro para cada lugar.',
+    /* O Google ignora `keywords` desde 2009 — a lista fica porque outros
+       consumidores do HTML a leem, e porque descreve para quem edita a página
+       de que buscas ela é a resposta. Os termos de cauda curta aqui têm volume
+       quase nulo no Google (a pesquisa de 25/08/2026 mediu zero em "mapa
+       turístico de são bento do sapucaí"): a demanda aparece em pergunta a
+       modelo de IA, e quem responde por ela é o FAQ abaixo, não esta lista. */
     keywords: [
       'mapa turístico de são bento do sapucaí',
       'mapa de são bento do sapucaí',
+      'guia turístico de são bento do sapucaí',
       'o que fazer em são bento do sapucaí',
       'pontos turísticos de são bento do sapucaí',
+      'roteiro em são bento do sapucaí',
+      'trilhas em são bento do sapucaí',
       'onde fica a pedra do baú',
       'distância até a pedra do baú',
       'cachoeiras de são bento do sapucaí',
