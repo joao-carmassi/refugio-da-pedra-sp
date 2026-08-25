@@ -51,6 +51,14 @@ interface Props {
   onAltura: (altura: Altura) => void;
   children: React.ReactNode;
   rotulo: string;
+  /**
+   * Desce a folha para fora da tela sem trocar de parada.
+   *
+   * A folha não fecha, mas há um momento em que ela atrapalha: com a busca
+   * aberta, a faixa de arrastar disputa a tela curta com o balão de
+   * resultados. Sai por baixo e volta na parada onde estava.
+   */
+  oculta?: boolean;
 }
 
 /**
@@ -65,7 +73,13 @@ interface Props {
  * avança para a próxima. As duas coisas porque o clique é o que funciona com
  * teclado e leitor de tela.
  */
-function FolhaMobile({ altura, onAltura, children, rotulo }: Props) {
+function FolhaMobile({
+  altura,
+  onAltura,
+  children,
+  rotulo,
+  oculta = false,
+}: Props) {
   const trilho = useRef<HTMLDivElement>(null);
   const arrasto = useRef<{
     y: number;
@@ -214,10 +228,12 @@ function FolhaMobile({ altura, onAltura, children, rotulo }: Props) {
           background: 'var(--map-surface)',
           boxShadow: '0 -10px 44px rgb(27 36 32 / 0.26)',
         }}
+        inert={oculta}
         className={cn(
           'pointer-events-auto flex flex-col overflow-hidden rounded-t-3xl',
           fracaoViva === null &&
-            'transition-[height] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
+            'transition-[height,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
+          oculta && 'pointer-events-none translate-y-full',
           ANIMA_ENTRA,
         )}
       >

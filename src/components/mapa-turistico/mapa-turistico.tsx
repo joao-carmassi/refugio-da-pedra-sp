@@ -738,7 +738,10 @@ function MapaTuristico() {
             própria faixa dela é o caminho para a lista e para o mapa. */}
         {mobile && (
           <div
-            style={{ bottom: acimaDaFolha(folhaAltura) }}
+            // Com a folha fora de cena a pilha desce até o rodapé: apoiada na
+            // altura de uma folha que não está ali, ela flutuaria no meio da
+            // tela com uma faixa vazia embaixo.
+            style={{ bottom: buscaAberta ? '2.5rem' : acimaDaFolha(folhaAltura) }}
             className='pointer-events-none absolute inset-x-2.5 z-40 flex flex-col transition-[bottom] duration-300'
           >
             <Controles variante='mobile' className='self-end' />
@@ -787,6 +790,9 @@ function MapaTuristico() {
           <FolhaMobile
             altura={folhaAltura}
             onAltura={setFolha}
+            // Com a busca aberta a tela é do balão de resultados: a faixa da
+            // folha só somaria disputa embaixo. Ela volta na mesma parada.
+            oculta={buscaAberta}
             rotulo={fichaPresente ? 'Detalhes do local' : titulo}
           >
             {fichaPresente && ultimoLocal ? (

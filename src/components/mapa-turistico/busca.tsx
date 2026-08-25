@@ -160,9 +160,14 @@ function Busca({
             // das pílulas em vez de cobri-las.
             //
             // No mobile esse pai tem padding lateral, que o posicionamento
-            // absoluto ignora: `inset-x-3` repõe a mesma margem. E a lista
-            // rola por dentro, porque ali a tela acaba antes dos seis itens.
-            mobile ? 'inset-x-3 max-h-[60vh] overflow-y-auto' : 'inset-x-0',
+            // absoluto ignora: `inset-x-3` repõe a mesma margem. O `mt-3`
+            // repõe o respiro de baixo, que lá não existe — a fila de
+            // categorias cancela o próprio `p-3` com margem negativa, e sem
+            // ele o balão encostava nas pílulas. E a lista rola por dentro,
+            // porque ali a tela acaba antes dos seis itens.
+            mobile
+              ? 'inset-x-3 mt-3 max-h-[60vh] overflow-y-auto'
+              : 'inset-x-0',
           )}
         >
           <div className='px-3.5 pt-2.5 pb-1.5'>
