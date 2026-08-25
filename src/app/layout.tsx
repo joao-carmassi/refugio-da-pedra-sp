@@ -102,17 +102,28 @@ export default function RootLayout({
       '@type': 'PostalAddress',
       // Grafia fornecida pelo proprietário, mantida verbatim para bater com o
       // Google Business Profile (consistência de NAP).
-      // TODO(proprietário): confirmar grafia + número — deve bater exatamente com o Google Business Profile.
-      // TODO(proprietário): informar o CEP para preencher `postalCode`.
+      // TODO(proprietário): o Google Business Profile publica "R. das Araucárias
+      // — Comunidade São Pedro", que diverge desta grafia em duas coisas:
+      // "Araucareas" vs "Araucárias" e "Paiol Grande" vs "Comunidade São Pedro".
+      // NAP inconsistente derruba a confiança do Local SEO — alinhar os dois
+      // lados (aqui ou lá) e só então tirar este comentário.
       streetAddress: 'Rua Das Araucareas, Paiol Grande',
       addressLocality: 'São Bento do Sapucaí',
       addressRegion: 'SP',
+      // CEP único do município, o mesmo que o Google Business Profile exibe.
+      postalCode: '12490-000',
       addressCountry: 'BR',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: -22.67812457941675,
-      longitude: -45.66375792387372,
+      // Coordenada do marcador do Google Business Profile, resolvida pelo CID
+      // 18135816175245692937. A anterior (-45.66375792387372) tinha sido lida do
+      // `!2d`/`!3d` do iframe de `(homepage)/mapa.tsx` — mas ali esse par é o
+      // centro do enquadramento, não o pino, e caía 264 m a oeste da pousada.
+      // Quem marca o pino no embed é o `!1s0x94cc7de7a1085cab:0xfbaf5cb9454d9009`,
+      // então o iframe sempre esteve certo; era esta cópia que estava errada.
+      latitude: -22.678125,
+      longitude: -45.661183,
     },
     numberOfRooms: 5,
     checkinTime: '14:00',
