@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { List, Search, X } from 'lucide-react';
+import { List } from 'lucide-react';
 import { Map, MapArc, MapRoute, useMap } from '@/components/ui/map';
 import {
   CATEGORIAS,
@@ -183,11 +183,6 @@ const ANIMA_TOPO_ENTRA =
   'animate-in fade-in slide-in-from-top-4 duration-300 ease-out';
 const ANIMA_TOPO_SAI =
   'animate-out fade-out slide-out-to-top-4 fill-mode-forwards pointer-events-none duration-200 ease-in';
-
-/** A busca do mobile cobre a tela inteira: só o fade, sem deslizar nada. */
-const ANIMA_TELA_ENTRA = 'animate-in fade-in duration-200 ease-out';
-const ANIMA_TELA_SAI =
-  'animate-out fade-out fill-mode-forwards pointer-events-none duration-200 ease-in';
 
 /**
  * Onde encostar o que flutua no mobile.
@@ -416,6 +411,16 @@ function MapaTuristico() {
     window.open(getRotaUrl(local), '_blank', 'noopener,noreferrer');
   }
 
+  /**
+   * Foco no campo do topo. No mobile a folha desce junto: o balão de
+   * resultados nasce logo abaixo das pílulas e a folha em repouso é o que
+   * deixa a lista inteira caber na tela.
+   */
+  function abrirBusca() {
+    setBuscaAberta(true);
+    if (mobile) setFolha('minima');
+  }
+
   /** Fecha a ficha (ou a rota) e devolve a coluna ao estado de repouso. */
   function fecharFicha() {
     setPainel(repouso(mobile));
@@ -477,13 +482,11 @@ function MapaTuristico() {
   const mostraCartaoMobile =
     mobile && !!local && painel !== 'detalhes' && folha === 'minima';
   const mostraCromoMobile =
-    mobile && folha !== 'alta' && painel !== 'detalhes' && !buscaAberta;
-  const mostraBuscaMobile = mobile && buscaAberta;
+    mobile && folha !== 'alta' && painel !== 'detalhes';
 
   // Mesma regra do desktop, aplicada às bordas: desmontar no quadro em que a
   // condição vira falsa faz tudo sumir sem sair de cena.
   const cromoPresente = usePresenca(mostraCromoMobile);
-  const buscaPresente = usePresenca(mostraBuscaMobile);
 
   /**
    * A ficha do mobile fica no lugar até a folha terminar de descer.
@@ -504,6 +507,9 @@ function MapaTuristico() {
   const recolherFolha = useCallback(() => {
     setPainel((atual) => (atual === 'detalhes' ? null : atual));
     setFolha('minima');
+    // O balão de resultados também está "na frente": no mobile ele flutua
+    // sobre o mapa, e o mesmo gesto que abaixa a folha o dispensa.
+    setBuscaAberta(false);
   }, []);
 
   /**
@@ -605,7 +611,7 @@ function MapaTuristico() {
               onTermo={setTermo}
               resultados={resultados}
               aberto={buscaAberta}
-              onAbrir={() => setBuscaAberta(true)}
+              onAbrir={abrirBusca}
               onFechar={() => setBuscaAberta(false)}
               onEscolher={(id) => selecionar(id, { daBusca: true })}
             />
@@ -698,80 +704,29 @@ function MapaTuristico() {
         )}
 
         {/* ------------------------------------------------------- mobile */}
+        {/* O campo é o de verdade, e não um botão com cara de campo que abria
+            uma tela cheia por cima do mapa: trocar de campo no meio do gesto
+            custava uma transição inteira e apagava o mapa atrás. Fica acima da
+            folha (z-50) para o balão de resultados poder cair sobre ela. */}
         {cromoPresente && (
           <div
             className={cn(
-              'absolute inset-x-0 top-0 z-30 flex flex-col gap-2 px-3 pt-3',
+              'absolute inset-x-0 top-0 z-50 flex flex-col gap-2 px-3 pt-3',
               mostraCromoMobile ? ANIMA_TOPO_ENTRA : ANIMA_TOPO_SAI,
             )}
           >
-            <button
-              type='button'
-              onClick={() => setBuscaAberta(true)}
-              style={{
-                background: 'var(--map-surface)',
-                borderColor: 'var(--map-line)',
-                color: 'var(--map-meta)',
-                boxShadow: 'var(--map-shadow-control)',
-              }}
-              className='flex h-12 items-center gap-2.5 rounded-full border px-3.5 text-[15px]'
-            >
-              <Search
-                aria-hidden='true'
-                className='size-5 shrink-0'
-                style={{ color: 'var(--map-green)' }}
-              />
-              <span className='flex-1 text-left'>
-                Buscar lugares em São Bento...
-              </span>
-              <span
-                aria-hidden='true'
-                style={{
-                  background: 'var(--map-green)',
-                  color: 'var(--map-sand)',
-                }}
-                className='grid size-6.5 shrink-0 place-items-center rounded-[7px] text-[10px] font-bold'
-              >
-                RP
-              </span>
-            </button>
+            <Busca
+              variante='mobile'
+              termo={termo}
+              onTermo={setTermo}
+              resultados={resultados}
+              aberto={buscaAberta}
+              onAbrir={abrirBusca}
+              onFechar={() => setBuscaAberta(false)}
+              onEscolher={(id) => selecionar(id, { daBusca: true })}
+            />
 
             <Filtros ativo={filtro} onChange={trocarFiltro} className='-m-3' />
-          </div>
-        )}
-
-        {buscaPresente && (
-          <div
-            style={{ background: 'var(--map-surface)' }}
-            className={cn(
-              'absolute inset-0 z-50 flex flex-col',
-              mostraBuscaMobile ? ANIMA_TELA_ENTRA : ANIMA_TELA_SAI,
-            )}
-          >
-            <div className='flex items-start gap-2 p-3'>
-              <button
-                type='button'
-                onClick={() => setBuscaAberta(false)}
-                aria-label='Fechar busca'
-                style={{ color: 'var(--map-ink)' }}
-                className='mt-2 grid size-9 shrink-0 place-items-center rounded-full'
-              >
-                <X className='size-5' />
-              </button>
-              <div className='min-w-0 flex-1'>
-                <Busca
-                  variante='mobile'
-                  autoFocus
-                  termo={termo}
-                  onTermo={setTermo}
-                  resultados={resultados}
-                  aberto
-                  onAbrir={() => setBuscaAberta(true)}
-                  onFechar={() => setBuscaAberta(false)}
-                  onEscolher={(id) => selecionar(id, { daBusca: true })}
-                />
-              </div>
-            </div>
           </div>
         )}
 

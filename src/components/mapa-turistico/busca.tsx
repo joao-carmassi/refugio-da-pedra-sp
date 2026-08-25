@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import { ArrowUpRight, Search, X } from 'lucide-react';
 import { CATEGORIAS, getDistancia, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
@@ -14,9 +14,8 @@ interface Props {
   onAbrir: () => void;
   onFechar: () => void;
   onEscolher: (id: string) => void;
-  /** Mobile abre a busca em tela cheia; o layout do campo muda. */
+  /** No mobile o campo mora na barra do topo, e o formato dele muda. */
   variante?: 'desktop' | 'mobile';
-  autoFocus?: boolean;
 }
 
 function Busca({
@@ -28,7 +27,6 @@ function Busca({
   onFechar,
   onEscolher,
   variante = 'desktop',
-  autoFocus,
 }: Props) {
   const listaId = useId();
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,10 +45,6 @@ function Busca({
     setTermoAnterior(termo);
     setAtivo(-1);
   }
-
-  useEffect(() => {
-    if (autoFocus) inputRef.current?.focus();
-  }, [autoFocus]);
 
   function onKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'Escape') {
@@ -99,6 +93,9 @@ function Busca({
           value={termo}
           onChange={(event) => onTermo(event.target.value)}
           onFocus={onAbrir}
+          // O foco sozinho não basta: quem escolhe um resultado fecha o balão
+          // com o campo ainda focado, e tocar nele de novo não dispara `focus`.
+          onClick={onAbrir}
           onKeyDown={onKeyDown}
           aria-label='Buscar lugares em São Bento do Sapucaí'
           aria-expanded={mostraLista}
@@ -155,15 +152,17 @@ function Busca({
             boxShadow: 'var(--map-shadow-panel)',
           }}
           className={cn(
-            'animate-in fade-in slide-in-from-top-2 overflow-hidden rounded-2xl border duration-200 ease-out',
-            // No desktop o balão sai do fluxo: nele, as pílulas de categoria
-            // desciam e subiam a cada letra digitada. Sem `relative` aqui de
-            // propósito — ele ancora no bloco do topo inteiro (campo mais
-            // filas), que é o pai posicionado, e assim cai logo abaixo das
-            // pílulas em vez de cobri-las.
+            'animate-in fade-in slide-in-from-top-2 absolute top-full z-20 overflow-hidden rounded-2xl border duration-200 ease-out',
+            // O balão sai do fluxo nos dois layouts: dentro dele, as pílulas de
+            // categoria desciam e subiam a cada letra digitada. Sem `relative`
+            // aqui de propósito — ele ancora no bloco do topo inteiro (campo
+            // mais pílulas), que é o pai posicionado, e assim cai logo abaixo
+            // das pílulas em vez de cobri-las.
             //
-            // No mobile a busca ocupa a tela e a lista é a própria coluna.
-            !mobile && 'absolute inset-x-0 top-full z-20',
+            // No mobile esse pai tem padding lateral, que o posicionamento
+            // absoluto ignora: `inset-x-3` repõe a mesma margem. E a lista
+            // rola por dentro, porque ali a tela acaba antes dos seis itens.
+            mobile ? 'inset-x-3 max-h-[60vh] overflow-y-auto' : 'inset-x-0',
           )}
         >
           <div className='px-3.5 pt-2.5 pb-1.5'>
