@@ -1,14 +1,12 @@
 'use client';
 
 import { ArrowLeft, Clock, MapPin, MessageCircle, Phone, Route } from 'lucide-react';
-import Image from 'next/image';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { getAlt } from '@/lib/image-alt';
 import generateWhatsLink from '@/lib/generate-whats-link';
 import { REFUGIO, getDistancia, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
-import FotoLocal from './foto-local';
+import GaleriaLocal from './galeria-local';
 import { EtiquetaCategoria, Nota, Rotulo, SeloDestaque } from './etiquetas';
 
 interface Props {
@@ -42,7 +40,6 @@ function PainelDetalhes({
   moldura = true,
   className,
 }: Props) {
-  const fotos = local.fotos;
   const infos: Info[] = [
     local.horario && {
       icone: Clock,
@@ -75,7 +72,7 @@ function PainelDetalhes({
       )}
     >
       <div className='relative h-49 w-full shrink-0 overflow-hidden'>
-        <FotoLocal local={local} sizes='(max-width: 768px) 100vw, 412px' />
+        <GaleriaLocal local={local} sizes='(max-width: 768px) 100vw, 412px' />
 
         <button
           type='button'
@@ -91,30 +88,6 @@ function PainelDetalhes({
           <ArrowLeft className='size-5' />
         </button>
 
-        {fotos && fotos.arquivos.length > 1 && (
-          <div className='absolute right-3.5 bottom-3.5 flex gap-1.5'>
-            {fotos.arquivos.slice(1, 4).map((arquivo) => {
-              const src = `/assets/${fotos.pasta}/${arquivo}`;
-
-              return (
-                <span
-                  key={arquivo}
-                  style={{ borderColor: 'rgb(255 255 255 / 0.7)' }}
-                  className='relative block h-6.5 w-8.5 overflow-hidden rounded-md border'
-                >
-                  <Image
-                    src={src}
-                    alt={getAlt(src, local.nome)}
-                    fill
-                    sizes='34px'
-                    loading='lazy'
-                    className='object-cover'
-                  />
-                </span>
-              );
-            })}
-          </div>
-        )}
       </div>
 
       <ScrollArea className='min-h-0 flex-1'>
