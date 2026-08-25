@@ -443,14 +443,17 @@ function MapaTuristico() {
   // o de rota: ter de fechar o que se está lendo só para procurar outro lugar
   // era um passo a mais sem motivo.
   const mostraTopo = !mobile;
-  // O dropdown de resultados desce por cima da lista. Enquanto ele estiver na
-  // tela a lista sai de cena; ao fechar a busca ela volta, com animação.
+  // O dropdown de resultados desce por cima da coluna. Enquanto ele estiver na
+  // tela o painel sai de cena — seja a lista, a ficha ou a rota; ao fechar a
+  // busca ele volta, com animação.
   const buscaSugerindo =
     buscaAberta && termo.trim().length > 0 && resultados.length > 0;
 
   const mostraLista = !mobile && painel === 'lista' && !buscaSugerindo;
-  const mostraDetalhes = painel === 'detalhes' && !!local;
-  const mostraRota = !mobile && painel === 'rota' && !!local;
+  const mostraDetalhes =
+    painel === 'detalhes' && !!local && !(buscaSugerindo && !mobile);
+  const mostraRota =
+    !mobile && painel === 'rota' && !!local && !buscaSugerindo;
 
   // Os painéis do desktop desmontam só depois que a animação de saída termina.
   // A ficha do mobile fica de fora: lá ela é o conteúdo da folha, que já anima
