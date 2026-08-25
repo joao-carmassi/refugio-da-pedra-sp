@@ -954,6 +954,10 @@ body[data-scroll-locked] {
   --map-green: #2f6b4f;
   --map-green-deep: #1e4534;
   --map-sand: #f1efe6;
+  /* Chão da base cartográfica. Fica no mesmo verde de `PALETA_BASE.fundo`
+     (paleta-cartografica.ts) para que o quadro anterior ao primeiro tile não
+     pisque bege antes de virar mata. */
+  --map-base: #d9ebd6;
   --map-stone: #8a6b3b;
   --map-ink: #1b2420;
   --map-body: #3d4a42;
@@ -977,13 +981,6 @@ body[data-scroll-locked] {
   --map-shadow-pin-active: 0 10px 26px rgb(27 36 32 / 0.34);
   --map-shadow-control: 0 6px 20px rgb(27 36 32 / 0.18);
   --map-shadow-panel: 0 18px 44px rgb(27 36 32 / 0.2);
-}
-
-/* Base cartográfica em areia serra. O tile vem cinza-neutro do CARTO; o
-   filtro puxa para o bege da identidade sem precisar de style vetorial
-   próprio (que exigiria `connect-src` liberado no CSP). */
-[data-mapa-canvas] .maplibregl-canvas {
-  filter: sepia(0.32) saturate(0.82) brightness(1.03) contrast(0.96);
 }
 
 [data-mapa] .maplibregl-ctrl-attrib {
