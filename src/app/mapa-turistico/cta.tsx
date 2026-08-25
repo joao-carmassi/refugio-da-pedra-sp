@@ -11,9 +11,11 @@ import Rotulo from './rotulo';
  * Fecho da página, na mesma faixa escura que fecha a homepage — é a voz de
  * CTA da casa e ela não muda de rota para rota.
  *
- * O argumento aqui é o da própria página: cada número acima foi medido desta
- * porta. Nada de foto: depois de seis blocos de conteúdo a macroestrutura
- * pede uma faixa de tipografia, não uma sétima imagem.
+ * É o único bloco da rota em que a pousada fala de si, e por isso ele está no
+ * fim: o visitante chega aqui depois de já ter usado o guia. O argumento não é
+ * "você precisa se hospedar para usar o mapa", é "quem fez o mapa também
+ * recebe na serra". Nada de foto: depois de seis blocos de conteúdo a
+ * macroestrutura pede uma faixa de tipografia, não uma sétima imagem.
  */
 function Cta(): React.ReactNode {
   const scope = useReveal<HTMLElement>();
@@ -36,25 +38,26 @@ function Cta(): React.ReactNode {
               classe `dark` troca as variáveis, mas herança de `color` carrega o
               valor computado, não a variável. */}
           <div data-reveal className='mb-3'>
-            <Rotulo icone={TentTree}>Onde ficar</Rotulo>
+            <Rotulo icone={TentTree}>Quem mantém o mapa</Rotulo>
           </div>
           <h2
             data-reveal
             className='text-2xl tracking-tight text-pretty text-foreground md:text-4xl lg:text-5xl'
           >
-            Fique onde o mapa começa
+            A pousada por trás do mapa
           </h2>
           <p data-reveal className='mt-3 text-muted-foreground md:text-lg'>
-            O mapa mede cada distância a partir da nossa porta. Quem se
-            hospeda aqui acorda a 3,5 km da primeira cachoeira e a 1,5 km do pé
-            da Pedra do Baú, e ainda toma café ouvindo de nós o que rende mais
-            no dia que a serra der. São cinco acomodações: três chalés, uma
-            cabana com lareira e um domo geodésico.
+            Este mapa é um projeto do Refúgio da Pedra SP, a pousada que fica
+            no pé da serra e mantém o cadastro. Se você ainda está escolhendo
+            onde dormir em São Bento do Sapucaí, são cinco acomodações — três
+            chalés, uma cabana com lareira e um domo geodésico — a 3,5 km da
+            primeira cachoeira e a 1,5 km do pé da Pedra do Baú, com café da
+            manhã e a conversa sobre o que rende mais no dia que a serra der.
           </p>
 
           <p data-reveal className='mt-6 text-sm text-muted-foreground'>
-            O cadastro deste mapa foi levantado por quem mora aqui e recebe na
-            serra desde 2018.{' '}
+            O cadastro deste mapa foi levantado a pé e por estrada, por quem
+            mora na serra e recebe visitantes desde 2018.{' '}
             <Link
               className='underline underline-offset-4 hover:text-foreground'
               href='/sobre/'

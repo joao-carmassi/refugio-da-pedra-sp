@@ -41,8 +41,9 @@ interface CategoriaDaPagina {
  *
  * TODO(proprietário): mandar a lista de restaurantes, cafés, lojas de
  * artesanato e experiências guiadas (nome, endereço e horário, quando houver)
- * para o cadastro. A etiqueta "Em breve" some sozinha assim que o primeiro
- * registro de cada categoria entrar em `mapa-turistico.json`.
+ * para o cadastro. São as quatro categorias que hoje aparecem na página sem um
+ * único pino no mapa — a página promete um guia da cidade inteira e por
+ * enquanto cobre esses quatro eixos só pelos guias do blog.
  */
 export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
   [
@@ -104,7 +105,7 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
     {
       id: 'hospedagem',
       texto:
-        'O Refúgio da Pedra SP, marcado no mapa porque é dele que sai cada medida. Cinco acomodações no pé da Pedra do Baú.',
+        'Onde dormir no pé da serra. O mapa marca hoje o Refúgio da Pedra SP, a pousada que mantém este projeto e serve de ponto fixo para as distâncias, com cinco acomodações a caminho da Pedra do Baú.',
       leitura: { href: '/chales/', texto: 'Conheça as acomodações' },
     },
   ] satisfies Omit<CategoriaDaPagina, 'label'>[]

@@ -41,6 +41,17 @@ function Categorias(): React.ReactNode {
           <h2 className='text-2xl tracking-tight text-balance md:text-4xl lg:text-5xl'>
             Oito maneiras de olhar para São Bento do Sapucaí
           </h2>
+          {/* A linha existe para a página não prometer no título o que o
+              cadastro ainda não tem: mesa, café, artesanato e experiência
+              guiada aparecem aqui como eixo e levam ao guia do blog, não a um
+              pino que não existe. Quando o cadastro receber o primeiro
+              registro de cada uma, esta ressalva sai. */}
+          <p className='text-muted-foreground'>
+            Quatro eixos já estão marcados ponto a ponto no mapa. Os outros
+            quatro — mesa, café, artesanato e experiência guiada — estão sendo
+            cadastrados e, por enquanto, moram nos guias do blog, linkados
+            abaixo.
+          </p>
         </div>
 
         <div

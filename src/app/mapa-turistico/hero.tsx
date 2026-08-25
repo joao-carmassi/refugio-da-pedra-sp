@@ -77,19 +77,19 @@ function Hero(): React.ReactNode {
           data-reveal
           className='mt-4 max-w-4xl text-2xl tracking-tight text-pretty md:mt-5 md:text-4xl lg:text-5xl'
         >
-          Mapa turístico de São Bento do Sapucaí, com a distância real até cada
-          lugar
+          Mapa turístico de São Bento do Sapucaí: o que visitar, onde comer e o
+          que fazer na serra
         </h1>
 
         <p
           data-reveal
           className='mt-3 max-w-prose text-muted-foreground md:mt-4 md:text-lg'
         >
-          Reunimos num mapa só os lugares que indicamos a quem se hospeda aqui:
-          as trilhas do Complexo da Pedra do Baú, as cachoeiras do vale, as
-          igrejas e os mirantes do centro. No mapa, cada ponto traz a
-          quilometragem e o tempo de carro medidos por estrada de verdade, a
-          partir da porta do Refúgio da Pedra SP.
+          Um guia da cidade em forma de mapa, aberto a quem estiver
+          planejando a viagem: as trilhas do Complexo da Pedra do Baú, as
+          cachoeiras do vale, as igrejas e os mirantes do centro histórico. Cada
+          ponto traz endereço, horário quando existe horário publicado e a rota
+          de carro medida por estrada de verdade.
         </p>
 
         <div
@@ -107,13 +107,16 @@ function Hero(): React.ReactNode {
               <ArrowRight className='size-4' />
             </Link>
           </Button>
+          {/* O segundo botão leva para dentro do próprio guia, não para a
+              reserva: quem chega da busca está escolhendo o que fazer na
+              cidade, e a pousada tem o bloco de fecho para se apresentar. */}
           <Button
             variant='outline'
             asChild
             size='lg'
             className='w-full rounded-full sm:w-auto'
           >
-            <Link href='/reservar/'>Reservar sua estadia</Link>
+            <Link href='#pontos-anchor'>Ver os lugares</Link>
           </Button>
         </div>
 

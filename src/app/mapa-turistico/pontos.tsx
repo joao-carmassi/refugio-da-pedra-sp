@@ -1,7 +1,6 @@
 'use client';
 
 import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -70,9 +69,9 @@ function Pontos(): React.ReactNode {
             </h2>
             <p className='mt-3 max-w-prose text-muted-foreground'>
               Cada ponto do mapa com o que ele é e em que canto do município
-              fica, na ordem em que costumamos indicá-los: primeiro o complexo
-              da Pedra do Baú, depois o centro histórico e por fim o lado oeste
-              do município.
+              fica. Estão na ordem em que a serra se organiza: primeiro o
+              complexo da Pedra do Baú, depois o centro histórico e por fim o
+              lado oeste do município.
             </p>
           </header>
 

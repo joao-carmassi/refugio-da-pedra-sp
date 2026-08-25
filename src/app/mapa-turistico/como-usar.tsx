@@ -36,12 +36,12 @@ const PASSOS: Passo[] = [
   {
     titulo: 'Toque num pino',
     texto:
-      'No celular sobe um cartão com foto, categoria e a distância até aqui. No computador o cartão aparece ao passar o ponteiro, e o clique abre a ficha completa, com endereço, horário e telefone quando existem.',
+      'No celular sobe um cartão com foto, categoria e a distância de carro até o lugar. No computador o cartão aparece ao passar o ponteiro, e o clique abre a ficha completa, com endereço, horário e telefone quando existem.',
   },
   {
     titulo: 'Toque em Como chegar',
     texto:
-      'O Google Maps abre com a rota traçada até a coordenada do lugar, saindo de onde você estiver. O botão do Refúgio, no canto, devolve o mapa para o ponto de partida a qualquer momento.',
+      'O Google Maps abre com a rota traçada até a coordenada do lugar, saindo de onde você estiver — as distâncias do cartão são medidas de um ponto fixo, e a rota é medida de onde você está. O botão no canto devolve o mapa a esse ponto fixo quando você quiser recomeçar.',
   },
 ];
 
@@ -75,7 +75,8 @@ function ComoUsar(): React.ReactNode {
           </h2>
           <p className='mt-3 max-w-prose text-muted-foreground'>
             O mapa abre em tela cheia, já enquadrado na região. Não precisa de
-            cadastro nem de aplicativo.
+            cadastro, de aplicativo nem de conta — é de uso livre, para quem
+            estiver na cidade e para quem ainda está planejando a viagem.
           </p>
 
           <div className='mt-6'>

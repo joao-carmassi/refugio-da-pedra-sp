@@ -43,20 +43,28 @@ const pageUrl = `${getSiteUrl()}/mapa-turistico/`;
  * do Sapucaí".
  *
  * `/mapa/` é a ferramenta: tela cheia, sem rodapé, conteúdo desenhado em
- * WebGL. Não há corpo de texto para o buscador ler nem lugar para converter
- * quem chega. Esta página responde à mesma intenção em HTML rastreável e
- * empurra para o mapa e para a reserva no mesmo scroll. Por isso `/mapa/`
- * ficou com o eixo de ferramenta ("Mapa Interativo da Região") — as duas
- * continuam indexáveis e auto-canônicas, sem disputar o mesmo termo.
+ * WebGL. Não há corpo de texto para o buscador ler. Esta página responde à
+ * mesma intenção em HTML rastreável: apresenta o município, o que há para ver
+ * nele e a ferramenta que mostra onde fica cada coisa. Por isso `/mapa/` ficou
+ * com o eixo de ferramenta ("Mapa Interativo da Região") — as duas continuam
+ * indexáveis e auto-canônicas, sem disputar o mesmo termo.
+ *
+ * Quem chega aqui está planejando uma viagem a São Bento do Sapucaí, não
+ * procurando pousada: o texto da rota é de guia turístico e trata o mapa como
+ * o produto. O Refúgio aparece como quem mantém o projeto — na assinatura do
+ * hero, na origem das distâncias e no bloco de fecho —, nunca como a razão de
+ * a página existir.
  */
 export function generateMetadata() {
   return {
     title: 'Mapa Turístico de São Bento do Sapucaí',
     description:
-      'Onde ficam a Pedra do Baú, as cachoeiras, os mirantes e as igrejas de São Bento do Sapucaí, com a distância de carro de cada lugar até a pousada.',
+      'Guia de São Bento do Sapucaí em forma de mapa: a Pedra do Baú, as cachoeiras, os mirantes e as igrejas do município, com endereço, horário e rota de carro para cada lugar.',
     keywords: [
       'mapa turístico de são bento do sapucaí',
       'mapa de são bento do sapucaí',
+      'o que fazer em são bento do sapucaí',
+      'pontos turísticos de são bento do sapucaí',
       'onde fica a pedra do baú',
       'distância até a pedra do baú',
       'cachoeiras de são bento do sapucaí',
@@ -65,9 +73,9 @@ export function generateMetadata() {
       'vale do baú',
     ],
     openGraph: {
-      title: 'Mapa Turístico de São Bento do Sapucaí - Refúgio da Pedra SP',
+      title: 'Mapa Turístico de São Bento do Sapucaí',
       description:
-        'Onde ir na serra: cada ponto do mapa de São Bento do Sapucaí com a distância de carro até o Refúgio da Pedra SP.',
+        'Onde ficam as trilhas, as cachoeiras, os mirantes e as igrejas de São Bento do Sapucaí, num mapa que abre no navegador, sem aplicativo.',
       siteName: 'Refúgio da Pedra SP',
       type: 'website',
       url: pageUrl,
@@ -134,7 +142,7 @@ const jsonLd: WithContext<CollectionPage> = {
   '@id': `${pageUrl}#webpage`,
   name: 'Mapa Turístico de São Bento do Sapucaí',
   description:
-    'Onde ficam os pontos turísticos, cachoeiras, mirantes e igrejas de São Bento do Sapucaí, agrupados por trecho do município e com a distância de carro a partir do Refúgio da Pedra SP.',
+    'Onde ficam os pontos turísticos, cachoeiras, mirantes e igrejas de São Bento do Sapucaí, agrupados por trecho do município e com endereço, horário e rota de carro para cada lugar.',
   url: pageUrl,
   inLanguage: 'pt-BR',
   isPartOf: { '@id': `${siteUrl}/#website` },
