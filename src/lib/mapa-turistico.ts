@@ -2,6 +2,7 @@ import {
   Camera,
   Coffee,
   Compass,
+  Landmark,
   LayoutGrid,
   Mountain,
   ShoppingBag,
@@ -16,28 +17,62 @@ import rotasJson from '@/data/rotas.json';
 /**
  * TODO(proprietário): conferir e completar o cadastro de `mapa-turistico.json`.
  *
- * Todos os lugares vieram de fontes públicas verificáveis — coordenadas do
- * OpenStreetMap e descrições já publicadas no blog do próprio site. O que
- * ainda falta e depende de quem conhece a região:
+ * O cadastro foi refeito do zero contra fontes públicas primárias: mapa e
+ * roteiros oficiais da Prefeitura (saobentotur.com.br), Cadastro Nacional de
+ * Museus (IBRAM), Fundação Florestal, CBVL, OpenStreetMap e tracks de GPS com
+ * waypoint nomeado. Nenhuma coordenada foi estimada no olho. O que ainda
+ * depende de quem conhece a região:
  *
- *   1. `horario` — só está preenchido onde há horário publicado. Sem esse
- *      campo o cartão não exibe funcionamento, de propósito.
- *   2. `nota` / `avaliacoes` — nenhum lugar tem nota hoje. Preencher só com o
- *      número real do Google Business Profile; a estrela some enquanto não
- *      houver.
- *   3. `tel` — só telefones já publicados no blog. Não inventar.
- *   4. `aConferir: true` marca coordenada aproximada (centro da rua ou do
- *      bairro, não do imóvel). Remover a marca ao confirmar o ponto exato.
- *   5. "Padaria Cazarim", citada em dois posts do blog, não existe em nenhuma
- *      fonte pública — nem no Google Maps, nem no diretório de turismo da
- *      prefeitura. O nome mais próximo é "Padaria Casarão", no Centro. Por
- *      isso ela não entrou no mapa: confirmar a grafia e corrigir também os
- *      posts.
- *   6. Fica de fora, por falta de coordenada confiável: a portaria do MoNa
- *      Pedra do Baú (o marco do monumento não é o portão), "Manacá" e "Bento"
- *      (dois estabelecimentos com esse nome no Centro, a 450 m um do outro),
- *      e "Mache" — o único "Ma Che" da região fica em Paiol Grande, não no
- *      Centro como o blog descreve.
+ *   1. `aConferir: true` marca coordenada aproximada — a rua certa, não o
+ *      imóvel. Está em: Cachoeira do Encontro (nenhuma fonte publica o ponto
+ *      da queda; o pino é um nó de cachoeira do OSM ao lado do acesso),
+ *      Cachoeira do Tobogã (dois GPS a 140 m um do outro), Belvedere do
+ *      Serrano (um GPS só), Capelinhas de Mosaico, Igreja Santo Antônio,
+ *      Igreja N. Sra. do Rosário, Praça Presidente João Goulart e Portal da
+ *      Cidade. Remover a marca ao confirmar o ponto exato.
+ *   2. Dois templos do Centro estão no OpenStreetMap sem nome: um na Av.
+ *      Conselheiro Rodrigues Alves e outro junto à Praça General Marcondes
+ *      Salgado. Foram atribuídos a Santo Antônio e ao Rosário por bater com o
+ *      logradouro publicado — confirmar qual é qual antes de tirar o
+ *      `aConferir`. Há um segundo candidato para Santo Antônio, 570 m ao sul,
+ *      na Praça Santo Antônio.
+ *   3. Taxa da Cachoeira do Encontro: como se entra por dentro da Cachoeira
+ *      dos Amores, paga-se a taxa dela. O roteiro oficial publica R$ 10,
+ *      relatos de 2024–2026 falam em R$ 20 a R$ 25 — confirmar o valor atual.
+ *   4. `horario` — só está preenchido onde há horário publicado por fonte
+ *      oficial. Sem esse campo o cartão não exibe funcionamento, de propósito.
+ *      Segue em branco onde as fontes divergem sem desempate.
+ *   5. `nota` / `avaliacoes` — só o Refúgio tem, vindo do próprio Google
+ *      Business Profile. Preencher os demais só com número real; a estrela
+ *      some enquanto não houver.
+ *   6. Ficaram de fora, por não existirem nas fontes ou por falta de
+ *      coordenada utilizável:
+ *      - "Parquinho Municipal": nenhum equipamento com esse nome no OSM, na
+ *        Prefeitura ou no portal de turismo. Provável apelido local — dizer de
+ *        qual praça se trata. O candidato mais provável é a Praça Adhemar de
+ *        Barros, conhecida como Praça do Coreto.
+ *      - Cachoeira do Monjolinho: o curso d'água existe, mas não consta de
+ *        nenhum material oficial e as duas referências públicas apontam áreas
+ *        distintas do município. Provavelmente é propriedade particular sem
+ *        visitação estruturada.
+ *      - Cachoeira do Poção: fica ao lado da do Tobogã, mas o acesso é negado
+ *        pelo proprietário. Não anunciar como visitável.
+ *      - Cachoeira dos Amores, Museu da Revolução de 1932, Museu do Carro de
+ *        Boi Quim Costa e Espaço de Leitura e Arte Eugênia Sereno: existem e
+ *        estavam cadastrados com dado conferido, mas saíram do mapa a pedido.
+ *        Voltam sem pesquisa nova — o histórico do Git tem o cadastro inteiro.
+ *   7. Nomes corrigidos em relação ao pedido original: "Pedra Serra da
+ *      Balança" são duas coisas — a Pedra da Balança (o cume, que entrou) e a
+ *      Serra da Balança (crista e roteiro tropeiro até Gonçalves). "Pedreira
+ *      Campo Escola" não existe: o setor de escalada se chama só Campo
+ *      Escola. E o "Mirante do Toldi" não é um ponto à parte: o nome oficial
+ *      dele é Mirante da Cachoeira do Toldi e o deck fica a 30 m da queda, no
+ *      mesmo estacionamento — viraram um pino só. Separá-los também quebrava a
+ *      distância: a base da cachoeira encaixa numa estrada desconectada e o
+ *      OSRM devolvia 15,7 km para um vizinho de 250 m que dá 6,1 km.
+ *      Os parceiros do Refúgio (Baú Ecoturismo, Sabor com Arte,
+ *      Villa Santa Maria, OLIQ) saíram do mapa a pedido — as fotos continuam
+ *      em `public/assets/`.
  */
 
 /**
@@ -51,6 +86,14 @@ import rotasJson from '@/data/rotas.json';
  */
 export const CATEGORIAS = {
   turismo: { label: 'Turismo', cor: '#2f6b4f', icone: Camera },
+  /**
+   * Igreja, museu e casa de cultura saíram de `turismo` porque São Bento tem
+   * dez deles: misturados com mirante e cachoeira, o chip "Turismo" virava a
+   * lista inteira e deixava de filtrar. O cinza-ardósia é o único tom
+   * quase-neutro da paleta — é a cor da taipa e da pedra, e não briga com o
+   * azul de `hospedagem`, que só marca o próprio Refúgio.
+   */
+  cultura: { label: 'Cultura', cor: '#4f5d6b', icone: Landmark },
   restaurantes: { label: 'Restaurantes', cor: '#b4523a', icone: UtensilsCrossed },
   cafes: { label: 'Cafés', cor: '#8a6b3b', icone: Coffee },
   hospedagem: { label: 'Hospedagem', cor: '#4a6fa5', icone: TentTree },
