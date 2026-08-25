@@ -48,6 +48,30 @@ type OrdemCamera =
   | null;
 
 /**
+ * Mantém o canvas do MapLibre do tamanho do contêiner.
+ *
+ * O MapLibre já observa o contêiner, mas descarta a primeira entrega do
+ * ResizeObserver — a observação inicial. Nesta rota a altura útil muda logo
+ * depois da montagem: `--header-height` é publicada pelo cabeçalho, e numa
+ * navegação client-side ela ainda vale o valor da página anterior quando o
+ * mapa nasce. Essa mudança cai justamente na entrega descartada, e o canvas
+ * ficava com a altura antiga — mapa cortado embaixo até um F5.
+ */
+function Redimensiona() {
+  const { map } = useMap();
+
+  useEffect(() => {
+    if (!map) return;
+
+    const observador = new ResizeObserver(() => map.resize());
+    observador.observe(map.getContainer());
+    return () => observador.disconnect();
+  }, [map]);
+
+  return null;
+}
+
+/**
  * Abre o mapa com todos os pontos à vista.
  *
  * Precisa acontecer aqui, e não em `center`/`zoom` do `<Map>`, porque o
@@ -518,6 +542,7 @@ function MapaTuristico() {
         dragRotate={false}
         pitchWithRotate={false}
       >
+        <Redimensiona />
         <Abertura mobile={mobile} />
         <Camera camera={camera} mobile={mobile} />
 
