@@ -47,7 +47,7 @@ export const PERGUNTAS: Pergunta[] = [
   {
     pergunta: 'Posso levar meu cachorro?',
     resposta:
-      'No Monumento Natural, não: animais de estimação não entram na unidade de conservação, com uma exceção, que é o trecho até o Mirante do Caramuru, onde fica a rampa de voo livre. No Refúgio da Pedra SP, sim — somos pet friendly na maior parte das acomodações.',
+      'No Monumento Natural, não: animais de estimação não entram na unidade de conservação, com uma exceção, que é o trecho até o Mirante do Caramuru, onde fica a rampa de voo livre. Fora dela depende de cada lugar — o Refúgio da Pedra SP, a pousada que mantém este mapa, aceita pet na maior parte das acomodações.',
   },
   {
     // TODO(proprietário): confirmar a taxa atual da Cachoeira dos Amores, que
@@ -59,8 +59,8 @@ export const PERGUNTAS: Pergunta[] = [
       'A Cachoeira do Tobogã tem acesso gratuito. Para a Cachoeira do Encontro entra-se por dentro da Cachoeira dos Amores, e a taxa cobrada é a dela — confirme o valor no local, porque as fontes públicas divergem.',
   },
   {
-    pergunta: 'A que distância a pousada fica desses lugares?',
+    pergunta: 'As distâncias do mapa são medidas a partir de onde?',
     resposta:
-      'O mapa mede tudo a partir do Refúgio da Pedra SP, por estrada. A Cachoeira do Encontro fica a 3,5 km, o centro da cidade a 10 km, a portaria do Complexo da Pedra do Baú a 17,3 km e o cume do Baú a 19 km de carro mais o trecho final a pé.',
+      'De um ponto fixo no pé da serra, o Refúgio da Pedra SP, que é a pousada que mantém este mapa. Medir tudo do mesmo lugar deixa os números comparáveis entre si, e a conta é por estrada, não em linha reta. A Cachoeira do Encontro fica a 3,5 km desse ponto, o centro da cidade a 10 km, a portaria do Complexo da Pedra do Baú a 17,3 km e o cume do Baú a 19 km de carro mais o trecho final a pé.',
   },
 ];

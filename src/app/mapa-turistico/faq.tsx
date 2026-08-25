@@ -8,7 +8,8 @@ import { PERGUNTAS } from './perguntas';
 import Rotulo from './rotulo';
 
 /**
- * As perguntas que chegam no WhatsApp antes de cada reserva.
+ * As perguntas que quem planeja a viagem faz antes de subir a serra — taxa de
+ * entrada, horário de portaria, obrigatoriedade de guia.
  *
  * Composição de `@shadcnblocks/faq20`: título e chamada numa coluna, a lista
  * na outra, separada por réguas de 1px. O que não veio do bloco é o acordeão —
@@ -41,14 +42,15 @@ function Faq(): React.ReactNode {
             que manda alguém subir a serra à toa.
           </p>
           <p className='mt-4 max-w-prose text-muted-foreground'>
-            Ficou faltando alguma?{' '}
+            Ficou faltando alguma, ou você conhece um lugar que devia estar no
+            mapa?{' '}
             <Link
               className='underline underline-offset-4 hover:text-foreground'
               href='/reservar/'
             >
               Fale com a gente
             </Link>{' '}
-            — respondemos antes da reserva, sem compromisso.
+            — quem mantém o cadastro mora na serra e responde.
           </p>
         </header>
 
