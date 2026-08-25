@@ -30,7 +30,7 @@ export const PALETA_BASE = {
 } as const;
 
 /**
- * Repinta a base cartográfica.
+ * Repinta a base cartográfica e cala os POIs que vêm do OpenStreetMap.
  *
  * Casa as camadas por padrão de id em vez de listar as 111 uma a uma: o
  * `liberty` nomeia por família (`landcover_*`, `road_*`, `*_casing`), então
@@ -67,6 +67,33 @@ export function pintarBase(map: MapaLibre) {
         // derrubar a repintura das outras.
       }
     };
+
+    if (/^poi_/.test(id)) {
+      // Os pontos de interesse do OpenStreetMap saem de cena.
+      //
+      // A partir do zoom 15 o `liberty` começa a soltar os POIs dele —
+      // pousada, restaurante, mirante, ponto de ônibus — cada um com ícone e
+      // rótulo próprios. São dados que ninguém curou: entram todos os que
+      // alguém cadastrou no OSM, abertos ou não, com nome errado ou não, e
+      // aparecem com o mesmo peso visual dos pinos desta lista. O mapa passa a
+      // ter duas camadas de "lugar para ir" competindo, e a que o Refúgio
+      // escolheu mostrar vira a minoria na tela.
+      //
+      // `visibility` em vez de remover a camada: `removeLayer` é destrutivo e
+      // o estilo é recarregado por conta própria pelo MapLibre em algumas
+      // transições, o que traria os POIs de volta sem aviso. Esconder é
+      // idempotente e sobrevive a isso.
+      //
+      // Só a família `poi_` (ids `poi_r1`, `poi_r7`, `poi_r20`, `poi_transit`,
+      // todos sobre a source-layer `poi`). Nome de vilarejo, de estrada e de
+      // curso d'água ficam: eles orientam, não disputam.
+      try {
+        map.setLayoutProperty(id, 'visibility', 'none');
+      } catch {
+        // Mesmo motivo do `catch` de `pintar`: estilo de terceiros.
+      }
+      continue;
+    }
 
     if (type === 'background') {
       pintar('background-color', PALETA_BASE.fundo);
