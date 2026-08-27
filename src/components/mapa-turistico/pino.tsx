@@ -28,6 +28,12 @@ interface Props {
  * O `z-index` segue a mesma ordem para que o pino maior nunca fique atrás de
  * um menor.
  *
+ * O Refúgio se distingue por tamanho, cor e borda, e só. Sem pulso e sem nome
+ * fixo embaixo: o rótulo permanente disputava espaço com os pinos vizinhos, e
+ * a animação infinita puxava o olho para o único ponto do mapa que ninguém
+ * precisa procurar — o rótulo agora é do selecionado, como em qualquer outro
+ * pino.
+ *
  * A cauda de 2×9px abaixo do círculo é o que faz o pino "apontar": o
  * `anchor='bottom'` do MapLibre ancora a base do elemento na coordenada, então
  * é a ponta da cauda que cai sobre o lugar, não o centro do círculo.
@@ -115,18 +121,6 @@ function Pino({
             destacado && !selecionado && 'scale-115',
           )}
         >
-          {local.refugio && (
-            <span
-              data-map-pulse
-              aria-hidden='true'
-              className='absolute -inset-1.5 rounded-full border-2'
-              style={{
-                borderColor: 'var(--map-stone)',
-                animation: 'map-pin-pulse 2.4s ease-out infinite',
-              }}
-            />
-          )}
-
           <Icone
             aria-hidden='true'
             strokeWidth={2.25}
@@ -161,7 +155,7 @@ function Pino({
           className='h-[9px] w-0.5'
         />
 
-        {(local.refugio || selecionado) && (
+        {selecionado && (
           <span
             style={{
               zIndex,
