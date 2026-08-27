@@ -37,7 +37,11 @@ export const SERVICE_WORKER = {
  * O evento é disparado uma única vez, no fim do carregamento, e some se
  * ninguém o segurar — inclusive se ele chegar antes de o React hidratar, o
  * que na tela do mapa é plausível: é a rota mais pesada do site. Por isso a
- * captura acontece num script inline no HTML, e o hook lê daqui.
+ * captura acontece fora do React, em `public/mapa-instalavel.js`, e o hook lê
+ * daqui.
+ *
+ * Esta chave e o evento abaixo são o contrato com aquele arquivo: os nomes
+ * estão escritos literalmente lá, e mudar um lado exige mudar o outro.
  */
 export const CHAVE_EVENTO = '__conviteInstalarMapa';
 
@@ -45,13 +49,16 @@ export const CHAVE_EVENTO = '__conviteInstalarMapa';
 export const EVENTO_DISPONIVEL = 'mapa:instalavel';
 
 /**
- * O script inline que faz a captura, montado a partir das constantes acima
- * para que os dois lados não possam divergir em silêncio.
+ * O script que faz a captura.
  *
- * `preventDefault` é o que transfere a oferta para a página: sem ele o Chrome
- * mostra a barra de instalação dele, no lugar e na hora que ele quiser.
+ * Arquivo estático em `public/`, e não trecho inline no JSX: um `<script>`
+ * inline renderizado por componente React nunca é executado quando a rota
+ * chega por navegação client-side — o navegador ignora scripts inseridos
+ * assim, e o React só avisa no console. Com `src` e `async` o React 19 trata a
+ * tag como elemento içado: move para o `<head>`, executa e deduplica pelo
+ * `src`, na primeira carga e na navegação interna.
  */
-export const SCRIPT_CAPTURA = `(function(){var w=window;w.${CHAVE_EVENTO}=null;w.addEventListener('beforeinstallprompt',function(e){e.preventDefault();w.${CHAVE_EVENTO}=e;w.dispatchEvent(new Event(${JSON.stringify(EVENTO_DISPONIVEL)}))})})()`;
+export const SCRIPT_CAPTURA_URL = '/mapa-instalavel.js';
 
 /**
  * A partir de quantas visitas o convite pode aparecer.
