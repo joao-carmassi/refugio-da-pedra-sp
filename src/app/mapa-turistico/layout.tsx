@@ -112,7 +112,7 @@ const siteUrl = getSiteUrl();
  *
  * Ele nasceu em `/mapa/`, mas descrever cada atração é papel da página que
  * tem texto sobre elas; a tela do mapa passou a apenas referenciar este `@id`
- * no `mainEntity`. Duas cópias dos mesmos 29 nós em URLs diferentes seria o
+ * no `mainEntity`. Duas cópias dos mesmos 31 nós em URLs diferentes seria o
  * mesmo erro que o repositório evita de propósito com o `#business`: duas
  * entidades concorrentes para a mesma coisa.
  *
