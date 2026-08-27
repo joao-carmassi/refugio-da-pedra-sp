@@ -5,6 +5,7 @@ import type {
   BreadcrumbList,
 } from 'schema-dts';
 import Header from '@/components/header';
+import ConviteInstalar from '@/components/mapa-turistico/convite-instalar';
 import { getSiteUrl } from '@/lib/env';
 import { METADATA_APP_MAPA } from '@/lib/pwa-mapa';
 
@@ -149,6 +150,11 @@ function MapaLayout({ children }: Props): React.ReactNode {
       */}
       <Header compact />
       {children}
+      {/* Por último no DOM de propósito: o cartão é `fixed`, então a posição
+          na árvore não muda onde ele aparece, só a ordem do Tab — e um convite
+          que se antecipa ao conteúdo na navegação por teclado seria a mesma
+          interrupção que ele evita na tela. */}
+      <ConviteInstalar elevado />
     </>
   );
 }

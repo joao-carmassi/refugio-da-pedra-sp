@@ -8,6 +8,7 @@ import type {
 } from 'schema-dts';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import ConviteInstalar from '@/components/mapa-turistico/convite-instalar';
 import { getSiteUrl } from '@/lib/env';
 import { METADATA_APP_MAPA } from '@/lib/pwa-mapa';
 import { CATEGORIAS } from '@/lib/mapa-turistico';
@@ -246,6 +247,9 @@ function MapaTuristicoLayout({ children }: Props): React.ReactNode {
       <Header />
       {children}
       <Footer />
+      {/* Mesmo convite de `/mapa/`: as duas rotas são o mesmo PWA, e é por
+          aqui que chega quem procurou o guia da cidade. */}
+      <ConviteInstalar />
     </>
   );
 }
