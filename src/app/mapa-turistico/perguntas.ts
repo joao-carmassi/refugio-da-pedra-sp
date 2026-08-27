@@ -36,7 +36,7 @@ export const PERGUNTAS: Pergunta[] = [
   {
     pergunta: 'Dá para conhecer São Bento do Sapucaí em um fim de semana?',
     resposta:
-      'Dá, dividindo por trecho — é assim que o mapa está organizado. O Vale do Baú toma um dia inteiro: a portaria do Monumento Natural, a trilha que você escolher e as cachoeiras do Encontro e do Toldi, todas do mesmo lado. O centro histórico se faz a pé em meio período, com as cinco igrejas, a Ladeira dos Pirilampos, as Capelinhas de Mosaico, a Casa da Cultura e as duas praças. Sobra a rota rural, com a Cachoeira do Tobogã, o Belvedere do Serrano e a Pedra da Balança, que rende a segunda manhã.',
+      'Dá, dividindo por trecho — é assim que o mapa está organizado. O Vale do Baú toma um dia inteiro: a portaria do Monumento Natural, a trilha que você escolher e as cachoeiras do Encontro e do Toldi, todas do mesmo lado. O centro histórico se faz a pé em meio período, com as cinco igrejas, as seis praças, a Ladeira dos Pirilampos, as Capelinhas de Mosaico e a Casa da Cultura. Sobra a rota rural, com a Cachoeira do Tobogã, o Belvedere do Serrano e a Pedra da Balança, que rende a segunda manhã.',
   },
   {
     pergunta: 'Preciso pagar para entrar no Complexo da Pedra do Baú?',
@@ -55,7 +55,7 @@ export const PERGUNTAS: Pergunta[] = [
   {
     // Preço fica de fora de propósito: varia por trilha e por tamanho de
     // grupo, e valor de terceiro que o cadastro não confere não entra na
-    // página — a mesma regra que cala sobre a taxa da Cachoeira dos Amores.
+    // página — a mesma regra que cala sobre a taxa das cachoeiras.
     pergunta: 'Onde contratar um guia para as trilhas de São Bento do Sapucaí?',
     resposta:
       'Com os condutores credenciados do município ou com as agências locais, sempre com pelo menos um dia de antecedência — no cume do Baú e na Pedra Ana Chata o guia é obrigatório, na proporção de um monitor a cada seis pessoas. O Centro de Informação ao Turista, que funciona no Portal da Cidade e está marcado no mapa, é o balcão oficial para essa pergunta, e o telefone dele aparece na ficha do ponto. Esta página não publica preço de guia: ele varia por trilha e por tamanho do grupo, e valor de terceiro que não dá para conferir não entra no cadastro.',
@@ -80,13 +80,15 @@ export const PERGUNTAS: Pergunta[] = [
       'No Monumento Natural, não: animais de estimação não entram na unidade de conservação, com uma exceção, que é o trecho até o Mirante do Caramuru, onde fica a rampa de voo livre. Fora dela depende de cada lugar — o Refúgio da Pedra SP, a pousada que mantém este mapa, aceita pet na maior parte das acomodações.',
   },
   {
-    // TODO(proprietário): confirmar a taxa atual da Cachoeira dos Amores, que
-    // é o que se paga para chegar à Cachoeira do Encontro. O roteiro oficial
-    // publica R$ 10 e relatos de 2024 a 2026 falam em R$ 20 a R$ 25 — sem
-    // desempate, a resposta não publica valor nenhum.
+    // TODO(proprietário): confirmar se há cobrança na entrada nova da
+    // Cachoeira do Encontro, pela Estrada da Ana Chata. Relatos de 2024 e 2026
+    // falam em acesso gratuito, mas nenhuma fonte oficial descreve esse acesso
+    // — o portal do município sequer tem página da cachoeira — e a trilha
+    // atravessa terreno particular, onde cobrança aparece e some sem aviso.
+    // Enquanto não houver confirmação, a resposta manda perguntar no local.
     pergunta: 'As cachoeiras cobram entrada?',
     resposta:
-      'A Cachoeira do Tobogã tem acesso gratuito. Para a Cachoeira do Encontro entra-se por dentro da Cachoeira dos Amores, e a taxa cobrada é a dela — confirme o valor no local, porque as fontes públicas divergem.',
+      'A Cachoeira do Tobogã tem acesso gratuito. A Cachoeira do Encontro mudou de entrada: não se passa mais por dentro da Cachoeira dos Amores, e sim pela Estrada da Ana Chata, de onde sai uma trilha que desce por um terreno particular. Pergunte no local se há taxa — nenhuma fonte oficial cobre esse acesso.',
   },
   {
     // TODO(proprietário): confirmar com o Centro de Informação ao Turista se
@@ -104,6 +106,6 @@ export const PERGUNTAS: Pergunta[] = [
   {
     pergunta: 'As distâncias do mapa são medidas a partir de onde?',
     resposta:
-      'De um ponto fixo no pé da serra, o Refúgio da Pedra SP, que é a pousada que mantém este mapa. Medir tudo do mesmo lugar deixa os números comparáveis entre si, e a conta é por estrada, não em linha reta. A Cachoeira do Encontro fica a 3,5 km desse ponto, o centro da cidade a 10 km, a portaria do Complexo da Pedra do Baú a 17,3 km e o cume do Baú a 19 km de carro mais o trecho final a pé.',
+      'De um ponto fixo no pé da serra, o Refúgio da Pedra SP, que é a pousada que mantém este mapa. Medir tudo do mesmo lugar deixa os números comparáveis entre si, e a conta é por estrada, não em linha reta. A Cachoeira do Encontro fica a 2,4 km desse ponto, o centro da cidade a 10 km, a portaria do Complexo da Pedra do Baú a 17,3 km e o cume do Baú a 19 km de carro mais o trecho final a pé.',
   },
 ];
