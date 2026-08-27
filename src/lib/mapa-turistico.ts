@@ -29,10 +29,12 @@ import rotasJson from '@/data/rotas.json';
  *      Antônio, Igreja N. Sra. do Rosário, Praça Presidente João Goulart,
  *      Praça Dr. Braz Reale (o logradouro não está no OSM; o pino é o ponto
  *      médio entre a Biblioteca Municipal e os Correios, que têm a praça como
- *      endereço), Portal da Cidade e Arte no Quilombo (não está no OSM; a
+ *      endereço), Portal da Cidade, Arte no Quilombo (não está no OSM; a
  *      coordenada é a do pino do Google republicado pelo portal de turismo do
- *      Estado, sem cruzamento independente). Remover a marca ao confirmar o
- *      ponto exato. O Ateliê Ditinho Joana saiu da lista porque o proprietário
+ *      Estado, sem cruzamento independente) e Bar SBS Bebidas (também fora do
+ *      OSM; a coordenada é a geocodificação do endereço pelo Tripadvisor, que
+ *      cai na rua e na quadra certas, a 40 m do coreto). Remover a marca ao
+ *      confirmar o ponto exato. O Ateliê Ditinho Joana saiu da lista porque o proprietário
  *      confirmou o pino, mas segue sem logradouro publicado: nenhuma fonte dá
  *      rua e número, e o cadastro traz só o bairro.
  *   2. Dois templos do Centro estão no OpenStreetMap sem nome: um na Av.
@@ -53,10 +55,17 @@ import rotasJson from '@/data/rotas.json';
  *      Segue em branco onde as fontes divergem sem desempate. O do Arte no
  *      Quilombo é o do site do próprio espaço; o portal de turismo do Estado
  *      publica outro (terça a domingo, sem intervalo de almoço), e quem
- *      desempatou foi o proprietário.
+ *      desempatou foi o proprietário. O do Bar SBS Bebidas ficou em branco:
+ *      o Instagram do bar e o Tripadvisor dizem quinta a domingo a partir das
+ *      18h, o portal de turismo diz quarta a domingo a partir das 15h, e não
+ *      há como desempatar sem ligar. A descrição do bar avisa disso.
  *   5. `nota` / `avaliacoes` — só o Refúgio tem, vindo do próprio Google
  *      Business Profile. Preencher os demais só com número real; a estrela
- *      some enquanto não houver.
+ *      some enquanto não houver. O que existe e não entrou: o Sabor com Arte
+ *      publica 4,3 com 511 avaliações no Tripadvisor (e 4,5 numa outra faixa
+ *      do próprio site, que se contradiz), e o Bar SBS Bebidas tem 4,7 no
+ *      Tripadvisor com três avaliações. Nenhum dos dois é Google, e três
+ *      avaliações não são média — pedir os números do Business Profile.
  *   6. Ficaram de fora, por não existirem nas fontes ou por falta de
  *      coordenada utilizável:
  *      - "Parquinho Municipal": nenhum equipamento com esse nome no OSM, na
@@ -84,9 +93,11 @@ import rotasJson from '@/data/rotas.json';
  *      mesmo estacionamento — viraram um pino só. Separá-los também quebrava a
  *      distância: a base da cachoeira encaixa numa estrada desconectada e o
  *      OSRM devolvia 15,7 km para um vizinho de 250 m que dá 6,1 km.
- *      Os parceiros do Refúgio (Baú Ecoturismo, Sabor com Arte,
- *      Villa Santa Maria, OLIQ) saíram do mapa a pedido — as fotos continuam
- *      em `public/assets/`.
+ *      Os parceiros do Refúgio (Baú Ecoturismo, Villa Santa Maria, OLIQ)
+ *      saíram do mapa a pedido — as fotos continuam em `public/assets/`. O
+ *      Sabor com Arte saiu junto e voltou depois, agora como restaurante e
+ *      não como parceiro: as duas fotos antigas seguem em uso pela seção de
+ *      parceiros da pousada, e as cinco do cadastro são novas.
  */
 
 /**

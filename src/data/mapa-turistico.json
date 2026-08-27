@@ -127,6 +127,30 @@
     "endereco": "Rod. Mun. Thomaz Alckmin, Paiol Grande — São Bento do Sapucaí"
   },
   {
+    "id": "sabor-com-arte",
+    "nome": "Restaurante Sabor com Arte",
+    "cat": "restaurantes",
+    "zona": "bau",
+    "lat": -22.675182,
+    "lng": -45.681726,
+    "horario": "Seg a qui, 11h às 17h · sex a dom, 11h às 23h",
+    "resumo": "Truta flambada na mesa e buffet livre no fim de semana, com deck de frente para a Pedra do Baú.",
+    "descricao": "Fica no km 5 da estrada do Paiol Grande, no caminho de volta das trilhas do complexo — dá para deixar o carro aqui, subir e almoçar na descida. São cinco ambientes, e o disputado é o deck externo, com vista direta do paredão e o riacho correndo nos fundos. A truta é a especialidade, em sete preparos; a flambada, feita na mesa com conhaque, sai só à la carte. O buffet livre é aos sábados, domingos e feriados, das 12h às 16h. Não há reserva de mesa: o atendimento é por ordem de chegada, e no fim de semana o deck lota cedo. Aceita pet nas áreas externas e tem estacionamento próprio.",
+    "endereco": "Rodovia Prefeito Benedicto Gomes de Souza, km 5, Paiol Grande — São Bento do Sapucaí",
+    "tel": "(12) 99671-7118",
+    "destaque": true,
+    "fotos": {
+      "pasta": "sabor",
+      "arquivos": [
+        "sabor-3.webp",
+        "sabor-7.webp",
+        "sabor-6.webp",
+        "sabor-5.webp",
+        "sabor-4.webp"
+      ]
+    }
+  },
+  {
     "id": "cachoeira-toboga",
     "nome": "Cachoeira do Tobogã",
     "cat": "turismo",
@@ -256,6 +280,20 @@
     "endereco": "Rua Sargento José Lourenço, 105, Centro — São Bento do Sapucaí",
     "tel": "(12) 3971-1665",
     "site": "https://casadaculturamiguelreale.org.br"
+  },
+  {
+    "id": "sbs-bebidas",
+    "nome": "Bar SBS Bebidas",
+    "cat": "restaurantes",
+    "zona": "centro",
+    "lat": -22.688967,
+    "lng": -45.733128,
+    "aConferir": true,
+    "resumo": "Boteco de balcão de frente para o coreto, com chope gelado, porção e rock no som. Abre à noite, e não todo dia.",
+    "descricao": "Fica na Cândido José da Silva, de frente para o coreto da Praça Adhemar de Barros — é o bar do centro histórico, não adega nem distribuidora, apesar do nome. Serve cerveja, drink e porção; quem avalia fala em chope bem gelado, porção generosa e rock no som. Aceita pet, tem wi-fi e estacionamento. Abre só à noite e não todos os dias: as fontes divergem sobre quais, então ligue antes de descer.",
+    "endereco": "Rua Cândido José da Silva, 278, Centro — São Bento do Sapucaí",
+    "tel": "(12) 99625-5908",
+    "destaque": true
   },
   {
     "id": "praca-bandeira",

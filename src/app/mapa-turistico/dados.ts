@@ -1,3 +1,4 @@
+import { getAlt } from '@/lib/image-alt';
 import {
   CATEGORIAS,
   LOCAIS,
@@ -10,7 +11,7 @@ import {
 /**
  * Números desta página saem do cadastro, nunca da mão de quem escreve.
  *
- * A copy diz "9 lugares de turismo" e "29 pontos no mapa" — se alguém
+ * A copy diz "9 lugares de turismo" e "31 pontos no mapa" — se alguém
  * acrescentar uma cachoeira em `mapa-turistico.json`, o texto tem de
  * acompanhar sozinho. Digitar o número no JSX transformaria cada edição de
  * dado numa página que mente até alguém reparar.
@@ -39,11 +40,11 @@ interface CategoriaDaPagina {
  * envelhece mal e convida à comparação errada — "só 2 cachoeiras?" —, quando o
  * que importa é o que existe em cada eixo. Quem quiser contar abre o mapa.
  *
- * TODO(proprietário): mandar a lista de restaurantes, cafés e experiências
- * guiadas (nome, endereço e horário, quando houver) para o cadastro. São as
- * três categorias que hoje aparecem na página sem um único pino no mapa — a
- * página promete um guia da cidade inteira e por enquanto cobre esses três
- * eixos só pelos guias do blog.
+ * TODO(proprietário): mandar a lista de cafés e experiências guiadas (nome,
+ * endereço e horário, quando houver) para o cadastro. São as duas categorias
+ * que hoje aparecem na página sem um único pino no mapa — a página promete um
+ * guia da cidade inteira e por enquanto cobre esses dois eixos só pelos guias
+ * do blog.
  */
 export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
   [
@@ -73,7 +74,7 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
     {
       id: 'restaurantes',
       texto:
-        'A mesa da serra: truta, azeite prensado na região, vinho de altitude e a cozinha de fogão a lenha das estradas do vale.',
+        'A mesa da serra. No mapa estão o Sabor com Arte, que serve truta em sete preparos e tem deck de frente para a Pedra do Baú, e o Bar SBS Bebidas, o boteco do centro, de frente para o coreto.',
       leitura: {
         href: '/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/',
         texto: 'O guia de gastronomia',
@@ -124,6 +125,13 @@ export interface PontoDaPagina {
   categoriaLabel: string;
   /** Enquadramento da foto que vai ocupar o lugar do espaço reservado. */
   foto: string;
+  /**
+   * A fotografia, quando o lugar já tem uma cadastrada. Presente, o cartão
+   * mostra a foto; ausente, mostra o espaço reservado com o enquadramento
+   * pedido em `foto`. É a primeira do carrossel da ficha do mapa — a mesma
+   * imagem representa o lugar nos dois lugares.
+   */
+  imagem?: { src: string; alt: string };
 }
 
 export interface GrupoDePontos {
@@ -162,6 +170,8 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Encontro das duas quedas da Cachoeira do Encontro, com as piscinas rasas em primeiro plano',
   'cachoeira-toldi':
     'Salto de mais de 70 metros da Cachoeira do Toldi visto do deck de mirante na estrada',
+  'sbs-bebidas':
+    'Fachada do Bar SBS Bebidas à noite, com o coreto da praça em frente',
   'pedra-balanca':
     'Cruz no cume da Pedra da Balança a 1.600 m, com o vale a oeste ao fundo',
   'cachoeira-toboga':
@@ -207,6 +217,9 @@ const ENQUADRAMENTOS: Record<string, string> = {
 };
 
 function montarPonto(local: Local): PontoDaPagina {
+  const capa = local.fotos?.arquivos[0];
+  const src = capa && `/assets/${local.fotos!.pasta}/${capa}`;
+
   return {
     id: local.id,
     nome: local.nome,
@@ -214,6 +227,7 @@ function montarPonto(local: Local): PontoDaPagina {
     categoria: local.cat,
     categoriaLabel: CATEGORIAS[local.cat].label,
     foto: ENQUADRAMENTOS[local.id] ?? `${local.nome}, em São Bento do Sapucaí`,
+    ...(src ? { imagem: { src, alt: getAlt(src, local.nome) } } : {}),
   };
 }
 
@@ -234,9 +248,11 @@ const ORDEM: string[] = [
   'campo-escola',
   'cachoeira-encontro',
   'cachoeira-toldi',
+  'sabor-com-arte',
   'igreja-matriz',
   'ladeira-pirilampos',
   'casa-cultura-miguel-reale',
+  'sbs-bebidas',
   'mirante-cruzeiro',
   'capelinhas-mosaico',
   'igreja-sao-benedito',
@@ -278,7 +294,7 @@ export const GRUPOS_DE_PONTOS: GrupoDePontos[] = (
     {
       id: 'bau',
       texto:
-        'O complexo da Pedra do Baú e as duas cachoeiras do caminho. É o trecho das trilhas, e o que se alcança sem passar pela cidade.',
+        'O complexo da Pedra do Baú, as duas cachoeiras do caminho e o restaurante que fica na volta da trilha. É o trecho das caminhadas, e o que se alcança sem passar pela cidade.',
       leitura: {
         href: '/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/',
         texto: 'As trilhas do complexo, uma a uma',

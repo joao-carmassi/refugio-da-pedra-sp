@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowLeft, ArrowRight, MapPin } from 'lucide-react';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -19,7 +20,7 @@ import Rotulo from './rotulo';
 /**
  * A galeria de lugares — o miolo da página.
  *
- * Substituiu a lista de três trechos por um carrossel: com 29 pontos, o texto
+ * Substituiu a lista de três trechos por um carrossel: com 31 pontos, o texto
  * corrido virava três parágrafos que ninguém lê até o fim, e cada lugar merece
  * a própria fotografia. A fita corre na ordem editorial dos trechos — complexo
  * da Pedra do Baú, centro histórico, lado oeste — e não tem filtro em cima:
@@ -105,7 +106,7 @@ function Pontos(): React.ReactNode {
             há mais coisa adiante. */}
         <div data-reveal className='mt-8 md:mt-12'>
           {/* `skipSnaps` deixa o arrasto passar de mais de um cartão por gesto,
-            em vez de sempre parar no vizinho: com 29 pontos na fita, um
+            em vez de sempre parar no vizinho: com 31 pontos na fita, um
             arrastão longo tem de andar o que a mão andou. */}
           <Carousel
             setApi={setApi}
@@ -140,11 +141,24 @@ function Pontos(): React.ReactNode {
                       concêntricos disputando a mesma atenção — o texto é que
                       recua. */}
                     <article className='flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card'>
-                      <FotoPlaceholder
-                        compacta
-                        legenda={ponto.foto}
-                        className='aspect-3/2 w-full'
-                      />
+                      {ponto.imagem ? (
+                        <div className='relative aspect-3/2 w-full'>
+                          <Image
+                            src={ponto.imagem.src}
+                            alt={ponto.imagem.alt}
+                            fill
+                            sizes='(max-width: 1024px) 20rem, 22rem'
+                            loading='lazy'
+                            className='object-cover'
+                          />
+                        </div>
+                      ) : (
+                        <FotoPlaceholder
+                          compacta
+                          legenda={ponto.foto}
+                          className='aspect-3/2 w-full'
+                        />
+                      )}
 
                       <div className='p-5'>
                         {/* Etiqueta de categoria no desenho da identidade do

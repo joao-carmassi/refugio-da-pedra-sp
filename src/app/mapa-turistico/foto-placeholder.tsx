@@ -31,11 +31,11 @@ interface Props {
 /**
  * Espaço reservado de fotografia.
  *
- * A página foi escrita para ter foto e ainda não tem nenhuma. Em vez de
- * publicá-la sem as imagens — e deixar o layout inteiro para refazer depois —
- * cada foto prevista entra como este bloco, com a proporção final já
- * ocupando o espaço. Trocar por `<Image>` na hora certa é mexer só aqui e no
- * `alt`, sem reflow nem redesenho.
+ * A página foi escrita para ter foto e quase nenhum lugar tem a sua. Em vez
+ * de publicá-la sem as imagens — e deixar o layout inteiro para refazer
+ * depois — cada foto que falta entra como este bloco, com a proporção final já
+ * ocupando o espaço; quem já tem foto cadastrada mostra a foto, e não passa
+ * por aqui (ver `imagem` em `dados.ts`).
  *
  * TODO(proprietário): mandar as fotos. A legenda de cada bloco descreve o
  * enquadramento pedido.
