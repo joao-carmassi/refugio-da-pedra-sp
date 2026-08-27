@@ -24,33 +24,47 @@ import rotasJson from '@/data/rotas.json';
  * depende de quem conhece a região:
  *
  *   1. `aConferir: true` marca coordenada aproximada — a rua certa, não o
- *      imóvel. Está em: Cachoeira do Encontro (nenhuma fonte publica o ponto
- *      da queda; o pino é um nó de cachoeira do OSM ao lado do acesso),
- *      Cachoeira do Tobogã (dois GPS a 140 m um do outro), Belvedere do
- *      Serrano (um GPS só), Capelinhas de Mosaico, Igreja Santo Antônio,
- *      Igreja N. Sra. do Rosário, Praça Presidente João Goulart e Portal da
- *      Cidade. Remover a marca ao confirmar o ponto exato.
+ *      imóvel. Está em: Cachoeira do Tobogã (dois GPS a 140 m um do outro),
+ *      Belvedere do Serrano (um GPS só), Capelinhas de Mosaico, Igreja Santo
+ *      Antônio, Igreja N. Sra. do Rosário, Praça Presidente João Goulart,
+ *      Praça Dr. Braz Reale (o logradouro não está no OSM; o pino é o ponto
+ *      médio entre a Biblioteca Municipal e os Correios, que têm a praça como
+ *      endereço), Portal da Cidade e Arte no Quilombo (não está no OSM; a
+ *      coordenada é a do pino do Google republicado pelo portal de turismo do
+ *      Estado, sem cruzamento independente). Remover a marca ao confirmar o
+ *      ponto exato. O Ateliê Ditinho Joana saiu da lista porque o proprietário
+ *      confirmou o pino, mas segue sem logradouro publicado: nenhuma fonte dá
+ *      rua e número, e o cadastro traz só o bairro.
  *   2. Dois templos do Centro estão no OpenStreetMap sem nome: um na Av.
  *      Conselheiro Rodrigues Alves e outro junto à Praça General Marcondes
  *      Salgado. Foram atribuídos a Santo Antônio e ao Rosário por bater com o
  *      logradouro publicado — confirmar qual é qual antes de tirar o
  *      `aConferir`. Há um segundo candidato para Santo Antônio, 570 m ao sul,
  *      na Praça Santo Antônio.
- *   3. Taxa da Cachoeira do Encontro: como se entra por dentro da Cachoeira
- *      dos Amores, paga-se a taxa dela. O roteiro oficial publica R$ 10,
- *      relatos de 2024–2026 falam em R$ 20 a R$ 25 — confirmar o valor atual.
+ *   3. Taxa da Cachoeira do Encontro. A entrada mudou: não se passa mais por
+ *      dentro da Cachoeira dos Amores, e sim pela Estrada da Ana Chata, onde
+ *      o pino agora fica. Dois relatos (2024 e 2026) dizem que o acesso novo
+ *      é gratuito, nenhuma fonte oficial o descreve — o portal do município
+ *      não tem sequer página da cachoeira — e a trilha atravessa terreno
+ *      particular, onde cobrança aparece e some sem aviso. Confirmar se há
+ *      taxa hoje; enquanto não houver resposta, o cadastro não cita valor.
  *   4. `horario` — só está preenchido onde há horário publicado por fonte
  *      oficial. Sem esse campo o cartão não exibe funcionamento, de propósito.
- *      Segue em branco onde as fontes divergem sem desempate.
+ *      Segue em branco onde as fontes divergem sem desempate. O do Arte no
+ *      Quilombo é o do site do próprio espaço; o portal de turismo do Estado
+ *      publica outro (terça a domingo, sem intervalo de almoço), e quem
+ *      desempatou foi o proprietário.
  *   5. `nota` / `avaliacoes` — só o Refúgio tem, vindo do próprio Google
  *      Business Profile. Preencher os demais só com número real; a estrela
  *      some enquanto não houver.
  *   6. Ficaram de fora, por não existirem nas fontes ou por falta de
  *      coordenada utilizável:
  *      - "Parquinho Municipal": nenhum equipamento com esse nome no OSM, na
- *        Prefeitura ou no portal de turismo. Provável apelido local — dizer de
- *        qual praça se trata. O candidato mais provável é a Praça Adhemar de
- *        Barros, conhecida como Praça do Coreto.
+ *        Prefeitura ou no portal de turismo, e não há um único
+ *        `leisure=playground` mapeado no centro. A Praça Adhemar de Barros era
+ *        o candidato mais provável e foi descartada pelo proprietário: ela tem
+ *        o coreto, não tem brinquedo. Sem outra pista, o apelido segue sem
+ *        dono — dizer de que praça se trata.
  *      - Cachoeira do Monjolinho: o curso d'água existe, mas não consta de
  *        nenhum material oficial e as duas referências públicas apontam áreas
  *        distintas do município. Provavelmente é propriedade particular sem

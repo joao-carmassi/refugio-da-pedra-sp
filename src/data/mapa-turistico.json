@@ -6,15 +6,15 @@
     "zona": "bau",
     "lat": -22.678125,
     "lng": -45.661183,
-    "refugio": true,
-    "destaque": true,
     "horario": "Check-in 14h · check-out 12h",
-    "nota": "4,7",
-    "avaliacoes": 29,
     "resumo": "Ponto de partida deste mapa: cinco chalés privativos em meio à Mata Atlântica, no pé do Complexo da Pedra do Baú.",
     "descricao": "Pousada sustentável em Paiol Grande, com chalés, cabana e domo geodésico voltados para o mar de montanhas da Mantiqueira. Todas as distâncias deste mapa são medidas a partir daqui.",
     "endereco": "Rua das Araucárias, Paiol Grande — São Bento do Sapucaí",
     "tel": "(12) 99614-8154",
+    "nota": "4,7",
+    "avaliacoes": 29,
+    "destaque": true,
+    "refugio": true,
     "fotos": {
       "pasta": "refugio/geral",
       "arquivos": [
@@ -26,14 +26,14 @@
   },
   {
     "id": "mona-pedra-bau",
-    "nome": "Monumento Natural Estadual da Pedra do Baú",
+    "nome": "Portaria do Monumento Natural da Pedra do Baú",
     "cat": "turismo",
     "zona": "bau",
     "lat": -22.679277,
     "lng": -45.648816,
     "horario": "Todos os dias, 9h às 18h",
-    "resumo": "A portaria pública do complexo — é por aqui que se paga a taxa e começa tudo.",
-    "descricao": "Unidade de conservação de 3.154 hectares criada pelo Decreto Estadual nº 56.613/2010, em gestão compartilhada entre a Fundação Florestal e a Prefeitura. A taxa de conservação ambiental é de R$ 18 por pessoa, em dinheiro, com isenção para maiores de 60 anos, crianças até 12 e moradores do município. Entrada até as 18h e permanência até 18h30; a subida ao cume do Baú só pode começar até as 14h. Animais de estimação não entram — a exceção é o trecho até o Mirante do Caramuru.",
+    "resumo": "A entrada pública do complexo: é aqui que se paga a taxa e começam o Bauzinho, a Ana Chata e o cume do Baú.",
+    "descricao": "O pino marca a portaria, e não a unidade: o Monumento Natural são 3.154 hectares criados pelo Decreto Estadual nº 56.613/2010, em gestão compartilhada entre a Fundação Florestal e a Prefeitura. A taxa de conservação ambiental é de R$ 18 por pessoa, em dinheiro, com isenção para maiores de 60 anos, crianças até 12 e moradores do município. Entrada até as 18h e permanência até 18h30; a subida ao cume do Baú só pode começar até as 14h. Animais de estimação não entram — a exceção é o trecho até o Mirante do Caramuru.",
     "endereco": "Estr. Mun. do Baúzinho, s/n, Paiol Grande — São Bento do Sapucaí",
     "tel": "(12) 3971-6110"
   },
@@ -109,12 +109,11 @@
     "nome": "Cachoeira do Encontro",
     "cat": "turismo",
     "zona": "bau",
-    "lat": -22.673107,
-    "lng": -45.674616,
-    "aConferir": true,
+    "lat": -22.668461,
+    "lng": -45.668767,
     "resumo": "Duas quedas que se encontram, com piscinas rasas — a melhor da região para ir com criança.",
-    "descricao": "Uma das quedas desce da Serra do Coimbra, no rumo da Cachoeira do Toldi, e a outra vem da Pedra do Baú. O acesso é por dentro da Cachoeira dos Amores: são cerca de 400 m de trilha fácil, com uma descida no fim, e a entrada não é sinalizada. O pino é aproximado — nenhuma fonte pública publica a coordenada exata da queda.",
-    "endereco": "Estrada do Paiol Grande, km 5, Paiol Grande — São Bento do Sapucaí"
+    "descricao": "Uma das quedas desce da Serra do Coimbra, no rumo da Cachoeira do Toldi, e a outra vem da Pedra do Baú. O pino é a entrada, e não a queda: estacione no recuo logo no começo da Estrada da Ana Chata, passe o mata-burro à direita e siga a pé por dentro de um terreno particular. São cerca de 700 metros de trilha fácil, sem sinalização, com uma descida de raiz e tronco no fim. Não se entra mais por dentro da Cachoeira dos Amores.",
+    "endereco": "Estrada da Ana Chata, no entroncamento com a Rodovia Prefeito Benedicto Gomes de Souza, Paiol Grande — São Bento do Sapucaí"
   },
   {
     "id": "cachoeira-toldi",
@@ -281,6 +280,51 @@
     "endereco": "Rua Presidente Castelo Branco, s/n, Centro — São Bento do Sapucaí"
   },
   {
+    "id": "praca-braz-reale",
+    "nome": "Praça Dr. Braz Reale",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.688776,
+    "lng": -45.731018,
+    "aConferir": true,
+    "resumo": "A praça da Biblioteca Municipal e dos Correios, 22 metros entre a XV de Novembro e a Gama Rodrigues.",
+    "descricao": "Denominada pela Lei Municipal nº 1.887, de 5 de junho de 2017, em homenagem a Biaggio Reale, médico formado em Nápoles e nascido em San Severino Lucano, na Itália, em 1865. Foi o primeiro a atender a população da cidade e fundou a Santa Casa de Misericórdia em 1915, que fica a dois quarteirões daqui. O pino é aproximado: o logradouro não está mapeado, e a coordenada saiu dos dois equipamentos que têm a praça como endereço.",
+    "endereco": "Praça Dr. Braz Reale, s/n, Centro — São Bento do Sapucaí"
+  },
+  {
+    "id": "praca-monsenhor-pedro",
+    "nome": "Praça Monsenhor Pedro do Vale Monteiro",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.688206,
+    "lng": -45.732474,
+    "resumo": "Praça central em frente ao Banco do Brasil, ao lado da escola Coronel Ribeiro da Luz.",
+    "descricao": "Chamava-se Praça Plínio Salgado até a Lei Municipal nº 1.972, de 18 de junho de 2018, que a rebatizou em homenagem ao Monsenhor Pedro do Valle Monteiro. Ele chegou como pároco em 1929 e ficou até morrer, em 1974; virou cidadão honorário em 1968 e é lembrado na cidade como o Patriarca da Mantiqueira. Seus restos estão na capelinha batismal da Igreja Matriz.",
+    "endereco": "Avenida Conselheiro Rodrigues Alves, s/n, Centro — São Bento do Sapucaí"
+  },
+  {
+    "id": "praca-adhemar-barros",
+    "nome": "Praça Dr. Adhemar Pereira de Barros",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.689223,
+    "lng": -45.733369,
+    "resumo": "A Praça do Coreto, como todo mundo chama: cem metros de árvore, banco à sombra e o coreto no meio.",
+    "descricao": "Vai da Rua Cândido José da Silva à Avenida Doutor Rubião Júnior, e teve a denominação oficializada pela Lei Municipal nº 1.887, de 5 de junho de 2017 — antes disso era a Praça da República. A Igreja Nossa Senhora dos Remédios, de 1970, fecha um dos lados. O arquivo da Câmara não guarda biografia do homenageado.",
+    "endereco": "Avenida Doutor Rubião Júnior, s/n, Centro — São Bento do Sapucaí"
+  },
+  {
+    "id": "praca-sao-benedito",
+    "nome": "Praça São Benedito",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.685802,
+    "lng": -45.732982,
+    "resumo": "O largo em frente à Igreja São Benedito, a cem metros da rodoviária. No papel, Praça dos Folheiros.",
+    "descricao": "A Lei Municipal nº 1.970, de 18 de junho de 2018, batizou o largo de Praça dos Folheiros, mas a cidade continua chamando pela igreja que ele tem em frente. A homenagem é à família Folheiro, em especial a Joaquim Antonio da Silva, que chegou em 1919 e montou a funilaria que deu apelido ao ofício e ao sobrenome; há hoje mais de duzentos descendentes dele morando em São Bento. É a praça de quem desembarca: a rodoviária municipal fica a pouco mais de cem metros.",
+    "endereco": "Rua Major Monteiro de Carvalho, s/n, Centro — São Bento do Sapucaí"
+  },
+  {
     "id": "portal-cidade",
     "nome": "Portal da Cidade",
     "cat": "turismo",
@@ -292,5 +336,34 @@
     "descricao": "Uma estrutura que cobre a via na chegada pela SP-042, em tons de marrom e janelas envidraçadas azuis que lembram uma casa de fazenda. Dentro funciona o Centro de Informação ao Turista, com material sobre os atrativos do município e estacionamento por perto.",
     "endereco": "Av. Ver. José Galdino Barbosa, s/n, Jardim dos Cisnes — São Bento do Sapucaí",
     "tel": "(12) 3971-2453"
+  },
+  {
+    "id": "arte-no-quilombo",
+    "nome": "Arte no Quilombo",
+    "cat": "compras",
+    "zona": "vale",
+    "lat": -22.672444,
+    "lng": -45.716141,
+    "aConferir": true,
+    "horario": "Seg a sex, 10h às 12h e 13h às 18h · sáb e dom, 10h às 18h",
+    "resumo": "Mais de 80 artesãos do bairro do Quilombo trançando palha de bananeira e de milho, com balcão de venda e oficina.",
+    "descricao": "Aberto em janeiro de 2004 por incentivo do escultor Ditinho Joana, cujo ateliê fica a 70 metros daqui, e formalizado como associação de moradores e artesãos em 2009. A matéria-prima é a palha — de bananeira e de milho —, trabalhada em cesto, banco, tapete, esteira e peça de decoração; bambu, madeira, barro e tecido completam. O artesão também ensina o trançado a quem quiser sair com a própria peça pronta, com reserva antecipada. O bairro é uma das comunidades quilombolas remanescentes da região, e a igreja da Imaculada Conceição, de adobe, é de 1805.",
+    "endereco": "Estrada Vereador Benedito Cândido Ribeiro, km 2,5, Quilombo — São Bento do Sapucaí",
+    "tel": "(12) 3971-2669",
+    "site": "https://artenoquilombo.com.br"
+  },
+  {
+    "id": "atelie-ditinho-joana",
+    "nome": "Ateliê Ditinho Joana",
+    "cat": "compras",
+    "zona": "vale",
+    "lat": -22.672568,
+    "lng": -45.715465,
+    "horario": "Todos os dias, 8h às 17h",
+    "resumo": "O ateliê do escultor que achou uma raiz com forma de bicho em 1974 e nunca mais parou. Vende no próprio balcão.",
+    "descricao": "Benedito da Silva Santos — Ditinho Joana, apelido herdado da mãe, Maria Joana — nasceu no Quilombo em 1945 e era lavrador quando começou a esculpir. A primeira peça foi um padre e um índio, feitos à luz de lamparina. Em 1979 expôs em São Paulo e foi avaliado por Pietro Maria Bardi, do MASP. O tema é a comunidade rural, ampliado depois para profissões, santos e objetos do dia a dia. Hoje trabalha com os filhos Alexandre, Adriângela e Saulo, e as esculturas, de miniatura a peça de chão, saem daqui mesmo.",
+    "endereco": "Bairro do Quilombo — São Bento do Sapucaí",
+    "tel": "(12) 3971-2579",
+    "site": "https://www.atelieditinhojoana.com.br"
   }
 ]

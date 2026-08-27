@@ -10,7 +10,7 @@ import {
 /**
  * Números desta página saem do cadastro, nunca da mão de quem escreve.
  *
- * A copy diz "9 lugares de turismo" e "23 pontos no mapa" — se alguém
+ * A copy diz "9 lugares de turismo" e "29 pontos no mapa" — se alguém
  * acrescentar uma cachoeira em `mapa-turistico.json`, o texto tem de
  * acompanhar sozinho. Digitar o número no JSX transformaria cada edição de
  * dado numa página que mente até alguém reparar.
@@ -39,18 +39,18 @@ interface CategoriaDaPagina {
  * envelhece mal e convida à comparação errada — "só 2 cachoeiras?" —, quando o
  * que importa é o que existe em cada eixo. Quem quiser contar abre o mapa.
  *
- * TODO(proprietário): mandar a lista de restaurantes, cafés, lojas de
- * artesanato e experiências guiadas (nome, endereço e horário, quando houver)
- * para o cadastro. São as quatro categorias que hoje aparecem na página sem um
- * único pino no mapa — a página promete um guia da cidade inteira e por
- * enquanto cobre esses quatro eixos só pelos guias do blog.
+ * TODO(proprietário): mandar a lista de restaurantes, cafés e experiências
+ * guiadas (nome, endereço e horário, quando houver) para o cadastro. São as
+ * três categorias que hoje aparecem na página sem um único pino no mapa — a
+ * página promete um guia da cidade inteira e por enquanto cobre esses três
+ * eixos só pelos guias do blog.
  */
 export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
   [
     {
       id: 'turismo',
       texto:
-        'Cachoeiras, mirantes e praças. Entram aqui a portaria do Monumento Natural Estadual da Pedra do Baú, a Cachoeira do Toldi, com salto de mais de 70 metros, a Cachoeira do Encontro, o Mirante do Cruzeiro e o Portal da Cidade, onde funciona o Centro de Informação ao Turista.',
+        'Cachoeiras, mirantes e praças. Entram aqui a portaria do Monumento Natural da Pedra do Baú, a Cachoeira do Toldi, com salto de mais de 70 metros, a Cachoeira do Encontro, o Mirante do Cruzeiro, o Portal da Cidade, onde funciona o Centro de Informação ao Turista, e as seis praças do centro, do coreto ao largo da rodoviária.',
     },
     {
       id: 'aventura',
@@ -87,7 +87,7 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
     {
       id: 'compras',
       texto:
-        'O que São Bento faz à mão: escultura em madeira, tear, cerâmica e mosaico, dos ateliês do centro às associações de artesãos do município.',
+        'O que São Bento faz à mão. No mapa estão os dois do bairro do Quilombo: o Arte no Quilombo, associação com mais de oitenta artesãos trançando palha de bananeira e de milho, e o Ateliê Ditinho Joana, que esculpe madeira desde 1974.',
       leitura: {
         href: '/blog/artesanato-em-sao-bento-do-sapucai-guia-completo/',
         texto: 'O guia de artesanato',
@@ -190,6 +190,18 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Praça da Bandeira arborizada, com os bancos e o caminho de pedestres',
   'praca-joao-goulart':
     'Praça Presidente João Goulart na subida do Mirante do Cruzeiro',
+  'praca-adhemar-barros':
+    'Coreto da Praça Dr. Adhemar Pereira de Barros ao centro, com as árvores e os bancos à sombra em volta',
+  'praca-monsenhor-pedro':
+    'Praça Monsenhor Pedro do Vale Monteiro vista da Avenida Conselheiro Rodrigues Alves',
+  'praca-braz-reale':
+    'Praça Dr. Braz Reale com a fachada da Biblioteca Municipal ao fundo',
+  'praca-sao-benedito':
+    'Praça São Benedito com a igreja de frente para o largo e a rodoviária ao lado',
+  'arte-no-quilombo':
+    'Balcão do Arte no Quilombo com as peças de palha de bananeira e de milho expostas',
+  'atelie-ditinho-joana':
+    'Ditinho Joana esculpindo no ateliê, com as peças de madeira prontas em volta',
   'portal-cidade':
     'Portal da Cidade de São Bento do Sapucaí, com o Centro de Informação ao Turista aberto',
 };
@@ -232,8 +244,14 @@ const ORDEM: string[] = [
   'igreja-remedios',
   'igreja-santo-antonio',
   'portal-cidade',
+  'praca-adhemar-barros',
+  'praca-monsenhor-pedro',
+  'praca-braz-reale',
+  'praca-sao-benedito',
   'praca-bandeira',
   'praca-joao-goulart',
+  'arte-no-quilombo',
+  'atelie-ditinho-joana',
   'belvedere-serrano',
   'cachoeira-toboga',
   'pedra-balanca',
@@ -269,7 +287,7 @@ export const GRUPOS_DE_PONTOS: GrupoDePontos[] = (
     {
       id: 'centro',
       texto:
-        'Cabe numa tarde a pé: as igrejas, o casarão da Casa da Cultura, a escadaria de mosaico e o mirante que se alcança caminhando.',
+        'Cabe numa tarde a pé: as igrejas, as seis praças, o casarão da Casa da Cultura, a escadaria de mosaico e o mirante que se alcança caminhando.',
       leitura: {
         href: '/blog/igreja-matriz-de-sao-bento-do-sapucai-historia-arquitetura-e-visitacao/',
         texto: 'A história da Igreja Matriz',
@@ -278,7 +296,7 @@ export const GRUPOS_DE_PONTOS: GrupoDePontos[] = (
     {
       id: 'vale',
       texto:
-        'O lado oeste, no rumo do Serrano e da divisa com Minas. Estrada de terra na maior parte do caminho — vá de carro preparado e evite dia de chuva forte.',
+        'A rota das estradas rurais, e ela vai para dois lados. A oeste, no rumo do Serrano e da divisa com Minas, é terra na maior parte do caminho — vá de carro preparado e evite dia de chuva forte. Ao norte, logo depois da cidade, fica o bairro do Quilombo, com o artesanato de palha e o ateliê de escultura.',
     },
   ] satisfies Omit<GrupoDePontos, 'label' | 'pontos'>[]
 ).map((grupo) => ({

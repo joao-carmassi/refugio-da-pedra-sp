@@ -19,7 +19,7 @@ import Rotulo from './rotulo';
 /**
  * A galeria de lugares — o miolo da página.
  *
- * Substituiu a lista de três trechos por um carrossel: com 23 pontos, o texto
+ * Substituiu a lista de três trechos por um carrossel: com 29 pontos, o texto
  * corrido virava três parágrafos que ninguém lê até o fim, e cada lugar merece
  * a própria fotografia. A fita corre na ordem editorial dos trechos — complexo
  * da Pedra do Baú, centro histórico, lado oeste — e não tem filtro em cima:
@@ -105,7 +105,7 @@ function Pontos(): React.ReactNode {
             há mais coisa adiante. */}
         <div data-reveal className='mt-8 md:mt-12'>
           {/* `skipSnaps` deixa o arrasto passar de mais de um cartão por gesto,
-            em vez de sempre parar no vizinho: com 23 pontos na fita, um
+            em vez de sempre parar no vizinho: com 29 pontos na fita, um
             arrastão longo tem de andar o que a mão andou. */}
           <Carousel
             setApi={setApi}
