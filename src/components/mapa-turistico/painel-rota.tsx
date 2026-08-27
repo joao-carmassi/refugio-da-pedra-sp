@@ -6,7 +6,7 @@ import {
   REFUGIO,
   formatarDistancia,
   formatarDuracao,
-  getDistancia,
+  getChegada,
   getRota,
   getRotaUrl,
   type Local,
@@ -33,11 +33,16 @@ function PainelRota({ local, onVoltar, className }: Props) {
   const [copiado, setCopiado] = useState(false);
   const url = getRotaUrl(local);
   const rota = getRota(local);
+  const chegada = getChegada(local);
 
   async function compartilhar() {
     const dados = {
       title: `Como chegar em ${local.nome}`,
-      text: `${local.nome} — ${getDistancia(local)} do ${REFUGIO.nome}.`,
+      // O trecho a pé vai junto: quem recebe o link recebe a rota até a
+      // parada, e sem esta frase acharia que ela termina no lugar.
+      text:
+        `${local.nome} — ${chegada.carro} do ${REFUGIO.nome}.` +
+        (chegada.aPe ? ` ${chegada.aPe}` : ''),
       url,
     };
 
@@ -137,7 +142,7 @@ function PainelRota({ local, onVoltar, className }: Props) {
               style={{ color: 'var(--map-green)' }}
               className='font-display text-3xl leading-none font-semibold'
             >
-              {rota ? formatarDistancia(rota.metros) : getDistancia(local)}
+              {rota ? formatarDistancia(rota.metros) : chegada.carro}
             </span>
             {rota && (
               <span
@@ -157,16 +162,17 @@ function PainelRota({ local, onVoltar, className }: Props) {
             condição do piso e a época do ano.
           </p>
 
-          {/* Cume e cachoeira não têm estrada até a porta. Dizer só "18,6 km de
-              carro" mandaria a pessoa procurar um estacionamento que não
-              existe — o número do trecho a pé é o que evita isso. */}
-          {rota && rota.desvio > 250 && (
+          {/* Cume e cachoeira não têm estrada até a porta. O que falta a pé é
+              declarado no cadastro (`Local.acesso`), e não deduzido do desvio
+              da rota: o desvio errava dos dois lados — a Ana Chata encaixava a
+              57 m de uma estrada que não é a dela, com 3,8 km de trilha pela
+              frente. */}
+          {chegada.aPe && (
             <p
               style={{ color: 'var(--map-ink)' }}
               className='mt-2 text-[13px] font-medium'
             >
-              A estrada chega a {formatarDistancia(rota.desvio)} do ponto: o
-              final do caminho é a pé.
+              {chegada.aPe}
             </p>
           )}
         </div>

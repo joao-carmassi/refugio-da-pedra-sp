@@ -89,7 +89,8 @@ function Hero(): React.ReactNode {
           planejando a viagem: as trilhas do Complexo da Pedra do Baú, as
           cachoeiras do vale, as igrejas e os mirantes do centro histórico. Cada
           ponto traz endereço, horário quando existe horário publicado e a rota
-          de carro medida por estrada de verdade.
+          de carro medida por estrada de verdade — e, onde o carro não chega,
+          o que ainda falta caminhar.
         </p>
 
         <div

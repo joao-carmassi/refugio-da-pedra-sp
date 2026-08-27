@@ -98,6 +98,24 @@ import rotasJson from '@/data/rotas.json';
  *      Sabor com Arte saiu junto e voltou depois, agora como restaurante e
  *      não como parceiro: as duas fotos antigas seguem em uso pela seção de
  *      parceiros da pousada, e as cinco do cadastro são novas.
+ *   8. Onde se deixa o carro para subir a Pedra da Balança. O `acesso` dela é
+ *      a única coordenada avulsa do cadastro, e essa coordenada é onde o OSRM
+ *      encaixou: o último lugar em que o OpenStreetMap conhece uma via, no fim
+ *      da estrada de terra do Bairro dos Serranos. A descrição fala em 1 km de
+ *      trilha e a rota parava a 390 m do cume — alguma coisa dessa conta sobra,
+ *      e o mais provável é que os 19,2 km já entrem uns metros de trilha. A
+ *      ficha não mente (diz que o carro para e que há caminhada), mas confirmar
+ *      o ponto exato tiraria a dúvida.
+ *   9. As duas entradas do Complexo do Baú. O cadastro passou a dizer que o
+ *      cume do Baú, a Ana Chata e o Campo Escola entram pelo estacionamento
+ *      do Chico Bento — 1,9 km do Refúgio, trilha mais longa —, e que o
+ *      Bauzinho e a rampa de voo livre entram pela portaria do Monumento
+ *      Natural — 17,3 km, trilha mais curta. É o que o proprietário descreve
+ *      como o costume da casa. Duas coisas seguem em aberto: quanto custa o
+ *      estacionamento do Chico Bento (as fontes públicas divergem entre
+ *      R$ 20 e R$ 30 por carro, e por isso o cadastro não cita valor) e se
+ *      piloto de parapente com equipamento nas costas pode subir de carro os
+ *      400 m até a rampa, que o visitante comum faz a pé.
  */
 
 /**
@@ -145,6 +163,55 @@ export const ZONAS = {
 
 export type ZonaId = keyof typeof ZONAS;
 
+/**
+ * Onde o carro para e o que sobra depois disso.
+ *
+ * Duas informações separadas de propósito, porque elas não andam sempre
+ * juntas: a Pedra do Baú tem parada declarada — a portaria — e caminhada; a
+ * Cachoeira do Encontro tem só caminhada, porque o pino já é o recuo onde se
+ * estaciona e ainda assim são 700 m de trilha até a queda.
+ */
+export interface Acesso {
+  /**
+   * Id do local do cadastro onde o carro para, quando essa parada já é um
+   * ponto do mapa. É o caso do Complexo do Baú, que tem duas entradas, as
+   * duas com pino próprio: a portaria do Monumento Natural, com taxa e
+   * horário, e o estacionamento do Chico Bento, particular e sem estrutura.
+   * Guardar o id, e não a coordenada, faz com que corrigir uma entrada
+   * corrija de uma vez todos os pontos que entram por ela.
+   */
+  ponto?: string;
+  /**
+   * Coordenada avulsa da parada, quando ela não é local nenhum e não merece
+   * virar um: a Pedra da Balança acaba no fim de uma estrada de terra que não
+   * é atrativo, não tem horário e não teria o que dizer numa ficha. Vai com
+   * `ponto` ou com `lat`/`lng` — nunca com os dois.
+   */
+  lat?: number;
+  lng?: number;
+  /**
+   * Como a frase chama a parada, em minúscula e com artigo: é o que entra em
+   * "O carro vai até ___". Sem isso cai no `nome` do local apontado por
+   * `ponto`, que é um título e nem sempre cabe na frase — "a portaria do
+   * Monumento Natural" lê melhor que "Portaria do Monumento Natural da Pedra
+   * do Baú".
+   */
+  nome?: string;
+  /**
+   * O que sobra depois que o carro para, escrito à mão por quem já subiu.
+   *
+   * É prosa, e não um par de números, porque a realidade não é um par de
+   * números: a Ana Chata são 3,8 km ida e volta pela portaria ou 5,5 km pela
+   * entrada do Chico Bento, em 1 a 2 horas, com via ferrata no fim. Nenhum
+   * campo `metrosAPe` diz isso, e o que ele dissesse seria uma segunda
+   * mentira no lugar da primeira.
+   *
+   * Único campo obrigatório: sem coordenada de parada, ele é o `acesso`
+   * inteiro.
+   */
+  aPe: string;
+}
+
 export interface Local {
   id: string;
   nome: string;
@@ -162,6 +229,22 @@ export interface Local {
   resumo: string;
   descricao?: string;
   endereco: string;
+  /**
+   * Onde o carro para, quando ele não para no ponto — e o que falta a pé.
+   *
+   * Só existe onde a ficha mentiria sem ele. O pino continua no cume: a
+   * atração está lá, e é ela que o mapa está mostrando. Quem muda de lugar é
+   * o número — a rota passa a ser medida até a parada, e o botão "Como
+   * chegar" manda o Google Maps para a parada, porque mandar um carro para o
+   * cume da Pedra do Baú é mandá-lo para onde não há estrada.
+   *
+   * Não sai do `desvio` da rota porque o `desvio` erra dos dois lados: a Ana
+   * Chata encaixa a 57 m de uma estrada que não é a dela e tem 3,8 km de
+   * trilha; a Pedra do Baú encaixa a 686 m que não são caminhada nenhuma, são
+   * o pedaço de trilha carroçável que o OSRM aceitou percorrer. Quem sabe
+   * onde se estaciona é quem edita o cadastro.
+   */
+  acesso?: Acesso;
   tel?: string;
   site?: string;
   /** Nota e nº de avaliações do Google, quando conferidos. */
@@ -213,13 +296,57 @@ export function getLocal(id: string): Local | undefined {
   return LOCAIS.find((l) => l.id === id);
 }
 
+/**
+ * Até onde o carro vai, de verdade.
+ *
+ * Devolve sempre um ponto: sem parada declarada, a parada é o próprio lugar.
+ * `nome` só vem preenchido quando a parada é outra coisa — é ele que a ficha
+ * usa para dizer onde o carro morre, e é a ausência dele que faz a ficha
+ * calar sobre isso.
+ *
+ * É esta função que decide para onde vai a rota gravada, para onde aponta o
+ * botão "Como chegar" e o que a ficha promete. Um `ponto` que não resolve
+ * cairia aqui de volta no próprio lugar e devolveria em silêncio o número
+ * errado — por isso quem valida o cadastro é `gerar-rotas.mjs`, antes de
+ * qualquer requisição, e não este `if`.
+ */
+export function getParada(local: Local): {
+  lat: number;
+  lng: number;
+  nome: string | null;
+} {
+  const acesso = local.acesso;
+
+  if (acesso?.ponto) {
+    const parada = getLocal(acesso.ponto);
+
+    if (parada) {
+      return {
+        lat: parada.lat,
+        lng: parada.lng,
+        nome: acesso.nome ?? parada.nome,
+      };
+    }
+  }
+
+  if (acesso?.lat !== undefined && acesso.lng !== undefined) {
+    return { lat: acesso.lat, lng: acesso.lng, nome: acesso.nome ?? null };
+  }
+
+  return { lat: local.lat, lng: local.lng, nome: null };
+}
+
 export interface Rota {
   /** Estrada percorrida, em metros, do Refúgio até o ponto. */
   metros: number;
   segundos: number;
   /**
-   * Quanto a estrada mais próxima parou longe do ponto cadastrado. Grande em
-   * cume e cachoeira, que se alcança a pé: é o trecho que o carro não faz.
+   * Quanto a estrada mais próxima parou longe do ponto para onde a rota foi
+   * pedida. Depois que os cumes ganharam `acesso`, esse ponto é a parada de
+   * carro, e o número tem de ser pequeno em todo lugar: quando ele cresce, é
+   * o cadastro que está errado — falta `acesso`, ou o `acesso` aponta para
+   * onde não passa carro. Não é mais medida de caminhada; quem diz o que
+   * falta a pé é `Acesso.aPe`, escrito à mão.
    */
   desvio: number;
   /** Traçado da rota, em pares [lng, lat]. */
@@ -252,17 +379,24 @@ export function getRota(local: Local): Rota | null {
  * ainda não tem rota gravada — cadastrado depois da última geração, ou fora do
  * alcance do roteamento. Um número aproximado é melhor do que espaço em branco,
  * e o rótulo diz que é linha reta para não passar por quilometragem de estrada.
+ *
+ * Mede até a parada de carro, e não até o pino, pela mesma razão que a rota:
+ * a reserva tem de reservar a mesma coisa. Sem isso, o lugar que perdesse a
+ * rota trocaria "17,3 km de carro até a portaria" por "1,0 km em linha reta"
+ * — que é a distância da varanda ao cume do Bauzinho, e não um caminho que
+ * exista.
  */
 export function getDistanciaKm(local: Local): number {
+  const parada = getParada(local);
   const R = 6371;
   const rad = (graus: number) => (graus * Math.PI) / 180;
 
-  const dLat = rad(local.lat - REFUGIO.lat);
-  const dLng = rad(local.lng - REFUGIO.lng);
+  const dLat = rad(parada.lat - REFUGIO.lat);
+  const dLng = rad(parada.lng - REFUGIO.lng);
   const a =
     Math.sin(dLat / 2) ** 2 +
     Math.cos(rad(REFUGIO.lat)) *
-      Math.cos(rad(local.lat)) *
+      Math.cos(rad(parada.lat)) *
       Math.sin(dLng / 2) ** 2;
 
   return 2 * R * Math.asin(Math.sqrt(a));
@@ -289,12 +423,15 @@ export function formatarDuracao(segundos: number): string {
 }
 
 /**
- * A linha de distância que aparece em cartão, lista e busca.
+ * O trecho de carro, e só ele: estrada e tempo do Refúgio até onde o carro
+ * para.
  *
- * Mostra estrada e tempo de carro — é a resposta que o hóspede procura ao
- * escolher o que fazer no dia. A linha reta enganava justamente onde mais
- * importa: a Pedra do Baú fica a 1,2 km da varanda e a 18,6 km de carro,
- * porque a estrada contorna o maciço.
+ * A linha reta enganava justamente onde mais importa — a portaria do
+ * Monumento Natural fica a 1,3 km da varanda e a 17,3 km de estrada, porque
+ * a estrada contorna o maciço inteiro para chegar até ela.
+ *
+ * Onde o carro não para no ponto, esta função não é a resposta inteira: quem
+ * monta as duas linhas da ficha é `getChegada`.
  */
 export function getDistancia(local: Local): string {
   if (local.refugio) return 'Ponto de partida';
@@ -310,6 +447,38 @@ export function getDistancia(local: Local): string {
   }
 
   return `${formatarDistancia(rota.metros)} · ${formatarDuracao(rota.segundos)} de carro`;
+}
+
+export interface Chegada {
+  /** A linha grande: '17,3 km · 28 min de carro'. */
+  carro: string;
+  /**
+   * A linha miúda embaixo. `null` na maior parte do cadastro, onde o carro
+   * encosta no ponto e não sobra caminhada nenhuma para avisar.
+   */
+  aPe: string | null;
+}
+
+/**
+ * O que a ficha diz sobre chegar num lugar, em duas linhas.
+ *
+ * A de cima é sempre trecho de carro — e só ele. A de baixo só existe onde a
+ * de cima, sozinha, mentiria: dizer "19,0 km · 38 min de carro" para a Pedra
+ * do Baú mandava o hóspede procurar um estacionamento a 4 km de trilha do
+ * lugar onde ele tinha acabado de parar.
+ */
+export function getChegada(local: Local): Chegada {
+  const carro = getDistancia(local);
+  const acesso = local.acesso;
+
+  if (!acesso) return { carro, aPe: null };
+
+  const { nome } = getParada(local);
+
+  return {
+    carro,
+    aPe: nome ? `O carro vai até ${nome}. ${acesso.aPe}` : acesso.aPe,
+  };
 }
 
 /** Minúsculas e sem acento: quem digita "sao bento" quer "São Bento". */
@@ -441,9 +610,17 @@ export function filtrarLocais(
  *
  * O destino vai em coordenada, e não no nome do lugar: o nome nem sempre
  * resolve para o ponto certo em estrada rural, a coordenada sempre resolve.
+ *
+ * E a coordenada é a da parada, não a do pino. `travelmode=driving` para o
+ * cume da Pedra do Baú não devolve "não é possível dirigir até aqui": o
+ * Google escolhe sozinho uma estrada próxima, e a que ele escolhe não é
+ * nenhuma das duas entradas do complexo — é a mesma carroçável que enganou o
+ * OSRM. Mandar para a parada declarada é a única forma de a rota terminar
+ * onde há um portão e um lugar para deixar o carro.
  */
 export function getRotaUrl(destino: Local): string {
-  const chegada = `${destino.lat},${destino.lng}`;
+  const parada = getParada(destino);
+  const chegada = `${parada.lat},${parada.lng}`;
 
   return `https://www.google.com/maps/dir/?api=1&destination=${chegada}&travelmode=driving`;
 }

@@ -146,12 +146,14 @@ function Camera({ camera, mobile }: { camera: OrdemCamera; mobile: boolean }) {
       // estrada sai muito fora dela — para a Pedra do Baú ela contorna o maciço
       // inteiro, e metade da rota ficaria fora da tela.
       const rota = getRota(local);
-      const pontos: [number, number][] = rota?.linha.length
-        ? rota.linha
-        : [
-            [REFUGIO.lng, REFUGIO.lat],
-            [local.lng, local.lat],
-          ];
+      const pontos: [number, number][] = [
+        [REFUGIO.lng, REFUGIO.lat],
+        // O pino continua no cume, e a rota já não vai até ele — ela termina
+        // na portaria, onde o carro para. Sem este ponto na caixa, enquadrar a
+        // rota deixava o próprio destino fora da tela.
+        [local.lng, local.lat],
+        ...(rota?.linha ?? []),
+      ];
       const lngs = pontos.map(([lng]) => lng);
       const lats = pontos.map(([, lat]) => lat);
 
@@ -439,6 +441,10 @@ function MapaTuristico() {
     // em `Painel`/`OrdemCamera`) porque o resumo em si — distância, duração e
     // traçado sobre o mapa — tem valor fora do gesto de sair para navegar, e
     // pode voltar por outra porta.
+    //
+    // O destino do link é a parada de carro, e não o pino: quem resolve isso é
+    // `getRotaUrl`. Mandar `travelmode=driving` para o cume da Pedra do Baú
+    // fazia o Google escolher sozinho uma estrada qualquer por perto.
     window.open(getRotaUrl(local), '_blank', 'noopener,noreferrer');
   }
 

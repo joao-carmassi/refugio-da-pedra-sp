@@ -36,12 +36,12 @@ const PASSOS: Passo[] = [
   {
     titulo: 'Toque num pino',
     texto:
-      'No celular sobe um cartão com foto, categoria e a distância de carro até o lugar. No computador o cartão aparece ao passar o ponteiro, e o clique abre a ficha completa, com endereço, horário e telefone quando existem.',
+      'No celular sobe um cartão com foto, categoria e o resumo do lugar. No computador o cartão aparece ao passar o ponteiro, e o clique abre a ficha completa, com endereço, horário e telefone quando existem — e a distância a partir do Refúgio, que em cume e cachoeira vem com o trecho que ainda falta a pé.',
   },
   {
     titulo: 'Toque em Como chegar',
     texto:
-      'O Google Maps abre com a rota traçada até a coordenada do lugar, saindo de onde você estiver — as distâncias do cartão são medidas de um ponto fixo, e a rota é medida de onde você está. O botão no canto devolve o mapa a esse ponto fixo quando você quiser recomeçar.',
+      'O Google Maps abre com a rota traçada até onde o carro chega, saindo de onde você estiver. Em cume e trilha esse ponto não é a atração: no Complexo da Pedra do Baú a rota vai para o estacionamento de onde sai a trilha daquele ponto — o do Chico Bento para o cume do Baú, a Ana Chata e o Campo Escola, o da portaria para o Bauzinho. As distâncias da ficha são medidas de um ponto fixo, e a rota é medida de onde você está. O botão no canto devolve o mapa a esse ponto fixo quando você quiser recomeçar.',
   },
 ];
 

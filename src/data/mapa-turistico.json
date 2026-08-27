@@ -38,6 +38,17 @@
     "tel": "(12) 3971-6110"
   },
   {
+    "id": "estacionamento-chico-bento",
+    "nome": "Estacionamento do Chico Bento",
+    "cat": "aventura",
+    "zona": "bau",
+    "lat": -22.684599,
+    "lng": -45.670249,
+    "resumo": "A entrada de trilha mais perto do Refúgio: é daqui que sobem a Pedra do Baú, a Pedra Ana Chata e o Campo Escola.",
+    "descricao": "Acesso pela face norte do maciço, no fim da estrada que sai do Paiol Grande seguindo as placas da Ana Chata. É estacionamento particular, cobrado por carro, e sem estrutura nenhuma — nem banheiro, nem água, nem quem venda comida. Não há bilheteria do Monumento Natural aqui: a taxa de conservação é cobrada na portaria, do outro lado do maciço. As trilhas que saem daqui são mais longas e mais íngremes do que as do lado da portaria — o que se ganha é o carro: pela portaria ele contorna o maciço inteiro para começar a andar, e daqui a subida começa a poucos minutos do Refúgio.",
+    "endereco": "Acesso Face Norte, Paiol Grande — São Bento do Sapucaí"
+  },
+  {
     "id": "pedra-bau",
     "nome": "Pedra do Baú",
     "cat": "aventura",
@@ -45,8 +56,13 @@
     "lat": -22.688355,
     "lng": -45.660807,
     "resumo": "O monólito de 1.950 m que dá nome à região, com via ferrata e vista de 360° sobre a Mantiqueira.",
-    "descricao": "Cume mais alto do complexo, com paredão de cerca de 350 m na face norte. São aproximadamente 4 km de trilha e 3 horas de subida, nível difícil, e o trecho final é uma via ferrata de degraus e grampos fixados na rocha. Guia credenciado é obrigatório — um monitor a cada seis pessoas — e o agendamento tem de ser feito com pelo menos um dia de antecedência.",
-    "endereco": "Monumento Natural Estadual da Pedra do Baú — São Bento do Sapucaí"
+    "descricao": "Cume mais alto do complexo, com paredão de cerca de 350 m na face norte. Pela portaria do Monumento Natural são aproximadamente 4 km de trilha e 3 horas de subida, nível difícil, e o trecho final é uma via ferrata de degraus e grampos fixados na rocha. Guia credenciado é obrigatório — um monitor a cada seis pessoas — e o agendamento tem de ser feito com pelo menos um dia de antecedência.",
+    "endereco": "Monumento Natural Estadual da Pedra do Baú — São Bento do Sapucaí",
+    "acesso": {
+      "ponto": "estacionamento-chico-bento",
+      "nome": "o estacionamento do Chico Bento",
+      "aPe": "De lá são cerca de 5 km de trilha ida e volta e umas 5 horas, com muita subida, via ferrata no trecho final e guia credenciado obrigatório. Pela portaria do Monumento Natural a trilha é mais curta — 4 km e 3 horas de subida —, mas o carro contorna o maciço inteiro para chegar lá."
+    }
   },
   {
     "id": "bauzinho",
@@ -57,7 +73,12 @@
     "lng": -45.657986,
     "resumo": "A 1.760 m, é a trilha mais acessível do complexo — e não exige agendamento.",
     "descricao": "Cerca de 30 minutos de caminhada a partir da portaria, nível fácil e sem via ferrata. É a saída indicada para quem quer a vista sem encarar a subida do Baú. Depois das 17h30 o acesso ao cume fecha, mas o trecho até o Mirante do Caramuru continua liberado.",
-    "endereco": "Complexo da Pedra do Baú — São Bento do Sapucaí"
+    "endereco": "Complexo da Pedra do Baú — São Bento do Sapucaí",
+    "acesso": {
+      "ponto": "mona-pedra-bau",
+      "nome": "a portaria do Monumento Natural",
+      "aPe": "De lá são cerca de 30 minutos de caminhada, nível fácil e sem via ferrata."
+    }
   },
   {
     "id": "ana-chata",
@@ -68,7 +89,12 @@
     "lng": -45.669263,
     "resumo": "Laje suspensa a 1.670 m, com a vista mais larga do complexo.",
     "descricao": "Trilha de cerca de 3,8 km ida e volta a partir do estacionamento do Bauzinho — 5,5 km se a entrada for pelo Chico Bento. Leva de 1 a 2 horas, é moderada a difícil pela inclinação até a base e tem via ferrata no trecho final. Agendamento prévio obrigatório. Do alto se vê a Serra do Coimbra e Campos do Jordão.",
-    "endereco": "Complexo da Pedra do Baú — São Bento do Sapucaí"
+    "endereco": "Complexo da Pedra do Baú — São Bento do Sapucaí",
+    "acesso": {
+      "ponto": "estacionamento-chico-bento",
+      "nome": "o estacionamento do Chico Bento",
+      "aPe": "De lá são 5,5 km de trilha ida e volta, moderada a difícil pela inclinação até a base, com via ferrata no trecho final e agendamento prévio obrigatório. Pela portaria do Monumento Natural a trilha cai para 3,8 km, mas o carro contorna o maciço inteiro para chegar lá."
+    }
   },
   {
     "id": "campo-escola",
@@ -79,7 +105,12 @@
     "lng": -45.66237,
     "resumo": "Setor de escalada em granito onde a serra ensina quem está começando.",
     "descricao": "Fica na aproximação da face norte da Pedra do Baú, a cerca de 570 m do cume, na mesma trilha das vias Transbaú e Parque dos Dinossauros. Reúne vias curtas e fáceis, e é onde as escolas de escalada da região fazem o primeiro dia de curso. A Prefeitura instalou a sinalização das vias em 2014.",
-    "endereco": "Monumento Natural Estadual da Pedra do Baú — São Bento do Sapucaí"
+    "endereco": "Monumento Natural Estadual da Pedra do Baú — São Bento do Sapucaí",
+    "acesso": {
+      "ponto": "estacionamento-chico-bento",
+      "nome": "o estacionamento do Chico Bento",
+      "aPe": "De lá sobe a trilha da face norte, a mesma aproximação das vias Transbaú e Parque dos Dinossauros. É subida contínua, e o Campo Escola fica antes do cume do Baú — a cerca de 570 m dele."
+    }
   },
   {
     "id": "rampa-voo-livre",
@@ -91,7 +122,12 @@
     "horario": "Todos os dias, 9h às 18h",
     "resumo": "Mirante do Caramuru, a 1.810 m: rampa oficial de parapente e o primeiro atrativo do percurso.",
     "descricao": "Fica a 400 m da entrada do Monumento Natural, o que faz dela a parada mais fácil do complexo. A decolagem é natural, com quadrantes N, NE e NW e 890 m de desnível até o pouso, regulada pelo Clube Pedra do Baú de Voo Livre; a melhor época vai de junho a dezembro. O acesso é o mesmo do parque, com a taxa de R$ 18 por pessoa — não confundir com o preço do voo duplo, que é cobrado pelas escolas. Depois das 17h30, quando o Bauzinho fecha, ainda se chega até aqui.",
-    "endereco": "Estr. Mun. do Bauzinho, s/n, Paiol Grande — São Bento do Sapucaí"
+    "endereco": "Estr. Mun. do Bauzinho, s/n, Paiol Grande — São Bento do Sapucaí",
+    "acesso": {
+      "ponto": "mona-pedra-bau",
+      "nome": "a portaria do Monumento Natural",
+      "aPe": "De lá são 400 m a pé pela estrada de terra que sobe para o Bauzinho — o trecho de caminhada mais curto do complexo."
+    }
   },
   {
     "id": "pedra-balanca",
@@ -102,7 +138,13 @@
     "lng": -45.799964,
     "resumo": "Cume de 1.600 m com cruz no alto, no extremo oeste do município.",
     "descricao": "Não faz parte do Complexo do Baú: fica no bairro dos Serranos, a cerca de 14 km dele, na divisa com Gonçalves (MG). O acesso é por uns 2 km de estrada de terra e mais 1 km de trilha, nível moderado. Do topo se vê o vale, a cidade de São Bento e a própria Pedra do Baú ao fundo.",
-    "endereco": "Estr. Luiz Venâncio de Souza, Bairro dos Serranos — São Bento do Sapucaí"
+    "endereco": "Estr. Luiz Venâncio de Souza, Bairro dos Serranos — São Bento do Sapucaí",
+    "acesso": {
+      "lat": -22.69999,
+      "lng": -45.80158,
+      "nome": "o fim da estrada de terra do Bairro dos Serranos",
+      "aPe": "De lá é 1 km de trilha, nível moderado. Os últimos 2 km de carro já são de estrada de terra."
+    }
   },
   {
     "id": "cachoeira-encontro",
@@ -113,7 +155,10 @@
     "lng": -45.668767,
     "resumo": "Duas quedas que se encontram, com piscinas rasas — a melhor da região para ir com criança.",
     "descricao": "Uma das quedas desce da Serra do Coimbra, no rumo da Cachoeira do Toldi, e a outra vem da Pedra do Baú. O pino é a entrada, e não a queda: estacione no recuo logo no começo da Estrada da Ana Chata, passe o mata-burro à direita e siga a pé por dentro de um terreno particular. São cerca de 700 metros de trilha fácil, sem sinalização, com uma descida de raiz e tronco no fim. Não se entra mais por dentro da Cachoeira dos Amores.",
-    "endereco": "Estrada da Ana Chata, no entroncamento com a Rodovia Prefeito Benedicto Gomes de Souza, Paiol Grande — São Bento do Sapucaí"
+    "endereco": "Estrada da Ana Chata, no entroncamento com a Rodovia Prefeito Benedicto Gomes de Souza, Paiol Grande — São Bento do Sapucaí",
+    "acesso": {
+      "aPe": "O carro chega ao pino, que é a entrada e não a queda: dali são cerca de 700 metros de trilha fácil por dentro de terreno particular, sem sinalização, com uma descida de raiz e tronco no fim."
+    }
   },
   {
     "id": "cachoeira-toldi",
@@ -160,7 +205,10 @@
     "aConferir": true,
     "resumo": "As rochas formam um escorregador natural — daí o nome — e a piscina é rasa.",
     "descricao": "Fica no lado oeste do município, no rumo do Serrano e de Gonçalves (MG), por estrada de terra. Uma placa na margem direita anuncia 100 m; a porteira vem logo depois e a trilha sobe pela margem do rio, curta e sem dificuldade técnica. Acesso gratuito.",
-    "endereco": "Estr. Geraldo Francisco da Costa, km 8, Bairro do Serrano — São Bento do Sapucaí"
+    "endereco": "Estr. Geraldo Francisco da Costa, km 8, Bairro do Serrano — São Bento do Sapucaí",
+    "acesso": {
+      "aPe": "O carro para na porteira, logo depois da placa na margem direita: dali a trilha sobe pela margem do rio, curta e sem dificuldade técnica."
+    }
   },
   {
     "id": "mirante-cruzeiro",

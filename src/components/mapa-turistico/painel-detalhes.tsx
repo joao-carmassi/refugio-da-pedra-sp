@@ -2,7 +2,7 @@
 
 import { ArrowLeft, Clock, MapPin, MessageCircle, Phone, Route } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { REFUGIO, getDistancia, type Local } from '@/lib/mapa-turistico';
+import { REFUGIO, getChegada, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
 import GaleriaLocal from './galeria-local';
@@ -48,7 +48,10 @@ function getWhatsLocal(local: Local) {
  * telefone que não temos e nota não conferida simplesmente não aparecem, em
  * vez de virarem um traço ou um valor de mentira. A caixa "A partir do
  * Refúgio" é o que justifica o mapa existir dentro do site da pousada — é a
- * distância até aqui, não uma distância genérica.
+ * distância até aqui, não uma distância genérica. E é a distância até onde o
+ * carro chega: cume e cachoeira ganham embaixo a linha do que falta a pé, que
+ * é a diferença entre uma ficha honesta e um hóspede procurando
+ * estacionamento a 4 km de trilha do lugar.
  */
 function PainelDetalhes({
   local,
@@ -72,6 +75,7 @@ function PainelDetalhes({
   ].filter(Boolean) as Info[];
 
   const whats = getWhatsLocal(local);
+  const chegada = getChegada(local);
 
   return (
     <div
@@ -167,8 +171,21 @@ function PainelDetalhes({
                 style={{ color: 'var(--map-green)' }}
                 className='font-display mt-1.5 text-2xl font-semibold'
               >
-                {getDistancia(local)}
+                {chegada.carro}
               </p>
+
+              {/* Cume, laje e setor de escalada não têm estrada até a porta. O
+                  número de cima é o trecho de carro, e só ele — esta linha diz
+                  onde o carro para e o que falta caminhar. Sem ela a ficha da
+                  Pedra do Baú prometia um estacionamento que não existe. */}
+              {chegada.aPe && (
+                <p
+                  style={{ color: 'var(--map-ink)' }}
+                  className='mt-1.5 text-[13px] leading-relaxed text-pretty'
+                >
+                  {chegada.aPe}
+                </p>
+              )}
             </div>
           )}
 

@@ -18,6 +18,14 @@
  * script refuses to write a partial file: either every place gets a route or
  * nothing is written, so a network hiccup can never silently shorten the data.
  *
+ * The destination is not always the place. Cume, laje e setor de escalada não
+ * têm estrada até a porta, e o `acesso` do cadastro declara onde o carro para
+ * — é para lá que a rota é medida, porque "19,0 km de carro" até um cume que
+ * se alcança a pé manda o hóspede procurar um estacionamento que não existe.
+ * O cadastro de `acesso` é validado antes da primeira requisição: uma
+ * referência quebrada gravaria o número velho em silêncio, e este script
+ * existe justamente para que isso não aconteça.
+ *
  * The geometry is `overview=simplified` and coordinates are rounded to five
  * decimals (~1 m), which is far more precision than a line drawn on a zoomed
  * out map can show — full precision would triple the file for nothing.
@@ -71,9 +79,11 @@ async function buscar(origem, destino) {
       return {
         metros: Math.round(rota.distance),
         segundos: Math.round(rota.duration),
-        // Quanto a estrada mais próxima ficou do ponto cadastrado. Cume e
-        // cachoeira não têm estrada até a porta: o número é o que sobra de
-        // caminhada, e a interface avisa quando é grande.
+        // Quanto a estrada mais próxima ficou do ponto para onde a rota foi
+        // pedida — que é a parada de carro, e não necessariamente o pino.
+        // Depois que os cumes ganharam `acesso`, este número tem de ser
+        // pequeno em todo lugar: quando cresce, é cheiro de cadastro, não
+        // dica de trilha. Quem diz o que falta a pé é `Acesso.aPe`.
         desvio: Math.round(haversine([destino.lng, destino.lat], destinoSnap.location)),
         _origemDesvio: Math.round(
           haversine([origem.lng, origem.lat], origemSnap.location),
@@ -98,20 +108,109 @@ if (!refugio) {
   process.exit(1);
 }
 
+const porId = new Map(locais.map((local) => [local.id, local]));
+
+/**
+ * O cadastro de `acesso` é conferido inteiro antes da primeira requisição.
+ *
+ * Um `ponto` que não resolve não quebra nada: `getParada` cai de volta no
+ * próprio lugar e o arquivo sai com o número velho, certinho, mentindo. É o
+ * modo de falha que este script foi escrito para não ter — daí interromper
+ * antes de gravar, como já se faz com a rede.
+ */
+const erros = [];
+
+for (const local of locais) {
+  const acesso = local.acesso;
+  if (!acesso) continue;
+
+  if (typeof acesso.aPe !== 'string' || !acesso.aPe.trim()) {
+    erros.push(`${local.id}: acesso sem \`aPe\` — é o campo que diz o que sobra a pé`);
+  }
+
+  const temCoordenada = acesso.lat !== undefined || acesso.lng !== undefined;
+
+  if (acesso.ponto && temCoordenada) {
+    erros.push(`${local.id}: acesso com \`ponto\` e coordenada juntos — escolha um`);
+  }
+
+  if (temCoordenada) {
+    if (typeof acesso.lat !== 'number' || typeof acesso.lng !== 'number') {
+      erros.push(`${local.id}: acesso com coordenada pela metade`);
+    }
+    if (!acesso.nome) {
+      erros.push(
+        `${local.id}: acesso por coordenada precisa de \`nome\` — é o que entra em "O carro vai até ___"`,
+      );
+    }
+  }
+
+  if (acesso.ponto) {
+    const parada = porId.get(acesso.ponto);
+
+    if (!parada) {
+      erros.push(`${local.id}: acesso aponta para "${acesso.ponto}", que não está no cadastro`);
+    } else if (parada.id === local.id) {
+      erros.push(`${local.id}: acesso aponta para si mesmo`);
+    } else if (parada.acesso) {
+      erros.push(
+        `${local.id}: acesso aponta para "${acesso.ponto}", que também tem acesso — a corrente pararia onde?`,
+      );
+    }
+  }
+}
+
+if (erros.length) {
+  console.error('rotas: cadastro de `acesso` inválido. Nada foi gravado:');
+  for (const erro of erros) console.error(`  · ${erro}`);
+  process.exit(1);
+}
+
+/** Where the car actually stops. Without a declared stop, it is the place itself. */
+function paradaDe(local) {
+  const acesso = local.acesso;
+  if (!acesso) return local;
+
+  if (acesso.ponto) return porId.get(acesso.ponto);
+  if (acesso.lat !== undefined) return { lat: acesso.lat, lng: acesso.lng };
+
+  return local;
+}
+
 const destinos = locais.filter((local) => !local.refugio);
 const rotas = {};
 
-for (const [indice, destino] of destinos.entries()) {
-  const rota = await buscar(refugio, destino);
+/**
+ * Cinco lugares do Complexo do Baú param na mesma portaria, e sem cache seriam
+ * cinco perguntas idênticas ao servidor de demonstração do OSRM. Com ele, os
+ * que dividem a parada dividem os números exatos — que é justamente a verdade
+ * a ser contada: de carro, chega-se ao mesmo lugar.
+ */
+const cache = new Map();
+
+for (const destino of destinos) {
+  const parada = paradaDe(destino);
+  const chave = `${arredonda(parada.lng)},${arredonda(parada.lat)}`;
+  let rota = cache.get(chave);
+
+  if (!rota) {
+    // A pausa fica antes da chamada de rede, e não entre destinos: acerto de
+    // cache não pede intervalo nenhum ao servidor.
+    if (cache.size) await espera(INTERVALO);
+    rota = await buscar(refugio, parada);
+    cache.set(chave, rota);
+  }
+
   rotas[destino.id] = rota;
 
   console.log(
     `rotas: ${destino.id} — ${(rota.metros / 1000).toFixed(1)} km, ` +
       `${Math.round(rota.segundos / 60)} min` +
-      (rota.desvio > 250 ? ` (estrada a ${rota.desvio} m do ponto)` : ''),
+      (destino.acesso?.ponto || destino.acesso?.lat !== undefined
+        ? ' (até a parada declarada; o resto é a pé)'
+        : '') +
+      (rota.desvio > 250 ? ` — atenção: estrada a ${rota.desvio} m do ponto pedido` : ''),
   );
-
-  if (indice < destinos.length - 1) await espera(INTERVALO);
 }
 
 const origemDesvio = rotas[destinos[0].id]._origemDesvio;
@@ -158,7 +257,8 @@ console.log(`rotas: origem encaixou a ${origemDesvio} m da estrada`);
 
 if (longe.length) {
   console.log(
-    `rotas: ${longe.length} ponto(s) sem estrada até a porta — ` +
-      longe.map(([id, r]) => `${id} (${r.desvio} m)`).join(', '),
+    `rotas: ${longe.length} ponto(s) sem estrada até a coordenada pedida — ` +
+      longe.map(([id, r]) => `${id} (${r.desvio} m)`).join(', ') +
+      '. Ou falta `acesso` no cadastro, ou ele aponta para onde não passa carro.',
   );
 }

@@ -41,12 +41,12 @@ export const PERGUNTAS: Pergunta[] = [
   {
     pergunta: 'Preciso pagar para entrar no Complexo da Pedra do Baú?',
     resposta:
-      'Sim. O Monumento Natural Estadual da Pedra do Baú cobra taxa de conservação ambiental de R$ 18 por pessoa, paga em dinheiro na portaria. Maiores de 60 anos, crianças até 12 anos e moradores do município são isentos.',
+      'Depende da entrada. Pela portaria do Monumento Natural Estadual da Pedra do Baú paga-se taxa de conservação ambiental de R$ 18 por pessoa, em dinheiro, com isenção para maiores de 60 anos, crianças até 12 anos e moradores do município. O outro acesso, o estacionamento do Chico Bento, é particular e cobra por carro, não por pessoa, e não tem bilheteria do Monumento Natural — confirme o valor no local.',
   },
   {
     pergunta: 'Dá para subir a Pedra do Baú sem guia?',
     resposta:
-      'Não. Guia credenciado é obrigatório, na proporção de um monitor a cada seis pessoas, e o agendamento tem de ser feito com pelo menos um dia de antecedência. São cerca de 4 km de trilha e 3 horas de subida, com via ferrata de degraus e grampos no trecho final. A Pedra Ana Chata também exige agendamento prévio.',
+      'Não. Guia credenciado é obrigatório, na proporção de um monitor a cada seis pessoas, e o agendamento tem de ser feito com pelo menos um dia de antecedência. Pela portaria do Monumento Natural são cerca de 4 km de trilha e 3 horas de subida; pelo estacionamento do Chico Bento, que fica bem mais perto de carro, são cerca de 5 km ida e volta e umas 5 horas, com mais subida. Nos dois casos o trecho final é uma via ferrata de degraus e grampos. A Pedra Ana Chata também exige agendamento prévio.',
     leitura: {
       href: '/blog/como-reservar-passeios-guiados-em-sao-bento-do-sapucai/',
       texto: 'Como reservar passeios guiados em São Bento',
@@ -106,6 +106,6 @@ export const PERGUNTAS: Pergunta[] = [
   {
     pergunta: 'As distâncias do mapa são medidas a partir de onde?',
     resposta:
-      'De um ponto fixo no pé da serra, o Refúgio da Pedra SP, que é a pousada que mantém este mapa. Medir tudo do mesmo lugar deixa os números comparáveis entre si, e a conta é por estrada, não em linha reta. A Cachoeira do Encontro fica a 2,4 km desse ponto, o centro da cidade a 10 km, a portaria do Complexo da Pedra do Baú a 17,3 km e o cume do Baú a 19 km de carro mais o trecho final a pé.',
+      'De um ponto fixo no pé da serra, o Refúgio da Pedra SP, que é a pousada que mantém este mapa. Medir tudo do mesmo lugar deixa os números comparáveis entre si, e a conta é por estrada, não em linha reta. A Cachoeira do Encontro fica a 2,4 km desse ponto e o centro da cidade a 10 km. No Complexo da Pedra do Baú o número é o do estacionamento onde a trilha começa, e são dois: o cume do Baú, a Pedra Ana Chata e o Campo Escola sobem pelo estacionamento do Chico Bento, a 1,9 km, e o Bauzinho e a rampa de voo livre entram pela portaria do Monumento Natural, a 17,3 km do outro lado do maciço. Onde o carro não chega ao ponto, a ficha diz onde ele para e quanto sobra de caminhada.',
   },
 ];
