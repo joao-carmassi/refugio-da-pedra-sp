@@ -9,6 +9,7 @@ import type {
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { getSiteUrl } from '@/lib/env';
+import { METADATA_APP_MAPA } from '@/lib/pwa-mapa';
 import { CATEGORIAS } from '@/lib/mapa-turistico';
 import { LUGARES } from './dados';
 import { PERGUNTAS } from './perguntas';
@@ -60,6 +61,13 @@ export function generateMetadata() {
     title: 'Mapa Turístico de São Bento do Sapucaí',
     description:
       'Guia de São Bento do Sapucaí em forma de mapa: a Pedra do Baú, as cachoeiras, os mirantes e as igrejas do município, com endereço, horário e rota de carro para cada lugar.',
+    /**
+     * Esta rota é a porta de entrada do PWA do mapa, não do da pousada: é
+     * daqui que chega quem procurou o guia da cidade. Por isso declara a
+     * mesma identidade de app que `/mapa/` — instalar daqui instala o mapa,
+     * que abre na ferramenta.
+     */
+    ...METADATA_APP_MAPA,
     /* O Google ignora `keywords` desde 2009 — a lista fica porque outros
        consumidores do HTML a leem, e porque descreve para quem edita a página
        de que buscas ela é a resposta. Os termos de cauda curta aqui têm volume

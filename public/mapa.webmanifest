@@ -1,0 +1,28 @@
+{
+  "id": "/mapa/",
+  "name": "Mapa de São Bento do Sapucaí",
+  "short_name": "Mapa SBS",
+  "description": "Mapa turístico de São Bento do Sapucaí: trilhas, cachoeiras, mirantes e igrejas, com endereço e rota de carro para cada lugar.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/mapa/",
+  "scope": "/mapa",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "categories": ["travel", "navigation"],
+  "icons": [
+    {
+      "src": "/mapa-web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/mapa-web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

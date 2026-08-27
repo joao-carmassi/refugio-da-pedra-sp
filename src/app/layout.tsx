@@ -43,6 +43,27 @@ export function generateMetadata(): Metadata {
     description:
       'Chalés e experiências em meio à natureza em São Bento do Sapucaí, Serra da Mantiqueira.',
     metadataBase: new URL(siteUrl),
+    /**
+     * Manifest e ícones da pousada — declarados como metadata, e não pelas
+     * convenções de arquivo do Next (`app/manifest.json`, `app/favicon.ico`,
+     * `app/icon1.png`, `app/apple-icon.png`). Os arquivos vivem em `public/`.
+     *
+     * O motivo é que o site instala como dois PWAs distintos: a pousada
+     * (este) e o mapa (`@/lib/pwa-mapa`, usado por `/mapa/` e
+     * `/mapa-turistico/`). Aquelas convenções só existem na raiz do `app/` e
+     * injetam as mesmas tags em todas as rotas — o `<link rel="icon">` da
+     * pousada chegava às rotas do mapa e disputava com o do mapa, os dois
+     * anunciando `sizes="48x48"`. Como campo de metadata, o segmento filho
+     * substitui o do pai e cada rota fica só com a identidade do seu app.
+     */
+    manifest: '/manifest.webmanifest',
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: '48x48', type: 'image/x-icon' },
+        { url: '/icon-96x96.png', sizes: '96x96', type: 'image/png' },
+      ],
+      apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    },
     alternates: {
       // `trailingSlash: true` no next.config.ts: a raiz é servida em
       // `${siteUrl}/`. Sem a barra o canonical aponta para um 308.

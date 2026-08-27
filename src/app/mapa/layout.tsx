@@ -6,6 +6,7 @@ import type {
 } from 'schema-dts';
 import Header from '@/components/header';
 import { getSiteUrl } from '@/lib/env';
+import { METADATA_APP_MAPA } from '@/lib/pwa-mapa';
 
 interface Props {
   children: React.ReactNode;
@@ -45,6 +46,12 @@ export function generateMetadata() {
     title: 'Mapa Interativo da Região',
     description:
       'Abra o mapa do Refúgio da Pedra SP, filtre por categoria e veja a rota de carro da pousada até cada ponto de São Bento do Sapucaí.',
+    /**
+     * Manifest, ícones e nome de atalho do PWA do mapa. Esta é a `start_url`
+     * dele: quem instala a partir de qualquer rota do mapa abre aqui, na
+     * ferramenta, e não na home da pousada.
+     */
+    ...METADATA_APP_MAPA,
     keywords: [
       'mapa interativo',
       'mapa refúgio da pedra sp',
