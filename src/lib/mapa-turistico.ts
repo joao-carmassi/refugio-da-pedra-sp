@@ -106,16 +106,18 @@ import rotasJson from '@/data/rotas.json';
  *      e o mais provável é que os 19,2 km já entrem uns metros de trilha. A
  *      ficha não mente (diz que o carro para e que há caminhada), mas confirmar
  *      o ponto exato tiraria a dúvida.
- *   9. As duas entradas do Complexo do Baú. O cadastro passou a dizer que o
- *      cume do Baú, a Ana Chata e o Campo Escola entram pelo estacionamento
- *      do Chico Bento — 1,9 km do Refúgio, trilha mais longa —, e que o
- *      Bauzinho e a rampa de voo livre entram pela portaria do Monumento
- *      Natural — 17,3 km, trilha mais curta. É o que o proprietário descreve
- *      como o costume da casa. Duas coisas seguem em aberto: quanto custa o
- *      estacionamento do Chico Bento (as fontes públicas divergem entre
- *      R$ 20 e R$ 30 por carro, e por isso o cadastro não cita valor) e se
- *      piloto de parapente com equipamento nas costas pode subir de carro os
- *      400 m até a rampa, que o visitante comum faz a pé.
+ *   9. As duas entradas do Complexo do Baú. O cadastro diz que o cume do Baú,
+ *      a Ana Chata e o Campo Escola entram pelo estacionamento do Chico Bento
+ *      — 1,9 km do Refúgio, trilha mais longa —, e que o Bauzinho e a rampa
+ *      de voo livre entram pela portaria do Monumento Natural — 17,3 km,
+ *      trilha mais curta. É o que o proprietário descreve como o costume da
+ *      casa. O Chico Bento entrou como coordenada de `acesso`, e não como
+ *      pino: é negócio de terceiro, e o proprietário não quis marcá-lo no
+ *      mapa. A rota leva até lá do mesmo jeito. Duas coisas seguem em aberto:
+ *      quanto custa o estacionamento (as fontes públicas divergem entre R$ 20
+ *      e R$ 30 por carro, e por isso nem o cadastro nem o FAQ citam valor) e
+ *      se piloto de parapente com equipamento nas costas pode subir de carro
+ *      os 400 m até a rampa, que o visitante comum faz a pé.
  */
 
 /**
@@ -167,25 +169,30 @@ export type ZonaId = keyof typeof ZONAS;
  * Onde o carro para e o que sobra depois disso.
  *
  * Duas informações separadas de propósito, porque elas não andam sempre
- * juntas: a Pedra do Baú tem parada declarada — a portaria — e caminhada; a
+ * juntas: a Pedra do Baú tem parada declarada — o estacionamento do Chico
+ * Bento — e caminhada; a
  * Cachoeira do Encontro tem só caminhada, porque o pino já é o recuo onde se
  * estaciona e ainda assim são 700 m de trilha até a queda.
  */
 export interface Acesso {
   /**
    * Id do local do cadastro onde o carro para, quando essa parada já é um
-   * ponto do mapa. É o caso do Complexo do Baú, que tem duas entradas, as
-   * duas com pino próprio: a portaria do Monumento Natural, com taxa e
-   * horário, e o estacionamento do Chico Bento, particular e sem estrutura.
-   * Guardar o id, e não a coordenada, faz com que corrigir uma entrada
-   * corrija de uma vez todos os pontos que entram por ela.
+   * ponto do mapa. Hoje só a portaria do Monumento Natural se encaixa: ela
+   * tem taxa, horário e ficha própria, e por ela entram o Bauzinho e a rampa
+   * de voo livre. Guardar o id, e não a coordenada, faz com que corrigir a
+   * portaria corrija de uma vez todos os pontos que entram por ela.
    */
   ponto?: string;
   /**
-   * Coordenada avulsa da parada, quando ela não é local nenhum e não merece
-   * virar um: a Pedra da Balança acaba no fim de uma estrada de terra que não
-   * é atrativo, não tem horário e não teria o que dizer numa ficha. Vai com
-   * `ponto` ou com `lat`/`lng` — nunca com os dois.
+   * Coordenada avulsa da parada, quando ela não é ponto do mapa. Duas razões
+   * diferentes levam a isso. A Pedra da Balança acaba no fim de uma estrada de
+   * terra que não é atrativo, não tem horário e não teria o que dizer numa
+   * ficha. Já o estacionamento do Chico Bento, por onde sobem o cume do Baú, a
+   * Ana Chata e o Campo Escola, é negócio de terceiro: dar pino a ele seria
+   * vitrine, e essa não é decisão do mapa a tomar. A coordenada leva o hóspede
+   * até a porteira sem que o mapa anuncie a casa.
+   *
+   * Vai com `ponto` ou com `lat`/`lng` — nunca com os dois.
    */
   lat?: number;
   lng?: number;

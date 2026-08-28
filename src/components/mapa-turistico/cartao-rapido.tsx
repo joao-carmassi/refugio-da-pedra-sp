@@ -77,6 +77,17 @@ function CartaoRapido({
                 <Nota local={local} />
               </p>
             )}
+            {/* O resumo é a razão de o hóspede tocar em "Detalhes" — sem ele o
+                cartão do celular só repete o nome que já está no pino. Três
+                linhas: a coluna aqui é estreita, e em duas quase todo resumo
+                do cadastro morria no meio da frase. Ainda cabe sem que a
+                prévia cubra o pino que acabou de ser tocado. */}
+            <p
+              style={{ color: 'var(--map-body)' }}
+              className='mt-1.5 line-clamp-3 text-xs leading-normal text-pretty'
+            >
+              {local.resumo}
+            </p>
           </div>
 
           {acoes && (

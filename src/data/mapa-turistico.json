@@ -38,17 +38,6 @@
     "tel": "(12) 3971-6110"
   },
   {
-    "id": "estacionamento-chico-bento",
-    "nome": "Estacionamento do Chico Bento",
-    "cat": "aventura",
-    "zona": "bau",
-    "lat": -22.684599,
-    "lng": -45.670249,
-    "resumo": "A entrada de trilha mais perto do Refúgio: é daqui que sobem a Pedra do Baú, a Pedra Ana Chata e o Campo Escola.",
-    "descricao": "Acesso pela face norte do maciço, no fim da estrada que sai do Paiol Grande seguindo as placas da Ana Chata. É estacionamento particular, cobrado por carro, e sem estrutura nenhuma — nem banheiro, nem água, nem quem venda comida. Não há bilheteria do Monumento Natural aqui: a taxa de conservação é cobrada na portaria, do outro lado do maciço. As trilhas que saem daqui são mais longas e mais íngremes do que as do lado da portaria — o que se ganha é o carro: pela portaria ele contorna o maciço inteiro para começar a andar, e daqui a subida começa a poucos minutos do Refúgio.",
-    "endereco": "Acesso Face Norte, Paiol Grande — São Bento do Sapucaí"
-  },
-  {
     "id": "pedra-bau",
     "nome": "Pedra do Baú",
     "cat": "aventura",
@@ -59,7 +48,8 @@
     "descricao": "Cume mais alto do complexo, com paredão de cerca de 350 m na face norte. Pela portaria do Monumento Natural são aproximadamente 4 km de trilha e 3 horas de subida, nível difícil, e o trecho final é uma via ferrata de degraus e grampos fixados na rocha. Guia credenciado é obrigatório — um monitor a cada seis pessoas — e o agendamento tem de ser feito com pelo menos um dia de antecedência.",
     "endereco": "Monumento Natural Estadual da Pedra do Baú — São Bento do Sapucaí",
     "acesso": {
-      "ponto": "estacionamento-chico-bento",
+      "lat": -22.684599,
+      "lng": -45.670249,
       "nome": "o estacionamento do Chico Bento",
       "aPe": "De lá são cerca de 5 km de trilha ida e volta e umas 5 horas, com muita subida, via ferrata no trecho final e guia credenciado obrigatório. Pela portaria do Monumento Natural a trilha é mais curta — 4 km e 3 horas de subida —, mas o carro contorna o maciço inteiro para chegar lá."
     }
@@ -91,7 +81,8 @@
     "descricao": "Trilha de cerca de 3,8 km ida e volta a partir do estacionamento do Bauzinho — 5,5 km se a entrada for pelo Chico Bento. Leva de 1 a 2 horas, é moderada a difícil pela inclinação até a base e tem via ferrata no trecho final. Agendamento prévio obrigatório. Do alto se vê a Serra do Coimbra e Campos do Jordão.",
     "endereco": "Complexo da Pedra do Baú — São Bento do Sapucaí",
     "acesso": {
-      "ponto": "estacionamento-chico-bento",
+      "lat": -22.684599,
+      "lng": -45.670249,
       "nome": "o estacionamento do Chico Bento",
       "aPe": "De lá são 5,5 km de trilha ida e volta, moderada a difícil pela inclinação até a base, com via ferrata no trecho final e agendamento prévio obrigatório. Pela portaria do Monumento Natural a trilha cai para 3,8 km, mas o carro contorna o maciço inteiro para chegar lá."
     }
@@ -107,7 +98,8 @@
     "descricao": "Fica na aproximação da face norte da Pedra do Baú, a cerca de 570 m do cume, na mesma trilha das vias Transbaú e Parque dos Dinossauros. Reúne vias curtas e fáceis, e é onde as escolas de escalada da região fazem o primeiro dia de curso. A Prefeitura instalou a sinalização das vias em 2014.",
     "endereco": "Monumento Natural Estadual da Pedra do Baú — São Bento do Sapucaí",
     "acesso": {
-      "ponto": "estacionamento-chico-bento",
+      "lat": -22.684599,
+      "lng": -45.670249,
       "nome": "o estacionamento do Chico Bento",
       "aPe": "De lá sobe a trilha da face norte, a mesma aproximação das vias Transbaú e Parque dos Dinossauros. É subida contínua, e o Campo Escola fica antes do cume do Baú — a cerca de 570 m dele."
     }
