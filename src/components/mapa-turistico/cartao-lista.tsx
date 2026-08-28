@@ -15,7 +15,12 @@ interface Props {
   ativo: boolean;
   onSelect: (id: string) => void;
   onHover?: (id: string | null) => void;
-  /** No mobile o cartão é mais curto: sem resumo e sem a ação secundária. */
+  /**
+   * No mobile o cartão troca o horário pelo resumo: quem folheia a folha ainda
+   * está escolhendo o lugar, não conferindo se abre agora — o horário continua
+   * na ficha. E o clamp é mais curto (2 linhas em vez de 3) para a folha caber
+   * na altura de repouso sem virar rolagem.
+   */
   compacto?: boolean;
 }
 
@@ -95,16 +100,17 @@ function CartaoLista({ local, ativo, onSelect, onHover, compacto }: Props) {
           </p>
         )}
 
-        <Horario local={local} className='mt-1.5 block' />
+        {!compacto && <Horario local={local} className='mt-1.5 block' />}
 
-        {!compacto && (
-          <p
-            style={{ color: 'var(--map-body)' }}
-            className='mt-1.5 text-xs leading-normal text-pretty'
-          >
-            {local.resumo}
-          </p>
-        )}
+        <p
+          style={{ color: 'var(--map-body)' }}
+          className={cn(
+            'mt-1.5 text-xs leading-normal text-pretty',
+            compacto ? 'line-clamp-2' : 'line-clamp-3',
+          )}
+        >
+          {local.resumo}
+        </p>
       </div>
     </button>
   );

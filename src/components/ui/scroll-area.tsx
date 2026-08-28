@@ -16,9 +16,12 @@ function ScrollArea({
       className={cn("relative", className)}
       {...props}
     >
+      {/* O Radix embrulha os filhos num div com display:table inline, que encolhe até
+          o conteúdo e estoura na horizontal quando há texto nowrap dentro (truncate).
+          Todo ScrollArea daqui é só vertical, então forçamos bloco de largura cheia. */}
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
-        className="size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1"
+        className="size-full rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 [&>div]:!block [&>div]:!w-full"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
