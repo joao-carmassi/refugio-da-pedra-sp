@@ -35,7 +35,10 @@ import rotasJson from '@/data/rotas.json';
  *      coordenada é a do pino do Google republicado pelo portal de turismo do
  *      Estado, sem cruzamento independente) e Bar SBS Bebidas (também fora do
  *      OSM; a coordenada é a geocodificação do endereço pelo Tripadvisor, que
- *      cai na rua e na quadra certas, a 40 m do coreto). Remover a marca ao
+ *      cai na rua e na quadra certas, a 40 m do coreto) e Letreiro (o pino é o
+ *      da Praça General Marcondes Salgado, que é onde as letras estão — falta
+ *      só o ponto delas dentro do gramado, e por isso os dois pinos hoje se
+ *      sobrepõem). Remover a marca ao
  *      confirmar o ponto exato. O Ateliê Ditinho Joana saiu da lista porque o proprietário
  *      confirmou o pino, mas segue sem logradouro publicado: nenhuma fonte dá
  *      rua e número, e o cadastro traz só o bairro.
@@ -45,6 +48,13 @@ import rotasJson from '@/data/rotas.json';
  *      logradouro publicado — confirmar qual é qual antes de tirar o
  *      `aConferir`. Há um segundo candidato para Santo Antônio, 570 m ao sul,
  *      na Praça Santo Antônio.
+ *      Metade disso já está resolvida: a fachada de
+ *      `mapa/igreja-rosario/igreja-rosario-1.webp` traz "NSR 1934" escrito no
+ *      frontão, e a foto é do templo junto à Praça General Marcondes Salgado —
+ *      é o Rosário, e o ano do cadastro confere. Falta só Santo Antônio, e é
+ *      por ele que o `aConferir` do Rosário ainda não caiu: as duas atribuições
+ *      vieram do mesmo raciocínio, e derrubar uma sem olhar a outra seria
+ *      trocar uma suposição por outra.
  *   3. Taxa da Cachoeira do Encontro. A entrada mudou: não se passa mais por
  *      dentro da Cachoeira dos Amores, e sim pela Estrada da Ana Chata, onde
  *      o pino agora fica. Dois relatos (2024 e 2026) dizem que o acesso novo
@@ -102,7 +112,13 @@ import rotasJson from '@/data/rotas.json';
  *        Boi Quim Costa, Espaço de Leitura e Arte Eugênia Sereno, Campo Escola
  *        e Praça Presidente João Goulart: existem e estavam cadastrados com
  *        dado conferido, mas saíram do mapa a pedido. Voltam sem pesquisa
- *        nova — o histórico do Git tem o cadastro inteiro.
+ *        nova — o histórico do Git tem o cadastro inteiro. A Praça da Bandeira
+ *        e a Praça São Benedito saíram depois, pelo mesmo caminho.
+ *      - No lugar das duas entrou a Praça General Marcondes Salgado, que é
+ *        onde estão o marco zero, o espelho d'água e o letreiro — e que o
+ *        cadastro já citava desde o começo, como endereço da Igreja do
+ *        Rosário, sem nunca ter tido pino próprio. A coordenada é o pino do
+ *        Google indicado pelo proprietário.
  *   7. Nomes corrigidos em relação ao pedido original: "Pedra Serra da
  *      Balança" são duas coisas — a Pedra da Balança (o cume, que entrou) e a
  *      Serra da Balança (crista e roteiro tropeiro até Gonçalves). "Pedreira
@@ -147,6 +163,26 @@ import rotasJson from '@/data/rotas.json';
  *      e em subir a serra, e nenhuma das duas coisas se aplica a um escritório
  *      no centro. A descrição avisa em português. Confirmar qual dos dois
  *      endereços é a porta e acertar o que estiver errado.
+ *  11. O letreiro estava dentro da ficha errada. `igreja-rosario-1.webp` e
+ *      `-2.webp` mostravam as letras coloridas do nome da cidade, e não a
+ *      igreja — o `alt` das duas já dizia isso em voz alta e ninguém tinha
+ *      reparado. As duas passaram para `mapa/letreiro/`, o Rosário ganhou três
+ *      fotos reais da igreja e o letreiro virou ponto próprio a pedido do
+ *      proprietário. Fica o aviso: quando o `alt` e a pasta discordarem, quem
+ *      costuma estar certo é o `alt`, porque ele foi escrito olhando a imagem.
+ *  12. As duas fotos da Pedra da Balança vieram de uma pasta rotulada "Serra
+ *      da Balança", e o item 7 explica por que os dois nomes não são a mesma
+ *      coisa. `pedra-balanca-1.webp` mostra um cume pontiagudo que encaixa na
+ *      descrição; a `-2` é uma vista de crista e pasto que serve às duas.
+ *      Conferir se a primeira é mesmo o cume — se não for, ela é ilustração de
+ *      serra e não retrato do ponto.
+ *  13. A fachada da Hot Stone contradiz o nome do ponto. O letreiro do
+ *      prédio, em `hot-stone-1.webp`, diz "HOT STONE Pizzaria & Choperia", e
+ *      o cadastro registra "Hot Stone Pizzaria & Hambúrgueria". As duas
+ *      coisas são verdade — a casa faz pizza, hambúrguer e chope, e a
+ *      `descricao` já diz isso —, mas só uma está pintada na parede. O nome
+ *      do cadastro ficou como estava porque é por ele que a casa aparece na
+ *      busca; confirmar com o proprietário qual dos dois ele quer no mapa.
  */
 
 /**

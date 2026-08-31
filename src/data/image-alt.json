@@ -55,5 +55,137 @@
   "/assets/sabor/sabor-7.webp": "Garrafa de vinho tinto apoiada num muro do restaurante, com o paredão da Pedra do Baú e o céu limpo ao fundo",
   "/assets/sabor/sabor-6.webp": "Porção de fogão a lenha em panela de ferro sobre tábua de madeira: linguiça, torresmo, mandioca frita e farofa, com arroz, feijão e vinagrete ao lado",
   "/assets/sabor/sabor-5.webp": "Medalhões de carne em molho verde cremoso na panela de ferro, com legumes picados e batata rústica",
-  "/assets/sabor/sabor-4.webp": "Filés empanados servidos na panela de ferro, com brócolis e legumes ao lado"
+  "/assets/sabor/sabor-4.webp": "Filés empanados servidos na panela de ferro, com brócolis e legumes ao lado",
+
+  "/assets/mapa/ana-chata/ana-chata-1.webp": "Monólito do complexo do Baú visto do alto ao amanhecer, cercado de mata e acima de um mar de nuvens",
+  "/assets/mapa/ana-chata/ana-chata-2.webp": "Monólito do complexo do Baú acima do mar de nuvens, visto de um cume vizinho de rocha exposta",
+  "/assets/mapa/ana-chata/ana-chata-3.webp": "Laje de rocha no alto da trilha, com uma árvore solitária e o vale de São Bento aberto ao fundo",
+
+  "/assets/mapa/arte-no-quilombo/arte-no-quilombo-1.webp": "Fachada de tijolo e madeira do Arte no Quilombo, com telhado de telha, bananeiras na entrada e o morro ao fundo",
+  "/assets/mapa/arte-no-quilombo/arte-no-quilombo-2.webp": "Placa redonda de madeira do Arte no Quilombo, com a silhueta de uma capela e os horários de funcionamento",
+  "/assets/mapa/arte-no-quilombo/arte-no-quilombo-3.webp": "Estantes de madeira com cestos, bandejas e peneiras de palha trançada à venda na loja",
+  "/assets/mapa/arte-no-quilombo/arte-no-quilombo-4.webp": "Interior da loja com arranjos de flores secas, ímãs artesanais e cestas sobre mesas de toalha floral",
+  "/assets/mapa/arte-no-quilombo/arte-no-quilombo-5.webp": "Parede de tijolo coberta de arranjos de flores secas, com garrafas e vasos enfileirados na mesa embaixo",
+  "/assets/mapa/arte-no-quilombo/arte-no-quilombo-6.webp": "Quadros de flores secas em molduras de madeira e bambu pendurados na parede de tijolo aparente",
+
+  "/assets/mapa/atelie-ditinho-joana/atelie-ditinho-joana-1.webp": "Fachada do Ateliê Ditinho Joana, casa de madeira avermelhada com varanda, placa entalhada e muro de tijolo",
+  "/assets/mapa/atelie-ditinho-joana/atelie-ditinho-joana-2.webp": "Escultura talhada num tronco único: figuras de chapéu em volta de um barril, dentro de uma venda antiga",
+  "/assets/mapa/atelie-ditinho-joana/atelie-ditinho-joana-3.webp": "Escultura em produção sobre a bancada do ateliê, com cena de colheita sob a parreira e as goivas ao lado",
+  "/assets/mapa/atelie-ditinho-joana/atelie-ditinho-joana-4.webp": "Conjunto de esculturas de madeira representando uma venda antiga, com figuras sentadas e prateleiras de garrafas",
+  "/assets/mapa/atelie-ditinho-joana/atelie-ditinho-joana-5.webp": "Escultura de um sapateiro com uma criança ao lado, diante da prateleira de botinas talhadas em madeira",
+  "/assets/mapa/atelie-ditinho-joana/atelie-ditinho-joana-6.webp": "Pergaminho pintado à mão com o texto da botinha que representa a caminhada da vida",
+
+  "/assets/mapa/pedra-bau/pedra-bau-1.webp": "Pedra do Baú vista do alto da trilha, com o monólito recortado contra o céu e o mar de montanhas ao fundo",
+  "/assets/mapa/pedra-bau/pedra-bau-2.webp": "Vista aérea do maciço da Pedra do Baú à luz dourada do fim de tarde, com a serra ao fundo",
+  "/assets/mapa/pedra-bau/pedra-bau-3.webp": "Vista aérea do paredão da Pedra do Baú sobre a mata, com o vale verde e as montanhas ao fundo",
+  "/assets/mapa/pedra-bau/pedra-bau-4.webp": "Vista aérea do complexo do Baú entre nuvens baixas, com o paredão de rocha cercado de mata",
+  "/assets/mapa/pedra-bau/pedra-bau-5.webp": "Ponta do paredão da Pedra do Baú aparecendo por entre as nuvens",
+  "/assets/mapa/pedra-bau/pedra-bau-6.webp": "Pôr do sol alaranjado sobre as silhuetas das serras da Mantiqueira",
+
+  "/assets/mapa/bauzinho/bauzinho-1.webp": "Pedra do Baú vista do alto do Bauzinho, com o vale e o casario ao fundo",
+  "/assets/mapa/bauzinho/bauzinho-2.webp": "Pedra do Baú ao pôr do sol vista da crista do Bauzinho, com o vale iluminado embaixo",
+  "/assets/mapa/bauzinho/bauzinho-3.webp": "Formações de rocha do complexo do Baú emoldurando o vale de São Bento à luz do amanhecer",
+
+  "/assets/mapa/mona-pedra-bau/mona-pedra-bau-1.webp": "Placas na entrada do Monumento Natural da Pedra do Baú, com informações de segurança e as quatro trilhas por nível de dificuldade",
+  "/assets/mapa/mona-pedra-bau/mona-pedra-bau-2.webp": "Via Láctea sobre a silhueta do complexo do Baú, com as luzes do bairro no vale",
+
+  "/assets/mapa/rampa-voo-livre/rampa-voo-livre-1.webp": "Deck de madeira da rampa de voo livre, com corrimão de tronco e a Pedra do Baú no horizonte",
+  "/assets/mapa/rampa-voo-livre/rampa-voo-livre-2.webp": "Alto gramado da rampa de voo livre, com pilotos e biruta sobre o vale de São Bento",
+  "/assets/mapa/rampa-voo-livre/rampa-voo-livre-3.webp": "Topo da rampa com um paredão de rocha à esquerda e o vale aberto sob nuvens altas",
+  "/assets/mapa/rampa-voo-livre/rampa-voo-livre-4.webp": "Vale de São Bento visto da rampa, com araucárias em primeiro plano e a serra ao fundo",
+  "/assets/mapa/rampa-voo-livre/rampa-voo-livre-5.webp": "Mar de montanhas visto do alto da rampa, com nuvens baixas presas nas encostas",
+  "/assets/mapa/rampa-voo-livre/rampa-voo-livre-6.webp": "Vista do vale e das serras a partir da rampa de voo livre, em dia de céu azul",
+
+  "/assets/mapa/cachoeira-toboga/cachoeira-toboga-1.webp": "Água escorregando pela laje inclinada da Cachoeira do Tobogã até o poço raso da base",
+  "/assets/mapa/cachoeira-toboga/cachoeira-toboga-2.webp": "Cachoeira do Tobogã descendo em leques sobre a rocha, cercada de mata, com o poço em primeiro plano",
+
+  "/assets/mapa/cachoeira-toldi/cachoeira-toldi-1.webp": "Queda alta da Cachoeira do Toldi descendo o paredão de rocha, entre araucárias",
+  "/assets/mapa/cachoeira-toldi/cachoeira-toldi-2.webp": "Cachoeira do Toldi vista de longe na encosta, emoldurada por araucárias",
+  "/assets/mapa/cachoeira-toldi/cachoeira-toldi-3.webp": "Base da cachoeira, com a água caindo em cortina larga sobre a rocha escura",
+  "/assets/mapa/cachoeira-toldi/cachoeira-toldi-4.webp": "Cachoeira do Toldi ao longe, no fundo do vale coberto de mata, com a placa de acesso à direita",
+  "/assets/mapa/cachoeira-toldi/cachoeira-toldi-5.webp": "Queda d'água vista por entre os galhos de uma araucária, no meio da mata fechada",
+  "/assets/mapa/cachoeira-toldi/cachoeira-toldi-6.webp": "Queda do Toldi vista de longe, riscando de branco o vale coberto de mata fechada",
+
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-1.webp": "Capelinha de mosaico do Centro, revestida de caco preto e branco, com colunas coloridas e porta aberta",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-2.webp": "Interior da capelinha coberto de mosaico: paredes com imagens de santos, Cristo no frontão e altar de cacos coloridos",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-3.webp": "Altar de mosaico da capelinha, com nicho de santos e painéis de figuras nas paredes brancas",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-4.webp": "Capelinha de mosaico do Paiol, com fachada de bandeirinhas coloridas e escadaria de caco no meio do pasto",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-5.webp": "A capelinha de mosaico do Paiol vista da estrada, ao lado da placa 'Cap. de Mosaico II'",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-6.webp": "Capelinha de mosaico com frases de escritores gravadas nos degraus de granito preto",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-7.webp": "Capelinha de mosaico com rosácea em cruz e pináculos pretos, sobre a plataforma de degraus com frases de escritores, e a serra ao fundo",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-8.webp": "Parede de mosaico escuro do altar, coberta de pratos, medalhões e imagens de santos",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-9.webp": "Interior da capelinha coberto de mosaico branco, com dezenas de imagens de santos emolduradas, Cristo no frontão e piso xadrez",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-10.webp": "A mesma capelinha vista da porta, com o medalhão redondo de mosaico no chão diante do altar",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-11.webp": "Capelinha de fundo escuro, com a parede do altar coberta de pratos e medalhões e o altar azul embaixo",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-12.webp": "Capelinha de bandeirinhas coloridas à beira da estrada, com a escadaria de mosaico descendo para o acostamento",
+  "/assets/mapa/capelinhas-mosaico/capelinhas-mosaico-13.webp": "Capelinha de mosaico geométrico com uma cruz dentro de um círculo branco, sobre a plataforma de degraus com frases de escritores",
+
+  "/assets/mapa/casa-cultura-miguel-reale/casa-cultura-miguel-reale-1.webp": "Fachada amarela da Casa da Cultura Miguel Reale, com janelas verdes e portão de ferro na rua de paralelepípedo",
+  "/assets/mapa/casa-cultura-miguel-reale/casa-cultura-miguel-reale-2.webp": "Escritório preservado de Miguel Reale, com escrivaninha de madeira, óculos, livros e manuscritos",
+  "/assets/mapa/casa-cultura-miguel-reale/casa-cultura-miguel-reale-3.webp": "Mural com o retrato de Miguel Reale em traço preto sobre fundo azul, na parede da rua",
+
+  "/assets/mapa/igreja-matriz/igreja-matriz-1.webp": "Fachada azul e branca da Igreja Matriz de São Bento, com a torre do relógio e os arcos góticos",
+  "/assets/mapa/igreja-matriz/igreja-matriz-2.webp": "Fachada da Igreja Matriz vista de frente, com as duas torres, o gradil branco e a escadaria de acesso",
+  "/assets/mapa/igreja-matriz/igreja-matriz-3.webp": "Frontão e torre do relógio da Matriz vistos de baixo, contra o céu de fim de tarde",
+  "/assets/mapa/igreja-matriz/igreja-matriz-4.webp": "Nave da Igreja Matriz em direção ao altar, com bancos de madeira, piso de losangos e forro azul-claro",
+  "/assets/mapa/igreja-matriz/igreja-matriz-5.webp": "Altar-mor da Matriz em dourado e branco, entre pinturas murais de cortinado vermelho",
+  "/assets/mapa/igreja-matriz/igreja-matriz-6.webp": "Interior da Matriz visto do fundo da nave, com o lustre central e as arcadas laterais",
+
+  "/assets/mapa/igreja-rosario/igreja-rosario-1.webp": "Fachada branca e azul da Igreja Nossa Senhora do Rosário, com torre única, rosácea e gradil azul na frente",
+  "/assets/mapa/igreja-rosario/igreja-rosario-2.webp": "Nave da Igreja do Rosário, com forro de madeira em leque, arco azul-claro sobre o altar e medalhões nas paredes",
+  "/assets/mapa/igreja-rosario/igreja-rosario-3.webp": "Altar da Igreja do Rosário: painel de madeira entre colunas douradas, com a imagem de Nossa Senhora no nicho e arranjos de flores brancas",
+
+  "/assets/mapa/mirante-cruzeiro/mirante-cruzeiro-1.webp": "Cruz de cimento do Mirante do Cruzeiro sobre a plataforma de piso claro, com escadas, guarda-corpo e os morros verdes ao fundo",
+  "/assets/mapa/mirante-cruzeiro/mirante-cruzeiro-2.webp": "São Bento do Sapucaí visto do alto do morro do Cruzeiro, com as serras ao fundo e o sol alto",
+  "/assets/mapa/mirante-cruzeiro/mirante-cruzeiro-3.webp": "Morros e casario de São Bento à luz do fim de tarde, vistos do alto do Cruzeiro",
+
+  "/assets/mapa/belvedere-serrano/belvedere-serrano-1.webp": "Vale de São Bento visto do Belvedere do Serrano, com araucárias em primeiro plano e as serras em camadas ao fundo",
+  "/assets/mapa/belvedere-serrano/belvedere-serrano-2.webp": "Deck de piso intertravado do Belvedere do Serrano, com guarda-corpo e bancos de tronco voltados para os morros",
+  "/assets/mapa/belvedere-serrano/belvedere-serrano-3.webp": "Jipe parado na estrada de terra do Serrano, sob o paredão de rocha cercado de mata",
+
+  "/assets/mapa/igreja-sao-benedito/igreja-sao-benedito-1.webp": "Fachada ocre e branca da Igreja São Benedito, com dois campanários e três arcos na entrada, na rua de paralelepípedo",
+  "/assets/mapa/igreja-sao-benedito/igreja-sao-benedito-2.webp": "Nave da Igreja São Benedito em direção ao altar, com piso xadrez preto e branco e bancos de madeira",
+  "/assets/mapa/igreja-sao-benedito/igreja-sao-benedito-3.webp": "Forro de madeira em leque da Igreja São Benedito sobre as paredes brancas e as estações da via-sacra",
+
+  "/assets/mapa/igreja-remedios/igreja-remedios-1.webp": "Fachada azul da Igreja Nossa Senhora dos Remédios, com a cruz branca no frontão e vasos de flores na porta",
+  "/assets/mapa/igreja-remedios/igreja-remedios-2.webp": "Nave da Igreja dos Remédios, com forro de madeira, paredes amarelas e corredor de piso xadrez entre os bancos",
+  "/assets/mapa/igreja-remedios/igreja-remedios-3.webp": "Altar da Igreja dos Remédios, com a imagem de Nossa Senhora ao centro entre dois anjos sobre pedestais",
+
+  "/assets/mapa/ladeira-pirilampos/ladeira-pirilampos-1.webp": "Escadaria da Ladeira dos Pirilampos revestida de mosaico, com corrimão de ferro e os arcos coloridos ao fundo",
+  "/assets/mapa/ladeira-pirilampos/ladeira-pirilampos-2.webp": "Arco de blocos de vidro coloridos da Ladeira dos Pirilampos, com a sequência de arcos alinhada atrás",
+  "/assets/mapa/ladeira-pirilampos/ladeira-pirilampos-3.webp": "Arcos de mosaico da ladeira vistos de baixo, encostados no casarão amarelo e azul",
+  "/assets/mapa/ladeira-pirilampos/ladeira-pirilampos-4.webp": "Placa da Ladeira dos Pirilampos, com o texto da obra e a lista de colaboradores",
+
+  "/assets/mapa/letreiro/letreiro-1.webp": "Letreiro colorido de São Bento do Sapucaí no gramado da praça, com a igreja azul e branca logo atrás",
+  "/assets/mapa/letreiro/letreiro-2.webp": "Letreiro visto de lado, com o símbolo turístico do município antes da primeira letra e a base de concreto no gramado",
+  "/assets/mapa/letreiro/letreiro-3.webp": "Letras coloridas do nome da cidade à sombra das árvores da praça, em dia de céu limpo",
+  "/assets/mapa/letreiro/letreiro-4.webp": "Letreiro colorido de São Bento do Sapucaí na Praça General Marcondes Salgado, com a igreja de torre única ao fundo",
+  "/assets/mapa/letreiro/letreiro-5.webp": "Letreiro de São Bento do Sapucaí no gramado da praça, entre árvores antigas",
+
+  "/assets/mapa/portal-cidade/portal-cidade-1.webp": "Portal da Cidade cobrindo a pista na chegada pela rodovia, com telhado de telha, janelas azuis e o Centro de Informação ao Turista",
+  "/assets/mapa/portal-cidade/portal-cidade-2.webp": "Gramado largo na entrada da cidade, com o letreiro de São Bento do Sapucaí ao fundo e a serra atrás",
+
+  "/assets/mapa/praca-marcondes-salgado/praca-marcondes-salgado-1.webp": "Marco zero de São Bento do Sapucaí: bloco de pedra com placa, no gramado arborizado da praça",
+  "/assets/mapa/praca-marcondes-salgado/praca-marcondes-salgado-2.webp": "Espelho d’água da praça entre palmeiras e canteiros, com o casario ao fundo",
+  "/assets/mapa/praca-marcondes-salgado/praca-marcondes-salgado-3.webp": "Árvore grande de tronco claro no centro do gramado da praça, sem folhas, contra o céu de inverno",
+
+  "/assets/mapa/praca-adhemar-barros/praca-adhemar-barros-1.webp": "Coreto da Praça Dr. Adhemar Pereira de Barros, azul e branco, com azulejos na base e renda de ferro no guarda-corpo",
+  "/assets/mapa/praca-adhemar-barros/praca-adhemar-barros-2.webp": "Caminho de piso vermelho levando ao coreto entre as árvores da praça",
+  "/assets/mapa/praca-adhemar-barros/praca-adhemar-barros-3.webp": "Banco de madeira à sombra na Praça do Coreto, ao lado do canteiro de meio-fio de pedra",
+
+  "/assets/mapa/praca-monsenhor-pedro/praca-monsenhor-pedro-1.webp": "Árvore de tronco retorcido com banco circular de madeira em volta, na Praça Monsenhor Pedro, com os quiosques pintados atrás",
+  "/assets/mapa/praca-monsenhor-pedro/praca-monsenhor-pedro-2.webp": "Passarela coberta da praça, com a faixa colorida no piso levando às lojas",
+  "/assets/mapa/praca-monsenhor-pedro/praca-monsenhor-pedro-3.webp": "Painel ilustrado da praça montado entre as árvores, sobre o deck de madeira",
+  "/assets/mapa/praca-monsenhor-pedro/praca-monsenhor-pedro-4.webp": "Copa da árvore central da praça vista de baixo, com os quiosques de mural azul ao fundo",
+  "/assets/mapa/praca-monsenhor-pedro/praca-monsenhor-pedro-5.webp": "Praça Monsenhor Pedro em dia de céu azul, com a árvore central, o banco circular e os quiosques em volta",
+
+  "/assets/mapa/pedra-balanca/pedra-balanca-1.webp": "Cume pontiagudo da Pedra da Balança sobre a crista verde, emoldurado pela mata em primeiro plano",
+  "/assets/mapa/pedra-balanca/pedra-balanca-2.webp": "Pastos e cristas da Serra da Balança em camadas, com as montanhas azuis no horizonte",
+
+  "/assets/mapa/hot-stone/hot-stone-1.webp": "Fachada da Hot Stone à noite, com o letreiro branco iluminado sobre painel vermelho canelado e os toldos claros da entrada",
+  "/assets/mapa/hot-stone/hot-stone-2.webp": "Salão da Hot Stone com balcão preto, prateleiras de madeira e ferro cheias de garrafas, taças penduradas e mesas de madeira ao lado",
+  "/assets/mapa/hot-stone/hot-stone-3.webp": "Pizza de abobrinha com muçarela derretida, azeitonas pretas e orégano na chapa redonda, sobre pano vermelho",
+  "/assets/mapa/hot-stone/hot-stone-4.webp": "Hambúrguer com queijo, alface, tomate e cebola roxa em pão de gergelim, no papel estampado da casa",
+  "/assets/mapa/hot-stone/hot-stone-5.webp": "Tábua com carne fatiada, cebola e tomatinhos, fritas na frigideira, farofa, molho e um chope da Cervejaria Sapucaí ao lado",
+  "/assets/mapa/hot-stone/hot-stone-6.webp": "Fileira de drinques coloridos no balcão de madeira da Hot Stone, com limões e uvas ao lado e a parede de pedra atrás"
 }

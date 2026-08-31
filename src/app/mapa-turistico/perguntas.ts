@@ -36,7 +36,7 @@ export const PERGUNTAS: Pergunta[] = [
   {
     pergunta: 'Dá para conhecer São Bento do Sapucaí em um fim de semana?',
     resposta:
-      'Dá, dividindo por trecho — é assim que o mapa está organizado. O Vale do Baú toma um dia inteiro: a portaria do Monumento Natural, a trilha que você escolher e as cachoeiras do Encontro e do Toldi, todas do mesmo lado. O centro histórico se faz a pé em meio período, com as cinco igrejas, as seis praças, a Ladeira dos Pirilampos, as Capelinhas de Mosaico e a Casa da Cultura. Sobra a rota rural, com a Cachoeira do Tobogã, o Belvedere do Serrano e a Pedra da Balança, que rende a segunda manhã.',
+      'Dá, dividindo por trecho — é assim que o mapa está organizado. O Vale do Baú toma um dia inteiro: a portaria do Monumento Natural, a trilha que você escolher e as cachoeiras do Encontro e do Toldi, todas do mesmo lado. O centro histórico se faz a pé em meio período, com as cinco igrejas, as quatro praças, a Ladeira dos Pirilampos, as Capelinhas de Mosaico e a Casa da Cultura. Sobra a rota rural, com a Cachoeira do Tobogã, o Belvedere do Serrano e a Pedra da Balança, que rende a segunda manhã.',
   },
   {
     pergunta: 'Preciso pagar para entrar no Complexo da Pedra do Baú?',

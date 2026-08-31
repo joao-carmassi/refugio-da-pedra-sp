@@ -56,7 +56,7 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
     {
       id: 'turismo',
       texto:
-        'Cachoeiras, mirantes e praças. Entram aqui a portaria do Monumento Natural da Pedra do Baú, a Cachoeira do Toldi, com salto de mais de 70 metros, a Cachoeira do Encontro, o Mirante do Cruzeiro, o Portal da Cidade, onde funciona o Centro de Informação ao Turista, e as cinco praças do centro, do coreto ao largo da rodoviária.',
+        'Cachoeiras, mirantes e praças. Entram aqui a portaria do Monumento Natural da Pedra do Baú, a Cachoeira do Toldi, com salto de mais de 70 metros, a Cachoeira do Encontro, o Mirante do Cruzeiro, o Portal da Cidade, onde funciona o Centro de Informação ao Turista, as três praças do centro — a do coreto, a do Banco do Brasil e a do marco zero — e o letreiro colorido da cidade, que fica nesta última.',
     },
     {
       id: 'aventura',
@@ -181,7 +181,7 @@ const ENQUADRAMENTOS: Record<string, string> = {
   'sbs-bebidas':
     'Fachada do Bar SBS Bebidas à noite, com o coreto da praça em frente',
   'hot-stone':
-    'Salão da Hot Stone cheio à noite, com a pizza saindo do forno em primeiro plano',
+    'Fachada iluminada da Hot Stone à noite, na Avenida Conselheiro Rodrigues Alves',
   campomax:
     'Fachada da CAMPOMAX na Avenida Doutor Rubião Júnior, com a vitrine de imóveis à vista',
   'pedra-balanca':
@@ -208,16 +208,16 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Casarão do século XIX da Casa da Cultura Professor Miguel Reale, com a fachada colonial inteira no quadro',
   'mirante-cruzeiro':
     'Rosa dos ventos em mosaico no piso do Mirante do Cruzeiro, com a cidade ao fundo',
-  'praca-bandeira':
-    'Praça da Bandeira arborizada, com os bancos e o caminho de pedestres',
   'praca-adhemar-barros':
     'Coreto da Praça Dr. Adhemar Pereira de Barros ao centro, com as árvores e os bancos à sombra em volta',
   'praca-monsenhor-pedro':
     'Praça Monsenhor Pedro do Vale Monteiro vista da Avenida Conselheiro Rodrigues Alves',
   'praca-braz-reale':
     'Praça Dr. Braz Reale com a fachada da Biblioteca Municipal ao fundo',
-  'praca-sao-benedito':
-    'Praça São Benedito com a igreja de frente para o largo e a rodoviária ao lado',
+  'praca-marcondes-salgado':
+    'Marco zero de São Bento do Sapucaí na Praça General Marcondes Salgado, com o espelho d’água e as árvores em volta',
+  letreiro:
+    'Letreiro colorido de São Bento do Sapucaí no gramado da praça, com a Igreja Nossa Senhora do Rosário atrás',
   'arte-no-quilombo':
     'Balcão do Arte no Quilombo com as peças de palha de bananeira e de milho expostas',
   'atelie-ditinho-joana':
@@ -273,8 +273,8 @@ const ORDEM: string[] = [
   'praca-adhemar-barros',
   'praca-monsenhor-pedro',
   'praca-braz-reale',
-  'praca-sao-benedito',
-  'praca-bandeira',
+  'praca-marcondes-salgado',
+  'letreiro',
   'campomax',
   'arte-no-quilombo',
   'atelie-ditinho-joana',
@@ -313,7 +313,7 @@ export const GRUPOS_DE_PONTOS: GrupoDePontos[] = (
     {
       id: 'centro',
       texto:
-        'Cabe numa tarde a pé: as igrejas, as seis praças, o casarão da Casa da Cultura, a escadaria de mosaico e o mirante que se alcança caminhando.',
+        'Cabe numa tarde a pé: as igrejas, as quatro praças, o letreiro da cidade, o casarão da Casa da Cultura, a escadaria de mosaico e o mirante que se alcança caminhando.',
       leitura: {
         href: '/blog/igreja-matriz-de-sao-bento-do-sapucai-historia-arquitetura-e-visitacao/',
         texto: 'A história da Igreja Matriz',

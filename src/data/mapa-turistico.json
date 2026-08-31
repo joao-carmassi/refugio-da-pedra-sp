@@ -35,7 +35,14 @@
     "resumo": "A entrada pública do complexo: é aqui que se paga a taxa e começam o Bauzinho, a Ana Chata e o cume do Baú.",
     "descricao": "O pino marca a portaria, e não a unidade: o Monumento Natural são 3.154 hectares criados pelo Decreto Estadual nº 56.613/2010, em gestão compartilhada entre a Fundação Florestal e a Prefeitura. A taxa de conservação ambiental é de R$ 18 por pessoa, em dinheiro, com isenção para maiores de 60 anos, crianças até 12 e moradores do município. Entrada até as 18h e permanência até 18h30; a subida ao cume do Baú só pode começar até as 14h. Animais de estimação não entram — a exceção é o trecho até o Mirante do Caramuru.",
     "endereco": "Estr. Mun. do Baúzinho, s/n, Paiol Grande — São Bento do Sapucaí",
-    "tel": "(12) 3971-6110"
+    "tel": "(12) 3971-6110",
+    "fotos": {
+      "pasta": "mapa/mona-pedra-bau",
+      "arquivos": [
+        "mona-pedra-bau-1.webp",
+        "mona-pedra-bau-2.webp"
+      ]
+    }
   },
   {
     "id": "pedra-bau",
@@ -52,6 +59,17 @@
       "lng": -45.670249,
       "nome": "o estacionamento do Chico Bento",
       "aPe": "De lá são cerca de 5 km de trilha ida e volta e umas 5 horas, com muita subida, via ferrata no trecho final e guia credenciado obrigatório. Pela portaria do Monumento Natural a trilha é mais curta — 4 km e 3 horas de subida —, mas o carro contorna o maciço inteiro para chegar lá."
+    },
+    "fotos": {
+      "pasta": "mapa/pedra-bau",
+      "arquivos": [
+        "pedra-bau-1.webp",
+        "pedra-bau-2.webp",
+        "pedra-bau-3.webp",
+        "pedra-bau-4.webp",
+        "pedra-bau-5.webp",
+        "pedra-bau-6.webp"
+      ]
     }
   },
   {
@@ -68,6 +86,14 @@
       "ponto": "mona-pedra-bau",
       "nome": "a portaria do Monumento Natural",
       "aPe": "De lá são cerca de 30 minutos de caminhada, nível fácil e sem via ferrata."
+    },
+    "fotos": {
+      "pasta": "mapa/bauzinho",
+      "arquivos": [
+        "bauzinho-1.webp",
+        "bauzinho-2.webp",
+        "bauzinho-3.webp"
+      ]
     }
   },
   {
@@ -85,6 +111,14 @@
       "lng": -45.670249,
       "nome": "o estacionamento do Chico Bento",
       "aPe": "De lá são 5,5 km de trilha ida e volta, moderada a difícil pela inclinação até a base, com via ferrata no trecho final e agendamento prévio obrigatório. Pela portaria do Monumento Natural a trilha cai para 3,8 km, mas o carro contorna o maciço inteiro para chegar lá."
+    },
+    "fotos": {
+      "pasta": "mapa/ana-chata",
+      "arquivos": [
+        "ana-chata-1.webp",
+        "ana-chata-2.webp",
+        "ana-chata-3.webp"
+      ]
     }
   },
   {
@@ -102,6 +136,17 @@
       "ponto": "mona-pedra-bau",
       "nome": "a portaria do Monumento Natural",
       "aPe": "De lá são 400 m a pé pela estrada de terra que sobe para o Bauzinho — o trecho de caminhada mais curto do complexo."
+    },
+    "fotos": {
+      "pasta": "mapa/rampa-voo-livre",
+      "arquivos": [
+        "rampa-voo-livre-1.webp",
+        "rampa-voo-livre-2.webp",
+        "rampa-voo-livre-3.webp",
+        "rampa-voo-livre-4.webp",
+        "rampa-voo-livre-5.webp",
+        "rampa-voo-livre-6.webp"
+      ]
     }
   },
   {
@@ -119,6 +164,13 @@
       "lng": -45.80158,
       "nome": "o fim da estrada de terra do Bairro dos Serranos",
       "aPe": "De lá é 1 km de trilha, nível moderado. Os últimos 2 km de carro já são de estrada de terra."
+    },
+    "fotos": {
+      "pasta": "mapa/pedra-balanca",
+      "arquivos": [
+        "pedra-balanca-1.webp",
+        "pedra-balanca-2.webp"
+      ]
     }
   },
   {
@@ -144,7 +196,18 @@
     "lng": -45.644539,
     "resumo": "Cascata com salto de mais de 70 metros, a maior do município, vista de um deck na estrada.",
     "descricao": "O mirante e a queda são o mesmo ponto — o nome oficial do deck é Mirante da Cachoeira do Toldi. Estaciona-se ao lado dele, na estrada que sobe para o Complexo da Pedra do Baú, e daí sai a trilha de mata fechada que desce até a base. O trecho de terra tem partes íngremes e pedregosas, então carro com boa suspensão ajuda. Os 200 metros que às vezes se lê por aí são o desnível do conjunto de cascatas, não o salto único.",
-    "endereco": "Rod. Mun. Thomaz Alckmin, Paiol Grande — São Bento do Sapucaí"
+    "endereco": "Rod. Mun. Thomaz Alckmin, Paiol Grande — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/cachoeira-toldi",
+      "arquivos": [
+        "cachoeira-toldi-1.webp",
+        "cachoeira-toldi-2.webp",
+        "cachoeira-toldi-3.webp",
+        "cachoeira-toldi-4.webp",
+        "cachoeira-toldi-5.webp",
+        "cachoeira-toldi-6.webp"
+      ]
+    }
   },
   {
     "id": "sabor-com-arte",
@@ -183,6 +246,13 @@
     "endereco": "Estr. Geraldo Francisco da Costa, km 8, Bairro do Serrano — São Bento do Sapucaí",
     "acesso": {
       "aPe": "O carro para na porteira, logo depois da placa na margem direita: dali a trilha sobe pela margem do rio, curta e sem dificuldade técnica."
+    },
+    "fotos": {
+      "pasta": "mapa/cachoeira-toboga",
+      "arquivos": [
+        "cachoeira-toboga-1.webp",
+        "cachoeira-toboga-2.webp"
+      ]
     }
   },
   {
@@ -194,7 +264,15 @@
     "lng": -45.728556,
     "resumo": "O mirante que se alcança a pé do centro, com a rosa dos ventos desenhada em mosaico no chão.",
     "descricao": "Do alto se vê a cidade inteira com a Mantiqueira e o sul de Minas ao fundo. A cruz que dá nome ao morro veio de uma procissão de Frei Caetano, que subiu com uma cruz de madeira pedindo proteção para a cidade; depois virou ferro e hoje é de cimento. Dá para subir de carro ou por uma trilha curta, de menos de uma hora, que sai das imediações da Câmara.",
-    "endereco": "Rua Presidente Castelo Branco, 139, Centro — São Bento do Sapucaí"
+    "endereco": "Rua Presidente Castelo Branco, 139, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/mirante-cruzeiro",
+      "arquivos": [
+        "mirante-cruzeiro-1.webp",
+        "mirante-cruzeiro-2.webp",
+        "mirante-cruzeiro-3.webp"
+      ]
+    }
   },
   {
     "id": "belvedere-serrano",
@@ -206,7 +284,15 @@
     "aConferir": true,
     "resumo": "Mirante de pedra e tora de eucalipto a 1.535 m, na divisa com Minas.",
     "descricao": "O roteiro oficial da Prefeitura recomenda como ponto de nascer do sol. Do deck se vê o vale de São Bento inteiro, com a cidade lá embaixo ao longe. A divisa com Gonçalves fica a 350 m daqui. O acesso é por estrada de terra em subida — vá de carro preparado.",
-    "endereco": "Estr. Carmelina Francisca da Rosa Barros, Bairro do Serrano — São Bento do Sapucaí"
+    "endereco": "Estr. Carmelina Francisca da Rosa Barros, Bairro do Serrano — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/belvedere-serrano",
+      "arquivos": [
+        "belvedere-serrano-1.webp",
+        "belvedere-serrano-2.webp",
+        "belvedere-serrano-3.webp"
+      ]
+    }
   },
   {
     "id": "igreja-matriz",
@@ -219,7 +305,18 @@
     "resumo": "Matriz de taipa de pilão erguida por volta de 1853, tombada pelo CONDEPHAAT.",
     "descricao": "É o marco fundador da cidade: o primeiro batismo é de fevereiro de 1828, escrito numa casa particular com o templo ainda em obras. Ganhou a torre central em 1906 e as laterais em 1916, e foi concluída pelos carmelitas em 1917. O tombamento, pela Resolução SC-24 de 2015, preserva fachada e interior.",
     "endereco": "Praça Cônego Bento de Almeida, 442, Centro — São Bento do Sapucaí",
-    "tel": "(12) 3971-2227"
+    "tel": "(12) 3971-2227",
+    "fotos": {
+      "pasta": "mapa/igreja-matriz",
+      "arquivos": [
+        "igreja-matriz-1.webp",
+        "igreja-matriz-2.webp",
+        "igreja-matriz-3.webp",
+        "igreja-matriz-4.webp",
+        "igreja-matriz-5.webp",
+        "igreja-matriz-6.webp"
+      ]
+    }
   },
   {
     "id": "ladeira-pirilampos",
@@ -230,7 +327,16 @@
     "lng": -45.73126,
     "resumo": "Escadaria de pedestres revestida de mosaico que desce da Matriz para a parte baixa da cidade.",
     "descricao": "Degraus e muros trazem azulejos e trechos de \"O Pássaro da Escuridão\", romance da escritora sambentista Eugênia Sereno. À noite pequenas luzes acendem ao longo da subida — é daí que vem o nome. A intervenção é atribuída ao artista Ângelo Milani.",
-    "endereco": "Junto à Praça Cônego Bento de Almeida, Centro — São Bento do Sapucaí"
+    "endereco": "Junto à Praça Cônego Bento de Almeida, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/ladeira-pirilampos",
+      "arquivos": [
+        "ladeira-pirilampos-1.webp",
+        "ladeira-pirilampos-2.webp",
+        "ladeira-pirilampos-3.webp",
+        "ladeira-pirilampos-4.webp"
+      ]
+    }
   },
   {
     "id": "capelinhas-mosaico",
@@ -242,7 +348,25 @@
     "aConferir": true,
     "resumo": "Três capelas centenárias revestidas de caco de vidro, azulejo e miçanga.",
     "descricao": "Eram capelas de Santa Cruz — a tradição da Mantiqueira de erguer capelinhas em homenagem a quem morreu — e em 2008 os artistas Ângelo Milani e Cláudia Vilar as cobriram de mosaico por dentro e por fora, com fragmentos de imagens de santos descartadas. A do Centro traz o poema \"Milagre aos Cacos\", de Tarcísio Bregalda; as outras duas ficam perto do Paço Municipal e no Quilombo. O pino marca a do Centro e é aproximado.",
-    "endereco": "Rua Treze de Maio, 217, Centro — São Bento do Sapucaí"
+    "endereco": "Rua Treze de Maio, 217, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/capelinhas-mosaico",
+      "arquivos": [
+        "capelinhas-mosaico-1.webp",
+        "capelinhas-mosaico-2.webp",
+        "capelinhas-mosaico-3.webp",
+        "capelinhas-mosaico-4.webp",
+        "capelinhas-mosaico-5.webp",
+        "capelinhas-mosaico-6.webp",
+        "capelinhas-mosaico-7.webp",
+        "capelinhas-mosaico-8.webp",
+        "capelinhas-mosaico-9.webp",
+        "capelinhas-mosaico-10.webp",
+        "capelinhas-mosaico-11.webp",
+        "capelinhas-mosaico-12.webp",
+        "capelinhas-mosaico-13.webp"
+      ]
+    }
   },
   {
     "id": "igreja-sao-benedito",
@@ -253,7 +377,15 @@
     "lng": -45.733368,
     "resumo": "Palco da maior festa religiosa da cidade, conduzida pela Congada de São Benedito.",
     "descricao": "A celebração ligada ao 13 de maio é uma das mais antigas ainda vivas em São Bento e tem vínculo forte com a comunidade do Quilombo. O largo em frente é conhecido tanto por Praça dos Folheiros quanto por Praça São Benedito.",
-    "endereco": "Rua Major Monteiro de Carvalho, Centro — São Bento do Sapucaí"
+    "endereco": "Rua Major Monteiro de Carvalho, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/igreja-sao-benedito",
+      "arquivos": [
+        "igreja-sao-benedito-1.webp",
+        "igreja-sao-benedito-2.webp",
+        "igreja-sao-benedito-3.webp"
+      ]
+    }
   },
   {
     "id": "igreja-rosario",
@@ -265,7 +397,56 @@
     "aConferir": true,
     "resumo": "Igreja de torre única de 1934, em frente ao marco zero da cidade.",
     "descricao": "Por volta de 1820 fazendeiros das margens do Sapucaí-Mirim tentaram erguer uma capela neste ponto, mas pararam a obra por conflito com moradores de Camanducaia. A Praça General Marcondes Salgado, à frente, é considerada o marco zero de São Bento e abriga o letreiro da cidade.",
-    "endereco": "Em frente à Praça General Marcondes Salgado, Centro — São Bento do Sapucaí"
+    "endereco": "Em frente à Praça General Marcondes Salgado, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/igreja-rosario",
+      "arquivos": [
+        "igreja-rosario-1.webp",
+        "igreja-rosario-2.webp",
+        "igreja-rosario-3.webp"
+      ]
+    }
+  },
+  {
+    "id": "praca-marcondes-salgado",
+    "nome": "Praça General Marcondes Salgado",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.686467,
+    "lng": -45.73064,
+    "resumo": "A praça do marco zero, com espelho d’água e o letreiro da cidade, em frente à Igreja Nossa Senhora do Rosário.",
+    "descricao": "O marco zero de São Bento do Sapucaí fica aqui: um bloco de pedra com placa, num gramado arborizado que também abriga o espelho d’água e as letras coloridas do nome da cidade. A Igreja Nossa Senhora do Rosário fecha um dos lados. A coordenada é o pino do logradouro, indicado pelo proprietário.",
+    "endereco": "Praça General Marcondes Salgado, s/n, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/praca-marcondes-salgado",
+      "arquivos": [
+        "praca-marcondes-salgado-1.webp",
+        "praca-marcondes-salgado-2.webp",
+        "praca-marcondes-salgado-3.webp"
+      ]
+    }
+  },
+  {
+    "id": "letreiro",
+    "nome": "Letreiro de São Bento do Sapucaí",
+    "cat": "turismo",
+    "zona": "centro",
+    "lat": -22.686467,
+    "lng": -45.73064,
+    "resumo": "As letras coloridas do nome da cidade, no gramado da Praça General Marcondes Salgado.",
+    "descricao": "Letras de concreto pintadas sobre uma base baixa, com o símbolo turístico do município antes da primeira palavra, voltadas para a Igreja Nossa Senhora do Rosário. É a fotografia de chegada de quem sobe a serra. O pino é o da praça: onde exatamente as letras estão dentro do gramado ainda não foi conferido.",
+    "endereco": "Praça General Marcondes Salgado, s/n, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/letreiro",
+      "arquivos": [
+        "letreiro-1.webp",
+        "letreiro-2.webp",
+        "letreiro-3.webp",
+        "letreiro-4.webp",
+        "letreiro-5.webp"
+      ]
+    },
+    "aConferir": true
   },
   {
     "id": "igreja-remedios",
@@ -276,7 +457,15 @@
     "lng": -45.733932,
     "resumo": "Construção modesta de 1970, pintada de azul, de frente para o coreto da cidade.",
     "descricao": "Tem aparência quase residencial e fecha um dos lados da Praça Adhemar Pereira de Barros, onde fica o coreto — a praça de convívio mais usada do centro.",
-    "endereco": "Em frente à Praça Adhemar Pereira de Barros, Centro — São Bento do Sapucaí"
+    "endereco": "Em frente à Praça Adhemar Pereira de Barros, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/igreja-remedios",
+      "arquivos": [
+        "igreja-remedios-1.webp",
+        "igreja-remedios-2.webp",
+        "igreja-remedios-3.webp"
+      ]
+    }
   },
   {
     "id": "igreja-santo-antonio",
@@ -302,7 +491,15 @@
     "descricao": "Reale nasceu aqui em 6 de novembro de 1910; a casa virou equipamento cultural em 1º de julho de 2006 e mantém exposições, cursos, oficinas e projetos com escolas. A entrada é gratuita.",
     "endereco": "Rua Sargento José Lourenço, 105, Centro — São Bento do Sapucaí",
     "tel": "(12) 3971-1665",
-    "site": "https://casadaculturamiguelreale.org.br"
+    "site": "https://casadaculturamiguelreale.org.br",
+    "fotos": {
+      "pasta": "mapa/casa-cultura-miguel-reale",
+      "arquivos": [
+        "casa-cultura-miguel-reale-1.webp",
+        "casa-cultura-miguel-reale-2.webp",
+        "casa-cultura-miguel-reale-3.webp"
+      ]
+    }
   },
   {
     "id": "sbs-bebidas",
@@ -330,7 +527,18 @@
     "endereco": "Avenida Conselheiro Rodrigues Alves, 32, Centro — São Bento do Sapucaí",
     "tel": "(12) 99733-6413",
     "site": "https://www.hotstonepizzaria.com.br",
-    "destaque": true
+    "destaque": true,
+    "fotos": {
+      "pasta": "mapa/hot-stone",
+      "arquivos": [
+        "hot-stone-1.webp",
+        "hot-stone-2.webp",
+        "hot-stone-3.webp",
+        "hot-stone-4.webp",
+        "hot-stone-5.webp",
+        "hot-stone-6.webp"
+      ]
+    }
   },
   {
     "id": "campomax",
@@ -345,16 +553,6 @@
     "tel": "(12) 99250-3867",
     "site": "https://redecampomax.com.br",
     "destaque": true
-  },
-  {
-    "id": "praca-bandeira",
-    "nome": "Praça da Bandeira",
-    "cat": "turismo",
-    "zona": "centro",
-    "lat": -22.684265,
-    "lng": -45.731274,
-    "resumo": "Praça arborizada no eixo norte do centro, a caminho da Prefeitura.",
-    "endereco": "Praça da Bandeira, s/n, Centro — São Bento do Sapucaí"
   },
   {
     "id": "praca-braz-reale",
@@ -377,7 +575,17 @@
     "lng": -45.732474,
     "resumo": "Praça central em frente ao Banco do Brasil, ao lado da escola Coronel Ribeiro da Luz.",
     "descricao": "Chamava-se Praça Plínio Salgado até a Lei Municipal nº 1.972, de 18 de junho de 2018, que a rebatizou em homenagem ao Monsenhor Pedro do Valle Monteiro. Ele chegou como pároco em 1929 e ficou até morrer, em 1974; virou cidadão honorário em 1968 e é lembrado na cidade como o Patriarca da Mantiqueira. Seus restos estão na capelinha batismal da Igreja Matriz.",
-    "endereco": "Avenida Conselheiro Rodrigues Alves, s/n, Centro — São Bento do Sapucaí"
+    "endereco": "Avenida Conselheiro Rodrigues Alves, s/n, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/praca-monsenhor-pedro",
+      "arquivos": [
+        "praca-monsenhor-pedro-1.webp",
+        "praca-monsenhor-pedro-2.webp",
+        "praca-monsenhor-pedro-3.webp",
+        "praca-monsenhor-pedro-4.webp",
+        "praca-monsenhor-pedro-5.webp"
+      ]
+    }
   },
   {
     "id": "praca-adhemar-barros",
@@ -388,18 +596,15 @@
     "lng": -45.733369,
     "resumo": "A Praça do Coreto, como todo mundo chama: cem metros de árvore, banco à sombra e o coreto no meio.",
     "descricao": "Vai da Rua Cândido José da Silva à Avenida Doutor Rubião Júnior, e teve a denominação oficializada pela Lei Municipal nº 1.887, de 5 de junho de 2017 — antes disso era a Praça da República. A Igreja Nossa Senhora dos Remédios, de 1970, fecha um dos lados. O arquivo da Câmara não guarda biografia do homenageado.",
-    "endereco": "Avenida Doutor Rubião Júnior, s/n, Centro — São Bento do Sapucaí"
-  },
-  {
-    "id": "praca-sao-benedito",
-    "nome": "Praça São Benedito",
-    "cat": "turismo",
-    "zona": "centro",
-    "lat": -22.685802,
-    "lng": -45.732982,
-    "resumo": "O largo em frente à Igreja São Benedito, a cem metros da rodoviária. No papel, Praça dos Folheiros.",
-    "descricao": "A Lei Municipal nº 1.970, de 18 de junho de 2018, batizou o largo de Praça dos Folheiros, mas a cidade continua chamando pela igreja que ele tem em frente. A homenagem é à família Folheiro, em especial a Joaquim Antonio da Silva, que chegou em 1919 e montou a funilaria que deu apelido ao ofício e ao sobrenome; há hoje mais de duzentos descendentes dele morando em São Bento. É a praça de quem desembarca: a rodoviária municipal fica a pouco mais de cem metros.",
-    "endereco": "Rua Major Monteiro de Carvalho, s/n, Centro — São Bento do Sapucaí"
+    "endereco": "Avenida Doutor Rubião Júnior, s/n, Centro — São Bento do Sapucaí",
+    "fotos": {
+      "pasta": "mapa/praca-adhemar-barros",
+      "arquivos": [
+        "praca-adhemar-barros-1.webp",
+        "praca-adhemar-barros-2.webp",
+        "praca-adhemar-barros-3.webp"
+      ]
+    }
   },
   {
     "id": "portal-cidade",
@@ -412,7 +617,14 @@
     "resumo": "O pórtico de entrada da cidade, que abriga o Centro de Informação ao Turista.",
     "descricao": "Uma estrutura que cobre a via na chegada pela SP-042, em tons de marrom e janelas envidraçadas azuis que lembram uma casa de fazenda. Dentro funciona o Centro de Informação ao Turista, com material sobre os atrativos do município e estacionamento por perto.",
     "endereco": "Av. Ver. José Galdino Barbosa, s/n, Jardim dos Cisnes — São Bento do Sapucaí",
-    "tel": "(12) 3971-2453"
+    "tel": "(12) 3971-2453",
+    "fotos": {
+      "pasta": "mapa/portal-cidade",
+      "arquivos": [
+        "portal-cidade-1.webp",
+        "portal-cidade-2.webp"
+      ]
+    }
   },
   {
     "id": "arte-no-quilombo",
@@ -427,7 +639,18 @@
     "descricao": "Aberto em janeiro de 2004 por incentivo do escultor Ditinho Joana, cujo ateliê fica a 70 metros daqui, e formalizado como associação de moradores e artesãos em 2009. A matéria-prima é a palha — de bananeira e de milho —, trabalhada em cesto, banco, tapete, esteira e peça de decoração; bambu, madeira, barro e tecido completam. O artesão também ensina o trançado a quem quiser sair com a própria peça pronta, com reserva antecipada. O bairro é uma das comunidades quilombolas remanescentes da região, e a igreja da Imaculada Conceição, de adobe, é de 1805.",
     "endereco": "Estrada Vereador Benedito Cândido Ribeiro, km 2,5, Quilombo — São Bento do Sapucaí",
     "tel": "(12) 3971-2669",
-    "site": "https://artenoquilombo.com.br"
+    "site": "https://artenoquilombo.com.br",
+    "fotos": {
+      "pasta": "mapa/arte-no-quilombo",
+      "arquivos": [
+        "arte-no-quilombo-1.webp",
+        "arte-no-quilombo-2.webp",
+        "arte-no-quilombo-3.webp",
+        "arte-no-quilombo-4.webp",
+        "arte-no-quilombo-5.webp",
+        "arte-no-quilombo-6.webp"
+      ]
+    }
   },
   {
     "id": "atelie-ditinho-joana",
@@ -441,6 +664,17 @@
     "descricao": "Benedito da Silva Santos — Ditinho Joana, apelido herdado da mãe, Maria Joana — nasceu no Quilombo em 1945 e era lavrador quando começou a esculpir. A primeira peça foi um padre e um índio, feitos à luz de lamparina. Em 1979 expôs em São Paulo e foi avaliado por Pietro Maria Bardi, do MASP. O tema é a comunidade rural, ampliado depois para profissões, santos e objetos do dia a dia. Hoje trabalha com os filhos Alexandre, Adriângela e Saulo, e as esculturas, de miniatura a peça de chão, saem daqui mesmo.",
     "endereco": "Bairro do Quilombo — São Bento do Sapucaí",
     "tel": "(12) 3971-2579",
-    "site": "https://www.atelieditinhojoana.com.br"
+    "site": "https://www.atelieditinhojoana.com.br",
+    "fotos": {
+      "pasta": "mapa/atelie-ditinho-joana",
+      "arquivos": [
+        "atelie-ditinho-joana-1.webp",
+        "atelie-ditinho-joana-2.webp",
+        "atelie-ditinho-joana-3.webp",
+        "atelie-ditinho-joana-4.webp",
+        "atelie-ditinho-joana-5.webp",
+        "atelie-ditinho-joana-6.webp"
+      ]
+    }
   }
 ]
