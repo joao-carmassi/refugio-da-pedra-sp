@@ -46,7 +46,7 @@ export function generateMetadata() {
   return {
     title: 'Mapa Interativo da Região',
     description:
-      'Abra o mapa do Refúgio da Pedra SP, filtre por categoria e veja a rota de carro da pousada até cada ponto de São Bento do Sapucaí.',
+      'Abra o mapa do Refúgio da Pedra SP, filtre por categoria e veja a rota de carro do centro de São Bento do Sapucaí até cada ponto.',
     /**
      * Manifest, ícones e nome de atalho do PWA do mapa. Esta é a `start_url`
      * dele: quem instala a partir de qualquer rota do mapa abre aqui, na
@@ -93,7 +93,7 @@ const jsonLd: WithContext<CollectionPage> = {
   '@id': `${pageUrl}#webpage`,
   name: 'Mapa Interativo da Região - Refúgio da Pedra SP',
   description:
-    'Mapa interativo dos pontos turísticos, trilhas e cachoeiras de São Bento do Sapucaí, com filtro por categoria e rota de carro a partir do Refúgio da Pedra SP.',
+    'Mapa interativo dos pontos turísticos, trilhas e cachoeiras de São Bento do Sapucaí, com filtro por categoria e rota de carro a partir do centro da cidade.',
   url: pageUrl,
   inLanguage: 'pt-BR',
   isPartOf: { '@id': `${siteUrl}/#website` },

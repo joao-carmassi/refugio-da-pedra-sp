@@ -23,8 +23,15 @@ const SAIDA_MS = 200;
  * zoom, com três botões de 2,625rem e dois filetes (8rem) = 11,25rem, sobre um
  * `bottom` de 1,5rem. Meia unidade de folga fecha em 13,25rem.
  *
- * Só no desktop, e só nesta rota: no celular a pilha vira um botão só, e em
- * `/mapa-turistico/` não há controle nenhum nesse canto.
+ * O botão do Refúgio só existe com `?refugio=1`, e a conta continua a mesma
+ * nos dois casos de propósito. Sem ele o cartão sobra 3,25rem acima da pilha —
+ * flutua um pouco mais alto do que precisaria, e é só isso. O erro que importa
+ * é o outro: um número menor cobriria os controles justamente na tela onde o
+ * botão está lá. O cartão é `fixed` no layout, fora da árvore que conhece a
+ * origem, então ele não tem como perguntar — e a folga é o lado seguro.
+ *
+ * Só no desktop, e só nesta rota: no celular a pilha vira um botão só (ou
+ * nenhum), e em `/mapa-turistico/` não há controle nenhum nesse canto.
  */
 const ACIMA_DOS_CONTROLES = 'sm:bottom-[13.25rem]';
 

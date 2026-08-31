@@ -2,11 +2,12 @@
 
 import { ArrowLeft, Clock, MapPin, MessageCircle, Phone, Route } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { REFUGIO, getChegada, type Local } from '@/lib/mapa-turistico';
+import { REFUGIO, ehOrigem, getChegada, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
 import GaleriaLocal from './galeria-local';
 import { EtiquetaCategoria, Nota, Rotulo, SeloDestaque } from './etiquetas';
+import { useOrigem } from './origem';
 
 interface Props {
   local: Local;
@@ -46,12 +47,16 @@ function getWhatsLocal(local: Local) {
  *
  * Só mostra linha de informação que existe de fato: horário sem confirmação,
  * telefone que não temos e nota não conferida simplesmente não aparecem, em
- * vez de virarem um traço ou um valor de mentira. A caixa "A partir do
- * Refúgio" é o que justifica o mapa existir dentro do site da pousada — é a
- * distância até aqui, não uma distância genérica. E é a distância até onde o
- * carro chega: cume e cachoeira ganham embaixo a linha do que falta a pé, que
- * é a diferença entre uma ficha honesta e um hóspede procurando
- * estacionamento a 4 km de trilha do lugar.
+ * vez de virarem um traço ou um valor de mentira. A caixa "A partir do ___" é
+ * o que faz este mapa medir alguma coisa em vez de só marcar pinos: a
+ * distância sai sempre do mesmo ponto, e é ele que o rótulo nomeia — o Centro
+ * de São Bento no mapa da cidade, o Refúgio no mapa do hóspede. E é a
+ * distância até onde o carro chega: cume e cachoeira ganham embaixo a linha do
+ * que falta a pé, que é a diferença entre uma ficha honesta e um hóspede
+ * procurando estacionamento a 4 km de trilha do lugar.
+ *
+ * A caixa some no lugar que está sobre a própria origem — ali ela diria "0 m",
+ * e o que cabe é a frase que `getDistancia` devolve no lugar do número.
  */
 function PainelDetalhes({
   local,
@@ -60,6 +65,8 @@ function PainelDetalhes({
   moldura = true,
   className,
 }: Props) {
+  const origem = useOrigem();
+
   const infos: Info[] = [
     local.horario && {
       icone: Clock,
@@ -75,7 +82,7 @@ function PainelDetalhes({
   ].filter(Boolean) as Info[];
 
   const whats = getWhatsLocal(local);
-  const chegada = getChegada(local);
+  const chegada = getChegada(local, origem);
 
   return (
     <div
@@ -158,7 +165,7 @@ function PainelDetalhes({
             )}
           </div>
 
-          {!local.refugio && (
+          {!ehOrigem(local, origem) && (
             <div
               style={{
                 background: 'var(--map-chip)',
@@ -166,7 +173,7 @@ function PainelDetalhes({
               }}
               className='mt-4.5 rounded-2xl border p-3.5'
             >
-              <Rotulo>A partir do {REFUGIO.nome}</Rotulo>
+              <Rotulo>A partir do {origem.nome}</Rotulo>
               <p
                 style={{ color: 'var(--map-green)' }}
                 className='font-display mt-1.5 text-2xl font-semibold'

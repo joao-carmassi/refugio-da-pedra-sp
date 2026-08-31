@@ -7,13 +7,13 @@ import {
   CATEGORIAS,
   FILTRO_TODOS,
   LOCAIS,
-  REFUGIO,
   filtrarLocais,
   getLocal,
   getRota,
   getRotaUrl,
   type FiltroId,
   type Local,
+  type Origem,
 } from '@/lib/mapa-turistico';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { usePresenca } from '@/hooks/use-presenca';
@@ -33,6 +33,7 @@ import CartaoRapido from './cartao-rapido';
 import Controles from './controles';
 import Filtros from './filtros';
 import FolhaMobile, { FRACOES, type Altura } from './folha-mobile';
+import { useOrigem } from './origem';
 import PainelDetalhes from './painel-detalhes';
 import PainelLista from './painel-lista';
 import PainelRota from './painel-rota';
@@ -133,7 +134,15 @@ function Abertura({ mobile }: { mobile: boolean }) {
  * dentro dele. O `selo` é o que permite repetir a mesma ordem (clicar duas
  * vezes no mesmo pino) sem que o efeito seja ignorado por dependências iguais.
  */
-function Camera({ camera, mobile }: { camera: OrdemCamera; mobile: boolean }) {
+function Camera({
+  camera,
+  mobile,
+  origem,
+}: {
+  camera: OrdemCamera;
+  mobile: boolean;
+  origem: Origem;
+}) {
   const { map, isLoaded } = useMap();
 
   useEffect(() => {
@@ -145,9 +154,9 @@ function Camera({ camera, mobile }: { camera: OrdemCamera; mobile: boolean }) {
       // Enquadra pela caixa do traçado, não pela reta entre os dois pontos: a
       // estrada sai muito fora dela — para a Pedra do Baú ela contorna o maciço
       // inteiro, e metade da rota ficaria fora da tela.
-      const rota = getRota(local);
+      const rota = getRota(local, origem);
       const pontos: [number, number][] = [
-        [REFUGIO.lng, REFUGIO.lat],
+        [origem.lng, origem.lat],
         // O pino continua no cume, e a rota já não vai até ele — ela termina
         // na portaria, onde o carro para. Sem este ponto na caixa, enquadrar a
         // rota deixava o próprio destino fora da tela.
@@ -182,7 +191,7 @@ function Camera({ camera, mobile }: { camera: OrdemCamera; mobile: boolean }) {
       essential: true,
       offset: mobile ? [0, -110] : [180, 0],
     });
-  }, [map, isLoaded, camera, mobile]);
+  }, [map, isLoaded, camera, mobile, origem]);
 
   return null;
 }
@@ -346,6 +355,7 @@ function Pinos({
  */
 function MapaTuristico() {
   const mobile = useIsMobile();
+  const origem = useOrigem();
 
   const [filtro, setFiltro] = useState<FiltroId>(FILTRO_TODOS);
   const [termo, setTermo] = useState('');
@@ -358,7 +368,7 @@ function MapaTuristico() {
 
   const selo = useRef(0);
   const local = selecionado ? (getLocal(selecionado) ?? null) : null;
-  const tracado = local ? getRota(local) : null;
+  const tracado = local ? getRota(local, origem) : null;
 
   /**
    * Eco do último lugar aberto.
@@ -576,7 +586,7 @@ function MapaTuristico() {
       <Map
         theme='light'
         styles={{ light: ESTILO_BASE, dark: ESTILO_BASE }}
-        center={[REFUGIO.lng, REFUGIO.lat]}
+        center={[origem.lng, origem.lat]}
         zoom={mobile ? ZOOM_INICIAL.mobile : ZOOM_INICIAL.desktop}
         minZoom={ZOOM_MINIMO}
         maxZoom={ZOOM_MAXIMO}
@@ -590,7 +600,7 @@ function MapaTuristico() {
         <Redimensiona />
         <Repintura />
         <Abertura mobile={mobile} />
-        <Camera camera={camera} mobile={mobile} />
+        <Camera camera={camera} mobile={mobile} origem={origem} />
 
         {mobile && (
           <ToqueNoMapa onToque={tocarNoMapa} onArrasto={recolherFolha} />
@@ -622,7 +632,7 @@ function MapaTuristico() {
               data={[
                 {
                   id: local.id,
-                  from: [REFUGIO.lng, REFUGIO.lat],
+                  from: [origem.lng, origem.lat],
                   to: [local.lng, local.lat],
                 },
               ]}

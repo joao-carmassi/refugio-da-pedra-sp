@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { ArrowLeft, Navigation, Share2 } from 'lucide-react';
 import {
-  REFUGIO,
   formatarDistancia,
   formatarDuracao,
   getChegada,
@@ -14,6 +13,7 @@ import {
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
 import { Rotulo } from './etiquetas';
+import { useOrigem } from './origem';
 
 interface Props {
   local: Local;
@@ -31,9 +31,10 @@ interface Props {
  */
 function PainelRota({ local, onVoltar, className }: Props) {
   const [copiado, setCopiado] = useState(false);
+  const origem = useOrigem();
   const url = getRotaUrl(local);
-  const rota = getRota(local);
-  const chegada = getChegada(local);
+  const rota = getRota(local, origem);
+  const chegada = getChegada(local, origem);
 
   async function compartilhar() {
     const dados = {
@@ -41,7 +42,7 @@ function PainelRota({ local, onVoltar, className }: Props) {
       // O trecho a pé vai junto: quem recebe o link recebe a rota até a
       // parada, e sem esta frase acharia que ela termina no lugar.
       text:
-        `${local.nome} — ${chegada.carro} do ${REFUGIO.nome}.` +
+        `${local.nome} — ${chegada.carro} do ${origem.nome}.` +
         (chegada.aPe ? ` ${chegada.aPe}` : ''),
       url,
     };
@@ -118,7 +119,7 @@ function PainelRota({ local, onVoltar, className }: Props) {
                 style={{ color: 'var(--map-ink)' }}
                 className='text-[15px] font-medium'
               >
-                {REFUGIO.nome}
+                {origem.nome}
               </p>
             </div>
             <div>

@@ -5,6 +5,7 @@ import { useMap } from '@/components/ui/map';
 import { REFUGIO } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import { ZOOM_FOCO, enquadrarTudo } from './base-cartografica';
+import { useOrigem } from './origem';
 
 interface Props {
   variante: 'desktop' | 'mobile';
@@ -18,10 +19,16 @@ interface Props {
  * não é zoom nem bússola — na mesma pilha dos demais, e pede a pilha na
  * paleta do mapa. O comportamento continua vindo da instância do MapLibre via
  * `useMap()`.
+ *
+ * O botão do Refúgio só existe no mapa do hóspede (`?refugio=1`). No mapa da
+ * cidade a pousada é um pino como os outros, e um atalho que voa até ela seria
+ * exatamente a vitrine que essa versão do mapa não quer ser.
  */
 function Controles({ variante, className }: Props) {
   const { map } = useMap();
+  const origem = useOrigem();
   const mobile = variante === 'mobile';
+  const mostraRefugio = origem.id === 'refugio';
 
   function irParaRefugio() {
     map?.flyTo({
@@ -40,6 +47,12 @@ function Controles({ variante, className }: Props) {
   const botaoPilha =
     'grid place-items-center transition-colors hover:bg-black/5';
 
+  // No celular a pilha de zoom não existe (ver abaixo), então sem o botão do
+  // Refúgio não sobra controle nenhum. Sair antes evita deixar no ar um
+  // contêiner flutuante vazio, que continuaria abrindo espaço na pilha do
+  // mobile e engolindo o toque na faixa que ele ocupa.
+  if (mobile && !mostraRefugio) return null;
+
   return (
     <div
       className={cn(
@@ -47,25 +60,27 @@ function Controles({ variante, className }: Props) {
         className,
       )}
     >
-      <button
-        type='button'
-        onClick={irParaRefugio}
-        aria-label={`Centralizar no ${REFUGIO.nome}`}
-        style={{
-          background: 'var(--map-green)',
-          color: '#fff',
-          boxShadow: 'var(--map-shadow-control)',
-        }}
-        className={cn(
-          'flex items-center gap-2 text-[13px] font-bold transition-[filter] hover:brightness-90',
-          mobile
-            ? 'size-11 justify-center rounded-2xl'
-            : 'h-10.5 rounded-xl px-3.5',
-        )}
-      >
-        <TentTree aria-hidden='true' className='size-5' />
-        {!mobile && 'Refúgio'}
-      </button>
+      {mostraRefugio && (
+        <button
+          type='button'
+          onClick={irParaRefugio}
+          aria-label={`Centralizar no ${REFUGIO.nome}`}
+          style={{
+            background: 'var(--map-green)',
+            color: '#fff',
+            boxShadow: 'var(--map-shadow-control)',
+          }}
+          className={cn(
+            'flex items-center gap-2 text-[13px] font-bold transition-[filter] hover:brightness-90',
+            mobile
+              ? 'size-11 justify-center rounded-2xl'
+              : 'h-10.5 rounded-xl px-3.5',
+          )}
+        >
+          <TentTree aria-hidden='true' className='size-5' />
+          {!mobile && 'Refúgio'}
+        </button>
+      )}
 
       {/* A pilha inteira é de desktop. No celular sobrava um botão só nela,
           e uma caixa com um único item ao lado do botão do Refúgio lê como

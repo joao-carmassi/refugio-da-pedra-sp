@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Fuse from 'fuse.js';
 import locaisJson from '@/data/mapa-turistico.json';
+import centroJson from '@/data/centro.json';
 import rotasJson from '@/data/rotas.json';
 
 /**
@@ -260,11 +261,18 @@ export interface Local {
   /**
    * Prioridade na lista, cartão maior e selo no pino. Marca parceiro do
    * Refúgio — e o próprio Refúgio, que é quem mais precisa ser achado no
-   * mapa da própria pousada. `refugio` só diz de onde saem as distâncias; é
-   * este campo que empurra o lugar para o topo da lista.
+   * mapa da própria pousada. `refugio` só diz qual pino é a pousada; é este
+   * campo que empurra o lugar para o topo da lista.
    */
   destaque?: boolean;
-  /** O próprio Refúgio da Pedra — origem de todas as distâncias. */
+  /**
+   * O próprio Refúgio da Pedra.
+   *
+   * Já foi "a origem de todas as distâncias", e não é mais: de onde se mede
+   * agora é `Origem`, que vem da URL e pode ser o Centro. Este campo ficou
+   * com o que sempre foi só dele — dizer qual pino é a pousada, para ele ser
+   * desenhado maior, em cima dos outros e na cor da hospedagem.
+   */
   refugio?: boolean;
   /** Pasta em `public/assets/` e arquivos, quando há foto real. */
   fotos?: { pasta: string; arquivos: string[] };
@@ -274,8 +282,74 @@ export interface Local {
 
 export const LOCAIS = locaisJson as Local[];
 
-/** Origem de todas as distâncias e do enquadramento inicial do mapa. */
+/** O próprio Refúgio da Pedra, como lugar do cadastro. */
 export const REFUGIO = LOCAIS.find((l) => l.refugio) as Local;
+
+/**
+ * De onde as distâncias são medidas.
+ *
+ * Isto começou como uma constante — o Refúgio, e ponto final — e virou um
+ * parâmetro porque o mapa passou a ter dois usos. Sem parâmetro nenhum na URL
+ * ele é o mapa da cidade: mede tudo do Centro de São Bento, não anuncia a
+ * pousada e serve a quem só quer saber onde ficam as cachoeiras. Com
+ * `?refugio=1` ele é o mapa do hóspede: mede da varanda, e é por isso que o
+ * botão "Refúgio" existe nos controles. As distâncias são o site inteiro
+ * mudando de dono, então elas não podem sair de uma constante de módulo.
+ *
+ * `id` é a chave do conjunto gravado em `rotas.json`, e `nome` é o que a ficha
+ * escreve em "A partir do ___" — daí ele viajar junto e não ser derivado do
+ * `id` na hora de renderizar.
+ */
+export type OrigemId = 'refugio' | 'centro';
+
+export interface Origem {
+  id: OrigemId;
+  nome: string;
+  lat: number;
+  lng: number;
+}
+
+export const ORIGEM_REFUGIO: Origem = {
+  id: 'refugio',
+  nome: REFUGIO.nome,
+  lat: REFUGIO.lat,
+  lng: REFUGIO.lng,
+};
+
+/**
+ * O centro como lugar, e não como ponto turístico.
+ *
+ * A coordenada é a da praça da matriz e é a mesma que a Igreja Matriz tem no
+ * cadastro — mas o nome não pode ser o dela. "A partir do Centro de São Bento"
+ * é uma medida que qualquer um entende; "a partir da Igreja Matriz" faria o
+ * visitante achar que o mapa mede distância de igreja. Por isso o par
+ * nome/coordenada mora em `centro.json`, fora do cadastro de atrativos, e é
+ * lido também pelo `gerar-rotas.mjs`.
+ */
+export const ORIGEM_CENTRO: Origem = {
+  id: 'centro',
+  nome: centroJson.nome,
+  lat: centroJson.lat,
+  lng: centroJson.lng,
+};
+
+/** Sem pedido em contrário, o mapa é da cidade. */
+export const ORIGEM_PADRAO = ORIGEM_CENTRO;
+
+/**
+ * O lugar que está exatamente sobre a origem.
+ *
+ * Ele não tem distância a mostrar: tem uma frase, "Ponto de partida". A regra
+ * é a coordenada, e não `local.refugio`, porque ela precisa valer para as duas
+ * origens — com o Centro ativo quem cai aqui é a Igreja Matriz, que divide a
+ * coordenada com a praça da matriz, e sem isso a ficha dela anunciaria "0 m ·
+ * 0 min de carro". É a mesma regra que tira o ponto da lista de destinos em
+ * `gerar-rotas.mjs`, e as duas precisam concordar: se discordassem, a ficha
+ * pediria uma rota que o gerador não gravou.
+ */
+export function ehOrigem(local: Local, origem: Origem): boolean {
+  return local.lat === origem.lat && local.lng === origem.lng;
+}
 
 /**
  * Chips da barra de filtros.
@@ -344,7 +418,7 @@ export function getParada(local: Local): {
 }
 
 export interface Rota {
-  /** Estrada percorrida, em metros, do Refúgio até o ponto. */
+  /** Estrada percorrida, em metros, da origem ativa até o ponto. */
   metros: number;
   segundos: number;
   /**
@@ -364,25 +438,34 @@ export interface Rota {
  * Rotas de carro, calculadas pelo OSRM sobre o OpenStreetMap e gravadas em
  * `rotas.json` por `npm run rotas`.
  *
- * Ficam no repositório em vez de serem buscadas pelo navegador porque a origem
- * é fixa e os destinos são uma lista curada: a resposta é a mesma para todo
- * visitante. Assim o painel abre sem espera, continua de pé se o serviço de
- * rotas cair, e o site em produção não despeja tráfego no servidor de
- * demonstração do OSRM, que existe para desenvolvimento.
+ * Ficam no repositório em vez de serem buscadas pelo navegador porque as
+ * origens são fixas e os destinos são uma lista curada: a resposta é a mesma
+ * para todo visitante. Assim o painel abre sem espera, continua de pé se o
+ * serviço de rotas cair, e o site em produção não despeja tráfego no servidor
+ * de demonstração do OSRM, que existe para desenvolvimento.
  *
- * Mexeu em coordenada no `mapa-turistico.json`? Rode `npm run rotas` de novo.
+ * São dois conjuntos, um por origem, gravados na mesma rodada. Os dois viajam
+ * no bundle porque a origem só se conhece na URL, já no navegador — e buscar o
+ * conjunto certo depois seria trocar um arquivo a mais por uma espera que este
+ * arquivo existe para não ter.
+ *
+ * Mexeu em coordenada no `mapa-turistico.json` ou no `centro.json`? Rode
+ * `npm run rotas` de novo.
  */
 // O TypeScript lê a geometria do JSON como `number[][]`, sem saber que cada par
 // tem exatamente dois números — daí a passagem por `unknown`. Quem garante o
 // formato é o gerador, não o compilador.
-const ROTAS = rotasJson.rotas as unknown as Record<string, Rota>;
+const ROTAS = rotasJson.origens as unknown as Record<
+  OrigemId,
+  { rotas: Record<string, Rota> }
+>;
 
-export function getRota(local: Local): Rota | null {
-  return ROTAS[local.id] ?? null;
+export function getRota(local: Local, origem: Origem): Rota | null {
+  return ROTAS[origem.id].rotas[local.id] ?? null;
 }
 
 /**
- * Distância em linha reta até o Refúgio. Serve de reserva para o lugar que
+ * Distância em linha reta até a origem. Serve de reserva para o lugar que
  * ainda não tem rota gravada — cadastrado depois da última geração, ou fora do
  * alcance do roteamento. Um número aproximado é melhor do que espaço em branco,
  * e o rótulo diz que é linha reta para não passar por quilometragem de estrada.
@@ -393,16 +476,16 @@ export function getRota(local: Local): Rota | null {
  * — que é a distância da varanda ao cume do Bauzinho, e não um caminho que
  * exista.
  */
-export function getDistanciaKm(local: Local): number {
+export function getDistanciaKm(local: Local, origem: Origem): number {
   const parada = getParada(local);
   const R = 6371;
   const rad = (graus: number) => (graus * Math.PI) / 180;
 
-  const dLat = rad(parada.lat - REFUGIO.lat);
-  const dLng = rad(parada.lng - REFUGIO.lng);
+  const dLat = rad(parada.lat - origem.lat);
+  const dLng = rad(parada.lng - origem.lng);
   const a =
     Math.sin(dLat / 2) ** 2 +
-    Math.cos(rad(REFUGIO.lat)) *
+    Math.cos(rad(origem.lat)) *
       Math.cos(rad(parada.lat)) *
       Math.sin(dLng / 2) ** 2;
 
@@ -430,8 +513,8 @@ export function formatarDuracao(segundos: number): string {
 }
 
 /**
- * O trecho de carro, e só ele: estrada e tempo do Refúgio até onde o carro
- * para.
+ * O trecho de carro, e só ele: estrada e tempo da origem ativa até onde o
+ * carro para.
  *
  * A linha reta enganava justamente onde mais importa — a portaria do
  * Monumento Natural fica a 1,3 km da varanda e a 17,3 km de estrada, porque
@@ -440,13 +523,13 @@ export function formatarDuracao(segundos: number): string {
  * Onde o carro não para no ponto, esta função não é a resposta inteira: quem
  * monta as duas linhas da ficha é `getChegada`.
  */
-export function getDistancia(local: Local): string {
-  if (local.refugio) return 'Ponto de partida';
+export function getDistancia(local: Local, origem: Origem): string {
+  if (ehOrigem(local, origem)) return 'Ponto de partida';
 
-  const rota = getRota(local);
+  const rota = getRota(local, origem);
 
   if (!rota) {
-    const km = getDistanciaKm(local);
+    const km = getDistanciaKm(local, origem);
 
     return km < 1
       ? `${Math.round(km * 1000)} m em linha reta`
@@ -474,8 +557,8 @@ export interface Chegada {
  * do Baú mandava o hóspede procurar um estacionamento a 4 km de trilha do
  * lugar onde ele tinha acabado de parar.
  */
-export function getChegada(local: Local): Chegada {
-  const carro = getDistancia(local);
+export function getChegada(local: Local, origem: Origem): Chegada {
+  const carro = getDistancia(local, origem);
   const acesso = local.acesso;
 
   if (!acesso) return { carro, aPe: null };
@@ -610,10 +693,12 @@ export function filtrarLocais(
 /**
  * Link de rota do Google Maps até o lugar.
  *
- * Sem `origin` de propósito: o Maps assume a localização de quem abriu. Fixar a
- * saída no Refúgio traçava a rota errada para quem ainda está vindo de casa, e
- * quem já está hospedado sai do Refúgio de qualquer jeito — o padrão acerta os
- * dois casos, e ninguém precisa apagar um endereço antes de sair dirigindo.
+ * Sem `origin` de propósito, e é por isso que esta é a única função de rota que
+ * não recebe a origem: o Maps assume a localização de quem abriu. Fixar a
+ * saída traçava a rota errada para quem ainda está vindo de casa, e quem já
+ * está na cidade sai de onde está de qualquer jeito — o padrão acerta os dois
+ * casos, e ninguém precisa apagar um endereço antes de sair dirigindo. O ponto
+ * fixo mede; ele não dirige.
  *
  * O destino vai em coordenada, e não no nome do lugar: o nome nem sempre
  * resolve para o ponto certo em estrada rural, a coordenada sempre resolve.

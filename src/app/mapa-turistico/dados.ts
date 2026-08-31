@@ -106,7 +106,7 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
     {
       id: 'hospedagem',
       texto:
-        'Onde dormir no pé da serra. O mapa marca hoje o Refúgio da Pedra SP, a pousada que mantém este projeto e serve de ponto fixo para as distâncias, com cinco acomodações a caminho da Pedra do Baú.',
+        'Onde dormir no pé da serra. O mapa marca hoje o Refúgio da Pedra SP, a pousada que mantém este projeto, com cinco acomodações a caminho da Pedra do Baú.',
       leitura: { href: '/chales/', texto: 'Conheça as acomodações' },
     },
   ] satisfies Omit<CategoriaDaPagina, 'label'>[]

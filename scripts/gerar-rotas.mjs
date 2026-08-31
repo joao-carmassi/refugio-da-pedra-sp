@@ -1,22 +1,33 @@
 #!/usr/bin/env node
 /**
- * Precomputes the driving route from the Refúgio to every place in the tourist
+ * Precomputes the driving route from each origin to every place in the tourist
  * map and writes them to `src/data/rotas.json`.
  *
  * Usage:
  *   node scripts/gerar-rotas.mjs
  *   npm run rotas
  *
- * Why at build time instead of fetching from the browser: the origin is fixed
- * and the destinations are a hand-curated list, so the answer never changes
- * between visitors. Precomputing means the route panel opens with no spinner,
- * keeps working when the routing service is down, and — most importantly —
- * keeps every visitor of a live hotel site off the public OSRM demo server,
- * which is meant for development, not production traffic.
+ * Why at build time instead of fetching from the browser: the origins are
+ * fixed and the destinations are a hand-curated list, so the answer never
+ * changes between visitors. Precomputing means the route panel opens with no
+ * spinner, keeps working when the routing service is down, and — most
+ * importantly — keeps every visitor of a live hotel site off the public OSRM
+ * demo server, which is meant for development, not production traffic.
  *
- * Re-run this whenever a coordinate changes in `mapa-turistico.json`. The
- * script refuses to write a partial file: either every place gets a route or
- * nothing is written, so a network hiccup can never silently shorten the data.
+ * São duas origens, e não uma. O mapa passou a ter dois usos: sem parâmetro
+ * nenhum ele é o mapa da cidade, e mede tudo a partir do Centro de São Bento
+ * (`src/data/centro.json`); com `?refugio=1` ele é o mapa do hóspede, e mede a
+ * partir da pousada. Uma origem em tempo de execução não resolveria isso — o
+ * ponto inteiro deste arquivo é que linha reta mente aqui: a portaria do
+ * Monumento Natural fica a 1,3 km da varanda em linha reta e a 17,3 km de
+ * estrada, porque a estrada contorna o maciço. Cada origem precisa, então, do
+ * seu próprio conjunto de rotas gravado, e os dois saem da mesma rodada para
+ * nunca envelhecerem em ritmos diferentes.
+ *
+ * Re-run this whenever a coordinate changes in `mapa-turistico.json` or in
+ * `centro.json`. The script refuses to write a partial file: either every
+ * place gets a route from every origin or nothing is written, so a network
+ * hiccup can never silently shorten the data.
  *
  * The destination is not always the place. Cume, laje e setor de escalada não
  * têm estrada até a porta, e o `acesso` do cadastro declara onde o carro para
@@ -36,6 +47,11 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const entrada = join(root, 'src', 'data', 'mapa-turistico.json');
+// A coordenada do centro mora num arquivo só, lido aqui e importado pelo
+// `mapa-turistico.ts`: repetida nos dois lados, ela envelheceria de um lado só
+// e as distâncias gravadas passariam a sair de um lugar diferente do que a
+// ficha diz na tela.
+const centroJson = join(root, 'src', 'data', 'centro.json');
 const saida = join(root, 'src', 'data', 'rotas.json');
 
 const SERVIDOR = 'https://router.project-osrm.org/route/v1/driving';
@@ -101,12 +117,27 @@ async function buscar(origem, destino) {
 }
 
 const locais = JSON.parse(await readFile(entrada, 'utf8'));
+const centro = JSON.parse(await readFile(centroJson, 'utf8'));
 const refugio = locais.find((local) => local.refugio);
 
 if (!refugio) {
   console.error('rotas: nenhum local marcado como `refugio` em mapa-turistico.json');
   process.exit(1);
 }
+
+/**
+ * As duas origens, na ordem em que entram no arquivo.
+ *
+ * `id` é a chave por onde `getRota` acha o conjunto, e é o mesmo `OrigemId` do
+ * `mapa-turistico.ts` — mudar um nome aqui sem mudar lá deixa o site pedindo um
+ * conjunto que não existe. O `nome` viaja junto por conferência: é ele que a
+ * ficha escreve em "A partir do ___", e vê-lo gravado ao lado dos números diz,
+ * numa olhada, de onde eles saíram.
+ */
+const ORIGENS = [
+  { id: 'refugio', nome: refugio.nome, lat: refugio.lat, lng: refugio.lng },
+  { id: 'centro', nome: centro.nome, lat: centro.lat, lng: centro.lng },
+];
 
 const porId = new Map(locais.map((local) => [local.id, local]));
 
@@ -177,88 +208,155 @@ function paradaDe(local) {
   return local;
 }
 
-const destinos = locais.filter((local) => !local.refugio);
-const rotas = {};
+/**
+ * O lugar que está exatamente sobre a origem não é destino dela: é o próprio
+ * ponto de partida.
+ *
+ * Vale para as duas origens, e é por isso que a regra é a coordenada e não
+ * `local.refugio`: com o Refúgio na origem quem sai da lista é a pousada; com o
+ * Centro na origem quem sai é a Igreja Matriz, que ocupa a mesma coordenada da
+ * praça da matriz. Pedir essa rota devolveria 0 m, e "0 m · 0 min de carro" é
+ * pior do que a frase que a ficha põe no lugar — a mesma regra roda no
+ * `mapa-turistico.ts`, onde ela vira "Ponto de partida".
+ *
+ * Note que a pousada é destino comum quando a origem é o Centro: no mapa da
+ * cidade ela é um lugar como os outros, e precisa da distância que os outros
+ * têm.
+ */
+const naOrigem = (local, origem) =>
+  local.lat === origem.lat && local.lng === origem.lng;
 
 /**
- * Cinco lugares do Complexo do Baú param na mesma portaria, e sem cache seriam
- * cinco perguntas idênticas ao servidor de demonstração do OSRM. Com ele, os
- * que dividem a parada dividem os números exatos — que é justamente a verdade
- * a ser contada: de carro, chega-se ao mesmo lugar.
+ * O intervalo é do servidor, não de cada origem.
+ *
+ * Contar a pausa por origem faria a primeira rota do Centro sair colada na
+ * última do Refúgio — o dobro do ritmo combinado, justamente na virada. Uma
+ * marca só, para a rodada inteira, é o que mantém a promessa de uma requisição
+ * a cada 1,2 s de ponta a ponta.
  */
-const cache = new Map();
+let jaPediu = false;
 
-for (const destino of destinos) {
-  const parada = paradaDe(destino);
-  const chave = `${arredonda(parada.lng)},${arredonda(parada.lat)}`;
-  let rota = cache.get(chave);
+async function rotasDe(origem) {
+  const destinos = locais.filter((local) => !naOrigem(local, origem));
+  const rotas = {};
 
-  if (!rota) {
-    // A pausa fica antes da chamada de rede, e não entre destinos: acerto de
-    // cache não pede intervalo nenhum ao servidor.
-    if (cache.size) await espera(INTERVALO);
-    rota = await buscar(refugio, parada);
-    cache.set(chave, rota);
+  /**
+   * Cinco lugares do Complexo do Baú param na mesma portaria, e sem cache
+   * seriam cinco perguntas idênticas ao servidor de demonstração do OSRM. Com
+   * ele, os que dividem a parada dividem os números exatos — que é justamente
+   * a verdade a ser contada: de carro, chega-se ao mesmo lugar.
+   *
+   * O cache é de cada origem: a mesma parada vista de dois pontos de partida
+   * são duas estradas diferentes, e reaproveitar entre origens gravaria a
+   * quilometragem do Refúgio dentro do conjunto do Centro.
+   */
+  const cache = new Map();
+
+  for (const destino of destinos) {
+    const parada = paradaDe(destino);
+    const chave = `${arredonda(parada.lng)},${arredonda(parada.lat)}`;
+    let rota = cache.get(chave);
+
+    if (!rota) {
+      // A pausa fica antes da chamada de rede, e não entre destinos: acerto de
+      // cache não pede intervalo nenhum ao servidor.
+      if (jaPediu) await espera(INTERVALO);
+      rota = await buscar(origem, parada);
+      jaPediu = true;
+      cache.set(chave, rota);
+    }
+
+    rotas[destino.id] = rota;
+
+    console.log(
+      `rotas: ${origem.id}/${destino.id} — ${(rota.metros / 1000).toFixed(1)} km, ` +
+        `${Math.round(rota.segundos / 60)} min` +
+        (destino.acesso?.ponto || destino.acesso?.lat !== undefined
+          ? ' (até a parada declarada; o resto é a pé)'
+          : '') +
+        (rota.desvio > 250 ? ` — atenção: estrada a ${rota.desvio} m do ponto pedido` : ''),
+    );
   }
 
-  rotas[destino.id] = rota;
-
-  console.log(
-    `rotas: ${destino.id} — ${(rota.metros / 1000).toFixed(1)} km, ` +
-      `${Math.round(rota.segundos / 60)} min` +
-      (destino.acesso?.ponto || destino.acesso?.lat !== undefined
-        ? ' (até a parada declarada; o resto é a pé)'
-        : '') +
-      (rota.desvio > 250 ? ` — atenção: estrada a ${rota.desvio} m do ponto pedido` : ''),
-  );
+  return { destinos, rotas, origemDesvio: rotas[destinos[0].id]._origemDesvio };
 }
 
-const origemDesvio = rotas[destinos[0].id]._origemDesvio;
+/**
+ * As duas rodadas inteiras antes de gravar qualquer coisa.
+ *
+ * É a mesma promessa de sempre — ou tudo, ou nada —, agora com um motivo a
+ * mais: um arquivo com o conjunto do Refúgio novo e o do Centro velho é pior
+ * do que um arquivo velho inteiro, porque a incoerência entre os dois não
+ * aparece em lugar nenhum da tela.
+ */
+const gerado = [];
+
+for (const origem of ORIGENS) gerado.push([origem, await rotasDe(origem)]);
 
 /**
  * Hand-rolled so each route stays on a handful of lines, geometry included.
  * `JSON.stringify(…, 2)` puts every coordinate of every route on its own line:
  * the same data becomes a 99 KB file that no diff can be read through.
  */
-const corpo = Object.entries(rotas)
-  .map(
-    ([id, rota]) =>
-      `    ${JSON.stringify(id)}: {\n` +
-      `      "metros": ${rota.metros},\n` +
-      `      "segundos": ${rota.segundos},\n` +
-      `      "desvio": ${rota.desvio},\n` +
-      `      "linha": ${JSON.stringify(rota.linha)}\n` +
-      '    }',
-  )
+const corpo = gerado
+  .map(([origem, { rotas, origemDesvio }]) => {
+    const linhas = Object.entries(rotas)
+      .map(
+        ([id, rota]) =>
+          `        ${JSON.stringify(id)}: {\n` +
+          `          "metros": ${rota.metros},\n` +
+          `          "segundos": ${rota.segundos},\n` +
+          `          "desvio": ${rota.desvio},\n` +
+          `          "linha": ${JSON.stringify(rota.linha)}\n` +
+          '        }',
+      )
+      .join(',\n');
+
+    return (
+      `    ${JSON.stringify(origem.id)}: {\n` +
+      `      "nome": ${JSON.stringify(origem.nome)},\n` +
+      // Guardados para conferência: se uma coordenada de origem mudar e ninguém
+      // rodar o script, é por aqui que se descobre que os números envelheceram.
+      `      "origem": ${JSON.stringify([arredonda(origem.lng), arredonda(origem.lat)])},\n` +
+      `      "origemDesvio": ${origemDesvio},\n` +
+      '      "rotas": {\n' +
+      `${linhas}\n` +
+      '      }\n' +
+      '    }'
+    );
+  })
   .join(',\n');
 
 const arquivo =
   '{\n' +
   `  "_comentario": ${JSON.stringify(
     'Gerado por scripts/gerar-rotas.mjs (npm run rotas). Não editar à mão: ' +
-      'rode o script de novo depois de mexer numa coordenada de mapa-turistico.json.',
+      'rode o script de novo depois de mexer numa coordenada de ' +
+      'mapa-turistico.json ou de centro.json.',
   )},\n` +
   '  "fonte": "OSRM · OpenStreetMap",\n' +
-  // Guardados para conferência: se a coordenada do Refúgio mudar e ninguém
-  // rodar o script, é por aqui que se descobre que os números envelheceram.
-  `  "origem": ${JSON.stringify([arredonda(refugio.lng), arredonda(refugio.lat)])},\n` +
-  `  "origemDesvio": ${origemDesvio},\n` +
-  '  "rotas": {\n' +
+  '  "origens": {\n' +
   `${corpo}\n` +
   '  }\n' +
   '}\n';
 
 await writeFile(saida, arquivo, 'utf8');
 
-const longe = Object.entries(rotas).filter(([, r]) => r.desvio > 250);
+for (const [origem, { destinos, rotas, origemDesvio }] of gerado) {
+  const longe = Object.entries(rotas).filter(([, r]) => r.desvio > 250);
 
-console.log(`rotas: ${destinos.length} rotas gravadas em src/data/rotas.json`);
-console.log(`rotas: origem encaixou a ${origemDesvio} m da estrada`);
-
-if (longe.length) {
   console.log(
-    `rotas: ${longe.length} ponto(s) sem estrada até a coordenada pedida — ` +
-      longe.map(([id, r]) => `${id} (${r.desvio} m)`).join(', ') +
-      '. Ou falta `acesso` no cadastro, ou ele aponta para onde não passa carro.',
+    `rotas: ${origem.id} — ${destinos.length} rotas gravadas, ` +
+      `origem encaixou a ${origemDesvio} m da estrada`,
   );
+
+  if (longe.length) {
+    console.log(
+      `rotas: ${origem.id} — ${longe.length} ponto(s) sem estrada até a coordenada pedida: ` +
+        longe.map(([id, r]) => `${id} (${r.desvio} m)`).join(', ') +
+        '. Ou falta `acesso` no cadastro, ou ele aponta para onde não passa carro.',
+    );
+  }
 }
+
+console.log('rotas: src/data/rotas.json gravado');
