@@ -1,5 +1,11 @@
-import type { LngLatBoundsLike, Map as MapaLibre } from 'maplibre-gl';
+import type {
+  LngLatBoundsLike,
+  Map as MapaLibre,
+  StyleSpecification,
+} from 'maplibre-gl';
 import { LOCAIS, REFUGIO } from '@/lib/mapa-turistico';
+import estiloJson from '@/data/base-estilo.json';
+import regiaoJson from '@/data/regiao.json';
 import { FRACOES } from './folha-mobile';
 
 /**
@@ -18,8 +24,43 @@ import { FRACOES } from './folha-mobile';
  *
  * Ele chega bege de papel, com rodovia amarela; quem dá a cor final é
  * `pintarBase`, em `paleta-cartografica.ts`.
+ *
+ * O estilo é nosso, e não do OpenFreeMap: `scripts/gerar-base-offline.mjs` baixa
+ * a região inteira na build e a congela em `public/mapa-base/<snapshot>/`, pelo
+ * mesmo motivo que `gerar-rotas.mjs` congela as rotas — a resposta é a mesma
+ * para todo visitante e não muda entre deploys. É o que permite a promessa de
+ * funcionar sem sinal, e de quebra tira o último domínio externo do mapa.
+ *
+ * O `snapshot` no caminho dos tiles é a leva de dados do OpenFreeMap. Ele torna
+ * o pacote imutável por endereço: gerar de novo publica uma pasta nova em vez de
+ * puxar o chão de quem já baixou a anterior.
  */
-export const ESTILO_BASE = 'https://tiles.openfreemap.org/styles/liberty';
+
+/**
+ * O estilo, com o sprite completado.
+ *
+ * Tiles e glifos o MapLibre resolve a partir da raiz sem reclamar. O sprite,
+ * não: ele faz um `new URL(valor)` sem base, que exige esquema e host — e host
+ * é justamente o que não se sabe na build, quando o mesmo arquivo vai servir o
+ * localhost e o domínio de produção. Completar aqui é o que o próprio erro do
+ * MapLibre sugere, e custa uma linha.
+ *
+ * É função, e não constante, por causa da renderização no servidor, onde
+ * `location` não existe: uma constante seria avaliada já na importação e
+ * derrubaria o build. A guarda dentro dela é pelo mesmo motivo — o componente do
+ * mapa é renderizado uma vez no servidor antes de hidratar, e o valor devolvido
+ * ali não chega a ser usado, porque o MapLibre só roda no navegador.
+ */
+export function getEstiloBase(): StyleSpecification {
+  const estilo = estiloJson as unknown as StyleSpecification;
+
+  if (typeof location === 'undefined') return estilo;
+
+  return {
+    ...estilo,
+    sprite: new URL(estiloJson.sprite, location.origin).toString(),
+  };
+}
 
 /**
  * Enquadramento inicial: o Refúgio um pouco abaixo do centro óptico, para
@@ -31,17 +72,17 @@ export const ZOOM_INICIAL = { desktop: 12.6, mobile: 12 } as const;
 /** Zoom a partir do qual um local isolado é apresentado sem contexto demais. */
 export const ZOOM_FOCO = 15;
 
-export const ZOOM_MINIMO = 10.5;
-export const ZOOM_MAXIMO = 17;
+export const ZOOM_MINIMO = regiaoJson.zoomMinimo;
+export const ZOOM_MAXIMO = regiaoJson.zoomMaximo;
 
 /**
  * Cerca da região. Impede que o usuário arraste para fora de São Bento do
  * Sapucaí e fique olhando para um mapa vazio sem entender o que aconteceu.
+ *
+ * Vem de `regiao.json`, e não escrita aqui, porque o gerador do pacote offline
+ * precisa da mesma caixa para saber quais tiles baixar — ver o comentário lá.
  */
-export const LIMITES_REGIAO: LngLatBoundsLike = [
-  [-45.92, -22.85],
-  [-45.5, -22.5],
-];
+export const LIMITES_REGIAO = regiaoJson.limites as LngLatBoundsLike;
 
 /**
  * Textos da camada de gestos cooperativos do MapLibre. A página tem conteúdo

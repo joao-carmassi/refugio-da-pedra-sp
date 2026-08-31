@@ -19,7 +19,7 @@ import { useIsMobile } from '@/hooks/use-media-query';
 import { usePresenca } from '@/hooks/use-presenca';
 import { cn } from '@/lib/utils';
 import {
-  ESTILO_BASE,
+  getEstiloBase,
   LIMITES_REGIAO,
   LOCALE_PT_BR,
   enquadrarTudo,
@@ -354,6 +354,14 @@ function Pinos({
  * ficaria com o dobro de nós para o navegador manter.
  */
 function MapaTuristico() {
+  // O mesmo estilo nos dois temas: o mapa não tem modo escuro, e a paleta final
+  // vem de `pintarBase` de qualquer jeito. Memoizado porque trocar a identidade
+  // do objeto faz o MapLibre recarregar a base inteira a cada render.
+  const estilo = useMemo(() => {
+    const base = getEstiloBase();
+
+    return { light: base, dark: base };
+  }, []);
   const mobile = useIsMobile();
   const origem = useOrigem();
 
@@ -600,7 +608,7 @@ function MapaTuristico() {
     >
       <Map
         theme='light'
-        styles={{ light: ESTILO_BASE, dark: ESTILO_BASE }}
+        styles={estilo}
         center={[origem.lng, origem.lat]}
         zoom={mobile ? ZOOM_INICIAL.mobile : ZOOM_INICIAL.desktop}
         minZoom={ZOOM_MINIMO}

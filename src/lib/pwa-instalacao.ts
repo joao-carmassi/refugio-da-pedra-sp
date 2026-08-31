@@ -17,14 +17,28 @@
  */
 
 /**
- * O service worker mínimo que torna a rota instalável, e o escopo que ele
- * controla.
+ * O service worker do mapa, e o escopo que ele controla.
  *
  * O escopo é `/mapa` sem barra final de propósito, a mesma string do `scope`
  * de `public/mapa.webmanifest`: a comparação é de prefixo, então cobre
  * `/mapa/` e `/mapa-turistico/` de uma vez. Um escopo mais estreito que a
  * pasta do arquivo é sempre permitido, então o service worker pode morar na
  * raiz de `public/` sem precisar do cabeçalho `Service-Worker-Allowed`.
+ *
+ * Desde que ele passou a servir o mapa offline, esse prefixo virou carga
+ * estrutural, e vale registrar o que ele *não* significa. Escopo decide quais
+ * **documentos** o service worker controla, não quais URLs ele pode
+ * interceptar: com `/mapa/` sob controle, todo subrecurso que a página pedir
+ * passa por ele — `/_next/static/` inclusive, que está fora do prefixo.
+ *
+ * A exceção é script de worker, que casa pela própria URL em vez da URL do
+ * documento que o criou. Por isso o worker do MapLibre teve de se mudar para
+ * `/mapa-worker/`: na raiz de `public/` ele escapava do escopo, e sem ele
+ * nenhum tile vetorial é decodificado — mapa em branco com o cache cheio. Tudo
+ * que o mapa precisa ter debaixo do prefixo já carrega o `mapa-` do nome:
+ * `/mapa-worker/`, `/mapa-base/`, `/mapa-instalavel.js`, `/mapa.webmanifest` e
+ * os ícones. A convenção de nomes do projeto é, na prática, o desenho do
+ * escopo.
  */
 export const SERVICE_WORKER = {
   url: '/mapa-sw.js',

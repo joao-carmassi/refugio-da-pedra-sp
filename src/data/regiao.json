@@ -1,0 +1,11 @@
+{
+  "_comentario": "A cerca e o zoom do mapa, lidos por src/components/mapa-turistico/base-cartografica.ts e por scripts/gerar-base-offline.mjs. Mora num arquivo só porque as duas pontas precisam da mesma caixa: o componente para impedir o hóspede de arrastar para fora da região, o gerador para saber quais tiles baixar. Repetida nos dois lados, ela envelheceria de um lado só — e o resultado seria um mapa que deixa arrastar para onde não há tile guardado, que offline não é mensagem de erro, é tela cinza. Mexeu aqui? Rode `npm run base`.",
+  "limites": [
+    [-45.92, -22.85],
+    [-45.5, -22.5]
+  ],
+  "zoomMinimo": 10.5,
+  "zoomMaximo": 17,
+  "_folga": "Tiles a mais em cada direção, além do que a cerca pede. No zoom mínimo a viewport de um desktop largo é mais larga que a própria cerca: o MapLibre então encosta o enquadramento no limite e mostra uma faixa de fora, que só existe no pacote por causa desta folga. Sem ela, a borda do mapa fica cinza justamente no enquadramento de abertura.",
+  "folgaTiles": 1
+}

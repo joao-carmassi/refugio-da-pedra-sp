@@ -6,11 +6,12 @@ const CSP_DIRECTIVES = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  // OpenFreeMap serves the vector basemap for /mapa/ (style JSON,
-  // tiles, glyphs and sprites) over fetch/XHR, so it needs connect-src, not
-  // img-src. The MapLibre worker is served from this origin — see
-  // scripts/sync-maplibre-worker.mjs — hence 'self' rather than a CDN.
-  "connect-src 'self' https://tiles.openfreemap.org",
+  // A base vetorial de /mapa/ (estilo, tiles, glifos e sprite) é servida deste
+  // mesmo domínio: `scripts/gerar-base-offline.mjs` congela a região inteira em
+  // public/mapa-base/ na build. Foi por causa disso que o OpenFreeMap saiu
+  // daqui — o mapa não fala mais com ninguém de fora em runtime. O worker do
+  // MapLibre também é nosso, ver scripts/sync-maplibre-worker.mjs.
+  "connect-src 'self'",
   "worker-src 'self' blob:",
   // Allows the Google Maps embed used on the homepage (see mapa.tsx / outras-experiencias.tsx).
   "frame-src 'self' https://www.google.com",
@@ -45,6 +46,22 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      {
+        /*
+         * O pacote da base cartográfica é imutável por endereço: o caminho leva
+         * o snapshot do OpenFreeMap, então gerar de novo publica uma pasta
+         * nova em vez de trocar o conteúdo destas URLs. Um ano de cache é
+         * seguro por construção — e é ele que faz o botão de guardar o mapa não
+         * baixar de novo o que o hóspede já tinha visto navegando.
+         */
+        source: '/mapa-base/:caminho*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
       {
         source: '/(.*)',
         headers: [
