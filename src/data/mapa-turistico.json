@@ -88,23 +88,6 @@
     }
   },
   {
-    "id": "campo-escola",
-    "nome": "Campo Escola",
-    "cat": "aventura",
-    "zona": "bau",
-    "lat": -22.688243,
-    "lng": -45.66237,
-    "resumo": "Setor de escalada em granito onde a serra ensina quem está começando.",
-    "descricao": "Fica na aproximação da face norte da Pedra do Baú, a cerca de 570 m do cume, na mesma trilha das vias Transbaú e Parque dos Dinossauros. Reúne vias curtas e fáceis, e é onde as escolas de escalada da região fazem o primeiro dia de curso. A Prefeitura instalou a sinalização das vias em 2014.",
-    "endereco": "Monumento Natural Estadual da Pedra do Baú — São Bento do Sapucaí",
-    "acesso": {
-      "lat": -22.684599,
-      "lng": -45.670249,
-      "nome": "o estacionamento do Chico Bento",
-      "aPe": "De lá sobe a trilha da face norte, a mesma aproximação das vias Transbaú e Parque dos Dinossauros. É subida contínua, e o Campo Escola fica antes do cume do Baú — a cerca de 570 m dele."
-    }
-  },
-  {
     "id": "rampa-voo-livre",
     "nome": "Rampa de Voo Livre da Pedra do Baú",
     "cat": "aventura",
@@ -372,18 +355,6 @@
     "lng": -45.731274,
     "resumo": "Praça arborizada no eixo norte do centro, a caminho da Prefeitura.",
     "endereco": "Praça da Bandeira, s/n, Centro — São Bento do Sapucaí"
-  },
-  {
-    "id": "praca-joao-goulart",
-    "nome": "Praça Presidente João Goulart",
-    "cat": "turismo",
-    "zona": "centro",
-    "lat": -22.689,
-    "lng": -45.7295,
-    "aConferir": true,
-    "resumo": "Logradouro público oficializado em 2018, na subida do Mirante do Cruzeiro.",
-    "descricao": "Denominada pela Lei Municipal nº 1.972, de 18 de junho de 2018, em homenagem a João Belchior Marques Goulart. Fica na mesma rua que sobe para o Mirante do Cruzeiro, em frente ao Cemitério Municipal. O pino é aproximado: a praça ainda não está mapeada.",
-    "endereco": "Rua Presidente Castelo Branco, s/n, Centro — São Bento do Sapucaí"
   },
   {
     "id": "praca-braz-reale",

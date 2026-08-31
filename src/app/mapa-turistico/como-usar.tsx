@@ -53,7 +53,7 @@ function passos(origem: Origem): Passo[] {
     {
       titulo: 'Toque em Como chegar',
       texto:
-        'O Google Maps abre com a rota traçada até onde o carro chega, saindo de onde você estiver. Em cume e trilha esse ponto não é a atração: no Complexo da Pedra do Baú a rota vai para o estacionamento de onde sai a trilha daquele ponto — o do Chico Bento para o cume do Baú, a Ana Chata e o Campo Escola, o da portaria para o Bauzinho. ' +
+        'O Google Maps abre com a rota traçada até onde o carro chega, saindo de onde você estiver. Em cume e trilha esse ponto não é a atração: no Complexo da Pedra do Baú a rota vai para o estacionamento de onde sai a trilha daquele ponto — o do Chico Bento para o cume do Baú e a Ana Chata, o da portaria para o Bauzinho. ' +
         `As distâncias da ficha são medidas de um ponto fixo, o ${origem.nome}, e a rota é medida de onde você está.` +
         (doRefugio
           ? ' O botão no canto devolve o mapa a esse ponto fixo quando você quiser recomeçar.'

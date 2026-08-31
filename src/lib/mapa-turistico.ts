@@ -28,7 +28,7 @@ import rotasJson from '@/data/rotas.json';
  *   1. `aConferir: true` marca coordenada aproximada — a rua certa, não o
  *      imóvel. Está em: Cachoeira do Tobogã (dois GPS a 140 m um do outro),
  *      Belvedere do Serrano (um GPS só), Capelinhas de Mosaico, Igreja Santo
- *      Antônio, Igreja N. Sra. do Rosário, Praça Presidente João Goulart,
+ *      Antônio, Igreja N. Sra. do Rosário,
  *      Praça Dr. Braz Reale (o logradouro não está no OSM; o pino é o ponto
  *      médio entre a Biblioteca Municipal e os Correios, que têm a praça como
  *      endereço), Portal da Cidade, Arte no Quilombo (não está no OSM; a
@@ -99,14 +99,16 @@ import rotasJson from '@/data/rotas.json';
  *      - Cachoeira do Poção: fica ao lado da do Tobogã, mas o acesso é negado
  *        pelo proprietário. Não anunciar como visitável.
  *      - Cachoeira dos Amores, Museu da Revolução de 1932, Museu do Carro de
- *        Boi Quim Costa e Espaço de Leitura e Arte Eugênia Sereno: existem e
- *        estavam cadastrados com dado conferido, mas saíram do mapa a pedido.
- *        Voltam sem pesquisa nova — o histórico do Git tem o cadastro inteiro.
+ *        Boi Quim Costa, Espaço de Leitura e Arte Eugênia Sereno, Campo Escola
+ *        e Praça Presidente João Goulart: existem e estavam cadastrados com
+ *        dado conferido, mas saíram do mapa a pedido. Voltam sem pesquisa
+ *        nova — o histórico do Git tem o cadastro inteiro.
  *   7. Nomes corrigidos em relação ao pedido original: "Pedra Serra da
  *      Balança" são duas coisas — a Pedra da Balança (o cume, que entrou) e a
  *      Serra da Balança (crista e roteiro tropeiro até Gonçalves). "Pedreira
- *      Campo Escola" não existe: o setor de escalada se chama só Campo
- *      Escola. E o "Mirante do Toldi" não é um ponto à parte: o nome oficial
+ *      Campo Escola" não existe: o setor de escalada se chama só Campo Escola
+ *      — que depois saiu do mapa a pedido, mas a correção fica registrada
+ *      porque o nome errado tende a voltar. E o "Mirante do Toldi" não é um ponto à parte: o nome oficial
  *      dele é Mirante da Cachoeira do Toldi e o deck fica a 30 m da queda, no
  *      mesmo estacionamento — viraram um pino só. Separá-los também quebrava a
  *      distância: a base da cachoeira encaixa numa estrada desconectada e o
@@ -124,8 +126,8 @@ import rotasJson from '@/data/rotas.json';
  *      e o mais provável é que os 19,2 km já entrem uns metros de trilha. A
  *      ficha não mente (diz que o carro para e que há caminhada), mas confirmar
  *      o ponto exato tiraria a dúvida.
- *   9. As duas entradas do Complexo do Baú. O cadastro diz que o cume do Baú,
- *      a Ana Chata e o Campo Escola entram pelo estacionamento do Chico Bento
+ *   9. As duas entradas do Complexo do Baú. O cadastro diz que o cume do Baú
+ *      e a Ana Chata entram pelo estacionamento do Chico Bento
  *      — 1,9 km do Refúgio, trilha mais longa —, e que o Bauzinho e a rampa
  *      de voo livre entram pela portaria do Monumento Natural — 17,3 km,
  *      trilha mais curta. É o que o proprietário descreve como o costume da
@@ -233,8 +235,8 @@ export interface Acesso {
    * Coordenada avulsa da parada, quando ela não é ponto do mapa. Duas razões
    * diferentes levam a isso. A Pedra da Balança acaba no fim de uma estrada de
    * terra que não é atrativo, não tem horário e não teria o que dizer numa
-   * ficha. Já o estacionamento do Chico Bento, por onde sobem o cume do Baú, a
-   * Ana Chata e o Campo Escola, é negócio de terceiro: dar pino a ele seria
+   * ficha. Já o estacionamento do Chico Bento, por onde sobem o cume do Baú e
+   * a Ana Chata, é negócio de terceiro: dar pino a ele seria
    * vitrine, e essa não é decisão do mapa a tomar. A coordenada leva o hóspede
    * até a porteira sem que o mapa anuncie a casa.
    *

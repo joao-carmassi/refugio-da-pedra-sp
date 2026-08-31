@@ -56,12 +56,12 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
     {
       id: 'turismo',
       texto:
-        'Cachoeiras, mirantes e praças. Entram aqui a portaria do Monumento Natural da Pedra do Baú, a Cachoeira do Toldi, com salto de mais de 70 metros, a Cachoeira do Encontro, o Mirante do Cruzeiro, o Portal da Cidade, onde funciona o Centro de Informação ao Turista, e as seis praças do centro, do coreto ao largo da rodoviária.',
+        'Cachoeiras, mirantes e praças. Entram aqui a portaria do Monumento Natural da Pedra do Baú, a Cachoeira do Toldi, com salto de mais de 70 metros, a Cachoeira do Encontro, o Mirante do Cruzeiro, o Portal da Cidade, onde funciona o Centro de Informação ao Turista, e as cinco praças do centro, do coreto ao largo da rodoviária.',
     },
     {
       id: 'aventura',
       texto:
-        'O Complexo da Pedra do Baú inteiro: o cume do Baú a 1.950 m, o Bauzinho, a Pedra Ana Chata, o setor de escalada do Campo Escola e a rampa de voo livre do Mirante do Caramuru. Fora do complexo, a Pedra da Balança, no extremo oeste do município.',
+        'O Complexo da Pedra do Baú inteiro: o cume do Baú a 1.950 m, o Bauzinho, a Pedra Ana Chata e a rampa de voo livre do Mirante do Caramuru. Fora do complexo, a Pedra da Balança, no extremo oeste do município.',
       leitura: {
         href: '/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/',
         texto: 'As trilhas do complexo, uma a uma',
@@ -172,8 +172,6 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Trilha do Bauzinho no trecho final, com caminhantes chegando ao topo e a vista da Mantiqueira aberta',
   'ana-chata':
     'Laje suspensa da Pedra Ana Chata sobre o vale, com a serra ao fundo',
-  'campo-escola':
-    'Escalador em parede de granito no setor Campo Escola, com corda e costão à vista',
   'rampa-voo-livre':
     'Rampa de voo livre do Mirante do Caramuru com parapente pronto para decolar sobre o vale',
   'cachoeira-encontro':
@@ -212,8 +210,6 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Rosa dos ventos em mosaico no piso do Mirante do Cruzeiro, com a cidade ao fundo',
   'praca-bandeira':
     'Praça da Bandeira arborizada, com os bancos e o caminho de pedestres',
-  'praca-joao-goulart':
-    'Praça Presidente João Goulart na subida do Mirante do Cruzeiro',
   'praca-adhemar-barros':
     'Coreto da Praça Dr. Adhemar Pereira de Barros ao centro, com as árvores e os bancos à sombra em volta',
   'praca-monsenhor-pedro':
@@ -259,7 +255,6 @@ const ORDEM: string[] = [
   'bauzinho',
   'ana-chata',
   'rampa-voo-livre',
-  'campo-escola',
   'cachoeira-encontro',
   'cachoeira-toldi',
   'sabor-com-arte',
@@ -280,7 +275,6 @@ const ORDEM: string[] = [
   'praca-braz-reale',
   'praca-sao-benedito',
   'praca-bandeira',
-  'praca-joao-goulart',
   'campomax',
   'arte-no-quilombo',
   'atelie-ditinho-joana',
