@@ -21,6 +21,15 @@ import map from '@/data/image-alt.json';
 // ou de um espaço gourmet compartilhado — se for compartilhado, a foto deveria
 // sair da pasta do chalé, e não só mudar de alt.
 //
+// TODO(proprietário): `mapa/ana-chata/ana-chata-1.webp` mostra um monólito
+// arredondado acima do mar de nuvens, e a Pedra Ana Chata é descrita como laje
+// suspensa. O enquadramento aéreo não prova qual das pedras do complexo é, então
+// a descrição fala só do que está no quadro. Confirmar com quem fotografou — se
+// não for a Ana Chata, a foto muda de ponto. Vale o mesmo para `ana-chata-2`,
+// que é um monólito visto de um cume vizinho — o que está no quadro pode muito
+// bem ser a própria Pedra do Baú, fotografada de cima da Ana Chata; a descrição
+// não diz o nome de nenhuma das duas por isso.
+
 // TODO(proprietário): `ametista/refugio-2.webp` e `ametista/refugio-3.webp` têm
 // enquadramento fechado demais para provar, só pela imagem, que o prédio/detalhe
 // é o da Cabana Ametista. As descrições foram escritas sem citar a unidade.
