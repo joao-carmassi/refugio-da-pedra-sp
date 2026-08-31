@@ -50,3 +50,6 @@ next-env.d.ts
 # do repositório — ver design/README.md.
 /design/*.zip
 /design/*.cdr
+
+# claude code — links locais e preferências de máquina
+/.claude/
