@@ -1,5 +1,7 @@
 /* Hallmark · genre: editorial · macrostructure: Photographic · chrome: N6 masthead + Ft1 footer · design-system: design.md */
 
+import { Suspense } from 'react';
+import { ProvedorOrigem } from '@/components/mapa-turistico/origem';
 import Hero from './hero';
 import Categorias from './categorias';
 import Pontos from './pontos';
@@ -34,7 +36,22 @@ function MapaTuristicoPage(): React.ReactNode {
       <Hero />
       <Categorias />
       <Pontos />
-      <ComoUsar />
+      {/*
+        Só esta seção conhece a origem — é ela que descreve o que a ficha do
+        mapa mostra —, e por isso só ela entra no limite de suspensão que
+        `useSearchParams()` exige numa rota estática.
+
+        O `fallback` é a própria seção, sem provedor: fora dele o contexto
+        entrega o Centro, que é o padrão. Assim o HTML gerado no build sai com
+        a prosa inteira, redigida para o mapa da cidade — um esqueleto no lugar
+        dela tiraria do índice o texto que esta página existe para publicar. O
+        cliente só troca a seção quando há `?refugio=1` para trocar.
+      */}
+      <Suspense fallback={<ComoUsar />}>
+        <ProvedorOrigem>
+          <ComoUsar />
+        </ProvedorOrigem>
+      </Suspense>
       <Cta />
       <Faq />
     </main>
