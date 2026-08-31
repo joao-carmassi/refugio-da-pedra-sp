@@ -34,7 +34,7 @@ interface CategoriaDaPagina {
 }
 
 /**
- * As oito categorias do mapa, na ordem em que a página as conta.
+ * As nove categorias do mapa, na ordem em que a página as conta.
  *
  * Sem número de lugares, de propósito: contagem numa página institucional
  * envelhece mal e convida à comparação errada — "só 2 cachoeiras?" —, quando o
@@ -45,6 +45,11 @@ interface CategoriaDaPagina {
  * que hoje aparecem na página sem um único pino no mapa — a página promete um
  * guia da cidade inteira e por enquanto cobre esses dois eixos só pelos guias
  * do blog.
+ *
+ * TODO(proprietário): serviços é a categoria mais nova e tem um lugar só. Se a
+ * ideia é que ela cubra o que o hóspede precisa resolver na cidade — farmácia,
+ * posto, mercado, caixa eletrônico —, dizer quais entram. Se ela existe só
+ * para o parceiro imobiliário, ela já está pronta como está.
  */
 export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
   [
@@ -74,7 +79,7 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
     {
       id: 'restaurantes',
       texto:
-        'A mesa da serra. No mapa estão o Sabor com Arte, que serve truta em sete preparos e tem deck de frente para a Pedra do Baú, e o Bar SBS Bebidas, o boteco do centro, de frente para o coreto.',
+        'A mesa da serra. No mapa estão o Sabor com Arte, que serve truta em sete preparos e tem deck de frente para a Pedra do Baú, a Hot Stone, que é pizzaria, hamburgueria e choperia na avenida do centro, e o Bar SBS Bebidas, o boteco de frente para o coreto.',
       leitura: {
         href: '/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/',
         texto: 'O guia de gastronomia',
@@ -108,6 +113,11 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
       texto:
         'Onde dormir no pé da serra. O mapa marca hoje o Refúgio da Pedra SP, a pousada que mantém este projeto, com cinco acomodações a caminho da Pedra do Baú.',
       leitura: { href: '/chales/', texto: 'Conheça as acomodações' },
+    },
+    {
+      id: 'servicos',
+      texto:
+        'O eixo que não é passeio, para quem já está aqui e precisa resolver alguma coisa. Hoje marca a CAMPOMAX, a imobiliária do centro, que trabalha com terreno e casa na serra — a busca de quem sobe muito e uma hora pensa em ficar.',
     },
   ] satisfies Omit<CategoriaDaPagina, 'label'>[]
 ).map(({ id, texto, leitura }) => ({
@@ -172,6 +182,10 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Salto de mais de 70 metros da Cachoeira do Toldi visto do deck de mirante na estrada',
   'sbs-bebidas':
     'Fachada do Bar SBS Bebidas à noite, com o coreto da praça em frente',
+  'hot-stone':
+    'Salão da Hot Stone cheio à noite, com a pizza saindo do forno em primeiro plano',
+  campomax:
+    'Fachada da CAMPOMAX na Avenida Doutor Rubião Júnior, com a vitrine de imóveis à vista',
   'pedra-balanca':
     'Cruz no cume da Pedra da Balança a 1.600 m, com o vale a oeste ao fundo',
   'cachoeira-toboga':
@@ -253,6 +267,7 @@ const ORDEM: string[] = [
   'ladeira-pirilampos',
   'casa-cultura-miguel-reale',
   'sbs-bebidas',
+  'hot-stone',
   'mirante-cruzeiro',
   'capelinhas-mosaico',
   'igreja-sao-benedito',
@@ -266,6 +281,7 @@ const ORDEM: string[] = [
   'praca-sao-benedito',
   'praca-bandeira',
   'praca-joao-goulart',
+  'campomax',
   'arte-no-quilombo',
   'atelie-ditinho-joana',
   'belvedere-serrano',

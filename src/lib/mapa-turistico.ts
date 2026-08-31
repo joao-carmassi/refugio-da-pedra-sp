@@ -1,4 +1,5 @@
 import {
+  Briefcase,
   Camera,
   Coffee,
   Compass,
@@ -59,14 +60,30 @@ import rotasJson from '@/data/rotas.json';
  *      desempatou foi o proprietário. O do Bar SBS Bebidas ficou em branco:
  *      o Instagram do bar e o Tripadvisor dizem quinta a domingo a partir das
  *      18h, o portal de turismo diz quarta a domingo a partir das 15h, e não
- *      há como desempatar sem ligar. A descrição do bar avisa disso.
+ *      há como desempatar sem ligar. A descrição do bar avisa disso. O da Hot
+ *      Stone ficou em branco pelo mesmo motivo: as fontes convergem em "à
+ *      noite, e não todo dia" e divergem em quais dias e a partir de que hora.
+ *      A descrição da pizzaria avisa disso.
  *   5. `nota` / `avaliacoes` — só o Refúgio tem, vindo do próprio Google
  *      Business Profile. Preencher os demais só com número real; a estrela
  *      some enquanto não houver. O que existe e não entrou: o Sabor com Arte
  *      publica 4,3 com 511 avaliações no Tripadvisor (e 4,5 numa outra faixa
  *      do próprio site, que se contradiz), e o Bar SBS Bebidas tem 4,7 no
  *      Tripadvisor com três avaliações. Nenhum dos dois é Google, e três
- *      avaliações não são média — pedir os números do Business Profile.
+ *      avaliações não são média — pedir os números do Business Profile. A Hot
+ *      Stone e a CAMPOMAX entraram sem nota pela mesma regra.
+ *
+ *      O endereço dos dois saiu do cadastro federal (CNPJ
+ *      37.196.231/0001-22 e 65.204.731/0001-02), e foi ele que desempatou a
+ *      Hot Stone: as fontes públicas se dividiam entre o nº 32 e o nº 60 da
+ *      Avenida Conselheiro Rodrigues Alves, e a Receita diz 32.
+ *
+ *      Nenhum dos dois telefones é o do cadastro, e é de propósito: a Receita
+ *      guarda o número com que a empresa se registrou, que não costuma ser o
+ *      que ela atende. O da Hot Stone é o que o proprietário confirmou — é o
+ *      WhatsApp do pedido, e não o (12) 99755-2244 que a Receita traz. O da
+ *      CAMPOMAX é o do site da própria empresa, e não o (12) 9112-4409 do
+ *      cadastro.
  *   6. Ficaram de fora, por não existirem nas fontes ou por falta de
  *      coordenada utilizável:
  *      - "Parquinho Municipal": nenhum equipamento com esse nome no OSM, na
@@ -119,6 +136,15 @@ import rotasJson from '@/data/rotas.json';
  *      e R$ 30 por carro, e por isso nem o cadastro nem o FAQ citam valor) e
  *      se piloto de parapente com equipamento nas costas pode subir de carro
  *      os 400 m até a rampa, que o visitante comum faz a pé.
+ *  10. Onde fica a porta da CAMPOMAX. Aqui o problema é o inverso do item 1: a
+ *      coordenada é boa — é o pino que a própria empresa publica no Google —, e
+ *      o que não fecha é o endereço. O cadastro federal declara Rua Doutor
+ *      Rubião Júnior, 122, e o pino cai a uns 80 m dela, mais perto da
+ *      Travessa Nossa Senhora do Rosário. Não levou `aConferir` de propósito:
+ *      a ressalva que essa marca imprime na ficha fala em horário de visitação
+ *      e em subir a serra, e nenhuma das duas coisas se aplica a um escritório
+ *      no centro. A descrição avisa em português. Confirmar qual dos dois
+ *      endereços é a porta e acertar o que estiver errado.
  */
 
 /**
@@ -146,6 +172,25 @@ export const CATEGORIAS = {
   compras: { label: 'Compras', cor: '#7a5a8c', icone: ShoppingBag },
   aventura: { label: 'Aventura', cor: '#2e7d8a', icone: Mountain },
   experiencias: { label: 'Experiências', cor: '#9a4a5f', icone: Compass },
+  /**
+   * O eixo que não é passeio.
+   *
+   * As oito categorias acima respondem "o que fazer no fim de semana". Esta
+   * responde a outra pergunta, que quem sobe a serra acaba fazendo: quem
+   * resolve alguma coisa aqui. Ela nasceu com a imobiliária do centro —
+   * visitante que volta muito uma hora procura terreno — e é onde entra o
+   * serviço que o hóspede precisa achar sem sair do mapa.
+   *
+   * Mantê-la separada de `compras` é o que impede as duas de mentirem:
+   * `compras` é o artesanato de São Bento, palha de bananeira e escultura em
+   * madeira, e uma corretora de imóveis no meio disso desmancharia o filtro
+   * para os dois lados.
+   *
+   * O oliva é o único vão que sobrava na paleta: entre o marrom dos cafés
+   * (36°) e o verde do turismo (150°) não havia nada, e é terra lavrada, que
+   * convive com a base em areia sem disputar com o verde de mato.
+   */
+  servicos: { label: 'Serviços', cor: '#6d7f3c', icone: Briefcase },
 } as const satisfies Record<
   string,
   { label: string; cor: string; icone: LucideIcon }

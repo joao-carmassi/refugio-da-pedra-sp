@@ -336,6 +336,34 @@
     "destaque": true
   },
   {
+    "id": "hot-stone",
+    "nome": "Hot Stone Pizzaria & Hambúrgueria",
+    "cat": "restaurantes",
+    "zona": "centro",
+    "lat": -22.691488,
+    "lng": -45.7326,
+    "resumo": "Pizza, hambúrguer e chope na avenida que corta o centro. Come-se no salão ou pede-se em casa; abre à noite, e não todo dia.",
+    "descricao": "Fica na Avenida Conselheiro Rodrigues Alves, a via que atravessa o centro de ponta a ponta. É pizzaria, hamburgueria e choperia no mesmo endereço, e ainda entrega: o cadastro federal traz restaurante como atividade principal e bar, bufê e comida para consumo em casa como secundárias — a casa faz as quatro coisas. O pedido de entrega sai pelo site próprio e por WhatsApp. Abre só à noite e não todos os dias: as fontes públicas divergem sobre quais dias e a partir de que hora, então ligue antes de descer.",
+    "endereco": "Avenida Conselheiro Rodrigues Alves, 32, Centro — São Bento do Sapucaí",
+    "tel": "(12) 99733-6413",
+    "site": "https://www.hotstonepizzaria.com.br",
+    "destaque": true
+  },
+  {
+    "id": "campomax",
+    "nome": "CAMPOMAX Imobiliária",
+    "cat": "servicos",
+    "zona": "centro",
+    "lat": -22.691196,
+    "lng": -45.733528,
+    "resumo": "A imobiliária do centro: compra, venda, locação e avaliação de imóveis, com o forte em terreno na serra.",
+    "descricao": "Corretagem na compra, venda, locação e avaliação de imóveis em São Bento do Sapucaí e região, com o forte em terreno. CRECI 319522-F. É o eixo de serviços do mapa, e não um passeio: entra aqui porque quem sobe muito a serra uma hora pensa em ficar. O pino é o que a própria empresa publica no Google e fica a uns 80 metros do endereço declarado no cadastro federal — ligue antes de ir até a porta.",
+    "endereco": "Avenida Doutor Rubião Júnior, 122, Centro — São Bento do Sapucaí",
+    "tel": "(12) 99250-3867",
+    "site": "https://redecampomax.com.br",
+    "destaque": true
+  },
+  {
     "id": "praca-bandeira",
     "nome": "Praça da Bandeira",
     "cat": "turismo",
