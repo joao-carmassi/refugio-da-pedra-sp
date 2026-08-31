@@ -375,8 +375,12 @@ function MapaTuristico() {
    *
    * Fechar o cartão zera `selecionado` no mesmo quadro em que ele começa a
    * descer, e um cartão sem lugar não tem o que desenhar enquanto sai. Este eco
-   * segura o conteúdo até a animação terminar; ele nunca é lido por quem já tem
-   * `local` na mão.
+   * segura o conteúdo até a animação terminar.
+   *
+   * Quem sai de cena lê o eco; quem entra lê `local`. A ficha dos dois
+   * tamanhos e o cartão do celular fecham por aqui, então leem o eco. A rota é
+   * o contrário: dela só se volta para a ficha, com o lugar ainda selecionado,
+   * e por isso ela e o traçado no mapa seguem em `local`.
    */
   const [ultimoLocal, setUltimoLocal] = useState<Local | null>(null);
 
@@ -386,10 +390,12 @@ function MapaTuristico() {
     () => filtrarLocais(filtro, termo),
     [filtro, termo],
   );
-  const resultados = useMemo(
-    () => filtrarLocais(FILTRO_TODOS, termo, { incluirRefugio: false }),
-    [termo],
-  );
+  // A busca varre o cadastro inteiro, o Refúgio junto. Ele já foi escondido
+  // daqui, de quando era a origem das distâncias e aparecer no autocomplete o
+  // fazia parecer resposta a uma busca que ninguém tinha feito. Agora que a
+  // medida sai do centro, a pousada é um pino como os outros — e quem digita o
+  // nome dela e não acha nada só conclui que o mapa está incompleto.
+  const resultados = useMemo(() => filtrarLocais(FILTRO_TODOS, termo), [termo]);
 
   const titulo =
     termo.trim().length > 0
@@ -468,8 +474,17 @@ function MapaTuristico() {
     if (mobile) setFolha('minima');
   }
 
-  /** Fecha a ficha (ou a rota) e devolve a coluna ao estado de repouso. */
+  /**
+   * Fecha a ficha e devolve a coluna ao estado de repouso.
+   *
+   * Zera `selecionado` junto. Sem isso o painel saía mas o pino ficava para
+   * trás, grande e com o rótulo aberto, apontando para uma ficha que não
+   * estava mais na tela — e como só um pino fica assim por vez, o mapa passava
+   * a afirmar uma seleção que a pessoa acabara de desfazer. Quem segura o
+   * conteúdo enquanto o painel desce é `ultimoLocal`, que existe para isto.
+   */
   function fecharFicha() {
+    setSelecionado(null);
     setPainel(repouso(mobile));
     if (mobile) setFolha('minima');
   }
@@ -694,9 +709,15 @@ function MapaTuristico() {
           </div>
         )}
 
-        {naColuna(detalhesPresente, mostraDetalhes) && local && (
+        {/*
+          Lê `ultimoLocal`, e não `local`, pelo mesmo motivo que a ficha do
+          mobile: fechar zera `selecionado` no quadro em que o painel começa a
+          sair, e um guard em `local` o desmontaria ali mesmo, sem a animação
+          que `detalhesPresente` está segurando. O eco tem o conteúdo até o fim.
+        */}
+        {naColuna(detalhesPresente, mostraDetalhes) && ultimoLocal && (
           <PainelDetalhes
-            local={local}
+            local={ultimoLocal}
             onVoltar={fecharFicha}
             onRota={abrirRota}
             // Mesmo encaixe da lista, logo abaixo da busca: a ficha substitui a

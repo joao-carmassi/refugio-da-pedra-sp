@@ -670,15 +670,10 @@ function pontuar(termo: string): Map<string, number> | null {
  * lista lateral quanto para o autocomplete. O score só desempata dentro de
  * cada grupo, para que o acerto literal venha antes do palpite.
  */
-export function filtrarLocais(
-  filtro: FiltroId,
-  termo: string,
-  { incluirRefugio = true }: { incluirRefugio?: boolean } = {},
-): Local[] {
+export function filtrarLocais(filtro: FiltroId, termo: string): Local[] {
   const scores = pontuar(termo);
 
   return LOCAIS.filter((local) => {
-    if (!incluirRefugio && local.refugio) return false;
     if (filtro !== FILTRO_TODOS && local.cat !== filtro) return false;
 
     return !scores || scores.has(local.id);
