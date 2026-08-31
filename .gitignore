@@ -40,3 +40,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# design — os empacotados do designer ficam fora do Git
+#
+# O `.cdr` editável da logo da pousada tinha 103 MB e o GitHub recusa qualquer
+# arquivo acima de 100 MB, então o push inteiro travava. Um `.cdr` moderno já é
+# um zip de bitmaps: extrair não ajuda, o `Bitmaps.dat` de dentro sozinho tem
+# 137 MB. Enquanto a arte carregar raster nesse tamanho, o original mora fora
+# do repositório — ver design/README.md.
+/design/*.zip
+/design/*.cdr
