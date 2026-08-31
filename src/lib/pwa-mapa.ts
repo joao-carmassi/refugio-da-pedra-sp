@@ -18,7 +18,7 @@ import type { Metadata } from 'next';
  * `public/` com prefixo `mapa-` e são apontados explicitamente.
  *
  * O `icon0.svg` que veio do gerador de ícones ficou de fora, pelo mesmo
- * motivo que o da pousada: são 5,7 MB de SVG rasterizado (1871×1871) para um
+ * motivo que o da pousada: 762 KB de SVG rasterizado (1254×1254) para um
  * favicon que nenhum navegador vai preferir aos PNG/ICO abaixo.
  */
 export const METADATA_APP_MAPA = {
