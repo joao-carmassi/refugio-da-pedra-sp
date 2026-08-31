@@ -5,7 +5,13 @@ import { type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
 import FotoLocal from './foto-local';
-import { EtiquetaCategoria, Horario, Nota, SeloDestaque } from './etiquetas';
+import {
+  EtiquetaCategoria,
+  Nota,
+  SeloAberto,
+  SeloDestaque,
+  useAberto,
+} from './etiquetas';
 
 interface Props {
   local: Local;
@@ -38,6 +44,7 @@ function CartaoRapido({
   onFechar,
 }: Props) {
   const mobile = variante === 'mobile';
+  const aberto = useAberto(local);
 
   return (
     <div
@@ -136,10 +143,12 @@ function CartaoRapido({
             >
               {local.nome}
             </p>
-            {(local.nota || local.horario) && (
+            {/* O selo responde a pergunta da prévia — dá para ir agora? A
+                tabela de dias fica para a ficha. */}
+            {(local.nota || aberto !== null) && (
               <p className='mt-1.5 flex flex-wrap items-center gap-2 text-xs'>
                 <Nota local={local} />
-                <Horario local={local} />
+                <SeloAberto local={local} />
               </p>
             )}
             <p

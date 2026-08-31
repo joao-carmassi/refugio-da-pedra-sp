@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils';
 import FotoLocal from './foto-local';
 import {
   EtiquetaCategoria,
-  Horario,
   Nota,
+  SeloAberto,
   SeloDestaque,
 } from './etiquetas';
 
@@ -16,10 +16,9 @@ interface Props {
   onSelect: (id: string) => void;
   onHover?: (id: string | null) => void;
   /**
-   * No mobile o cartão troca o horário pelo resumo: quem folheia a folha ainda
-   * está escolhendo o lugar, não conferindo se abre agora — o horário continua
-   * na ficha. E o clamp é mais curto (2 linhas em vez de 3) para a folha caber
-   * na altura de repouso sem virar rolagem.
+   * No mobile a miniatura não cresce com o Destaque e o clamp é mais curto (2
+   * linhas em vez de 3), para a folha caber na altura de repouso sem virar
+   * rolagem.
    */
   compacto?: boolean;
 }
@@ -100,7 +99,10 @@ function CartaoLista({ local, ativo, onSelect, onHover, compacto }: Props) {
           </p>
         )}
 
-        {!compacto && <Horario local={local} className='mt-1.5 block' />}
+        {/* Só o selo: a tabela de dias e faixas é da ficha. Quem folheia a
+            lista ainda está escolhendo o lugar, e a única pergunta que se faz
+            de relance é se dá para ir agora. */}
+        <SeloAberto local={local} className='mt-1.5' />
 
         <p
           style={{ color: 'var(--map-body)' }}

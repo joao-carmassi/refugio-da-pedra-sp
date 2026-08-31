@@ -1,5 +1,8 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { Star } from 'lucide-react';
-import { CATEGORIAS, type Local } from '@/lib/mapa-turistico';
+import { CATEGORIAS, estaAberto, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 
 /**
@@ -102,24 +105,62 @@ export function Nota({
 }
 
 /**
- * Horário de funcionamento. Some quando não há horário conferido — ver o
- * comentário do campo `horario` em `@/lib/mapa-turistico`.
+ * Se o lugar está aberto neste minuto, ou `null` quando o cadastro não permite
+ * afirmar — ver `estaAberto` em `@/lib/mapa-turistico`.
+ *
+ * A resposta só existe depois da montagem, e tem que ser assim: a página é
+ * gerada uma vez e servida por horas, então um selo vindo do HTML do servidor
+ * estaria errado para quase todo mundo que o lê, além de não bater com a
+ * hidratação. Reconfere de minuto em minuto porque a folha do mapa fica aberta
+ * enquanto o hóspede escolhe, e a hora de fechar chega com ela aberta.
  */
-export function Horario({
+export function useAberto(local: Local): boolean | null {
+  const [aberto, setAberto] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const conferir = () => setAberto(estaAberto(local));
+
+    conferir();
+
+    const relogio = setInterval(conferir, 60_000);
+
+    return () => clearInterval(relogio);
+  }, [local]);
+
+  return aberto;
+}
+
+/**
+ * Selo de aberto/fechado. Some quando não há como afirmar, e some sem deixar
+ * nada no lugar: a lista e a prévia mostram só o selo, e a tabela de dias e
+ * faixas mora na ficha, que é onde ela cabe em mais de uma linha.
+ */
+export function SeloAberto({
   local,
   className,
 }: {
   local: Local;
   className?: string;
 }) {
-  if (!local.horario) return null;
+  const aberto = useAberto(local);
+
+  if (aberto === null) return null;
 
   return (
     <span
-      style={{ color: 'var(--map-meta)' }}
-      className={cn('truncate text-[11px]', className)}
+      title={local.horario}
+      style={{
+        color: aberto ? 'var(--map-open-fg)' : 'var(--map-closed-fg)',
+        background: aberto ? 'var(--map-open-bg)' : 'var(--map-closed-bg)',
+      }}
+      className={cn(
+        'inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-bold whitespace-nowrap',
+        className,
+      )}
     >
-      {local.horario}
+      <span aria-hidden='true' className='size-1.5 rounded-full bg-current' />
+      {aberto ? 'Aberto agora' : 'Fechado'}
+      {local.horario && <span className='sr-only'>. {local.horario}</span>}
     </span>
   );
 }

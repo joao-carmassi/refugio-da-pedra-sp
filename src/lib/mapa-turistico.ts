@@ -765,3 +765,171 @@ export function getFotoPrincipal(local: Local): string | null {
 
   return `/assets/${local.fotos.pasta}/${local.fotos.arquivos[0]}`;
 }
+
+/**
+ * Fuso do vale. O hóspede pode abrir o mapa de qualquer lugar do mundo, e
+ * "Aberto agora" só significa alguma coisa no relógio de São Bento.
+ */
+const FUSO = 'America/Sao_Paulo';
+
+/** Dias como o cadastro os escreve, na ordem de `Date#getDay`. */
+const DIAS = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+
+/** Nomes do `Intl` em `en-US`, na mesma ordem. */
+const DIAS_INTL = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+const DIA = 24 * 60;
+const SEMANA = 7 * DIA;
+
+/** Uma abertura, em minutos desde a meia-noite de domingo. */
+interface Faixa {
+  abre: number;
+  /** Sempre maior que `abre`; passa de `SEMANA` quando a faixa vira o domingo. */
+  fecha: number;
+}
+
+/** `Seg a qui`, `sáb e dom`, `dom`, `Todos os dias` — nada além disso. */
+function lerDias(texto: string): number[] | null {
+  const t = semAcento(texto).trim();
+
+  if (t === 'todos os dias') return [0, 1, 2, 3, 4, 5, 6];
+
+  const intervalo = t.match(/^(\w+) a (\w+)$/);
+
+  if (intervalo) {
+    const de = DIAS.indexOf(intervalo[1]);
+    const ate = DIAS.indexOf(intervalo[2]);
+
+    if (de < 0 || ate < 0) return null;
+
+    // Anda em círculo porque "sex a dom" atravessa o fim da semana.
+    const dias: number[] = [];
+
+    for (let d = de; dias.length < 7; d = (d + 1) % 7) {
+      dias.push(d);
+      if (d === ate) return dias;
+    }
+
+    return null;
+  }
+
+  const lista = t.split(/\s+e\s+/).map((d) => DIAS.indexOf(d.trim()));
+
+  return lista.some((d) => d < 0) ? null : lista;
+}
+
+/** `9h`, `11h30`. Devolve minutos desde a meia-noite. */
+function lerHora(texto: string): number | null {
+  const m = texto.trim().match(/^(\d{1,2})h(\d{2})?$/);
+
+  if (!m) return null;
+
+  const hora = Number(m[1]);
+  const minuto = Number(m[2] ?? 0);
+
+  if (hora > 24 || minuto > 59) return null;
+
+  return hora * 60 + minuto;
+}
+
+/**
+ * Traduz o `horario` do cadastro para faixas de relógio.
+ *
+ * Devolve `null` na primeira coisa que não entende, e é de propósito: o campo
+ * é texto livre escrito à mão, e um palpite sobre um texto que o parser não
+ * reconhece vira um "Aberto agora" falso — que é exatamente o erro que manda
+ * o hóspede subir a serra à toa. Sem leitura certa, sem selo; o texto do
+ * horário continua aparecendo como está. É o que acontece com o cartão do
+ * próprio Refúgio, cujo campo traz check-in e check-out, e não funcionamento.
+ */
+function lerHorario(horario: string | undefined): Faixa[] | null {
+  if (!horario) return null;
+
+  const faixas: Faixa[] = [];
+
+  for (const trecho of horario.split('·')) {
+    const corte = trecho.indexOf(',');
+
+    if (corte < 0) return null;
+
+    const dias = lerDias(trecho.slice(0, corte));
+
+    if (!dias?.length) return null;
+
+    for (const parte of trecho.slice(corte + 1).split(/\s+e\s+/)) {
+      const [de, ate] = parte.split(/\s+às\s+/);
+      const abre = lerHora(de ?? '');
+      const fecha = lerHora(ate ?? '');
+
+      if (abre === null || fecha === null) return null;
+
+      for (const dia of dias) {
+        const base = dia * DIA;
+
+        // Fechar antes de abrir é a madrugada do dia seguinte, não um erro.
+        faixas.push({
+          abre: base + abre,
+          fecha: base + (fecha > abre ? fecha : fecha + DIA),
+        });
+      }
+    }
+  }
+
+  return faixas.length ? faixas : null;
+}
+
+/** Minuto da semana, no fuso do vale, contado a partir da meia-noite de domingo. */
+function minutoDaSemana(quando: Date): number {
+  const partes = new Intl.DateTimeFormat('en-US', {
+    timeZone: FUSO,
+    weekday: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).formatToParts(quando);
+
+  const valor = (tipo: string) =>
+    partes.find((p) => p.type === tipo)?.value ?? '';
+
+  const dia = DIAS_INTL.indexOf(valor('weekday'));
+
+  // `hour12: false` devolve 24 à meia-noite em alguns motores.
+  const hora = Number(valor('hour')) % 24;
+
+  return (dia < 0 ? 0 : dia) * DIA + hora * 60 + Number(valor('minute'));
+}
+
+/**
+ * Se o lugar está aberto neste minuto. `null` quando não dá para afirmar —
+ * ver o comentário de `lerHorario`.
+ */
+export function estaAberto(
+  local: Local,
+  quando: Date = new Date(),
+): boolean | null {
+  const faixas = lerHorario(local.horario);
+
+  if (!faixas) return null;
+
+  const agora = minutoDaSemana(quando);
+
+  return faixas.some(
+    ({ abre, fecha }) =>
+      (agora >= abre && agora < fecha) ||
+      // A faixa que vira o domingo ainda vale na madrugada de domingo.
+      (fecha > SEMANA && agora + SEMANA >= abre && agora + SEMANA < fecha),
+  );
+}
+
+/**
+ * O horário quebrado em uma linha por faixa de dias. Numa linha só, o campo
+ * do cadastro fica longo demais para ser lido de relance — e é justamente de
+ * relance que ele é lido. A inicial sobe porque cada trecho vira frase.
+ */
+export function linhasHorario(horario: string): string[] {
+  return horario
+    .split('·')
+    .map((t) => t.trim())
+    .filter(Boolean)
+    .map((t) => t[0].toUpperCase() + t.slice(1));
+}

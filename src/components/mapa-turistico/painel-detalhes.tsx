@@ -2,11 +2,23 @@
 
 import { ArrowLeft, Clock, MapPin, MessageCircle, Phone, Route } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { REFUGIO, ehOrigem, getChegada, type Local } from '@/lib/mapa-turistico';
+import {
+  REFUGIO,
+  ehOrigem,
+  getChegada,
+  linhasHorario,
+  type Local,
+} from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
 import GaleriaLocal from './galeria-local';
-import { EtiquetaCategoria, Nota, Rotulo, SeloDestaque } from './etiquetas';
+import {
+  EtiquetaCategoria,
+  Nota,
+  Rotulo,
+  SeloAberto,
+  SeloDestaque,
+} from './etiquetas';
 import { useOrigem } from './origem';
 
 interface Props {
@@ -21,7 +33,9 @@ interface Props {
 interface Info {
   icone: typeof Clock;
   rotulo: string;
-  valor: string;
+  /** Uma linha por faixa de dias, no horário; uma linha só no resto. */
+  linhas: string[];
+  selo?: React.ReactNode;
 }
 
 /**
@@ -71,13 +85,14 @@ function PainelDetalhes({
     local.horario && {
       icone: Clock,
       rotulo: 'Horário',
-      valor: local.horario,
+      linhas: linhasHorario(local.horario),
+      selo: <SeloAberto local={local} />,
     },
-    { icone: MapPin, rotulo: 'Endereço', valor: local.endereco },
+    { icone: MapPin, rotulo: 'Endereço', linhas: [local.endereco] },
     local.tel && {
       icone: Phone,
       rotulo: 'Telefone',
-      valor: local.tel,
+      linhas: [local.tel],
     },
   ].filter(Boolean) as Info[];
 
@@ -207,7 +222,7 @@ function PainelDetalhes({
             style={{ borderColor: 'var(--map-line)' }}
             className='mt-4.5 divide-y overflow-hidden rounded-2xl border'
           >
-            {infos.map(({ icone: Icone, rotulo, valor }) => (
+            {infos.map(({ icone: Icone, rotulo, linhas, selo }) => (
               <li
                 key={rotulo}
                 style={{ borderColor: 'var(--map-line)' }}
@@ -219,13 +234,19 @@ function PainelDetalhes({
                   style={{ color: 'var(--map-stone)' }}
                 />
                 <div className='min-w-0'>
-                  <Rotulo>{rotulo}</Rotulo>
-                  <p
-                    style={{ color: 'var(--map-ink)' }}
-                    className='mt-0.5 text-[13px]'
-                  >
-                    {valor}
-                  </p>
+                  <span className='flex flex-wrap items-center gap-2'>
+                    <Rotulo>{rotulo}</Rotulo>
+                    {selo}
+                  </span>
+                  {linhas.map((linha) => (
+                    <p
+                      key={linha}
+                      style={{ color: 'var(--map-ink)' }}
+                      className='mt-0.5 text-[13px]'
+                    >
+                      {linha}
+                    </p>
+                  ))}
                 </div>
               </li>
             ))}
