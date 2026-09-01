@@ -166,6 +166,8 @@ O segredo é combinar o evento com uma boa hospedagem reservada com antecedênci
 
 O **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú, é a base ideal para quem quer viver os eventos sambentistas sem abrir mão do conforto serrano. Reserve seu chalé e garanta a melhor experiência na Serra da Mantiqueira.
 
+Os endereços do centro — praças, igrejas, o letreiro da cidade e a Casa da Cultura Miguel Reale — estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), com horário de funcionamento.
+
 *Acompanhe a programação oficial em [saobentotur.com.br/eventos](https://saobentotur.com.br/eventos/).*
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Trilhas do Complexo do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/)*

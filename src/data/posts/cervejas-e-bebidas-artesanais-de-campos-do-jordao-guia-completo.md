@@ -108,6 +108,8 @@ Juntos, os dois destinos oferecem:
 - Azeite artesanal na Oliq
 - Cachaças e licores da Mantiqueira
 
+O bar SBS Bebidas, no centro de São Bento, está no [mapa turístico da cidade](/mapa-turistico/) com o horário de funcionamento.
+
 ## Dicas Práticas
 
 - **Tour na Baden Baden**: reserve com antecedência nos fins de semana

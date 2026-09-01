@@ -91,6 +91,8 @@ No mesmo espaço convivem um viveiro de frutíferas e o restaurante **Entre Vila
 ### Sabor com Arte
 Referência gastronômica de Chão Bento, com **truta preparada à vista**, cozinha de fogão à lenha e música ao vivo nos fins de semana.
 
+O Sabor com Arte está no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) com o horário de funcionamento; o mapa também traz os mirantes e as capelinhas que costumam entrar no mesmo roteiro.
+
 ## Paisagens de Cinema
 
 Além da gastronomia, São Bento oferece cenários que justificam o apelido:

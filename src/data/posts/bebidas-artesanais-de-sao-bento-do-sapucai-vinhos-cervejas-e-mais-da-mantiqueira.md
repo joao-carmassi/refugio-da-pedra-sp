@@ -90,6 +90,8 @@ A Serra da Mantiqueira tem tradição em cachaça artesanal. Guias locais e o S�
 
 A maioria das vinícolas fica em estradas rurais ao redor de São Bento do Sapucaí, a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173. Carro com boa tração é recomendado; em dias de chuva, algumas estradas ficam difíceis.
 
+Vale abrir o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) antes de pegar essas estradas: ele traz os pontos de referência do centro e do vale com endereço, horário e rota de carro.
+
 ## Dicas Práticas
 
 - **Reserve com antecedência**: especialmente na Villa Santa Maria, que atende apenas com reserva

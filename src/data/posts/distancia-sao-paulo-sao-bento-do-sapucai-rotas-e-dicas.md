@@ -96,6 +96,8 @@ Saindo de São Paulo pela **BR-116 (Via Dutra)** até **Taubaté**, depois segui
 
 A cidade não possui aeroporto nem estação rodoviária com linhas regulares expressas de São Paulo. O acesso é essencialmente **de carro**. Há sinal de celular no centro, mas nas estradas rurais e trilhas a cobertura é irregular.
 
+Por isso vale abrir o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) antes de sair da rodovia: ele roda no navegador, pode ser instalado como aplicativo e continua funcionando sem sinal depois de baixar a base do município.
+
 ## FAQ
 
 ### Quantos km de São Paulo a São Bento do Sapucaí?

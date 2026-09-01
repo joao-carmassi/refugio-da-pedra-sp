@@ -88,6 +88,8 @@ Ao contratar qualquer passeio que exija equipamento técnico, **tudo está inclu
 - **Endereço**: Av. Conselheiro Rodrigues Alves, 143, Centro (em frente ao Restaurante Sabor da Serra)
 - **Ponto de encontro para passeios**: Restaurante Pedra do Baú (R. das Araucárias, s/n, Paiol Grande)
 
+O trecho entre o centro e o complexo está no [mapa turístico da cidade](/mapa-turistico/), que mostra a portaria do Monumento Natural e a rota de carro até ela.
+
 ## O Que Você Precisa Levar por Conta Própria
 
 O equipamento técnico de segurança é da agência, mas você precisa trazer:

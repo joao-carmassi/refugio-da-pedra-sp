@@ -209,6 +209,8 @@ Monte um **roteiro de meio dia** visitando os principais espaços:
 
 **Base ideal**: Refúgio da Pedra SP — ponto de partida perfeito para explorar o melhor de São Bento.
 
+O Ateliê Ditinho Joana, o Arte no Quilombo e as Capelinhas de Mosaico estão no [mapa turístico da cidade](/mapa-turistico/), com endereço e horário — dá para medir a distância entre eles antes de fechar a ordem do dia.
+
 ---
 
 ## Dicas Práticas

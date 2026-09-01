@@ -121,6 +121,8 @@ A distância é de apenas 35 km pela SP-042. Ideal para combinar os dois destino
 
 Para saber o que visitar nas cidades ao redor durante a viagem, confira o guia de [cidades vizinhas de São Bento do Sapucaí](/blog/cidades-vizinhas-de-sao-bento-do-sapucai-o-que-visitar-na-regiao).
 
+Para se situar dentro do município, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) reúne as trilhas, as cachoeiras, os mirantes, as igrejas e as praças da cidade num mapa só, com endereço, horário e rota de carro para cada ponto.
+
 ## Clima e Melhor Época para Visitar São Bento do Sapucaí
 
 São Bento do Sapucaí é um destino para o ano inteiro — cada estação entrega uma experiência diferente.
@@ -264,5 +266,7 @@ São Bento do Sapucaí integra a **Serra da Mantiqueira** — a mais extensa cad
 - **Tarde**: tour na **Vinícola Villa Santa Maria** ou degustação na **Oliq Azeite**
 - **Fim da tarde**: **Mirante do Cruzeiro** para a vista panorâmica da cidade e das montanhas
 - **Noite**: jantar no **Sabor com Arte** com truta flambada
+
+Quase todas as paradas destes dois dias estão no [mapa turístico do município](/mapa-turistico/), que mostra a distância e a rota de carro entre elas — útil para ajustar a ordem do roteiro ao seu ponto de partida.
 
 Para quem tem apenas um dia disponível, veja o roteiro otimizado: [o que fazer em São Bento do Sapucaí em 1 dia](/blog/o-que-fazer-em-sao-bento-do-sapucai-em-1-dia-roteiro-completo).

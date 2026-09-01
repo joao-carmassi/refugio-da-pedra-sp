@@ -100,6 +100,8 @@ Em **7 de maio de 2015**, através da **Resolução SC 24**, a Igreja Matriz foi
 - **Melhor horário para fotos**: manhã, quando a luz natural entra pelos vitrais
 - **Combine com**: Mirante do Cruzeiro (logo ao lado) e Capelinha de Mosaico do Centro (Rua 13 de Maio, 217)
 
+Os três ficam a poucos quarteirões um do outro: o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra onde cada um está e o horário em que a igreja abre.
+
 ## FAQ
 
 ### Quando foi construída a Igreja Matriz de São Bento do Sapucaí?

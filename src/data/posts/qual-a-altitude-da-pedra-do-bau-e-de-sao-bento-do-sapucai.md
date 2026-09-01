@@ -68,6 +68,8 @@ O Complexo da Pedra do Baú é formado por três formações rochosas principais
 
 A **Pedra do Baú**, com seus **1.964 metros de altitude** e aproximadamente **340 metros de parede rochosa**, é o ponto culminante do complexo e um dos mais altos da Serra da Mantiqueira paulista. Suas escarpas de gnaisse atingem **350 metros de altura e 540 metros de comprimento**.
 
+As três formações estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), junto da portaria do Monumento Natural e da rampa de voo livre.
+
 ## Altitude de São Bento do Sapucaí
 
 A sede do município de São Bento do Sapucaí está a aproximadamente **880 metros de altitude**. Por conta dessa elevação, a cidade é reconhecida como **Estância Climática** desde 1976, com temperaturas amenas durante todo o ano.

@@ -93,6 +93,8 @@ Da Suíça Brasileira (Campos do Jordão, 1.628 m) ao refúgio de Monte Verde (1
 ### 4. Infraestrutura de Hospedagem
 A oferta de hospedagem na Mantiqueira vai de hotéis sofisticados em Campos do Jordão a chalés privativos como o **Refúgio da Pedra SP** em São Bento do Sapucaí. Na Canastra, as opções se concentram em São Roque de Minas, com perfil mais rústico.
 
+Em São Bento, o [mapa turístico da cidade](/mapa-turistico/) mostra o que existe ao redor dessa base — do cume do Baú às capelinhas do centro.
+
 ### 5. Clima e Conforto
 A Mantiqueira é agradável o ano inteiro. No inverno, frio delicioso com lareira e fondue. No verão, cachoeiras e temperaturas amenas na altitude. A Canastra pode ser muito quente e seca na estiagem.
 

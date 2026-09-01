@@ -89,6 +89,8 @@ As cidades mais encantadoras da Mantiqueira são justamente as que têm **menos 
 
 Com pouco mais de **11 mil moradores**, São Bento do Sapucaí concentra uma oferta turística desproporcional ao seu tamanho: monumento natural com escalada, circuito de produtores artesanais (vinho, azeite, cerveja), festivais literários e de aventura, além de uma cena gastronômica que atrai visitantes de toda a Grande São Paulo. É o caso mais emblemático de como as cidades compactas da Mantiqueira entregam experiências de alto nível sem aglomeração.
 
+A oferta inteira cabe num [mapa turístico do município](/mapa-turistico/): trilhas, cachoeiras, mirantes, igrejas e ateliês, cada um com endereço e horário.
+
 ## Perfil Demográfico da Região
 
 A Serra da Mantiqueira é predominantemente composta por:

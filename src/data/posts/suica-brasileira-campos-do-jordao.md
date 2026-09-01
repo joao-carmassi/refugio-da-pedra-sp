@@ -107,7 +107,7 @@ Montanhas cobertas de Mata Atlântica e bosques de araucárias emolduram a cidad
 - **Proximidade**: a ~167 km de São Paulo e ~40 km de São Bento do Sapucaí
 - **Ideal para casais**: restaurantes românticos, lareiras e passeios a dois
 - **Cultura e natureza**: museus, jardins, trilhas e mirantes num só destino
-- **Combine com São Bento do Sapucaí**: fique no Refúgio da Pedra SP e visite Campos do Jordão num bate-volta
+- **Combine com São Bento do Sapucaí**: fique no Refúgio da Pedra SP e visite Campos do Jordão num bate-volta — o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra o que fazer na base
 
 ## Como Chegar
 

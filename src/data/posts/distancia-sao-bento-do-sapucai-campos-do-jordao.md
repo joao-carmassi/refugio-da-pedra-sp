@@ -101,6 +101,8 @@ A maioria dos viajantes que conhece São Bento do Sapucaí faz pelo menos um bat
 
 Base ideal: **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú — perfeito para explorar os dois destinos.
 
+Para montar a parte sambentista do roteiro, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra a distância entre as trilhas, as cachoeiras e o centro.
+
 ## Dicas Práticas
 
 - **GPS offline**: o sinal de celular pode cair entre as duas cidades

@@ -78,6 +78,8 @@ Há três entradas para o Complexo da Pedra do Baú:
 
 Além das trilhas, explore também: **Cachoeira dos Amores** (6 km), **Oliq Azeite**, **Vinícola Villa Santa Maria** e as encantadoras **Capelinhas de Mosaico**.
 
+Tudo isso a partir da mesma base: o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) é mantido pelo Refúgio e mede a distância de cada ponto do município até a pousada.
+
 ## Como Chegar
 
 São Bento do Sapucaí está a **aprox. 200 km de São Paulo** e **aprox. 40 km de Campos do Jordão** *(distâncias aproximadas; confirme via GPS)*. Acesso de carro pela SP-070 (Via Dutra) → Jacareí → SP-50 → SP-173. Não há aeroporto na cidade.

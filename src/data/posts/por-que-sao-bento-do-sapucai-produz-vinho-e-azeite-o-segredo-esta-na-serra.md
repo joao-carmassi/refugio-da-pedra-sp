@@ -123,6 +123,8 @@ Ao contrário do vinho, **quanto mais novo o azeite, melhor ele é**. Muitos aze
 
 A maioria das propriedades fica em estradas rurais ao redor de São Bento do Sapucaí. Reserve com antecedência, especialmente na Villa Santa Maria (reserva obrigatória). Carro com boa tração é recomendado em dias de chuva.
 
+Para encaixar outras paradas no mesmo dia, o [mapa turístico do município](/mapa-turistico/) mostra os mirantes, as cachoeiras e as igrejas do centro, cada um com horário e rota.
+
 ## FAQ
 
 ### Por que São Bento do Sapucaí produz vinho e azeite?

@@ -99,6 +99,8 @@ Durante os **cinco dias de carnaval**, São Bento do Sapucaí oferece uma progra
 - **Participe do desfile dos Bonecões**: acontece um mês antes — se estiver na região, vale conferir
 - **Respeite a tradição**: o Zé Pereira é patrimônio cultural da cidade
 
+Para se localizar na cidade durante a festa, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) traz as praças, as igrejas e o letreiro do centro, com endereço e horário.
+
 ## Onde Se Hospedar
 
 O **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú, é a base ideal para curtir o carnaval e ainda aproveitar as trilhas durante o dia. Reserve seu chalé e combine folia com aventura na serra.
