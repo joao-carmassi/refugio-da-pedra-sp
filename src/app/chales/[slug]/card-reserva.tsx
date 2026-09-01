@@ -31,8 +31,11 @@ const focusRing =
 
 // Curva expo-out do design system. Usada só na entrada da barra mobile —
 // é a única motion desta ilha.
+// `translate`, e não `transform`: no Tailwind v4 o `translate-y-full` da barra
+// escreve na propriedade `translate`, que é própria e não entra no `transform`.
+// Com `transform` na lista a barra aparecia já no lugar, só com o fade.
 const barMotion =
-  'transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:translate-y-0';
+  'transition-[translate,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:translate-y-0';
 
 /** Um passo de contador. Alvo de toque de 44px via `after`, sem inflar o botão. */
 function Stepper({
