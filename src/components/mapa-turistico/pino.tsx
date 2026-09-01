@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/map';
 import { CATEGORIAS, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
-import { ZOOM_INICIAL } from './base-cartografica';
+import { ZOOM_INICIAL, ZOOM_MAXIMO } from './base-cartografica';
 import CartaoRapido from './cartao-rapido';
 
 /**
@@ -18,60 +18,62 @@ import CartaoRapido from './cartao-rapido';
  *
  * `2 ** ((zoom - referencia) * forca)` é o crescimento do próprio mapa elevado
  * a uma fração. Com `forca: 1` o pino acompanharia o terreno metro a metro e
- * as pontas ficariam impraticáveis — invisível de longe, gigante de perto.
- * `0.45` encolhe o bastante para os pinos se desencostarem e ainda deixa o
- * desenho legível na ponta de baixo.
+ * as pontas ficariam impraticáveis — invisível de longe, gigante de perto. A
+ * fração encolhe o bastante para os pinos se desencostarem e ainda deixa o
+ * desenho legível embaixo. `referencia` é o zoom em que a escala vale 1 e os
+ * diâmetros do pino são o que se vê; `piso` e `teto` cortam as pontas.
  *
- * A referência é `ZOOM_INICIAL.desktop`, e esse é o ponto: o mapa não abre
- * nele. Quem enquadra na abertura é `enquadrarTudo`, que encaixa o vale na
- * tela e para em ~11,9 num desktop largo e no zoom mínimo num celular. Pôr a
- * referência na abertura foi a primeira tentativa e não deu em nada — a
- * escala abria em 0,99, e a tela cheia de pinos, que é o caso do problema,
- * continuava igual. Com a referência acima da abertura, a vista inicial já
- * chega encolhida e o tamanho nominal fica reservado a quem aproximou.
+ * São duas curvas, escolhidas por `pointer: coarse` e não por largura de tela,
+ * porque a pergunta que importa nas duas pontas é sobre o dedo.
  *
- * Os limites são por dedo, não por largura de tela — `pointer: coarse`
- * responde exatamente essa pergunta, e é a que importa nas duas pontas.
+ * No ponteiro fino a referência é `ZOOM_INICIAL.desktop`, acima do zoom em que
+ * o mapa abre — quem enquadra na abertura é `enquadrarTudo`, que encaixa o vale
+ * na tela e para em ~11,9 num desktop largo. Pôr a referência na abertura foi a
+ * primeira tentativa e não deu em nada: a escala abria em 0,99 e a tela cheia
+ * de pinos, que é o caso do problema, continuava igual. Com ela acima, a vista
+ * inicial já chega encolhida. O piso pode ser baixo porque o ponteiro é
+ * preciso.
  *
- * Embaixo: num mouse o pino pode ficar pequeno à vontade, porque o ponteiro é
- * preciso; num toque ele não pode descer abaixo do que se acerta com o polegar.
- *
- * Em cima é menos óbvio, e é o que a faixa apertada do toque resolve. No zoom
- * do centro da cidade — uma dezena de pontos em poucos quarteirões — quem
- * decide se dois pinos se encavalam não é o zoom, é a largura da tela: em 390px
- * eles ficam a algumas dezenas de pixels um do outro, e um pino no tamanho
- * nominal cobre essa distância. Um teto de 1,15 servia justo o pino grande no
- * lugar onde ele menos cabe. No toque o teto fica quase encostado no piso, e o
- * pino é praticamente do mesmo tamanho em todo o percurso do zoom: é a resposta
- * honesta para uma tela onde o espaço nunca aparece.
+ * No toque a curva inteira é outra, e desliza para o fim do zoom. Numa tela de
+ * 390px quem decide se dois pinos se encavalam não é o zoom, é a largura: do
+ * vale inteiro até o centro da cidade os pontos ficam a algumas dezenas de
+ * pixels um do outro, e ali o pino precisa ficar no piso o tempo todo — 0,75,
+ * que é o menor tamanho que ainda se acerta com o polegar. Só perto de
+ * `ZOOM_MAXIMO`, quando o mapa já abriu a rua e sobra espaço entre os pontos,
+ * é que ele cresce. Por isso a referência é `ZOOM_MAXIMO - 1` e a força é mais
+ * suave: o piso segura até ~14,6 e o pino chega ao teto por volta de 16,7.
  */
 const ESCALA = {
-  referencia: ZOOM_INICIAL.desktop,
-  forca: 0.45,
-  limites: {
-    ponteiroFino: { piso: 0.55, teto: 1.15 },
-    ponteiroGrosso: { piso: 0.75, teto: 0.82 },
+  ponteiroFino: {
+    referencia: ZOOM_INICIAL.desktop,
+    forca: 0.45,
+    piso: 0.55,
+    teto: 1.15,
+  },
+  ponteiroGrosso: {
+    referencia: ZOOM_MAXIMO - 1,
+    forca: 0.3,
+    piso: 0.75,
+    teto: 1.15,
   },
 } as const;
 
 /**
  * A lista de mídia é consultada a cada evento de zoom, então vive fora do
  * componente: criar uma nova por quadro é desperdício, e a mesma serve o mapa
- * inteiro. Fica nula no servidor, onde não há `window` — e a faixa do ponteiro
+ * inteiro. Fica nula no servidor, onde não há `window` — e a curva do ponteiro
  * fino é a certa até a primeira medição no cliente.
  */
 const TOQUE =
   typeof window === 'undefined' ? null : window.matchMedia('(pointer: coarse)');
 
 function escalaDoZoom(zoom: number) {
-  const bruta = 2 ** ((zoom - ESCALA.referencia) * ESCALA.forca);
   // Relido a cada chamada, e não guardado: quem alterna mouse e toque no mesmo
-  // aparelho troca de faixa sem precisar recarregar o mapa.
-  const { piso, teto } = TOQUE?.matches
-    ? ESCALA.limites.ponteiroGrosso
-    : ESCALA.limites.ponteiroFino;
+  // aparelho troca de curva sem precisar recarregar o mapa.
+  const curva = TOQUE?.matches ? ESCALA.ponteiroGrosso : ESCALA.ponteiroFino;
+  const bruta = 2 ** ((zoom - curva.referencia) * curva.forca);
 
-  return Math.min(teto, Math.max(piso, bruta));
+  return Math.min(curva.teto, Math.max(curva.piso, bruta));
 }
 
 /**
