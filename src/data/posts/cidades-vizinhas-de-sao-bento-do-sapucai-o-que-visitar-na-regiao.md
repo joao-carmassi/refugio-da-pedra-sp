@@ -106,6 +106,8 @@ Cidade paulista que homenageia o escritor. Oferece trilhas, cachoeiras e o charm
 
 *Distâncias e tempos aproximados. Confirme via GPS — estradas serranas podem variar.*
 
+Dentro de São Bento, o [mapa turístico do município](/mapa-turistico/) faz o mesmo trabalho em escala menor: mostra onde fica cada atração e a rota de carro até ela.
+
 ## Dicas para Explorar a Região
 
 - **Base em São Bento**: hospede-se no **Refúgio da Pedra SP** e faça bate-voltas para as cidades vizinhas

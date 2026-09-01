@@ -125,6 +125,8 @@ Artesanato em lã, malhas, cerâmicas e produtos regionais podem ser encontrados
 
 Campos do Jordão está a apenas **~40 km de São Bento do Sapucaí**. Hospede-se no Refúgio da Pedra SP, aproveite as trilhas da Pedra do Baú e reserve dias alternados para conhecer Campos do Jordão — o melhor dos dois mundos na Mantiqueira.
 
+Para planejar os dias em São Bento, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra as trilhas do Baú, as cachoeiras e o centro histórico, com endereço e horário.
+
 ## FAQ
 
 ### O que fazer em Campos do Jordão em 1 dia?

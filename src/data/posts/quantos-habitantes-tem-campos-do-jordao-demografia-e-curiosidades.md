@@ -105,6 +105,8 @@ Com os avanços da medicina e a erradicação da tuberculose, os sanatórios for
 
 As duas cidades se complementam perfeitamente: Campos do Jordão oferece gastronomia, compras e cultura, enquanto São Bento do Sapucaí oferece trilhas, natureza e aventura. Juntas, formam o roteiro ideal na Serra da Mantiqueira.
 
+Do lado sambentista, o [mapa turístico do município](/mapa-turistico/) mostra onde ficam as trilhas, as cachoeiras e o centro.
+
 ## FAQ
 
 ### Quantos habitantes tem Campos do Jordão?

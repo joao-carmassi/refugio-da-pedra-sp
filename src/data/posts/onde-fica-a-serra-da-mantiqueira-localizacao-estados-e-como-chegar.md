@@ -122,6 +122,8 @@ A serra se estende desde a região de **Poços de Caldas** (MG) e **Bragança Pa
 | Gonçalves | ~210 km | 3h |
 | Visconde de Mauá | ~260 km | 3h30–4h |
 
+Chegando a São Bento do Sapucaí, o [mapa turístico da cidade](/mapa-turistico/) mostra onde fica cada atração do município, com endereço e horário.
+
 ## FAQ
 
 ### Onde fica a Serra da Mantiqueira?

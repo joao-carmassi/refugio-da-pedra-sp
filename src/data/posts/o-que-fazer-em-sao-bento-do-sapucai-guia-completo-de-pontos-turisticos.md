@@ -151,6 +151,8 @@ Espaço cultural dedicado ao jurista e filósofo **Miguel Reale**, nascido em S�
 
 São Bento do Sapucaí está a **aprox. 200 km de São Paulo** (SP-070 → SP-50 → SP-173) e **aprox. 40 km de Campos do Jordão** *(distâncias aproximadas)*. Acesso de carro; sem aeroporto na cidade.
 
+Já na cidade, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra onde fica cada atração desta lista — as trilhas do Complexo do Baú, as cachoeiras, o Mirante do Cruzeiro, as igrejas e as Capelinhas de Mosaico —, com endereço, horário e rota de carro a partir do centro.
+
 ## Dicas Práticas
 
 - **Melhor época**: destino atrativo o ano todo; inverno (jun–ago) é mais frio e romântico; verão tem mais chuva

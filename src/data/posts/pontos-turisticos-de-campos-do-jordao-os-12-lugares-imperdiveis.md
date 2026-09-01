@@ -96,6 +96,8 @@ Conjunto arquitetônico que reproduz uma vila britânica, com lojinhas, cafés e
 
 Embora fique no município vizinho de **São Bento do Sapucaí** (~40 km), a **Pedra do Baú** é frequentemente incluída nos roteiros de quem visita a região. Com 1.964 m de altitude e via ferrata, é a aventura mais épica da Mantiqueira. O **Refúgio da Pedra SP** é a base ideal para essa experiência.
 
+O complexo inteiro — cume, Bauzinho, Ana Chata e a portaria do Monumento Natural — está no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/).
+
 ## 11. Bosque do Silêncio
 
 Trilha contemplativa no Horto Florestal, marcada pelo silêncio e pelas araucárias centenárias. Percurso curto e fácil, indicado para meditação e contato com a natureza.

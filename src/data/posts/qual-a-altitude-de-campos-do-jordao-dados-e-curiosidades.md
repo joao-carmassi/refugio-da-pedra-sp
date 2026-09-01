@@ -90,7 +90,7 @@ Campos do Jordão é consistentemente uma das cidades mais altas do Brasil em al
 
 ### Clima Frio
 
-A altitude é a principal responsável pelo frio de Campos do Jordão. A cada **100 metros** de elevação, a temperatura cai em média **0,6°C**. Isso significa que Campos do Jordão é naturalmente **5 a 6°C mais fria** que São Paulo e cerca de **4 a 5°C mais fria** que São Bento do Sapucaí.
+A altitude é a principal responsável pelo frio de Campos do Jordão. A cada **100 metros** de elevação, a temperatura cai em média **0,6°C**. Isso significa que Campos do Jordão é naturalmente **5 a 6°C mais fria** que São Paulo e cerca de **4 a 5°C mais fria** que São Bento do Sapucaí — cidade que vai de ~880 m no centro a ~1.964 m no cume do Baú, como mostra o [mapa turístico do município](/mapa-turistico/).
 
 No inverno (junho a agosto):
 - Mínimas podem chegar a **-3°C a 0°C**

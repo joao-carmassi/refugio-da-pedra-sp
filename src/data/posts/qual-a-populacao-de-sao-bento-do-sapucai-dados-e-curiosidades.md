@@ -99,6 +99,8 @@ O tamanho reduzido de São Bento é uma virtude:
 - **Sem agito**: ritmo de vida desacelerado — o antídoto perfeito para o estresse urbano
 - **Tradição viva**: festas, artesanato e gastronomia que refletem gerações de cultura serrana
 
+Tudo isso cabe num raio curto — o [mapa turístico do município](/mapa-turistico/) mostra os pontos do centro e do vale com endereço e horário.
+
 ## Comparação com Vizinhas
 
 | Cidade | População aprox. |

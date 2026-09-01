@@ -98,6 +98,8 @@ Há três entradas para o Complexo da Pedra do Baú, cada uma indicada para uma 
 
 São Bento do Sapucaí está a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173. Recomenda-se GPS atualizado e carro com boa tração.
 
+A portaria do Monumento Natural, o Bauzinho, a Ana Chata e o cume do Baú estão marcados no [mapa turístico da cidade](/mapa-turistico/), que traça a rota de carro até cada ponto de partida.
+
 ## Dicas Práticas
 
 - **Saia cedo**: melhor luz para fotos, menos calor no percurso e estacionamento mais fácil

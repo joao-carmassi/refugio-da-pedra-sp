@@ -96,6 +96,8 @@ Mais do que um restaurante, uma experiência de turismo rural: tour pela produç
 
 A maioria dos restaurantes fica na área central ou ao longo da rodovia que leva à Pedra do Baú. São Bento do Sapucaí está a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173.
 
+O Sabor com Arte e a Hot Stone estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), com endereço e horário de funcionamento — dá para conferir o que abre hoje antes de subir a serra.
+
 ## Dicas Práticas
 
 - **Fins de semana**: movimento alto no Sabor com Arte — chegue cedo ou ligue antes

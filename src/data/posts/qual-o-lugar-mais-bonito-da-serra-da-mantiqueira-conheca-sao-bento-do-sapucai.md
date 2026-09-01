@@ -107,6 +107,8 @@ O título de "lugar mais bonito" vai além do visual:
 - **Eventos**: FLIPES, Mountain Festival, INDOMIT, Carnaval centenário
 - **Hospedagem**: Refúgio da Pedra SP, a ~1,5 km da Pedra do Baú
 
+Onde fica cada uma dessas coisas está no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) — dos ateliês do vale às igrejas e capelinhas do centro.
+
 ## FAQ
 
 ### Qual o lugar mais bonito da Serra da Mantiqueira?

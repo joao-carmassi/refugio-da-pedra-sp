@@ -97,6 +97,8 @@ A serra foi barreira e caminho para os **bandeirantes paulistas** que, partindo 
 ### Século XIX: Estâncias Climáticas
 A altitude e o clima ameno atraíram a elite paulista e carioca para estâncias de saúde. **Campos do Jordão** nasceu como refúgio terapêutico para tuberculosos. Cidades como **São Bento do Sapucaí**, **Santo Antônio do Pinhal** e **Monte Verde** se consolidaram como destinos de descanso.
 
+Em São Bento, o que sobrou dessa época — as igrejas do centro e o casarão do século XIX que hoje abriga a Casa da Cultura Miguel Reale — está no [mapa turístico do município](/mapa-turistico/), com endereço e horário de visitação.
+
 ### Século XX: Conservação e Turismo
 Em **1985**, a Serra da Mantiqueira foi declarada **Área de Proteção Ambiental (APA)** pelo governo federal, abrangendo 422.873 hectares nos três estados. O turismo de natureza, aventura e gastronomia transformou a região em um dos corredores turísticos mais importantes do país.
 

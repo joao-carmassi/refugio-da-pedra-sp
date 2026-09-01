@@ -109,6 +109,8 @@ Embora o acesso ao topo seja de carro, há **trilhas nos arredores** do Pico do 
 
 **Dica**: combine as trilhas dos dois destinos. Use as caminhadas mais leves de Campos do Jordão para dias de descanso ativo, e reserve as trilhas do Complexo do Baú em São Bento para os dias de aventura.
 
+As trilhas do lado sambentista estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), com a rota de carro até cada entrada.
+
 ## Dicas Práticas
 
 - **Horário**: chegue cedo ao Horto Florestal — preferência entre 8h e 9h

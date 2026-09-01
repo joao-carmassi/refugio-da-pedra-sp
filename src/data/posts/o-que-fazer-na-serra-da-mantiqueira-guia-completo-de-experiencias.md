@@ -116,6 +116,8 @@ A Mantiqueira é a única cadeia montanhosa do Sudeste com **enoturismo consolid
 - **Pico Agudo** (Santo Antônio do Pinhal): mirante 360° com rampa de voo livre
 - **Mirante do Cruzeiro** (São Bento): panorâmica do centro e montanhas
 
+Os pontos de São Bento desta lista estão no [mapa turístico do município](/mapa-turistico/), com a rota de carro a partir do centro até cada um.
+
 ## Cultura e Artesanato
 
 - **Ateliê Ditinho Joana** (São Bento): talha em jacarandá que retrata a vida rural brasileira — reconhecido nacionalmente

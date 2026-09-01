@@ -132,6 +132,7 @@ Compareça ao **ponto de encontro** no horário combinado (geralmente entre 6h30
 - **Chegue no horário**: os guias saem pontualmente e não esperam atrasados
 - **Pergunte sobre combinações**: é possível fazer rapel no Bauzinho + subida na Pedra do Baú no mesmo dia
 - **Prepare-se fisicamente**: a via ferrata exige condicionamento básico
+- **Saiba onde é o ponto de partida**: o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra a portaria do Monumento Natural e os três cumes do complexo, com rota de carro a partir do centro
 
 ## FAQ
 

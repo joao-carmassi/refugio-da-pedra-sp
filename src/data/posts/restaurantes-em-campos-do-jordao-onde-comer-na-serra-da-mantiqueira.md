@@ -115,7 +115,7 @@ Alguns dos melhores restaurantes ficam nas saídas da cidade, em propriedades ru
 - **Fondue pede reserva**: a sequência de fondue é servida sob demanda e muitos restaurantes limitam as mesas
 - **Almoço é mais tranquilo**: se quiser evitar filas, vá na hora do almoço
 - **Preços**: Campos do Jordão pratica preços de destino turístico — para economizar, explore opções em Abernéssia e Jaguaribe
-- **Combine com São Bento**: a gastronomia de São Bento do Sapucaí é mais rústica e artesanal (truta flambada, azeite Oliq) — vale a visita gastronômica às duas cidades
+- **Combine com São Bento**: a gastronomia de São Bento do Sapucaí é mais rústica e artesanal (truta flambada, azeite Oliq) — vale a visita gastronômica às duas cidades; os restaurantes sambentistas estão no [mapa turístico da cidade](/mapa-turistico/), com endereço e horário
 
 ## FAQ
 

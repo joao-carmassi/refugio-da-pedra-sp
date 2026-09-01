@@ -122,6 +122,8 @@ O verão em Campos do Jordão é diferente do verão litorâneo:
 
 Estando a **aprox. 40 km de São Bento do Sapucaí**, Campos do Jordão é um complemento perfeito para quem se hospeda no Refúgio da Pedra SP. A melhor estratégia é usar São Bento como base para trilhas e natureza, e reservar um dia para o circuito gastronômico e cultural de Campos do Jordão.
 
+O [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) ajuda a dividir os dias: ele diz em que dias da semana e a que horas cada ponto do município abre.
+
 ## FAQ
 
 ### Qual a melhor época para visitar Campos do Jordão?
