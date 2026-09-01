@@ -1076,3 +1076,57 @@ body[data-scroll-locked] {
   font-size: 10px;
   background: rgb(255 255 255 / 0.82);
 }
+
+/* ---------------------------------------------------------------------------
+   Acordeão nativo que abre e fecha animado
+   ---------------------------------------------------------------------------
+   O FAQ de `/mapa-turistico/` é feito de `<details>`/`<summary>` de verdade, e
+   não do acordeão do Radix, porque a resposta precisa estar no HTML servido
+   mesmo com o item fechado — o motivo inteiro está no comentário de
+   `src/app/mapa-turistico/faq.tsx`. O preço disso era o salto: o navegador
+   abre e fecha `<details>` sem transição nenhuma.
+
+   `::details-content` é o pseudo-elemento que embrulha tudo que vem depois do
+   `<summary>`, e é ele que dá onde pegar para animar. Duas coisas o tornam
+   possível:
+
+   - `interpolate-size: allow-keywords` autoriza o navegador a interpolar de
+     `0` até `auto`. Sem isso a transição de altura para `auto` simplesmente
+     não acontece, e é por isso que a receita antiga do `max-height` chutado
+     existia — aqui a altura é a real, sem número mágico que corta texto longo.
+   - `allow-discrete` no `content-visibility` segura o conteúdo visível
+     enquanto ele encolhe. Sem essa palavra o navegador esconde o conteúdo no
+     primeiro quadro do fechamento e o que resta é uma caixa vazia diminuindo.
+
+   Onde o navegador não conhecer o pseudo-elemento, a regra inteira é ignorada
+   e o acordeão volta a abrir instantaneamente — que é como ele estava. Nada
+   depende disto para funcionar.
+
+   Utilitário, e não regra global em `details`: o site tem outros `<details>`
+   possíveis (conteúdo de blog, por exemplo) e animar todos por tabela seria
+   decidir por eles. Quem quer o efeito pede por ele. */
+:root {
+  interpolate-size: allow-keywords;
+}
+
+@utility detalhe-animado {
+  &::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 260ms ease,
+      content-visibility 260ms ease allow-discrete;
+  }
+
+  &[open]::details-content {
+    block-size: auto;
+  }
+
+  /* Quem pediu menos movimento continua com o acordeão, sem o deslize — a
+     mesma regra que `use-reveal.ts` aplica ao resto da página. */
+  @media (prefers-reduced-motion: reduce) {
+    &::details-content {
+      transition: none;
+    }
+  }
+}

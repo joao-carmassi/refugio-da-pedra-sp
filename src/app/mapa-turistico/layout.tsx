@@ -23,14 +23,19 @@ interface Props {
  * O Next.js substitui (não mescla) o objeto `openGraph` inteiro quando um
  * segmento filho o declara, então `images` precisa ser repetido aqui.
  *
- * TODO(proprietário): trocar pela foto própria desta rota assim que ela
- * existir — o hero da página está em placeholder pelo mesmo motivo.
+ * A foto é a mesma que abre o hero, e é de propósito: quem compartilha esta
+ * rota está passando adiante o guia da cidade, não a pousada. Enquanto o
+ * cartão social mostrava os chalés, o preview prometia hospedagem e a página
+ * entregava mapa — desencontro que devolve o visitante para a busca. O alt é
+ * cópia literal do que `src/data/image-alt.json` guarda para este arquivo:
+ * metadata não roda no cliente e não passa pelo `getAlt`, então as duas
+ * descrições precisam ser conferidas juntas se a foto mudar.
  */
 const ogImage = {
-  url: '/assets/refugio/geral/refugio-1.webp',
+  url: '/assets/mapa/pedra-bau/pedra-bau-4.webp',
   width: 1620,
-  height: 1080,
-  alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+  height: 1213,
+  alt: 'Vista aérea do complexo do Baú entre nuvens baixas, com o paredão de rocha cercado de mata',
 };
 
 /**
@@ -244,7 +249,20 @@ function MapaTuristicoLayout({ children }: Props): React.ReactNode {
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: serialize(faqJsonLd) }}
       />
-      <Header />
+      {/* `<Header />` travado em `compact`, como em `/mapa/` — mas por outro
+          motivo. Lá o masthead cheio comia a área útil da ferramenta; aqui ele
+          coloca o brasão, o nome da pousada e a localidade acima de tudo, e
+          quem chega da busca por "mapa turístico de São Bento do Sapucaí"
+          encontraria a pousada se apresentando antes do guia que ele veio ler.
+          Esta rota trata o Refúgio como quem mantém o projeto, e o lugar disso
+          é a assinatura do hero — não o topo da página.
+
+          Travar o estado numa página que rola é seguro: o cabeçalho é `fixed`,
+          o spacer no fluxo é medido já no estado travado e a prop desliga o
+          listener de scroll, então não há a troca masthead↔barra que o resto
+          do site faz ao rolar. O que se perde é justamente essa animação, que
+          aqui não teria o que animar. */}
+      <Header compact />
       {children}
       <Footer />
       {/* Mesmo convite de `/mapa/`: as duas rotas são o mesmo PWA, e é por

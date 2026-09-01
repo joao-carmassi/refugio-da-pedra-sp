@@ -152,21 +152,25 @@ function Busca({
             boxShadow: 'var(--map-shadow-panel)',
           }}
           className={cn(
-            'animate-in fade-in slide-in-from-top-2 absolute top-full z-20 overflow-hidden rounded-2xl border duration-200 ease-out',
+            'animate-in fade-in slide-in-from-top-2 absolute top-full z-20 mt-3 overflow-hidden rounded-2xl border duration-200 ease-out',
             // O balão sai do fluxo nos dois layouts: dentro dele, as pílulas de
             // categoria desciam e subiam a cada letra digitada. Sem `relative`
             // aqui de propósito — ele ancora no bloco do topo inteiro (campo
-            // mais pílulas), que é o pai posicionado, e assim cai logo abaixo
-            // das pílulas em vez de cobri-las.
+            // mais pílulas), que é o pai posicionado, e assim cai abaixo do
+            // último dos dois em vez de cobri-lo: no desktop o campo, que vem
+            // embaixo das pílulas; no mobile as pílulas, que vêm embaixo do
+            // campo.
             //
-            // No mobile esse pai tem padding lateral, que o posicionamento
-            // absoluto ignora: `inset-x-3` repõe a mesma margem. O `mt-3`
-            // repõe o respiro de baixo, que lá não existe — a fila de
-            // categorias cancela o próprio `p-3` com margem negativa, e sem
-            // ele o balão encostava nas pílulas. E a lista rola por dentro,
-            // porque ali a tela acaba antes dos seis itens.
+            // O `mt-3` é o respiro entre o balão e esse último elemento, e não
+            // sobra de graça em nenhum dos dois: a fila de categorias cancela
+            // o próprio `p-3` com margem negativa, então o bloco termina rente
+            // ao que estiver por último e sem ele o balão encostava.
+            //
+            // No mobile o pai ainda tem padding lateral, que o posicionamento
+            // absoluto ignora: `inset-x-3` repõe a mesma margem. E a lista
+            // rola por dentro, porque ali a tela acaba antes dos seis itens.
             mobile
-              ? 'inset-x-3 mt-3 max-h-[60vh] overflow-y-auto'
+              ? 'inset-x-3 max-h-[60vh] overflow-y-auto'
               : 'inset-x-0',
           )}
         >

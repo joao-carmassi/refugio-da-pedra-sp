@@ -34,7 +34,14 @@ interface CategoriaDaPagina {
 }
 
 /**
- * As nove categorias do mapa, na ordem em que a página as conta.
+ * As oito categorias que esta página mostra, na ordem em que ela as conta.
+ *
+ * O mapa continua com nove: café ficou de fora daqui, não do cadastro. É a
+ * única categoria que não tem nem pino no mapa nem guia no blog para onde
+ * mandar quem se interessar, de modo que o bloco dela seria um texto sem
+ * lugar e sem continuação. Experiência guiada também não tem pino, mas tem
+ * leitura, e por isso fica. Quando o primeiro café entrar no cadastro, a
+ * categoria volta para esta lista.
  *
  * Sem número de lugares, de propósito: contagem numa página institucional
  * envelhece mal e convida à comparação errada — "só 2 cachoeiras?" —, quando o
@@ -42,9 +49,9 @@ interface CategoriaDaPagina {
  *
  * TODO(proprietário): mandar a lista de cafés e experiências guiadas (nome,
  * endereço e horário, quando houver) para o cadastro. São as duas categorias
- * que hoje aparecem na página sem um único pino no mapa — a página promete um
- * guia da cidade inteira e por enquanto cobre esses dois eixos só pelos guias
- * do blog.
+ * do mapa que hoje não têm um único pino; a de experiência guiada ainda se
+ * segura na página pelo guia do blog, a de café saiu da seção até ter lugar
+ * de verdade para mostrar.
  *
  * TODO(proprietário): serviços é a categoria mais nova e tem um lugar só. Se a
  * ideia é que ela cubra o que o hóspede precisa resolver na cidade — farmácia,
@@ -84,11 +91,6 @@ export const CATEGORIAS_DA_PAGINA: CategoriaDaPagina[] = (
         href: '/blog/gastronomia-em-sao-bento-do-sapucai-os-melhores-restaurantes-da-serra/',
         texto: 'O guia de gastronomia',
       },
-    },
-    {
-      id: 'cafes',
-      texto:
-        'A parada antes de subir e depois de descer — cafés, casas de chá e as padarias que abrem cedo no centro.',
     },
     {
       id: 'compras',

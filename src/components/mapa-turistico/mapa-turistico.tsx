@@ -671,11 +671,22 @@ function MapaTuristico() {
 
         {/* ------------------------------------------------------ desktop */}
         {/* Este bloco é a âncora do balão de resultados da busca, que se
-            posiciona pelo rodapé dele para nascer abaixo das pílulas. Fica
-            acima dos painéis: o balão cai justamente sobre o encaixe deles, e
-            atrás de um painel ele não seria lido. */}
+            posiciona pelo rodapé dele. Com as pílulas em cima e o campo
+            embaixo, esse rodapé é o próprio campo, e o balão nasce colado
+            nele em vez de ter de saltar a fila de categorias. Fica acima dos
+            painéis: o balão cai justamente sobre o encaixe deles, e atrás de
+            um painel ele não seria lido. */}
         {mostraTopo && (
           <div className='absolute top-5 left-5 z-50 w-101'>
+            {/* O `-mt-3` cancela o `p-3` que a fila carrega para não perder a
+                sombra das pílulas: sem ele o conjunto inteiro nasceria doze
+                pixels abaixo do `top-5`. O `-mb-0.5` mantém entre as pílulas e
+                o campo a mesma folga que havia quando a ordem era a inversa. */}
+            <Filtros
+              ativo={filtro}
+              onChange={trocarFiltro}
+              className='-mx-3 -mt-3 -mb-0.5 w-[calc(100vw-1rem)] max-w-244'
+            />
             <Busca
               termo={termo}
               onTermo={setTermo}
@@ -684,11 +695,6 @@ function MapaTuristico() {
               onAbrir={abrirBusca}
               onFechar={() => setBuscaAberta(false)}
               onEscolher={(id) => selecionar(id, { daBusca: true })}
-            />
-            <Filtros
-              ativo={filtro}
-              onChange={trocarFiltro}
-              className='-mx-3 -mt-0.5 w-[calc(100vw-1rem)] max-w-244'
             />
           </div>
         )}

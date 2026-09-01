@@ -9,7 +9,7 @@ import { CATEGORIAS_DA_PAGINA } from './dados';
 import Rotulo from './rotulo';
 
 /**
- * As nove categorias do mapa.
+ * As oito categorias que esta seção mostra.
  *
  * Estrutura de `@shadcnblocks/feature210`: etiqueta e título sobre uma grade
  * de quatro colunas sem moldura, em que cada item é ícone, nome e uma linha de
@@ -17,10 +17,15 @@ import Rotulo from './rotulo';
  * só aparece onde há link, para não prometer clique em bloco que não leva a
  * lugar nenhum.
  *
- * As nove aparecem sempre, inclusive as duas que ainda não têm um único
- * lugar cadastrado — a página apresenta o mapa inteiro. O que não aparece é
- * número: nem contagem por categoria, nem etiqueta dizendo quais estão
- * vazias. Quem quiser contar abre o mapa.
+ * São oito, e não as nove do mapa, porque café não tem o que oferecer aqui:
+ * é a única categoria sem nenhum lugar cadastrado e sem guia no blog, ou
+ * seja, um bloco que descreve um eixo e não leva a nada — nem a pino, nem a
+ * leitura. Experiência guiada está no mesmo caso quanto a pino, mas tem post
+ * para onde mandar o leitor, e por isso continua na grade. De quebra, oito
+ * fecham as duas fileiras de `lg:grid-cols-4` sem deixar um item sozinho na
+ * terceira. O que não aparece continua sendo número: nem contagem por
+ * categoria, nem etiqueta dizendo qual está vazia. Quem quiser contar abre o
+ * mapa.
  */
 function Categorias(): React.ReactNode {
   const scope = useReveal<HTMLElement>();
@@ -39,17 +44,16 @@ function Categorias(): React.ReactNode {
         <div data-reveal className='flex max-w-2xl flex-col gap-3'>
           <Rotulo icone={LayoutGrid}>O que tem no mapa</Rotulo>
           <h2 className='text-2xl tracking-tight text-balance md:text-4xl lg:text-5xl'>
-            Nove maneiras de olhar para São Bento do Sapucaí
+            Oito maneiras de olhar para São Bento do Sapucaí
           </h2>
           {/* A linha existe para a página não prometer no título o que o
-              cadastro ainda não tem: café e experiência guiada aparecem aqui
-              como eixo e levam ao guia do blog, não a um pino que não existe.
-              Quando o cadastro receber o primeiro registro de cada uma, esta
-              ressalva sai. */}
+              cadastro ainda não tem: experiência guiada aparece aqui como eixo
+              e leva ao guia do blog, não a um pino que não existe. Quando o
+              cadastro receber o primeiro registro dela, esta ressalva sai. */}
           <p className='text-muted-foreground'>
-            Sete eixos já estão marcados ponto a ponto no mapa. Os outros dois
-            — café e experiência guiada — estão sendo cadastrados e, por
-            enquanto, moram nos guias do blog, linkados abaixo.
+            Sete eixos já estão marcados ponto a ponto no mapa. O oitavo —
+            experiência guiada — está sendo cadastrado e, por enquanto, mora
+            no guia do blog, linkado abaixo.
           </p>
         </div>
 

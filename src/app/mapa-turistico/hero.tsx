@@ -10,9 +10,16 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { useReveal } from '@/hooks/use-reveal';
+import { getAlt } from '@/lib/image-alt';
 import { ArrowRight, Home } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
-import FotoPlaceholder from './foto-placeholder';
+
+/**
+ * Foto de abertura, em constante porque o caminho é usado duas vezes: na
+ * `src` e na consulta ao mapa de alt text, que é chaveado por ele.
+ */
+const FOTO = '/assets/mapa/pedra-bau/pedra-bau-4.webp';
 
 /**
  * Abertura da página.
@@ -20,7 +27,7 @@ import FotoPlaceholder from './foto-placeholder';
  * Não é a dobra fotográfica da homepage: aqui a rota é editorial e abre como
  * /chales/, /blog/ e /sobre/ — breadcrumb primeiro, `pt-12 md:pt-20` de folga
  * abaixo do cabeçalho. A fotografia entra logo depois do texto, em largura
- * total, e por enquanto é um espaço reservado.
+ * total.
  *
  * `onMount` porque o bloco está acima da dobra: esperar o ScrollTrigger aqui
  * significaria abrir a página com o título invisível.
@@ -47,30 +54,60 @@ function Hero(): React.ReactNode {
           </Breadcrumb>
         </div>
 
-        {/* Assinatura de marca da identidade do mapa: nome do projeto em
-            Piazzolla, régua de 1px e o crédito em Archivo 600, caixa alta,
-            marrom pedra — sempre menor que o nome. É o único ponto da rota
-            onde as duas marcas aparecem lado a lado; o resto da página é do
-            mapa. O marrom vem por `style` porque é cor de marca, não papel de
-            interface: não há token de tema que signifique "vínculo com o
-            refúgio". */}
-        <div
-          data-reveal
-          className='mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 md:mt-10'
-        >
-          <span className='font-display text-base leading-none font-semibold tracking-tight md:text-lg'>
-            Mapa de São Bento do Sapucaí
-          </span>
-          <span
-            aria-hidden='true'
-            className='hidden h-5 w-px bg-border sm:block'
+        {/* Assinatura de marca da identidade do mapa: o selo do projeto, o
+            nome em Piazzolla, régua de 1px e o crédito em Archivo 600, caixa
+            alta, marrom pedra — sempre menor que o nome. É o único ponto da
+            rota onde as duas marcas aparecem lado a lado; o resto da página é
+            do mapa. O marrom vem por `style` porque é cor de marca, não papel
+            de interface: não há token de tema que signifique "vínculo com o
+            refúgio".
+
+            O selo entra ao lado do nome, e não no lugar dele. O losango traz
+            "Mapa Turístico de São Bento do Sapucaí" escrito em curva ao redor
+            da rosa dos ventos, mas num quadro de 56–64 px essa volta de texto
+            tem uns quatro pixels de altura: lê-se como ornamento, não como
+            palavra. Tirar o `<span>` confiando no que está desenhado dentro da
+            marca deixaria a assinatura sem nome legível — e sem nenhum nome no
+            leitor de tela, já que o `alt` descreve o desenho, não repete o
+            título. A redundância é só aparente.
+
+            O bloco virou duas camadas — selo fora, texto dentro — porque a
+            fila antiga era `flex-wrap`: quando o crédito quebrava para a linha
+            de baixo, ele voltava a encostar na margem do container e o selo
+            ficava órfão em cima. Com o texto num invólucro próprio, a quebra
+            acontece dentro dele e a assinatura continua sendo um bloco só ao
+            lado da marca. */}
+        <div data-reveal className='mt-8 flex items-center gap-3 md:mt-10'>
+          {/* Arquivo próprio, e não o ícone do PWA (`mapa-web-app-manifest-
+              512x512.png`), porque aquele traz o fundo branco chapado que o
+              instalador de aplicativo exige. Sobre o creme desta página o
+              branco vira um quadrado visível em volta do losango. Aqui o fundo
+              é transparente e o quadro está cortado rente às pontas — o selo
+              apoia no creme em vez de flutuar dentro de um adesivo. */}
+          <Image
+            src='/assets/mapa/logo-mapa-turistico.webp'
+            alt='Selo do mapa: losango verde com rosa dos ventos, alfinete e a silhueta da Pedra do Baú'
+            width={412}
+            height={412}
+            sizes='64px'
+            priority
+            className='size-14 shrink-0 md:size-16'
           />
-          <span
-            style={{ color: 'var(--map-stone)' }}
-            className='text-[0.6875rem] font-semibold tracking-[0.12em] uppercase'
-          >
-            um projeto do Refúgio da Pedra
-          </span>
+          <div className='flex flex-wrap items-center gap-x-3 gap-y-1'>
+            <span className='font-display text-base leading-none font-semibold tracking-tight md:text-lg'>
+              Mapa de São Bento do Sapucaí
+            </span>
+            <span
+              aria-hidden='true'
+              className='hidden h-5 w-px bg-border sm:block'
+            />
+            <span
+              style={{ color: 'var(--map-stone)' }}
+              className='text-[0.6875rem] font-semibold tracking-[0.12em] uppercase'
+            >
+              um projeto do Refúgio da Pedra
+            </span>
+          </div>
         </div>
 
         <h1
@@ -123,15 +160,30 @@ function Hero(): React.ReactNode {
 
         {/* Moldura de `@shadcnblocks/hero263`: a fotografia fica dentro do
             container, com régua de 1px em volta e canto arredondado, em vez de
-            sangrar de borda a borda. Sangria é gesto de fotografia; enquanto o
-            que está ali é hachura, uma faixa cheia de parede a parede vira uma
-            laje cinza no topo da página. A proporção abre em 4/3 no celular e
-            vira 16/9 no resto — 21/9 numa tela estreita seria uma tarja de
-            100 px. */}
+            sangrar de borda a borda. A moldura continua valendo agora que há
+            foto: esta rota é editorial, e o texto que vem acima e abaixo dela
+            corre no mesmo container — uma imagem sangrando de parede a parede
+            romperia a coluna de leitura no meio da página, que é gesto de
+            dobra fotográfica (a homepage e `/chales/[slug]/` fazem isso, e lá
+            a foto é a abertura, não uma ilustração do texto). A proporção abre
+            em 4/3 no celular e vira 16/9 no resto — 21/9 numa tela estreita
+            seria uma tarja de 100 px. `object-cover` porque o recorte muda com
+            a proporção, e o assunto da foto (o paredão) está no centro.
+
+            `priority`: com o cabeçalho travado em compacto, esta imagem entra
+            na primeira tela em telas grandes e é a candidata a LCP da rota. */}
         <div data-reveal className='mt-10 md:mt-14'>
-          <FotoPlaceholder
-            className='aspect-4/3 max-h-[70svh] w-full rounded-lg border border-border md:aspect-video'
-            legenda='Vista do maciço da Pedra do Baú a partir do Refúgio da Pedra SP, com névoa subindo do vale ao amanhecer'
+          <Image
+            src={FOTO}
+            alt={getAlt(
+              FOTO,
+              'Vista aérea do maciço da Pedra do Baú entre nuvens baixas',
+            )}
+            width={1620}
+            height={1213}
+            sizes='100vw'
+            priority
+            className='aspect-4/3 max-h-[70svh] w-full rounded-lg border border-border object-cover md:aspect-video'
           />
         </div>
       </div>
