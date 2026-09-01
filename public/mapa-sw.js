@@ -21,6 +21,14 @@
  *      em nenhum dos dois a mesma URL pode significar duas coisas diferentes.
  *      Não há versão velha para servir por engano.
  *
+ * O item 2 é verdade no build de produção e mentira no `next dev`, que serve
+ * `/_next/static/chunks/app/mapa/page.js` e `css/app/layout.css` com o mesmo
+ * endereço a cada edição. Sob este worker, a primeira visita de desenvolvimento
+ * congelaria o bundle e o CSS, e nenhuma alteração apareceria mais na tela —
+ * com a aparência de código que não salvou, não de cache. Por isso este arquivo
+ * só é registrado em produção, e em desenvolvimento é ativamente removido junto
+ * com os caches `mapa-`: ver `src/hooks/use-convite-instalacao.ts`.
+ *
  * Escopo `/mapa`, sem barra final, como antes. Não é limitação: escopo decide
  * quais *documentos* este arquivo controla, não quais URLs ele pode interceptar
  * — com `/mapa/` sob controle, todo subrecurso que a página pedir passa por
@@ -42,7 +50,24 @@
  * deploy e é remontada sozinha, o pacote da base foi baixado de propósito pelo
  * hóspede e não pode sumir num `activate` de rotina.
  */
-const CACHE_CASCA = 'mapa-casca-v1';
+/*
+ * O número no nome da casca é a válvula de escape deste arquivo.
+ *
+ * Quando uma casca guardada estraga — foi o que aconteceu com a `v1`, que
+ * chegou a guardar bundle de desenvolvimento —, não há como pedir ao navegador
+ * de outra pessoa que esvazie o cache: o código que faria isso mora justamente
+ * no bundle que o cache velho está servindo. O que quebra o impasse é que o
+ * *script do worker* nunca vem do cache dele mesmo: o navegador refaz o
+ * download de `mapa-sw.js` a cada navegação dentro do escopo e compara byte a
+ * byte. Então basta este arquivo mudar — e trocar o número é a menor mudança
+ * possível — para a versão nova instalar, o `activate` abaixo apagar toda
+ * casca que não seja a atual e a próxima carga vir limpa.
+ *
+ * O pacote da base não leva número junto: ele foi baixado de propósito pelo
+ * hóspede, pesa megabytes e tem endereço com snapshot no caminho. Apagá-lo
+ * porque a casca estragou seria cobrar do hóspede um erro que não é dele.
+ */
+const CACHE_CASCA = 'mapa-casca-v2';
 const CACHE_BASE = 'mapa-base-v1';
 const NOSSOS = [CACHE_CASCA, CACHE_BASE];
 
@@ -119,6 +144,46 @@ async function doCache(cache, requisicao) {
 }
 
 /**
+ * Guardado agora, atualizado por baixo para a próxima vez.
+ *
+ * É o que os arquivos sem hash no nome precisam. `/mapa-worker/`,
+ * `/mapa-instalavel.js`, o manifesto e os ícones mantêm o mesmo endereço para
+ * sempre: com cache primeiro, a versão baixada na primeira visita seria servida
+ * até o fim dos tempos, e um deploy que corrigisse o worker do MapLibre nunca
+ * chegaria a quem já tivesse o antigo — o pior caso é o mapa abrir em branco
+ * com o cache cheio, que é a falha mais difícil de diagnosticar aqui.
+ *
+ * A resposta sai do cache no mesmo instante, então a promessa de funcionar sem
+ * sinal continua de pé; a ida à rede acontece em paralelo e só troca o que está
+ * guardado. Quem paga o atraso de uma versão é a visita atual, nunca a
+ * seguinte. Se a rede falhar, o `catch` deixa o guardado como estava — offline
+ * isto se comporta exatamente como cache primeiro.
+ *
+ * A ida à rede é criada fora, pelo `fetch` listener, porque quem a segura viva
+ * é o `waitUntil` do evento: sem isso o navegador pode desligar o worker no
+ * instante em que a resposta guardada sai, e a atualização morre pela metade —
+ * de novo servindo a versão velha na visita seguinte.
+ *
+ * Ela chega aqui podendo rejeitar, de propósito. Havendo cópia guardada, a
+ * rejeição é irrelevante e some no `waitUntil`. Não havendo, a rede é a única
+ * fonte, e o erro dela precisa chegar ao navegador como erro — engoli-lo aqui
+ * devolveria `undefined` ao `respondWith`, que é uma falha bem menos legível do
+ * que a que o navegador daria sozinho.
+ */
+async function doRevalidando(cache, requisicao, rede) {
+  const guardado = await caches.match(requisicao, { cacheName: cache });
+
+  return guardado ?? rede;
+}
+
+/** A metade em segundo plano do `doRevalidando`: busca e guarda. */
+function atualizarEmSegundoPlano(cache, requisicao) {
+  return fetch(requisicao).then((resposta) =>
+    guardar(cache, requisicao, resposta),
+  );
+}
+
+/**
  * Rede primeiro para o documento da tela do mapa, cache como ela falhar.
  *
  * A chave é sempre `/mapa/`, montada à mão em vez de vir da requisição. Sem
@@ -186,10 +251,30 @@ self.addEventListener('fetch', (evento) => {
     return;
   }
 
-  if (
-    url.pathname.startsWith('/_next/static/') ||
-    ARQUIVOS_DO_APP.has(url.pathname)
-  ) {
+  /*
+   * Cache primeiro só aqui, e só porque o endereço é imutável: o nome do chunk
+   * carrega o hash do conteúdo. Vale no build de produção — e este worker é
+   * registrado apenas lá, justamente porque no `next dev` a mesma URL muda de
+   * conteúdo a cada edição. Ver `src/hooks/use-convite-instalacao.ts`.
+   */
+  if (url.pathname.startsWith('/_next/static/')) {
     evento.respondWith(doCache(CACHE_CASCA, request));
+    return;
+  }
+
+  /*
+   * Estes não têm hash — o endereço é o mesmo para sempre —, então cache
+   * primeiro os congelaria na primeira visita e um deploy nunca os alcançaria.
+   * A resposta continua saindo do cache na hora; o que muda é que a cópia
+   * guardada é trocada por baixo para a visita seguinte.
+   */
+  if (ARQUIVOS_DO_APP.has(url.pathname)) {
+    const rede = atualizarEmSegundoPlano(CACHE_CASCA, request);
+
+    // O `catch` é do `waitUntil`, não da resposta: aqui a rejeição só encerra
+    // a atualização em silêncio. Quem decide o que fazer com ela quando não há
+    // cópia guardada é o `doRevalidando`.
+    evento.waitUntil(rede.catch(() => undefined));
+    evento.respondWith(doRevalidando(CACHE_CASCA, request, rede));
   }
 });
