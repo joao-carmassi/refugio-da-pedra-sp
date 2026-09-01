@@ -3,10 +3,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { List } from 'lucide-react';
 import { Map, MapArc, MapRoute, useMap } from '@/components/ui/map';
+import type { MapMouseEvent } from 'maplibre-gl';
 import {
   CATEGORIAS,
   FILTRO_TODOS,
-  LOCAIS,
   filtrarLocais,
   getLocal,
   getRota,
@@ -38,7 +38,7 @@ import PainelDetalhes from './painel-detalhes';
 import PainelLista from './painel-lista';
 import PainelRota from './painel-rota';
 import { pintarBase } from './paleta-cartografica';
-import Pino, { EscalaZoom } from './pino';
+import Pinos, { CAMADA_PINOS } from './pinos';
 
 type Painel = 'lista' | 'detalhes' | 'rota' | null;
 
@@ -197,15 +197,6 @@ function Camera({
 }
 
 /**
- * Ordem de pintura dos pinos, fixa: o MapLibre reordena os marcadores conforme
- * a latitude, e a ordem do DOM é o que decide quem fica por cima entre pinos
- * empatados. O Refúgio vai por último para nunca cair atrás de ninguém.
- */
-const PINOS_ORDENADOS = [...LOCAIS].sort(
-  (a, b) => Number(!!a.refugio) - Number(!!b.refugio),
-);
-
-/**
  * Entrada e saída dos painéis da coluna da esquerda. Sempre pelo mesmo lado:
  * eles ocupam o mesmo encaixe e se revezam ali, então deslizar cada um por uma
  * borda diferente faria a troca parecer três telas em vez de uma só.
@@ -245,9 +236,13 @@ const acimaDaFolha = (altura: Altura) =>
  * Tira da frente o que estiver sobre o mapa quando se toca o mapa.
  *
  * Sem isto a folha só sairia da frente por arrasto, e quem toca o mapa está
- * pedindo justamente o mapa. O toque no pino chega aqui junto — o MapLibre
- * pendura os marcadores dentro do mesmo contêiner que ele escuta —, então
- * quem recebe o evento precisa separar os dois; ver `tocarNoMapa`.
+ * pedindo justamente o mapa. O toque no pino chega aqui junto, e por isso o
+ * clique é perguntado ao mapa antes de subir: os pinos são uma camada de
+ * símbolo, então tocar num deles é um clique no canvas como outro qualquer, e
+ * só `queryRenderedFeatures` sabe a diferença.
+ *
+ * A pergunta é por lugar em cena, não por pino desenhado: quem saiu do filtro
+ * continua na camada, transparente, e tocar onde ele está é tocar o vazio.
  *
  * Arrastar não é a mesma coisa que tocar: arrastar recolhe a folha para
  * liberar mapa, mas mantém o lugar aberto — quem move o mapa com um cartão em
@@ -256,20 +251,41 @@ const acimaDaFolha = (altura: Altura) =>
 function ToqueNoMapa({
   onToque,
   onArrasto,
+  locais,
 }: {
-  onToque: (evento: { originalEvent: MouseEvent }) => void;
+  onToque: (emLugar: boolean) => void;
   onArrasto: () => void;
+  locais: Local[];
 }) {
   const { map, isLoaded } = useMap();
+  const emCena = useRef(locais);
+
+  useEffect(() => {
+    emCena.current = locais;
+  });
 
   useEffect(() => {
     if (!map || !isLoaded) return;
 
-    map.on('click', onToque);
+    const clicar = (evento: MapMouseEvent) => {
+      const emLugar =
+        Boolean(map.getLayer(CAMADA_PINOS)) &&
+        map
+          .queryRenderedFeatures(evento.point, { layers: [CAMADA_PINOS] })
+          .some((feicao) =>
+            emCena.current.some(
+              (local) => local.id === String(feicao.properties?.id),
+            ),
+          );
+
+      onToque(emLugar);
+    };
+
+    map.on('click', clicar);
     map.on('dragstart', onArrasto);
 
     return () => {
-      map.off('click', onToque);
+      map.off('click', clicar);
       map.off('dragstart', onArrasto);
     };
   }, [map, isLoaded, onToque, onArrasto]);
@@ -290,60 +306,6 @@ function ToqueNoMapa({
  */
 function repouso(mobile: boolean): Painel {
   return mobile ? null : 'lista';
-}
-
-/**
- * Pinos do mapa.
- *
- * Sem agrupamento por zona: são poucas dezenas de lugares em um vale pequeno,
- * e trocar os pinos por bolhas com um número dizia menos do que os próprios
- * pinos já diziam — de longe eles não chegam a virar mancha. Afastar o mapa
- * afasta e encolhe os pinos junto (`EscalaZoom`), que é o que os mantém
- * separados sem precisar agrupá-los.
- *
- * Todos os pinos ficam montados o tempo todo, e é a opacidade que decide quem
- * está em cena. Montar e desmontar conforme o filtro os fazia piscar de uma
- * letra digitada para a outra: um marcador desmontado não tem como animar a
- * própria saída. São poucas dezenas de nós — o custo de manter os de fora vale
- * a transição.
- */
-function Pinos({
-  locais,
-  selecionado,
-  hover,
-  onSelect,
-  onHover,
-}: {
-  locais: Local[];
-  selecionado: string | null;
-  hover: string | null;
-  onSelect: (id: string) => void;
-  onHover: (id: string | null) => void;
-}) {
-  // Quem está em cena agora: quem passou pelo filtro. O resto continua
-  // montado, só que transparente.
-  const visiveis = useMemo(
-    () => new Set(locais.map((item) => item.id)),
-    [locais],
-  );
-
-  return (
-    <>
-      <EscalaZoom />
-
-      {PINOS_ORDENADOS.map((local) => (
-        <Pino
-          key={local.id}
-          local={local}
-          visivel={visiveis.has(local.id)}
-          selecionado={selecionado === local.id}
-          destacado={hover === local.id}
-          onSelect={onSelect}
-          onHover={onHover}
-        />
-      ))}
-    </>
-  );
 }
 
 /**
@@ -588,14 +550,14 @@ function MapaTuristico() {
   /**
    * Toque no vazio do mapa também fecha o lugar aberto.
    *
-   * No vazio, e não em qualquer lugar: o clique num pino sobe até o contêiner
-   * do canvas, porque é ali que o MapLibre pendura os marcadores. Sem o
-   * guarda, tocar num lugar o abriria e o fecharia no mesmo gesto.
+   * No vazio, e não em qualquer lugar: sem o guarda, tocar num lugar o abriria
+   * e o fecharia no mesmo gesto, porque os dois ouvintes recebem o mesmo
+   * clique. Quem separa os dois é `ToqueNoMapa`, que pergunta ao mapa o que há
+   * sob o ponto antes de chamar isto.
    */
   const tocarNoMapa = useCallback(
-    (evento: { originalEvent: MouseEvent }) => {
-      const alvo = evento.originalEvent.target;
-      if (alvo instanceof Element && alvo.closest('.maplibregl-marker')) return;
+    (emLugar: boolean) => {
+      if (emLugar) return;
 
       setSelecionado(null);
       recolherFolha();
@@ -629,7 +591,11 @@ function MapaTuristico() {
         <Camera camera={camera} mobile={mobile} origem={origem} />
 
         {mobile && (
-          <ToqueNoMapa onToque={tocarNoMapa} onArrasto={recolherFolha} />
+          <ToqueNoMapa
+            onToque={tocarNoMapa}
+            onArrasto={recolherFolha}
+            locais={locais}
+          />
         )}
 
         <Pinos
