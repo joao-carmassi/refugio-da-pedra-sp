@@ -30,23 +30,35 @@ import CartaoRapido from './cartao-rapido';
  * continuava igual. Com a referência acima da abertura, a vista inicial já
  * chega encolhida e o tamanho nominal fica reservado a quem aproximou.
  *
- * Os pisos são por dedo, não por largura de tela: num mouse o pino pode ficar
- * pequeno à vontade, porque o ponteiro é preciso; num toque ele não pode
- * descer abaixo do que se acerta com o polegar. `pointer: coarse` responde
- * exatamente essa pergunta.
+ * Os limites são por dedo, não por largura de tela — `pointer: coarse`
+ * responde exatamente essa pergunta, e é a que importa nas duas pontas.
+ *
+ * Embaixo: num mouse o pino pode ficar pequeno à vontade, porque o ponteiro é
+ * preciso; num toque ele não pode descer abaixo do que se acerta com o polegar.
+ *
+ * Em cima é menos óbvio, e é o que a faixa apertada do toque resolve. No zoom
+ * do centro da cidade — uma dezena de pontos em poucos quarteirões — quem
+ * decide se dois pinos se encavalam não é o zoom, é a largura da tela: em 390px
+ * eles ficam a algumas dezenas de pixels um do outro, e um pino no tamanho
+ * nominal cobre essa distância. Um teto de 1,15 servia justo o pino grande no
+ * lugar onde ele menos cabe. No toque o teto fica quase encostado no piso, e o
+ * pino é praticamente do mesmo tamanho em todo o percurso do zoom: é a resposta
+ * honesta para uma tela onde o espaço nunca aparece.
  */
 const ESCALA = {
   referencia: ZOOM_INICIAL.desktop,
   forca: 0.45,
-  maxima: 1.15,
-  piso: { ponteiroFino: 0.55, ponteiroGrosso: 0.75 },
+  limites: {
+    ponteiroFino: { piso: 0.55, teto: 1.15 },
+    ponteiroGrosso: { piso: 0.75, teto: 0.82 },
+  },
 } as const;
 
 /**
  * A lista de mídia é consultada a cada evento de zoom, então vive fora do
  * componente: criar uma nova por quadro é desperdício, e a mesma serve o mapa
- * inteiro. Fica nula no servidor, onde não há `window` — e o piso do ponteiro
- * fino é o certo até a primeira medição no cliente.
+ * inteiro. Fica nula no servidor, onde não há `window` — e a faixa do ponteiro
+ * fino é a certa até a primeira medição no cliente.
  */
 const TOQUE =
   typeof window === 'undefined' ? null : window.matchMedia('(pointer: coarse)');
@@ -54,12 +66,12 @@ const TOQUE =
 function escalaDoZoom(zoom: number) {
   const bruta = 2 ** ((zoom - ESCALA.referencia) * ESCALA.forca);
   // Relido a cada chamada, e não guardado: quem alterna mouse e toque no mesmo
-  // aparelho muda de piso sem precisar recarregar o mapa.
-  const piso = TOQUE?.matches
-    ? ESCALA.piso.ponteiroGrosso
-    : ESCALA.piso.ponteiroFino;
+  // aparelho troca de faixa sem precisar recarregar o mapa.
+  const { piso, teto } = TOQUE?.matches
+    ? ESCALA.limites.ponteiroGrosso
+    : ESCALA.limites.ponteiroFino;
 
-  return Math.min(ESCALA.maxima, Math.max(piso, bruta));
+  return Math.min(teto, Math.max(piso, bruta));
 }
 
 /**
