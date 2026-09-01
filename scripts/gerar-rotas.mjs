@@ -214,8 +214,9 @@ function paradaDe(local) {
  *
  * Vale para as duas origens, e é por isso que a regra é a coordenada e não
  * `local.refugio`: com o Refúgio na origem quem sai da lista é a pousada; com o
- * Centro na origem quem sai é a Igreja Matriz, que ocupa a mesma coordenada da
- * praça da matriz. Pedir essa rota devolveria 0 m, e "0 m · 0 min de carro" é
+ * Centro na origem quem sai é a Praça Monsenhor Pedro do Vale Monteiro, que
+ * ocupa a mesma coordenada. Pedir essa rota devolveria 0 m, e "0 m · 0 min de
+ * carro" é
  * pior do que a frase que a ficha põe no lugar — a mesma regra roda no
  * `mapa-turistico.ts`, onde ela vira "Ponto de partida".
  *

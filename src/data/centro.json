@@ -1,6 +1,6 @@
 {
-  "_comentario": "O centro de São Bento do Sapucaí como origem de distâncias, lido por scripts/gerar-rotas.mjs e por src/lib/mapa-turistico.ts. A coordenada é a da praça da matriz, que é onde a cidade se encontra e de onde qualquer morador diria que se sai — não o centroide geométrico do município, que cai em pasto. O mesmo ponto está no cadastro como a Igreja Matriz, mas a origem aqui é o centro como lugar, e o nome tem de dizer isso: quem lê 'a partir do Centro de São Bento' entende a medida; quem lesse 'a partir da Igreja Matriz' acharia que o mapa mede distância de igreja.",
+  "_comentario": "O centro de São Bento do Sapucaí como origem de distâncias, lido por scripts/gerar-rotas.mjs e por src/lib/mapa-turistico.ts. A coordenada é a da Praça Monsenhor Pedro do Vale Monteiro, que é onde a cidade se encontra e de onde qualquer morador diria que se sai — não o centroide geométrico do município, que cai em pasto. Já apontou para o prédio da Igreja Matriz, 240 m dali: perto o bastante para a frase 'praça da matriz' passar despercebida no comentário, longe o bastante para o mapa desenhar a origem no quarteirão errado. O mesmo ponto está no cadastro como 'praca-monsenhor-pedro', mas a origem aqui é o centro como lugar, e o nome tem de dizer isso: quem lê 'a partir do Centro de São Bento' entende a medida; quem lesse 'a partir da Praça Monsenhor Pedro do Vale Monteiro' acharia que o mapa mede distância de praça.",
   "nome": "Centro de São Bento",
-  "lat": -22.689807,
-  "lng": -45.730938
+  "lat": -22.688206,
+  "lng": -45.732474
 }
