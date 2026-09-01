@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Star } from 'lucide-react';
 import {
   MapMarker,
@@ -77,15 +77,45 @@ function escalaDoZoom(zoom: number) {
 }
 
 /**
- * Publica a escala dos pinos como variável CSS no container do mapa.
+ * As camadas que o zoom escala, uma por pino, e a escala em vigor.
+ *
+ * A primeira versão publicava a escala como variável CSS no container do mapa
+ * e deixava a herança entregá-la aos pinos. Custou caro: o `<Map>` guarda os
+ * filhos no mesmo elemento que o MapLibre usa de container, então busca,
+ * filtros, painéis e folha moram todos lá dentro — perto de 900 nós. Trocar
+ * uma propriedade personalizada nesse elemento invalida o estilo herdado da
+ * subárvore inteira, e o `zoom` dispara a cada quadro: medido em produção,
+ * 0,43s de recálculo de estilo em 3,3s de zoom, 27% do tempo de tarefa.
+ *
+ * Escrever `scale` direto em cada camada troca uma invalidação de 900 nós por
+ * 32 escritas dirigidas. O React continua sem ser acordado, que era o ponto da
+ * variável.
+ */
+const CAMADAS = new Set<HTMLElement>();
+
+let escalaAtual = 1;
+
+/**
+ * Pino recém-montado entra já no tamanho certo.
+ *
+ * Sem isto, um pino que nasce com o mapa longe apareceria no tamanho nominal
+ * até o zoom seguinte — e o filtro monta pinos a qualquer momento.
+ */
+function registrarCamada(el: HTMLElement) {
+  CAMADAS.add(el);
+  el.style.scale = String(escalaAtual);
+
+  return () => {
+    CAMADAS.delete(el);
+  };
+}
+
+/**
+ * Mantém a escala dos pinos em dia com o zoom.
  *
  * Poderia ser estado de React, mas o evento `zoom` dispara a cada quadro de
  * uma rolagem ou de um pinçar, e re-renderizar as quatro dezenas de pinos
- * nesse ritmo engasga. Escrevendo direto na variável, quem recalcula é o
- * navegador e o React não é acordado nenhuma vez.
- *
- * A variável mora no container porque todo marcador do MapLibre é descendente
- * dele — a herança do CSS entrega o valor a todos de uma vez.
+ * nesse ritmo engasga.
  *
  * Sem transição, de propósito: o valor já chega quadro a quadro, e uma
  * transição por cima só atrasaria o pino em relação ao chão que ele marca.
@@ -96,12 +126,13 @@ export function EscalaZoom() {
   useEffect(() => {
     if (!map) return;
 
-    const container = map.getContainer();
-    const aplicar = () =>
-      container.style.setProperty(
-        '--pino-escala',
-        String(escalaDoZoom(map.getZoom())),
-      );
+    const aplicar = () => {
+      escalaAtual = escalaDoZoom(map.getZoom());
+
+      const valor = String(escalaAtual);
+
+      for (const camada of CAMADAS) camada.style.scale = valor;
+    };
 
     aplicar();
     map.on('zoom', aplicar);
@@ -137,7 +168,7 @@ interface Props {
  * um menor.
  *
  * Esses diâmetros valem no zoom de referência (ver `ESCALA`), que é mais perto
- * do que o mapa abre: `--pino-escala` encolhe todos juntos conforme o mapa se
+ * do que o mapa abre: `EscalaZoom` encolhe todos juntos conforme o mapa se
  * afasta, e a vista inicial já chega menor do que os números daqui.
  *
  * O Refúgio se distingue por tamanho, cor e borda, e só. Sem pulso e sem nome
@@ -158,6 +189,12 @@ function Pino({
   onSelect,
   onHover,
 }: Props) {
+  // Só o registro; quem escreve a escala a partir daqui é `EscalaZoom`.
+  const camada = useCallback(
+    (el: HTMLDivElement | null) => (el ? registrarCamada(el) : undefined),
+    [],
+  );
+
   const categoria = CATEGORIAS[local.cat];
   const Icone = local.refugio ? CATEGORIAS.hospedagem.icone : categoria.icone;
 
@@ -218,8 +255,8 @@ function Pino({
             que é irmã desta camada justamente para não encolher junto — texto
             de 11px a 72% não se lê. */}
         <div
+          ref={camada}
           className='flex origin-bottom flex-col items-center'
-          style={{ scale: 'var(--pino-escala, 1)' }}
         >
           <div
             style={{
