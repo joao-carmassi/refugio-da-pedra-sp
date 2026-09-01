@@ -20,7 +20,10 @@
       "arquivos": [
         "refugio-1.webp",
         "refugio-2.webp",
-        "refugio-15.webp"
+        "refugio-15.webp",
+        "refugio-4.webp",
+        "refugio-20.webp",
+        "refugio-27.webp"
       ]
     }
   },
@@ -79,6 +82,7 @@
     "zona": "bau",
     "lat": -22.68657,
     "lng": -45.657986,
+    "horario": "Todos os dias, 9h às 18h",
     "resumo": "A 1.760 m, é a trilha mais acessível do complexo — e não exige agendamento.",
     "descricao": "Cerca de 30 minutos de caminhada a partir da portaria, nível fácil e sem via ferrata. É a saída indicada para quem quer a vista sem encarar a subida do Baú. Depois das 17h30 o acesso ao cume fecha, mas o trecho até o Mirante do Caramuru continua liberado.",
     "endereco": "Complexo da Pedra do Baú — São Bento do Sapucaí",
@@ -229,7 +233,8 @@
         "sabor-7.webp",
         "sabor-6.webp",
         "sabor-5.webp",
-        "sabor-4.webp"
+        "sabor-4.webp",
+        "sabor-8.webp"
       ]
     }
   },
@@ -509,8 +514,9 @@
     "lat": -22.688967,
     "lng": -45.733128,
     "aConferir": true,
+    "horario": "Qui a dom, 18h às 0h",
     "resumo": "Boteco de balcão de frente para o coreto, com chope gelado, porção e rock no som. Abre à noite, e não todo dia.",
-    "descricao": "Fica na Cândido José da Silva, de frente para o coreto da Praça Adhemar de Barros — é o bar do centro histórico, não adega nem distribuidora, apesar do nome. Serve cerveja, drink e porção; quem avalia fala em chope bem gelado, porção generosa e rock no som. Aceita pet, tem wi-fi e estacionamento. Abre só à noite e não todos os dias: as fontes divergem sobre quais, então ligue antes de descer.",
+    "descricao": "Fica na Cândido José da Silva, de frente para o coreto da Praça Adhemar de Barros — é o bar do centro histórico, não adega nem distribuidora, apesar do nome. Serve cerveja, drink e porção; quem avalia fala em chope bem gelado, porção generosa e rock no som. Aceita pet, tem wi-fi e estacionamento. Abre só à noite, de quinta a domingo, das 18h à meia-noite — a mesma ficha registra a cozinha parando às 23h no domingo, então prato tarde no último dia é ligar antes.",
     "endereco": "Rua Cândido José da Silva, 278, Centro — São Bento do Sapucaí",
     "tel": "(12) 99625-5908",
     "destaque": true
@@ -522,8 +528,9 @@
     "zona": "centro",
     "lat": -22.691488,
     "lng": -45.7326,
-    "resumo": "Pizza, hambúrguer e chope na avenida que corta o centro. Come-se no salão ou pede-se em casa; abre à noite, e não todo dia.",
-    "descricao": "Fica na Avenida Conselheiro Rodrigues Alves, a via que atravessa o centro de ponta a ponta. É pizzaria, hamburgueria e choperia no mesmo endereço, e ainda entrega: o cadastro federal traz restaurante como atividade principal e bar, bufê e comida para consumo em casa como secundárias — a casa faz as quatro coisas. O pedido de entrega sai pelo site próprio e por WhatsApp. Abre só à noite e não todos os dias: as fontes públicas divergem sobre quais dias e a partir de que hora, então ligue antes de descer.",
+    "horario": "Seg a qui, 18h às 23h30 · sex a dom, 18h às 0h",
+    "resumo": "Pizza, hambúrguer e chope na avenida que corta o centro. Come-se no salão ou pede-se em casa; abre todas as noites.",
+    "descricao": "Fica na Avenida Conselheiro Rodrigues Alves, a via que atravessa o centro de ponta a ponta. É pizzaria, hamburgueria e choperia no mesmo endereço, e ainda entrega: o cadastro federal traz restaurante como atividade principal e bar, bufê e comida para consumo em casa como secundárias — a casa faz as quatro coisas. O pedido de entrega sai pelo site próprio e por WhatsApp. Abre só à noite, todos os dias, a partir das 18h — até 23h30 de segunda a quinta e até meia-noite de sexta a domingo, conforme a casa publica na própria ficha. A entrega tem grade própria e nem sempre acompanha a do salão.",
     "endereco": "Avenida Conselheiro Rodrigues Alves, 32, Centro — São Bento do Sapucaí",
     "tel": "(12) 99733-6413",
     "site": "https://www.hotstonepizzaria.com.br",
@@ -547,6 +554,7 @@
     "zona": "centro",
     "lat": -22.691196,
     "lng": -45.733528,
+    "horario": "Seg a sex, 10h às 18h",
     "resumo": "A imobiliária do centro: compra, venda, locação e avaliação de imóveis, com o forte em terreno na serra.",
     "descricao": "Corretagem na compra, venda, locação e avaliação de imóveis em São Bento do Sapucaí e região, com o forte em terreno. CRECI 319522-F. É o eixo de serviços do mapa, e não um passeio: entra aqui porque quem sobe muito a serra uma hora pensa em ficar. O pino é o que a própria empresa publica no Google e fica a uns 80 metros do endereço declarado no cadastro federal — ligue antes de ir até a porta.",
     "endereco": "Avenida Doutor Rubião Júnior, 122, Centro — São Bento do Sapucaí",

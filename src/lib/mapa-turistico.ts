@@ -55,6 +55,12 @@ import rotasJson from '@/data/rotas.json';
  *      por ele que o `aConferir` do Rosário ainda não caiu: as duas atribuições
  *      vieram do mesmo raciocínio, e derrubar uma sem olhar a outra seria
  *      trocar uma suposição por outra.
+ *      Pesa a favor do candidato do sul: a ficha "Igreja Santo Antônio" do
+ *      Google fica em -22.691902, -45.7330289, que é justamente ele — uns
+ *      530 m abaixo do pino do cadastro, ainda na Avenida Conselheiro
+ *      Rodrigues Alves. Não basta para trocar sozinha, porque a atribuição do
+ *      Rosário depende da mesma resposta, mas é a pista mais concreta que
+ *      apareceu até agora.
  *   3. Taxa da Cachoeira do Encontro. A entrada mudou: não se passa mais por
  *      dentro da Cachoeira dos Amores, e sim pela Estrada da Ana Chata, onde
  *      o pino agora fica. Dois relatos (2024 e 2026) dizem que o acesso novo
@@ -67,13 +73,54 @@ import rotasJson from '@/data/rotas.json';
  *      Segue em branco onde as fontes divergem sem desempate. O do Arte no
  *      Quilombo é o do site do próprio espaço; o portal de turismo do Estado
  *      publica outro (terça a domingo, sem intervalo de almoço), e quem
- *      desempatou foi o proprietário. O do Bar SBS Bebidas ficou em branco:
- *      o Instagram do bar e o Tripadvisor dizem quinta a domingo a partir das
- *      18h, o portal de turismo diz quarta a domingo a partir das 15h, e não
- *      há como desempatar sem ligar. A descrição do bar avisa disso. O da Hot
- *      Stone ficou em branco pelo mesmo motivo: as fontes convergem em "à
- *      noite, e não todo dia" e divergem em quais dias e a partir de que hora.
- *      A descrição da pizzaria avisa disso.
+ *      desempatou foi o proprietário.
+ *
+ *      O Bar SBS Bebidas, a Hot Stone e a CAMPOMAX ficaram em branco por muito
+ *      tempo porque as fontes secundárias (Instagram, Tripadvisor, portal de
+ *      turismo) se contradiziam. O que desempatou foi ler a tabela completa da
+ *      ficha do Google de cada um — a ficha gerida pelo próprio dono, que é a
+ *      melhor fonte pública que existe para comércio, e não o resumo que a
+ *      busca mostra. Duas ressalvas continuam abertas: a ficha do bar traz um
+ *      segundo conjunto, o da cozinha, que fecha às 23h no domingo em vez de
+ *      meia-noite, e a Hot Stone tem uma ficha separada de entrega com grade
+ *      própria. As duas descrições dizem isso em português.
+ *
+ *      O Bauzinho recebeu o horário da portaria, como o proprietário supôs:
+ *      o site oficial do Monumento Natural e o Guia de Áreas Protegidas do
+ *      Estado dizem 9h às 18h todos os dias; o portal municipal (São Bento
+ *      TUR) diz 9h às 17h. Duas fontes oficiais contra uma — mas a divergência
+ *      fica registrada aqui, e uma ligação para a portaria a encerraria.
+ *
+ *      Seguem em branco de propósito, e cada um por um motivo diferente:
+ *      - Cume do Baú e Pedra Ana Chata. O dado existe e as fontes oficiais
+ *        concordam, mas não é horário de funcionamento: é janela de largada
+ *        (9h às 14h pela portaria, 7h às 14h pelo Chico Bento, permanência
+ *        até 17h, via ferrata só até 15h). Cadastrar faria o selo dizer
+ *        "fechado" às 15h para quem está legitimamente na trilha até as 17h.
+ *        Levado ao proprietário em 31/08/2026 com a pesquisa em mãos, e a
+ *        resposta foi não cadastrar. Não é pendência: é decisão. A pesquisa
+ *        fica registrada aqui para ninguém refazê-la, não para reabrir o
+ *        assunto.
+ *      - Portal da Cidade. O Centro de Informação ao Turista quase certamente
+ *        tem horário, mas ninguém o publica: a carta de serviços da
+ *        Prefeitura traz só local e telefone. O "seg a sex, 8h às 17h" que
+ *        aparece na página da Secretaria de Turismo é do prédio dela, na Rua
+ *        Doutor Gama Rodrigues, e não do balcão no Portal. O proprietário
+ *        decidiu, em 31/08/2026, não ligar atrás do dado: fica sem horário.
+ *      - Cachoeira do Toldi e Cachoeira do Encontro. Nenhuma fonte publica
+ *        horário — o mesmo vazio que o item 3 descreve para a taxa. Também
+ *        fechado com o proprietário em 31/08/2026: ficam sem horário.
+ *      - As quatro igrejas que não são a Matriz. A Diocese de Taubaté publica
+ *        a grade de missa só da Matriz; São Benedito, Rosário, Remédios e
+ *        Santo Antônio são capelas da mesma paróquia e não têm grade própria
+ *        publicada.
+ *      - Praças, mirantes, o letreiro, a Ladeira dos Pirilampos, as
+ *        Capelinhas de Mosaico, a Pedra da Balança e a Cachoeira do Tobogã.
+ *        Onde o Google Maps diz "atendimento 24 horas" isso é valor-padrão de
+ *        diretório para logradouro público, não horário declarado por um
+ *        gestor. Campo vazio significa "sem horário publicado", que é
+ *        diferente de "aberto sempre" — cadastrar as 24h seria afirmar o que
+ *        ninguém afirmou.
  *   5. `nota` / `avaliacoes` — só o Refúgio tem, vindo do próprio Google
  *      Business Profile. Preencher os demais só com número real; a estrela
  *      some enquanto não houver. O que existe e não entrou: o Sabor com Arte
