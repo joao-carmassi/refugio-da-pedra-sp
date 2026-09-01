@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/map';
 import { CATEGORIAS, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
+import { ZOOM_INICIAL } from './base-cartografica';
 import CartaoRapido from './cartao-rapido';
 
 /**
@@ -17,31 +18,48 @@ import CartaoRapido from './cartao-rapido';
  *
  * `2 ** ((zoom - referencia) * forca)` é o crescimento do próprio mapa elevado
  * a uma fração. Com `forca: 1` o pino acompanharia o terreno metro a metro e
- * as pontas ficariam impraticáveis — invisível de longe, gigante de perto. Com
- * `0.3` ele apenas encolhe ao se afastar, o bastante para os pinos se
- * desencostarem, e continua legível.
+ * as pontas ficariam impraticáveis — invisível de longe, gigante de perto.
+ * `0.45` encolhe o bastante para os pinos se desencostarem e ainda deixa o
+ * desenho legível na ponta de baixo.
  *
- * A referência é o zoom em que o mapa de fato abre, e não `ZOOM_INICIAL`:
- * quem decide o enquadramento inicial é `enquadrarTudo`, que encaixa o vale na
- * tela e para em ~11,9 num desktop largo — menos numa tela estreita, que é
- * justamente onde os pinos se amontoam mais. É nesse zoom que a escala vale 1
- * e os diâmetros acima são o que se vê.
+ * A referência é `ZOOM_INICIAL.desktop`, e esse é o ponto: o mapa não abre
+ * nele. Quem enquadra na abertura é `enquadrarTudo`, que encaixa o vale na
+ * tela e para em ~11,9 num desktop largo e no zoom mínimo num celular. Pôr a
+ * referência na abertura foi a primeira tentativa e não deu em nada — a
+ * escala abria em 0,99, e a tela cheia de pinos, que é o caso do problema,
+ * continuava igual. Com a referência acima da abertura, a vista inicial já
+ * chega encolhida e o tamanho nominal fica reservado a quem aproximou.
  *
- * Os limites cortam os extremos. Em cima, do zoom 12,6 adiante o pino para de
- * crescer: aproximar até a rua não devolve um pino gigante. Embaixo, o piso é
- * o que importa no celular — lá `enquadrarTudo` encosta no zoom mínimo já na
- * abertura, e sem piso o pino cairia para 22px, abaixo do alvo de toque.
+ * Os pisos são por dedo, não por largura de tela: num mouse o pino pode ficar
+ * pequeno à vontade, porque o ponteiro é preciso; num toque ele não pode
+ * descer abaixo do que se acerta com o polegar. `pointer: coarse` responde
+ * exatamente essa pergunta.
  */
 const ESCALA = {
-  referencia: 11.9,
-  forca: 0.3,
-  minima: 0.82,
+  referencia: ZOOM_INICIAL.desktop,
+  forca: 0.45,
   maxima: 1.15,
+  piso: { ponteiroFino: 0.55, ponteiroGrosso: 0.75 },
 } as const;
+
+/**
+ * A lista de mídia é consultada a cada evento de zoom, então vive fora do
+ * componente: criar uma nova por quadro é desperdício, e a mesma serve o mapa
+ * inteiro. Fica nula no servidor, onde não há `window` — e o piso do ponteiro
+ * fino é o certo até a primeira medição no cliente.
+ */
+const TOQUE =
+  typeof window === 'undefined' ? null : window.matchMedia('(pointer: coarse)');
 
 function escalaDoZoom(zoom: number) {
   const bruta = 2 ** ((zoom - ESCALA.referencia) * ESCALA.forca);
-  return Math.min(ESCALA.maxima, Math.max(ESCALA.minima, bruta));
+  // Relido a cada chamada, e não guardado: quem alterna mouse e toque no mesmo
+  // aparelho muda de piso sem precisar recarregar o mapa.
+  const piso = TOQUE?.matches
+    ? ESCALA.piso.ponteiroGrosso
+    : ESCALA.piso.ponteiroFino;
+
+  return Math.min(ESCALA.maxima, Math.max(piso, bruta));
 }
 
 /**
@@ -104,9 +122,9 @@ interface Props {
  * O `z-index` segue a mesma ordem para que o pino maior nunca fique atrás de
  * um menor.
  *
- * Esses diâmetros são o tamanho no zoom de abertura; `--pino-escala` (ver
- * `EscalaZoom`) encolhe todos juntos quando o mapa se afasta, que é quando os
- * lugares se amontoam no vale.
+ * Esses diâmetros valem no zoom de referência (ver `ESCALA`), que é mais perto
+ * do que o mapa abre: `--pino-escala` encolhe todos juntos conforme o mapa se
+ * afasta, e a vista inicial já chega menor do que os números daqui.
  *
  * O Refúgio se distingue por tamanho, cor e borda, e só. Sem pulso e sem nome
  * fixo embaixo: o rótulo permanente disputava espaço com os pinos vizinhos, e
