@@ -86,7 +86,11 @@ function Pino({
       <MarkerContent
         className={cn(
           'relative flex origin-bottom flex-col items-center',
-          'transition-[opacity,transform] duration-300 ease-out',
+          // `scale`, e não `transform`: no Tailwind v4 o `scale-50` abaixo
+          // escreve na propriedade `scale`, que é própria. Com `transform` na
+          // lista o pino só desbotava, e o crescer prometido no comentário
+          // acima acontecia de uma vez, no primeiro quadro.
+          'transition-[opacity,scale] duration-300 ease-out',
           visivel
             ? 'scale-100 opacity-100'
             : 'pointer-events-none scale-50 opacity-0',

@@ -232,7 +232,12 @@ function FolhaMobile({
         className={cn(
           'pointer-events-auto flex flex-col overflow-hidden rounded-t-3xl',
           fracaoViva === null &&
-            'transition-[height,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
+            // `translate`, e não `transform`: no Tailwind v4 o `translate-y-full`
+            // abaixo escreve na propriedade `translate`, que é própria e não entra
+            // no `transform`. Listando só `transform`, a folha sumia de um quadro
+            // para o outro quando a busca abria — a transição existia e não
+            // alcançava a propriedade que de fato muda.
+            'transition-[height,translate] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]',
           oculta && 'pointer-events-none translate-y-full',
           ANIMA_ENTRA,
         )}
