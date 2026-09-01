@@ -36,7 +36,7 @@ function Hero(): React.ReactNode {
   const scope = useReveal<HTMLElement>({ onMount: true, delay: 0.15 });
 
   return (
-    <section ref={scope} className='pt-12 md:py-20'>
+    <section ref={scope} className='py-12 md:py-20'>
       <div className='container'>
         <div data-reveal>
           <Breadcrumb>
@@ -122,12 +122,12 @@ function Hero(): React.ReactNode {
           data-reveal
           className='mt-3 max-w-prose text-muted-foreground md:mt-4 md:text-lg'
         >
-          Um guia da cidade em forma de mapa, aberto a quem estiver
-          planejando a viagem: as trilhas do Complexo da Pedra do Baú, as
-          cachoeiras do vale, as igrejas e os mirantes do centro histórico. Cada
-          ponto traz endereço, horário quando existe horário publicado e a rota
-          de carro medida por estrada de verdade — e, onde o carro não chega,
-          o que ainda falta caminhar.
+          Um guia da cidade em forma de mapa, aberto a quem estiver planejando a
+          viagem: as trilhas do Complexo da Pedra do Baú, as cachoeiras do vale,
+          as igrejas e os mirantes do centro histórico. Cada ponto traz
+          endereço, horário quando existe horário publicado e a rota de carro
+          medida por estrada de verdade — e, onde o carro não chega, o que ainda
+          falta caminhar.
         </p>
 
         <div
