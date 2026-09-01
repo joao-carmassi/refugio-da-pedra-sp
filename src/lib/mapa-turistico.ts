@@ -10,11 +10,11 @@ import {
   TentTree,
   UtensilsCrossed,
   type LucideIcon,
-} from 'lucide-react';
-import Fuse from 'fuse.js';
-import locaisJson from '@/data/mapa-turistico.json';
-import centroJson from '@/data/centro.json';
-import rotasJson from '@/data/rotas.json';
+} from "lucide-react";
+import Fuse from "fuse.js";
+import locaisJson from "@/data/mapa-turistico.json";
+import centroJson from "@/data/centro.json";
+import rotasJson from "@/data/rotas.json";
 
 /**
  * TODO(proprietário): conferir e completar o cadastro de `mapa-turistico.json`.
@@ -242,7 +242,7 @@ import rotasJson from '@/data/rotas.json';
  * interface.
  */
 export const CATEGORIAS = {
-  turismo: { label: 'Turismo', cor: '#2f6b4f', icone: Camera },
+  turismo: { label: "Turismo", cor: "#2f6b4f", icone: Camera },
   /**
    * Igreja, museu e casa de cultura saíram de `turismo` porque São Bento tem
    * dez deles: misturados com mirante e cachoeira, o chip "Turismo" virava a
@@ -250,13 +250,17 @@ export const CATEGORIAS = {
    * quase-neutro da paleta — é a cor da taipa e da pedra, e não briga com o
    * azul de `hospedagem`, que só marca o próprio Refúgio.
    */
-  cultura: { label: 'Cultura', cor: '#4f5d6b', icone: Landmark },
-  restaurantes: { label: 'Restaurantes', cor: '#b4523a', icone: UtensilsCrossed },
-  cafes: { label: 'Cafés', cor: '#8a6b3b', icone: Coffee },
-  hospedagem: { label: 'Hospedagem', cor: '#4a6fa5', icone: TentTree },
-  compras: { label: 'Compras', cor: '#7a5a8c', icone: ShoppingBag },
-  aventura: { label: 'Aventura', cor: '#2e7d8a', icone: Mountain },
-  experiencias: { label: 'Experiências', cor: '#9a4a5f', icone: Compass },
+  cultura: { label: "Cultura", cor: "#4f5d6b", icone: Landmark },
+  restaurantes: {
+    label: "Restaurantes",
+    cor: "#b4523a",
+    icone: UtensilsCrossed,
+  },
+  cafes: { label: "Cafés", cor: "#8a6b3b", icone: Coffee },
+  hospedagem: { label: "Hospedagem", cor: "#4a6fa5", icone: TentTree },
+  compras: { label: "Compras", cor: "#7a5a8c", icone: ShoppingBag },
+  aventura: { label: "Aventura", cor: "#2e7d8a", icone: Mountain },
+  experiencias: { label: "Experiências", cor: "#9a4a5f", icone: Compass },
   /**
    * O eixo que não é passeio.
    *
@@ -275,7 +279,7 @@ export const CATEGORIAS = {
    * (36°) e o verde do turismo (150°) não havia nada, e é terra lavrada, que
    * convive com a base em areia sem disputar com o verde de mato.
    */
-  servicos: { label: 'Serviços', cor: '#6d7f3c', icone: Briefcase },
+  servicos: { label: "Serviços", cor: "#6d7f3c", icone: Briefcase },
 } as const satisfies Record<
   string,
   { label: string; cor: string; icone: LucideIcon }
@@ -284,14 +288,14 @@ export const CATEGORIAS = {
 export type CategoriaId = keyof typeof CATEGORIAS;
 
 /** `todos` não é uma categoria de dado — é o estado "sem filtro" dos chips. */
-export const FILTRO_TODOS = 'todos' as const;
+export const FILTRO_TODOS = "todos" as const;
 export type FiltroId = typeof FILTRO_TODOS | CategoriaId;
 
 /** Trecho do vale onde cada lugar fica, usado para descrevê-lo por perto. */
 export const ZONAS = {
-  bau: 'Vale do Baú',
-  centro: 'Centro',
-  vale: 'Rota rural',
+  bau: "Vale do Baú",
+  centro: "Centro",
+  vale: "Rota rural",
 } as const;
 
 export type ZonaId = keyof typeof ZONAS;
@@ -430,7 +434,7 @@ export const REFUGIO = LOCAIS.find((l) => l.refugio) as Local;
  * escreve em "A partir do ___" — daí ele viajar junto e não ser derivado do
  * `id` na hora de renderizar.
  */
-export type OrigemId = 'refugio' | 'centro';
+export type OrigemId = "refugio" | "centro";
 
 export interface Origem {
   id: OrigemId;
@@ -440,7 +444,7 @@ export interface Origem {
 }
 
 export const ORIGEM_REFUGIO: Origem = {
-  id: 'refugio',
+  id: "refugio",
   nome: REFUGIO.nome,
   lat: REFUGIO.lat,
   lng: REFUGIO.lng,
@@ -457,7 +461,7 @@ export const ORIGEM_REFUGIO: Origem = {
  * lido também pelo `gerar-rotas.mjs`.
  */
 export const ORIGEM_CENTRO: Origem = {
-  id: 'centro',
+  id: "centro",
   nome: centroJson.nome,
   lat: centroJson.lat,
   lng: centroJson.lng,
@@ -493,7 +497,7 @@ export const FILTROS: {
   label: string;
   icone: LucideIcon;
 }[] = [
-  { id: FILTRO_TODOS, label: 'Todos', icone: LayoutGrid },
+  { id: FILTRO_TODOS, label: "Todos", icone: LayoutGrid },
   ...(Object.keys(CATEGORIAS) as CategoriaId[])
     .filter((id) => LOCAIS.some((local) => local.cat === id))
     .map((id) => ({
@@ -628,7 +632,7 @@ export function formatarDistancia(metros: number): string {
 
   const km = metros / 1000;
 
-  return `${km.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} km`;
+  return `${km.toLocaleString("pt-BR", { maximumFractionDigits: 1 })} km`;
 }
 
 export function formatarDuracao(segundos: number): string {
@@ -654,7 +658,7 @@ export function formatarDuracao(segundos: number): string {
  * monta as duas linhas da ficha é `getChegada`.
  */
 export function getDistancia(local: Local, origem: Origem): string {
-  if (ehOrigem(local, origem)) return 'Ponto de partida';
+  if (ehOrigem(local, origem)) return "Ponto de partida";
 
   const rota = getRota(local, origem);
 
@@ -663,7 +667,7 @@ export function getDistancia(local: Local, origem: Origem): string {
 
     return km < 1
       ? `${Math.round(km * 1000)} m em linha reta`
-      : `${km.toLocaleString('pt-BR', { maximumFractionDigits: 1 })} km em linha reta`;
+      : `${km.toLocaleString("pt-BR", { maximumFractionDigits: 1 })} km em linha reta`;
   }
 
   return `${formatarDistancia(rota.metros)} · ${formatarDuracao(rota.segundos)} de carro`;
@@ -704,8 +708,8 @@ export function getChegada(local: Local, origem: Origem): Chegada {
 /** Minúsculas e sem acento: quem digita "sao bento" quer "São Bento". */
 function semAcento(texto: string): string {
   return texto
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
     .toLowerCase();
 }
 
@@ -725,8 +729,8 @@ const REGISTROS = LOCAIS.map((local) => ({
 
 const FUSE = new Fuse(REGISTROS, {
   keys: [
-    { name: 'nome', weight: 0.7 },
-    { name: 'categoria', weight: 0.3 },
+    { name: "nome", weight: 0.7 },
+    { name: "categoria", weight: 0.3 },
   ],
   includeScore: true,
   ignoreDiacritics: true,
@@ -853,13 +857,13 @@ export function getFotoPrincipal(local: Local): string | null {
  * Fuso do vale. O hóspede pode abrir o mapa de qualquer lugar do mundo, e
  * "Aberto agora" só significa alguma coisa no relógio de São Bento.
  */
-const FUSO = 'America/Sao_Paulo';
+const FUSO = "America/Sao_Paulo";
 
 /** Dias como o cadastro os escreve, na ordem de `Date#getDay`. */
-const DIAS = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+const DIAS = ["dom", "seg", "ter", "qua", "qui", "sex", "sab"];
 
 /** Nomes do `Intl` em `en-US`, na mesma ordem. */
-const DIAS_INTL = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const DIAS_INTL = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const DIA = 24 * 60;
 const SEMANA = 7 * DIA;
@@ -875,7 +879,7 @@ interface Faixa {
 function lerDias(texto: string): number[] | null {
   const t = semAcento(texto).trim();
 
-  if (t === 'todos os dias') return [0, 1, 2, 3, 4, 5, 6];
+  if (t === "todos os dias") return [0, 1, 2, 3, 4, 5, 6];
 
   const intervalo = t.match(/^(\w+) a (\w+)$/);
 
@@ -930,8 +934,8 @@ function lerHorario(horario: string | undefined): Faixa[] | null {
 
   const faixas: Faixa[] = [];
 
-  for (const trecho of horario.split('·')) {
-    const corte = trecho.indexOf(',');
+  for (const trecho of horario.split("·")) {
+    const corte = trecho.indexOf(",");
 
     if (corte < 0) return null;
 
@@ -941,8 +945,8 @@ function lerHorario(horario: string | undefined): Faixa[] | null {
 
     for (const parte of trecho.slice(corte + 1).split(/\s+e\s+/)) {
       const [de, ate] = parte.split(/\s+às\s+/);
-      const abre = lerHora(de ?? '');
-      const fecha = lerHora(ate ?? '');
+      const abre = lerHora(de ?? "");
+      const fecha = lerHora(ate ?? "");
 
       if (abre === null || fecha === null) return null;
 
@@ -963,23 +967,23 @@ function lerHorario(horario: string | undefined): Faixa[] | null {
 
 /** Minuto da semana, no fuso do vale, contado a partir da meia-noite de domingo. */
 function minutoDaSemana(quando: Date): number {
-  const partes = new Intl.DateTimeFormat('en-US', {
+  const partes = new Intl.DateTimeFormat("en-US", {
     timeZone: FUSO,
-    weekday: 'short',
-    hour: '2-digit',
-    minute: '2-digit',
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
     hour12: false,
   }).formatToParts(quando);
 
   const valor = (tipo: string) =>
-    partes.find((p) => p.type === tipo)?.value ?? '';
+    partes.find((p) => p.type === tipo)?.value ?? "";
 
-  const dia = DIAS_INTL.indexOf(valor('weekday'));
+  const dia = DIAS_INTL.indexOf(valor("weekday"));
 
   // `hour12: false` devolve 24 à meia-noite em alguns motores.
-  const hora = Number(valor('hour')) % 24;
+  const hora = Number(valor("hour")) % 24;
 
-  return (dia < 0 ? 0 : dia) * DIA + hora * 60 + Number(valor('minute'));
+  return (dia < 0 ? 0 : dia) * DIA + hora * 60 + Number(valor("minute"));
 }
 
 /**
@@ -1011,8 +1015,83 @@ export function estaAberto(
  */
 export function linhasHorario(horario: string): string[] {
   return horario
-    .split('·')
+    .split("·")
     .map((t) => t.trim())
     .filter(Boolean)
     .map((t) => t[0].toUpperCase() + t.slice(1));
+}
+
+/** Códigos de dia do Schema.org, na ordem de `DIAS`. */
+const DIAS_SCHEMA = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+
+/** `1080` vira `18:00`; `1440` vira `24:00`, que o ISO 8601 aceita. */
+function relogio(minutos: number): string {
+  const hora = Math.floor(minutos / 60);
+  const minuto = minutos % 60;
+
+  return `${String(hora).padStart(2, "0")}:${String(minuto).padStart(2, "0")}`;
+}
+
+/**
+ * O `horario` do cadastro traduzido para o `openingHours` do Schema.org.
+ *
+ * O campo do cadastro é português corrido — `Seg a qui, 18h às 23h30 · sex a
+ * dom, 18h às 0h` —, escrito para quem lê o cartão. O `openingHours` não é
+ * texto livre: a especificação pede código de dia em inglês abreviado e hora
+ * em 24h, `Mo-Th 18:00-23:30`. Publicar a frase em português naquele campo
+ * não é um horário "mais ou menos certo" para o buscador; é um valor que ele
+ * não consegue ler, e o rich result sai sem horário nenhum ou com o texto
+ * cru. Daí a tradução aqui, a partir do mesmo parser que alimenta o selo de
+ * "Aberto agora" — as duas leituras não têm como divergir.
+ *
+ * Devolve `undefined` no que o parser não entende, e quem chama omite o campo.
+ * Esse é o ponto: um campo ausente diz "não sei"; um campo com frase solta diz
+ * uma coisa errada com cara de dado estruturado.
+ *
+ * Fechamento à meia-noite sai como `24:00` do mesmo dia, e não como `00:00` do
+ * seguinte — `18:00-00:00` seria um intervalo negativo.
+ */
+export function horarioSchema(
+  horario: string | undefined,
+): string[] | undefined {
+  const faixas = lerHorario(horario);
+
+  if (!faixas) return undefined;
+
+  /*
+   * As faixas saem do parser já expandidas por dia — `Seg a qui` vira quatro.
+   * Agrupar de volta por par de horas devolve `Mo-Th 18:00-23:30` no lugar de
+   * quatro linhas idênticas, que é o que a especificação espera e o que o
+   * cadastro de fato disse.
+   */
+  const porIntervalo = new Map<string, number[]>();
+
+  for (const { abre, fecha } of faixas) {
+    const dia = Math.floor(abre / DIA);
+    const chave = `${relogio(abre % DIA)}-${relogio(fecha - dia * DIA)}`;
+
+    porIntervalo.set(chave, [...(porIntervalo.get(chave) ?? []), dia]);
+  }
+
+  return [...porIntervalo].map(([intervalo, dias]) => {
+    /*
+     * A ordem vem do parser, não do `sort`, e isso importa: `sex a dom` sai
+     * como `[5, 6, 0]`, contíguo dando a volta na semana. Ordenado viraria
+     * `[0, 5, 6]` e a volta se perderia — sairia `Su,Fr,Sa` em vez de
+     * `Fr-Su`. Ambos são válidos, mas só um se lê.
+     */
+    const contiguo = dias.every(
+      (d, i) => i === 0 || d === (dias[i - 1] + 1) % 7,
+    );
+    const dia = (d: number) => DIAS_SCHEMA[d];
+
+    if (dias.length === 1) return `${dia(dias[0])} ${intervalo}`;
+
+    if (contiguo) {
+      return `${dia(dias[0])}-${dia(dias[dias.length - 1])} ${intervalo}`;
+    }
+
+    // Fora de sequência: lista explícita, que a especificação também aceita.
+    return `${dias.map(dia).join(",")} ${intervalo}`;
+  });
 }
