@@ -132,7 +132,7 @@ interface Props {
  * precisa procurar — o rótulo agora é do selecionado, como em qualquer outro
  * pino.
  *
- * A cauda de 2×9px abaixo do círculo é o que faz o pino "apontar": o
+ * A cauda de 2×8px abaixo do círculo é o que faz o pino "apontar": o
  * `anchor='bottom'` do MapLibre ancora a base do elemento na coordenada, então
  * é a ponta da cauda que cai sobre o lugar, não o centro do círculo.
  */
@@ -148,12 +148,12 @@ function Pino({
   const Icone = local.refugio ? CATEGORIAS.hospedagem.icone : categoria.icone;
 
   const diametro = local.refugio
-    ? 43
+    ? 39
     : selecionado
-      ? 41
+      ? 37
       : local.destaque
-        ? 35
-        : 30;
+        ? 32
+        : 27;
 
   const zIndex = local.refugio
     ? 520
@@ -245,7 +245,7 @@ function Pino({
             {local.destaque && (
               <span
                 aria-hidden='true'
-                className='absolute -top-1 -right-1.5 grid size-[17px] place-items-center rounded-full border-2'
+                className='absolute -top-1 -right-1.5 grid size-[15px] place-items-center rounded-full border-2'
                 style={{
                   background: 'var(--map-stone)',
                   borderColor: 'var(--map-surface)',
@@ -267,7 +267,7 @@ function Pino({
                 ? 'var(--map-green-deep)'
                 : categoria.cor,
             }}
-            className='h-[9px] w-0.5'
+            className='h-2 w-0.5'
           />
         </div>
 
