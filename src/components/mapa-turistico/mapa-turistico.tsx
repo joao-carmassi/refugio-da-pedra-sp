@@ -38,7 +38,7 @@ import PainelDetalhes from './painel-detalhes';
 import PainelLista from './painel-lista';
 import PainelRota from './painel-rota';
 import { pintarBase } from './paleta-cartografica';
-import Pino from './pino';
+import Pino, { EscalaZoom } from './pino';
 
 type Painel = 'lista' | 'detalhes' | 'rota' | null;
 
@@ -298,7 +298,8 @@ function repouso(mobile: boolean): Painel {
  * Sem agrupamento por zona: são poucas dezenas de lugares em um vale pequeno,
  * e trocar os pinos por bolhas com um número dizia menos do que os próprios
  * pinos já diziam — de longe eles não chegam a virar mancha. Afastar o mapa
- * agora só afasta.
+ * afasta e encolhe os pinos junto (`EscalaZoom`), que é o que os mantém
+ * separados sem precisar agrupá-los.
  *
  * Todos os pinos ficam montados o tempo todo, e é a opacidade que decide quem
  * está em cena. Montar e desmontar conforme o filtro os fazia piscar de uma
@@ -328,6 +329,8 @@ function Pinos({
 
   return (
     <>
+      <EscalaZoom />
+
       {PINOS_ORDENADOS.map((local) => (
         <Pino
           key={local.id}

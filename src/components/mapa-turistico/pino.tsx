@@ -1,10 +1,86 @@
 'use client';
 
+import { useEffect } from 'react';
 import { Star } from 'lucide-react';
-import { MapMarker, MarkerContent, MarkerTooltip } from '@/components/ui/map';
+import {
+  MapMarker,
+  MarkerContent,
+  MarkerTooltip,
+  useMap,
+} from '@/components/ui/map';
 import { CATEGORIAS, type Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
 import CartaoRapido from './cartao-rapido';
+
+/**
+ * Como o tamanho do pino responde ao zoom.
+ *
+ * `2 ** ((zoom - referencia) * forca)` é o crescimento do próprio mapa elevado
+ * a uma fração. Com `forca: 1` o pino acompanharia o terreno metro a metro e
+ * as pontas ficariam impraticáveis — invisível de longe, gigante de perto. Com
+ * `0.3` ele apenas encolhe ao se afastar, o bastante para os pinos se
+ * desencostarem, e continua legível.
+ *
+ * A referência é o zoom em que o mapa de fato abre, e não `ZOOM_INICIAL`:
+ * quem decide o enquadramento inicial é `enquadrarTudo`, que encaixa o vale na
+ * tela e para em ~11,9 num desktop largo — menos numa tela estreita, que é
+ * justamente onde os pinos se amontoam mais. É nesse zoom que a escala vale 1
+ * e os diâmetros acima são o que se vê.
+ *
+ * Os limites cortam os extremos. Em cima, do zoom 12,6 adiante o pino para de
+ * crescer: aproximar até a rua não devolve um pino gigante. Embaixo, o piso é
+ * o que importa no celular — lá `enquadrarTudo` encosta no zoom mínimo já na
+ * abertura, e sem piso o pino cairia para 22px, abaixo do alvo de toque.
+ */
+const ESCALA = {
+  referencia: 11.9,
+  forca: 0.3,
+  minima: 0.82,
+  maxima: 1.15,
+} as const;
+
+function escalaDoZoom(zoom: number) {
+  const bruta = 2 ** ((zoom - ESCALA.referencia) * ESCALA.forca);
+  return Math.min(ESCALA.maxima, Math.max(ESCALA.minima, bruta));
+}
+
+/**
+ * Publica a escala dos pinos como variável CSS no container do mapa.
+ *
+ * Poderia ser estado de React, mas o evento `zoom` dispara a cada quadro de
+ * uma rolagem ou de um pinçar, e re-renderizar as quatro dezenas de pinos
+ * nesse ritmo engasga. Escrevendo direto na variável, quem recalcula é o
+ * navegador e o React não é acordado nenhuma vez.
+ *
+ * A variável mora no container porque todo marcador do MapLibre é descendente
+ * dele — a herança do CSS entrega o valor a todos de uma vez.
+ *
+ * Sem transição, de propósito: o valor já chega quadro a quadro, e uma
+ * transição por cima só atrasaria o pino em relação ao chão que ele marca.
+ */
+export function EscalaZoom() {
+  const { map } = useMap();
+
+  useEffect(() => {
+    if (!map) return;
+
+    const container = map.getContainer();
+    const aplicar = () =>
+      container.style.setProperty(
+        '--pino-escala',
+        String(escalaDoZoom(map.getZoom())),
+      );
+
+    aplicar();
+    map.on('zoom', aplicar);
+
+    return () => {
+      map.off('zoom', aplicar);
+    };
+  }, [map]);
+
+  return null;
+}
 
 interface Props {
   local: Local;
@@ -28,6 +104,10 @@ interface Props {
  * O `z-index` segue a mesma ordem para que o pino maior nunca fique atrás de
  * um menor.
  *
+ * Esses diâmetros são o tamanho no zoom de abertura; `--pino-escala` (ver
+ * `EscalaZoom`) encolhe todos juntos quando o mapa se afasta, que é quando os
+ * lugares se amontoam no vale.
+ *
  * O Refúgio se distingue por tamanho, cor e borda, e só. Sem pulso e sem nome
  * fixo embaixo: o rótulo permanente disputava espaço com os pinos vizinhos, e
  * a animação infinita puxava o olho para o único ponto do mapa que ninguém
@@ -50,12 +130,12 @@ function Pino({
   const Icone = local.refugio ? CATEGORIAS.hospedagem.icone : categoria.icone;
 
   const diametro = local.refugio
-    ? 46
+    ? 43
     : selecionado
-      ? 44
+      ? 41
       : local.destaque
-        ? 38
-        : 32;
+        ? 35
+        : 30;
 
   const zIndex = local.refugio
     ? 520
@@ -96,68 +176,82 @@ function Pino({
             : 'pointer-events-none scale-50 opacity-0',
         )}
       >
+        {/* A camada que o zoom mexe. Fica separada da de cima porque as duas
+            escalam: a de fora anima a entrada e a saída do pino, esta segue o
+            afastamento do mapa, e no Tailwind v4 as duas escreveriam na mesma
+            propriedade `scale` se estivessem no mesmo elemento.
+
+            `origin-bottom` de novo: encolher a partir da ponta da cauda
+            mantém o pino sobre a coordenada e mantém a etiqueta abaixo dele,
+            que é irmã desta camada justamente para não encolher junto — texto
+            de 11px a 72% não se lê. */}
         <div
-          style={{
-            zIndex,
-            width: diametro,
-            height: diametro,
-            // Disco na cor da categoria com o desenho claro por cima: sobre
-            // um mapa de papel, cheio de textura, a mancha de cor é o que se
-            // acha de longe — o contorno fino sobre branco se perdia no fundo.
-            // A borda clara não é enfeite: é ela que descola o disco do que
-            // estiver embaixo quando os dois têm cor forte.
-            background: local.refugio
-              ? 'var(--map-green-deep)'
-              : categoria.cor,
-            color: 'var(--map-sand)',
-            borderColor:
-              local.refugio || local.destaque
-                ? 'var(--map-stone)'
-                : 'var(--map-surface)',
-            borderWidth: local.refugio || selecionado ? 3 : local.destaque ? 2.5 : 2,
-            boxShadow: aceso
-              ? 'var(--map-shadow-pin-active)'
-              : 'var(--map-shadow-pin)',
-          }}
-          className={cn(
-            'relative grid cursor-pointer place-items-center rounded-full border-solid',
-            'transition-transform duration-200 ease-out',
-            destacado && !selecionado && 'scale-115',
-          )}
+          className='flex origin-bottom flex-col items-center'
+          style={{ scale: 'var(--pino-escala, 1)' }}
         >
-          <Icone
-            aria-hidden='true'
-            strokeWidth={2.25}
-            style={{ width: diametro * 0.52, height: diametro * 0.52 }}
-          />
-
-          {local.destaque && (
-            <span
+          <div
+            style={{
+              zIndex,
+              width: diametro,
+              height: diametro,
+              // Disco na cor da categoria com o desenho claro por cima: sobre
+              // um mapa de papel, cheio de textura, a mancha de cor é o que se
+              // acha de longe — o contorno fino sobre branco se perdia no fundo.
+              // A borda clara não é enfeite: é ela que descola o disco do que
+              // estiver embaixo quando os dois têm cor forte.
+              background: local.refugio
+                ? 'var(--map-green-deep)'
+                : categoria.cor,
+              color: 'var(--map-sand)',
+              borderColor:
+                local.refugio || local.destaque
+                  ? 'var(--map-stone)'
+                  : 'var(--map-surface)',
+              borderWidth: local.refugio || selecionado ? 3 : local.destaque ? 2.5 : 2,
+              boxShadow: aceso
+                ? 'var(--map-shadow-pin-active)'
+                : 'var(--map-shadow-pin)',
+            }}
+            className={cn(
+              'relative grid cursor-pointer place-items-center rounded-full border-solid',
+              'transition-transform duration-200 ease-out',
+              destacado && !selecionado && 'scale-115',
+            )}
+          >
+            <Icone
               aria-hidden='true'
-              className='absolute -top-1 -right-1.5 grid size-[17px] place-items-center rounded-full border-2'
-              style={{
-                background: 'var(--map-stone)',
-                borderColor: 'var(--map-surface)',
-                color: 'var(--map-surface)',
-              }}
-            >
-              <Star className='size-2.5' fill='currentColor' />
-            </span>
-          )}
-        </div>
+              strokeWidth={2.25}
+              style={{ width: diametro * 0.52, height: diametro * 0.52 }}
+            />
 
-        <span
-          aria-hidden='true'
-          style={{
-            zIndex,
-            // A cauda acompanha o disco: com o disco preenchido, deixá-la
-            // cinza fazia o pino parecer duas peças soltas.
-            background: local.refugio
-              ? 'var(--map-green-deep)'
-              : categoria.cor,
-          }}
-          className='h-[9px] w-0.5'
-        />
+            {local.destaque && (
+              <span
+                aria-hidden='true'
+                className='absolute -top-1 -right-1.5 grid size-[17px] place-items-center rounded-full border-2'
+                style={{
+                  background: 'var(--map-stone)',
+                  borderColor: 'var(--map-surface)',
+                  color: 'var(--map-surface)',
+                }}
+              >
+                <Star className='size-2.5' fill='currentColor' />
+              </span>
+            )}
+          </div>
+
+          <span
+            aria-hidden='true'
+            style={{
+              zIndex,
+              // A cauda acompanha o disco: com o disco preenchido, deixá-la
+              // cinza fazia o pino parecer duas peças soltas.
+              background: local.refugio
+                ? 'var(--map-green-deep)'
+                : categoria.cor,
+            }}
+            className='h-[9px] w-0.5'
+          />
+        </div>
 
         {selecionado && (
           <span
