@@ -40,12 +40,12 @@ function FotoLocal({ local, sizes, className, priority }: Props) {
   const src = getFotoPrincipal(local);
 
   /*
-   * A foto pode existir no cadastro e não chegar: as fotos ficam fora do pacote
-   * offline (ver `mapa-offline.ts`), então sem sinal toda `<Image>` aqui falha.
-   * Sem este estado, a ficha mostraria o ícone de imagem quebrada do navegador
-   * — e "quebrado" é o que o hóspede concluiria do mapa inteiro, que naquele
-   * momento está funcionando. Caindo na mesma hachura de quem não tem foto, a
-   * ficha fica com a cara de "sem foto", que é a verdade.
+   * A foto pode existir no cadastro e não chegar — arquivo renomeado, rede que
+   * cai no meio do carregamento. Sem este estado, a ficha mostraria o ícone de
+   * imagem quebrada do navegador, e "quebrado" é o que o hóspede concluiria do
+   * mapa inteiro, que naquele momento está funcionando. Caindo na mesma hachura
+   * de quem não tem foto, a ficha fica com a cara de "sem foto", que é o mais
+   * perto da verdade que dá para dizer daqui.
    */
   const [falhou, setFalhou] = useState(false);
 

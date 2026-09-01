@@ -4,7 +4,6 @@ import { X } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import type { Local } from '@/lib/mapa-turistico';
 import { cn } from '@/lib/utils';
-import BaixarOffline from './baixar-offline';
 import CartaoLista from './cartao-lista';
 
 interface Props {
@@ -23,11 +22,6 @@ interface Props {
  *
  * Serve o painel lateral do desktop e o conteúdo da folha do mobile — o que
  * muda entre os dois é só a moldura, então a moldura fica de fora.
- *
- * No pé, a oferta de guardar o mapa no aparelho. Fica fora da rolagem de
- * propósito: um convite que só aparece depois de rolar quarenta cartões é um
- * convite que quase ninguém vê, e este precisa ser visto enquanto ainda há
- * Wi-Fi.
  */
 function PainelLista({
   titulo,
@@ -106,8 +100,6 @@ function PainelLista({
           )}
         </ul>
       </ScrollArea>
-
-      <BaixarOffline />
     </div>
   );
 }

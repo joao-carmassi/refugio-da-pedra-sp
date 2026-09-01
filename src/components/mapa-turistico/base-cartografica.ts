@@ -25,11 +25,11 @@ import { FRACOES } from './folha-mobile';
  * Ele chega bege de papel, com rodovia amarela; quem dá a cor final é
  * `pintarBase`, em `paleta-cartografica.ts`.
  *
- * O estilo é nosso, e não do OpenFreeMap: `scripts/gerar-base-offline.mjs` baixa
- * a região inteira na build e a congela em `public/mapa-base/<snapshot>/`, pelo
+ * O estilo é nosso, e não do OpenFreeMap: `scripts/gerar-base.mjs` baixa a
+ * região inteira na build e a congela em `public/mapa-base/<snapshot>/`, pelo
  * mesmo motivo que `gerar-rotas.mjs` congela as rotas — a resposta é a mesma
- * para todo visitante e não muda entre deploys. É o que permite a promessa de
- * funcionar sem sinal, e de quebra tira o último domínio externo do mapa.
+ * para todo visitante e não muda entre deploys. De quebra, tira o último
+ * domínio externo do mapa: `connect-src 'self'`, em `next.config.ts`.
  *
  * O `snapshot` no caminho dos tiles é a leva de dados do OpenFreeMap. Ele torna
  * o pacote imutável por endereço: gerar de novo publica uma pasta nova em vez de
@@ -79,8 +79,8 @@ export const ZOOM_MAXIMO = regiaoJson.zoomMaximo;
  * Cerca da região. Impede que o usuário arraste para fora de São Bento do
  * Sapucaí e fique olhando para um mapa vazio sem entender o que aconteceu.
  *
- * Vem de `regiao.json`, e não escrita aqui, porque o gerador do pacote offline
- * precisa da mesma caixa para saber quais tiles baixar — ver o comentário lá.
+ * Vem de `regiao.json`, e não escrita aqui, porque o gerador da base precisa da
+ * mesma caixa para saber quais tiles baixar — ver o comentário lá.
  */
 export const LIMITES_REGIAO = regiaoJson.limites as LngLatBoundsLike;
 

@@ -24,20 +24,13 @@ import { cn } from "@/lib/utils";
 
 // Divergência proposital do registry do mapcn, que aponta o worker para o
 // unpkg. Servimos os dois arquivos do próprio site (`npm run maplibre:sync`
-// copia `maplibre-gl-worker.mjs` + `maplibre-gl-shared.mjs` para
-// `public/mapa-worker/`, e o `postinstall` mantém a cópia na versão
-// instalada). Assim o CSP não precisa liberar `script-src` de terceiros e o
-// mapa não depende de um CDN externo em runtime.
-//
-// A pasta importa: script de worker casa com o service worker pela URL do
-// próprio worker, não pela do documento que o criou. Na raiz de `public/` ele
-// ficaria fora do escopo `/mapa` e escaparia do cache — offline, o worker não
-// carrega e nenhum tile é decodificado. Ver o cabeçalho de
-// `scripts/sync-maplibre-worker.mjs`.
-//
-// Ao rodar `shadcn add` de novo neste arquivo, refazer esta troca.
+// copia `maplibre-gl-worker.mjs` + `maplibre-gl-shared.mjs` para `public/`,
+// e o `postinstall` mantém a cópia na versão instalada). Assim o CSP não
+// precisa liberar `script-src` de terceiros e o mapa não depende de um CDN
+// externo em runtime. Ao rodar `shadcn add` de novo neste arquivo, refazer
+// esta troca.
 if (typeof window !== "undefined" && !MapLibreGL.getWorkerUrl()) {
-  MapLibreGL.setWorkerUrl("/mapa-worker/maplibre-gl-worker.mjs");
+  MapLibreGL.setWorkerUrl("/maplibre-gl-worker.mjs");
 }
 
 const defaultStyles = {

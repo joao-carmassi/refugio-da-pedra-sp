@@ -7,7 +7,7 @@ const CSP_DIRECTIVES = [
   "img-src 'self' data: https:",
   "font-src 'self' data:",
   // A base vetorial de /mapa/ (estilo, tiles, glifos e sprite) é servida deste
-  // mesmo domínio: `scripts/gerar-base-offline.mjs` congela a região inteira em
+  // mesmo domínio: `scripts/gerar-base.mjs` congela a região inteira em
   // public/mapa-base/ na build. Foi por causa disso que o OpenFreeMap saiu
   // daqui — o mapa não fala mais com ninguém de fora em runtime. O worker do
   // MapLibre também é nosso, ver scripts/sync-maplibre-worker.mjs.
@@ -51,8 +51,8 @@ const nextConfig: NextConfig = {
          * O pacote da base cartográfica é imutável por endereço: o caminho leva
          * o snapshot do OpenFreeMap, então gerar de novo publica uma pasta
          * nova em vez de trocar o conteúdo destas URLs. Um ano de cache é
-         * seguro por construção — e é ele que faz o botão de guardar o mapa não
-         * baixar de novo o que o hóspede já tinha visto navegando.
+         * seguro por construção — e é ele que faz o hóspede não rebaixar tile
+         * nenhum ao voltar ao mapa, que é o que sustenta a segunda visita.
          */
         source: '/mapa-base/:caminho*',
         headers: [

@@ -40,11 +40,9 @@ interface Convite {
  * rota instalável, decide se esta visita merece o convite (as regras estão em
  * `pwa-instalacao.ts`) e segura o evento do navegador até o clique no botão.
  *
- * O registro do service worker acontece em toda visita de produção, mesmo
- * quando o convite não vai aparecer — é ele que faz o navegador considerar a
- * rota instalável, e quem está na primeira visita hoje é quem vai receber o
- * convite na próxima. Em desenvolvimento ele não só deixa de ser registrado
- * como é removido; o porquê está no efeito abaixo.
+ * O registro do service worker acontece sempre, mesmo quando o convite não vai
+ * aparecer — é ele que faz o navegador considerar a rota instalável, e quem
+ * está na primeira visita hoje é quem vai receber o convite na próxima.
  *
  * A URL pode pedir o convite na hora, com `?instalar=1`; o parâmetro sai
  * assim que a pessoa decide. Ver `PARAMETRO_FORCAR`.
@@ -55,58 +53,6 @@ export function useConviteInstalacao(): Convite {
 
   useEffect(() => {
     if (!('serviceWorker' in navigator)) return;
-
-    /*
-     * Em desenvolvimento o service worker não entra — e o que já estiver
-     * instalado é desfeito.
-     *
-     * O argumento que sustenta o cache dele ("tudo que é cache primeiro tem
-     * endereço imutável, porque os chunks do Next levam hash de conteúdo no
-     * nome") só vale no build de produção. O `next dev` serve os mesmos
-     * `/_next/static/` sem hash: `chunks/app/mapa/page.js` e
-     * `css/app/layout.css` continuam com o mesmo endereço a cada alteração.
-     * Como o `fetch` do worker responde essa faixa com cache primeiro, a
-     * primeira visita congela o bundle e o CSS daquele minuto, e a partir dali
-     * nenhuma edição aparece na tela — o HTML chega novo, o JavaScript e o
-     * estilo chegam velhos. O sintoma não parece cache: parece que o código
-     * não foi salvo, e um `<Image>` cujas classes de tamanho ainda não existem
-     * no CSS guardado abre no tamanho natural do arquivo.
-     *
-     * `unregister` sozinho não basta: ele solta o controle das próximas
-     * navegações, mas deixa a casca no disco, e uma reinstalação futura
-     * voltaria a servir de lá. A casca vai junto.
-     *
-     * Só a casca. O pacote da base (`mapa-base-*`) fica onde está: ele não tem
-     * nada a ver com bundle velho — tem endereço com snapshot no caminho, pesa
-     * megabytes e foi baixado por decisão de quem usa. Apagá-lo de passagem,
-     * para resolver um problema que é do JavaScript, cobraria o download de
-     * novo a cada recarga de quem estivesse justamente testando o modo
-     * offline.
-     */
-    if (process.env.NODE_ENV !== 'production') {
-      void navigator.serviceWorker
-        .getRegistrations()
-        .then((registros) =>
-          Promise.all(
-            registros
-              .filter((r) => r.active?.scriptURL.endsWith(SERVICE_WORKER.url))
-              .map((r) => r.unregister()),
-          ),
-        )
-        .then(() => caches?.keys())
-        .then((nomes) =>
-          Promise.all(
-            (nomes ?? [])
-              .filter((nome) => nome.startsWith('mapa-casca'))
-              .map((nome) => caches.delete(nome)),
-          ),
-        )
-        .catch(() => {
-          // Navegador sem `caches` ou sem permissão: nada a limpar.
-        });
-
-      return;
-    }
 
     /*
      * Depois do `load`: registrar durante o carregamento faz o download do
@@ -122,10 +68,14 @@ export function useConviteInstalacao(): Convite {
            * `register` numa instalação que já existe devolve a de sempre sem
            * ir à rede — quem procura versão nova do script é o `update`. O
            * navegador também o faz sozinho a cada navegação, mas com um teto
-           * de 24 h de cache HTTP no meio; pedir explicitamente encurta para
-           * esta visita o intervalo entre publicar uma correção no worker e
-           * ela valer. O worker novo assume na hora, sem esperar a aba fechar,
-           * porque ele chama `skipWaiting` e `clients.claim`.
+           * de 24 h de cache HTTP no meio.
+           *
+           * Encurtar essa espera importa por causa de uma versão anterior
+           * deste worker, que cacheava a rota inteira e podia servir bundle
+           * velho. Quem a tem instalada só se livra dela quando o script novo
+           * baixa: é o `activate` de `mapa-sw.js` que esvazia os caches
+           * `mapa-`. Pedir aqui é o que faz isso acontecer nesta visita, e não
+           * na de amanhã.
            */
           registro.update(),
         )

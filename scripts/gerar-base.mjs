@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Baixa a base cartográfica inteira da região e a congela em
- * `public/mapa-base/<snapshot>/`, para o mapa desenhar sem depender de rede.
+ * `public/mapa-base/<snapshot>/`, para o mapa ser servido deste mesmo domínio.
  *
  * Usage:
- *   node scripts/gerar-base-offline.mjs
+ *   node scripts/gerar-base.mjs
  *   npm run base
  *
  * Por que cabe. O mapa não é do mundo, é de São Bento do Sapucaí: a cerca de
@@ -16,8 +16,8 @@
  *
  * Por que na build e não no navegador, como em `gerar-rotas.mjs`: a resposta é a
  * mesma para todo visitante e não muda entre um deploy e outro. Congelada aqui,
- * ela abre sem espera, sobrevive ao OpenFreeMap sair do ar e — o ponto deste
- * arquivo — pode ser guardada num cache para funcionar sem sinal nenhum.
+ * ela abre sem espera, sobrevive ao OpenFreeMap sair do ar e tira o último
+ * domínio de terceiro do mapa — `connect-src 'self'`, em `next.config.ts`.
  *
  * E há um motivo que só aparece depois: se o mapa continuasse buscando tiles no
  * OpenFreeMap, o caminho deles carregaria o snapshot *deles*. No dia em que o
@@ -26,7 +26,7 @@
  * troca de snapshot passa a ser um `npm run base` deliberado.
  *
  * Ou tudo é gravado, ou nada. Um pacote pela metade é um mapa com buraco, e
- * buraco em mapa offline não se distingue de "aqui não tem nada" — o hóspede
+ * buraco no mapa não se distingue de "aqui não tem nada" — o hóspede
  * concluiria que não há estrada onde só faltou um arquivo. Por isso o script
  * junta tudo em memória (são poucos megabytes) e só toca no disco no fim.
  */
@@ -36,7 +36,6 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REGIAO = join(root, 'src', 'data', 'regiao.json');
-const INDICE = join(root, 'src', 'data', 'base-offline.json');
 const ESTILO = join(root, 'src', 'data', 'base-estilo.json');
 const DESTINO = join(root, 'public', 'mapa-base');
 
@@ -155,7 +154,7 @@ function listarTiles(faixas) {
  *
  * Vale o mesmo que a validação de `acesso` em `gerar-rotas.mjs`: uma mudança
  * silenciosa lá fora gravaria aqui um pacote meio certo, e meio certo num mapa
- * offline é pior que quebrado — ninguém vai conferir 700 tiles à mão. Se o
+ * é pior que quebrado — ninguém vai conferir 700 tiles à mão. Se o
  * OpenFreeMap reestruturar o `liberty`, este script tem de parar e dizer o quê.
  */
 function conferirEstilo(estilo, tilejson) {
@@ -333,28 +332,6 @@ async function main() {
   const bytes = [...arquivos.values()].reduce((soma, b) => soma + b.length, 0);
   const pasta = join(DESTINO, snapshot);
 
-  /*
-   * O índice do pacote, do lado do código e não dentro de `public/`.
-   *
-   * É daqui que o botão de baixar tira a lista de URLs, e daqui que
-   * `base-cartografica.ts` tira o snapshot para montar o caminho do estilo. As
-   * faixas vão como faixas, e não como 700 caminhos escritos: o bundle carrega
-   * duzentos bytes em vez de quinze mil, e a geometria fica legível para quem
-   * abrir o arquivo — que é o que um caminho literal repetido 700 vezes não é.
-   */
-  const indice = {
-    _comentario:
-      'Gerado por scripts/gerar-base-offline.mjs (`npm run base`). Não editar à mão: os números descrevem os arquivos que estão em public/mapa-base/, e um índice que não bate com a pasta é um download que promete o que não existe.',
-    snapshot,
-    gerado: new Date().toISOString().slice(0, 10),
-    tiles: tiles.length - ausentes.length,
-    bytes,
-    faixas,
-    ausentes,
-    glifos: [...fontstacks],
-    faixasGlifo: FAIXAS_GLIFO,
-  };
-
   // Só agora o disco é tocado, e a pasta antiga só cai depois de o pacote novo
   // estar inteiro em memória.
   await rm(DESTINO, { recursive: true, force: true });
@@ -366,14 +343,11 @@ async function main() {
     await writeFile(alvo, conteudo);
   }
 
-  await writeFile(INDICE, `${JSON.stringify(indice, null, 2)}\n`);
-
   /*
    * O estilo vai para `src/data/`, e não para dentro do pacote em `public/`.
    *
-   * Importado, ele chega junto com o bundle — que o service worker guarda
-   * inteiro na primeira visita — em vez de ser mais uma requisição que o mapa
-   * precisa esperar antes de desenhar o primeiro traço. E o caminho fica
+   * Importado, ele chega junto com o bundle, em vez de ser mais uma requisição
+   * que o mapa precisa esperar antes de desenhar o primeiro traço. E o caminho fica
    * estável: dentro do pacote ele mudaria de endereço a cada snapshot, e nenhum
    * `import` sobrevive a isso.
    */
@@ -383,7 +357,7 @@ async function main() {
     `\n${arquivos.size} arquivos, ${(bytes / 1048576).toFixed(2)} MB em public/mapa-base/${snapshot}/`,
   );
   if (ausentes.length) console.log(`${ausentes.length} tiles vazios no planeta`);
-  console.log('Índice e estilo em src/data/');
+  console.log('Estilo em src/data/base-estilo.json');
 }
 
 main().catch((erro) => {
