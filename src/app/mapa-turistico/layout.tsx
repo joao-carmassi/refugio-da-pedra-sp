@@ -1,19 +1,19 @@
-import serialize from 'serialize-javascript';
+import serialize from "serialize-javascript";
 import type {
   WithContext,
   CollectionPage,
   BreadcrumbList,
   FAQPage,
   ItemList,
-} from 'schema-dts';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-import ConviteInstalar from '@/components/mapa-turistico/convite-instalar';
-import { getSiteUrl } from '@/lib/env';
-import { METADATA_APP_MAPA } from '@/lib/pwa-mapa';
-import { CATEGORIAS } from '@/lib/mapa-turistico';
-import { LUGARES } from './dados';
-import { PERGUNTAS } from './perguntas';
+} from "schema-dts";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
+import ConviteInstalar from "@/components/mapa-turistico/convite-instalar";
+import { getSiteUrl } from "@/lib/env";
+import { METADATA_APP_MAPA } from "@/lib/pwa-mapa";
+import { CATEGORIAS, horarioSchema } from "@/lib/mapa-turistico";
+import { LUGARES } from "./dados";
+import { PERGUNTAS } from "./perguntas";
 
 interface Props {
   children: React.ReactNode;
@@ -32,10 +32,10 @@ interface Props {
  * descrições precisam ser conferidas juntas se a foto mudar.
  */
 const ogImage = {
-  url: '/assets/mapa/pedra-bau/pedra-bau-4.webp',
+  url: "/assets/mapa/pedra-bau/pedra-bau-4.webp",
   width: 1620,
   height: 1213,
-  alt: 'Vista aérea do complexo do Baú entre nuvens baixas, com o paredão de rocha cercado de mata',
+  alt: "Vista aérea do complexo do Baú entre nuvens baixas, com o paredão de rocha cercado de mata",
 };
 
 /**
@@ -64,9 +64,9 @@ const pageUrl = `${getSiteUrl()}/mapa-turistico/`;
  */
 export function generateMetadata() {
   return {
-    title: 'Mapa Turístico de São Bento do Sapucaí',
+    title: "Mapa Turístico de São Bento do Sapucaí",
     description:
-      'Guia de São Bento do Sapucaí em forma de mapa: a Pedra do Baú, as cachoeiras, os mirantes e as igrejas do município, com endereço, horário e rota de carro para cada lugar.',
+      "Guia de São Bento do Sapucaí em forma de mapa: a Pedra do Baú, as cachoeiras, os mirantes e as igrejas do município, com endereço, horário e rota de carro para cada lugar.",
     /**
      * Esta rota é a porta de entrada do PWA do mapa, não do da pousada: é
      * daqui que chega quem procurou o guia da cidade. Por isso declara a
@@ -81,26 +81,26 @@ export function generateMetadata() {
        turístico de são bento do sapucaí"): a demanda aparece em pergunta a
        modelo de IA, e quem responde por ela é o FAQ abaixo, não esta lista. */
     keywords: [
-      'mapa turístico de são bento do sapucaí',
-      'mapa de são bento do sapucaí',
-      'guia turístico de são bento do sapucaí',
-      'o que fazer em são bento do sapucaí',
-      'pontos turísticos de são bento do sapucaí',
-      'roteiro em são bento do sapucaí',
-      'trilhas em são bento do sapucaí',
-      'onde fica a pedra do baú',
-      'distância até a pedra do baú',
-      'cachoeiras de são bento do sapucaí',
-      'mirantes de são bento do sapucaí',
-      'igrejas de são bento do sapucaí',
-      'vale do baú',
+      "mapa turístico de são bento do sapucaí",
+      "mapa de são bento do sapucaí",
+      "guia turístico de são bento do sapucaí",
+      "o que fazer em são bento do sapucaí",
+      "pontos turísticos de são bento do sapucaí",
+      "roteiro em são bento do sapucaí",
+      "trilhas em são bento do sapucaí",
+      "onde fica a pedra do baú",
+      "distância até a pedra do baú",
+      "cachoeiras de são bento do sapucaí",
+      "mirantes de são bento do sapucaí",
+      "igrejas de são bento do sapucaí",
+      "vale do baú",
     ],
     openGraph: {
-      title: 'Mapa Turístico de São Bento do Sapucaí',
+      title: "Mapa Turístico de São Bento do Sapucaí",
       description:
-        'Onde ficam as trilhas, as cachoeiras, os mirantes e as igrejas de São Bento do Sapucaí, num mapa que abre no navegador, sem aplicativo.',
-      siteName: 'Refúgio da Pedra SP',
-      type: 'website',
+        "Onde ficam as trilhas, as cachoeiras, os mirantes e as igrejas de São Bento do Sapucaí, num mapa que abre no navegador, sem aplicativo.",
+      siteName: "Refúgio da Pedra SP",
+      type: "website",
       url: pageUrl,
       images: [ogImage],
     },
@@ -126,60 +126,71 @@ const siteUrl = getSiteUrl();
  * um segundo nó para o mesmo negócio.
  */
 const itemListJsonLd: WithContext<ItemList> = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  '@id': `${pageUrl}#lugares`,
-  name: 'Lugares para visitar em São Bento do Sapucaí',
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${pageUrl}#lugares`,
+  name: "Lugares para visitar em São Bento do Sapucaí",
   numberOfItems: LUGARES.length,
-  itemListElement: LUGARES.map((local, indice) => ({
-    '@type': 'ListItem' as const,
-    position: indice + 1,
-    item: {
-      '@type': 'TouristAttraction' as const,
-      '@id': `${pageUrl}#${local.id}`,
-      name: local.nome,
-      description: local.resumo,
-      ...(local.site ? { url: local.site } : {}),
-      ...(local.tel ? { telephone: local.tel } : {}),
-      ...(local.horario ? { openingHours: local.horario } : {}),
-      address: {
-        '@type': 'PostalAddress' as const,
-        streetAddress: local.endereco,
-        addressLocality: 'São Bento do Sapucaí',
-        addressRegion: 'SP',
-        addressCountry: 'BR',
+  itemListElement: LUGARES.map((local, indice) => {
+    const horario = horarioSchema(local.horario);
+
+    return {
+      "@type": "ListItem" as const,
+      position: indice + 1,
+      item: {
+        "@type": "TouristAttraction" as const,
+        "@id": `${pageUrl}#${local.id}`,
+        name: local.nome,
+        description: local.resumo,
+        ...(local.site ? { url: local.site } : {}),
+        ...(local.tel ? { telephone: local.tel } : {}),
+        /*
+         * `openingHours` pede `Mo-Th 18:00-23:30`, e o cadastro guarda a frase
+         * em português que o cartão mostra. Quem traduz é `horarioSchema`, no
+         * mesmo módulo que o parser do selo "Aberto agora" — e onde a tradução
+         * não é possível o campo sai fora, porque um horário que o buscador não
+         * lê é pior que nenhum.
+         */
+        ...(horario ? { openingHours: horario } : {}),
+        address: {
+          "@type": "PostalAddress" as const,
+          streetAddress: local.endereco,
+          addressLocality: "São Bento do Sapucaí",
+          addressRegion: "SP",
+          addressCountry: "BR",
+        },
+        geo: {
+          "@type": "GeoCoordinates" as const,
+          latitude: local.lat,
+          longitude: local.lng,
+        },
+        additionalType: CATEGORIAS[local.cat].label,
       },
-      geo: {
-        '@type': 'GeoCoordinates' as const,
-        latitude: local.lat,
-        longitude: local.lng,
-      },
-      additionalType: CATEGORIAS[local.cat].label,
-    },
-  })),
+    };
+  }),
 };
 
 const jsonLd: WithContext<CollectionPage> = {
-  '@context': 'https://schema.org',
-  '@type': 'CollectionPage',
-  '@id': `${pageUrl}#webpage`,
-  name: 'Mapa Turístico de São Bento do Sapucaí',
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${pageUrl}#webpage`,
+  name: "Mapa Turístico de São Bento do Sapucaí",
   description:
-    'Onde ficam os pontos turísticos, cachoeiras, mirantes e igrejas de São Bento do Sapucaí, agrupados por trecho do município e com endereço, horário e rota de carro para cada lugar.',
+    "Onde ficam os pontos turísticos, cachoeiras, mirantes e igrejas de São Bento do Sapucaí, agrupados por trecho do município e com endereço, horário e rota de carro para cada lugar.",
   url: pageUrl,
-  inLanguage: 'pt-BR',
-  isPartOf: { '@id': `${siteUrl}/#website` },
+  inLanguage: "pt-BR",
+  isPartOf: { "@id": `${siteUrl}/#website` },
   // O negócio é descrito uma única vez no layout raiz.
-  publisher: { '@id': `${siteUrl}/#business` },
-  mainEntity: { '@id': `${pageUrl}#lugares` },
+  publisher: { "@id": `${siteUrl}/#business` },
+  mainEntity: { "@id": `${pageUrl}#lugares` },
   about: {
-    '@type': 'City',
-    name: 'São Bento do Sapucaí',
+    "@type": "City",
+    name: "São Bento do Sapucaí",
     address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'São Bento do Sapucaí',
-      addressRegion: 'SP',
-      addressCountry: 'BR',
+      "@type": "PostalAddress",
+      addressLocality: "São Bento do Sapucaí",
+      addressRegion: "SP",
+      addressCountry: "BR",
     },
   },
   // O mapa interativo é a ferramenta que esta página apresenta.
@@ -187,14 +198,14 @@ const jsonLd: WithContext<CollectionPage> = {
 };
 
 const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteUrl}/` },
+    { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
     {
-      '@type': 'ListItem',
+      "@type": "ListItem",
       position: 2,
-      name: 'Mapa Turístico',
+      name: "Mapa Turístico",
       item: pageUrl,
     },
   ],
@@ -215,16 +226,16 @@ const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
  * existem na página de qualquer jeito — custo zero, sem promessa falsa.
  */
 const faqJsonLd: WithContext<FAQPage> = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  '@id': `${pageUrl}#faq`,
-  inLanguage: 'pt-BR',
-  isPartOf: { '@id': `${pageUrl}#webpage` },
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": `${pageUrl}#faq`,
+  inLanguage: "pt-BR",
+  isPartOf: { "@id": `${pageUrl}#webpage` },
   mainEntity: PERGUNTAS.map(({ pergunta, resposta }) => ({
-    '@type': 'Question' as const,
+    "@type": "Question" as const,
     name: pergunta,
     acceptedAnswer: {
-      '@type': 'Answer' as const,
+      "@type": "Answer" as const,
       text: resposta,
     },
   })),
@@ -234,19 +245,19 @@ function MapaTuristicoLayout({ children }: Props): React.ReactNode {
   return (
     <>
       <script
-        type='application/ld+json'
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
       />
       <script
-        type='application/ld+json'
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serialize(itemListJsonLd) }}
       />
       <script
-        type='application/ld+json'
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serialize(breadcrumbJsonLd) }}
       />
       <script
-        type='application/ld+json'
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serialize(faqJsonLd) }}
       />
       {/* `<Header />` travado em `compact`, como em `/mapa/` — mas por outro
