@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useSyncExternalStore } from 'react';
 import { Star } from 'lucide-react';
 import {
   MapMarker,
@@ -66,6 +66,28 @@ const ESCALA = {
  */
 const TOQUE =
   typeof window === 'undefined' ? null : window.matchMedia('(pointer: coarse)');
+
+function assinarToque(aoMudar: () => void) {
+  TOQUE?.addEventListener('change', aoMudar);
+
+  return () => TOQUE?.removeEventListener('change', aoMudar);
+}
+
+/**
+ * `true` quando o ponteiro é grosso — dedo, e não mouse.
+ *
+ * A mesma lista de mídia que decide a curva da escala, agora lida por quem
+ * renderiza. `useSyncExternalStore` porque o valor vive fora do React e pode
+ * mudar sozinho: quem encaixa o aparelho num teclado passa a ter mouse, e a
+ * prévia de hover deixa de ser inalcançável no meio da sessão.
+ */
+function useToque() {
+  return useSyncExternalStore(
+    assinarToque,
+    () => TOQUE?.matches ?? false,
+    () => false,
+  );
+}
 
 function escalaDoZoom(zoom: number) {
   // Relido a cada chamada, e não guardado: quem alterna mouse e toque no mesmo
@@ -195,6 +217,7 @@ function Pino({
     [],
   );
 
+  const toque = useToque();
   const categoria = CATEGORIAS[local.cat];
   const Icone = local.refugio ? CATEGORIAS.hospedagem.icone : categoria.icone;
 
@@ -343,6 +366,13 @@ function Pino({
           o popup no ponteiro —, então o mobile nunca o vê e recebe a mesma
           prévia pelo cartão inferior.
 
+          Por isso o `!toque`: até aqui o cartão era montado assim mesmo, no
+          contêiner solto do balão, e ficava lá sem chance de aparecer. Medido
+          num celular emulado, os trinta e dois custavam cerca de 990 nós fora
+          do documento e a maior parte de dez mil ouvintes de evento. Quem não
+          tem ponteiro não precisa deles montados; quem encaixar um teclado
+          passa a ter, porque `useToque` acompanha a mudança.
+
           Sem ações aqui: o balão fecha assim que o ponteiro sai do pino, então
           um botão dentro dele não teria como ser alcançado.
 
@@ -352,7 +382,7 @@ function Pino({
 
           O balão do `ui/map` vem com moldura escura de tooltip curto; o cartão
           traz o próprio fundo e a própria sombra, então ela é zerada aqui. */}
-      {visivel && (
+      {visivel && !toque && (
         <MarkerTooltip
           offset={diametro + 12}
           className='w-88 bg-transparent p-0 text-[color:var(--map-ink)] shadow-none'
