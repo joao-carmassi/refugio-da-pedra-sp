@@ -168,7 +168,7 @@ export interface GrupoDePontos {
 const ENQUADRAMENTOS: Record<string, string> = {
   'mona-pedra-bau':
     'Portaria do Monumento Natural Estadual da Pedra do Baú, com a placa de entrada e o maciço ao fundo',
-  'pedra-bau':
+  'pedra-do-bau':
     'Cume da Pedra do Baú visto de baixo, com a via ferrata riscando a face de granito',
   bauzinho:
     'Trilha do Bauzinho no trecho final, com caminhantes chegando ao topo e a vista da Mantiqueira aberta',
@@ -251,7 +251,7 @@ function montarPonto(local: Local): PontoDaPagina {
  */
 const ORDEM: string[] = [
   'mona-pedra-bau',
-  'pedra-bau',
+  'pedra-do-bau',
   'bauzinho',
   'ana-chata',
   'rampa-voo-livre',

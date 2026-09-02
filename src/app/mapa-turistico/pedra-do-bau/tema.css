@@ -1,0 +1,58 @@
+/* Tema da vitrine: Pedra do Baú
+ *
+ * Gerado por .agents/skills/pagina-vitrine/scripts/tema.mjs a partir de
+ * vitrines/pedra-do-bau/marca.json. Reescreva pelo script, não à mão — o que está
+ * aqui passou por teste de contraste e a edição solta desfaz isso.
+ *
+ * O escopo para no <main> de propósito: cabeçalho e rodapé são a marca do
+ * Refúgio e continuam em âmbar, como no resto do site. O seletor leva `main`
+ * na frente porque [data-mapa-tema], no globals.css, tem a mesma
+ * especificidade e a ordem de carga dos dois arquivos não é contrato.
+ */
+
+main[data-vitrine='pedra-do-bau'] {
+  --background: oklch(0.9578 0.0054 95.10); /* #F2F1ED */
+  --foreground: oklch(0.2061 0.0086 240.33); /* #14181B */
+  --card: oklch(0.9578 0.0054 95.10); /* #F2F1ED */
+  --card-foreground: oklch(0.2061 0.0086 240.33); /* #14181B */
+  --popover: oklch(0.9578 0.0054 95.10); /* #F2F1ED */
+  --popover-foreground: oklch(0.2061 0.0086 240.33); /* #14181B */
+  --primary: oklch(0.4364 0.0364 235.42); /* #3E5563 */
+  --primary-foreground: oklch(0.9578 0.0054 95.10); /* #f2f1ed */
+  --primary-forte: oklch(0.4364 0.0364 235.42); /* #3e5563 */
+  --secondary: oklch(0.5879 0.0389 76.80); /* #8A7A63 */
+  --secondary-foreground: oklch(0.1747 0.0089 240.48); /* #0d1114 */
+  --muted: oklch(0.9276 0.0055 95.10); /* #e8e7e3 */
+  --muted-foreground: oklch(0.4912 0.0030 228.83); /* #5f6162 */
+  --accent: oklch(0.9056 0.0054 106.51); /* #e0e0dc */
+  --accent-foreground: oklch(0.2061 0.0086 240.33); /* #14181B */
+  --border: oklch(0.8537 0.0041 106.49); /* #cfcfcc */
+  --input: oklch(0.6320 0.0032 128.52); /* #898a88 */
+  --ring: oklch(0.4364 0.0364 235.42); /* #3E5563 */
+  --radius: 0rem;
+  --font-display: var(--font-vitrine-display), ui-serif, Georgia, serif;
+}
+
+
+/* Faixa escura dentro da página (bloco com className='dark'). Sem isto ela
+   herda o marrom do Refúgio e destoa da marca do parceiro. */
+main[data-vitrine='pedra-do-bau'] .dark {
+  --background: oklch(0.1958 0.0122 237.44); /* #10161A */
+  --foreground: oklch(0.9561 0.0035 219.53); /* #EEF1F2 */
+  --card: oklch(0.1958 0.0122 237.44); /* #10161A */
+  --card-foreground: oklch(0.9561 0.0035 219.53); /* #EEF1F2 */
+  --popover: oklch(0.1958 0.0122 237.44); /* #10161A */
+  --popover-foreground: oklch(0.9561 0.0035 219.53); /* #EEF1F2 */
+  --primary: oklch(0.7679 0.0383 235.65); /* #9DB8C9 */
+  --primary-foreground: oklch(0.1958 0.0122 237.44); /* #10161a */
+  --primary-forte: oklch(0.7679 0.0383 235.65); /* #9db8c9 */
+  --secondary: oklch(0.5879 0.0389 76.80); /* #8A7A63 */
+  --secondary-foreground: oklch(0.1773 0.0112 229.78); /* #0c1215 */
+  --muted: oklch(0.2560 0.0115 237.13); /* #1e2428 */
+  --muted-foreground: oklch(0.6667 0.0073 233.70); /* #909598 */
+  --accent: oklch(0.2889 0.0112 237.02); /* #262c30 */
+  --accent-foreground: oklch(0.9561 0.0035 219.53); /* #EEF1F2 */
+  --border: oklch(0.3482 0.0107 236.89); /* #353b3f */
+  --input: oklch(0.5029 0.0098 236.72); /* #5f6569 */
+  --ring: oklch(0.7679 0.0383 235.65); /* #9DB8C9 */
+}

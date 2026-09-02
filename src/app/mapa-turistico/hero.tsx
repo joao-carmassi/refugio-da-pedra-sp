@@ -19,7 +19,7 @@ import Link from 'next/link';
  * Foto de abertura, em constante porque o caminho é usado duas vezes: na
  * `src` e na consulta ao mapa de alt text, que é chaveado por ele.
  */
-const FOTO = '/assets/mapa/pedra-bau/pedra-bau-4.webp';
+const FOTO = '/assets/mapa/pedra-do-bau/pedra-do-bau-4.webp';
 
 /**
  * Abertura da página.

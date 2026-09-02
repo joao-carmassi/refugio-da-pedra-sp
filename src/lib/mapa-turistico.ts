@@ -401,6 +401,12 @@ export interface Local {
    */
   destaque?: boolean;
   /**
+   * Parceiro do plano Vitrine: tem página própria em
+   * `/mapa-turistico/<id>/`. É o que separa o Vitrine do Destaque — no mapa
+   * os dois são idênticos, e o que o Vitrine paga a mais é a página.
+   */
+  vitrine?: boolean;
+  /**
    * O próprio Refúgio da Pedra.
    *
    * Já foi "a origem de todas as distâncias", e não é mais: de onde se mede

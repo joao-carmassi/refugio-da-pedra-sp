@@ -1,0 +1,25 @@
+{
+  "id": "pedra-do-bau",
+  "nome": "Pedra do Baú",
+  "//": "TESTE da skill. A Pedra do Baú é atrativo público: não tem dono, não tem plano e não respondeu formulário. A identidade abaixo foi derivada da própria pedra (granito na sombra, líquen, céu de neblina), não de uma marca existente — está aqui para exercitar o processo, e um parceiro de verdade traria as cores dele.",
+  "//radius": "0rem: a pedra é angular. Canto arredondado amaciaria o único assunto da página.",
+  "radius": "0rem",
+  "cores": {
+    "primary": "#3E5563",
+    "secondary": "#8A7A63",
+    "background": "#F2F1ED",
+    "foreground": "#14181B"
+  },
+  "escuro": {
+    "//": "A dobra é uma faixa `dark`: foto de granito sob véu, texto claro em cima. Sem este bloco ela herdaria o marrom do Refúgio, que é a marca errada por baixo da foto certa.",
+    "background": "#10161A",
+    "foreground": "#EEF1F2",
+    "primary": "#9DB8C9"
+  },
+  "fontes": {
+    "//": "Oswald condensada tem cara de placa de trilha e de cota em carta topográfica. O corpo fica no Archivo do site: duas fontes bastam.",
+    "display": { "familia": "Oswald", "pesos": ["500", "600"] },
+    "texto": null
+  },
+  "observacoes": "A dobra (hero78) usa faixa .dark, por isso o bloco escuro acima. Identidade derivada da pedra: nao ha marca de cliente neste teste."
+}

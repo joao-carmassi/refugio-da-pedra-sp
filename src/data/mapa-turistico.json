@@ -48,7 +48,7 @@
     }
   },
   {
-    "id": "pedra-bau",
+    "id": "pedra-do-bau",
     "nome": "Pedra do Baú",
     "cat": "aventura",
     "zona": "bau",
@@ -64,14 +64,14 @@
       "aPe": "De lá são cerca de 5 km de trilha ida e volta e umas 5 horas, com muita subida, via ferrata no trecho final e guia credenciado obrigatório. Pela portaria do Monumento Natural a trilha é mais curta — 4 km e 3 horas de subida —, mas o carro contorna o maciço inteiro para chegar lá."
     },
     "fotos": {
-      "pasta": "mapa/pedra-bau",
+      "pasta": "mapa/pedra-do-bau",
       "arquivos": [
-        "pedra-bau-1.webp",
-        "pedra-bau-2.webp",
-        "pedra-bau-3.webp",
-        "pedra-bau-4.webp",
-        "pedra-bau-5.webp",
-        "pedra-bau-6.webp"
+        "pedra-do-bau-1.webp",
+        "pedra-do-bau-2.webp",
+        "pedra-do-bau-3.webp",
+        "pedra-do-bau-4.webp",
+        "pedra-do-bau-5.webp",
+        "pedra-do-bau-6.webp"
       ]
     }
   },

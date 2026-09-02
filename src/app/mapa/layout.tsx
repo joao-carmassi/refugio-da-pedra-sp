@@ -14,7 +14,7 @@ interface Props {
  * segmento filho o declara, então `images` precisa ser repetido aqui.
  */
 const ogImage = {
-  url: '/assets/mapa/pedra-bau/pedra-bau-4.webp',
+  url: '/assets/mapa/pedra-do-bau/pedra-do-bau-4.webp',
   width: 1620,
   height: 1213,
   /*

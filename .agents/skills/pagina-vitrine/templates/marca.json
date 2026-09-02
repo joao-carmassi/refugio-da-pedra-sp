@@ -1,0 +1,25 @@
+{
+  "id": "hot-stone",
+  "nome": "Hot Stone Pizzaria & Hamburgueria",
+  "//radius": "0rem duro | 0.25rem sóbrio | 0.5rem neutro | 0.75rem–1rem macio",
+  "radius": "0.25rem",
+  "cores": {
+    "//": "hex da marca. primary é a cor do botão; background quase nunca é branco puro",
+    "primary": "#C4161C",
+    "secondary": "#2B2B2B",
+    "background": "#FBF7F2",
+    "foreground": "#1A1512"
+  },
+  "escuro": {
+    "//": "só quando algum bloco escolhido usa faixa .dark. Senão, apague esta chave",
+    "background": "#191413",
+    "foreground": "#F6F1EA",
+    "primary": "#E8433F"
+  },
+  "fontes": {
+    "//": "nome exato no next/font/google. texto: null = mantém o Archivo do site",
+    "display": { "familia": "Bebas Neue", "pesos": ["400"] },
+    "texto": null
+  },
+  "observacoes": "O vermelho da fachada. O cliente pediu para não usar amarelo."
+}
