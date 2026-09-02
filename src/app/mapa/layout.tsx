@@ -1,9 +1,5 @@
 import serialize from 'serialize-javascript';
-import type {
-  WithContext,
-  CollectionPage,
-  BreadcrumbList,
-} from 'schema-dts';
+import type { WithContext, CollectionPage, BreadcrumbList } from 'schema-dts';
 import Header from '@/components/header';
 import ConviteInstalar from '@/components/mapa-turistico/convite-instalar';
 import { getSiteUrl } from '@/lib/env';
@@ -18,10 +14,17 @@ interface Props {
  * segmento filho o declara, então `images` precisa ser repetido aqui.
  */
 const ogImage = {
-  url: '/assets/refugio/geral/refugio-1.webp',
+  url: '/assets/mapa/pedra-bau/pedra-bau-4.webp',
   width: 1620,
-  height: 1080,
-  alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
+  height: 1213,
+  /*
+    O alt é cópia literal do que `src/data/image-alt.json` guarda para este
+    arquivo: metadata não roda no cliente e não passa pelo `getAlt`, então as
+    duas descrições precisam ser conferidas juntas se a foto mudar. Ele já
+    descreveu chalés ao entardecer — texto de uma foto anterior, que ficou para
+    trás quando a imagem virou a vista aérea do Baú.
+  */
+  alt: 'Vista aérea do complexo do Baú entre nuvens baixas, com o paredão de rocha cercado de mata',
 };
 
 /**
@@ -41,12 +44,31 @@ const pageUrl = `${getSiteUrl()}/mapa/`;
  * A description antiga prometia "restaurantes, cafés e artesanato", e o
  * cadastro não tem um único local nessas categorias — snippet que promete o
  * que a tela não entrega devolve o visitante para a busca.
+ *
+ * O eixo é a ferramenta, mas o assunto é a cidade: o título dizia "da
+ * Região" e a description abria com "o mapa do Refúgio da Pedra SP", o que
+ * descrevia a tela como um serviço da pousada. Não é o que ela é: sem
+ * parâmetro na URL o mapa abre no centro do município e a pousada é um pino
+ * como os outros — a versão do hóspede, que mede da porta dela, mora atrás de
+ * `?refugio=1`. O vínculo com o Refúgio está no `publisher` do JSON-LD, e é
+ * lá que ele basta.
  */
 export function generateMetadata() {
   return {
-    title: 'Mapa Interativo da Região',
+    /**
+     * `absolute` para escapar do `template: "%s | Refúgio da Pedra SP"` do
+     * layout raiz, pelo mesmo motivo de `/mapa-turistico/`: o sufixo da
+     * pousada não descreve esta tela.
+     *
+     * "de São Bento do Sapucaí" no lugar de "da Região" porque, sem o sufixo,
+     * o título ficava sem dizer região nenhuma. O adjetivo "Interativo"
+     * continua sendo o que separa esta rota de `/mapa-turistico/`: a head
+     * keyword "mapa turístico de são bento do sapucaí" segue sendo da landing,
+     * e nada aqui a disputa. Casa com o `<h1>` que a página já servia.
+     */
+    title: { absolute: 'Mapa Interativo de São Bento do Sapucaí' },
     description:
-      'Abra o mapa do Refúgio da Pedra SP, filtre por categoria e veja a rota de carro do centro de São Bento do Sapucaí até cada ponto.',
+      'Mapa dos pontos turísticos de São Bento do Sapucaí no navegador, sem aplicativo: filtre por categoria, toque num pino e veja a rota de carro do centro da cidade até cada lugar.',
     /**
      * Manifest, ícones e nome de atalho do PWA do mapa. Esta é a `start_url`
      * dele: quem instala a partir de qualquer rota do mapa abre aqui, na
@@ -54,18 +76,26 @@ export function generateMetadata() {
      */
     ...METADATA_APP_MAPA,
     keywords: [
-      'mapa interativo',
-      'mapa refúgio da pedra sp',
+      'mapa interativo de são bento do sapucaí',
+      'mapa de são bento do sapucaí',
+      'onde ficam os pontos turísticos de são bento do sapucaí',
       'como chegar na pedra do baú',
       'distância até a pedra do baú',
       'rota vale do baú',
       'são bento do sapucaí',
     ],
     openGraph: {
-      title: 'Mapa Interativo - Refúgio da Pedra SP',
+      title: 'Mapa Interativo de São Bento do Sapucaí',
+      /*
+        Dizia "a rota de carro da pousada até cada ponto", e a tela não faz
+        isso: sem parâmetro na URL o mapa abre medindo do centro do município.
+        Cartão social que promete a medida do hóspede descreve uma tela que
+        quase ninguém que chega pela busca vai ver.
+      */
       description:
-        'Filtre por categoria e veja a rota de carro da pousada até cada ponto de São Bento do Sapucaí.',
-      siteName: 'Refúgio da Pedra SP',
+        'Filtre por categoria, toque num pino e veja a rota de carro do centro de São Bento do Sapucaí até cada ponto.',
+      // Mesmo `name` de `public/mapa.webmanifest`, como em `/mapa-turistico/`.
+      siteName: 'Mapa de São Bento do Sapucaí',
       type: 'website',
       url: pageUrl,
       images: [ogImage],
@@ -91,7 +121,7 @@ const jsonLd: WithContext<CollectionPage> = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   '@id': `${pageUrl}#webpage`,
-  name: 'Mapa Interativo da Região - Refúgio da Pedra SP',
+  name: 'Mapa Interativo de São Bento do Sapucaí',
   description:
     'Mapa interativo dos pontos turísticos, trilhas e cachoeiras de São Bento do Sapucaí, com filtro por categoria e rota de carro a partir do centro da cidade.',
   url: pageUrl,

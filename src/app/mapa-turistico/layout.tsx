@@ -64,7 +64,16 @@ const pageUrl = `${getSiteUrl()}/mapa-turistico/`;
  */
 export function generateMetadata() {
   return {
-    title: "Mapa Turístico de São Bento do Sapucaí",
+    /**
+     * `absolute` para escapar do `template: "%s | Refúgio da Pedra SP"` do
+     * layout raiz. O sufixo é da pousada, e aqui ele apareceria na aba do
+     * navegador, no resultado da busca e no cartão social de uma página que
+     * é sobre a cidade — quem procura "mapa turístico de São Bento do
+     * Sapucaí" leria o nome de uma pousada no lugar onde esperava o do guia.
+     * A ligação com o Refúgio não some: ela está no `publisher` do JSON-LD e
+     * na assinatura do hero, que é onde ela pertence.
+     */
+    title: { absolute: "Mapa Turístico de São Bento do Sapucaí" },
     description:
       "Guia de São Bento do Sapucaí em forma de mapa: a Pedra do Baú, as cachoeiras, os mirantes e as igrejas do município, com endereço, horário e rota de carro para cada lugar.",
     /**
@@ -99,7 +108,14 @@ export function generateMetadata() {
       title: "Mapa Turístico de São Bento do Sapucaí",
       description:
         "Onde ficam as trilhas, as cachoeiras, os mirantes e as igrejas de São Bento do Sapucaí, num mapa que abre no navegador, sem aplicativo.",
-      siteName: "Refúgio da Pedra SP",
+      /**
+       * `siteName` do mapa, não da pousada: é o rótulo que WhatsApp,
+       * Telegram e Slack imprimem acima do título do cartão, e o site instala
+       * como dois PWAs distintos. O texto é o mesmo `name` de
+       * `public/mapa.webmanifest` — quem compartilha o link e quem instala o
+       * app têm de ver o mesmo nome. Mudar um pede mudar o outro.
+       */
+      siteName: "Mapa de São Bento do Sapucaí",
       type: "website",
       url: pageUrl,
       images: [ogImage],
