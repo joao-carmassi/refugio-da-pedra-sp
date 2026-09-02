@@ -473,18 +473,6 @@
     }
   },
   {
-    "id": "igreja-santo-antonio",
-    "nome": "Igreja Santo Antônio",
-    "cat": "cultura",
-    "zona": "centro",
-    "lat": -22.687113,
-    "lng": -45.732113,
-    "aConferir": true,
-    "resumo": "Uma das paradas do roteiro de igrejas e praças do centro.",
-    "descricao": "Aparece na lista de atrativos do portal oficial de turismo do município, que publica só o logradouro. O pino é aproximado: o templo não está nomeado no OpenStreetMap e há mais de um candidato na mesma avenida.",
-    "endereco": "Avenida Conselheiro Rodrigues Alves, Centro — São Bento do Sapucaí"
-  },
-  {
     "id": "casa-cultura-miguel-reale",
     "nome": "Casa da Cultura Professor Miguel Reale",
     "cat": "cultura",
@@ -519,7 +507,15 @@
     "descricao": "Fica na Cândido José da Silva, de frente para o coreto da Praça Adhemar de Barros — é o bar do centro histórico, não adega nem distribuidora, apesar do nome. Serve cerveja, drink e porção; quem avalia fala em chope bem gelado, porção generosa e rock no som. Aceita pet, tem wi-fi e estacionamento. Abre só à noite, de quinta a domingo, das 18h à meia-noite — a mesma ficha registra a cozinha parando às 23h no domingo, então prato tarde no último dia é ligar antes.",
     "endereco": "Rua Cândido José da Silva, 278, Centro — São Bento do Sapucaí",
     "tel": "(12) 99625-5908",
-    "destaque": true
+    "destaque": true,
+    "fotos": {
+      "pasta": "mapa/sbs-bebidas",
+      "arquivos": [
+        "sbs-bebidas-1.webp",
+        "sbs-bebidas-2.webp",
+        "sbs-bebidas-3.webp"
+      ]
+    }
   },
   {
     "id": "hot-stone",
@@ -560,7 +556,15 @@
     "endereco": "Avenida Doutor Rubião Júnior, 122, Centro — São Bento do Sapucaí",
     "tel": "(12) 99250-3867",
     "site": "https://redecampomax.com.br",
-    "destaque": true
+    "destaque": true,
+    "fotos": {
+      "pasta": "mapa/campomax",
+      "arquivos": [
+        "campomax-1.webp",
+        "campomax-2.webp",
+        "campomax-3.webp"
+      ]
+    }
   },
   {
     "id": "praca-braz-reale",

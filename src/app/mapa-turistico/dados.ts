@@ -204,8 +204,6 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Torre única da Igreja Nossa Senhora do Rosário, de 1934, vista do marco zero da cidade',
   'igreja-remedios':
     'Fachada azul da Igreja Nossa Senhora dos Remédios, de frente para o coreto',
-  'igreja-santo-antonio':
-    'Igreja Santo Antônio vista da rua, no roteiro de igrejas do centro',
   'casa-cultura-miguel-reale':
     'Casarão do século XIX da Casa da Cultura Professor Miguel Reale, com a fachada colonial inteira no quadro',
   'mirante-cruzeiro':
@@ -270,7 +268,6 @@ const ORDEM: string[] = [
   'igreja-sao-benedito',
   'igreja-rosario',
   'igreja-remedios',
-  'igreja-santo-antonio',
   'portal-cidade',
   'praca-adhemar-barros',
   'praca-monsenhor-pedro',

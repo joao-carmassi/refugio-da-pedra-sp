@@ -27,40 +27,42 @@ import rotasJson from "@/data/rotas.json";
  *
  *   1. `aConferir: true` marca coordenada aproximada — a rua certa, não o
  *      imóvel. Está em: Cachoeira do Tobogã (dois GPS a 140 m um do outro),
- *      Belvedere do Serrano (um GPS só), Capelinhas de Mosaico, Igreja Santo
- *      Antônio, Igreja N. Sra. do Rosário,
+ *      Belvedere do Serrano (um GPS só), Capelinhas de Mosaico,
+ *      Igreja N. Sra. do Rosário,
  *      Praça Dr. Braz Reale (o logradouro não está no OSM; o pino é o ponto
  *      médio entre a Biblioteca Municipal e os Correios, que têm a praça como
  *      endereço), Portal da Cidade, Arte no Quilombo (não está no OSM; a
  *      coordenada é a do pino do Google republicado pelo portal de turismo do
  *      Estado, sem cruzamento independente) e Bar SBS Bebidas (também fora do
  *      OSM; a coordenada é a geocodificação do endereço pelo Tripadvisor, que
- *      cai na rua e na quadra certas, a 40 m do coreto) e Letreiro (o pino é o
+ *      cai na rua e na quadra certas, a 40 m do coreto — mas a foto de fachada
+ *      recebida em 02/09/2026 mostra uma via larga com faixa pintada, canteiro
+ *      e prédios do outro lado, e nenhum coreto no quadro; confirmar o
+ *      endereço e a frase "de frente para o coreto" da descrição) e Letreiro (o pino é o
  *      da Praça General Marcondes Salgado, que é onde as letras estão — falta
  *      só o ponto delas dentro do gramado, e por isso os dois pinos hoje se
  *      sobrepõem). Remover a marca ao
  *      confirmar o ponto exato. O Ateliê Ditinho Joana saiu da lista porque o proprietário
  *      confirmou o pino, mas segue sem logradouro publicado: nenhuma fonte dá
  *      rua e número, e o cadastro traz só o bairro.
- *   2. Dois templos do Centro estão no OpenStreetMap sem nome: um na Av.
- *      Conselheiro Rodrigues Alves e outro junto à Praça General Marcondes
- *      Salgado. Foram atribuídos a Santo Antônio e ao Rosário por bater com o
- *      logradouro publicado — confirmar qual é qual antes de tirar o
- *      `aConferir`. Há um segundo candidato para Santo Antônio, 570 m ao sul,
- *      na Praça Santo Antônio.
- *      Metade disso já está resolvida: a fachada de
+ *   2. `aConferir` da Igreja N. Sra. do Rosário. Dois templos do Centro estão
+ *      no OpenStreetMap sem nome: um na Av. Conselheiro Rodrigues Alves e
+ *      outro junto à Praça General Marcondes Salgado. Foram atribuídos a Santo
+ *      Antônio e ao Rosário por bater com o logradouro publicado, e o pino de
+ *      Santo Antônio saiu do cadastro em 02/09/2026, por decisão do
+ *      proprietário — sobrou o Rosário.
+ *      A atribuição dele tem prova própria: a fachada de
  *      `mapa/igreja-rosario/igreja-rosario-1.webp` traz "NSR 1934" escrito no
- *      frontão, e a foto é do templo junto à Praça General Marcondes Salgado —
- *      é o Rosário, e o ano do cadastro confere. Falta só Santo Antônio, e é
- *      por ele que o `aConferir` do Rosário ainda não caiu: as duas atribuições
- *      vieram do mesmo raciocínio, e derrubar uma sem olhar a outra seria
- *      trocar uma suposição por outra.
- *      Pesa a favor do candidato do sul: a ficha "Igreja Santo Antônio" do
- *      Google fica em -22.691902, -45.7330289, que é justamente ele — uns
- *      530 m abaixo do pino do cadastro, ainda na Avenida Conselheiro
- *      Rodrigues Alves. Não basta para trocar sozinha, porque a atribuição do
- *      Rosário depende da mesma resposta, mas é a pista mais concreta que
- *      apareceu até agora.
+ *      frontão, a foto é do templo junto à Praça General Marcondes Salgado, e
+ *      o ano do cadastro confere. O que segurava o `aConferir` era depender do
+ *      mesmo raciocínio que atribuía Santo Antônio ao outro templo; sem esse
+ *      pino, a dúvida some e a marca pode cair — falta só alguém da região
+ *      dizer que sim.
+ *      Fica registrado, para ninguém refazer a pesquisa: a ficha "Igreja Santo
+ *      Antônio" do Google aponta -22.691902, -45.7330289, uns 530 m abaixo do
+ *      pino que o cadastro tinha, ainda na Avenida Conselheiro Rodrigues
+ *      Alves — ou seja, o templo da Praça Santo Antônio, e não o da Av.
+ *      Conselheiro Rodrigues Alves que o cadastro apontava.
  *   3. Taxa da Cachoeira do Encontro. A entrada mudou: não se passa mais por
  *      dentro da Cachoeira dos Amores, e sim pela Estrada da Ana Chata, onde
  *      o pino agora fica. Dois relatos (2024 e 2026) dizem que o acesso novo
@@ -110,10 +112,9 @@ import rotasJson from "@/data/rotas.json";
  *      - Cachoeira do Toldi e Cachoeira do Encontro. Nenhuma fonte publica
  *        horário — o mesmo vazio que o item 3 descreve para a taxa. Também
  *        fechado com o proprietário em 31/08/2026: ficam sem horário.
- *      - As quatro igrejas que não são a Matriz. A Diocese de Taubaté publica
- *        a grade de missa só da Matriz; São Benedito, Rosário, Remédios e
- *        Santo Antônio são capelas da mesma paróquia e não têm grade própria
- *        publicada.
+ *      - As três igrejas que não são a Matriz. A Diocese de Taubaté publica
+ *        a grade de missa só da Matriz; São Benedito, Rosário e Remédios são
+ *        capelas da mesma paróquia e não têm grade própria publicada.
  *      - Praças, mirantes, o letreiro, a Ladeira dos Pirilampos, as
  *        Capelinhas de Mosaico, a Pedra da Balança e a Cachoeira do Tobogã.
  *        Onde o Google Maps diz "atendimento 24 horas" isso é valor-padrão de
