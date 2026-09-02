@@ -2,6 +2,7 @@ import { getSiteUrl } from '@/lib/env';
 import type { MetadataRoute } from 'next';
 import chales from '@/data/chales.json';
 import { getAllPosts } from '@/lib/posts';
+import { LOCAIS } from '@/lib/mapa-turistico';
 import slugify from 'slugify';
 
 // Explicit, hand-maintained lastmod dates.
@@ -25,12 +26,31 @@ const LAST_MODIFIED = {
   politicaDePrivacidade: '2026-07-20',
 } as const;
 
+/** Data de publicação ou da última mexida em cada página de vitrine. */
+const LAST_MODIFIED_VITRINE: Record<string, string> = {};
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
 
   const chaleUrls: MetadataRoute.Sitemap = chales.map((chale) => ({
     url: `${baseUrl}/chales/${slugify(chale.nome, { lower: true, strict: true })}/`,
     lastModified: LAST_MODIFIED.chale,
+  }));
+
+  /*
+    Páginas do plano Vitrine: uma rota por parceiro que assinou, saída do
+    próprio cadastro. Enquanto ninguém tem `vitrine: true`, a lista é vazia e
+    o sitemap sai idêntico ao de antes — é de propósito, para uma página em
+    produção só entrar no índice quando o cadastro disser que ela existe.
+
+    A data vem de LAST_MODIFIED_VITRINE, à mão como o resto do arquivo: mexeu
+    no texto ou na foto de uma vitrine, atualize a linha dela.
+  */
+  const vitrineUrls: MetadataRoute.Sitemap = LOCAIS.filter(
+    (local) => local.vitrine,
+  ).map((local) => ({
+    url: `${baseUrl}/mapa-turistico/${local.id}/`,
+    lastModified: LAST_MODIFIED_VITRINE[local.id] ?? LAST_MODIFIED.mapaTuristico,
   }));
 
   const postUrls: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
@@ -60,6 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/mapa-turistico/`,
       lastModified: LAST_MODIFIED.mapaTuristico,
     },
+    ...vitrineUrls,
     {
       url: `${baseUrl}/mapa/`,
       lastModified: LAST_MODIFIED.mapa,

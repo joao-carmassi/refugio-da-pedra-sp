@@ -53,3 +53,9 @@ next-env.d.ts
 
 # claude code — links locais e preferências de máquina
 /.claude/
+
+# fotos cruas que o cliente do plano Vitrine mandou. O dossiê (formulário,
+# marca.json) fica versionado; o material bruto, não — o que o site serve são
+# as .webp de public/assets/, e um cartão de memória inteiro de jpg fora de
+# escala não tem por que viajar em todo clone.
+/vitrines/*/originais/
