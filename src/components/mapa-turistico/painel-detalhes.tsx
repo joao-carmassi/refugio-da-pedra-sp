@@ -1,11 +1,12 @@
 'use client';
 
-import { ArrowLeft, Clock, MapPin, MessageCircle, Phone, Route } from 'lucide-react';
+import { ArrowLeft, BookOpen, Clock, MapPin, MessageCircle, Phone, Route } from 'lucide-react';
+import Link from 'next/link';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
-  REFUGIO,
   ehOrigem,
   getChegada,
+  getWhatsLocal,
   linhasHorario,
   type Local,
 } from '@/lib/mapa-turistico';
@@ -36,24 +37,6 @@ interface Info {
   /** Uma linha por faixa de dias, no horário; uma linha só no resto. */
   linhas: string[];
   selo?: React.ReactNode;
-}
-
-/**
- * Link de WhatsApp do próprio lugar, quando o telefone cadastrado é celular.
- *
- * Só celular porque fixo de igreja, museu e portaria não tem conta de
- * WhatsApp: o link abriria uma conversa com um número que nunca responde, o
- * que é pior do que não oferecer o botão. O teste é o formato brasileiro de
- * celular — DDD mais nove dígitos começando em 9.
- */
-function getWhatsLocal(local: Local) {
-  const numero = local.tel?.replace(/\D/g, '');
-
-  if (!numero || !/^\d{2}9\d{8}$/.test(numero)) return null;
-
-  const texto = `Olá! Vi ${local.nome} no mapa turístico do site do ${REFUGIO.nome} e queria saber mais.`;
-
-  return `https://api.whatsapp.com/send?phone=55${numero}&text=${encodeURIComponent(texto)}`;
 }
 
 /**
@@ -179,6 +162,21 @@ function PainelDetalhes({
               </BotaoMapa>
             )}
           </div>
+
+          {/* O que o plano Vitrine entrega. No mapa, Destaque e Vitrine são o
+              mesmo pino com o mesmo selo — a diferença inteira é esta linha, e
+              é por ela que o visitante chega à página que o parceiro paga.
+              Fica embaixo dos dois botões de ação, em largura cheia, porque
+              ler mais sobre o lugar vem depois de decidir ir até ele ou
+              chamar no WhatsApp. */}
+          {local.vitrine && (
+            <BotaoMapa tom='contorno' asChild className='mt-2.5 w-full'>
+              <Link href={`/mapa-turistico/${local.id}/`}>
+                <BookOpen aria-hidden='true' />
+                Ver a página
+              </Link>
+            </BotaoMapa>
+          )}
 
           {!ehOrigem(local, origem) && (
             <div

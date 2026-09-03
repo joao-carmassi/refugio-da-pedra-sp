@@ -530,7 +530,10 @@
     "endereco": "Avenida Conselheiro Rodrigues Alves, 32, Centro — São Bento do Sapucaí",
     "tel": "(12) 99733-6413",
     "site": "https://www.hotstonepizzaria.com.br",
+    "nota": "4,7",
+    "avaliacoes": 169,
     "destaque": true,
+    "vitrine": true,
     "fotos": {
       "pasta": "mapa/hot-stone",
       "arquivos": [

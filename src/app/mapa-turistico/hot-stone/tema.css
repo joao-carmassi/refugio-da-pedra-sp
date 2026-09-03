@@ -1,0 +1,58 @@
+/* Tema da vitrine: Hot Stone Pizzaria & Hambúrgueria
+ *
+ * Gerado por .agents/skills/pagina-vitrine/scripts/tema.mjs a partir de
+ * vitrines/hot-stone/marca.json. Reescreva pelo script, não à mão — o que está
+ * aqui passou por teste de contraste e a edição solta desfaz isso.
+ *
+ * O escopo para no <main> de propósito: cabeçalho e rodapé são a marca do
+ * Refúgio e continuam em âmbar, como no resto do site. O seletor leva `main`
+ * na frente porque [data-mapa-tema], no globals.css, tem a mesma
+ * especificidade e a ordem de carga dos dois arquivos não é contrato.
+ */
+
+main[data-vitrine='hot-stone'] {
+  --background: oklch(0.9708 0.0086 84.57); /* #F8F5EF */
+  --foreground: oklch(0.2897 0.0753 25.25); /* #4A1917 */
+  --card: oklch(0.9708 0.0086 84.57); /* #F8F5EF */
+  --card-foreground: oklch(0.2897 0.0753 25.25); /* #4A1917 */
+  --popover: oklch(0.9708 0.0086 84.57); /* #F8F5EF */
+  --popover-foreground: oklch(0.2897 0.0753 25.25); /* #4A1917 */
+  --primary: oklch(0.5305 0.2151 27.01); /* #CB0316 */
+  --primary-foreground: oklch(0.9708 0.0086 84.57); /* #f8f5ef */
+  --primary-forte: oklch(0.5305 0.2151 27.01); /* #cb0316 */
+  --secondary: oklch(0.3794 0.1546 27.02); /* #810009 */
+  --secondary-foreground: oklch(0.9708 0.0086 84.57); /* #f8f5ef */
+  --muted: oklch(0.9431 0.0103 67.70); /* #f1ebe5 */
+  --muted-foreground: oklch(0.5280 0.0482 29.47); /* #85615b */
+  --accent: oklch(0.9235 0.0119 59.56); /* #ece4de */
+  --accent-foreground: oklch(0.2897 0.0753 25.25); /* #4A1917 */
+  --border: oklch(0.8748 0.0157 48.54); /* #dfd3cd */
+  --input: oklch(0.6464 0.0259 37.35); /* #9d8983 */
+  --ring: oklch(0.5305 0.2151 27.01); /* #CB0316 */
+  --radius: 0rem;
+  --font-display: var(--font-vitrine-display), ui-serif, Georgia, serif;
+}
+
+
+/* Faixa escura dentro da página (bloco com className='dark'). Sem isto ela
+   herda o marrom do Refúgio e destoa da marca do parceiro. */
+main[data-vitrine='hot-stone'] .dark {
+  --background: oklch(0.1696 0.0194 25.07); /* #170C0B */
+  --foreground: oklch(0.9708 0.0086 84.57); /* #F8F5EF */
+  --card: oklch(0.1696 0.0194 25.07); /* #170C0B */
+  --card-foreground: oklch(0.9708 0.0086 84.57); /* #F8F5EF */
+  --popover: oklch(0.1696 0.0194 25.07); /* #170C0B */
+  --popover-foreground: oklch(0.9708 0.0086 84.57); /* #F8F5EF */
+  --primary: oklch(0.5803 0.2252 27.00); /* #E11B22 */
+  --primary-foreground: oklch(0.9798 0.0086 84.57); /* #fbf8f2 */
+  --primary-forte: oklch(0.6103 0.2251 26.95); /* #ec2c2d */
+  --secondary: oklch(0.3794 0.1546 27.02); /* #810009 */
+  --secondary-foreground: oklch(0.9708 0.0086 84.57); /* #f8f5ef */
+  --muted: oklch(0.2350 0.0180 30.27); /* #261b19 */
+  --muted-foreground: oklch(0.6656 0.0112 48.55); /* #9a928e */
+  --accent: oklch(0.2659 0.0186 23.91); /* #2e2221 */
+  --accent-foreground: oklch(0.9708 0.0086 84.57); /* #F8F5EF */
+  --border: oklch(0.3284 0.0164 30.07); /* #3d3230 */
+  --input: oklch(0.4905 0.0138 37.37); /* #685e5b */
+  --ring: oklch(0.5803 0.2252 27.00); /* #E11B22 */
+}

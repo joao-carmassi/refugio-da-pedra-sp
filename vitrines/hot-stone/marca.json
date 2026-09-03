@@ -1,0 +1,25 @@
+{
+  "id": "hot-stone",
+  "nome": "Hot Stone Pizzaria & Hambúrgueria",
+  "//": "As cores não foram escolhidas aqui: são as que o site da própria casa declara em globals.css, convertidas de OKLCH para hex. Os comentários entre parênteses são os que estão no arquivo dela.",
+  "//radius": "0rem: a casa é preta, canelada e angular — painel de fachada, balcão de chapa, boxes retos. Canto arredondado amaciaria a única coisa que o salão não é.",
+  "radius": "0rem",
+  "cores": {
+    "primary": "#CB0316",
+    "secondary": "#810009",
+    "background": "#F8F5EF",
+    "foreground": "#4A1917"
+  },
+  "escuro": {
+    "//": "A dobra é faixa `dark`: a foto da mesa sob véu escuro, texto claro em cima. Sem este bloco ela herdaria o marrom do Refúgio por baixo da foto do parceiro.",
+    "background": "#170C0B",
+    "foreground": "#F8F5EF",
+    "primary": "#E11B22"
+  },
+  "fontes": {
+    "//": "Anton é a condensada que o site da casa usa nos títulos de impacto (--font-condensed). É a voz do letreiro da fachada. O corpo fica no Archivo do site: duas famílias bastam.",
+    "display": { "familia": "Anton", "pesos": ["400"] },
+    "texto": null
+  },
+  "observacoes": "Sem logo em vetor: o site da casa desenha o logotipo em componente React, não há arquivo. A página escreve o nome como texto. O vermelho da marca é vivo (#CB0316) e não passa em AA como cor de texto — o tema deriva --primary-forte para link e rótulo, e mantém o vermelho da marca nas superfícies grandes."
+}

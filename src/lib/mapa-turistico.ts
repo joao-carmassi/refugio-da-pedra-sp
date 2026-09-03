@@ -853,6 +853,34 @@ export function getRotaUrl(destino: Local): string {
   return `https://www.google.com/maps/dir/?api=1&destination=${chegada}&travelmode=driving`;
 }
 
+/**
+ * Link de WhatsApp do próprio lugar, quando o telefone cadastrado é celular.
+ *
+ * Só celular porque fixo de igreja, museu e portaria não tem conta de
+ * WhatsApp: o link abriria uma conversa com um número que nunca responde, o
+ * que é pior do que não oferecer o botão. O teste é o formato brasileiro de
+ * celular — DDD mais nove dígitos começando em 9.
+ *
+ * Nasceu dentro de `painel-detalhes.tsx` e subiu para cá quando as páginas do
+ * plano Vitrine passaram a precisar do mesmo botão: o número do parceiro sai
+ * de um lugar só, e `generateWhatsLink` não serve aqui — aquele é o WhatsApp
+ * da pousada, e quem pergunta se tem mesa quer falar com quem atende ali.
+ *
+ * `texto` troca a mensagem pronta. O padrão cita o mapa, que é de onde vem
+ * quem clica no cartão; a página do parceiro diz de onde ela é.
+ */
+export function getWhatsLocal(local: Local, texto?: string): string | null {
+  const numero = local.tel?.replace(/\D/g, "");
+
+  if (!numero || !/^\d{2}9\d{8}$/.test(numero)) return null;
+
+  const mensagem =
+    texto ??
+    `Olá! Vi ${local.nome} no mapa turístico do site do ${REFUGIO.nome} e queria saber mais.`;
+
+  return `https://api.whatsapp.com/send?phone=55${numero}&text=${encodeURIComponent(mensagem)}`;
+}
+
 /** Caminho da primeira foto do local, quando existe. */
 export function getFotoPrincipal(local: Local): string | null {
   if (!local.fotos?.arquivos.length) return null;
