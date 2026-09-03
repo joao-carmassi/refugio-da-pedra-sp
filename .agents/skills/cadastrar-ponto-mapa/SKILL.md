@@ -73,6 +73,17 @@ aplica o limite no momento do cadastro e reporta o que aplicou.
 
 ## Passo 3 — juntar os dados
 
+Quando os dados vêm do dono do negócio — cliente novo, comércio entrando no
+mapa —, não improvise a pergunta na conversa: mande o formulário pronto de
+`templates/formulario-whatsapp.md`, já formatado para colar no WhatsApp. É uma
+mensagem só, igual para os três planos, cobrindo nome, endereço com link do
+Google Maps, horário, contato, fotos e o que não pode entrar. Não existe
+formulário no site: é esse texto, copiado e colado.
+
+Ele pede até 6 fotos sempre; o limite do plano você aplica na hora de gravar,
+escolhendo as melhores. E não pergunta preço — o cadastro não tem esse campo, e
+o que o cliente contar sobre valor entra na `descricao`.
+
 Peça o que faltar antes de escrever. Os campos, na ordem em que entram no JSON:
 
 - **`id`** — slug em kebab-case, sem acento, único. É a chave de tudo: nome da

@@ -47,6 +47,7 @@ um ano, por que a página diz o que diz. As fotos cruas que ele mandou ficam em
 | Arquivo | Para quê |
 | --- | --- |
 | `templates/formulario.md` | o questionário que vai para o cliente |
+| `templates/formulario-whatsapp.md` | o mesmo questionário, formatado para colar no WhatsApp |
 | `templates/marca.json` | esqueleto das cores, raio e fontes |
 | `scripts/blocos.mjs` | procurar e vetar bloco no registry |
 | `scripts/tema.mjs` | `marca.json` → `tema.css`, com teste de contraste |
@@ -141,9 +142,15 @@ vitrine?: boolean;
 A página é feita à mão, mas a coleta é padronizada: sem isso, cada cliente manda
 um punhado diferente de material e a página trava esperando um dado.
 
-Copie `templates/formulario.md` para `vitrines/<id>/formulario.md` e mande para
-o cliente (WhatsApp, e-mail, o que ele usar). Ele responde no próprio arquivo ou
-por áudio — quem transcreve para o arquivo é você.
+Copie `templates/formulario.md` para `vitrines/<id>/formulario.md`: esse é o
+arquivo onde as respostas vão morar. Para **mandar** ao cliente, use
+`templates/formulario-whatsapp.md` — o mesmo questionário em uma mensagem só,
+com os marcadores do WhatsApp e sem o markdown que aparece cru na conversa. Não existe página de formulário no site.
+
+Ele responde na conversa ou por áudio; quem transcreve para
+`vitrines/<id>/formulario.md` é você. O formulário do WhatsApp não repete
+endereço, telefone, horário nem nota do Google — isso já está no cadastro do
+pino, e perguntar de novo cria duas versões do mesmo dado.
 
 O formulário pede, e é ele que define o que a página consegue ser:
 
@@ -152,9 +159,9 @@ O formulário pede, e é ele que define o que a página consegue ser:
 | a frase de uma linha | o `<h1>` da dobra |
 | o que vende, com preço | a seção de oferta |
 | o diferencial concreto | a razão de a dobra não ser genérica |
-| 8 a 12 fotos | a galeria e o fundo da dobra |
+| 8 a 15 fotos | a galeria e o fundo da dobra, depois de você cortar as ruins |
 | logo em vetor + cores | `marca.json` → `tema.css` |
-| depoimento ou nota | a prova social |
+| a nota do Google, que vem do cadastro | a prova social |
 | o que ele quer que aconteça | o CTA primário |
 
 **Não comece a página com o formulário pela metade.** Página montada com
