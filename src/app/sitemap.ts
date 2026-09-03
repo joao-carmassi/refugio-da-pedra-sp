@@ -26,8 +26,23 @@ const LAST_MODIFIED = {
   politicaDePrivacidade: '2026-07-20',
 } as const;
 
-/** Data de publicação ou da última mexida em cada página de vitrine. */
-const LAST_MODIFIED_VITRINE: Record<string, string> = {};
+/*
+  Páginas próprias de ponto: uma rota por ponto que tem página em
+  `src/app/mapa-turistico/<id>/`, com a data de publicação ou da última mexida.
+
+  A chave aqui — e não o `vitrine: true` do cadastro — é o que põe a rota no
+  índice. São coisas diferentes: `vitrine` diz que alguém paga o plano e faz o
+  cartão do mapa linkar a página; esta lista diz que a página existe. A Pedra
+  do Baú é o caso que separa as duas: atrativo público, sem plano e sem
+  `vitrine`, mas com rota publicada — pelo critério antigo ela ficava fora do
+  sitemap para sempre.
+
+  Regra: criou pasta em `src/app/mapa-turistico/<id>/`, acrescenta a linha
+  aqui no mesmo commit. Mexeu no texto ou na foto, atualiza a data.
+*/
+const LAST_MODIFIED_PAGINA_DE_PONTO: Record<string, string> = {
+  'pedra-do-bau': '2026-09-02',
+};
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
@@ -38,19 +53,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   /*
-    Páginas do plano Vitrine: uma rota por parceiro que assinou, saída do
-    próprio cadastro. Enquanto ninguém tem `vitrine: true`, a lista é vazia e
-    o sitemap sai idêntico ao de antes — é de propósito, para uma página em
-    produção só entrar no índice quando o cadastro disser que ela existe.
+    As rotas de `/mapa-turistico/<id>/`: as do plano Vitrine, saídas do
+    cadastro, mais as páginas listadas à mão acima. O `filter` aceita as duas
+    origens porque uma página publicada tem de ser indexável mesmo quando não
+    há plano por trás dela.
 
-    A data vem de LAST_MODIFIED_VITRINE, à mão como o resto do arquivo: mexeu
-    no texto ou na foto de uma vitrine, atualize a linha dela.
+    A data vem de LAST_MODIFIED_PAGINA_DE_PONTO; vitrine recém-publicada que
+    ainda não ganhou linha cai na data da landing do mapa.
   */
-  const vitrineUrls: MetadataRoute.Sitemap = LOCAIS.filter(
-    (local) => local.vitrine,
+  const paginaDePontoUrls: MetadataRoute.Sitemap = LOCAIS.filter(
+    (local) => local.vitrine || local.id in LAST_MODIFIED_PAGINA_DE_PONTO,
   ).map((local) => ({
     url: `${baseUrl}/mapa-turistico/${local.id}/`,
-    lastModified: LAST_MODIFIED_VITRINE[local.id] ?? LAST_MODIFIED.mapaTuristico,
+    lastModified:
+      LAST_MODIFIED_PAGINA_DE_PONTO[local.id] ?? LAST_MODIFIED.mapaTuristico,
   }));
 
   const postUrls: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
@@ -80,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/mapa-turistico/`,
       lastModified: LAST_MODIFIED.mapaTuristico,
     },
-    ...vitrineUrls,
+    ...paginaDePontoUrls,
     {
       url: `${baseUrl}/mapa/`,
       lastModified: LAST_MODIFIED.mapa,

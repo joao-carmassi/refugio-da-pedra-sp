@@ -365,16 +365,48 @@ Sem isto a página existe e ninguém chega nela:
   do template raiz é da pousada), `description` escrita para a busca do
   negócio, `alternates.canonical` com barra final e `openGraph.images`
   repetido — o Next substitui o objeto inteiro.
-- JSON-LD de `LocalBusiness` (ou o subtipo certo: `Restaurant`, `Store`,
-  `LodgingBusiness`) com `@id` `${siteUrl}/mapa-turistico/<id>/#business`,
-  `address`, `geo`, `openingHours` via `horarioSchema`, `image` e
-  `isPartOf` apontando para a landing do mapa. Nunca crie um segundo nó para
-  o Refúgio.
+- **A imagem de OG é a foto que abre a página.** A mesma da dobra, o mesmo
+  arquivo — não a segunda melhor, não a do cadastro, não uma montagem com o
+  logo. Quem recebe o link no WhatsApp vê o cartão antes da página: cartão com
+  uma foto e dobra com outra é promessa que o site não cumpre, e é o cliente
+  quem repara, porque é ele quem manda o link. O `alt` é cópia literal do que
+  `src/data/image-alt.json` guarda para o arquivo — metadata não roda no
+  cliente e não passa pelo `getAlt`, então as duas descrições se conferem
+  juntas quando a foto muda. Trocou a foto da dobra, troca a OG no mesmo
+  commit; o validador do Passo 9 compara as duas.
+- **Três nós de JSON-LD, sempre, em toda rota sob `/mapa-turistico/`** — não
+  há página deste ramo sem os três, e o validador reprova quem sair sem eles:
+  1. a **entidade**: `LocalBusiness` ou o subtipo certo (`Restaurant`,
+     `Store`, `LodgingBusiness`, `TouristAttraction`), com `@id`
+     `${siteUrl}/mapa-turistico/<id>/#business`, `address`, `geo`,
+     `openingHours` via `horarioSchema` e `image`. Quando o ponto já é nó do
+     `ItemList` da landing, **reuse o `@id` da âncora** em vez de criar um
+     segundo nó para a mesma coisa — é o que a Pedra do Baú faz;
+  2. o **`WebPage`**, com `isPartOf` `${siteUrl}/#website`, `publisher`
+     `${siteUrl}/#business` e `mainEntity` apontando para a entidade;
+  3. o **`BreadcrumbList`** de três níveis: Home → Mapa Turístico → o ponto.
+
+  Os três vão para o HTML por `<script type="application/ld+json">` com
+  `serialize-javascript`. Nunca crie um segundo nó para o Refúgio.
 - `vitrine: true` no ponto em `mapa-turistico.json`, e o `ItemList` da landing
   ganha `url` para os pontos que têm página.
 - O cartão do ponto no mapa passa a linkar a página — é o caminho pelo qual o
   cliente vê que pagou por algo.
-- A rota entra em `src/app/sitemap.ts`.
+- **A rota entra em `src/app/sitemap.ts`, no mesmo commit da página.** A linha
+  vai em `LAST_MODIFIED_PAGINA_DE_PONTO`, com a data de publicação:
+
+  ```ts
+  const LAST_MODIFIED_PAGINA_DE_PONTO: Record<string, string> = {
+    'pedra-do-bau': '2026-09-02',
+    'hot-stone': '2026-09-10',
+  };
+  ```
+
+  Quem manda no sitemap é essa lista, não o `vitrine: true` — página sem plano
+  por trás (a Pedra do Baú é atrativo público) também é rota publicada e
+  também precisa ser achada. Foi por depender do campo do plano que
+  `/mapa-turistico/pedra-do-bau/` ficou fora do índice desde que nasceu.
+  Atualize a data quando trocar texto ou foto.
 
 Receitas completas em `references/seo.md`.
 
@@ -382,6 +414,8 @@ Receitas completas em `references/seo.md`.
 
 ```bash
 node .agents/skills/pagina-vitrine/scripts/validar-vitrine.mjs <id>
+# página de ponto sem assinatura por trás (atrativo público):
+node .agents/skills/pagina-vitrine/scripts/validar-vitrine.mjs <id> --sem-plano
 npx tsc --noEmit
 npm run build
 ```
@@ -389,8 +423,9 @@ npm run build
 O validador checa o que é mecânico: cinco seções ou menos, nenhuma URL de
 imagem externa, nenhum resto de texto de exemplo, `tema.css` escopado com
 `main[data-vitrine=…]`, alt de cada foto nova, fotos em `.webp` dentro de
-1620 px, hrefs internos com barra final, `vitrine: true` no cadastro, rota no
-sitemap, telefone/endereço da página batendo com o cadastro, e a costura do
+1620 px, hrefs internos com barra final, a OG batendo com a foto da dobra,
+`vitrine: true` no cadastro, a linha da rota no sitemap, os três nós de JSON-LD do Passo 8 injetados no HTML,
+telefone/endereço da página batendo com o cadastro, e a costura do
 Passo 7: toda seção no `.container`, nenhum invólucro `mx-auto max-w-*` e um
 eixo só de alinhamento.
 

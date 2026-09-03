@@ -250,6 +250,23 @@ máquina: não edite à mão.
 (longitude entre −45,92 e −45,5; latitude entre −22,85 e −22,5): fora dela o
 mapa não deixa arrastar até o ponto.
 
+## Passo 6b — sitemap e JSON-LD
+
+O pino não cria rota: ele entra no `ItemList` da landing do mapa como um nó
+`TouristAttraction` com `@id` de âncora (`…/mapa-turistico/#<id>`), gerado a
+partir do cadastro. Não há nada a fazer no `sitemap.ts` por causa de um pino.
+
+O que existe é o caso inverso, e ele já mordeu uma vez: **ponto que ganha
+página própria em `src/app/mapa-turistico/<id>/` precisa de uma linha em
+`LAST_MODIFIED_PAGINA_DE_PONTO`, em `src/app/sitemap.ts`** — e isso vale mesmo
+quando o ponto é atrativo público, sem plano e sem `vitrine: true`. Foi por
+depender do campo do plano que `/mapa-turistico/pedra-do-bau/` ficou fora do
+índice. Se você mexeu no cadastro de um ponto que tem página, confira a linha
+e atualize a data.
+
+Quem monta a página é a skill `pagina-vitrine`, e é lá que estão as regras dos
+três nós de JSON-LD que toda rota sob `/mapa-turistico/` publica.
+
 ## Passo 7 — conferir
 
 Rode o validador da skill, que checa o que dá para checar por máquina — campos,

@@ -9,6 +9,11 @@
  * final que vira um 308, a sexta seção que entrou "só dessa vez".
  *
  *   node .agents/skills/pagina-vitrine/scripts/validar-vitrine.mjs hot-stone
+ *
+ * `--sem-plano` para a página de ponto que não tem assinatura por trás (a
+ * Pedra do Baú, atrativo público): `vitrine` e `destaque` deixam de ser
+ * exigidos, e o resto — sitemap, JSON-LD, medidas, restos de bloco — continua
+ * valendo igual. Página publicada é página publicada.
  */
 
 import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
@@ -17,9 +22,11 @@ import { fileURLToPath } from 'node:url';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..', '..');
 
-const id = process.argv[2];
+const args = process.argv.slice(2);
+const semPlano = args.includes('--sem-plano');
+const id = args.find((a) => !a.startsWith('--'));
 if (!id) {
-  console.error('uso: validar-vitrine.mjs <id-do-ponto>');
+  console.error('uso: validar-vitrine.mjs <id-do-ponto> [--sem-plano]');
   process.exit(2);
 }
 
@@ -66,8 +73,11 @@ const ponto = cadastro.find((p) => p.id === id);
 if (!ponto) {
   erro(`o ponto "${id}" não existe em src/data/mapa-turistico.json — cadastre o pino antes (skill cadastrar-ponto-mapa)`);
 } else {
-  if (!ponto.vitrine) erro(`o ponto não tem "vitrine": true — sem isso o mapa não linka a página e o sitemap não a inclui`);
-  if (!ponto.destaque) erro(`o ponto não tem "destaque": true — Vitrine inclui Destaque`);
+  /* O sitemap não depende mais deste campo (ver seção 6): `vitrine` é o que
+     faz o cartão do mapa linkar a página e o `ItemList` dar `url` ao ponto. */
+  const planoFalta = semPlano ? aviso : erro;
+  if (!ponto.vitrine) planoFalta(`o ponto não tem "vitrine": true — sem isso o cartão do mapa não linka a página e o nó do ponto no ItemList fica sem "url"`);
+  if (!ponto.destaque) planoFalta(`o ponto não tem "destaque": true — Vitrine inclui Destaque`);
   if (!ponto.horario) aviso('o ponto não tem "horario" conferido: a seção de visita não mostra aberto/fechado (é de propósito, mas entra na lista de pendências do cliente)');
 
   /* NAP digitado à mão vira segunda verdade. */
@@ -151,6 +161,27 @@ if (/\$\{[^}]*\}\/[^'"`]*\.webp/.test(tudo) || /-\$\{[^}]*\}\.webp/.test(tudo)) 
   aviso('há src de imagem montado por template string: confira à mão se todos os arquivos existem e têm alt');
 }
 
+/* A foto do cartão social é a foto que abre a página.
+
+   Quem recebe o link no WhatsApp vê o cartão antes de ver a página: se as duas
+   imagens forem diferentes, a promessa do cartão não é a que o site cumpre — e
+   é a primeira coisa que o cliente do Vitrine nota, porque o cartão é o que
+   ele vai mandar para os clientes dele. A dobra manda; a OG copia. */
+
+const dobra = codigo['dobra.tsx'] ?? '';
+const fotoDaDobra = dobra.match(/['"`](\/assets\/[^'"`]+\.webp)['"`]/)?.[1];
+const fotoDaOg = (codigo['page.tsx'] ?? '').match(
+  /ogImage\s*=\s*\{[\s\S]*?url:\s*['"`](\/assets\/[^'"`]+\.webp)['"`]/,
+)?.[1];
+
+if (!fotoDaOg) {
+  erro('page.tsx não declara `ogImage` com uma foto de /assets/ — o cartão social cai no da pousada, que não é o negócio do cliente');
+} else if (!fotoDaDobra) {
+  aviso(`não achei a foto da dobra em dobra.tsx para comparar com a OG (${fotoDaOg}): confira à mão se são a mesma`);
+} else if (fotoDaDobra !== fotoDaOg) {
+  erro(`a OG é ${fotoDaOg} e a dobra abre com ${fotoDaDobra} — o cartão social tem de ser a imagem principal da página`);
+}
+
 /* ---------- 4. restos do bloco ------------------------------------------- */
 
 const restos = [
@@ -188,12 +219,55 @@ for (const [arquivo, conteudo] of Object.entries(codigo)) {
 
 /* ---------- 6. sitemap --------------------------------------------------- */
 
+/* Rota publicada e fora do sitemap é rota que ninguém acha. A checagem procura
+   a linha do ponto no mapa de datas do `sitemap.ts` — e não a palavra
+   "vitrine", que estava lá antes e passava sempre, porque o arquivo cita o
+   plano por outros motivos. Foi assim que /mapa-turistico/pedra-do-bau/ ficou
+   meses fora do índice. */
+
 const sitemap = readFileSync(join(RAIZ, 'src', 'app', 'sitemap.ts'), 'utf8');
-if (!/vitrine/i.test(sitemap) && !sitemap.includes(`mapa-turistico/${id}`)) {
-  erro('src/app/sitemap.ts não publica as rotas de vitrine');
+const temLinhaNoSitemap = new RegExp(`['"\`]${id}['"\`]\s*:`).test(sitemap);
+
+if (!temLinhaNoSitemap) {
+  if (ponto?.vitrine) {
+    aviso(`src/app/sitemap.ts não tem a linha "${id}" em LAST_MODIFIED_PAGINA_DE_PONTO: a rota entra pelo "vitrine": true, mas com a data da landing do mapa em vez da data da página`);
+  } else {
+    erro(`src/app/sitemap.ts não publica /mapa-turistico/${id}/ — acrescente "${id}": "AAAA-MM-DD" em LAST_MODIFIED_PAGINA_DE_PONTO, no mesmo commit da página`);
+  }
 }
 
-/* ---------- 7. costura --------------------------------------------------- */
+/* ---------- 7. JSON-LD ---------------------------------------------------- */
+
+/* Toda rota sob /mapa-turistico/ publica três nós, sem exceção: a entidade
+   (o negócio ou a atração), o `WebPage` que amarra a página ao site, e o
+   `BreadcrumbList` de três níveis. Página sem eles é página que o buscador lê
+   como texto solto — e é o que o cliente do Vitrine está pagando para não
+   ser. */
+
+const pagina = codigo['page.tsx'] ?? '';
+
+const nosObrigatorios = [
+  ['WebPage', /'@type':\s*'WebPage'|"@type":\s*"WebPage"/],
+  ['BreadcrumbList', /'@type':\s*'BreadcrumbList'|"@type":\s*"BreadcrumbList"/],
+];
+for (const [nome, padrao] of nosObrigatorios) {
+  if (!padrao.test(pagina)) erro(`page.tsx não declara um nó ${nome} em JSON-LD`);
+}
+
+const TIPOS_ENTIDADE = /'@type':\s*'(Restaurant|CafeOrCoffeeShop|Store|LodgingBusiness|TouristAttraction|HealthAndBeautyBusiness|LocalBusiness|ProfessionalService|BarOrPub|Bakery|ArtGallery)'/;
+if (!TIPOS_ENTIDADE.test(pagina.replace(/"/g, "'"))) {
+  erro('page.tsx não declara o nó do negócio (Restaurant, Store, LodgingBusiness, TouristAttraction…) em JSON-LD');
+}
+
+const scripts = (pagina.match(/application\/ld\+json/g) ?? []).length;
+if (scripts < 3) {
+  erro(`page.tsx tem ${scripts} <script type="application/ld+json"> — os três nós precisam ir para o HTML, não só existir como objeto`);
+}
+if (pagina.includes('ld+json') && !pagina.includes('serialize(')) {
+  erro('page.tsx injeta JSON-LD sem serialize-javascript — é como o resto do repositório escapa o conteúdo');
+}
+
+/* ---------- 8. costura --------------------------------------------------- */
 
 /* O defeito que mais denuncia página montada com bloco baixado não é cor nem
    fonte: é medida. Cada bloco do registry vem com o `max-w-` que o autor

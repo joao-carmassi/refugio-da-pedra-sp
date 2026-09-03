@@ -38,11 +38,42 @@ export function generateMetadata() {
 local sempre traz a cidade junto. `description` diz o que se come/compra, o
 horário em palavras e onde fica.
 
-A imagem de OG é uma foto real do lugar, com `alt` copiado de
-`src/data/image-alt.json` (metadata não roda no cliente e não passa pelo
-`getAlt`; as duas descrições se conferem juntas quando a foto muda).
+**A imagem de OG é a foto que abre a página** — o mesmo arquivo que a dobra
+usa, declarado uma vez e apontado pelos dois lados:
+
+```tsx
+/* dobra.tsx */
+const FOTO = '/assets/mapa/hot-stone/hot-stone-2.webp';
+
+/* page.tsx */
+const ogImage = {
+  url: '/assets/mapa/hot-stone/hot-stone-2.webp',
+  width: 1620,
+  height: 1215,
+  alt: 'Salão de mesas altas com o forno de pizza aceso ao fundo',
+};
+```
+
+Não é preciosismo de coerência: o cartão do WhatsApp é visto antes da página, e
+é ele que o cliente manda para a lista dele. Cartão com uma foto e dobra com
+outra faz o visitante achar que clicou no link errado. Vale a foto da dobra, e
+não a capa do cadastro, quando as duas divergem — a capa manda no cartão do
+mapa, a dobra manda na página.
+
+O `alt` é cópia literal do que `src/data/image-alt.json` guarda para o arquivo
+(metadata não roda no cliente e não passa pelo `getAlt`; as duas descrições se
+conferem juntas quando a foto muda). `width`/`height` são os da imagem em
+disco. O validador do Passo 9 compara a URL da OG com a foto encontrada em
+`dobra.tsx` e reprova quando divergem.
 
 ## JSON-LD
+
+**Toda rota sob `/mapa-turistico/` publica três nós: a entidade, o `WebPage` e
+o `BreadcrumbList`.** Não há exceção — nem para página de teste, nem para
+atrativo público, nem para vitrine que ainda espera foto. A landing
+(`/mapa-turistico/`) já segue isso com `ItemList` + `CollectionPage` +
+`BreadcrumbList` + `FAQPage`, e `/mapa/` com `CollectionPage` +
+`BreadcrumbList` no layout. Página nova entra no mesmo padrão ou não entra.
 
 Um nó de negócio por página, com o subtipo certo — `Restaurant`, `CafeOrCoffeeShop`,
 `Store`, `LodgingBusiness`, `TouristAttraction`, `HealthAndBeautyBusiness`.
@@ -116,17 +147,30 @@ campo). Gere as rotas de vitrine a partir do cadastro, com a data de quando a
 página foi publicada ou mexida:
 
 ```ts
-const vitrineUrls: MetadataRoute.Sitemap = LOCAIS
-  .filter((local) => local.vitrine)
+const LAST_MODIFIED_PAGINA_DE_PONTO: Record<string, string> = {
+  'pedra-do-bau': '2026-09-02',
+};
+
+const paginaDePontoUrls: MetadataRoute.Sitemap = LOCAIS
+  .filter((local) => local.vitrine || local.id in LAST_MODIFIED_PAGINA_DE_PONTO)
   .map((local) => ({
     url: `${baseUrl}/mapa-turistico/${local.id}/`,
-    lastModified: LAST_MODIFIED_VITRINE[local.id],
+    lastModified:
+      LAST_MODIFIED_PAGINA_DE_PONTO[local.id] ?? LAST_MODIFIED.mapaTuristico,
   }));
 ```
 
-Acrescente a chave em `LAST_MODIFIED_VITRINE` quando publicar, e **atualize-a**
-quando trocar texto ou foto. Data que não muda quando a página muda vale tanto
-quanto data que muda quando nada mudou.
+**Criou a pasta da rota, acrescenta a linha — no mesmo commit.** A lista é o
+que manda: o `vitrine: true` também inclui a rota, mas ele é campo de plano, e
+página existe sem plano. A Pedra do Baú é o caso — atrativo público com página
+publicada, que ficou fora do sitemap enquanto o critério era só o campo do
+plano. Atualize a data quando trocar texto ou foto: data que não muda quando a
+página muda vale tanto quanto data que muda quando nada mudou.
+
+O validador do Passo 9 procura a linha do ponto neste arquivo. A checagem
+antiga procurava a palavra "vitrine" e passava sempre, porque o `sitemap.ts`
+cita o plano por outros motivos — é assim que uma rota some do índice sem
+ninguém ver.
 
 ## O que não fazer
 
