@@ -42,6 +42,7 @@ const LAST_MODIFIED = {
 */
 const LAST_MODIFIED_PAGINA_DE_PONTO: Record<string, string> = {
   'pedra-do-bau': '2026-09-02',
+  'hot-stone': '2026-09-02',
 };
 
 export default function sitemap(): MetadataRoute.Sitemap {
