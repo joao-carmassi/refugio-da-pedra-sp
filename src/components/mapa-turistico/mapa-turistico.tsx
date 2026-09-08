@@ -17,6 +17,7 @@ import {
 } from '@/lib/mapa-turistico';
 import { useIsMobile } from '@/hooks/use-media-query';
 import { usePresenca } from '@/hooks/use-presenca';
+import { rastrear } from '@/lib/rastreio';
 import { cn } from '@/lib/utils';
 import {
   getEstiloBase,
@@ -421,6 +422,12 @@ function MapaTuristico() {
 
   function abrirRota() {
     if (!local) return;
+
+    // Único ponto de medição de rota no mapa: os três botões "Como chegar"
+    // (painel no desktop, painel dentro da folha mobile e cartão rápido)
+    // recebem esta mesma função como `onRota`, então medir aqui cobre os três
+    // sem contar clique em dobro.
+    rastrear('rota-mapa', { ponto: local.id });
 
     // Vai direto para o Google Maps, no celular e no desktop. Quem clica em
     // "como chegar" está indo embora do mapa: o painel de rota interrompia

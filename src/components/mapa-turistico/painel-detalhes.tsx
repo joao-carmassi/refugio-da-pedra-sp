@@ -10,6 +10,7 @@ import {
   linhasHorario,
   type Local,
 } from '@/lib/mapa-turistico';
+import { rastrear } from '@/lib/rastreio';
 import { cn } from '@/lib/utils';
 import BotaoMapa from './botao-mapa';
 import GaleriaLocal from './galeria-local';
@@ -155,7 +156,14 @@ function PainelDetalhes({
                 destino só faria o visitante perguntar para quem não sabe. */}
             {whats && (
               <BotaoMapa tom='contorno' asChild className='flex-1'>
-                <a href={whats} target='_blank' rel='noopener noreferrer'>
+                <a
+                  href={whats}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  onClick={() =>
+                    rastrear('whatsapp-mapa', { ponto: local.id })
+                  }
+                >
                   <MessageCircle aria-hidden='true' />
                   WhatsApp
                 </a>
@@ -171,7 +179,18 @@ function PainelDetalhes({
               chamar no WhatsApp. */}
           {local.vitrine && (
             <BotaoMapa tom='contorno' asChild className='mt-2.5 w-full'>
-              <Link href={`/mapa-turistico/${local.id}/`}>
+              {/*
+                Topo do funil do plano Vitrine: é este clique que o parceiro
+                paga para existir. Comparado com `whatsapp-vitrine` e
+                `rota-vitrine`, dá quantos entraram na página contra quantos
+                agiram nela.
+              */}
+              <Link
+                href={`/mapa-turistico/${local.id}/`}
+                onClick={() =>
+                  rastrear('vitrine-entrada', { ponto: local.id })
+                }
+              >
                 <BookOpen aria-hidden='true' />
                 Ver a página
               </Link>

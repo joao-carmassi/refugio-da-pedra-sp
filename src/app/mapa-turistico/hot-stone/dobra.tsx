@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useReveal } from '@/hooks/use-reveal';
 import { getAlt } from '@/lib/image-alt';
 import { getLocal, getWhatsLocal, ZONAS } from '@/lib/mapa-turistico';
+import { rastrear } from '@/lib/rastreio';
 import { MessageCircle, Pizza } from 'lucide-react';
 import Image from 'next/image';
 import Rotulo from '../rotulo';
@@ -113,7 +114,17 @@ function Dobra(): React.ReactNode {
               className='h-fit w-fit shrink-0 px-7 py-4'
               asChild
             >
-              <a href={whats} target='_blank' rel='noopener noreferrer'>
+              <a
+                href={whats}
+                target='_blank'
+                rel='noopener noreferrer'
+                onClick={() =>
+                  rastrear('whatsapp-vitrine', {
+                    ponto: local.id,
+                    secao: 'dobra',
+                  })
+                }
+              >
                 <MessageCircle aria-hidden='true' />
                 Chamar no WhatsApp
               </a>

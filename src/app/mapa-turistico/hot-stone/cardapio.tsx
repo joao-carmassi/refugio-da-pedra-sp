@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useReveal } from '@/hooks/use-reveal';
 import { getAlt } from '@/lib/image-alt';
 import { getLocal, getWhatsLocal } from '@/lib/mapa-turistico';
+import { rastrear } from '@/lib/rastreio';
 import { MessageCircle, UtensilsCrossed } from 'lucide-react';
 import Image from 'next/image';
 import Rotulo from '../rotulo';
@@ -90,7 +91,17 @@ function Cardapio(): React.ReactNode {
         {whats && (
           <div data-reveal className='mt-6'>
             <Button variant='outline' asChild>
-              <a href={whats} target='_blank' rel='noopener noreferrer'>
+              <a
+                href={whats}
+                target='_blank'
+                rel='noopener noreferrer'
+                onClick={() =>
+                  rastrear('whatsapp-vitrine', {
+                    ponto: local.id,
+                    secao: 'cardapio',
+                  })
+                }
+              >
                 <MessageCircle aria-hidden='true' />
                 Pedir o cardápio
               </a>

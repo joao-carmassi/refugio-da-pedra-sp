@@ -12,6 +12,7 @@ import {
   linhasHorario,
   ORIGEM_CENTRO,
 } from '@/lib/mapa-turistico';
+import { rastrear } from '@/lib/rastreio';
 import { ChevronRight, Clock, Map, MapPin, Route } from 'lucide-react';
 import Link from 'next/link';
 import Rotulo from '../rotulo';
@@ -70,7 +71,17 @@ function Visita(): React.ReactNode {
             >
               {whats && (
                 <Button size='lg' className='w-full sm:w-auto' asChild>
-                  <a href={whats} target='_blank' rel='noopener noreferrer'>
+                  <a
+                    href={whats}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    onClick={() =>
+                      rastrear('whatsapp-vitrine', {
+                        ponto: local.id,
+                        secao: 'visita',
+                      })
+                    }
+                  >
                     Chamar no WhatsApp
                   </a>
                 </Button>
@@ -85,6 +96,12 @@ function Visita(): React.ReactNode {
                   href={getRotaUrl(local)}
                   target='_blank'
                   rel='noopener noreferrer'
+                  onClick={() =>
+                    rastrear('rota-vitrine', {
+                      ponto: local.id,
+                      secao: 'visita',
+                    })
+                  }
                 >
                   <Route aria-hidden='true' />
                   Traçar a rota

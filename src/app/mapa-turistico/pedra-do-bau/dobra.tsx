@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useReveal } from '@/hooks/use-reveal';
 import { getAlt } from '@/lib/image-alt';
 import { getLocal, getRotaUrl, ZONAS } from '@/lib/mapa-turistico';
+import { rastrear } from '@/lib/rastreio';
 import { Mountain } from 'lucide-react';
 import Image from 'next/image';
 import Rotulo from '../rotulo';
@@ -92,7 +93,14 @@ function Dobra(): React.ReactNode {
           {/* `getRotaUrl` manda o Google Maps para a parada — o estacionamento
               de onde a trilha sai —, não para o pino no cume. Mandar um carro
               para o cume da Pedra do Baú é mandá-lo para onde não há estrada. */}
-          <a href={getRotaUrl(local)} target='_blank' rel='noopener noreferrer'>
+          <a
+            href={getRotaUrl(local)}
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={() =>
+              rastrear('rota-vitrine', { ponto: local.id, secao: 'dobra' })
+            }
+          >
             Como chegar
           </a>
         </Button>

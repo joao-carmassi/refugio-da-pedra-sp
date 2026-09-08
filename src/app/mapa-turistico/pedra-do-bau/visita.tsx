@@ -9,6 +9,7 @@ import {
   getRotaUrl,
   ORIGEM_CENTRO,
 } from '@/lib/mapa-turistico';
+import { rastrear } from '@/lib/rastreio';
 import { MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Rotulo from '../rotulo';
@@ -70,6 +71,12 @@ function Visita(): React.ReactNode {
                   href={getRotaUrl(local)}
                   target='_blank'
                   rel='noopener noreferrer'
+                  onClick={() =>
+                    rastrear('rota-vitrine', {
+                      ponto: local.id,
+                      secao: 'visita',
+                    })
+                  }
                 >
                   Traçar a rota no Google Maps
                 </a>
