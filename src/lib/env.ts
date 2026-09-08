@@ -33,3 +33,11 @@ export const getSiteUrl = () =>
     process.env.NEXT_PUBLIC_SITE_URL,
     'canonical URLs, sitemap, and OG tags will be broken.',
   );
+
+// Deliberately optional, so it does not go through `requireEnv`: with no value
+// the Umami tag is never mounted and the site runs unmeasured. That is the
+// whole mechanism separating development from production — the production
+// website id lives only in Vercel's Production environment, never in a local
+// `.env.local`, so a test click can never land in a partner's report.
+export const getUmamiWebsiteId = () =>
+  process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ?? '';

@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 import serialize from 'serialize-javascript';
 import type { WithContext, LodgingBusiness, WebSite } from 'schema-dts';
 import { Archivo, Piazzolla } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { getSiteUrl, getInPhoneNumber } from '@/lib/env';
+import { getSiteUrl, getInPhoneNumber, getUmamiWebsiteId } from '@/lib/env';
 
 const archivo = Archivo({
   subsets: ['latin'],
@@ -90,6 +91,7 @@ export default function RootLayout({
 }>) {
   const siteUrl = getSiteUrl();
   const rawPhone = getInPhoneNumber();
+  const umamiWebsiteId = getUmamiWebsiteId();
 
   /**
    * Nó canônico do negócio. Todos os outros nós do site (homepage, /sobre,
@@ -194,6 +196,40 @@ export default function RootLayout({
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: serialize(websiteJsonLd) }}
         />
+        {/*
+          Medição de audiência. Mora no layout raiz porque é o único com
+          cobertura total: o chrome foi distribuído em nove layouts de segmento
+          (ver comentário mais abaixo), e repetir a tag em cada um seria nove
+          lugares para esquecer de mexer.
+
+          `data-auto-track='false'` desliga a contagem de acesso. Sem ele o
+          script reportaria uma visita por página do site inteiro — blog e
+          chalés incluídos, que não têm nada a ver com o mapa. O que sai daqui
+          é só a lista de eventos de `src/lib/rastreio.ts`: rota, WhatsApp do
+          parceiro e entrada na página do Vitrine. Nada de pageview, nada de
+          cookie, nada que identifique pessoa — é por isso que o site não pede
+          consentimento (ver /politica-de-privacidade/).
+
+          `data-host-url` é obrigatório e é relativo de propósito. O script
+          monta o destino por concatenação pura — `${host-url}/api/send` — sem
+          exigir URL absoluta, então `/stats` vira `/stats/api/send` e o
+          `fetch` resolve contra a origem da página em que estiver. Com a URL
+          absoluta do site, `npm run dev` mandaria os eventos do localhost para
+          o domínio de produção (cross-origin, barrado pelo `connect-src
+          'self'`), e o mesmo valeria para qualquer deploy de preview.
+
+          Sem o id — que é o caso de `npm run dev` sem `.env.local` — a tag
+          não é montada e `rastrear()` vira no-op.
+        */}
+        {umamiWebsiteId && (
+          <Script
+            src='/stats/script.js'
+            data-website-id={umamiWebsiteId}
+            data-host-url='/stats'
+            data-auto-track='false'
+            strategy='afterInteractive'
+          />
+        )}
         {/*
           O chrome (cabeçalho/rodapé) não mora mais aqui: cada rota monta o seu
           no próprio layout. O motivo é `/mapa/`, uma tela cheia que não tem
