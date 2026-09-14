@@ -186,6 +186,8 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Fachada iluminada da Hot Stone à noite, na Avenida Conselheiro Rodrigues Alves',
   campomax:
     'Fachada da CAMPOMAX na Avenida Doutor Rubião Júnior, com a vitrine de imóveis à vista',
+  'cactario-sao-bento':
+    'Entrada de velho oeste do Cactário São Bento, com a porta de saloon e os cactos em volta',
   'pedra-balanca':
     'Cruz no cume da Pedra da Balança a 1.600 m, com o vale a oeste ao fundo',
   'cachoeira-toboga':
@@ -222,6 +224,8 @@ const ENQUADRAMENTOS: Record<string, string> = {
     'Balcão do Arte no Quilombo com as peças de palha de bananeira e de milho expostas',
   'atelie-ditinho-joana':
     'Ditinho Joana esculpindo no ateliê, com as peças de madeira prontas em volta',
+  'dona-mariquinha':
+    'Casa de madeira do Dona Mariquinha, com a placa de cafés especiais no gramado',
   'portal-cidade':
     'Portal da Cidade de São Bento do Sapucaí, com o Centro de Informação ao Turista aberto',
 };
@@ -275,8 +279,10 @@ const ORDEM: string[] = [
   'praca-marcondes-salgado',
   'letreiro',
   'campomax',
+  'cactario-sao-bento',
   'arte-no-quilombo',
   'atelie-ditinho-joana',
+  'dona-mariquinha',
   'belvedere-serrano',
   'cachoeira-toboga',
   'pedra-balanca',

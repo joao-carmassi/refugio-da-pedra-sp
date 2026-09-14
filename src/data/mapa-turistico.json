@@ -690,5 +690,49 @@
         "atelie-ditinho-joana-6.webp"
       ]
     }
+  },
+  {
+    "id": "dona-mariquinha",
+    "nome": "Dona Mariquinha Café, Empório e Artesanato",
+    "cat": "cafes",
+    "zona": "vale",
+    "lat": -22.67959,
+    "lng": -45.726464,
+    "horario": "Qui a dom e feriados, a partir das 12h",
+    "resumo": "Café especial, quitute regional, empório e artesanato autoral numa casa de madeira com vista para a serra, no Quilombo.",
+    "descricao": "Fica na Estrada do Quilombo, e o acesso é pela cancela da Pousada do Quilombo: basta passar por ela para chegar à casa. Serve cafés especiais e quitutes regionais, e divide o espaço com um empório completo e com artesanato autoral. Abre de quinta a domingo e nos feriados, a partir do meio-dia — a casa não informou a hora de fechar, então quem pensa em chegar no fim da tarde deve chamar no WhatsApp antes.",
+    "endereco": "Estrada do Quilombo, 1403, Quilombo — São Bento do Sapucaí",
+    "tel": "(11) 99693-8631",
+    "destaque": true,
+    "fotos": {
+      "pasta": "mapa/dona-mariquinha",
+      "arquivos": [
+        "dona-mariquinha-1.webp",
+        "dona-mariquinha-2.webp",
+        "dona-mariquinha-3.webp",
+        "dona-mariquinha-4.webp"
+      ]
+    }
+  },
+  {
+    "id": "cactario-sao-bento",
+    "nome": "Cactário São Bento",
+    "cat": "compras",
+    "zona": "centro",
+    "lat": -22.684437,
+    "lng": -45.730318,
+    "horario": "Todos os dias, 9h às 18h",
+    "resumo": "Viveiro de cacto, suculenta e flor em vaso no Centro, com uma entrada de velho oeste montada para foto.",
+    "descricao": "Fica na Rua Luigi Mazzei, no Centro. É um lugar de muita planta — as bancadas sob o sombrite enfileiram cacto, suculenta e flor em vaso — com um cenário de velho oeste na entrada, feito para tirar foto: porta de saloon, caveira de boi, roda de carroça e barril. Abre todos os dias, das 9h às 18h.",
+    "endereco": "Rua Luigi Mazzei, 111, Centro — São Bento do Sapucaí",
+    "tel": "(12) 98880-6505",
+    "fotos": {
+      "pasta": "mapa/cactario-sao-bento",
+      "arquivos": [
+        "cactario-sao-bento-1.webp",
+        "cactario-sao-bento-2.webp",
+        "cactario-sao-bento-3.webp"
+      ]
+    }
   }
 ]

@@ -231,6 +231,16 @@ import rotasJson from "@/data/rotas.json";
  *      `descricao` já diz isso —, mas só uma está pintada na parede. O nome
  *      do cadastro ficou como estava porque é por ele que a casa aparece na
  *      busca; confirmar com o proprietário qual dos dois ele quer no mapa.
+ *  14. Dona Mariquinha e Cactário São Bento entraram pelo formulário de
+ *      parceiro (11/09/2026), e só com o que ele traz: coordenada do link do
+ *      Google enviado, endereço, WhatsApp e horário como a casa escreveu.
+ *      O Dona Mariquinha (plano Destaque) informou "quinta a domingo e
+ *      feriados a partir do meio-dia", sem hora de fechar — o campo fica
+ *      assim, e por isso o cartão não mostra selo de aberto/fechado. Fichas
+ *      de terceiros dão 12h às 19h (19h30 no sábado), mas não entram: pedir a
+ *      hora de fechar à casa. O Cactário (plano Mapa) foi para `compras` por
+ *      ser viveiro de planta; o campo "site" do formulário veio
+ *      com o Instagram e ficou de fora, porque o cadastro não tem esse campo.
  */
 
 /**
