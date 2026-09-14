@@ -820,15 +820,39 @@ function pontuar(termo: string): Map<string, number> | null {
  * parceiros em Destaque primeiro — é a regra do design, e vale tanto para a
  * lista lateral quanto para o autocomplete. O score só desempata dentro de
  * cada grupo, para que o acerto literal venha antes do palpite.
+ *
+ * Com categoria escolhida ou termo digitado, o que está fechado agora desce
+ * para o fim — antes até do Destaque. Quem filtra está escolhendo aonde ir, e
+ * um restaurante fechado no topo é a resposta errada à pergunta que ele fez.
+ * Só `false` desce: sem horário legível (`null`) o lugar fica onde estava,
+ * porque não saber não é o mesmo que fechado. Na lista de "Todos" sem busca a
+ * ordem não muda, e é também o que mantém o relógio fora do primeiro render:
+ * esse é o estado inicial, o mesmo no servidor e na hidratação.
  */
-export function filtrarLocais(filtro: FiltroId, termo: string): Local[] {
+export function filtrarLocais(
+  filtro: FiltroId,
+  termo: string,
+  quando: Date = new Date(),
+): Local[] {
   const scores = pontuar(termo);
+  const fechadosNoFim = filtro !== FILTRO_TODOS || scores !== null;
 
-  return LOCAIS.filter((local) => {
+  const encontrados = LOCAIS.filter((local) => {
     if (filtro !== FILTRO_TODOS && local.cat !== filtro) return false;
 
     return !scores || scores.has(local.id);
-  }).sort((a, b) => {
+  });
+
+  const fechados = new Set(
+    fechadosNoFim
+      ? encontrados.filter((l) => estaAberto(l, quando) === false)
+      : [],
+  );
+
+  return encontrados.sort((a, b) => {
+    const porHorario = Number(fechados.has(a)) - Number(fechados.has(b));
+    if (porHorario !== 0) return porHorario;
+
     const porDestaque = Number(!!b.destaque) - Number(!!a.destaque);
     if (porDestaque !== 0 || !scores) return porDestaque;
 
