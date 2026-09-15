@@ -192,8 +192,11 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
           {/*
             Seção acrescentada junto com a medição do mapa turístico. Sem ela a
             política afirmaria, na seção 3, que nada é compartilhado com
-            terceiros enquanto o site conversa com o Umami — descompasso que a
-            LGPD não perdoa e que o hóspede não teria como perceber.
+            terceiros enquanto os cliques são gravados num banco hospedado no
+            Supabase — descompasso que a LGPD não perdoa e que o hóspede não
+            teria como perceber. As promessas abaixo (sem cookie, sem IP, sem
+            perfil) são o que `src/app/api/rastreio/route.ts` grava de fato:
+            um contador por ponto e mês, sem nenhuma linha por clique. Mudou a rota, muda aqui.
           */}
           <section className='space-y-2'>
             <h2 className='text-foreground text-xl font-semibold md:text-2xl'>
@@ -203,8 +206,9 @@ function PoliticaDePrivacidadePage(): React.ReactNode {
               Para entender quais lugares do nosso mapa turístico despertam mais
               interesse, registramos alguns cliques: quando alguém pede a rota
               até um ponto, chama um estabelecimento no WhatsApp ou abre a
-              página de um parceiro. Usamos o Umami, um serviço de medição
-              europeu contratado por nós.
+              página de um parceiro. Esses registros ficam num banco de dados
+              nosso, hospedado no Supabase, em servidores localizados em São
+              Paulo.
             </p>
             <p>
               Essa medição não usa cookies, não registra seu endereço de IP, não

@@ -34,10 +34,31 @@ export const getSiteUrl = () =>
     'canonical URLs, sitemap, and OG tags will be broken.',
   );
 
-// Deliberately optional, so it does not go through `requireEnv`: with no value
-// the Umami tag is never mounted and the site runs unmeasured. That is the
-// whole mechanism separating development from production — the production
-// website id lives only in Vercel's Production environment, never in a local
-// `.env.local`, so a test click can never land in a partner's report.
-export const getUmamiWebsiteId = () =>
-  process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ?? '';
+// Deliberately optional, so neither goes through `requireEnv`: with either one
+// missing, `/api/rastreio/` accepts the click and stores nothing, and the site
+// builds and runs unmeasured. Server-only — never prefix them with
+// `NEXT_PUBLIC_`, or the secret key (which bypasses RLS) ships in the bundle.
+export const getSupabaseUrl = () => process.env.SUPABASE_URL ?? '';
+
+export const getSupabaseSecretKey = () =>
+  process.env.SUPABASE_SECRET_KEY ?? '';
+
+// What keeps test clicks out of a partner's report: `/api/rastreio/` only
+// counts a click when this is `production`, so `cliques_mapa` holds nothing
+// else. Vercel sets `VERCEL_ENV` on its deploys; anything else — `npm run dev`,
+// a local `next start` — is development, even with the Supabase key present.
+export const getAmbiente = () => {
+  const ambiente = process.env.VERCEL_ENV;
+
+  return ambiente === 'production' || ambiente === 'preview'
+    ? ambiente
+    : 'development';
+};
+
+// Credentials for the `/relatorio/` Basic Auth check in `src/proxy.ts`.
+// Optional, but closed by default: with either one missing the report answers
+// 404, so forgetting them on Vercel never leaves partner numbers open.
+// Server-only, like the Supabase pair above.
+export const getRelatorioUsuario = () => process.env.RELATORIO_USUARIO ?? '';
+
+export const getRelatorioSenha = () => process.env.RELATORIO_SENHA ?? '';

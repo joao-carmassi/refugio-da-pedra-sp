@@ -44,56 +44,6 @@ const nextConfig: NextConfig = {
     qualities: [75, 100],
     formats: ['image/avif', 'image/webp'],
   },
-  /*
-    A medição de audiência é servida deste domínio, não de `cloud.umami.is`.
-    Dois motivos, nesta ordem:
-
-    1. O CSP acima declara `script-src 'self'` e `connect-src 'self'`. Sendo
-       same-origin, o analytics não pede exceção nenhuma na política — a tag
-       direta da Umami obrigaria a abrir as duas diretivas para um domínio de
-       fora.
-    2. `cloud.umami.is` está nas listas do uBlock, do Brave e de DNS filtrado.
-       Bloqueado, o relatório entregue ao parceiro sai menor que a realidade
-       sem ninguém saber quanto — que é o pior tipo de número errado.
-
-    A duplicata de `/stats/api/send` com e sem barra final não é descuido, e
-    foi confirmada na prática, não deduzida:
-
-      POST /stats/api/send   -> 308 para /stats/api/send/
-      POST /stats/api/send/  -> 400 vindo da Umami (payload vazio do teste)
-
-    O 400 é a boa notícia: significa que a requisição chegou ao servidor deles.
-    `trailingSlash: true` redireciona antes de os rewrites serem consultados,
-    então o evento sempre entra pelo caminho com barra — e sem a segunda regra
-    o destino do próprio redirect seria 404, derrubando toda a medição em
-    silêncio.
-
-    O custo é um 308 por evento, já que a Umami monta o endereço como
-    `<data-host-url>/api/send`, sem barra. Some-se `skipTrailingSlashRedirect`
-    para eliminá-lo e o site inteiro passa a servir 200 em `/sobre` e
-    `/sobre/`, o que é trocar um redirect barato por URL duplicada no índice.
-    Fica o 308.
-  */
-  async rewrites() {
-    return {
-      beforeFiles: [
-        {
-          source: '/stats/script.js',
-          destination: 'https://cloud.umami.is/script.js',
-        },
-        {
-          source: '/stats/api/send',
-          destination: 'https://cloud.umami.is/api/send',
-        },
-        {
-          source: '/stats/api/send/',
-          destination: 'https://cloud.umami.is/api/send',
-        },
-      ],
-      afterFiles: [],
-      fallback: [],
-    };
-  },
   async headers() {
     return [
       {
@@ -158,12 +108,12 @@ const nextConfig: NextConfig = {
           //   3. `script-src 'unsafe-inline'` is either replaced with a nonce/hash
           //      or consciously accepted — as written it neuters most of the policy.
           //   4. Any analytics/third-party script added since this was written is
-          //      reflected in script-src/connect-src. Status: the Umami tag added
-          //      in `src/app/layout.tsx` deliberately needs no change here — it is
-          //      proxied same-origin through the `/stats/*` rewrites above, so
-          //      `script-src 'self'` and `connect-src 'self'` already cover it.
-          //      Keep it that way: pointing the tag straight at cloud.umami.is
-          //      would reopen this item.
+          //      reflected in script-src/connect-src. Status: the tourist-map click
+          //      tracking (`src/lib/rastreio.ts`) needs no change here — the browser
+          //      only posts to the same-origin `/api/rastreio/` route, and Supabase
+          //      is reached server-side, so `connect-src 'self'` already covers it.
+          //      Keep it that way: calling Supabase from the browser would reopen
+          //      this item.
           {
             key: 'Content-Security-Policy-Report-Only',
             value: CSP_DIRECTIVES,
