@@ -73,7 +73,6 @@ function buildUrlList() {
     `${baseUrl}/reservar/`,
     `${baseUrl}/sobre/`,
     `${baseUrl}/mapa-turistico/`,
-    `${baseUrl}/mapa/`,
     `${baseUrl}/blog/`,
     ...getPostUrls(),
     `${baseUrl}/politica-de-privacidade/`,

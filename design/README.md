@@ -18,12 +18,11 @@ arquivos que a exportação sai.
 ## O que não está aqui, e por quê
 
 Os empacotados do designer saíram do Git e estão ignorados por `.gitignore`
-(`/design/*.zip`, `/design/*.cdr`). São dois:
+(`/design/*.zip`, `/design/*.cdr`):
 
 | Arquivo | Onde está |
 | --- | --- |
 | `logo-refugio-da-pedra-ago26.cdr.zip` | O `.cdr` editável do CorelDRAW, com as camadas separadas. É o original de verdade da logo da pousada. |
-| `logo-mapa-turistico.zip` | Logo do mapa turístico, entregue já em várias saídas: SVG vetorizado, PDF com fundo branco e com fundo verde, PNG sem fundo e os dois JPG. |
 
 O `.cdr` da pousada tem 103 MB e o GitHub recusa qualquer arquivo acima de
 100 MB — com ele versionado, o push do repositório inteiro travava. Extrair não
@@ -32,15 +31,13 @@ tem 137 MB sozinho. O peso é de bitmap embutido numa arte que deveria ser
 vetorial; enquanto isso não for enxugado no CorelDRAW, o arquivo não cabe no
 Git sem LFS.
 
-**Quem for mexer na logo precisa pedir os dois originais a quem os guarda — não
-adianta procurar no histórico do repositório, eles não estão lá.** O `.zip` do
-mapa é pequeno e saiu junto só para a pasta ter uma regra só: empacotado do
-designer não mora no Git.
+**Quem for mexer na logo precisa pedir o original a quem o guarda — não
+adianta procurar no histórico do repositório, ele não está lá.** A regra da
+pasta é uma só: empacotado do designer não mora no Git.
 
-O `.zip` do mapa veio de um Mac e traz `.DS_Store` e `__MACOSX/` dentro. Ficou
-como chegou de propósito: reempacotar para limpar significa que o arquivo deixa
-de ser exatamente aquilo que o designer mandou.
+Os ícones de PWA que saem daqui são apontados em `src/app/layout.tsx`, que
+comenta por que os binários moram em `public/` e não nas pastas de convenção
+do Next.
 
-Os ícones de PWA que saem daqui são apontados em `src/lib/pwa-mapa.ts` (mapa) e
-em `src/app/layout.tsx` (pousada); os dois comentam por que os binários moram
-em `public/` e não nas pastas de convenção do Next.
+A identidade do mapa turístico — a logo e os ícones dele — não mora mais
+aqui: foi junto com o mapa para o repositório próprio dele (`mapa-turistico`).

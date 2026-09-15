@@ -72,8 +72,8 @@ function WhatsappIcon(props: React.SVGProps<SVGSVGElement>) {
 const links = [
   { title: 'Chalés', href: '/chales/' },
   { title: 'Blog', href: '/blog/' },
-  // O texto-âncora já era a palavra-chave; faltava ele apontar para a página
-  // que a disputa. `/mapa/` continua a um clique dali.
+  // O texto-âncora é a palavra-chave, e aponta para a página que a disputa. O
+  // mapa interativo, em site próprio, fica a um clique dali.
   { title: 'Mapa turístico', href: '/mapa-turistico/' },
   { title: 'Sobre', href: '/sobre/' },
   { title: 'Reservar', href: '/reservar/' },

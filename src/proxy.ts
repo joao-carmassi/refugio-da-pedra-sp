@@ -1,58 +1,6 @@
-import { timingSafeEqual } from 'node:crypto';
 import { NextResponse, type NextRequest } from 'next/server';
 import chales from '@/data/chales.json';
 import slugify from 'slugify';
-import { getRelatorioSenha, getRelatorioUsuario } from '@/lib/env';
-
-const iguais = (a: string, b: string) => {
-  const bufferA = Buffer.from(a);
-  const bufferB = Buffer.from(b);
-
-  return (
-    bufferA.length === bufferB.length && timingSafeEqual(bufferA, bufferB)
-  );
-};
-
-/*
-  Porteiro do `/relatorio/`, que mostra os cliques de todos os parceiros.
-  Basic Auth porque quem abre são duas ou três pessoas da equipe: o navegador
-  pede o login e guarda, e não existe tela nem banco de usuários para manter.
-
-  Fechado por padrão: sem as duas variáveis a resposta é 404, não a página.
-  Esquecer a senha na Vercel deixa o relatório inacessível, nunca aberto. A
-  comparação em tempo constante evita que a demora da resposta revele quantos
-  caracteres da senha estavam certos.
-*/
-const barrarRelatorio = (request: NextRequest) => {
-  const usuario = getRelatorioUsuario();
-  const senha = getRelatorioSenha();
-
-  if (!usuario || !senha) {
-    return new NextResponse(null, { status: 404 });
-  }
-
-  const [esquema, credencial] = (
-    request.headers.get('authorization') ?? ''
-  ).split(' ');
-
-  if (esquema === 'Basic' && credencial) {
-    const decodificada = Buffer.from(credencial, 'base64').toString('utf8');
-    const separador = decodificada.indexOf(':');
-
-    if (
-      separador !== -1 &&
-      iguais(decodificada.slice(0, separador), usuario) &&
-      iguais(decodificada.slice(separador + 1), senha)
-    ) {
-      return null;
-    }
-  }
-
-  return new NextResponse('Login necessário.', {
-    status: 401,
-    headers: { 'WWW-Authenticate': 'Basic realm="Relatorio", charset="UTF-8"' },
-  });
-};
 
 const BLOG_REDIRECTS: Record<string, string> = {
   '/blog/sao-bento-do-sapucai-a-toscana-brasileira-da-serra-da-mantiqueira/':
@@ -88,10 +36,6 @@ export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const url = request.nextUrl.clone();
 
-  if (pathname.startsWith('/relatorio')) {
-    return barrarRelatorio(request) ?? NextResponse.next();
-  }
-
   // Blog slug redirects (SEO consolidation)
   if (pathname in BLOG_REDIRECTS) {
     url.pathname = BLOG_REDIRECTS[pathname];
@@ -107,5 +51,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/chales/:path*', '/blog/:path*', '/relatorio/:path*'],
+  matcher: ['/chales/:path*', '/blog/:path*'],
 };

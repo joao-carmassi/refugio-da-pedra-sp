@@ -20,7 +20,7 @@ import Rotulo from './rotulo';
  * O acordeão não é o do `@/components/ui/accordion`, e a razão é o requisito
  * que manda nesta seção: as respostas precisam estar no HTML servido, porque
  * metade destas visitas chega da busca atrás de uma delas e o `FAQPage` do
- * JSON-LD do layout descreve texto que tem de existir na página. O acordeão
+ * JSON-LD da página descreve texto que tem de existir na página. O acordeão
  * do Radix não serve para isso nem com `forceMount` — conferido no fonte de
  * `@radix-ui/react-collapsible`, o `Content` calcula `isOpen = context.open ||
  * isPresent` e renderiza `isOpen && children`; sem `forceMount` o item fechado
@@ -50,7 +50,7 @@ import Rotulo from './rotulo';
  * — a especificação permite conteúdo de cabeçalho ali, e a hierarquia da
  * página (`<h1>` no hero, `<h2>` por seção) segue inteira.
  *
- * A fonte é `./perguntas`, o mesmo módulo que o layout usa para montar o
+ * A fonte é `./perguntas`, o mesmo módulo que `page.tsx` usa para montar o
  * markup — as duas coisas não têm como divergir.
  */
 function Faq(): React.ReactNode {

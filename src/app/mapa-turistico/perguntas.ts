@@ -14,10 +14,12 @@ export interface Pergunta {
 /**
  * Perguntas frequentes do mapa.
  *
- * Toda resposta sai de `src/data/mapa-turistico.json` e de `rotas.json`. Não
- * há pergunta sobre preço de hospedagem, telefone de terceiro nem horário que
- * o cadastro não tenha conferido: o mapa cala onde a fonte é duvidosa, e a
- * página que fala do mapa segue a mesma regra.
+ * Toda resposta foi escrita sobre o cadastro e as rotas do mapa, que moram no
+ * projeto do mapa — os números aqui são texto fixo e precisam ser conferidos
+ * à mão quando o cadastro mudar. Não há pergunta sobre preço de hospedagem,
+ * telefone de terceiro nem horário que o cadastro não tenha conferido: o mapa
+ * cala onde a fonte é duvidosa, e a página que fala do mapa segue a mesma
+ * regra.
  *
  * A ordem não é aleatória. Abre no planejamento ("dá para conhecer num fim de
  * semana"), passa pelo que se paga e pelo que é obrigatório, e fecha nas

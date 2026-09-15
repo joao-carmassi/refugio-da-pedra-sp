@@ -8,9 +8,9 @@ interface Props {
 
 /**
  * O link tipográfico da casa (design.md, micro-ação C3): palavra, sublinhado
- * de 1px e seta. Fica num componente porque esta página o usa em quatro
- * seções — categorias, zonas, perguntas e fecho — e a alternativa era repetir
- * a mesma fila de classes oito vezes.
+ * de 1px e seta. Fica num componente porque esta página o usa em mais de uma
+ * seção — perguntas e fecho — e a alternativa era repetir a mesma fila de
+ * classes em cada uma.
  *
  * `href` sempre com barra final: `trailingSlash: true` no next.config.ts faz
  * o Next responder 308 antes de servir a página.

@@ -17,9 +17,16 @@ import Link from 'next/link';
 
 /**
  * Foto de abertura, em constante porque o caminho é usado duas vezes: na
- * `src` e na consulta ao mapa de alt text, que é chaveado por ele.
+ * `src` e na consulta ao mapa de alt text, que é chaveado por ele. É o
+ * paredão da Pedra do Baú visto da pousada — o assunto do guia, fotografado
+ * de onde o projeto é mantido.
  */
-const FOTO = '/assets/mapa/pedra-do-bau/pedra-do-bau-4.webp';
+const FOTO = '/assets/refugio/geral/refugio-2.webp';
+
+interface Props {
+  /** Origem do site do mapa, ou `null` quando ela não está configurada. */
+  mapaUrl: string | null;
+}
 
 /**
  * Abertura da página.
@@ -32,7 +39,7 @@ const FOTO = '/assets/mapa/pedra-do-bau/pedra-do-bau-4.webp';
  * `onMount` porque o bloco está acima da dobra: esperar o ScrollTrigger aqui
  * significaria abrir a página com o título invisível.
  */
-function Hero(): React.ReactNode {
+function Hero({ mapaUrl }: Props): React.ReactNode {
   const scope = useReveal<HTMLElement>({ onMount: true, delay: 0.15 });
 
   return (
@@ -54,60 +61,23 @@ function Hero(): React.ReactNode {
           </Breadcrumb>
         </div>
 
-        {/* Assinatura de marca da identidade do mapa: o selo do projeto, o
-            nome em Piazzolla, régua de 1px e o crédito em Archivo 600, caixa
-            alta, marrom pedra — sempre menor que o nome. É o único ponto da
-            rota onde as duas marcas aparecem lado a lado; o resto da página é
-            do mapa. O marrom vem por `style` porque é cor de marca, não papel
-            de interface: não há token de tema que signifique "vínculo com o
-            refúgio".
-
-            O selo entra ao lado do nome, e não no lugar dele. O losango traz
-            "Mapa Turístico de São Bento do Sapucaí" escrito em curva ao redor
-            da rosa dos ventos, mas num quadro de 56–64 px essa volta de texto
-            tem uns quatro pixels de altura: lê-se como ornamento, não como
-            palavra. Tirar o `<span>` confiando no que está desenhado dentro da
-            marca deixaria a assinatura sem nome legível — e sem nenhum nome no
-            leitor de tela, já que o `alt` descreve o desenho, não repete o
-            título. A redundância é só aparente.
-
-            O bloco virou duas camadas — selo fora, texto dentro — porque a
-            fila antiga era `flex-wrap`: quando o crédito quebrava para a linha
-            de baixo, ele voltava a encostar na margem do container e o selo
-            ficava órfão em cima. Com o texto num invólucro próprio, a quebra
-            acontece dentro dele e a assinatura continua sendo um bloco só ao
-            lado da marca. */}
-        <div data-reveal className='mt-8 flex items-center gap-3 md:mt-10'>
-          {/* Arquivo próprio, e não o ícone do PWA (`mapa-web-app-manifest-
-              512x512.png`), porque aquele traz o fundo branco chapado que o
-              instalador de aplicativo exige. Sobre o creme desta página o
-              branco vira um quadrado visível em volta do losango. Aqui o fundo
-              é transparente e o quadro está cortado rente às pontas — o selo
-              apoia no creme em vez de flutuar dentro de um adesivo. */}
-          <Image
-            src='/assets/mapa/logo-mapa-turistico.webp'
-            alt='Selo do mapa: losango verde com rosa dos ventos, alfinete e a silhueta da Pedra do Baú'
-            width={412}
-            height={412}
-            sizes='64px'
-            priority
-            className='size-14 shrink-0 md:size-16'
+        {/* Assinatura do projeto: o nome do mapa, régua de 1px e o crédito em
+            caixa alta, sempre menor que o nome. É o único ponto da rota onde
+            as duas marcas aparecem lado a lado; o resto da página é do mapa. */}
+        <div
+          data-reveal
+          className='mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 md:mt-10'
+        >
+          <span className='font-display text-base leading-none font-semibold tracking-tight md:text-lg'>
+            Mapa de São Bento do Sapucaí
+          </span>
+          <span
+            aria-hidden='true'
+            className='hidden h-5 w-px bg-border sm:block'
           />
-          <div className='flex flex-wrap items-center gap-x-3 gap-y-1'>
-            <span className='font-display text-base leading-none font-semibold tracking-tight md:text-lg'>
-              Mapa de São Bento do Sapucaí
-            </span>
-            <span
-              aria-hidden='true'
-              className='hidden h-5 w-px bg-border sm:block'
-            />
-            <span
-              style={{ color: 'var(--map-stone)' }}
-              className='text-[0.6875rem] font-semibold tracking-[0.12em] uppercase'
-            >
-              um projeto do Refúgio da Pedra
-            </span>
-          </div>
+          <span className='text-[0.6875rem] font-semibold tracking-[0.12em] text-muted-foreground uppercase'>
+            um projeto do Refúgio da Pedra
+          </span>
         </div>
 
         <h1
@@ -130,45 +100,53 @@ function Hero(): React.ReactNode {
           falta caminhar.
         </p>
 
+        {/* Números fixos, conferidos no cadastro do mapa em 15/09/2026. O
+            cadastro mora no projeto do mapa e esta página não o lê: se ele
+            crescer, o texto aqui precisa ser atualizado à mão. */}
+        <p
+          data-reveal
+          className='mt-3 max-w-prose text-muted-foreground md:text-lg'
+        >
+          São 32 lugares marcados, divididos nos três trechos em que a serra se
+          organiza: 8 no Vale do Baú, 18 no Centro e 6 na rota rural, a oeste e
+          ao norte da cidade.
+        </p>
+
         <div
           data-reveal
           className='mt-8 flex flex-col gap-3 sm:flex-row sm:items-center md:mt-10'
         >
-          <Button
-            asChild
-            effect='ringHover'
-            size='lg'
-            className='w-full rounded-full sm:w-auto'
-          >
-            <Link href='/mapa/'>
-              Abrir o mapa
-              <ArrowRight className='size-4' />
-            </Link>
-          </Button>
-          {/* O segundo botão leva para dentro do próprio guia, não para a
-              reserva: quem chega da busca está escolhendo o que fazer na
-              cidade, e a pousada tem o bloco de fecho para se apresentar. */}
+          {/* Sem endereço do mapa configurado o botão principal some: um link
+              que não leva a lugar nenhum é pior que nenhum botão. */}
+          {mapaUrl && (
+            <Button
+              asChild
+              effect='ringHover'
+              size='lg'
+              className='w-full rounded-full sm:w-auto'
+            >
+              <a href={`${mapaUrl}/mapa/`}>
+                Abrir o mapa
+                <ArrowRight className='size-4' />
+              </a>
+            </Button>
+          )}
           <Button
             variant='outline'
             asChild
             size='lg'
             className='w-full rounded-full sm:w-auto'
           >
-            <Link href='#pontos-anchor'>Ver os lugares</Link>
+            <Link href='#como-usar-anchor'>Como o mapa funciona</Link>
           </Button>
         </div>
 
         {/* Moldura de `@shadcnblocks/hero263`: a fotografia fica dentro do
             container, com régua de 1px em volta e canto arredondado, em vez de
-            sangrar de borda a borda. A moldura continua valendo agora que há
-            foto: esta rota é editorial, e o texto que vem acima e abaixo dela
-            corre no mesmo container — uma imagem sangrando de parede a parede
-            romperia a coluna de leitura no meio da página, que é gesto de
-            dobra fotográfica (a homepage e `/chales/[slug]/` fazem isso, e lá
-            a foto é a abertura, não uma ilustração do texto). A proporção abre
-            em 4/3 no celular e vira 16/9 no resto — 21/9 numa tela estreita
-            seria uma tarja de 100 px. `object-cover` porque o recorte muda com
-            a proporção, e o assunto da foto (o paredão) está no centro.
+            sangrar de borda a borda — esta rota é editorial, e o texto que vem
+            acima e abaixo dela corre no mesmo container. A proporção abre em
+            4/3 no celular e vira 16/9 no resto. `object-cover` porque o
+            recorte muda com a proporção.
 
             `priority`: com o cabeçalho travado em compacto, esta imagem entra
             na primeira tela em telas grandes e é a candidata a LCP da rota. */}
@@ -177,10 +155,10 @@ function Hero(): React.ReactNode {
             src={FOTO}
             alt={getAlt(
               FOTO,
-              'Vista aérea do maciço da Pedra do Baú entre nuvens baixas',
+              'Paredão da Pedra do Baú visto da pousada, com a mata da Mantiqueira',
             )}
             width={1620}
-            height={1213}
+            height={1080}
             sizes='100vw'
             priority
             className='aspect-4/3 max-h-[70svh] w-full rounded-lg border border-border object-cover md:aspect-video'

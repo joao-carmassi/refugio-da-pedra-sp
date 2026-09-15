@@ -1,4 +1,6 @@
 // @ts-check
+// Script CommonJS rodado direto com node, fora do bundle: require() é o esperado aqui.
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');

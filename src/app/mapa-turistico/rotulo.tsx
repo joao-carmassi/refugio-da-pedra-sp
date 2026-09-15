@@ -13,11 +13,9 @@ interface Props {
  * tracking largo, na cor de metadado. Não há terceira família de fonte no
  * sistema — o eyebrow se distingue por caixa e espacejamento, não por fonte.
  *
- * É o mesmo desenho do `Rotulo` da tela do mapa
- * (`components/mapa-turistico/etiquetas.tsx`), reescrito aqui em token de tema
- * em vez de `var(--map-meta)`: nesta página os tokens do shadcn já apontam
- * para a paleta do mapa (escopo `[data-mapa-tema]` em globals.css), e a faixa
- * escura de fecho precisa que a cor acompanhe a inversão.
+ * Em token de tema, e não em cor fixa: nesta página os tokens do shadcn
+ * apontam para a paleta do mapa (escopo `[data-mapa-tema]` em globals.css), e
+ * a faixa escura de fecho precisa que a cor acompanhe a inversão.
  */
 function Rotulo({ children, icone: Icone, className }: Props): React.ReactNode {
   return (

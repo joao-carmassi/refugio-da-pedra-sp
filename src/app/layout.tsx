@@ -47,14 +47,8 @@ export function generateMetadata(): Metadata {
      * Manifest e ícones da pousada — declarados como metadata, e não pelas
      * convenções de arquivo do Next (`app/manifest.json`, `app/favicon.ico`,
      * `app/icon1.png`, `app/apple-icon.png`). Os arquivos vivem em `public/`.
-     *
-     * O motivo é que o site instala como dois PWAs distintos: a pousada
-     * (este) e o mapa (`@/lib/pwa-mapa`, usado por `/mapa/` e
-     * `/mapa-turistico/`). Aquelas convenções só existem na raiz do `app/` e
-     * injetam as mesmas tags em todas as rotas — o `<link rel="icon">` da
-     * pousada chegava às rotas do mapa e disputava com o do mapa, os dois
-     * anunciando `sizes="48x48"`. Como campo de metadata, o segmento filho
-     * substitui o do pai e cada rota fica só com a identidade do seu app.
+     * Como campo de metadata, um segmento filho que precise de outra
+     * identidade substitui o do pai em vez de somar tags às da raiz.
      */
     manifest: '/manifest.webmanifest',
     icons: {
@@ -195,10 +189,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serialize(websiteJsonLd) }}
         />
         {/*
-          O chrome (cabeçalho/rodapé) não mora mais aqui: cada rota monta o seu
-          no próprio layout. O motivo é `/mapa/`, uma tela cheia que não tem
-          rodapé e usa o cabeçalho compacto — com o chrome no raiz não havia
-          como uma única rota abrir mão dele sem gambiarra de pathname.
+          O chrome (cabeçalho/rodapé) não mora aqui: cada rota monta o seu no
+          próprio layout, e assim uma rota pode travar o cabeçalho compacto
+          (como `/mapa-turistico/`) sem gambiarra de pathname.
         */}
         <TooltipProvider>{children}</TooltipProvider>
       </body>

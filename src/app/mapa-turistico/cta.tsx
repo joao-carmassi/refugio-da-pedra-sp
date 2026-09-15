@@ -11,11 +11,11 @@ import Rotulo from './rotulo';
  * Fecho da página, na mesma faixa escura que fecha a homepage — é a voz de
  * CTA da casa e ela não muda de rota para rota.
  *
- * É o único bloco da rota em que a pousada fala de si, e por isso ele está no
- * fim: o visitante chega aqui depois de já ter usado o guia. O argumento não é
- * "você precisa se hospedar para usar o mapa", é "quem fez o mapa também
- * recebe na serra". Nada de foto: depois de seis blocos de conteúdo a
- * macroestrutura pede uma faixa de tipografia, não uma sétima imagem.
+ * É o único bloco da rota em que a pousada fala de si, e por isso ele vem
+ * depois do hero e do "Como usar": o visitante chega aqui já sabendo o que o
+ * mapa mostra. O argumento não é "você precisa se hospedar para usar o mapa",
+ * é "quem fez o mapa também recebe na serra". Nada de foto: a imagem da página
+ * é a do hero, e o fecho pede uma faixa de tipografia, não uma segunda foto.
  */
 function Cta(): React.ReactNode {
   const scope = useReveal<HTMLElement>();

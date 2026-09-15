@@ -3,9 +3,6 @@
 import { Button } from '@/components/ui/button';
 import { useReveal } from '@/hooks/use-reveal';
 import { ArrowRight, Compass } from 'lucide-react';
-import Link from 'next/link';
-import { useOrigem } from '@/components/mapa-turistico/origem';
-import { type Origem } from '@/lib/mapa-turistico';
 import Rotulo from './rotulo';
 
 interface Passo {
@@ -13,63 +10,53 @@ interface Passo {
   texto: React.ReactNode;
 }
 
-/**
- * Os passos descrevem o que a tela faz hoje — filtro, busca tolerante a
- * acento e erro de digitação, cartão no pino e o botão "Como chegar", que é o
- * rótulo literal do mapa (`cartao-rapido.tsx`, `painel-detalhes.tsx`). Mudou
- * a interface, muda esta lista.
- *
- * Virou função porque duas frases dependem de onde o mapa mede. Sem parâmetro
- * na URL a tela é o mapa da cidade — mede do Centro de São Bento e não tem
- * botão do Refúgio no canto —, e descrever aqui um botão que o visitante não
- * vai achar é pior do que não descrever nada. É esta a versão que sai no HTML
- * do build, e é ela que quem chega pela busca encontra.
- */
-function passos(origem: Origem): Passo[] {
-  const doRefugio = origem.id === 'refugio';
-
-  return [
-    {
-      titulo: 'Filtre por categoria',
-      texto:
-        'A fila de pílulas no topo troca o que aparece no mapa e na lista lateral. Só entram categorias que têm lugar cadastrado.',
-    },
-    {
-      titulo: 'Ou busque pelo nome',
-      texto: (
-        <>
-          O campo aceita nome do lugar e nome de categoria, sem acento e com
-          letra trocada: digitar <em>bau</em> traz a Pedra do Baú, o Bauzinho e
-          a portaria do Monumento Natural de uma vez.
-        </>
-      ),
-    },
-    {
-      titulo: 'Toque num pino',
-      texto:
-        'No celular sobe um cartão com foto, categoria e o resumo do lugar. No computador o cartão aparece ao passar o ponteiro, e o clique abre a ficha completa, com endereço, horário e telefone quando existem — e a distância a partir do ' +
-        `${origem.nome}, que em cume e cachoeira vem com o trecho que ainda falta a pé.`,
-    },
-    {
-      titulo: 'Toque em Como chegar',
-      texto:
-        'O Google Maps abre com a rota traçada até onde o carro chega, saindo de onde você estiver. Em cume e trilha esse ponto não é a atração: no Complexo da Pedra do Baú a rota vai para o estacionamento de onde sai a trilha daquele ponto — o do Chico Bento para o cume do Baú e a Ana Chata, o da portaria para o Bauzinho. ' +
-        `As distâncias da ficha são medidas de um ponto fixo, o ${origem.nome}, e a rota é medida de onde você está.` +
-        (doRefugio
-          ? ' O botão no canto devolve o mapa a esse ponto fixo quando você quiser recomeçar.'
-          : ''),
-    },
-  ];
+interface Props {
+  /** Origem do site do mapa, ou `null` quando ela não está configurada. */
+  mapaUrl: string | null;
 }
 
 /**
- * Ponte entre a página e a ferramenta. Fica logo antes do FAQ porque é o
- * último empurrão antes de o visitante ou abrir o mapa ou ir tirar dúvida.
+ * Os passos descrevem o que a tela do mapa faz hoje — filtro, busca tolerante
+ * a acento e erro de digitação, cartão no pino e o botão "Como chegar", que é
+ * o rótulo literal da ferramenta. Mudou a interface do mapa, muda esta lista.
+ *
+ * O texto é o do mapa da cidade, que mede do Centro de São Bento: é a versão
+ * que abre sem parâmetro na URL, e é ela que quem chega pela busca encontra.
  */
-function ComoUsar(): React.ReactNode {
+const PASSOS: Passo[] = [
+  {
+    titulo: 'Filtre por categoria',
+    texto:
+      'A fila de pílulas no topo troca o que aparece no mapa e na lista lateral. Só entram categorias que têm lugar cadastrado.',
+  },
+  {
+    titulo: 'Ou busque pelo nome',
+    texto: (
+      <>
+        O campo aceita nome do lugar e nome de categoria, sem acento e com
+        letra trocada: digitar <em>bau</em> traz a Pedra do Baú, o Bauzinho e a
+        portaria do Monumento Natural de uma vez.
+      </>
+    ),
+  },
+  {
+    titulo: 'Toque num pino',
+    texto:
+      'No celular sobe um cartão com foto, categoria e o resumo do lugar. No computador o cartão aparece ao passar o ponteiro, e o clique abre a ficha completa, com endereço, horário e telefone quando existem — e a distância a partir do Centro de São Bento, que em cume e cachoeira vem com o trecho que ainda falta a pé.',
+  },
+  {
+    titulo: 'Toque em Como chegar',
+    texto:
+      'O Google Maps abre com a rota traçada até onde o carro chega, saindo de onde você estiver. Em cume e trilha esse ponto não é a atração: no Complexo da Pedra do Baú a rota vai para o estacionamento de onde sai a trilha daquele ponto — o do Chico Bento para o cume do Baú e a Ana Chata, o da portaria para o Bauzinho. As distâncias da ficha são medidas de um ponto fixo, o Centro de São Bento, e a rota é medida de onde você está.',
+  },
+];
+
+/**
+ * Ponte entre a página e a ferramenta. Vem logo depois do hero, antes do fecho
+ * da pousada e do FAQ, porque é o empurrão para o visitante abrir o mapa.
+ */
+function ComoUsar({ mapaUrl }: Props): React.ReactNode {
   const scope = useReveal<HTMLElement>();
-  const origem = useOrigem();
-  const etapas = passos(origem);
 
   return (
     <section
@@ -98,18 +85,22 @@ function ComoUsar(): React.ReactNode {
             estiver na cidade e para quem ainda está planejando a viagem.
           </p>
 
-          <div className='mt-6'>
-            <Button
-              effect='expandIcon'
-              iconPlacement='right'
-              icon={ArrowRight}
-              asChild
-              size='lg'
-              className='w-full rounded-full sm:w-auto'
-            >
-              <Link href='/mapa/'>Abrir o mapa turístico</Link>
-            </Button>
-          </div>
+          {/* Sem endereço do mapa configurado o botão some, e o texto acima
+              continua valendo sozinho. */}
+          {mapaUrl && (
+            <div className='mt-6'>
+              <Button
+                effect='expandIcon'
+                iconPlacement='right'
+                icon={ArrowRight}
+                asChild
+                size='lg'
+                className='w-full rounded-full sm:w-auto'
+              >
+                <a href={`${mapaUrl}/mapa/`}>Abrir o mapa turístico</a>
+              </Button>
+            </div>
+          )}
         </header>
 
         {/* Fila de `@shadcnblocks/process1`: número em bloco de fundo sólido à
@@ -117,7 +108,7 @@ function ComoUsar(): React.ReactNode {
             relação ao bloco foi a decoração — asterisco laranja e o SVG de
             canto vermelho saíram, porque a paleta da casa é areia e pedra. */}
         <ol data-reveal className='mt-8 md:mt-12 lg:mt-0'>
-          {etapas.map(({ titulo, texto }, indice) => (
+          {PASSOS.map(({ titulo, texto }, indice) => (
             <li
               key={titulo}
               className='flex flex-col gap-4 border-t border-border py-6 last:border-b md:flex-row md:gap-10 md:py-8'

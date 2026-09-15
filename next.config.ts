@@ -6,13 +6,7 @@ const CSP_DIRECTIVES = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: https:",
   "font-src 'self' data:",
-  // A base vetorial de /mapa/ (estilo, tiles, glifos e sprite) é servida deste
-  // mesmo domínio: `scripts/gerar-base.mjs` congela a região inteira em
-  // public/mapa-base/ na build. Foi por causa disso que o OpenFreeMap saiu
-  // daqui — o mapa não fala mais com ninguém de fora em runtime. O worker do
-  // MapLibre também é nosso, ver scripts/sync-maplibre-worker.mjs.
   "connect-src 'self'",
-  "worker-src 'self' blob:",
   // Allows the Google Maps embed used on the homepage (see mapa.tsx / outras-experiencias.tsx).
   "frame-src 'self' https://www.google.com",
   // Clickjacking protection. Also shipped as a standalone enforcing header
@@ -25,6 +19,47 @@ const CSP_DIRECTIVES = [
 // of the policy stays Report-Only. A policy that lists only `frame-ancestors`
 // restricts nothing else, so this cannot break page resources.
 const CSP_ENFORCED_DIRECTIVES = "frame-ancestors 'self'";
+
+/*
+  O mapa turístico saiu deste repositório e ganhou site próprio. Os endereços
+  que ele tinha aqui já circulam impressos (QR do adesivo), em favoritos e em
+  PWAs instalados, então cada um vira um 308 para o equivalente no site novo.
+  `/mapa-turistico/` fica de fora: continua aqui como página de texto que
+  apresenta o mapa. `/mapa-sw.js` também: é o service worker que desinstala o
+  PWA antigo, e precisa responder deste domínio.
+
+  Sem `NEXT_PUBLIC_MAPA_URL` não há para onde mandar, e nenhum redirecionamento
+  é criado — as rotas antigas respondem 404 e o build segue.
+
+  Com `trailingSlash: true` o Next já manda `/mapa` para `/mapa/` antes destas
+  regras, e o matcher delas é estrito com a barra final: por isso toda origem
+  termina em `/`. A query string passa adiante sozinha (`/mapa/?ponto=<id>`).
+*/
+const getMapaRedirects = () => {
+  const mapaUrl = process.env.NEXT_PUBLIC_MAPA_URL?.trim().replace(/\/+$/, '');
+
+  if (!mapaUrl) return [];
+
+  return [
+    // `:caminho*` com a barra depois cobre `/mapa/` e qualquer subcaminho.
+    { source: '/mapa/:caminho*/', destination: `${mapaUrl}/mapa/` },
+    {
+      source: '/mapa-turistico/hot-stone/',
+      destination: `${mapaUrl}/hot-stone/`,
+    },
+    {
+      source: '/mapa-turistico/pedra-do-bau/',
+      destination: `${mapaUrl}/pedra-do-bau/`,
+    },
+    { source: '/kit/adesivo/', destination: `${mapaUrl}/kit/adesivo/` },
+    { source: '/relatorio/', destination: `${mapaUrl}/relatorio/` },
+    // Arquivo, então sem barra: o Next tira a barra de caminhos com extensão.
+    {
+      source: '/mapa.webmanifest',
+      destination: `${mapaUrl}/mapa.webmanifest`,
+    },
+  ].map((redirect) => ({ ...redirect, permanent: true }));
+};
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -44,24 +79,11 @@ const nextConfig: NextConfig = {
     qualities: [75, 100],
     formats: ['image/avif', 'image/webp'],
   },
+  async redirects() {
+    return getMapaRedirects();
+  },
   async headers() {
     return [
-      {
-        /*
-         * O pacote da base cartográfica é imutável por endereço: o caminho leva
-         * o snapshot do OpenFreeMap, então gerar de novo publica uma pasta
-         * nova em vez de trocar o conteúdo destas URLs. Um ano de cache é
-         * seguro por construção — e é ele que faz o hóspede não rebaixar tile
-         * nenhum ao voltar ao mapa, que é o que sustenta a segunda visita.
-         */
-        source: '/mapa-base/:caminho*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
       {
         source: '/(.*)',
         headers: [
@@ -102,18 +124,12 @@ const nextConfig: NextConfig = {
           //      header, or `report-uri`) and violations are actually being received —
           //      today the policy neither enforces nor logs anything.
           //   2. Zero violations for a full crawl of /, /chales/, /chales/[slug]/,
-          //      /reservar/, /blog/, /blog/[post]/, /sobre/, /mapa/ and
-          //      /politica-de-privacidade/, including the Google Maps embed and
-          //      the MapLibre basemap (worker, style JSON, tiles, glyphs).
+          //      /reservar/, /blog/, /blog/[post]/, /sobre/, /mapa-turistico/ and
+          //      /politica-de-privacidade/, including the Google Maps embed.
           //   3. `script-src 'unsafe-inline'` is either replaced with a nonce/hash
           //      or consciously accepted — as written it neuters most of the policy.
           //   4. Any analytics/third-party script added since this was written is
-          //      reflected in script-src/connect-src. Status: the tourist-map click
-          //      tracking (`src/lib/rastreio.ts`) needs no change here — the browser
-          //      only posts to the same-origin `/api/rastreio/` route, and Supabase
-          //      is reached server-side, so `connect-src 'self'` already covers it.
-          //      Keep it that way: calling Supabase from the browser would reopen
-          //      this item.
+          //      reflected in script-src/connect-src.
           {
             key: 'Content-Security-Policy-Report-Only',
             value: CSP_DIRECTIVES,

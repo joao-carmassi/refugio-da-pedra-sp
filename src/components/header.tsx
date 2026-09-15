@@ -13,9 +13,9 @@ import { cn } from '@/lib/utils';
 const links = [
   { href: '/chales/', label: 'Chalés' },
   { href: '/blog/', label: 'Blog' },
-  // Aponta para a página de conteúdo, não para a tela do mapa: o link de nav
-  // sitewide é o sinal interno mais forte do site e precisa ir para a rota
-  // indexável. Quem quer a ferramenta chega nela pelo CTA da própria página.
+  // Aponta para a página de conteúdo sobre o mapa: o link de nav sitewide é o
+  // sinal interno mais forte do site e precisa ir para uma rota indexável
+  // daqui. Quem quer a ferramenta chega nela pelo CTA da própria página.
   { href: '/mapa-turistico/', label: 'Mapa' },
   { href: '/sobre/', label: 'Sobre' },
 ];
@@ -114,7 +114,7 @@ function Header({ compact: travado }: Props = {}): React.ReactNode {
   // ocupar exatamente o que sobra da viewport (`100svh - --header-height`) sem
   // precisar repetir a medição nem chutar um valor fixo. Numa página que trava
   // o cabeçalho, o publicado é a altura do estado travado — que é justamente o
-  // que o consumidor precisa descontar (o mapa, travado em compacto, é o caso).
+  // que o consumidor precisa descontar (`/mapa-turistico/`, travado em compacto, é o caso).
   useEffect(() => {
     if (!expandedHeight) return;
     document.documentElement.style.setProperty(

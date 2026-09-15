@@ -34,31 +34,14 @@ export const getSiteUrl = () =>
     'canonical URLs, sitemap, and OG tags will be broken.',
   );
 
-// Deliberately optional, so neither goes through `requireEnv`: with either one
-// missing, `/api/rastreio/` accepts the click and stores nothing, and the site
-// builds and runs unmeasured. Server-only — never prefix them with
-// `NEXT_PUBLIC_`, or the secret key (which bypasses RLS) ships in the bundle.
-export const getSupabaseUrl = () => process.env.SUPABASE_URL ?? '';
+// Deliberately optional, so it does not go through `requireEnv`: the tourist
+// map lives on its own site, and this pousada site only points to it — the
+// text landing at `/mapa-turistico/` links out and `next.config.ts` redirects
+// the old map URLs there. With it unset the build still passes: the landing
+// keeps its links on itself and no redirect is emitted. Absolute origin, and
+// any trailing slash is stripped so callers can append `/mapa/` safely.
+export const getMapaUrl = (): string | null => {
+  const url = process.env.NEXT_PUBLIC_MAPA_URL?.trim();
 
-export const getSupabaseSecretKey = () =>
-  process.env.SUPABASE_SECRET_KEY ?? '';
-
-// What keeps test clicks out of a partner's report: `/api/rastreio/` only
-// counts a click when this is `production`, so `cliques_mapa` holds nothing
-// else. Vercel sets `VERCEL_ENV` on its deploys; anything else — `npm run dev`,
-// a local `next start` — is development, even with the Supabase key present.
-export const getAmbiente = () => {
-  const ambiente = process.env.VERCEL_ENV;
-
-  return ambiente === 'production' || ambiente === 'preview'
-    ? ambiente
-    : 'development';
+  return url ? url.replace(/\/+$/, '') : null;
 };
-
-// Credentials for the `/relatorio/` Basic Auth check in `src/proxy.ts`.
-// Optional, but closed by default: with either one missing the report answers
-// 404, so forgetting them on Vercel never leaves partner numbers open.
-// Server-only, like the Supabase pair above.
-export const getRelatorioUsuario = () => process.env.RELATORIO_USUARIO ?? '';
-
-export const getRelatorioSenha = () => process.env.RELATORIO_SENHA ?? '';
