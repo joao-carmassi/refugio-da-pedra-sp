@@ -44,8 +44,49 @@ export interface Post {
   date: string;
   // Campos opcionais de frontmatter, ainda não preenchidos nos posts.
   dateModified?: string;
-  author?: string;
   image?: string;
+  // Sempre presente: resolvido na leitura a partir do `author` do frontmatter
+  // (ver `resolvePostAuthor`).
+  author: PostAuthor;
+}
+
+/**
+ * Autor do post já resolvido. `isDefault` indica o autor padrão do blog, que
+ * tem nó `Person` próprio e estável no JSON-LD; autor vindo do frontmatter só
+ * tem nome.
+ */
+export interface PostAuthor {
+  name: string;
+  url?: string;
+  isDefault: boolean;
+}
+
+/**
+ * Autor padrão de todos os posts, definido num lugar só em vez de repetido no
+ * frontmatter dos 41 arquivos. Um `author` no frontmatter substitui o nome.
+ */
+export const DEFAULT_POST_AUTHOR = {
+  name: 'João Vitor Carmassi',
+  url: 'https://github.com/joao-carmassi',
+  sameAs: ['https://github.com/joao-carmassi'],
+} as const;
+
+/**
+ * Converte o `author` cru do frontmatter (YAML não tem tipo) no autor do post.
+ * Ausente, vazio ou igual ao nome padrão cai no autor padrão.
+ */
+export function resolvePostAuthor(value: unknown): PostAuthor {
+  const name = typeof value === 'string' ? value.trim() : '';
+
+  if (!name || name === DEFAULT_POST_AUTHOR.name) {
+    return {
+      name: DEFAULT_POST_AUTHOR.name,
+      url: DEFAULT_POST_AUTHOR.url,
+      isDefault: true,
+    };
+  }
+
+  return { name, isDefault: false };
 }
 
 /**
@@ -149,7 +190,8 @@ export function getAllPosts(): Post[] {
       return {
         slug,
         content: resolveMapaLinks(content.trim()),
-        ...(data as Omit<Post, 'slug' | 'content'>),
+        ...(data as Omit<Post, 'slug' | 'content' | 'author'>),
+        author: resolvePostAuthor(data.author),
       };
     });
 }
@@ -164,6 +206,7 @@ export function getPostBySlug(slug: string): Post | undefined {
   return {
     slug,
     content: resolveMapaLinks(content.trim()),
-    ...(data as Omit<Post, 'slug' | 'content'>),
+    ...(data as Omit<Post, 'slug' | 'content' | 'author'>),
+    author: resolvePostAuthor(data.author),
   };
 }

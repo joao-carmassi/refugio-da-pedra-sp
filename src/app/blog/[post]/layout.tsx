@@ -7,6 +7,7 @@ import type {
 } from 'schema-dts';
 import JsonLd from '@/components/json-ld';
 import {
+  DEFAULT_POST_AUTHOR,
   DEFAULT_POST_IMAGE,
   faqTextoPuro,
   getAllPostsMeta,
@@ -41,7 +42,11 @@ export async function generateMetadata({ params }: MetadataProps) {
     title: post.meta_title,
     description: post.meta_description,
     keywords: [...post.focus_keywords, ...post.tags],
-    ...(post.author ? { authors: [{ name: post.author }] } : {}),
+    authors: [
+      post.author.url
+        ? { name: post.author.name, url: post.author.url }
+        : { name: post.author.name },
+    ],
     // O Next.js substitui o objeto `openGraph` inteiro do layout pai (ver
     // resolve-metadata.js: `newResolvedMetadata.openGraph = resolveOpenGraph(...)`),
     // então `siteName`, `locale` e `images` precisam ser repetidos aqui.
@@ -52,6 +57,8 @@ export async function generateMetadata({ params }: MetadataProps) {
       locale: 'pt_BR',
       type: 'article',
       url: `${siteUrl}/blog/${postSlug}/`,
+      // `article:author` aceita URL ou nome; a URL identifica melhor a pessoa.
+      authors: [post.author.url ?? post.author.name],
       // Sem `width`/`height`: um `image` futuro no frontmatter pode ter outras
       // dimensões, e valores errados são piores que ausentes.
       images: [
@@ -139,14 +146,23 @@ async function BlogPostLayout({
           dateModified: toDateTime(post.dateModified || post.date),
         }
       : {}),
-    // `author` no frontmatter tem prioridade; sem ele, a autoria recai sobre o
-    // nó canônico do negócio (`/#business`, definido no layout raiz).
-    author: post.author
+    // Todo post tem autor pessoa (resolvido em `lib/posts.ts`). O autor padrão
+    // ganha nó `Person` com `@id` estável (`/#autor`), igual em todos os posts,
+    // para os buscadores ligarem a autoria à mesma pessoa; um `author` no
+    // frontmatter vira `Person` só com nome. Quem publica continua sendo o
+    // negócio (`/#business`, definido no layout raiz).
+    author: post.author.isDefault
       ? {
           '@type': 'Person',
-          name: post.author,
+          '@id': `${siteUrl}/#autor`,
+          name: DEFAULT_POST_AUTHOR.name,
+          url: DEFAULT_POST_AUTHOR.url,
+          sameAs: [...DEFAULT_POST_AUTHOR.sameAs],
         }
-      : { '@id': `${siteUrl}/#business` },
+      : {
+          '@type': 'Person',
+          name: post.author.name,
+        },
     publisher: { '@id': `${siteUrl}/#business` },
     // O post pertence ao Blog, e o Blog pertence ao WebSite (ver
     // src/app/blog/layout.tsx).
