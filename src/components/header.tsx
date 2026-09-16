@@ -7,24 +7,15 @@ import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { getMapaAppUrl } from '@/lib/env';
-
-// Endereço do mapa interativo. `NEXT_PUBLIC_*` é embutida no bundle no build,
-// então ler aqui, num client component, é seguro.
-const mapaAppUrl = getMapaAppUrl();
 
 // `trailingSlash: true` (next.config.ts) — todo href interno precisa terminar
 // com barra, senão o Next responde 308 antes de servir a página.
 const links: { href: string; label: string; external?: boolean }[] = [
   { href: '/chales/', label: 'Chalés' },
   { href: '/blog/', label: 'Blog' },
-  // "Mapa" leva direto à ferramenta, que agora mora em site próprio: é o que o
-  // visitante espera do rótulo, e o link sitewide faz desta pousada um backlink
-  // do mapa (por isso sem nofollow e sem nova aba). Sem o endereço configurado
-  // cai na página de conteúdo sobre o mapa, que continua aqui.
-  mapaAppUrl
-    ? { href: mapaAppUrl, label: 'Mapa', external: true }
-    : { href: '/mapa-turistico/', label: 'Mapa' },
+  // Aponta para a página de conteúdo sobre o mapa, que é daqui e indexável;
+  // o link para a ferramenta, em site próprio, fica dentro dela.
+  { href: '/mapa-turistico/', label: 'Mapa' },
   { href: '/sobre/', label: 'Sobre' },
 ];
 
