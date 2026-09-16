@@ -148,8 +148,8 @@ function Hero({ mapaAppUrl }: Props): React.ReactNode {
             4/3 no celular e vira 16/9 no resto. `object-cover` porque o
             recorte muda com a proporção.
 
-            `priority`: com o cabeçalho travado em compacto, esta imagem entra
-            na primeira tela em telas grandes e é a candidata a LCP da rota. */}
+            `priority`: esta imagem entra na primeira tela em telas grandes e é
+            a candidata a LCP da rota. */}
         <div data-reveal className='mt-10 md:mt-14'>
           <Image
             src={FOTO}
