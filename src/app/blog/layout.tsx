@@ -1,7 +1,7 @@
-import serialize from 'serialize-javascript';
-import type { WithContext, Blog, BreadcrumbList } from 'schema-dts';
+import type { WithContext, Blog } from 'schema-dts';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import JsonLd from '@/components/json-ld';
 import { getSiteUrl } from '@/lib/env';
 import { DEFAULT_POST_IMAGE } from '@/lib/posts';
 
@@ -49,6 +49,12 @@ export function generateMetadata() {
   };
 }
 
+/*
+  O nó `Blog` fica no layout de propósito: ele é referenciado por `isPartOf` no
+  `BlogPosting` de cada post, então precisa estar em `/blog/` e em
+  `/blog/[post]/`. O breadcrumb, que é diferente em cada nível, mora em
+  `page.tsx` de cada rota.
+*/
 const jsonLd: WithContext<Blog> = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
@@ -64,40 +70,10 @@ const jsonLd: WithContext<Blog> = {
   isPartOf: { '@id': `${getSiteUrl()}/#website` },
 };
 
-const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: `${getSiteUrl()}/`,
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Blog',
-      item: `${getSiteUrl()}/blog/`,
-    },
-  ],
-};
-
 function BlogLayout({ children }: Props): React.ReactNode {
   return (
     <>
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: serialize(jsonLd),
-        }}
-      />
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: serialize(breadcrumbJsonLd),
-        }}
-      />
+      <JsonLd data={jsonLd} />
       <Header />
       {children}
       <Footer />

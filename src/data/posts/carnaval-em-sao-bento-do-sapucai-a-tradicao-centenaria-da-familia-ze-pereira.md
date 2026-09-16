@@ -99,22 +99,11 @@ Durante os **cinco dias de carnaval**, São Bento do Sapucaí oferece uma progra
 - **Participe do desfile dos Bonecões**: acontece um mês antes — se estiver na região, vale conferir
 - **Respeite a tradição**: o Zé Pereira é patrimônio cultural da cidade
 
-Para se localizar na cidade durante a festa, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) traz as praças, as igrejas e o letreiro do centro, com endereço e horário.
+Para se localizar na cidade durante a festa, o [mapa turístico de São Bento do Sapucaí](mapa:/roteiros/centro-a-pe/) traz as praças, as igrejas e o letreiro do centro, com endereço e horário.
 
 ## Onde Se Hospedar
 
 O **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú, é a base ideal para curtir o carnaval e ainda aproveitar as trilhas durante o dia. Reserve seu chalé e combine folia com aventura na serra.
-
-## FAQ
-
-### Como é o carnaval de São Bento do Sapucaí?
-É um carnaval de rua familiar e tradicional, com a centenária Família Zé Pereira, desfile de Bonecões Gigantes, blocos, escola de samba, shows e matinês para crianças. Acontece durante 5 dias no centro da cidade.
-
-### O que é a Família Zé Pereira?
-É um grupo folclórico centenário que percorre as ruas antes e durante o carnaval com percussão e batuque, anunciando a chegada da folia. É a tradição mais marcante do carnaval sambentista.
-
-### Preciso reservar hospedagem com antecedência para o carnaval?
-Sim. Reserve com pelo menos 60 dias de antecedência. Durante o carnaval, chalés e pousadas da região esgotam rapidamente.
 
 ## Conclusão
 

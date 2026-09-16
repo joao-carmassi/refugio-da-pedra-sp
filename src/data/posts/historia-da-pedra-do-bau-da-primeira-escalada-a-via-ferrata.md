@@ -124,18 +124,7 @@ Em 2010, foi criado o **Monumento Natural (MoNa) da Pedra do Baú**, unidade de 
 
 A via ferrata continua sendo a principal forma de acesso ao cume, agora com **equipamentos de segurança obrigatórios** e guias credenciados. A subida leva aproximadamente 50 minutos pelas escadas metálicas e a vista de 360 graus do topo continua inesquecível.
 
-O cume, o Bauzinho, a Ana Chata, a rampa de voo livre e a portaria do MoNa estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), com a rota de carro até a entrada de cada trilha.
-
-## FAQ
-
-### Quem foram os primeiros a escalar a Pedra do Baú?
-Os irmãos Cortez — Antônio e João Teixeira de Souza — em 12 de agosto de 1940. Escalaram sem equipamentos, encontrando uma rota na face sul após Antônio sonhar com o caminho.
-
-### Quando foi construída a via ferrata da Pedra do Baú?
-A primeira via ferrata (face sul) foi completada em agosto de 1943, financiada pelo empresário Luís Dumont Villares, sobrinho de Santos Dumont.
-
-### Existia um abrigo no topo da Pedra do Baú?
-Sim. Inaugurado em janeiro de 1947, foi um dos primeiros abrigos de montanha do Brasil, com 21 camas, lareira e sistema de água. Foi destruído por vandalismo e hoje restam apenas os alicerces.
+O cume, o Bauzinho, a Ana Chata, a rampa de voo livre e a portaria do MoNa estão no [mapa turístico de São Bento do Sapucaí](mapa:/lugares/pedra-do-bau/), com a rota de carro até a entrada de cada trilha.
 
 ## Conclusão
 

@@ -105,18 +105,7 @@ Com os avanços da medicina e a erradicação da tuberculose, os sanatórios for
 
 As duas cidades se complementam perfeitamente: Campos do Jordão oferece gastronomia, compras e cultura, enquanto São Bento do Sapucaí oferece trilhas, natureza e aventura. Juntas, formam o roteiro ideal na Serra da Mantiqueira.
 
-Do lado sambentista, o [mapa turístico do município](/mapa-turistico/) mostra onde ficam as trilhas, as cachoeiras e o centro.
-
-## FAQ
-
-### Quantos habitantes tem Campos do Jordão?
-Aproximadamente 52 mil habitantes fixos, segundo estimativa do IBGE. No inverno, a população flutuante pode chegar a centenas de milhares de visitantes por mês.
-
-### Campos do Jordão é cidade grande?
-Não. Com ~52 mil habitantes, é uma cidade de porte pequeno. O charme está justamente no tamanho compacto e na atmosfera de interior serrano. No entanto, a infraestrutura turística é robusta.
-
-### Quantos turistas Campos do Jordão recebe por ano?
-A cidade recebe mais de 3 milhões de visitantes por ano, com pico de movimento entre junho e agosto durante a temporada de inverno e o Festival de Inverno.
+Do lado sambentista, o [mapa turístico do município](mapa:/mapa/) mostra onde ficam as trilhas, as cachoeiras e o centro.
 
 ## Conclusão
 

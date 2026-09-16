@@ -89,7 +89,7 @@ As cidades mais encantadoras da Mantiqueira são justamente as que têm **menos 
 
 Com pouco mais de **11 mil moradores**, São Bento do Sapucaí concentra uma oferta turística desproporcional ao seu tamanho: monumento natural com escalada, circuito de produtores artesanais (vinho, azeite, cerveja), festivais literários e de aventura, além de uma cena gastronômica que atrai visitantes de toda a Grande São Paulo. É o caso mais emblemático de como as cidades compactas da Mantiqueira entregam experiências de alto nível sem aglomeração.
 
-A oferta inteira cabe num [mapa turístico do município](/mapa-turistico/): trilhas, cachoeiras, mirantes, igrejas e ateliês, cada um com endereço e horário.
+A oferta inteira cabe num [mapa turístico do município](mapa:/mapa/): trilhas, cachoeiras, mirantes, igrejas e ateliês, cada um com endereço e horário.
 
 ## Perfil Demográfico da Região
 
@@ -99,17 +99,6 @@ A Serra da Mantiqueira é predominantemente composta por:
 - **População envelhecida**: muitos jovens migram para centros maiores
 - **Novos moradores**: nos últimos anos, a pandemia acelerou a migração de famílias urbanas em busca de qualidade de vida na serra
 - **Turismo como motor econômico**: em cidades como Campos do Jordão, São Bento e Monte Verde, o turismo é a principal fonte de renda
-
-## FAQ
-
-### Quantos habitantes tem a Serra da Mantiqueira?
-A região total da Serra da Mantiqueira abrange dezenas de municípios em SP, MG e RJ, com mais de 2 milhões de habitantes no total. As cidades turísticas mais procuradas são pequenas: São Bento do Sapucaí (~11.600), Gonçalves (~4.000), Monte Verde (~5.000).
-
-### Qual a maior cidade da Serra da Mantiqueira?
-Considerando a serra como um todo, Poços de Caldas (~168.000) e Barbacena (~136.000) são as maiores. Entre os destinos turísticos clássicos, Campos do Jordão (~52.000) é a mais populosa.
-
-### Qual a menor cidade turística da Mantiqueira?
-Gonçalves (MG), com cerca de 4.000 habitantes, é uma das menores e mais charmosas. Monte Verde (distrito de Camanducaia) tem ~5.000.
 
 ## Conclusão
 

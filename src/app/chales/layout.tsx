@@ -1,10 +1,6 @@
-import serialize from 'serialize-javascript';
-import type { WithContext, ItemList, BreadcrumbList } from 'schema-dts';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { getSiteUrl } from '@/lib/env';
-import chales from '@/data/chales.json';
-import slugify from 'slugify';
 
 interface Props {
   children: React.ReactNode;
@@ -56,57 +52,15 @@ export function generateMetadata() {
   };
 }
 
-const jsonLd: WithContext<ItemList> = {
-  '@context': 'https://schema.org',
-  '@type': 'ItemList',
-  '@id': `${pageUrl}#acomodacoes`,
-  name: 'Acomodações - Pousada Refúgio da Pedra SP',
-  description:
-    'Chalés, cabanas e domos da Pousada Refúgio da Pedra SP em São Bento do Sapucaí.',
-  numberOfItems: chales.length,
-  itemListOrder: 'https://schema.org/ItemListOrderAscending',
-  itemListElement: chales.map((chale, index) => ({
-    '@type': 'ListItem' as const,
-    position: index + 1,
-    name: chale.nome,
-    url: `${pageUrl}${slugify(chale.nome, { lower: true, strict: true })}/`,
-  })),
-};
-
-const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: `${getSiteUrl()}/`,
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: 'Chalés',
-      item: pageUrl,
-    },
-  ],
-};
+/*
+  JSON-LD da listagem (CollectionPage, ItemList e BreadcrumbList) mora em
+  `page.tsx`, não aqui: este layout também envolve `/chales/[slug]/`, que tem o
+  próprio breadcrumb de três níveis, e os nós vazariam para as páginas de chalé.
+*/
 
 function ChalesLayout({ children }: Props): React.ReactNode {
   return (
     <>
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: serialize(jsonLd),
-        }}
-      />
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: serialize(breadcrumbJsonLd),
-        }}
-      />
       <Header />
       {children}
       <Footer />

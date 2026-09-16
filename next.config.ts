@@ -41,15 +41,16 @@ const getMapaRedirects = () => {
   if (!mapaUrl) return [];
 
   return [
-    // `:caminho*` com a barra depois cobre `/mapa/` e qualquer subcaminho.
+    // `:caminho*` com a barra depois cobre `/mapa/` e qualquer subcaminho. A
+    // query (`?ponto=`, `?categoria=`) segue junto: o Next a repassa ao destino.
     { source: '/mapa/:caminho*/', destination: `${mapaUrl}/mapa/` },
     {
       source: '/mapa-turistico/hot-stone/',
-      destination: `${mapaUrl}/hot-stone/`,
+      destination: `${mapaUrl}/lugares/hot-stone/`,
     },
     {
       source: '/mapa-turistico/pedra-do-bau/',
-      destination: `${mapaUrl}/pedra-do-bau/`,
+      destination: `${mapaUrl}/lugares/pedra-do-bau/`,
     },
     { source: '/kit/adesivo/', destination: `${mapaUrl}/kit/adesivo/` },
     { source: '/relatorio/', destination: `${mapaUrl}/relatorio/` },

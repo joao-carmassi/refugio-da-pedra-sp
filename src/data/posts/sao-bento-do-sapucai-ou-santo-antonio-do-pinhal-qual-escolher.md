@@ -111,18 +111,7 @@ Santo Antônio do Pinhal é encantadora e merece crédito:
 
 Como ficam a apenas **~25 km** (~30 min de carro), o ideal é **incluir as duas** no roteiro. Use São Bento do Sapucaí como base (com hospedagem no **Refúgio da Pedra SP**) e faça um bate-volta a Santo Antônio do Pinhal para conhecer o Pico Agudo.
 
-Para a parte de São Bento, o [mapa turístico do município](/mapa-turistico/) mostra o que dá para encaixar em cada dia, com endereço e horário de cada ponto.
-
-## FAQ
-
-### São Bento do Sapucaí ou Santo Antônio do Pinhal: qual tem mais atrações?
-São Bento do Sapucaí tem mais trilhas, cachoeiras, enoturismo, cultura e eventos. É o destino mais completo. Santo Antônio do Pinhal é mais compacta, com destaque para o Pico Agudo.
-
-### Dá para visitar as duas cidades na mesma viagem?
-Sim. Ficam a ~25 km (~30 min de carro). Dá para hospedar-se em São Bento e fazer um bate-volta a Santo Antônio do Pinhal.
-
-### Qual é mais indicada para aventureiros?
-São Bento do Sapucaí, pela Pedra do Baú (via ferrata), diversidade de trilhas, rapel no Bauzinho e eventos como INDOMIT e Mountain Festival.
+Para a parte de São Bento, o [mapa turístico do município](mapa:/mapa/) mostra o que dá para encaixar em cada dia, com endereço e horário de cada ponto.
 
 ## Conclusão
 

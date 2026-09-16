@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 import { Instagram } from 'lucide-react';
 import Image from 'next/image';
 import generateWhatsLink from '@/lib/generate-whats-link';
-import { getInPhoneNumber } from '@/lib/env';
+import { getInPhoneNumber, getMapaAppUrl } from '@/lib/env';
 
 // Endereço informado pelo proprietário. Os campos vazios são renderizados
 // condicionalmente — nunca inventar logradouro, número ou CEP: um NAP
@@ -69,12 +69,18 @@ function WhatsappIcon(props: React.SVGProps<SVGSVGElement>) {
 // com barra, senão o Next responde 308 antes de servir a página.
 // Ft1 pede UMA fila curta de links, não um índice em colunas: o sitemap já
 // cobre a árvore completa, e cada chalé é alcançado por /chales/.
-const links = [
+const mapaAppUrl = getMapaAppUrl();
+
+const links: { title: string; href: string; external?: boolean }[] = [
   { title: 'Chalés', href: '/chales/' },
   { title: 'Blog', href: '/blog/' },
-  // O texto-âncora é a palavra-chave, e aponta para a página que a disputa. O
-  // mapa interativo, em site próprio, fica a um clique dali.
+  // O texto-âncora é a palavra-chave, e aponta para a página que a disputa.
   { title: 'Mapa turístico', href: '/mapa-turistico/' },
+  // O mapa em si, no site próprio. Link comum, sem nofollow nem nova aba: a
+  // pousada é backlink do mapa. Sem o endereço configurado, não aparece.
+  ...(mapaAppUrl
+    ? [{ title: 'Mapa interativo', href: mapaAppUrl, external: true }]
+    : []),
   { title: 'Sobre', href: '/sobre/' },
   { title: 'Reservar', href: '/reservar/' },
   { title: 'Privacidade', href: '/politica-de-privacidade/' },
@@ -178,12 +184,21 @@ const Footer = () => {
                     ·
                   </span>
                 ) : null}
-                <Link
-                  href={link.href}
-                  className={`inline-flex min-h-11 items-center font-medium text-foreground transition-colors hover:text-accent-deep ${focusRing}`}
-                >
-                  {link.title}
-                </Link>
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    className={`inline-flex min-h-11 items-center font-medium text-foreground transition-colors hover:text-accent-deep ${focusRing}`}
+                  >
+                    {link.title}
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={`inline-flex min-h-11 items-center font-medium text-foreground transition-colors hover:text-accent-deep ${focusRing}`}
+                  >
+                    {link.title}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

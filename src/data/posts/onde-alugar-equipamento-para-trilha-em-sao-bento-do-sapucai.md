@@ -88,7 +88,7 @@ Ao contratar qualquer passeio que exija equipamento técnico, **tudo está inclu
 - **Endereço**: Av. Conselheiro Rodrigues Alves, 143, Centro (em frente ao Restaurante Sabor da Serra)
 - **Ponto de encontro para passeios**: Restaurante Pedra do Baú (R. das Araucárias, s/n, Paiol Grande)
 
-O trecho entre o centro e o complexo está no [mapa turístico da cidade](/mapa-turistico/), que mostra a portaria do Monumento Natural e a rota de carro até ela.
+O trecho entre o centro e o complexo está no [mapa turístico da cidade](mapa:/mapa/?ponto=mona-pedra-bau), que mostra a portaria do Monumento Natural e a rota de carro até ela.
 
 ## O Que Você Precisa Levar por Conta Própria
 
@@ -123,17 +123,6 @@ Antes de contratar, verifique:
 ## Quanto Custa
 
 Os valores são consultados diretamente com a Baú Ecoturismo pelo WhatsApp. O pagamento é feito **50% na reserva (via Pix)** e **50% na saída do passeio (dinheiro ou Pix)**. A agência não aceita cartão.
-
-## FAQ
-
-### Preciso comprar equipamento para subir a Pedra do Baú?
-Não. Ao contratar um passeio com a Baú Ecoturismo, todo o equipamento de segurança (corda, cadeirinha, capacete e mosquetões) está incluso.
-
-### Posso subir a Pedra do Baú sem equipamento?
-Não. A Portaria Normativa da Fundação Florestal exige equipamentos de segurança e condutor credenciado para a subida pela via ferrata.
-
-### Onde fica a Baú Ecoturismo?
-A agência fica na Av. Conselheiro Rodrigues Alves, 143, Centro de São Bento do Sapucaí. O ponto de encontro dos passeios é no Restaurante Pedra do Baú.
 
 ## Conclusão
 

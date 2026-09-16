@@ -101,7 +101,7 @@ A maioria dos viajantes que conhece São Bento do Sapucaí faz pelo menos um bat
 
 Base ideal: **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú — perfeito para explorar os dois destinos.
 
-Para montar a parte sambentista do roteiro, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra a distância entre as trilhas, as cachoeiras e o centro.
+Para montar a parte sambentista do roteiro, o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) mostra a distância entre as trilhas, as cachoeiras e o centro.
 
 ## Dicas Práticas
 
@@ -109,17 +109,6 @@ Para montar a parte sambentista do roteiro, o [mapa turístico de São Bento do 
 - **Combustível**: complete o tanque em qualquer uma das cidades antes de pegar a estrada
 - **Horário de retorno**: se for a Campos, volte para São Bento antes de escurecer
 - **Inverno**: Campos do Jordão lota de junho a agosto — prefira dias de semana para o bate-volta
-
-## FAQ
-
-### Qual a distância de São Bento do Sapucaí a Campos do Jordão?
-Aproximadamente 40 km, percorridos em cerca de 1 hora de carro por estrada serrana.
-
-### Dá para fazer bate-volta de São Bento a Campos do Jordão?
-Sim. A distância é curta e perfeitamente viável para um bate-volta de meio dia ou dia inteiro.
-
-### Qual estrada liga São Bento do Sapucaí a Campos do Jordão?
-A SP-173, passando por Santo Antônio do Pinhal. Estrada serrana, bonita, mas com curvas — atenção redobrada.
 
 ## Conclusão
 

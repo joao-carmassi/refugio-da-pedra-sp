@@ -36,7 +36,7 @@ faq_schema:
         text: >-
           Foque em Capivari (compras, chocolaterias), suba de teleférico ao
           Morro do Elefante e encerre com um fondue. Se sobrar tempo, visite o
-          Pico do Itapeva.
+          Pico do Itapeva para a vista panorâmica.
     - '@type': Question
       name: Campos do Jordão é bom para crianças?
       acceptedAnswer:
@@ -44,7 +44,7 @@ faq_schema:
         text: >-
           Sim. O Horto Florestal tem pedalinhos e trilhas fáceis, o teleférico
           encanta todas as idades e os jardins do Amantikir são lúdicos e
-          fotogênicos.
+          fotogênicos. As chocolaterias completam a diversão.
     - '@type': Question
       name: Preciso de carro para visitar Campos do Jordão?
       acceptedAnswer:
@@ -125,18 +125,7 @@ Artesanato em lã, malhas, cerâmicas e produtos regionais podem ser encontrados
 
 Campos do Jordão está a apenas **~40 km de São Bento do Sapucaí**. Hospede-se no Refúgio da Pedra SP, aproveite as trilhas da Pedra do Baú e reserve dias alternados para conhecer Campos do Jordão — o melhor dos dois mundos na Mantiqueira.
 
-Para planejar os dias em São Bento, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra as trilhas do Baú, as cachoeiras e o centro histórico, com endereço e horário.
-
-## FAQ
-
-### O que fazer em Campos do Jordão em 1 dia?
-Foque em Capivari (compras, chocolaterias), suba de teleférico ao Morro do Elefante e encerre com um fondue. Se sobrar tempo, visite o Pico do Itapeva para a vista panorâmica.
-
-### Campos do Jordão é bom para crianças?
-Sim. O Horto Florestal tem pedalinhos e trilhas fáceis, o teleférico encanta todas as idades e os jardins do Amantikir são lúdicos e fotogênicos. As chocolaterias completam a diversão.
-
-### Preciso de carro para visitar Campos do Jordão?
-Carro facilita muito, especialmente para o Horto Florestal e o Pico do Itapeva. Capivari pode ser explorado a pé. Há opções de transfer e táxi na cidade.
+Para planejar os dias em São Bento, o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) mostra as trilhas do Baú, as cachoeiras e o centro histórico, com endereço e horário.
 
 ## Conclusão
 

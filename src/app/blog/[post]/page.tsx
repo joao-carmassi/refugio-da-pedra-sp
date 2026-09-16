@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPostBySlug } from '@/lib/posts';
+import { getPostBySlug, getPostFaq } from '@/lib/posts';
 import BlogPostContent from './blog-post-content';
 
 interface Props {
@@ -26,6 +26,7 @@ const BlogPost = async ({ params }: Props): Promise<React.ReactNode> => {
       post={{ title: post.title, description: post.description }}
       intro={intro}
       sections={sections}
+      faq={getPostFaq(post)}
     />
   );
 };

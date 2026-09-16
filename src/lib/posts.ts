@@ -1,24 +1,31 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { getMapaUrl } from '@/lib/env';
 
 const postsDirectory = path.join(process.cwd(), 'src', 'data', 'posts');
 
-export interface FaqAnswer {
-  '@type': 'Answer';
-  text: string;
+/**
+ * Formato cru de `faq_schema` no frontmatter. Não é o nó JSON-LD: é só a fonte
+ * das perguntas, lida com cautela porque YAML não tem tipo. O `FAQPage`
+ * tipado com schema-dts é montado em `blog/[post]/layout.tsx`, e a seção
+ * visível em `blog/[post]/faq.tsx` — os dois a partir de `getPostFaq`, para o
+ * markup nunca descrever pergunta que não está na tela.
+ */
+interface FaqFrontmatter {
+  mainEntity?: {
+    name?: unknown;
+    acceptedAnswer?: { text?: unknown };
+  }[];
 }
 
-export interface FaqQuestion {
-  '@type': 'Question';
-  name: string;
-  acceptedAnswer: FaqAnswer;
-}
-
-export interface FaqSchema {
-  '@context': string;
-  '@type': 'FAQPage';
-  mainEntity: FaqQuestion[];
+/**
+ * Pergunta frequente do post. `resposta` é markdown de uma linha (negrito e
+ * links, inclusive `mapa:` já resolvido); o JSON-LD usa `faqTextoPuro`.
+ */
+export interface PostFaqItem {
+  pergunta: string;
+  resposta: string;
 }
 
 export interface Post {
@@ -33,7 +40,7 @@ export interface Post {
   focus_keywords: string[];
   // Opcional: nem todo frontmatter garante a chave, então o consumidor precisa
   // se proteger antes de serializar o JSON-LD.
-  faq_schema?: FaqSchema;
+  faq_schema?: FaqFrontmatter;
   date: string;
   // Campos opcionais de frontmatter, ainda não preenchidos nos posts.
   dateModified?: string;
@@ -79,6 +86,55 @@ export function getAllPostsMeta(): PostListItem[] {
     });
 }
 
+/*
+  Links para o mapa turístico, que mora em site próprio cujo endereço vem de
+  `NEXT_PUBLIC_MAPA_URL`. Como o markdown é estático, os posts escrevem o destino
+  com o prefixo `mapa:` e o caminho no site do mapa — `[texto](mapa:/mapa/?ponto=hot-stone)`,
+  `[texto](mapa:/lugares/pedra-do-bau/)`, `[texto](mapa:/)` — e a troca pelo
+  endereço absoluto acontece aqui, na leitura, antes de qualquer consumidor ver
+  o conteúdo. Sem o endereço configurado, o link cai na página de conteúdo
+  `/mapa-turistico/` deste site. Nenhum `mapa:` pode chegar cru ao HTML: o
+  react-markdown descartaria o href por não reconhecer o protocolo.
+*/
+const MAPA_LINK = /\]\(mapa:(\/[^)\s]*)\)/g;
+
+export function resolveMapaLinks(markdown: string): string {
+  const mapaUrl = getMapaUrl();
+
+  return markdown.replace(
+    MAPA_LINK,
+    (_, caminho: string) =>
+      `](${mapaUrl ? `${mapaUrl}${caminho}` : '/mapa-turistico/'})`,
+  );
+}
+
+export function getPostFaq(post: Pick<Post, 'faq_schema'>): PostFaqItem[] {
+  const itens = post.faq_schema?.mainEntity;
+  if (!Array.isArray(itens)) return [];
+
+  return itens.flatMap((item) => {
+    const pergunta = item?.name;
+    const resposta = item?.acceptedAnswer?.text;
+    if (typeof pergunta !== 'string' || typeof resposta !== 'string') return [];
+
+    return [
+      { pergunta: pergunta.trim(), resposta: resolveMapaLinks(resposta.trim()) },
+    ];
+  });
+}
+
+/**
+ * Texto que o leitor vê na resposta renderizada, sem a sintaxe de markdown:
+ * link vira só o rótulo, ênfase perde os asteriscos. É o `text` do `Answer`.
+ */
+export function faqTextoPuro(markdown: string): string {
+  return markdown
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export function getAllPosts(): Post[] {
   const fileNames = fs.readdirSync(postsDirectory);
 
@@ -92,7 +148,7 @@ export function getAllPosts(): Post[] {
 
       return {
         slug,
-        content: content.trim(),
+        content: resolveMapaLinks(content.trim()),
         ...(data as Omit<Post, 'slug' | 'content'>),
       };
     });
@@ -107,7 +163,7 @@ export function getPostBySlug(slug: string): Post | undefined {
 
   return {
     slug,
-    content: content.trim(),
+    content: resolveMapaLinks(content.trim()),
     ...(data as Omit<Post, 'slug' | 'content'>),
   };
 }

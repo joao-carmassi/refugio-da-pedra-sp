@@ -122,18 +122,7 @@ A serra se estende desde a região de **Poços de Caldas** (MG) e **Bragança Pa
 | Gonçalves | ~210 km | 3h |
 | Visconde de Mauá | ~260 km | 3h30–4h |
 
-Chegando a São Bento do Sapucaí, o [mapa turístico da cidade](/mapa-turistico/) mostra onde fica cada atração do município, com endereço e horário.
-
-## FAQ
-
-### Onde fica a Serra da Mantiqueira?
-Na Região Sudeste do Brasil, entre os estados de São Paulo, Minas Gerais e Rio de Janeiro. Estende-se por mais de 500 km com picos acima de 2.700 m.
-
-### Qual estado tem mais cidades na Serra da Mantiqueira?
-Minas Gerais. A maior parte dos municípios da serra fica em MG, embora as estâncias paulistas (Campos do Jordão, São Bento do Sapucaí) sejam muito populares.
-
-### Qual a distância de São Paulo à Serra da Mantiqueira?
-As cidades mais próximas ficam entre 160 e 210 km: São Bento do Sapucaí (~185 km), Campos do Jordão (~170 km), Monte Verde (~160 km).
+Chegando a São Bento do Sapucaí, o [mapa turístico da cidade](mapa:/mapa/) mostra onde fica cada atração do município, com endereço e horário.
 
 ## Conclusão
 

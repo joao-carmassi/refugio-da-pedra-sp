@@ -45,8 +45,8 @@ faq_schema:
         text: >-
           Campos do Jordão é mais acessível, com clima mais ameno que a Suíça
           real. Neve é rara (geadas são comuns no inverno). A arquitetura
-          enxaimel é adaptada, mas a experiência gastronômica e cultural é
-          genuinamente encantadora.
+          enxaimel é adaptada, não original, mas a experiência gastronômica e
+          cultural é genuinamente encantadora.
     - '@type': Question
       name: Campos do Jordão vale a pena no verão?
       acceptedAnswer:
@@ -107,22 +107,11 @@ Montanhas cobertas de Mata Atlântica e bosques de araucárias emolduram a cidad
 - **Proximidade**: a ~167 km de São Paulo e ~40 km de São Bento do Sapucaí
 - **Ideal para casais**: restaurantes românticos, lareiras e passeios a dois
 - **Cultura e natureza**: museus, jardins, trilhas e mirantes num só destino
-- **Combine com São Bento do Sapucaí**: fique no Refúgio da Pedra SP e visite Campos do Jordão num bate-volta — o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra o que fazer na base
+- **Combine com São Bento do Sapucaí**: fique no Refúgio da Pedra SP e visite Campos do Jordão num bate-volta — o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) mostra o que fazer na base
 
 ## Como Chegar
 
 Campos do Jordão está a **aprox. 167 km de São Paulo** pela Rodovia Floriano Rodrigues Pinheiro (SP-123) e a **aprox. 40 km de São Bento do Sapucaí** pela SP-171.
-
-## FAQ
-
-### Por que Campos do Jordão é chamada de Suíça Brasileira?
-Pela combinação de arquitetura enxaimel no estilo europeu, clima frio de montanha com temperaturas abaixo de 0°C no inverno, gastronomia inspirada na culinária suíça e alemã, e paisagens montanhosas que lembram os Alpes.
-
-### Qual a diferença entre Campos do Jordão e a Suíça de verdade?
-Campos do Jordão é mais acessível, com clima mais ameno que a Suíça real. Neve é rara (geadas são comuns no inverno). A arquitetura enxaimel é adaptada, não original, mas a experiência gastronômica e cultural é genuinamente encantadora.
-
-### Campos do Jordão vale a pena no verão?
-Sim. Embora o inverno seja a alta temporada, o verão oferece temperaturas amenas (15–22°C), trilhas exuberantes e preços mais acessíveis. A cidade é bonita o ano todo.
 
 ## Conclusão
 

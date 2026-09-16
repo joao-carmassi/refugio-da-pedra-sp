@@ -36,16 +36,16 @@ faq_schema:
       acceptedAnswer:
         '@type': Answer
         text: >-
-          A Trilha do Bauzinho é a mais tranquila: cerca de 30 minutos de
-          caminhada com panorama espetacular da Pedra do Baú — indicada para
-          iniciantes e famílias.
+          A Trilha do Bauzinho é a mais tranquila: 2,5 km ida e volta (~30
+          minutos), com panorama espetacular da Pedra do Baú — indicada para
+          iniciantes e famílias. Leve lanterna para a volta.
     - '@type': Question
       name: Com quanto tempo de antecedência devo reservar o Refúgio da Pedra SP?
       acceptedAnswer:
         '@type': Answer
         text: >-
           Mínimo 30 dias em feriados e no inverno serrano (junho a agosto),
-          quando a demanda é maior.
+          quando a demanda é maior. No carnaval, reserve com pelo menos 60 dias.
 ---
 **O Refúgio da Pedra SP é a pousada mais próxima da Pedra do Baú**: fica a apenas ~1,5 km do monumento rochoso, em São Bento do Sapucaí, com 5 chalés privativos em meio à Mata Atlântica.
 
@@ -78,7 +78,7 @@ Há três entradas para o Complexo da Pedra do Baú:
 
 Além das trilhas, explore também: **Cachoeira dos Amores** (6 km), **Oliq Azeite**, **Vinícola Villa Santa Maria** e as encantadoras **Capelinhas de Mosaico**.
 
-Tudo isso a partir da mesma base: o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) é mantido pelo Refúgio e mede a distância de cada ponto do município até a pousada.
+Tudo isso a partir da mesma base: o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/?ponto=refugio) é mantido pelo Refúgio e mede a distância de cada ponto do município até a pousada.
 
 ## Como Chegar
 
@@ -90,14 +90,6 @@ São Bento do Sapucaí está a **aprox. 200 km de São Paulo** e **aprox. 40 km 
 - **O que levar**: calçado de trilha, camadas de roupa, protetor solar, repelente e lanterna
 - **Equipamento obrigatório** para a via ferrata — contate Baú Ecoturismo: (12) 9 9737-5968 ou (12) 9 9623-1620
 - Reserve com antecedência em feriados, carnaval (Bloco do Zé Pereira centenário) e inverno (jun–ago)
-
-## FAQ
-
-### Qual é a trilha mais fácil saindo do Refúgio da Pedra SP?
-A Trilha do Bauzinho é a mais tranquila: 2,5 km ida e volta (~30 minutos), com panorama espetacular da Pedra do Baú — indicada para iniciantes e famílias. Leve lanterna para a volta.
-
-### Com quanto tempo de antecedência devo reservar?
-Mínimo 30 dias em feriados e no inverno serrano (junho a agosto), quando a demanda é maior. No carnaval, reserve com pelo menos 60 dias.
 
 ## Conclusão
 

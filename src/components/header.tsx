@@ -7,18 +7,50 @@ import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { getMapaAppUrl } from '@/lib/env';
+
+// Endereço do mapa interativo. `NEXT_PUBLIC_*` é embutida no bundle no build,
+// então ler aqui, num client component, é seguro.
+const mapaAppUrl = getMapaAppUrl();
 
 // `trailingSlash: true` (next.config.ts) — todo href interno precisa terminar
 // com barra, senão o Next responde 308 antes de servir a página.
-const links = [
+const links: { href: string; label: string; external?: boolean }[] = [
   { href: '/chales/', label: 'Chalés' },
   { href: '/blog/', label: 'Blog' },
-  // Aponta para a página de conteúdo sobre o mapa: o link de nav sitewide é o
-  // sinal interno mais forte do site e precisa ir para uma rota indexável
-  // daqui. Quem quer a ferramenta chega nela pelo CTA da própria página.
-  { href: '/mapa-turistico/', label: 'Mapa' },
+  // "Mapa" leva direto à ferramenta, que agora mora em site próprio: é o que o
+  // visitante espera do rótulo, e o link sitewide faz desta pousada um backlink
+  // do mapa (por isso sem nofollow e sem nova aba). Sem o endereço configurado
+  // cai na página de conteúdo sobre o mapa, que continua aqui.
+  mapaAppUrl
+    ? { href: mapaAppUrl, label: 'Mapa', external: true }
+    : { href: '/mapa-turistico/', label: 'Mapa' },
   { href: '/sobre/', label: 'Sobre' },
 ];
+
+// Link externo vai em `<a>` puro: `next/link` só serve para rotas deste app.
+function NavAnchor({
+  link,
+  ...props
+}: {
+  link: (typeof links)[number];
+  className?: string;
+  onClick?: () => void;
+}): React.ReactNode {
+  if (link.external) {
+    return (
+      <a href={link.href} {...props}>
+        {link.label}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={link.href} {...props}>
+      {link.label}
+    </Link>
+  );
+}
 
 // Anel de foco da casa (design.md § Microinteractions): idêntico ao do Button,
 // aplicado à mão nos links porque eles não passam pelo `buttonVariants`.
@@ -308,9 +340,7 @@ function Header({ compact: travado }: Props = {}): React.ReactNode {
                 <ul className='flex items-center justify-center gap-8'>
                   {links.map((link) => (
                     <li key={link.href}>
-                      <Link href={link.href} className={navLink}>
-                        {link.label}
-                      </Link>
+                      <NavAnchor link={link} className={navLink} />
                     </li>
                   ))}
                 </ul>
@@ -329,20 +359,38 @@ function Header({ compact: travado }: Props = {}): React.ReactNode {
                   : 'pointer-events-none translate-y-3 opacity-0 blur-[2px]',
               )}
             >
+              {/* Brasão ao lado do nome em duas linhas: na barra o wordmark
+                  sozinho perdia a identidade que o masthead dá com o brasão
+                  grande. "Pousada" vem em cima, menor, e o nome em destaque. */}
               <Link
-                className={cn(wordmark, 'text-xl', focusRing)}
+                className={cn(
+                  'flex items-center gap-2.5 rounded-xs',
+                  focusRing,
+                )}
                 href='/'
-                aria-label='Refúgio da Pedra SP — página inicial'
+                aria-label='Pousada Refúgio da Pedra SP — página inicial'
               >
-                Refúgio da Pedra SP
+                <Image
+                  src='/logo.png'
+                  alt=''
+                  width={88}
+                  height={88}
+                  className='size-10 shrink-0'
+                />
+                <span className='flex flex-col leading-none'>
+                  <span className='text-[0.6875rem] font-medium text-muted-foreground'>
+                    Pousada
+                  </span>
+                  <span className={cn(wordmark, 'mt-1 text-base')}>
+                    Refúgio da Pedra SP
+                  </span>
+                </span>
               </Link>
 
               <ul className='ml-auto flex items-center gap-6'>
                 {links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className={navLink}>
-                      {link.label}
-                    </Link>
+                    <NavAnchor link={link} className={navLink} />
                   </li>
                 ))}
               </ul>
@@ -383,14 +431,12 @@ function Header({ compact: travado }: Props = {}): React.ReactNode {
                 <ul>
                   {links.map((link) => (
                     <li key={link.href}>
-                      <Link
-                        href={link.href}
+                      <NavAnchor
+                        link={link}
                         onClick={() => setIsOpen(false)}
                         // min-h-11 = 44px de alvo de toque (WCAG 2.5.8).
                         className={`flex min-h-11 items-center text-base font-medium text-foreground ${focusRing}`}
-                      >
-                        {link.label}
-                      </Link>
+                      />
                     </li>
                   ))}
                 </ul>

@@ -126,21 +126,10 @@ Comum nas manhãs de inverno, o nevoeiro cobre os vales e cria cenários fotogê
 - Roupas leves para o dia
 - **Sempre leve um agasalho** — as noites são frescas mesmo no auge do verão
 
-## FAQ
-
-### Quando faz mais frio em Campos do Jordão?
-Junho e julho são os meses mais frios, com mínimas que podem chegar a 0°C ou abaixo. Geadas são frequentes nas madrugadas.
-
-### Campos do Jordão tem neve?
-Neve é um fenômeno muito raro em Campos do Jordão. Houve registros isolados, mas não é algo previsível. Geadas e temperaturas abaixo de 0°C são comuns no inverno.
-
-### Faz frio em Campos do Jordão no verão?
-Os dias de verão são amenos (até 25°C), mas as noites continuam frescas (12–15°C). Comparado ao restante de São Paulo, Campos do Jordão é fresca o ano todo graças à altitude de ~1.628 m.
-
 ## Conclusão
 
 O frio de Campos do Jordão é real e intenso no inverno — perfeito para quem busca lareiras, fondues e chocolate quente. De junho a agosto, prepare-se para temperaturas que podem chegar a 0°C. **Hospede-se no Refúgio da Pedra SP** e combine o frio de Campos do Jordão com as trilhas de São Bento do Sapucaí — a Serra da Mantiqueira espera por você!
 
-Antes de encarar as trilhas, vale conferir o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/): ele traz o horário de abertura de cada ponto do município.
+Antes de encarar as trilhas, vale conferir o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/?categoria=aventura): ele traz o horário de abertura de cada ponto do município.
 
 *Veja também: [Melhor Época para Visitar Campos do Jordão](/blog/qual-e-a-melhor-epoca-para-visitar-campos-do-jordao/) | [Altitude de Campos do Jordão](/blog/qual-a-altitude-de-campos-do-jordao-dados-e-curiosidades/)*

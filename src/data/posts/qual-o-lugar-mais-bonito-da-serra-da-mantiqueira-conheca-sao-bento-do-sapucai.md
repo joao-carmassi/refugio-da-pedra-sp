@@ -107,18 +107,7 @@ O título de "lugar mais bonito" vai além do visual:
 - **Eventos**: FLIPES, Mountain Festival, INDOMIT, Carnaval centenário
 - **Hospedagem**: Refúgio da Pedra SP, a ~1,5 km da Pedra do Baú
 
-Onde fica cada uma dessas coisas está no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) — dos ateliês do vale às igrejas e capelinhas do centro.
-
-## FAQ
-
-### Qual o lugar mais bonito da Serra da Mantiqueira?
-São Bento do Sapucaí é forte candidata: a Pedra do Baú (1.964 m) com via ferrata, o pôr do sol do Bauzinho, cachoeiras e estradas rurais formam um conjunto de paisagens único na serra.
-
-### O que são Bento do Sapucaí tem que outros destinos da Mantiqueira não têm?
-A via ferrata da Pedra do Baú (única no Brasil nesse estilo), o título de Toscana Brasileira (vinícola + azeite + queijos) e a combinação de aventura + gastronomia + cultura numa cidade com apenas ~11.600 habitantes.
-
-### Dá para ver a Pedra do Baú sem escalar?
-Sim. O Bauzinho oferece uma trilha curta e fácil com vista privilegiada da Pedra do Baú. O pôr do sol visto do Bauzinho é imperdível mesmo para quem não escala.
+Onde fica cada uma dessas coisas está no [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) — dos ateliês do vale às igrejas e capelinhas do centro.
 
 ## Conclusão
 

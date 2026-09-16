@@ -20,7 +20,7 @@ const LAST_MODIFIED = {
   reservar: '2026-03-06',
   blog: '2026-07-20',
   sobre: '2026-07-24',
-  mapaTuristico: '2026-08-25',
+  mapaTuristico: '2026-09-16',
   politicaDePrivacidade: '2026-07-20',
 } as const;
 

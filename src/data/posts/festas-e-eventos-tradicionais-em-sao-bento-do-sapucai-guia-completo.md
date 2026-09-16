@@ -74,9 +74,11 @@ faq_schema:
       acceptedAnswer:
         '@type': Answer
         text: >-
-          Consulte o portal de turismo em saobentotur.com.br/eventos e a agenda
-          da Prefeitura em saobentodosapucai.sp.gov.br/agenda-de-eventos para
-          datas e programação atualizada.
+          Consulte o portal de turismo
+          [saobentotur.com.br/eventos](https://saobentotur.com.br/eventos/) e a
+          agenda da Prefeitura em
+          [saobentodosapucai.sp.gov.br/agenda-de-eventos](https://saobentodosapucai.sp.gov.br/agenda-de-eventos/)
+          para datas e programação atualizada.
 ---
 **São Bento do Sapucaí tem eventos o ano inteiro**: Carnaval centenário "Tem Folia na Montanha", INDOMIT (corrida de trilha), Mountain Festival, FLIPES (festival literário), Festival da Viola e festas juninas. Confira o calendário completo abaixo.
 
@@ -166,22 +168,8 @@ O segredo é combinar o evento com uma boa hospedagem reservada com antecedênci
 
 O **Refúgio da Pedra SP**, a ~1,5 km da Pedra do Baú, é a base ideal para quem quer viver os eventos sambentistas sem abrir mão do conforto serrano. Reserve seu chalé e garanta a melhor experiência na Serra da Mantiqueira.
 
-Os endereços do centro — praças, igrejas, o letreiro da cidade e a Casa da Cultura Miguel Reale — estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), com horário de funcionamento.
+Os endereços do centro — praças, igrejas, o letreiro da cidade e a Casa da Cultura Miguel Reale — estão no [mapa turístico de São Bento do Sapucaí](mapa:/roteiros/centro-a-pe/), com horário de funcionamento.
 
 *Acompanhe a programação oficial em [saobentotur.com.br/eventos](https://saobentotur.com.br/eventos/).*
 
 *Veja também: [O Que Fazer em São Bento do Sapucaí](/blog/o-que-fazer-em-sao-bento-do-sapucai-guia-completo-de-pontos-turisticos/) | [Trilhas do Complexo do Baú](/blog/trilhas-em-sao-bento-do-sapucai-guia-completo-do-complexo-da-pedra-do-bau/)*
-
-## FAQ
-
-### Quais são os principais eventos tradicionais de São Bento do Sapucaí?
-Os mais tradicionais são: Carnaval "Tem Folia na Montanha" (fevereiro/março), Arraiá do Nhô Bento e Festival da Viola (junho/julho), Festival de Inverno "Arte no Inverno da Serra" (julho), Desfile de Aniversário da Cidade (agosto), GABEN (agosto), FLIPES (setembro), Natal e Réveillon (dezembro).
-
-### O Mountain Festival tem algum custo de entrada?
-Não. A entrada no Mountain Festival é gratuita para o público em geral. As corridas de trilha têm inscrição separada para atletas competidores.
-
-### Com quanto tempo de antecedência devo reservar hospedagem para os eventos?
-Para o INDOMIT e o Mountain Festival, reserve com pelo menos 60 dias de antecedência — a demanda é muito alta. Em outros eventos, 30 dias costumam ser suficientes, exceto em feriados nacionais.
-
-### Onde encontrar a programação atualizada dos eventos de São Bento do Sapucaí?
-Consulte o portal de turismo [saobentotur.com.br/eventos](https://saobentotur.com.br/eventos/) e a agenda da Prefeitura em [saobentodosapucai.sp.gov.br/agenda-de-eventos](https://saobentodosapucai.sp.gov.br/agenda-de-eventos/) para datas e programação atualizada.

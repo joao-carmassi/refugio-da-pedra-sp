@@ -44,17 +44,17 @@ faq_schema:
         '@type': Answer
         text: >-
           É uma das mais altas em altitude de área urbana no estado de São
-          Paulo. Há cidades em outros estados com altitudes similares, mas
-          Campos do Jordão é referência como a estância turística mais alta de
-          SP.
+          Paulo. Há cidades em outros estados com áreas urbanas em altitudes
+          similares ou maiores, mas Campos do Jordão é referência como a
+          estância turística mais alta de SP.
     - '@type': Question
       name: A altitude de Campos do Jordão causa mal-estar?
       acceptedAnswer:
         '@type': Answer
         text: >-
-          Não para a maioria das pessoas. O mal de altitude geralmente aparece
-          acima de 2.500 metros. A 1.628 m, o principal impacto é o ar mais seco
-          — hidrate-se bem.
+          Não para a maioria das pessoas. O mal de altitude (soroche) geralmente
+          começa a afetar acima de 2.500 metros. A 1.628 m, o principal impacto
+          é o ar mais seco — hidrate-se bem.
 ---
 **A altitude de Campos do Jordão é de ~1.628 m no centro**, chegando a 2.007 m no Pico do Itapeva. É a cidade mais alta do estado de São Paulo e uma das mais elevadas do Brasil.
 
@@ -90,7 +90,7 @@ Campos do Jordão é consistentemente uma das cidades mais altas do Brasil em al
 
 ### Clima Frio
 
-A altitude é a principal responsável pelo frio de Campos do Jordão. A cada **100 metros** de elevação, a temperatura cai em média **0,6°C**. Isso significa que Campos do Jordão é naturalmente **5 a 6°C mais fria** que São Paulo e cerca de **4 a 5°C mais fria** que São Bento do Sapucaí — cidade que vai de ~880 m no centro a ~1.964 m no cume do Baú, como mostra o [mapa turístico do município](/mapa-turistico/).
+A altitude é a principal responsável pelo frio de Campos do Jordão. A cada **100 metros** de elevação, a temperatura cai em média **0,6°C**. Isso significa que Campos do Jordão é naturalmente **5 a 6°C mais fria** que São Paulo e cerca de **4 a 5°C mais fria** que São Bento do Sapucaí — cidade que vai de ~880 m no centro a ~1.964 m no cume do Baú, como mostra o [mapa turístico do município](mapa:/mapa/?ponto=pedra-do-bau).
 
 No inverno (junho a agosto):
 - Mínimas podem chegar a **-3°C a 0°C**
@@ -122,17 +122,6 @@ A altitude condiciona a vegetação: **araucárias** (pinheiros-do-paraná) domi
 - **Hidrate-se**: o ar seco de altitude desidrata mais rápido
 - **Protetor solar**: a radiação UV é mais intensa em altitude
 - **Agasalho sempre na mochila**, mesmo em dias aparentemente quentes
-
-## FAQ
-
-### Qual a altitude de Campos do Jordão?
-O centro de Campos do Jordão está a aproximadamente 1.628 metros acima do nível do mar. O ponto mais alto da região é o Pico do Itapeva, com cerca de 2.007 metros.
-
-### Campos do Jordão é a cidade mais alta do Brasil?
-É uma das mais altas em altitude de área urbana no estado de São Paulo. Há cidades em outros estados com áreas urbanas em altitudes similares ou maiores, mas Campos do Jordão é referência como a estância turística mais alta de SP.
-
-### A altitude de Campos do Jordão causa mal-estar?
-Não para a maioria das pessoas. O mal de altitude (soroche) geralmente começa a afetar acima de 2.500 metros. A 1.628 m, o principal impacto é o ar mais seco — hidrate-se bem.
 
 ## Conclusão
 

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import serialize from 'serialize-javascript';
 import type { WithContext, LodgingBusiness, WebSite } from 'schema-dts';
 import { Archivo, Piazzolla } from 'next/font/google';
 import './globals.css';
+import JsonLd from '@/components/json-ld';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { getSiteUrl, getInPhoneNumber } from '@/lib/env';
 
@@ -32,6 +32,9 @@ const defaultOgImage = {
   height: 1080,
   alt: 'Chalés do Refúgio da Pedra SP ao entardecer, com a Pedra do Baú ao fundo, em São Bento do Sapucaí',
 };
+
+/** Ficha da pousada no Google Maps (CID do Google Business Profile). */
+const GOOGLE_MAPS_URL = 'https://maps.google.com/?cid=18135816175245692937';
 
 export function generateMetadata(): Metadata {
   const siteUrl = getSiteUrl();
@@ -141,8 +144,9 @@ export default function RootLayout({
       longitude: -45.661183,
     },
     numberOfRooms: 5,
-    checkinTime: '14:00',
-    checkoutTime: '12:00',
+    // `Time` com fuso: sem ele o horário fica ambíguo fora de Brasília.
+    checkinTime: '14:00:00-03:00',
+    checkoutTime: '12:00:00-03:00',
     petsAllowed: true,
     // TODO(priceRange): adicionar `priceRange` (ex.: 'R$$') assim que houver
     // uma faixa de diária oficial. Não emitir valor estimado/inventado.
@@ -159,7 +163,9 @@ export default function RootLayout({
       name,
       value: true,
     })),
-    sameAs: ['https://www.instagram.com/refugiodapedrasp/'],
+    // Ficha do Google Business Profile, pelo mesmo CID que resolve `geo`.
+    hasMap: GOOGLE_MAPS_URL,
+    sameAs: ['https://www.instagram.com/refugiodapedrasp/', GOOGLE_MAPS_URL],
   };
 
   const websiteJsonLd: WithContext<WebSite> = {
@@ -180,14 +186,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className='antialiased'>
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: serialize(businessJsonLd) }}
-        />
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: serialize(websiteJsonLd) }}
-        />
+        <JsonLd data={businessJsonLd} />
+        <JsonLd data={websiteJsonLd} />
         {/*
           O chrome (cabeçalho/rodapé) não mora aqui: cada rota monta o seu no
           próprio layout, e assim uma rota pode travar o cabeçalho compacto

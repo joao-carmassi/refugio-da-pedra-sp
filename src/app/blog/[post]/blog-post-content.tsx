@@ -16,7 +16,8 @@ import { Separator } from '@/components/ui/separator';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Cta from '@/components/cta';
-import type { Post } from '@/lib/posts';
+import type { Post, PostFaqItem } from '@/lib/posts';
+import PostFaq from './faq';
 
 interface Section {
   id: string;
@@ -30,9 +31,17 @@ interface Props {
   post: Pick<Post, 'title' | 'description'>;
   intro: string;
   sections: Section[];
+  faq: PostFaqItem[];
 }
 
-const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
+const FAQ_ID = 'perguntas-frequentes';
+
+const BlogPostContent = ({
+  post,
+  intro,
+  sections,
+  faq,
+}: Props): React.ReactNode => {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
@@ -51,6 +60,8 @@ const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
     Object.values(sectionRefs.current).forEach((el) => {
       if (el) observer.observe(el);
     });
+    const faqEl = document.getElementById(FAQ_ID);
+    if (faqEl) observer.observe(faqEl);
 
     return () => observer.disconnect();
   }, []);
@@ -104,6 +115,7 @@ const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
                 </Markdown>
               </section>
             ))}
+            {faq.length > 0 && <PostFaq id={FAQ_ID} itens={faq} />}
           </article>
 
           <aside className='sticky top-24 col-span-3 col-start-10 hidden h-fit lg:block'>
@@ -125,6 +137,21 @@ const BlogPostContent = ({ post, intro, sections }: Props): React.ReactNode => {
                     </Link>
                   </li>
                 ))}
+                {faq.length > 0 && (
+                  <li>
+                    <Link
+                      href={`#${FAQ_ID}`}
+                      className={cn(
+                        'block py-1 transition-colors duration-200',
+                        activeSection === FAQ_ID
+                          ? 'text-primary'
+                          : 'text-muted-foreground hover:text-primary',
+                      )}
+                    >
+                      Perguntas frequentes
+                    </Link>
+                  </li>
+                )}
               </ul>
             </nav>
 

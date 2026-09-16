@@ -100,18 +100,7 @@ Em **7 de maio de 2015**, através da **Resolução SC 24**, a Igreja Matriz foi
 - **Melhor horário para fotos**: manhã, quando a luz natural entra pelos vitrais
 - **Combine com**: Mirante do Cruzeiro (logo ao lado) e Capelinha de Mosaico do Centro (Rua 13 de Maio, 217)
 
-Os três ficam a poucos quarteirões um do outro: o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra onde cada um está e o horário em que a igreja abre.
-
-## FAQ
-
-### Quando foi construída a Igreja Matriz de São Bento do Sapucaí?
-A construção começou por volta de 1853, em taipa de pilão, com trabalho de escravos. As obras foram concluídas pelos padres carmelitas em 1917.
-
-### A Igreja Matriz de São Bento é tombada?
-Sim. Foi tombada como patrimônio histórico em 7 de maio de 2015, pela Resolução SC 24, preservando fachada, interior e elementos arquitetônicos.
-
-### Quem é o padroeiro de São Bento do Sapucaí?
-São Bento Abade é o padroeiro da cidade e da igreja. Sua imagem voltou ao altar-mor em 1934, após o período dos carmelitas.
+Os três ficam a poucos quarteirões um do outro: o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/?ponto=igreja-matriz) mostra onde cada um está e o horário em que a igreja abre.
 
 ## Conclusão
 

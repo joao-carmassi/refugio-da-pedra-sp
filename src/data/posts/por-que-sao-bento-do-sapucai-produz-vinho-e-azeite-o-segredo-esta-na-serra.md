@@ -123,18 +123,7 @@ Ao contrário do vinho, **quanto mais novo o azeite, melhor ele é**. Muitos aze
 
 A maioria das propriedades fica em estradas rurais ao redor de São Bento do Sapucaí. Reserve com antecedência, especialmente na Villa Santa Maria (reserva obrigatória). Carro com boa tração é recomendado em dias de chuva.
 
-Para encaixar outras paradas no mesmo dia, o [mapa turístico do município](/mapa-turistico/) mostra os mirantes, as cachoeiras e as igrejas do centro, cada um com horário e rota.
-
-## FAQ
-
-### Por que São Bento do Sapucaí produz vinho e azeite?
-A combinação de altitude elevada (900 a 1.800 m), clima subtropical de montanha com invernos frios e verões amenos, solo mineral bem drenado e grande amplitude térmica cria condições ideais para oliveiras e videiras — um terroir comparável ao Mediterrâneo.
-
-### Posso visitar as vinícolas e olivais de São Bento do Sapucaí?
-Sim. A Oliq Azeite e a Vinícola Villa Santa Maria oferecem tours com degustação. A Villa Santa Maria atende com reserva obrigatória pelo (12) 99633-0222. Confirme horários e disponibilidade.
-
-### O azeite de São Bento do Sapucaí é bom?
-Sim. Os azeites da Oliq são premiados em competições nacionais e internacionais, com alta concentração de polifenóis e perfil sensorial complexo graças ao terroir único da Mantiqueira.
+Para encaixar outras paradas no mesmo dia, o [mapa turístico do município](mapa:/mapa/) mostra os mirantes, as cachoeiras e as igrejas do centro, cada um com horário e rota.
 
 ## Conclusão
 

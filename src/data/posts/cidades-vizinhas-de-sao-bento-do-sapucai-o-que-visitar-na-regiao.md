@@ -52,8 +52,8 @@ faq_schema:
         '@type': Answer
         text: >-
           Campos do Jordão tem a maior infraestrutura turística. Para uma
-          experiência mais intimista, Santo Antônio do Pinhal e Gonçalves são
-          excelentes opções.
+          experiência mais intimista e parecida com São Bento, Santo Antônio do
+          Pinhal e Gonçalves são excelentes opções.
 ---
 **As cidades vizinhas de São Bento do Sapucaí são Campos do Jordão (~40 km), Santo Antônio do Pinhal (~25 km), Sapucaí-Mirim (~20 km) e Gonçalves (~50 km)** — todas na Serra da Mantiqueira, formando um circuito turístico completo.
 
@@ -106,7 +106,7 @@ Cidade paulista que homenageia o escritor. Oferece trilhas, cachoeiras e o charm
 
 *Distâncias e tempos aproximados. Confirme via GPS — estradas serranas podem variar.*
 
-Dentro de São Bento, o [mapa turístico do município](/mapa-turistico/) faz o mesmo trabalho em escala menor: mostra onde fica cada atração e a rota de carro até ela.
+Dentro de São Bento, o [mapa turístico do município](mapa:/mapa/) faz o mesmo trabalho em escala menor: mostra onde fica cada atração e a rota de carro até ela.
 
 ## Dicas para Explorar a Região
 
@@ -114,17 +114,6 @@ Dentro de São Bento, o [mapa turístico do município](/mapa-turistico/) faz o 
 - **Estradas serranas**: bonitas mas sinuosas — dirija com cuidado, especialmente à noite
 - **Combine destinos**: São Bento + Santo Antônio do Pinhal é a combinação mais fácil e recompensadora
 - **Abastecimento**: complete o tanque em São Bento ou Campos do Jordão antes de ir para cidades menores
-
-## FAQ
-
-### Quais são as cidades vizinhas de São Bento do Sapucaí?
-As principais são: Santo Antônio do Pinhal (SP, ~25 km), Sapucaí-Mirim (MG, ~20 km), Gonçalves (MG, ~30 km), Campos do Jordão (SP, ~40 km), Paraisópolis (MG, ~50 km) e Monteiro Lobato (SP, ~60 km).
-
-### Dá para ir de São Bento do Sapucaí a Campos do Jordão em um bate-volta?
-Sim. A distância é de aproximadamente 40 km (~1 hora de carro). É perfeitamente viável fazer um bate-volta no mesmo dia.
-
-### Qual cidade vizinha tem mais atrativos além de São Bento?
-Campos do Jordão tem a maior infraestrutura turística. Para uma experiência mais intimista e parecida com São Bento, Santo Antônio do Pinhal e Gonçalves são excelentes opções.
 
 ## Conclusão
 

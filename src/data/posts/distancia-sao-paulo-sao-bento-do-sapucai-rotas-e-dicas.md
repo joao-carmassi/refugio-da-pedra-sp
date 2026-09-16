@@ -96,18 +96,7 @@ Saindo de São Paulo pela **BR-116 (Via Dutra)** até **Taubaté**, depois segui
 
 A cidade não possui aeroporto nem estação rodoviária com linhas regulares expressas de São Paulo. O acesso é essencialmente **de carro**. Há sinal de celular no centro, mas nas estradas rurais e trilhas a cobertura é irregular.
 
-Por isso vale abrir o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) antes de sair da rodovia: ele roda no navegador e pode ser instalado como aplicativo na tela de início.
-
-## FAQ
-
-### Quantos km de São Paulo a São Bento do Sapucaí?
-Aproximadamente 200 km pela rota SP-070 → SP-50 → SP-173. O tempo de viagem varia entre 2h30 e 3h30 dependendo do trânsito.
-
-### Tem pedágio de São Paulo a São Bento do Sapucaí?
-Sim. Há praças de pedágio na SP-070 (Rodovia Ayrton Senna / Carvalho Pinto). Após a saída da rodovia principal, não há mais pedágios.
-
-### A estrada para São Bento do Sapucaí é perigosa?
-A SP-173 é serrana e sinuosa, exigindo atenção. Em dias de chuva forte ou neblina, reduza a velocidade. Evite dirigir à noite nesse trecho.
+Por isso vale abrir o [mapa turístico de São Bento do Sapucaí](mapa:/) antes de sair da rodovia: ele roda no navegador e pode ser instalado como aplicativo na tela de início.
 
 ## Conclusão
 

@@ -38,7 +38,8 @@ faq_schema:
         text: >-
           Por ser a última cidade de São Paulo na divisa com Minas Gerais, São
           Bento foi posição estratégica. Voluntários abriram trincheiras no
-          bairro do Quilombo para impedir o avanço das tropas federais.
+          bairro do Quilombo para impedir o avanço das tropas federais vindas de
+          Minas Gerais.
     - '@type': Question
       name: O Museu da Revolução de 1932 é aberto ao público?
       acceptedAnswer:
@@ -106,18 +107,7 @@ A cidade se orgulha de ter vários filhos ilustres ligados à história e à cul
 
 O Restaurante Trincheira e o Museu da Revolução de 1932 ficam na Rod. Benedito Cândido Ribeiro, 1403, bairro do Quilombo. São Bento do Sapucaí está a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173.
 
-O Quilombo é o mesmo bairro do Ateliê Ditinho Joana e do Arte no Quilombo — os dois estão no [mapa turístico da cidade](/mapa-turistico/), com horário e rota de carro a partir do centro.
-
-## FAQ
-
-### Qual foi o papel de São Bento do Sapucaí na Revolução de 1932?
-Por ser a última cidade de SP na divisa com MG, São Bento foi posição estratégica. Voluntários abriram trincheiras no bairro do Quilombo para impedir o avanço das tropas federais vindas de Minas Gerais.
-
-### O Museu da Revolução de 1932 é aberto ao público?
-Sim. O museu funciona todos os dias das 8h às 18h. Fica na Rod. Benedito Cândido Ribeiro, 1403, bairro do Quilombo — referência: Restaurante Trincheira.
-
-### Ainda existem trincheiras da revolução em São Bento do Sapucaí?
-Sim. Trincheiras originais de 1932 podem ser encontradas no bairro do Quilombo. Uma delas, bem preservada, está sob o Restaurante Trincheira, na Rod. Benedito Cândido Ribeiro, 1403.
+O Quilombo é o mesmo bairro do Ateliê Ditinho Joana e do Arte no Quilombo — os dois estão no [mapa turístico da cidade](mapa:/mapa/?categoria=compras), com horário e rota de carro a partir do centro.
 
 ## Conclusão
 

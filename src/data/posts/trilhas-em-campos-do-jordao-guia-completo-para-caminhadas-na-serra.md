@@ -37,7 +37,8 @@ faq_schema:
         text: >-
           As trilhas do Parque Estadual (Horto Florestal) são as mais
           estruturadas: Trilha da Cachoeira (fácil, 2 km), Trilha dos Campos
-          (moderada, 3,5 km) e Trilha do Rio Sapucaí (moderada, 6 km).
+          (moderada, 3,5 km) e Trilha do Rio Sapucaí (moderada, 6 km) são as
+          mais recomendadas.
     - '@type': Question
       name: Preciso de guia para fazer trilhas em Campos do Jordão?
       acceptedAnswer:
@@ -54,8 +55,8 @@ faq_schema:
         '@type': Answer
         text: >-
           Sim! As cidades estão a ~40 km uma da outra. Hospede-se no Refúgio da
-          Pedra para as trilhas da Pedra do Baú e reserve um dia para as
-          caminhadas mais leves do Horto Florestal.
+          Pedra SP para as trilhas da Pedra do Baú e reserve um dia para as
+          caminhadas mais leves do Horto Florestal em Campos do Jordão.
 ---
 **As melhores trilhas de Campos do Jordão ficam no Parque Estadual (Horto Florestal)**, com percursos como a Trilha das Quatro Pontes, Trilha da Cachoeira e Trilha do Rio Sapucaí. O Pico do Itapeva oferece vista panorâmica sem esforço.
 
@@ -109,7 +110,7 @@ Embora o acesso ao topo seja de carro, há **trilhas nos arredores** do Pico do 
 
 **Dica**: combine as trilhas dos dois destinos. Use as caminhadas mais leves de Campos do Jordão para dias de descanso ativo, e reserve as trilhas do Complexo do Baú em São Bento para os dias de aventura.
 
-As trilhas do lado sambentista estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), com a rota de carro até cada entrada.
+As trilhas do lado sambentista estão no [mapa turístico de São Bento do Sapucaí](mapa:/mapa/?categoria=aventura), com a rota de carro até cada entrada.
 
 ## Dicas Práticas
 
@@ -119,17 +120,6 @@ As trilhas do lado sambentista estão no [mapa turístico de São Bento do Sapuc
 - **Água e lanche**: leve pelo menos 1 litro de água por pessoa
 - **Agasalho**: as trilhas em altitude são mais frias, especialmente pela manhã
 - **Protetor solar e repelente**: essenciais mesmo em dias nublados
-
-## FAQ
-
-### Quais são as melhores trilhas de Campos do Jordão?
-As trilhas do Parque Estadual (Horto Florestal) são as mais estruturadas: Trilha da Cachoeira (fácil, 2 km), Trilha dos Campos (moderada, 3,5 km) e Trilha do Rio Sapucaí (moderada, 6 km) são as mais recomendadas.
-
-### Preciso de guia para fazer trilhas em Campos do Jordão?
-A maioria das trilhas do Parque Estadual é sinalizada e não exige guia. Para trilhas fora do parque ou experiências mais longas, considere um guia local.
-
-### Posso fazer trilhas em Campos do Jordão e em São Bento do Sapucaí no mesmo roteiro?
-Sim! As cidades estão a ~40 km uma da outra. Hospede-se no Refúgio da Pedra SP para as trilhas da Pedra do Baú e reserve um dia para as caminhadas mais leves do Horto Florestal em Campos do Jordão.
 
 ## Conclusão
 

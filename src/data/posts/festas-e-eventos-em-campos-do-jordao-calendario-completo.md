@@ -122,18 +122,7 @@ Reserve hospedagem com antecedência para qualquer evento, especialmente:
 
 O **Refúgio da Pedra SP** em São Bento do Sapucaí (~40 km) é uma alternativa estratégica: chalés em meio à natureza, longe do movimento intenso de Campos do Jordão, mas perto o suficiente para aproveitar os eventos com um bate-volta.
 
-Nos dias livres, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra o que há para ver do lado de cá da serra.
-
-## FAQ
-
-### Qual o principal evento de Campos do Jordão?
-O Festival de Inverno, criado em 1970, é o evento mais importante. Acontece entre junho e julho com concertos de música clássica no Auditório Claudio Santoro e atrai mais de 200 mil visitantes.
-
-### Campos do Jordão tem eventos o ano todo?
-Sim. Além do Festival de Inverno, a cidade tem eventos gastronômicos, festival de cerveja artesanal, Natal Iluminado, réveillon e eventos esportivos distribuídos ao longo do ano.
-
-### Preciso comprar ingresso para o Festival de Inverno?
-Há eventos gratuitos e pagos. Os concertos no Auditório Claudio Santoro geralmente exigem ingresso. Shows ao ar livre e programação paralela costumam ser gratuitos.
+Nos dias livres, o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) mostra o que há para ver do lado de cá da serra.
 
 ## Conclusão
 

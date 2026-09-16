@@ -116,18 +116,7 @@ A Mantiqueira começa na **região de Poços de Caldas e Águas da Prata** (divi
 
 E a **Pedra do Baú** (1.950 m), em São Bento do Sapucaí, é um dos mais acessíveis e icônicos da serra — com escalada por via ferrata.
 
-Ela e o resto do complexo estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), com a rota de carro até a portaria do Monumento Natural.
-
-## FAQ
-
-### Qual a extensão da Serra da Mantiqueira?
-Mais de 500 km, estendendo-se por São Paulo, Minas Gerais e Rio de Janeiro — do sudoeste (região de Poços de Caldas) ao nordeste (região de Itatiaia/Resende).
-
-### Quantas cidades ficam na Serra da Mantiqueira?
-Dezenas de municípios compõem a serra nos três estados. Entre os mais conhecidos: São Bento do Sapucaí (SP), Campos do Jordão (SP), Monte Verde (MG), Gonçalves (MG), Passa Quatro (MG), Itatiaia (RJ) e Visconde de Mauá (RJ).
-
-### Qual o pico mais alto da Serra da Mantiqueira?
-A Pedra da Mina, com 2.798 metros, na divisa entre São Paulo e Minas Gerais. É o quarto ponto mais alto do Brasil.
+Ela e o resto do complexo estão no [mapa turístico de São Bento do Sapucaí](mapa:/lugares/pedra-do-bau/), com a rota de carro até a portaria do Monumento Natural.
 
 ## Conclusão
 

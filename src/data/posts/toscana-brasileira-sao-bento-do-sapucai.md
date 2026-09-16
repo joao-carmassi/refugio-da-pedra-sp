@@ -91,7 +91,7 @@ No mesmo espaço convivem um viveiro de frutíferas e o restaurante **Entre Vila
 ### Sabor com Arte
 Referência gastronômica de Chão Bento, com **truta preparada à vista**, cozinha de fogão à lenha e música ao vivo nos fins de semana.
 
-O Sabor com Arte está no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) com o horário de funcionamento; o mapa também traz os mirantes e as capelinhas que costumam entrar no mesmo roteiro.
+O Sabor com Arte está no [mapa turístico de São Bento do Sapucaí](mapa:/mapa/?ponto=sabor-com-arte) com o horário de funcionamento; o mapa também traz os mirantes e as capelinhas que costumam entrar no mesmo roteiro.
 
 ## Paisagens de Cinema
 
@@ -123,17 +123,6 @@ O **Refúgio da Pedra SP** é a base perfeita para explorar a Toscana Brasileira
 - **Chalé Turmalina**: mezanino e cozinha equipada — até 3 pessoas, pet friendly
 
 Todos os chalés estão imersos na natureza, com silêncio e privacidade — o complemento perfeito para um dia de enoturismo e gastronomia.
-
-## FAQ
-
-### Por que São Bento do Sapucaí é chamada de Toscana Brasileira?
-Pela combinação de vinícolas, produção de azeite artesanal, queijos, gastronomia farm-to-table e paisagens de montanha que lembram as colinas da Toscana italiana.
-
-### O que visitar na Toscana Brasileira?
-Vinícola Villa Santa Maria, Oliq Azeite, Raízes do Baú, Entre Vilas (slow food), Sabor com Arte, Pedra do Baú, Cachoeira dos Amores e Capelinhas de Mosaico.
-
-### Qual a melhor época para ir à Toscana Brasileira?
-O inverno (junho a agosto) é a época mais atmosférica — frio, vinhos e lareira. Mas a cidade encanta o ano todo, com cachoeiras no verão e colheitas de uva e azeitona no outono.
 
 ## Conclusão
 

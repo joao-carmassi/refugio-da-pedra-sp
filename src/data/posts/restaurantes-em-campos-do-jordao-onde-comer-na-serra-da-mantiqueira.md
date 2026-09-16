@@ -115,18 +115,7 @@ Alguns dos melhores restaurantes ficam nas saídas da cidade, em propriedades ru
 - **Fondue pede reserva**: a sequência de fondue é servida sob demanda e muitos restaurantes limitam as mesas
 - **Almoço é mais tranquilo**: se quiser evitar filas, vá na hora do almoço
 - **Preços**: Campos do Jordão pratica preços de destino turístico — para economizar, explore opções em Abernéssia e Jaguaribe
-- **Combine com São Bento**: a gastronomia de São Bento do Sapucaí é mais rústica e artesanal (truta flambada, azeite Oliq) — vale a visita gastronômica às duas cidades; os restaurantes sambentistas estão no [mapa turístico da cidade](/mapa-turistico/), com endereço e horário
-
-## FAQ
-
-### Qual o prato mais famoso de Campos do Jordão?
-O fondue é o prato-símbolo da cidade, especialmente no inverno. A sequência de fondue (queijo + carne + chocolate) é a experiência gastronômica mais procurada. A truta da serra é outra especialidade imperdível.
-
-### Campos do Jordão tem restaurantes bons e baratos?
-Sim. Os bairros de Abernéssia e Jaguaribe oferecem opções com preços mais acessíveis que Capivari. Há também lanchonetes, padarias e self-services que atendem com qualidade a preços justos.
-
-### Preciso reservar restaurante em Campos do Jordão?
-Nos fins de semana de inverno (junho a agosto), sim. Os restaurantes de fondue e os mais concorridos de Capivari lotam rapidamente. Fora da alta temporada, reserva é menos necessária.
+- **Combine com São Bento**: a gastronomia de São Bento do Sapucaí é mais rústica e artesanal (truta flambada, azeite Oliq) — vale a visita gastronômica às duas cidades; os restaurantes sambentistas estão no [mapa turístico da cidade](mapa:/mapa/?categoria=restaurantes), com endereço e horário
 
 ## Conclusão
 

@@ -116,7 +116,7 @@ A Mantiqueira é a única cadeia montanhosa do Sudeste com **enoturismo consolid
 - **Pico Agudo** (Santo Antônio do Pinhal): mirante 360° com rampa de voo livre
 - **Mirante do Cruzeiro** (São Bento): panorâmica do centro e montanhas
 
-Os pontos de São Bento desta lista estão no [mapa turístico do município](/mapa-turistico/), com a rota de carro a partir do centro até cada um.
+Os pontos de São Bento desta lista estão no [mapa turístico do município](mapa:/mapa/), com a rota de carro a partir do centro até cada um.
 
 ## Cultura e Artesanato
 
@@ -141,17 +141,6 @@ Os pontos de São Bento desta lista estão no [mapa turístico do município](/m
 ## Onde Se Hospedar
 
 Para uma experiência completa na Mantiqueira, use **São Bento do Sapucaí** como base: é central, autêntica e menos lotada que Campos do Jordão. O **Refúgio da Pedra SP** oferece 5 chalés privativos a ~1,5 km da Pedra do Baú — perfeito para explorar a serra.
-
-## FAQ
-
-### O que fazer na Serra da Mantiqueira?
-Trilhas (Pedra do Baú, Agulhas Negras, Marins), cachoeiras, enoturismo (vinícolas e azeite), gastronomia serrana (truta, fondue, slow food), mirantes, artesanato e festivais culturais.
-
-### Qual a melhor cidade para se hospedar na Mantiqueira?
-São Bento do Sapucaí é a base mais completa: Pedra do Baú (aventura), Toscana Brasileira (gastronomia), cultura (artesanato) e tranquilidade — tudo a 185 km de SP.
-
-### A Serra da Mantiqueira é boa para crianças?
-Sim. Trilhas fáceis (Bauzinho), cachoeiras estruturadas (Amores), vinícolas com espaço para família e chalés com cozinha tornam a Mantiqueira ideal para famílias.
 
 ## Conclusão
 

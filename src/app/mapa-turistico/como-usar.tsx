@@ -11,8 +11,8 @@ interface Passo {
 }
 
 interface Props {
-  /** Origem do site do mapa, ou `null` quando ela não está configurada. */
-  mapaUrl: string | null;
+  /** Endereço do mapa interativo, ou `null` quando ele não está configurado. */
+  mapaAppUrl: string | null;
 }
 
 /**
@@ -55,7 +55,7 @@ const PASSOS: Passo[] = [
  * Ponte entre a página e a ferramenta. Vem logo depois do hero, antes do fecho
  * da pousada e do FAQ, porque é o empurrão para o visitante abrir o mapa.
  */
-function ComoUsar({ mapaUrl }: Props): React.ReactNode {
+function ComoUsar({ mapaAppUrl }: Props): React.ReactNode {
   const scope = useReveal<HTMLElement>();
 
   return (
@@ -87,7 +87,7 @@ function ComoUsar({ mapaUrl }: Props): React.ReactNode {
 
           {/* Sem endereço do mapa configurado o botão some, e o texto acima
               continua valendo sozinho. */}
-          {mapaUrl && (
+          {mapaAppUrl && (
             <div className='mt-6'>
               <Button
                 effect='expandIcon'
@@ -97,7 +97,7 @@ function ComoUsar({ mapaUrl }: Props): React.ReactNode {
                 size='lg'
                 className='w-full rounded-full sm:w-auto'
               >
-                <a href={`${mapaUrl}/mapa/`}>Abrir o mapa turístico</a>
+                <a href={mapaAppUrl}>Abrir o mapa turístico</a>
               </Button>
             </div>
           )}

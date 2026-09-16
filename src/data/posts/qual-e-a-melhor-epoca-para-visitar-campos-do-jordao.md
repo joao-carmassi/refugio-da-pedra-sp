@@ -36,8 +36,9 @@ faq_schema:
         '@type': Answer
         text: >-
           Depende do perfil. Para frio intenso e festivais, vá de junho a
-          agosto. Para trilhas com clima ameno e menos turistas, outono e
-          primavera são ideais. Para economizar, janeiro e fevereiro.
+          agosto. Para trilhas com clima ameno e menos turistas, outono
+          (março–maio) e primavera (setembro–novembro) são ideais. Para
+          economizar, janeiro e fevereiro.
     - '@type': Question
       name: Campos do Jordão faz frio o ano todo?
       acceptedAnswer:
@@ -122,18 +123,7 @@ O verão em Campos do Jordão é diferente do verão litorâneo:
 
 Estando a **aprox. 40 km de São Bento do Sapucaí**, Campos do Jordão é um complemento perfeito para quem se hospeda no Refúgio da Pedra SP. A melhor estratégia é usar São Bento como base para trilhas e natureza, e reservar um dia para o circuito gastronômico e cultural de Campos do Jordão.
 
-O [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) ajuda a dividir os dias: ele diz em que dias da semana e a que horas cada ponto do município abre.
-
-## FAQ
-
-### Qual a melhor época para visitar Campos do Jordão?
-Depende do perfil. Para frio intenso e festivais, vá de junho a agosto. Para trilhas com clima ameno e menos turistas, outono (março–maio) e primavera (setembro–novembro) são ideais. Para economizar, janeiro e fevereiro.
-
-### Campos do Jordão faz frio o ano todo?
-As noites são frescas o ano todo graças à altitude de ~1.628 m. Mas o frio intenso (abaixo de 5°C) ocorre de junho a agosto. No verão, as mínimas ficam entre 12°C e 15°C.
-
-### Quando é mais barato visitar Campos do Jordão?
-A baixa temporada vai de janeiro a março e em novembro. Nessas épocas, hospedagem e restaurantes praticam preços menores e a cidade é mais tranquila.
+O [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) ajuda a dividir os dias: ele diz em que dias da semana e a que horas cada ponto do município abre.
 
 ## Conclusão
 

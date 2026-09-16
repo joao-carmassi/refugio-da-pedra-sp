@@ -1,11 +1,20 @@
-import serialize from 'serialize-javascript';
-import type { WithContext, BlogPosting, BreadcrumbList } from 'schema-dts';
+import type {
+  WithContext,
+  BlogPosting,
+  BreadcrumbList,
+  FAQPage,
+  ImageObject,
+} from 'schema-dts';
+import JsonLd from '@/components/json-ld';
 import {
   DEFAULT_POST_IMAGE,
+  faqTextoPuro,
   getAllPostsMeta,
   getPostBySlug,
+  getPostFaq,
 } from '@/lib/posts';
 import { getSiteUrl } from '@/lib/env';
+import { getPublicImageSize } from '@/lib/image-size';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -58,6 +67,19 @@ export async function generateMetadata({ params }: MetadataProps) {
   };
 }
 
+/**
+ * `DateTime` do schema.org com hora e fuso. O frontmatter guarda só a data
+ * (`2026-05-14`), e data sem hora fica ambígua; 09:00 em Brasília é o horário
+ * nominal de publicação. Valor que já traz hora passa intacto. O YAML pode
+ * entregar `Date` se a data vier sem aspas, então os dois casos são tratados.
+ */
+function toDateTime(value: string | Date): string {
+  const text =
+    value instanceof Date ? value.toISOString().slice(0, 10) : String(value);
+
+  return /^\d{4}-\d{2}-\d{2}$/.test(text) ? `${text}T09:00:00-03:00` : text;
+}
+
 async function BlogPostLayout({
   children,
   params,
@@ -68,18 +90,53 @@ async function BlogPostLayout({
   if (!post) notFound();
 
   const siteUrl = getSiteUrl();
+  const postUrl = `${siteUrl}/blog/${postSlug}/`;
+  const imagePath = post.image || DEFAULT_POST_IMAGE;
+  const imageSize = getPublicImageSize(imagePath);
+
+  // Arquivo estático: servido exatamente assim, sem barra final.
+  const image: ImageObject = {
+    '@type': 'ImageObject',
+    url: `${siteUrl}${imagePath}`,
+    // Pelo schema.org `width`/`height` são `Distance` ou `QuantitativeValue`
+    // (número puro não tipa): pixels em UN/CEFACT são `E37`.
+    ...(imageSize
+      ? {
+          width: {
+            '@type': 'QuantitativeValue',
+            value: imageSize.width,
+            unitCode: 'E37',
+          },
+          height: {
+            '@type': 'QuantitativeValue',
+            value: imageSize.height,
+            unitCode: 'E37',
+          },
+        }
+      : {}),
+  };
+
   const jsonLdBlogPosting: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': `${postUrl}#article`,
     headline: post.title,
     description: post.meta_description,
     keywords: post.focus_keywords.join(', '),
-    url: `${siteUrl}/blog/${postSlug}/`,
-    image: `${siteUrl}${post.image || DEFAULT_POST_IMAGE}`,
+    url: postUrl,
+    inLanguage: 'pt-BR',
+    image,
+    // Nó da página, com `@id` próprio: é a ele que o `FAQPage` se liga.
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${postUrl}#webpage`,
+      url: postUrl,
+      isPartOf: { '@id': `${siteUrl}/#website` },
+    },
     ...(post.date
       ? {
-          datePublished: post.date,
-          dateModified: post.dateModified || post.date,
+          datePublished: toDateTime(post.date),
+          dateModified: toDateTime(post.dateModified || post.date),
         }
       : {}),
     // `author` no frontmatter tem prioridade; sem ele, a autoria recai sobre o
@@ -95,6 +152,27 @@ async function BlogPostLayout({
     // src/app/blog/layout.tsx).
     isPartOf: { '@id': `${siteUrl}/blog/#blog` },
   };
+
+  // Mesma fonte da seção "Perguntas frequentes" renderizada em `page.tsx`: o
+  // markup só descreve perguntas que estão na tela, e só existe se houver alguma.
+  const faq = getPostFaq(post);
+  const faqJsonLd: WithContext<FAQPage> | null = faq.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        '@id': `${postUrl}#faq`,
+        inLanguage: 'pt-BR',
+        isPartOf: { '@id': `${postUrl}#webpage` },
+        mainEntity: faq.map(({ pergunta, resposta }) => ({
+          '@type': 'Question' as const,
+          name: pergunta,
+          acceptedAnswer: {
+            '@type': 'Answer' as const,
+            text: faqTextoPuro(resposta),
+          },
+        })),
+      }
+    : null;
 
   const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
     '@context': 'https://schema.org',
@@ -116,27 +194,16 @@ async function BlogPostLayout({
         '@type': 'ListItem',
         position: 3,
         name: post.title,
-        item: `${siteUrl}/blog/${postSlug}/`,
+        item: postUrl,
       },
     ],
   };
 
   return (
     <>
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: serialize(jsonLdBlogPosting) }}
-      />
-      {post.faq_schema?.mainEntity?.length ? (
-        <script
-          type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(post.faq_schema) }}
-        />
-      ) : null}
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: serialize(breadcrumbJsonLd) }}
-      />
+      <JsonLd data={jsonLdBlogPosting} />
+      {faqJsonLd ? <JsonLd data={faqJsonLd} /> : null}
+      <JsonLd data={breadcrumbJsonLd} />
       {children}
     </>
   );

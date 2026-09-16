@@ -99,7 +99,7 @@ O tamanho reduzido de São Bento é uma virtude:
 - **Sem agito**: ritmo de vida desacelerado — o antídoto perfeito para o estresse urbano
 - **Tradição viva**: festas, artesanato e gastronomia que refletem gerações de cultura serrana
 
-Tudo isso cabe num raio curto — o [mapa turístico do município](/mapa-turistico/) mostra os pontos do centro e do vale com endereço e horário.
+Tudo isso cabe num raio curto — o [mapa turístico do município](mapa:/mapa/) mostra os pontos do centro e do vale com endereço e horário.
 
 ## Comparação com Vizinhas
 
@@ -111,17 +111,6 @@ Tudo isso cabe num raio curto — o [mapa turístico do município](/mapa-turist
 | Campos do Jordão | ~52.000 |
 
 São Bento ocupa um ponto ideal: infraestrutura suficiente para receber visitantes com qualidade, mas pequena o bastante para manter a essência de cidade do interior.
-
-## FAQ
-
-### Qual a população de São Bento do Sapucaí?
-Segundo o Censo IBGE de 2022, São Bento do Sapucaí tem aproximadamente 11.684 habitantes, distribuídos em uma área de cerca de 293 km².
-
-### São Bento do Sapucaí é uma cidade grande?
-Não. É um dos menores municípios de São Paulo, o que contribui para seu charme, tranquilidade e natureza preservada.
-
-### São Bento do Sapucaí tem infraestrutura para turismo?
-Sim. Apesar de pequena, a cidade conta com pousadas, chalés, restaurantes, agência de ecoturismo e atrativos naturais e culturais de alto nível.
 
 ## Conclusão
 

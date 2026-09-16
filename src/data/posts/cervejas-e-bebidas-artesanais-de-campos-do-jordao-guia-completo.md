@@ -108,7 +108,7 @@ Juntos, os dois destinos oferecem:
 - Azeite artesanal na Oliq
 - Cachaças e licores da Mantiqueira
 
-O bar SBS Bebidas, no centro de São Bento, está no [mapa turístico da cidade](/mapa-turistico/) com o horário de funcionamento.
+O bar SBS Bebidas, no centro de São Bento, está no [mapa turístico da cidade](mapa:/mapa/?ponto=sbs-bebidas) com o horário de funcionamento.
 
 ## Dicas Práticas
 
@@ -117,17 +117,6 @@ O bar SBS Bebidas, no centro de São Bento, está no [mapa turístico da cidade]
 - **Inverno é alta temporada**: os bares lotam nos fins de semana de junho a agosto
 - **Leve rótulos para casa**: as lojas de fábrica oferecem preços especiais
 - **Harmonize com fondue**: a combinação de cerveja escura + fondue de queijo é imbatível
-
-## FAQ
-
-### Qual a cervejaria mais famosa de Campos do Jordão?
-A Baden Baden é a mais conhecida e premiada. Oferece tour pela fábrica com degustação e um bar em Capivari com toda a linha de rótulos.
-
-### Posso visitar fábricas de cerveja em Campos do Jordão?
-Sim. A Baden Baden oferece tours guiados pela fábrica. Recomenda-se reservar com antecedência, especialmente nos fins de semana de inverno.
-
-### Campos do Jordão tem cerveja artesanal o ano todo?
-Sim. As cervejarias e bares funcionam durante todo o ano. No inverno, há cervejas sazonais e festivais de cerveja artesanal que ampliam a experiência.
 
 ## Conclusão
 

@@ -1,5 +1,10 @@
-import serialize from 'serialize-javascript';
-import type { WithContext, Room, BreadcrumbList } from 'schema-dts';
+import type {
+  WithContext,
+  HotelRoom,
+  BreadcrumbList,
+  WebPage,
+} from 'schema-dts';
+import JsonLd from '@/components/json-ld';
 import chales from '@/data/chales.json';
 import { getSiteUrl } from '@/lib/env';
 import { notFound } from 'next/navigation';
@@ -84,9 +89,11 @@ async function ChaleLayout({
   // `trailingSlash: true` no next.config.ts: a rota é servida com barra final.
   const pageUrl = `${siteUrl}/chales/${slug}/`;
 
-  const jsonLd: WithContext<Room> = {
+  // `HotelRoom`, não `Room`: é unidade de hospedagem, e é o tipo que os
+  // consumidores de hotelaria (Google Hotels) reconhecem.
+  const jsonLd: WithContext<HotelRoom> = {
     '@context': 'https://schema.org',
-    '@type': 'Room',
+    '@type': 'HotelRoom',
     '@id': `${pageUrl}#acomodacao`,
     name: chale.nome,
     description: `${chale.nome} no Refúgio da Pedra SP: ${chale.capacidade}, ${chale.camas}, ${chale.banheiros}. ${chale.tamanho}.`,
@@ -127,6 +134,17 @@ async function ChaleLayout({
     containedInPlace: { '@id': `${siteUrl}/#business` },
   };
 
+  const webPageJsonLd: WithContext<WebPage> = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${pageUrl}#webpage`,
+    name: `${chale.nome} - Pousada Refúgio da Pedra SP`,
+    url: pageUrl,
+    inLanguage: 'pt-BR',
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    mainEntity: { '@id': `${pageUrl}#acomodacao` },
+  };
+
   const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -154,18 +172,9 @@ async function ChaleLayout({
 
   return (
     <>
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: serialize(jsonLd),
-        }}
-      />
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: serialize(breadcrumbJsonLd),
-        }}
-      />
+      <JsonLd data={webPageJsonLd} />
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       {children}
     </>
   );

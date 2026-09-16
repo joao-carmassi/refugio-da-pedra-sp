@@ -45,15 +45,17 @@ faq_schema:
       acceptedAnswer:
         '@type': Answer
         text: >-
-          Em média, um chocolate quente artesanal custa entre R$ 15 e R$ 35.
-          Versões especiais com licor ou complementos podem custar mais.
+          Os preços variam conforme a casa e o tamanho da xícara. Em média, um
+          chocolate quente artesanal custa entre R$ 15 e R$ 35. Versões
+          especiais com licor ou complementos podem custar mais.
     - '@type': Question
       name: Vale a pena comprar chocolate em Campos do Jordão no verão?
       acceptedAnswer:
         '@type': Answer
         text: >-
           Sim. As chocolaterias funcionam o ano todo e os preços costumam ser
-          melhores fora da alta temporada de inverno.
+          melhores fora da alta temporada de inverno. O fondue e o chocolate
+          quente continuam deliciosos mesmo em dias mais amenos.
 ---
 **Os melhores chocolates e chocolates quentes de Campos do Jordão estão na Araucária Chocolates, na Montanhês e na Baden Baden.** A cidade concentra dezenas de chocolaterias artesanais, com trufas, tabletes e o famoso chocolate quente da serra.
 
@@ -113,21 +115,10 @@ Além de Capivari, há fábricas e ateliês na saída da cidade que oferecem **t
 | Chocolate quente | Passeio rápido, aquecer entre atrações | Tarde, caminhando por Capivari |
 | Fondue de chocolate | Jantar romântico, experiência completa | Noite, com reserva |
 
-## FAQ
-
-### Qual o melhor chocolate quente de Campos do Jordão?
-As melhores casas preparam chocolate quente com chocolate derretido de verdade (não achocolatado em pó). Procure as chocolaterias artesanais do bairro de Capivari que oferecem versões cremosas com cacau de qualidade.
-
-### Quanto custa o chocolate quente em Campos do Jordão?
-Os preços variam conforme a casa e o tamanho da xícara. Em média, um chocolate quente artesanal custa entre R$ 15 e R$ 35. Versões especiais com licor ou complementos podem custar mais.
-
-### Vale a pena comprar chocolate em Campos do Jordão no verão?
-Sim. As chocolaterias funcionam o ano todo e os preços costumam ser melhores fora da alta temporada de inverno. O fondue e o chocolate quente continuam deliciosos mesmo em dias mais amenos.
-
 ## Conclusão
 
 O chocolate é parte essencial da experiência em Campos do Jordão. Não visite a Serra da Mantiqueira sem provar o **chocolate quente artesanal** e levar trufas para casa. **Hospede-se no Refúgio da Pedra SP** em São Bento do Sapucaí e reserve um dia para o circuito do chocolate em Capivari — são apenas 40 km de puro prazer serrano!
 
-Nos outros dias, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra as trilhas, as cachoeiras e o centro histórico da cidade.
+Nos outros dias, o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) mostra as trilhas, as cachoeiras e o centro histórico da cidade.
 
 *Veja também: [Restaurantes em Campos do Jordão](/blog/restaurantes-em-campos-do-jordao-onde-comer-na-serra-da-mantiqueira/) | [Suíça Brasileira: Campos do Jordão](/blog/suica-brasileira-campos-do-jordao/)*

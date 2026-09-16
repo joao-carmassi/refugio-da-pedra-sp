@@ -24,8 +24,8 @@ import Link from 'next/link';
 const FOTO = '/assets/refugio/geral/refugio-2.webp';
 
 interface Props {
-  /** Origem do site do mapa, ou `null` quando ela não está configurada. */
-  mapaUrl: string | null;
+  /** Endereço do mapa interativo, ou `null` quando ele não está configurado. */
+  mapaAppUrl: string | null;
 }
 
 /**
@@ -39,7 +39,7 @@ interface Props {
  * `onMount` porque o bloco está acima da dobra: esperar o ScrollTrigger aqui
  * significaria abrir a página com o título invisível.
  */
-function Hero({ mapaUrl }: Props): React.ReactNode {
+function Hero({ mapaAppUrl }: Props): React.ReactNode {
   const scope = useReveal<HTMLElement>({ onMount: true, delay: 0.15 });
 
   return (
@@ -118,14 +118,14 @@ function Hero({ mapaUrl }: Props): React.ReactNode {
         >
           {/* Sem endereço do mapa configurado o botão principal some: um link
               que não leva a lugar nenhum é pior que nenhum botão. */}
-          {mapaUrl && (
+          {mapaAppUrl && (
             <Button
               asChild
               effect='ringHover'
               size='lg'
               className='w-full rounded-full sm:w-auto'
             >
-              <a href={`${mapaUrl}/mapa/`}>
+              <a href={mapaAppUrl}>
                 Abrir o mapa
                 <ArrowRight className='size-4' />
               </a>

@@ -68,7 +68,7 @@ O Complexo da Pedra do Baú é formado por três formações rochosas principais
 
 A **Pedra do Baú**, com seus **1.964 metros de altitude** e aproximadamente **340 metros de parede rochosa**, é o ponto culminante do complexo e um dos mais altos da Serra da Mantiqueira paulista. Suas escarpas de gnaisse atingem **350 metros de altura e 540 metros de comprimento**.
 
-As três formações estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), junto da portaria do Monumento Natural e da rampa de voo livre.
+As três formações estão no [mapa turístico de São Bento do Sapucaí](mapa:/lugares/pedra-do-bau/), junto da portaria do Monumento Natural e da rampa de voo livre.
 
 ## Altitude de São Bento do Sapucaí
 
@@ -111,17 +111,6 @@ A altitude de São Bento (880 m) não causa problemas de mal de altitude para a 
 ### Cultivo e Gastronomia
 
 A altitude elevada da região é responsável pela produção de **vinhos de altitude** e **azeites artesanais** — o frio favorece a dormência e floração de videiras e oliveiras, resultando em produtos de qualidade excepcional.
-
-## FAQ
-
-### Qual a altitude da Pedra do Baú?
-A Pedra do Baú tem 1.964 metros de altitude e aproximadamente 340 metros de parede rochosa. É o ponto mais alto do Complexo do Baú.
-
-### Qual a altitude de São Bento do Sapucaí?
-O centro da cidade está a aproximadamente 880 metros de altitude. A cidade é reconhecida como Estância Climática desde 1976.
-
-### Faz frio na Pedra do Baú?
-Sim. O cume pode estar 6 a 7°C mais frio que o centro da cidade. No inverno, temperaturas próximas de 0°C são comuns no topo. Leve agasalho sempre.
 
 ## Conclusão
 

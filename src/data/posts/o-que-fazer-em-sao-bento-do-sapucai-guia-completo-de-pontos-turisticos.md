@@ -151,7 +151,7 @@ Espaço cultural dedicado ao jurista e filósofo **Miguel Reale**, nascido em S�
 
 São Bento do Sapucaí está a **aprox. 200 km de São Paulo** (SP-070 → SP-50 → SP-173) e **aprox. 40 km de Campos do Jordão** *(distâncias aproximadas)*. Acesso de carro; sem aeroporto na cidade.
 
-Já na cidade, o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra onde fica cada atração desta lista — as trilhas do Complexo do Baú, as cachoeiras, o Mirante do Cruzeiro, as igrejas e as Capelinhas de Mosaico —, com endereço, horário e rota de carro a partir do centro.
+Já na cidade, o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) mostra onde fica cada atração desta lista — as trilhas do Complexo do Baú, as cachoeiras, o Mirante do Cruzeiro, as igrejas e as Capelinhas de Mosaico —, com endereço, horário e rota de carro a partir do centro.
 
 ## Dicas Práticas
 
@@ -253,17 +253,6 @@ Antecipe a noite assistindo ao pôr do sol do alto do **Bauzinho** — o sol se 
 - **Arraiá do Nhô Bento** (junho): quadrilha, fogueira e comidas típicas
 - **Festival Arte no Inverno da Serra** (julho): apresentações culturais noturnas
 - **FLIPES** (setembro): saraus e shows literários
-
-## FAQ
-
-### Quanto tempo preciso para visitar São Bento do Sapucaí?
-Um final de semana cobre as principais atrações. Para trilhas completas e enoturismo, planeje 3 a 4 dias.
-
-### A Pedra do Baú pode ser visitada por qualquer pessoa?
-O acesso ao topo via ferrata exige preparo físico e guia credenciado. O Bauzinho é acessível para iniciantes e famílias.
-
-### As Capelinhas de Mosaico têm horário de visitação?
-A capelinha do centro (Rua 13 de Maio, 217) é a mais acessível. Para as demais, verifique condições antes de visitar.
 
 ## Conclusão
 

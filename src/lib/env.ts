@@ -45,3 +45,11 @@ export const getMapaUrl = (): string | null => {
 
   return url ? url.replace(/\/+$/, '') : null;
 };
+
+// The interactive map app itself (`/mapa/` on the map site), or null when
+// `NEXT_PUBLIC_MAPA_URL` is unset. Single source for every "open the map" link.
+export const getMapaAppUrl = (): string | null => {
+  const mapaUrl = getMapaUrl();
+
+  return mapaUrl ? `${mapaUrl}/mapa/` : null;
+};

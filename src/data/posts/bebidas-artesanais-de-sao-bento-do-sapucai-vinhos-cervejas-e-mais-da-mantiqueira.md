@@ -90,7 +90,7 @@ A Serra da Mantiqueira tem tradição em cachaça artesanal. Guias locais e o S�
 
 A maioria das vinícolas fica em estradas rurais ao redor de São Bento do Sapucaí, a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173. Carro com boa tração é recomendado; em dias de chuva, algumas estradas ficam difíceis.
 
-Vale abrir o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) antes de pegar essas estradas: ele traz os pontos de referência do centro e do vale com endereço, horário e rota de carro.
+Vale abrir o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/) antes de pegar essas estradas: ele traz os pontos de referência do centro e do vale com endereço, horário e rota de carro.
 
 ## Dicas Práticas
 
@@ -98,17 +98,6 @@ Vale abrir o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) antes
 - **Não dirija à noite**: estradas rurais sem iluminação — programe visitas para o dia
 - **Harmonização**: leve embutidos, queijos e geleias das produtoras para combinar com os vinhos
 - **Melhor época**: outono e inverno, quando o clima frio valoriza uma degustação aquecida
-
-## FAQ
-
-### A Vinícola Villa Santa Maria aceita visitas sem agendamento?
-Não. A Villa Santa Maria atende somente com reserva prévia, de quinta a domingo, das 11h às 17h. Entre em contato pelo (12) 99633-0222.
-
-### São Bento do Sapucaí faz parte da Rota dos Vinhos da Mantiqueira?
-Sim. A Vinícola Villa Santa Maria é uma das produtoras cadastradas na Rota dos Vinhos da Mantiqueira, que conecta produtores da região serrana.
-
-### Tem cerveja artesanal produzida em São Bento do Sapucaí?
-Sim. A Fazenda Portal da Luz produz cerveja artesanal de castanha portuguesa, e há outras cervejarias na região. Para uma lista atualizada, consulte o São Bento TUR.
 
 ## Conclusão
 

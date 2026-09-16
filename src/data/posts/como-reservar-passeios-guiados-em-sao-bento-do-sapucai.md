@@ -132,18 +132,7 @@ Compareça ao **ponto de encontro** no horário combinado (geralmente entre 6h30
 - **Chegue no horário**: os guias saem pontualmente e não esperam atrasados
 - **Pergunte sobre combinações**: é possível fazer rapel no Bauzinho + subida na Pedra do Baú no mesmo dia
 - **Prepare-se fisicamente**: a via ferrata exige condicionamento básico
-- **Saiba onde é o ponto de partida**: o [mapa turístico de São Bento do Sapucaí](/mapa-turistico/) mostra a portaria do Monumento Natural e os três cumes do complexo, com rota de carro a partir do centro
-
-## FAQ
-
-### Preciso agendar passeio guiado com antecedência em São Bento do Sapucaí?
-Sim. A Baú Ecoturismo só atende com agendamento prévio. Não há guias disponíveis para atendimento no dia ou na hora.
-
-### Qual o melhor passeio guiado para iniciantes?
-A Trilha do Bauzinho é a mais tranquila e pode ser feita sem guia. Para quem quer uma experiência guiada leve, a Trilha da Cachoeira do Encontro é uma boa opção.
-
-### Como pago o passeio guiado?
-50% via Pix na reserva e 50% em dinheiro ou Pix na saída do passeio. Cartão de crédito e débito não são aceitos.
+- **Saiba onde é o ponto de partida**: o [mapa turístico de São Bento do Sapucaí](mapa:/mapa/?ponto=mona-pedra-bau) mostra a portaria do Monumento Natural e os três cumes do complexo, com rota de carro a partir do centro
 
 ## Conclusão
 

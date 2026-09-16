@@ -4,14 +4,14 @@ import Hero from "./hero";
 import ComoUsar from "./como-usar";
 import Faq from "./faq";
 import Cta from "./cta";
-import serialize from "serialize-javascript";
+import JsonLd from "@/components/json-ld";
 import type {
   WithContext,
   WebPage,
   BreadcrumbList,
   FAQPage,
 } from "schema-dts";
-import { getMapaUrl, getSiteUrl } from "@/lib/env";
+import { getMapaAppUrl, getSiteUrl } from "@/lib/env";
 import { PERGUNTAS } from "./perguntas";
 
 /*
@@ -112,11 +112,11 @@ export function generateMetadata() {
 const siteUrl = getSiteUrl();
 
 /**
- * Endereço do mapa, ou `null` quando `NEXT_PUBLIC_MAPA_URL` não está
+ * Endereço do mapa interativo, ou `null` quando `NEXT_PUBLIC_MAPA_URL` não está
  * configurada. Resolvido aqui, no servidor, e passado às seções que têm botão
  * para ele — elas não precisam saber de onde vem o valor.
  */
-const mapaUrl = getMapaUrl();
+const mapaAppUrl = getMapaAppUrl();
 
 const jsonLd: WithContext<WebPage> = {
   "@context": "https://schema.org",
@@ -141,7 +141,7 @@ const jsonLd: WithContext<WebPage> = {
     },
   },
   // O mapa interativo é a ferramenta que esta página apresenta.
-  ...(mapaUrl ? { significantLink: `${mapaUrl}/mapa/` } : {}),
+  ...(mapaAppUrl ? { significantLink: mapaAppUrl } : {}),
 };
 
 const breadcrumbJsonLd: WithContext<BreadcrumbList> = {
@@ -190,18 +190,9 @@ const faqJsonLd: WithContext<FAQPage> = {
 function MapaTuristicoPage(): React.ReactNode {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serialize(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serialize(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serialize(faqJsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
+      <JsonLd data={faqJsonLd} />
       {/*
         `data-mapa-tema` liga a identidade própria do mapa (globals.css) —
         verde mata na ação, areia no fundo, verde profundo nos blocos fechados.
@@ -211,8 +202,8 @@ function MapaTuristicoPage(): React.ReactNode {
         do Refúgio e continuam em âmbar, como no resto do site.
       */}
       <main data-mapa-tema className="bg-background">
-        <Hero mapaUrl={mapaUrl} />
-        <ComoUsar mapaUrl={mapaUrl} />
+        <Hero mapaAppUrl={mapaAppUrl} />
+        <ComoUsar mapaAppUrl={mapaAppUrl} />
         <Cta />
         <Faq />
       </main>

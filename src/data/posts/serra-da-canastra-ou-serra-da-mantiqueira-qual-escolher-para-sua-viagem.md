@@ -53,7 +53,7 @@ faq_schema:
         text: >-
           A Mantiqueira, por combinar hospedagem de charme (chalés com lareira),
           gastronomia romântica e trilhas para todos os níveis. O Refúgio da
-          Pedra, em São Bento, é ideal para casais.
+          Pedra SP, em São Bento, é ideal para casais.
 ---
 **Para quem sai de São Paulo, a Serra da Mantiqueira é a melhor escolha**: fica a ~2h30 (contra ~5h30 da Canastra), oferece mais diversidade (trilhas, enoturismo, gastronomia, cultura) e tem infraestrutura superior de hospedagem.
 
@@ -93,7 +93,7 @@ Da Suíça Brasileira (Campos do Jordão, 1.628 m) ao refúgio de Monte Verde (1
 ### 4. Infraestrutura de Hospedagem
 A oferta de hospedagem na Mantiqueira vai de hotéis sofisticados em Campos do Jordão a chalés privativos como o **Refúgio da Pedra SP** em São Bento do Sapucaí. Na Canastra, as opções se concentram em São Roque de Minas, com perfil mais rústico.
 
-Em São Bento, o [mapa turístico da cidade](/mapa-turistico/) mostra o que existe ao redor dessa base — do cume do Baú às capelinhas do centro.
+Em São Bento, o [mapa turístico da cidade](mapa:/mapa/) mostra o que existe ao redor dessa base — do cume do Baú às capelinhas do centro.
 
 ### 5. Clima e Conforto
 A Mantiqueira é agradável o ano inteiro. No inverno, frio delicioso com lareira e fondue. No verão, cachoeiras e temperaturas amenas na altitude. A Canastra pode ser muito quente e seca na estiagem.
@@ -106,17 +106,6 @@ A Canastra vence em alguns pontos específicos:
 - **Nascente do Rio São Francisco**: marco geográfico e simbólico do Brasil
 - **Cachoeira Casca d'Anta**: 186 m de queda, uma das mais altas de Minas
 - **Isolamento selvagem**: para quem busca natureza bruta, sem infraestrutura turística
-
-## FAQ
-
-### Serra da Canastra ou Mantiqueira: qual é mais perto de São Paulo?
-A Mantiqueira é muito mais perto: São Bento do Sapucaí fica a ~185 km (~2h30), enquanto a Canastra fica a ~420 km (~5h30) de SP.
-
-### Qual serra tem mais opções de gastronomia?
-A Mantiqueira. Além da gastronomia serrana (truta, fondue), oferece enoturismo (vinhos de altitude), azeite artesanal e restaurantes de slow food. A Canastra é referência no queijo artesanal.
-
-### Qual serra é melhor para casais?
-A Mantiqueira, por combinar hospedagem de charme (chalés com lareira), gastronomia romântica e trilhas para todos os níveis. O Refúgio da Pedra SP, em São Bento, é ideal para casais.
 
 ## Conclusão
 

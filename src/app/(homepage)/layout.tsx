@@ -1,7 +1,7 @@
-import serialize from 'serialize-javascript';
 import type { WithContext, WebPage } from 'schema-dts';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import JsonLd from '@/components/json-ld';
 import { getSiteUrl } from '@/lib/env';
 
 interface Props {
@@ -85,12 +85,7 @@ const jsonLd: WithContext<WebPage> = {
 async function HomeLayout({ children }: Props): Promise<React.ReactNode> {
   return (
     <>
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{
-          __html: serialize(jsonLd),
-        }}
-      />
+      <JsonLd data={jsonLd} />
       <Header />
       {children}
       <Footer />

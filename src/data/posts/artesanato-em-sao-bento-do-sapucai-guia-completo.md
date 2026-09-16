@@ -209,7 +209,7 @@ Monte um **roteiro de meio dia** visitando os principais espaços:
 
 **Base ideal**: Refúgio da Pedra SP — ponto de partida perfeito para explorar o melhor de São Bento.
 
-O Ateliê Ditinho Joana, o Arte no Quilombo e as Capelinhas de Mosaico estão no [mapa turístico da cidade](/mapa-turistico/), com endereço e horário — dá para medir a distância entre eles antes de fechar a ordem do dia.
+O Ateliê Ditinho Joana, o Arte no Quilombo e as Capelinhas de Mosaico estão no [mapa turístico da cidade](mapa:/mapa/?categoria=compras), com endereço e horário — dá para medir a distância entre eles antes de fechar a ordem do dia.
 
 ---
 
@@ -220,20 +220,6 @@ O Ateliê Ditinho Joana, o Arte no Quilombo e as Capelinhas de Mosaico estão no
 - **Reserve oficinas com antecedência**: o Arte no Quilombo pede 3 dias de aviso prévio
 - **Combine com natureza**: o Quilombo também tem o Museu da Revolução de 1932 e o Restaurante Trincheira — tudo num mesmo dia
 - **Compre como souvenir**: peças do Ditinho, cestas do Arte no Quilombo e bordados da Arteben são presentes únicos da Mantiqueira
-
-## FAQ
-
-### Quais são os principais espaços de artesanato em São Bento do Sapucaí?
-Os três principais são: **Ateliê Ditinho Joana** (esculturas em madeira de jacarandá, Bairro do Quilombo), **Arte no Quilombo** (artesanato em palha e barro, cultura quilombola) e **Arteben – Casa do Artesão** (mais de 60 artesãos reunidos no Centro).
-
-### Quem é Ditinho Joana?
-Benedito da Silva Santos (Ditinho Joana) é o escultor mais famoso de São Bento do Sapucaí. Nascido em 1945 no Quilombo, criou uma arte reconhecida nacionalmente — peças únicas em madeira de jacarandá retratando a vida rural brasileira.
-
-### O que é o Arte no Quilombo?
-É uma associação de artesãos do Bairro do Quilombo, fundada em 2004 e com mais de 80 membros. Especializada em artesanato de palha de bananeira e palha de milho, preserva a cultura quilombola local. Funciona diariamente e oferece oficinas culturais.
-
-### O que é a Arteben?
-A Arteben – Casa do Artesão é uma associação fundada em 2004 que reúne mais de 60 artesãos de todos os bairros de São Bento do Sapucaí num único espaço no centro da cidade. Ideal para conhecer a diversidade da produção artesanal local.
 
 ## Conclusão
 

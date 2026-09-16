@@ -36,8 +36,8 @@ faq_schema:
         '@type': Answer
         text: >-
           O Sabor com Arte é um dos mais tradicionais: conhecido pela truta
-          flambada, fogão à lenha e buffet variado. Funciona Seg–Qui das 11h às
-          17h30 e Sex–Dom das 11h às 23h.
+          flambada, fogão à lenha e buffet variado com vista para a Pedra do
+          Baú. Funciona Seg–Qui das 11h às 17h30 e Sex–Dom das 11h às 23h.
     - '@type': Question
       name: Tem opções vegetarianas em São Bento do Sapucaí?
       acceptedAnswer:
@@ -52,8 +52,8 @@ faq_schema:
         '@type': Answer
         text: >-
           Sim. A Oliq Azeite oferece tour pela produção com degustação.
-          Recomenda-se reservar com antecedência e evitar dias de chuva pois o
-          acesso pode ser difícil.
+          Recomenda-se confirmar horários e reservar com antecedência, e evitar
+          dias de chuva, pois o acesso pode ser difícil.
 ---
 **Os melhores restaurantes de São Bento do Sapucaí são o Sabor com Arte** (truta flambada e fogão à lenha), **Entre Vilas** (slow food farm-to-table) e **Manacá** (pratos executivos com vista). A gastronomia local valoriza ingredientes da serra e a tradição de Chão Bento.
 
@@ -96,7 +96,7 @@ Mais do que um restaurante, uma experiência de turismo rural: tour pela produç
 
 A maioria dos restaurantes fica na área central ou ao longo da rodovia que leva à Pedra do Baú. São Bento do Sapucaí está a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173.
 
-O Sabor com Arte e a Hot Stone estão no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/), com endereço e horário de funcionamento — dá para conferir o que abre hoje antes de subir a serra.
+O Sabor com Arte e a Hot Stone estão no [mapa turístico de São Bento do Sapucaí](mapa:/mapa/?categoria=restaurantes), com endereço e horário de funcionamento — dá para conferir o que abre hoje antes de subir a serra.
 
 ## Dicas Práticas
 
@@ -104,17 +104,6 @@ O Sabor com Arte e a Hot Stone estão no [mapa turístico de São Bento do Sapuc
 - **Inverno** (jun–ago): restaurantes podem ter horários especiais — confirme com antecedência
 - **Pratos típicos da região**: truta, costelinha, feijão-tropeiro e queijo artesanal
 - **Souvenir gastronômico**: leve azeite Oliq e vinhos da Villa Santa Maria
-
-## FAQ
-
-### Qual o restaurante mais famoso de São Bento do Sapucaí?
-O Sabor com Arte é um dos mais tradicionais: conhecido pela truta flambada, fogão à lenha e buffet variado com vista para a Pedra do Baú.
-
-### Tem opções vegetarianas em São Bento do Sapucaí?
-Alguns restaurantes, como o Entre Vilas, trabalham com ingredientes frescos da fazenda que contemplam vegetarianos. Confirme com o estabelecimento ao reservar.
-
-### Posso visitar a fábrica de azeite Oliq?
-Sim. A Oliq oferece tour pela produção com degustação. Recomenda-se confirmar horários e reservar com antecedência, especialmente em dias chuvosos.
 
 ## Conclusão
 

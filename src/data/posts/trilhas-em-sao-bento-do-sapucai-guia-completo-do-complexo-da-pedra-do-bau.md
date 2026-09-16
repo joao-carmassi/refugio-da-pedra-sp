@@ -44,9 +44,9 @@ faq_schema:
       acceptedAnswer:
         '@type': Answer
         text: >-
-          Não é recomendado. A via ferrata exige equipamentos técnicos e
-          experiência em escalada. Sempre contrate um guia credenciado — Baú
-          Ecoturismo: (12) 9 9737-5968.
+          Não é recomendado. A via ferrata da Pedra do Baú exige equipamentos
+          técnicos e experiência em escalada. Sempre contrate um guia
+          credenciado da região — Baú Ecoturismo: (12) 9 9737-5968.
     - '@type': Question
       name: Qual a melhor época para fazer trilhas em São Bento do Sapucaí?
       acceptedAnswer:
@@ -98,7 +98,7 @@ Há três entradas para o Complexo da Pedra do Baú, cada uma indicada para uma 
 
 São Bento do Sapucaí está a **aprox. 200 km de São Paulo** pela SP-070 → SP-50 → SP-173. Recomenda-se GPS atualizado e carro com boa tração.
 
-A portaria do Monumento Natural, o Bauzinho, a Ana Chata e o cume do Baú estão marcados no [mapa turístico da cidade](/mapa-turistico/), que traça a rota de carro até cada ponto de partida.
+A portaria do Monumento Natural, o Bauzinho, a Ana Chata e o cume do Baú estão marcados no [mapa turístico da cidade](mapa:/lugares/pedra-do-bau/), que traça a rota de carro até cada ponto de partida.
 
 ## Dicas Práticas
 
@@ -108,17 +108,6 @@ A portaria do Monumento Natural, o Bauzinho, a Ana Chata e o cume do Baú estão
 - **Temperatura**: muito mais fria no cume — leve camadas extras de roupa
 - **Guia credenciado**: para via ferrata e rapel — contate Baú Ecoturismo: (12) 9 9737-5968
 - **Melhor época**: outono e primavera (menos chuva e céu mais limpo)
-
-## FAQ
-
-### Qual trilha é mais indicada para crianças e iniciantes?
-A Trilha do Bauzinho é a mais tranquila: ~30 minutos de caminhada, taxa acessível e vista frontal da Pedra do Baú — ideal para toda a família.
-
-### É possível fazer a via ferrata sem contratar guia?
-Não é recomendado. A via ferrata da Pedra do Baú exige equipamentos técnicos e experiência em escalada. Sempre contrate um guia credenciado da região.
-
-### Qual a melhor época para fazer trilhas em São Bento do Sapucaí?
-Outono e primavera oferecem tempo mais estável e melhor visibilidade. Nos meses de verão (dez–mar), chuvas fortes são frequentes e podem tornar as trilhas perigosas.
 
 ## Conclusão
 

@@ -97,7 +97,7 @@ A serra foi barreira e caminho para os **bandeirantes paulistas** que, partindo 
 ### Século XIX: Estâncias Climáticas
 A altitude e o clima ameno atraíram a elite paulista e carioca para estâncias de saúde. **Campos do Jordão** nasceu como refúgio terapêutico para tuberculosos. Cidades como **São Bento do Sapucaí**, **Santo Antônio do Pinhal** e **Monte Verde** se consolidaram como destinos de descanso.
 
-Em São Bento, o que sobrou dessa época — as igrejas do centro e o casarão do século XIX que hoje abriga a Casa da Cultura Miguel Reale — está no [mapa turístico do município](/mapa-turistico/), com endereço e horário de visitação.
+Em São Bento, o que sobrou dessa época — as igrejas do centro e o casarão do século XIX que hoje abriga a Casa da Cultura Miguel Reale — está no [mapa turístico do município](mapa:/mapa/?categoria=cultura), com endereço e horário de visitação.
 
 ### Século XX: Conservação e Turismo
 Em **1985**, a Serra da Mantiqueira foi declarada **Área de Proteção Ambiental (APA)** pelo governo federal, abrangendo 422.873 hectares nos três estados. O turismo de natureza, aventura e gastronomia transformou a região em um dos corredores turísticos mais importantes do país.
@@ -110,17 +110,6 @@ A Mantiqueira é reconhecida internacionalmente como área de **extrema importâ
 - Compõe duas **IBAs (Important Bird Areas)** reconhecidas pela BirdLife International
 - Preserva remanescentes de **Mata Atlântica**, **campos de altitude** e **florestas de araucárias**
 - É fonte de águas minerais em dezenas de cidades (Caxambu, São Lourenço, Poços de Caldas etc.)
-
-## FAQ
-
-### O que significa "Mantiqueira"?
-Vem do tupi "amana tykyra", que significa "gota de chuva" ou, poeticamente, "a montanha que chora" — referência às inúmeras nascentes que brotam da serra.
-
-### Como surgiu a Serra da Mantiqueira?
-A formação remonta à ruptura do supercontinente Gondwana. Colisões entre placas tectônicas e movimentos de epirogênese soergueram a serra, composta por rochas cristalinas (granitos e gnaisses).
-
-### Qual a importância da Serra da Mantiqueira?
-É a principal fonte de água do Sudeste, alimentando rios como o Jaguari, Paraíba do Sul e Grande. Também é área de extrema importância para a biodiversidade da Mata Atlântica.
 
 ## Conclusão
 

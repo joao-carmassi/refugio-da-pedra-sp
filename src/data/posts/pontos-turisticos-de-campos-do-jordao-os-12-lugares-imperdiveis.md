@@ -96,7 +96,7 @@ Conjunto arquitetônico que reproduz uma vila britânica, com lojinhas, cafés e
 
 Embora fique no município vizinho de **São Bento do Sapucaí** (~40 km), a **Pedra do Baú** é frequentemente incluída nos roteiros de quem visita a região. Com 1.964 m de altitude e via ferrata, é a aventura mais épica da Mantiqueira. O **Refúgio da Pedra SP** é a base ideal para essa experiência.
 
-O complexo inteiro — cume, Bauzinho, Ana Chata e a portaria do Monumento Natural — está no [mapa turístico de São Bento do Sapucaí](/mapa-turistico/).
+O complexo inteiro — cume, Bauzinho, Ana Chata e a portaria do Monumento Natural — está no [mapa turístico de São Bento do Sapucaí](mapa:/lugares/pedra-do-bau/).
 
 ## 11. Bosque do Silêncio
 
@@ -125,17 +125,6 @@ Visita à fábrica da cervejaria artesanal mais famosa de Campos do Jordão. Tou
 - **Capivari à noite** é imperdível: iluminação, gastronomia e vida noturna
 - **Pico do Itapeva** rende mais em dias claros — vá pela manhã
 - **Reserve tempo** para caminhar sem pressa: parte da experiência é o passeio a pé
-
-## FAQ
-
-### Quais são os pontos turísticos mais famosos de Campos do Jordão?
-O Morro do Elefante com teleférico, o Parque Estadual (Horto Florestal), o Pico do Itapeva, o bairro de Capivari e o Palácio Boa Vista são os mais visitados e icônicos da cidade.
-
-### Quantos dias preciso para ver os pontos turísticos de Campos do Jordão?
-Dois a três dias são suficientes para as principais atrações. Com quatro dias, é possível incluir trilhas no Horto e um bate-volta a São Bento do Sapucaí para a Pedra do Baú.
-
-### Quais pontos turísticos são gratuitos em Campos do Jordão?
-Capivari (ruas e comércio), Ducha de Prata e Palácio Boa Vista são gratuitos. O Horto Florestal, Amantikir e Pico do Itapeva cobram taxa de entrada.
 
 ## Conclusão
 
